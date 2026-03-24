@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'זכויות חייב בהוצאה לפועל — המדריך המלא',
+  description: 'כל הזכויות שיש לך כחייב בהוצאה לפועל — מה מוגן מעיקול, אילו הגבלות מותרות, ואיך מגנים על עצמך',
+  inLanguage: 'he',
+};
+---
+
+<BaseLayout
+  title="זכויות חייב בהוצאה לפועל — כל מה שמגיע לך"
+  description="יש לך יותר זכויות ממה שאתה חושב. מה מוגן מעיקול, אילו הגבלות מותרות, ואיך מגנים על עצמך — בעברית פשוטה."
+  schema={schema}
+>
+  <Header />
+  <main class="max-w-4xl mx-auto px-4 py-10">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <span class="text-gray-700">זכויות חייבים</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-3">זכויות חייב בהוצאה לפועל</h1>
+    <p class="text-lg text-gray-600 mb-10 max-w-2xl">
+      להיות חייב לא אומר שאין לך זכויות. החוק הישראלי מגן עליך בצורות שרוב האנשים לא מכירים.
+    </p>
+
+    <!-- עמוד ראשי לזכויות -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+      {[
+        {
+          icon: '⚖️',
+          title: '10 זכויות שכל חייב חייב להכיר',
+          desc: 'הרשימה הבסיסית — מה מגיע לך לפי חוק',
+          href: '/rights/10-zchuyot/',
+          kw: '7,600 חיפושים/חודש',
+          highlight: true,
+        },
+        {
+          icon: '🏦',
+          title: 'סכומים ונכסים מוגנים מעיקול',
+          desc: 'מה לא ניתן לעקל — קצבאות, שכר מינימום, ציוד עבודה',
+          href: '/rights/skhomim-mugganim/',
+          kw: '4,900 חיפושים/חודש',
+          highlight: false,
+        },
+        {
+          icon: '🏠',
+          title: 'האם אפשר לעקל את הבית שלי?',
+          desc: 'מה ההגנות על דירת מגורים ראשית',
+          href: '/rights/bayit-muggan/',
+          kw: '3,100 חיפושים/חודש',
+          highlight: false,
+        },
+        {
+          icon: '🚫',
+          title: 'הגבלות על חייב — מה מותר ומה אסור',
+          desc: 'עיכוב יציאה, רישיון נהיגה, כרטיסי אשראי',
+          href: '/rights/hagbalot/',
+          kw: '2,800 חיפושים/חודש',
+          highlight: false,
+        },
+      ].map(item => (
+        <a
+          href={item.href}
+          class={`flex gap-4 items-start p-5 rounded-xl border-2 transition-all group ${
+            item.highlight
+              ? 'border-brand bg-brand-pale hover:bg-blue-100'
+              : 'border-neutral-border bg-white hover:border-brand hover:bg-brand-pale'
+          }`}
+        >
+          <span class="text-3xl mt-0.5">{item.icon}</span>
+          <div class="flex-1">
+            {item.highlight && (
+              <span class="text-xs font-bold text-brand bg-blue-100 px-2 py-0.5 rounded-full mb-2 inline-block">הכי נקרא</span>
+            )}
+            <h2 class="font-bold text-gray-800 mb-1 group-hover:text-brand-dark transition-colors leading-snug">{item.title}</h2>
+            <p class="text-sm text-gray-500 mb-2">{item.desc}</p>
+            {item.kw && <span class="text-xs text-neutral-muted">🔍 {item.kw}</span>}
+          </div>
+          <span class="text-brand-dark text-lg group-hover:translate-x-[-4px] transition-transform mt-1">←</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- תקציר מהיר -->
+    <div class="bg-brand-pale border border-brand-light rounded-2xl p-6 mb-10">
+      <h2 class="text-xl font-bold text-brand-dark mb-4">בקצרה — מה מוגן עליך בחוק</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+        {[
+          { label: 'שכר מינימום', val: 'מוגן לחלוטין מעיקול' },
+          { label: 'קצבאות ביטוח לאומי', val: 'לא ניתנות לעיקול' },
+          { label: 'עיקול משכורת', val: 'מקסימום שליש' },
+          { label: 'כלי עבודה', val: 'מוגנים בחוק' },
+          { label: 'ציוד רפואי', val: 'לא ניתן לעיקול' },
+          { label: 'בגדים וחפצים אישיים', val: 'מוגנים' },
+        ].map(item => (
+          <div class="flex justify-between items-center py-2 border-b border-brand-light last:border-0">
+            <span class="text-gray-600">{item.label}</span>
+            <span class="font-semibold text-brand-dark text-xs">{item.val}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+      ⚠️ המידע כאן הוא כללי בלבד ואינו מהווה ייעוץ משפטי. לייעוץ אישי — פנה לעורך דין.
+    </div>
+
+  </main>
+  <Footer />
+</BaseLayout>

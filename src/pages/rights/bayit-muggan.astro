@@ -1,0 +1,82 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="האם אפשר לעקל את הבית שלי? — הגנה על דירת מגורים"
+  description="מתי ניתן לעקל דירת מגורים ראשית ומתי לא? מה ההגנות החוקיות על הבית שלך בהוצאה לפועל — בעברית פשוטה."
+  breadcrumb={[{ label: 'זכויות חייבים', href: '/rights/' }, { label: 'הבית שלי', href: '/rights/bayit-muggan/' }]}
+  publishDate="2025-03-01"
+  updateDate="2026-03-01"
+  readTime="5 דקות"
+>
+
+  <p>
+    הפחד מאיבוד הבית הוא אחד הגדולים ביותר כשנכנסים להוצאה לפועל. האמת היא שעיקול וממוש
+    של דירת מגורים ראשית הוא הליך קשה ומורכב מאוד לנושה — ויש לך הגנות חשובות בחוק.
+  </p>
+
+  <h2>האם ניתן לעקל דירת מגורים?</h2>
+  <p>
+    כן — עיקול רישומי על דירה <em>ניתן</em> לרשום. אבל עיקול רישומי הוא לא אותו דבר כמו לקחת לך את הבית.
+    זה אומר שלא תוכל למכור את הדירה בלי לסלק את החוב קודם, אבל אתה ממשיך לגור בה.
+  </p>
+  <p>
+    <strong>ממוש הדירה</strong> — כלומר מכירה כפויה — הוא הרבה יותר קשה, ומצריך הליכים משפטיים מורכבים.
+  </p>
+
+  <h2>מתי קשה לממש דירת מגורים ראשית?</h2>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-3">הגורמים שמגנים עליך:</p>
+    <ul class="space-y-1">
+      <li><strong>זו הדירה היחידה שלך</strong> — בית יחיד נהנה מהגנה משמעותית יותר</li>
+      <li><strong>ילדים קטינים מתגוררים בה</strong> — בתי המשפט מהססים מאוד לממש</li>
+      <li><strong>שווי הדירה לא מכסה את החוב</strong> — ממוש לא יצדיק את עצמו</li>
+      <li><strong>בן/בת זוג שלא חייב</strong> — צריך הסכמתו/ה</li>
+      <li><strong>החוב קטן ביחס לשווי הדירה</strong> — הרשם עשוי לדחות בקשת ממוש</li>
+    </ul>
+  </div>
+
+  <h2>מה קורה בפועל — שלבי הממוש</h2>
+  <p>
+    כדי שנושה ימש דירה, הוא צריך לעבור תהליך ארוך ויקר:
+  </p>
+
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span>רישום עיקול בלשכת רישום המקרקעין (טאבו)</span></li>
+    <li><span class="step-num">2</span><span>הגשת בקשה לממוש לרשם ההוצאה לפועל</span></li>
+    <li><span class="step-num">3</span><span>שמיעת עמדת החייב ובני ביתו</span></li>
+    <li><span class="step-num">4</span><span>שמאות לקביעת שווי הנכס</span></li>
+    <li><span class="step-num">5</span><span>פרסום מכרז ומכירה פומבית</span></li>
+    <li><span class="step-num">6</span><span>תשלום לנושים לפי סדר עדיפויות</span></li>
+  </ol>
+
+  <p>
+    תהליך זה יכול לקחת <strong>שנים</strong> ועולה לנושה עשרות אלפי שקלים. לכן — רוב הנושים
+    מעדיפים הסדר מחוץ לכותלי בית המשפט.
+  </p>
+
+  <h2>מה כדאי לעשות אם עיקלו את הדירה?</h2>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">⚠️ אל תתעלם</p>
+    <p>עיקול רישומי על הדירה הוא אות אזהרה. עדיף לפעול מוקדם — לפני שמגיעים לשלב הממוש.</p>
+  </div>
+
+  <ol class="step-list mt-4">
+    <li><span class="step-num">1</span><span><strong>פנה לרשם מיד</strong> והגש בקשה לצו תשלומים — זה יכול לעצור את ההליך</span></li>
+    <li><span class="step-num">2</span><span><strong>הגש התנגדות</strong> לממוש אם יש טעמים (ילדים, דירה יחידה, חוב קטן)</span></li>
+    <li><span class="step-num">3</span><span><strong>שקול משא ומתן ישיר</strong> עם הנושה — לרוב עדיף לו הסדר מאשר מכירה</span></li>
+    <li><span class="step-num">4</span><span><strong>התייעץ עם עורך דין</strong> — בעניין דירה, ייצוג משפטי שווה את הכסף</span></li>
+  </ol>
+
+  <slot name="next-steps">
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/rights/skhomim-mugganim/" class="text-brand hover:underline">מה עוד מוגן מעיקול?</a></li>
+      <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">איך מגישים צו תשלומים לעצור הליכים</a></li>
+      <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">האם חדלות פירעון יכולה לעזור?</a></li>
+    </ul>
+  </slot>
+
+</GuideLayout>

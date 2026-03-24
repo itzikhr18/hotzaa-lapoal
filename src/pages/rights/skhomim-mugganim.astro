@@ -1,0 +1,130 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="סכומים ונכסים מוגנים מעיקול בהוצאה לפועל"
+  description="מה לא ניתן לעקל לפי חוק? קצבאות ביטוח לאומי, שכר מינימום, כלי עבודה, ציוד רפואי — הרשימה המלאה עם הסכומים המעודכנים ל-2025."
+  breadcrumb={[{ label: 'זכויות חייבים', href: '/rights/' }, { label: 'סכומים מוגנים', href: '/rights/skhomim-mugganim/' }]}
+  publishDate="2025-03-01"
+  updateDate="2026-03-01"
+  readTime="5 דקות"
+>
+
+  <p>
+    אחת הטעויות הנפוצות ביותר שחייבים עושים — הם מניחים שהנושה יכול לקחת הכל.
+    זה לא נכון. החוק קובע בדיוק מה מוגן ומה לא.
+  </p>
+
+  <h2>כספים שלא ניתנים לעיקול כלל</h2>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">מקור הכסף</th>
+          <th class="text-right p-3 border border-gray-200">הגנה</th>
+          <th class="text-right p-3 border border-gray-200">הערות</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['קצבת ילדים', 'מוגנת לחלוטין', 'כולל תוספות'],
+          ['קצבת נכות', 'מוגנת לחלוטין', 'כל סוגי הנכות'],
+          ['קצבת זקנה', 'מוגנת לחלוטין', 'כולל תוספת תלויים'],
+          ['קצבת שאירים', 'מוגנת לחלוטין', ''],
+          ['דמי אבטלה', 'מוגנים לחלוטין', 'מביטוח לאומי'],
+          ['גמלת סיעוד', 'מוגנת לחלוטין', ''],
+          ['מזונות שנפסקו', 'מוגנים לחלוטין', 'לתשלום לילדים'],
+          ['פיצויי נזקי גוף', 'מוגנים לחלוטין', 'פגיעה גופנית בלבד'],
+        ].map(([src, prot, note], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-medium">{src}</td>
+            <td class="p-3 border border-gray-200 text-green-700 font-semibold">{prot}</td>
+            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{note}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>הגנה על משכורת — החוק קובע תקרה</h2>
+  <p>
+    משכורת אינה ניתנת לעיקול מלא. החוק קובע מדרגות הגנה:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">גובה המשכורת נטו</th>
+          <th class="text-right p-3 border border-gray-200">מה ניתן לעקל</th>
+          <th class="text-right p-3 border border-gray-200">דוגמה</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['עד שכר מינימום (~5,000 ₪)', 'אפס — מוגן לחלוטין', 'משכורת 4,800 ₪ → לא מעקלים כלום'],
+          ['מעל שכר מינימום', 'עד שליש מהעודף', 'משכורת 9,000 ₪ → מקסימום עיקול: ~1,333 ₪'],
+        ].map(([range, rule, ex], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-medium">{range}</td>
+            <td class="p-3 border border-gray-200 text-orange-700 font-semibold">{rule}</td>
+            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{ex}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>נכסים פיזיים שלא ניתן לעקל</h2>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-3">רשימת נכסים מוגנים לפי חוק:</p>
+    <ul class="space-y-1">
+      <li><strong>מיטה ומצעים</strong> — לחייב ולכל בני ביתו</li>
+      <li><strong>שולחן, כיסאות ורהיטים בסיסיים</strong> — לשימוש יומיומי</li>
+      <li><strong>מקרר, כיריים ומכונת כביסה</strong> — ציוד בית בסיסי</li>
+      <li><strong>בגדים וחפצים אישיים</strong> — לחייב ולמשפחתו</li>
+      <li><strong>ספרי לימוד וחינוך של ילדים</strong></li>
+      <li><strong>כלי עבודה ומקצוע</strong> — הנחוצים לפרנסה עד תקרה מסוימת</li>
+      <li><strong>ציוד רפואי חיוני</strong> — כיסא גלגלים, מכשיר שמיעה, ועוד</li>
+      <li><strong>רכב — אם נחוץ לפרנסה</strong> — ניתן לבקש הגנה</li>
+    </ul>
+  </div>
+
+  <h2>מה קורה אם עיקלו כסף מוגן?</h2>
+  <p>
+    אם הבנק עיקל כסף שמקורו בקצבאות ביטוח לאומי — זה לא חוקי.
+    הנה מה לעשות:
+  </p>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>הדפס את דפי חשבון הבנק המראים את ההפקדות מביטוח לאומי</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>פנה לרשם ההוצאה לפועל עם הוכחות וביקש ביטול העיקול על הסכומים המוגנים</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>אם הרשם לא פועל — פנה לעורך דין או לסיוע משפטי חינמי</span>
+    </li>
+  </ol>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">⚠️ טיפ חשוב</p>
+    <p>אם אתה מקבל קצבאות ביטוח לאומי — מומלץ לשמור אותן בחשבון נפרד. זה מקל מאוד על הוכחה שהכסף מוגן.</p>
+  </div>
+
+  <slot name="next-steps">
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/rights/10-zchuyot/" class="text-brand hover:underline">כל 10 הזכויות שמגיעות לך</a></li>
+      <li>← <a href="/rights/bayit-muggan/" class="text-brand hover:underline">האם אפשר לעקל את הבית שלי?</a></li>
+      <li>← <a href="/guides/ikul-maskoret/" class="text-brand hover:underline">מדריך עיקול משכורת</a></li>
+    </ul>
+  </slot>
+
+</GuideLayout>
