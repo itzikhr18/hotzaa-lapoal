@@ -1,0 +1,175 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'האם ניתן לעקל את דירת המגורים הראשית שלי?',
+      acceptedAnswer: { '@type': 'Answer', text: 'ניתן לרשום עיקול רישומי על הדירה, אבל ממוש (מכירה כפויה) של דירת מגורים ראשית הוא הליך מורכב מאוד הדורש אישור בית משפט ועובר בירוקרטיה ארוכה.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם ניתן לעקל רכב שמשמש לעבודה?',
+      acceptedAnswer: { '@type': 'Answer', text: 'ניתן לעקל רכב, אבל אם הרכב נחוץ לפרנסה — ניתן לבקש מהרשם הגנה על הרכב. בית המשפט מהסס לעקל רכב שמשמש לעבודה.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה ההבדל בין עיקול רישומי לממוש?',
+      acceptedAnswer: { '@type': 'Answer', text: 'עיקול רישומי מונע מכירת הנכס אך אינו מוציא אותך ממנו. ממוש הוא מכירה כפויה בפועל — זה שלב הרבה יותר מורכב שדורש הליכים משפטיים נוספים.' },
+    },
+  ],
+};
+---
+
+<GuideLayout
+  title="עיקול על נכסים — דירה ורכב בהוצאה לפועל"
+  description="מאיימים לעקל את הדירה או הרכב שלך? מה ההגנות החוקיות, מתי ניתן לממש נכסים, ומה עושים כדי להגן על עצמך — מדריך מלא בעברית פשוטה."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'עיקול נכסים', href: '/guides/ikul-nechassim/' }]}
+  publishDate="2025-03-01"
+  updateDate="2026-03-01"
+  readTime="6 דקות"
+  schema={faqSchema}
+>
+
+  <p>
+    האיום על דירה או רכב הוא אחד הדברים המפחידים ביותר בהוצאה לפועל. אבל חשוב לדעת:
+    יש הבדל גדול בין <strong>עיקול רישומי</strong> לבין <strong>ממוש בפועל</strong> — והמעבר בין השניים
+    הוא לא אוטומטי כלל.
+  </p>
+
+  <h2>שני סוגי עיקול שחשוב להכיר</h2>
+
+  <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+    <div class="border-2 border-orange-200 bg-orange-50 rounded-xl p-5">
+      <h3 class="font-bold text-orange-800 mb-2">עיקול רישומי</h3>
+      <p class="text-sm text-gray-700 mb-3">רישום בטאבו (דירה) או ברשם הרכבים — מונע מכירה או העברת בעלות.</p>
+      <ul class="text-sm text-gray-600 space-y-1">
+        <li>✓ אתה ממשיך לגור בדירה</li>
+        <li>✓ אתה ממשיך להשתמש ברכב</li>
+        <li>✗ לא ניתן למכור ללא סילוק החוב</li>
+      </ul>
+    </div>
+    <div class="border-2 border-red-200 bg-red-50 rounded-xl p-5">
+      <h3 class="font-bold text-red-800 mb-2">ממוש הנכס</h3>
+      <p class="text-sm text-gray-700 mb-3">מכירה כפויה בפועל — זה השלב שכולם פוחדים ממנו.</p>
+      <ul class="text-sm text-gray-600 space-y-1">
+        <li>✗ דורש אישור בית משפט</li>
+        <li>✗ תהליך ארוך ויקר לנושה</li>
+        <li>✗ ניתן להתנגד ולעכב</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>עיקול דירה — מה מגן עליך</h2>
+  <p>
+    ממוש דירת מגורים ראשית הוא אחד ההליכים הקשים ביותר לנושה לבצע בישראל.
+    הנה הגורמים שמגנים עליך:
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">הגורמים שמקשים על ממוש הדירה:</p>
+    <ul class="space-y-1">
+      <li><strong>זו הדירה היחידה שלך</strong> — בית יחיד נהנה מהגנה משמעותית</li>
+      <li><strong>ילדים קטינים מתגוררים בה</strong> — בתי המשפט מהססים מאוד</li>
+      <li><strong>בן/בת זוג שלא חייב</strong> — דורש הסכמתו/ה</li>
+      <li><strong>החוב קטן ביחס לשווי הדירה</strong> — הרשם עשוי לדחות</li>
+      <li><strong>שמאות + הוצאות משפטיות</strong> — עולה לנושה הרבה כסף</li>
+    </ul>
+  </div>
+
+  <p>
+    בפועל — רוב הנושים מעדיפים להגיע להסדר תשלומים מאשר לעבור את כל הבירוקרטיה
+    של ממוש דירה. הכלי הכי חזק שלך הוא לפנות לרשם ולהציע צו תשלומים <strong>לפני</strong>
+    שמגיעים לשלב הממוש.
+  </p>
+
+  <h2>שלבי ממוש דירה — למה זה לוקח זמן</h2>
+
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span>רישום עיקול בטאבו</span></li>
+    <li><span class="step-num">2</span><span>הגשת בקשה לממוש לרשם ההוצאה לפועל</span></li>
+    <li><span class="step-num">3</span><span>שמיעת עמדת החייב ובני ביתו — <strong>כאן אפשר להתנגד</strong></span></li>
+    <li><span class="step-num">4</span><span>שמאות לקביעת שווי הנכס (על חשבון הנושה)</span></li>
+    <li><span class="step-num">5</span><span>פרסום מכרז ומכירה פומבית</span></li>
+    <li><span class="step-num">6</span><span>תשלום לנושים לפי סדר עדיפויות</span></li>
+  </ol>
+
+  <p>
+    כל התהליך יכול לקחת <strong>שנים</strong> — ועולה לנושה עשרות אלפי שקלים.
+  </p>
+
+  <h2>עיקול רכב — מה כדאי לדעת</h2>
+  <p>
+    עיקול רכב קל יותר לביצוע מאשר עיקול דירה — הוא נרשם ברשם הרכבים.
+    אבל גם כאן יש הגנות:
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מתי ניתן לבקש הגנה על הרכב:</p>
+    <ul>
+      <li><strong>הרכב נחוץ לעבודה</strong> — נהג, שליח, עצמאי, או שאין תחבורה ציבורית</li>
+      <li><strong>הרכב משמש לנכות</strong> — ניוד אדם עם מוגבלות</li>
+      <li><strong>שווי הרכב נמוך מאוד</strong> — ממוש לא משתלם לנושה</li>
+    </ul>
+    <p class="mt-2 text-sm">בקשת הגנה מוגשת לרשם ההוצאה לפועל עם הוכחות לנחיצות הרכב.</p>
+  </div>
+
+  <h2>מה לעשות עכשיו אם עיקלו נכס</h2>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span><strong>אל תתעלם</strong> — עיקול רישומי שמוזנח יכול להתקדם לממוש</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span><strong>הגש צו תשלומים מיידי</strong> — זה מפסיק את ההליכים ומראה רצון טוב</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span><strong>נסה משא ומתן ישיר</strong> — הנושה מעדיף כסף על פני בירוקרטיה של ממוש</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span><strong>התנגד לממוש</strong> — אם הגיעה בקשת ממוש, יש לך זכות לטעון בפני הרשם</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span><strong>התייעץ עם עורך דין</strong> — בעניין נכסים, ייצוג שווה את הכסף</span>
+    </li>
+  </ol>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">⚠️ הכלל החשוב ביותר</p>
+    <p>ככל שתפעל מוקדם יותר — כך יש לך יותר אפשרויות. אל תמתין לשלב הממוש.</p>
+  </div>
+
+  <h2>שאלות נפוצות</h2>
+  <div class="space-y-4 my-6">
+    {[
+      { q: 'האם ניתן לעקל את דירת המגורים הראשית שלי?', a: 'ניתן לרשום עיקול רישומי, אבל ממוש (מכירה כפויה) הוא הליך מורכב מאוד הדורש אישור בית משפט ולוקח שנים.' },
+      { q: 'האם ניתן לעקל רכב שמשמש לעבודה?', a: 'ניתן לעקל, אבל אם הרכב נחוץ לפרנסה — ניתן לבקש מהרשם הגנה על הרכב. בית המשפט מהסס לעקל רכב שמשמש לעבודה.' },
+      { q: 'מה ההבדל בין עיקול רישומי לממוש?', a: 'עיקול רישומי מונע מכירה אך לא מוציא אותך מהנכס. ממוש הוא מכירה כפויה בפועל — שלב הרבה יותר מורכב.' },
+    ].map(faq => (
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          {faq.q}
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <slot name="next-steps">
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/rights/bayit-muggan/" class="text-brand hover:underline">הגנות חוקיות על דירת מגורים</a></li>
+      <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">הגש צו תשלומים לפני שמממשים</a></li>
+      <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">חדלות פירעון — אפשרות לאיפוס</a></li>
+    </ul>
+  </slot>
+
+</GuideLayout>
