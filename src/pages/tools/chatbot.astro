@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ChatBot from '../../components/ChatBot';
+
+// מפתח ה-API נקרא ממשתנה סביבה — לא נכנס לקוד!
+const apiKey = import.meta.env.GEMINI_API_KEY ?? '';
+---
+
+<BaseLayout
+  title="צ'אטבוט הוצאה לפועל — שאל שאלה וקבל תשובה"
+  description="שאל שאלה על הוצאה לפועל וחדלות פירעון — צ'אטבוט AI שעונה בעברית פשוטה, 24/7, בחינם."
+>
+  <Header />
+  <main class="max-w-2xl mx-auto px-4 py-10">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <a href="/tools/">כלים</a> › <span class="text-gray-700">צ'אטבוט</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-2">צ'אטבוט הוצאה לפועל</h1>
+    <p class="text-gray-500 mb-8">שאל כל שאלה — מקבל תשובה בעברית פשוטה, מיידית, בחינם</p>
+
+    {apiKey ? (
+      <ChatBot apiKey={apiKey} client:load />
+    ) : (
+      <div class="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
+        <p class="font-bold text-red-800 mb-2">הצ'אטבוט אינו זמין כרגע</p>
+        <p class="text-sm text-red-600">מפתח ה-API לא הוגדר. הוסף את <code>GEMINI_API_KEY</code> למשתני הסביבה.</p>
+      </div>
+    )}
+
+  </main>
+  <Footer />
+</BaseLayout>
