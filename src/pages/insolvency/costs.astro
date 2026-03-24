@@ -1,0 +1,104 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="כמה עולה הליך חדלות פירעון? — פירוט עלויות 2026"
+  description="העלות הכוללת של הליך חדלות פירעון נעה בין 8,000 ל-25,000 ₪. פירוט אגרות, שכר טרחה עורך דין, ועלויות נסתרות — לפני שמחליטים."
+  breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'עלויות', href: '/insolvency/costs/' }]}
+  publishDate="2025-03-01"
+  updateDate="2026-03-01"
+  readTime="4 דקות"
+>
+
+  <p>
+    אחת השאלות הראשונות שאנשים שואלים היא כמה זה עולה. התשובה הכנה: לא מעט —
+    אבל ביחס לחובות שנמחקים בסוף, רוב האנשים שעברו את ההליך אומרים שהיה שווה.
+  </p>
+
+  <h2>סיכום עלויות — 2026</h2>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">פריט</th>
+          <th class="text-right p-3 border border-gray-200">עלות משוערת</th>
+          <th class="text-right p-3 border border-gray-200">הערות</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['אגרת בית משפט', '1,564 ₪', 'ניתן לבקש פטור במצוקה כלכלית'],
+          ['שכר טרחה עורך דין', '6,000 – 20,000 ₪', 'לפי מורכבות התיק ונכסים'],
+          ['שכר נאמן', 'נקבע על ידי בית המשפט', 'מתוך כספי הנושים בדרך כלל'],
+          ['שמאות נכסים (אם נדרש)', '1,500 – 3,000 ₪', 'רק אם יש נכסים לשום'],
+          ['סה"כ משוער', '8,000 – 25,000 ₪', 'ממוצע: כ-12,000-15,000 ₪'],
+        ].map(([item, cost, note], i) => (
+          <tr class={i === 4 ? 'bg-blue-50 font-bold' : i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200">{item}</td>
+            <td class="p-3 border border-gray-200 text-brand-dark font-semibold">{cost}</td>
+            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{note}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>אגרת בית המשפט — ואפשרות לפטור</h2>
+  <p>
+    אגרת הגשת בקשה לחדלות פירעון עומדת על <strong>1,564 ₪</strong> (נכון ל-2026).
+    אנשים שאין ביכולתם לשלם את האגרה יכולים לבקש פטור מלא או חלקי ממנה.
+    הבקשה לפטור מוגשת יחד עם הבקשה הראשית.
+  </p>
+
+  <h2>שכר טרחה עורך דין — האם חובה?</h2>
+  <p>
+    עורך דין אינו חובה — אפשר להגיש בעצמך. אבל:
+  </p>
+  <ul>
+    <li>ההליך מורכב ומלא מלכודות בירוקרטיות</li>
+    <li>טעויות בהגשה יכולות לעכב את ההליך בחודשים</li>
+    <li>עורך דין טוב יכול לשפר את תנאי תוכנית השיקום</li>
+    <li>בתיקים עם נכסים (דירה, רכב) — ייצוג חשוב מאוד</li>
+  </ul>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">כיצד לחסוך בשכר טרחה:</p>
+    <ul>
+      <li><strong>הלשכה לסיוע משפטי</strong> — ייצוג חינמי לזכאים לפי הכנסה</li>
+      <li><strong>קליניקות משפטיות</strong> — אוניברסיטאות מציעות ייעוץ בחינם</li>
+      <li><strong>השוואת מחירים</strong> — שכר הטרחה שונה מאוד בין עורכי דין. שאל לפחות 2-3</li>
+    </ul>
+  </div>
+
+  <h2>שכר נאמן — מי משלם?</h2>
+  <p>
+    הנאמן שממונה על ידי בית המשפט מקבל שכר מהכספים שנגבים מהחייב לטובת הנושים.
+    כלומר — שכר הנאמן לא יוצא ישירות מכיסך, אלא מהתשלומים שממילא אתה משלם.
+  </p>
+
+  <h2>האם ההשקעה משתלמת?</h2>
+
+  <div class="not-prose bg-green-50 border border-green-200 rounded-xl p-5 my-6">
+    <p class="font-semibold text-green-800 mb-3">דוגמה מספרית:</p>
+    <div class="text-sm text-gray-700 space-y-1">
+      <p>סכום חוב כולל: <strong>350,000 ₪</strong></p>
+      <p>עלות ההליך: <strong>~15,000 ₪</strong></p>
+      <p>תשלומים במהלך 4 שנים: <strong>~48,000 ₪</strong> (1,000 ₪/חודש)</p>
+      <p>חוב שנמחק בהפטר: <strong>~287,000 ₪</strong></p>
+      <div class="mt-3 pt-3 border-t border-green-200">
+        <p class="font-bold text-green-800">חיסכון נטו: כ-287,000 ₪ 💚</p>
+      </div>
+    </div>
+  </div>
+
+  <slot name="next-steps">
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/insolvency/process/" class="text-brand hover:underline">שלבי ההליך — מה קורה בכל שלב</a></li>
+      <li>← <a href="/insolvency/haftar/" class="text-brand hover:underline">ההפטר — מה בדיוק נמחק</a></li>
+      <li>← <a href="/contact/" class="text-brand hover:underline">רוצה ייעוץ? צור קשר עם עורך דין</a></li>
+    </ul>
+  </slot>
+
+</GuideLayout>

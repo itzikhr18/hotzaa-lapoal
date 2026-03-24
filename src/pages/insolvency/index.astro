@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout
+  title="חדלות פירעון בישראל — כל מה שצריך לדעת"
+  description="חדלות פירעון היא לא קץ העולם — היא דרך לצאת ממעגל החובות. מי זכאי, איך מתחילים, כמה עולה, ומה קורה בסוף ההליך."
+>
+  <Header />
+  <main class="max-w-4xl mx-auto px-4 py-10">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <span class="text-gray-700">חדלות פירעון</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-3">חדלות פירעון בישראל</h1>
+    <p class="text-lg text-gray-600 mb-10 max-w-2xl">
+      כשהחובות גדולים מדי מלסגור — יש מסלול חוקי שנועד לתת לך התחלה חדשה.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+      {[
+        {
+          icon: '❓',
+          title: 'מהי חדלות פירעון?',
+          desc: 'ההסבר הפשוט — מה השתנה מ"פשיטת רגל" ולמה זה שונה',
+          href: '/insolvency/what-is/',
+          kw: '6,800 חיפושים/חודש',
+          highlight: true,
+        },
+        {
+          icon: '✅',
+          title: 'מי זכאי להגיש?',
+          desc: 'סכומי הסף, התנאים, ומי לא יכול להגיש',
+          href: '/insolvency/eligibility/',
+          kw: '3,900 חיפושים/חודש',
+          highlight: false,
+        },
+        {
+          icon: '🗓️',
+          title: 'שלבי ההליך — מה קורה בכל שלב',
+          desc: 'מהגשת הבקשה עד ההפטר — 4 שנים בממוצע, שלב אחרי שלב',
+          href: '/insolvency/process/',
+          kw: '',
+          highlight: false,
+        },
+        {
+          icon: '💰',
+          title: 'כמה עולה הליך חדלות פירעון?',
+          desc: 'אגרות, שכר טרחה עורך דין, ועלויות נסתרות — הכל על השולחן',
+          href: '/insolvency/costs/',
+          kw: '',
+          highlight: false,
+        },
+        {
+          icon: '🏁',
+          title: 'ההפטר — מה זה ומתי מקבלים?',
+          desc: 'ביטול החובות בסוף ההליך — מה מוחק, מה נשאר, ומה התנאים',
+          href: '/insolvency/haftar/',
+          kw: '',
+          highlight: false,
+        },
+      ].map(item => (
+        <a
+          href={item.href}
+          class={`flex gap-4 items-start p-5 rounded-xl border-2 transition-all group ${
+            item.highlight
+              ? 'border-brand bg-brand-pale hover:bg-blue-100'
+              : 'border-neutral-border bg-white hover:border-brand hover:bg-brand-pale'
+          }`}
+        >
+          <span class="text-3xl mt-0.5">{item.icon}</span>
+          <div class="flex-1">
+            {item.highlight && (
+              <span class="text-xs font-bold text-brand bg-blue-100 px-2 py-0.5 rounded-full mb-2 inline-block">התחל כאן</span>
+            )}
+            <h2 class="font-bold text-gray-800 mb-1 group-hover:text-brand-dark transition-colors leading-snug">{item.title}</h2>
+            <p class="text-sm text-gray-500 mb-2">{item.desc}</p>
+            {item.kw && <span class="text-xs text-neutral-muted">🔍 {item.kw}</span>}
+          </div>
+          <span class="text-brand-dark text-lg group-hover:translate-x-[-4px] transition-transform mt-1">←</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- בדיקה מהירה -->
+    <div class="bg-brand-pale border border-brand-light rounded-2xl p-6 mb-8">
+      <h2 class="text-xl font-bold text-brand-dark mb-4">האם חדלות פירעון מתאימה לי?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+        {[
+          { q: 'גובה החוב המינימלי', a: 'מ-57,445 ₪ (2026)' },
+          { q: 'משך ההליך הממוצע', a: 'כ-4 שנים' },
+          { q: 'עלות משוערת', a: '8,000–25,000 ₪' },
+          { q: 'מה קורה בסוף', a: 'הפטר — ביטול החובות' },
+          { q: 'מי מנהל', a: 'בית משפט / רשם חדלות פירעון' },
+          { q: 'האם חובה עורך דין', a: 'מומלץ מאוד, לא חובה' },
+        ].map(item => (
+          <div class="flex justify-between items-center py-2 border-b border-brand-light last:border-0">
+            <span class="text-gray-600">{item.q}</span>
+            <span class="font-semibold text-brand-dark text-xs">{item.a}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+      ⚠️ המידע כאן הוא כללי בלבד ואינו מהווה ייעוץ משפטי. חדלות פירעון היא הליך מורכב — מומלץ להתייעץ עם עורך דין לפני הגשה.
+    </div>
+
+  </main>
+  <Footer />
+</BaseLayout>

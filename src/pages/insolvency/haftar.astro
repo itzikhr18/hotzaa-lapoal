@@ -1,0 +1,91 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="ההפטר בחדלות פירעון — מה נמחק ומה לא"
+  description="ההפטר הוא הפרס בסוף הליך חדלות פירעון — ביטול משפטי של יתרת החובות. מה בדיוק נמחק, מה לא, ומה קורה אחרי — מדריך מלא."
+  breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'ההפטר', href: '/insolvency/haftar/' }]}
+  publishDate="2025-03-01"
+  updateDate="2026-03-01"
+  readTime="5 דקות"
+>
+
+  <p>
+    ההפטר הוא המטרה של כל ההליך. אחרי שנים של שיתוף פעולה, תשלומים ומגבלות —
+    בית המשפט מעניק לך ניקיון מחובות ומאפשר לך להתחיל מחדש.
+  </p>
+
+  <h2>מה זה הפטר?</h2>
+  <p>
+    הפטר הוא החלטה שיפוטית שמבטלת את יתרת החובות שלך שלא שולמה במהלך ההליך.
+    מרגע ההפטר — הנושים לא יכולים לתבוע אותך יותר על אותם חובות. לא היום, לא בעוד 10 שנים.
+  </p>
+
+  <h2>מה ההפטר מוחק?</h2>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">✅ ניתנים להפטר (נמחקים):</p>
+    <ul class="space-y-1">
+      <li>הלוואות בנקאיות</li>
+      <li>חובות לכרטיסי אשראי</li>
+      <li>שיקים שחזרו</li>
+      <li>חובות לספקים ועסקים</li>
+      <li>חובות ארנונה ועירייה (בדרך כלל)</li>
+      <li>חובות משכנתה שנותרו אחרי מכירת נכס</li>
+    </ul>
+  </div>
+
+  <div class="warn-box mt-4">
+    <p class="font-semibold text-amber-800 mb-2">❌ לא ניתנים להפטר (נשארים):</p>
+    <ul class="space-y-1">
+      <li><strong>מזונות</strong> — לבן/בת זוג לשעבר וילדים</li>
+      <li><strong>קנסות פליליים</strong> — מבית משפט פלילי</li>
+      <li><strong>עיצומים מנהליים</strong> — מרשויות המדינה</li>
+      <li><strong>חובות שנוצרו במרמה</strong> — אם הוכח בבית משפט</li>
+      <li><strong>נזקי גוף מכוונים</strong> — שגרמת לאדם אחר</li>
+      <li><strong>חובות שנוצרו אחרי פתיחת ההליך</strong></li>
+    </ul>
+  </div>
+
+  <h2>מתי מקבלים הפטר?</h2>
+  <p>
+    ההפטר ניתן בסיום תקופת השיקום — לרוב כ-3 שנים אחרי אישור תוכנית השיקום,
+    כלומר כ-4 שנים מהגשת הבקשה הראשונית.
+  </p>
+  <p>
+    בית המשפט רשאי לקצר את תקופת השיקום אם החייב הפגין שיתוף פעולה יוצא דופן,
+    או להאריך אותה אם היו הפרות.
+  </p>
+
+  <h2>מה קורה אחרי ההפטר?</h2>
+
+  <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+    {[
+      { icon: '✅', title: 'מה מותר מחר בבוקר', items: ['לפתוח חשבון בנק רגיל', 'לקחת אשראי (תלוי בבנק)', 'לצאת מהארץ ללא הגבלה', 'לרכוש נכסים ורכב', 'לפתוח עסק'] },
+      { icon: '⚠️', title: 'מה כדאי לדעת', items: ['הרישום בנתוני האשראי נשאר זמן מה', 'בנקים עשויים לנהוג בזהירות בתחילה', 'חובות שלא בהפטר — ממשיכים', 'כדאי לבנות היסטוריית אשראי בהדרגה'] },
+    ].map(col => (
+      <div class="border border-neutral-border rounded-xl p-5 bg-white">
+        <h3 class="font-bold text-gray-800 mb-3">{col.icon} {col.title}</h3>
+        <ul class="text-sm space-y-1 text-gray-600">
+          {col.items.map(item => <li>• {item}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <h2>הפטר מותנה לעומת הפטר מוחלט</h2>
+  <p>
+    לפעמים בית המשפט נותן <strong>הפטר מותנה</strong> — שמחייב עמידה בתנאים נוספים לתקופה
+    קצרה לאחר סיום ההליך הרשמי. לאחר עמידה בתנאים — הופך לבלתי מוגבל.
+  </p>
+
+  <slot name="next-steps">
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">התחל מהתחלה — מהי חדלות פירעון?</a></li>
+      <li>← <a href="/insolvency/eligibility/" class="text-brand hover:underline">האם אני זכאי?</a></li>
+      <li>← <a href="/contact/" class="text-brand hover:underline">רוצה ייעוץ אישי? צור קשר</a></li>
+    </ul>
+  </slot>
+
+</GuideLayout>

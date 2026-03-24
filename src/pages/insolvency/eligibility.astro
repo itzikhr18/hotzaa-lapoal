@@ -1,0 +1,101 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="מי זכאי להגיש בקשה לחדלות פירעון? — סכומי הסף והתנאים"
+  description="לא כל אחד יכול להגיש חדלות פירעון. מה סכום החוב המינימלי, מה התנאים, ומי לא יכול להגיש — נכון ל-2026."
+  breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'מי זכאי?', href: '/insolvency/eligibility/' }]}
+  publishDate="2025-03-01"
+  updateDate="2026-03-01"
+  readTime="5 דקות"
+>
+
+  <p>
+    לפני שמגישים בקשה לחדלות פירעון — חשוב לבדוק שעומדים בתנאים הבסיסיים.
+    הגשת בקשה שלא עומדת בתנאים תידחה, ותעלה לך כסף ללא תוצאה.
+  </p>
+
+  <h2>תנאי הסף הבסיסיים</h2>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-3">כדי להגיש, צריך לעמוד בכל אלה:</p>
+    <ul class="space-y-1">
+      <li>✅ <strong>יחיד</strong> — לא חברה או תאגיד (לאלה יש הליך נפרד)</li>
+      <li>✅ <strong>חוב מינימלי של 57,445 ₪</strong> (נכון ל-2026)</li>
+      <li>✅ <strong>אי-יכולת לשלם</strong> — חובות גבוהים מיכולת ההחזר שלך</li>
+      <li>✅ <strong>תושב ישראל</strong> — או שמרכז החיים בישראל</li>
+    </ul>
+  </div>
+
+  <h2>סכומי הסף המעודכנים ל-2026</h2>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">סכום החוב</th>
+          <th class="text-right p-3 border border-gray-200">הגורם המטפל</th>
+          <th class="text-right p-3 border border-gray-200">הערות</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['פחות מ-57,445 ₪', 'לא זכאי לחדלות פירעון', 'שקול צו תשלומים או איחוד תיקים'],
+          ['57,445 – 176,923 ₪', 'רשם חדלות פירעון', 'מסלול מהיר יחסית'],
+          ['מעל 176,923 ₪', 'בית משפט השלום', 'הליך מלא עם נאמן'],
+        ].map(([amount, handler, note], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold">{amount}</td>
+            <td class="p-3 border border-gray-200 text-brand-dark">{handler}</td>
+            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{note}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="text-xs text-neutral-muted mt-2">* הסכומים מתעדכנים מדי שנה לפי מדד המחירים לצרכן.</p>
+  </div>
+
+  <h2>מי לא יכול להגיש?</h2>
+  <ul>
+    <li><strong>חברות ותאגידים</strong> — להם יש הליך פירוק נפרד בבית המשפט המחוזי</li>
+    <li><strong>מי שהגיש ב-7 השנים האחרונות</strong> — בדרך כלל לא יוכל להגיש שוב</li>
+    <li><strong>מי שהסתיר נכסים</strong> — בית המשפט עלול לדחות בקשה מחייב שלא פעל בתום לב</li>
+    <li><strong>מי שחובותיו נובעים מעבירות פליליות</strong> — יתכן עיכוב בהגשה</li>
+  </ul>
+
+  <h2>האם כדאי לי להגיש?</h2>
+  <p>
+    חדלות פירעון מתאימה כשהחוב גדול מדי מלסגור בכל דרך אחרת. לפני שמגישים, כדאי לבחון
+    אפשרויות אחרות:
+  </p>
+
+  <div class="not-prose grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+    {[
+      { title: 'צו תשלומים', when: 'חוב שניתן לשלם בתשלומים', pro: 'פשוט, זול, מהיר', con: 'החוב לא נמחק' },
+      { title: 'איחוד תיקים', when: 'כמה תיקים נפרדים', pro: 'תשלום אחד מסודר', con: 'החוב לא נמחק' },
+      { title: 'חדלות פירעון', when: 'חוב שאי אפשר לסגור', pro: 'בסוף — הפטר', con: '4 שנים, עלות גבוהה' },
+    ].map(opt => (
+      <div class="border border-neutral-border rounded-xl p-4 bg-white">
+        <h3 class="font-bold text-gray-800 mb-2">{opt.title}</h3>
+        <p class="text-xs text-gray-500 mb-3">מתאים כש: {opt.when}</p>
+        <p class="text-xs text-green-700">✓ {opt.pro}</p>
+        <p class="text-xs text-red-600 mt-1">✗ {opt.con}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">⚠️ בדוק לפני שמגיש</p>
+    <p>חדלות פירעון היא הליך ארוך ויקר. אם אתה לא בטוח — התייעץ עם עורך דין לפני הגשה. ייעוץ ראשוני הרבה פעמים חינמי או זול מאוד.</p>
+  </div>
+
+  <slot name="next-steps">
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/insolvency/process/" class="text-brand hover:underline">שלבי ההליך — מה קורה בכל שלב</a></li>
+      <li>← <a href="/insolvency/costs/" class="text-brand hover:underline">כמה עולה? פירוט עלויות</a></li>
+      <li>← <a href="/guides/ichud-tikim/" class="text-brand hover:underline">אולי איחוד תיקים יספיק?</a></li>
+    </ul>
+  </slot>
+
+</GuideLayout>
