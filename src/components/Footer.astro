@@ -1,0 +1,84 @@
+---
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'מדריכים',
+    links: [
+      { label: 'עיקול חשבון בנק', href: '/guides/ikul-heshbon/' },
+      { label: 'עיקול משכורת', href: '/guides/ikul-maskoret/' },
+      { label: 'מכתב מהוצל"פ', href: '/guides/michtav-hotzaa/' },
+      { label: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
+      { label: 'איחוד תיקים', href: '/guides/ichud-tikim/' },
+    ]
+  },
+  {
+    title: 'זכויות חייבים',
+    links: [
+      { label: 'מה מותר לעקל', href: '/rights/ma-mutar-leakol/' },
+      { label: 'סכומים מוגנים', href: '/rights/skhomim-mugganim/' },
+      { label: 'זכות לצו תשלומים', href: '/rights/zchut-tzav/' },
+      { label: 'ערעור על החלטות', href: '/rights/irur/' },
+    ]
+  },
+  {
+    title: 'חדלות פירעון',
+    links: [
+      { label: 'מהי חדלות פירעון?', href: '/insolvency/what-is/' },
+      { label: 'מי זכאי?', href: '/insolvency/eligibility/' },
+      { label: 'שלבי ההליך', href: '/insolvency/process/' },
+      { label: 'כמה זה עולה?', href: '/insolvency/costs/' },
+    ]
+  },
+  {
+    title: 'כלים',
+    links: [
+      { label: 'מחשבון ריבית', href: '/tools/calculator/' },
+      { label: "צ'אטבוט AI", href: '/tools/chatbot/' },
+      { label: 'בדיקת זכאות', href: '/tools/eligibility/' },
+      { label: 'אינדקס עורכי דין', href: '/lawyers/' },
+    ]
+  },
+  {
+    title: 'כללי',
+    links: [
+      { label: 'אודות', href: '/about/' },
+      { label: 'תנאי שימוש', href: '/legal/terms/' },
+      { label: 'מדיניות פרטיות', href: '/legal/privacy/' },
+      { label: 'הצהרת נגישות', href: '/legal/accessibility/' },
+      { label: 'יצירת קשר', href: '/contact/' },
+    ]
+  },
+];
+---
+
+<footer class="bg-gray-50 border-t border-neutral-border mt-16">
+  <div class="max-w-6xl mx-auto px-4 pt-12 pb-8">
+
+    <!-- Columns -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-10">
+      {columns.map(col => (
+        <div>
+          <h3 class="text-sm font-bold text-gray-800 mb-4">{col.title}</h3>
+          <ul class="space-y-2">
+            {col.links.map(link => (
+              <li>
+                <a href={link.href} class="text-sm text-neutral-muted hover:text-brand-dark transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-neutral-border pt-6 flex flex-col md:flex-row gap-3 justify-between items-start md:items-center text-xs text-neutral-muted">
+      <span>© {year} הוצאהלפועל.info — כל הזכויות שמורות</span>
+      <span class="max-w-lg text-right">
+        המידע באתר זה מסופק למטרות מידע כללי בלבד ואינו מהווה ייעוץ משפטי, אינו יוצר יחסי עורך דין-לקוח, ואינו תחליף לייעוץ משפטי אישי.
+      </span>
+    </div>
+  </div>
+</footer>

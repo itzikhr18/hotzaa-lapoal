@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const guides = [
+  { title: 'עיקלו לי את חשבון הבנק — מה עושים?', cat: 'עיקולים', href: '/guides/ikul-heshbon/', kw: '9,500/חודש', ready: true },
+  { title: 'קיבלתי מכתב מהוצאה לפועל', cat: 'התחלה', href: '/guides/michtav-hotzaa/', kw: '6,200/חודש', ready: true },
+  { title: 'עיקול משכורת — מתי מותר ואיך מבטלים', cat: 'עיקולים', href: '/guides/ikul-maskoret/', kw: '5,800/חודש', ready: true },
+  { title: 'בקשה לצו תשלומים — איך מגישים לבד', cat: 'הסדרים', href: '/guides/tzav-tashlumim/', kw: '5,100/חודש', ready: true },
+  { title: 'איחוד תיקים בהוצאה לפועל', cat: 'הסדרים', href: '/guides/ichud-tikim/', kw: '3,800/חודש', ready: true },
+  { title: 'עיקול על נכסים — דירה ורכב', cat: 'עיקולים', href: '/guides/ikul-nechassim/', kw: '', ready: false },
+];
+---
+
+<BaseLayout
+  title="מדריכים לחייבים — הוצאה לפועל בעברית פשוטה"
+  description="מדריכים מפורטים לכל שלב בהוצאה לפועל — עיקולים, הסדרים, זכויות. כתוב בשפה פשוטה, עדכני ל-2025."
+>
+  <Header />
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold text-brand-dark mb-2">מדריכים לחייבים</h1>
+    <p class="text-gray-500 mb-8">כתוב בשפה פשוטה — בלי ז'רגון משפטי</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {guides.map(g => (
+        <a href={g.href} class="flex items-start gap-4 p-5 bg-white border border-neutral-border rounded-xl hover:border-brand hover:bg-brand-pale transition-all group">
+          <div class="flex-1">
+            <span class="text-xs font-bold text-neutral-muted uppercase tracking-wide">{g.cat}</span>
+            <h2 class="text-base font-bold text-gray-800 mt-1 group-hover:text-brand-dark transition-colors">{g.title}</h2>
+            {g.kw && <p class="text-xs text-neutral-muted mt-1">🔍 {g.kw}</p>}
+          </div>
+          <span class="text-brand-dark text-lg mt-1 group-hover:translate-x-[-4px] transition-transform">←</span>
+        </a>
+      ))}
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

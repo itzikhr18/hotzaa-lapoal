@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hotzaa-lapoal.info/sitemap-index.xml

@@ -1,0 +1,19 @@
+---
+export interface Props {
+  variant?: 'default' | 'calculator' | 'chatbot';
+}
+const { variant = 'default' } = Astro.props;
+
+const messages: Record<string, string> = {
+  default:
+    'המידע באתר זה מסופק למטרות מידע כללי בלבד ואינו מהווה ייעוץ משפטי. שימוש במידע זה הוא על אחריותך בלבד.',
+  calculator:
+    'מחשבון זה מיועד להערכה בלבד. התוצאות עשויות להשתנות בהתאם לנתוני התיק הספציפי. לחישוב מדויק — יש לפנות לעורך דין או לרשות האכיפה והגבייה.',
+  chatbot:
+    "צ'אטבוט זה משתמש בבינה מלאכותית ועלול לטעות. אינו מחליף ייעוץ משפטי. לייעוץ אישי — פנה לעורך דין.",
+};
+---
+
+<div class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-sm text-amber-800" role="note">
+  <span class="font-semibold">⚠️ הערה: </span>{messages[variant]}
+</div>

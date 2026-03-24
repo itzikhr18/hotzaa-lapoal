@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    direction: rtl;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Assistant', 'Noto Sans Hebrew', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Assistant', 'Noto Sans Hebrew', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  /* RTL-aware prose */
+  .rtl-prose {
+    direction: rtl;
+    text-align: right;
+  }
+
+  .rtl-prose h2 {
+    @apply text-2xl font-bold text-brand-dark mt-8 mb-4;
+  }
+
+  .rtl-prose h3 {
+    @apply text-xl font-bold text-brand-dark mt-6 mb-3;
+  }
+
+  .rtl-prose p {
+    @apply mb-4 leading-relaxed text-gray-700;
+  }
+
+  .rtl-prose ul {
+    @apply list-disc list-inside mb-4 space-y-1 text-gray-700;
+  }
+
+  .rtl-prose ol {
+    @apply list-decimal list-inside mb-4 space-y-1 text-gray-700;
+  }
+
+  .rtl-prose a {
+    @apply text-brand underline hover:text-brand-dark transition-colors;
+  }
+
+  .rtl-prose blockquote {
+    @apply border-r-4 border-brand-light bg-brand-pale pr-4 py-2 my-4 italic text-gray-600;
+    border-left: none;
+  }
+
+  /* Info box */
+  .info-box {
+    @apply bg-blue-50 border border-blue-200 rounded-xl p-5 my-6;
+  }
+
+  /* Warning box */
+  .warn-box {
+    @apply bg-amber-50 border border-amber-200 rounded-xl p-5 my-6;
+  }
+
+  /* Step list */
+  .step-list {
+    @apply space-y-3 my-6;
+  }
+
+  .step-list li {
+    @apply flex items-start gap-3;
+  }
+
+  .step-num {
+    @apply flex-shrink-0 w-7 h-7 rounded-full bg-brand-dark text-white text-sm font-bold flex items-center justify-center mt-0.5;
+  }
+}
+
+/* Scrollbar RTL fix */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #AED6F1 transparent;
+}

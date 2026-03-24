@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { InterestCalculator } from '../../components/InterestCalculator';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'מחשבון ריבית הוצאה לפועל — תיקון 9',
+  description: 'חישוב ריבית חוב בהוצאה לפועל לפי תיקון 9 שנכנס לתוקף בינואר 2025',
+  inLanguage: 'he',
+  applicationCategory: 'FinanceApplication',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
+};
+---
+
+<BaseLayout
+  title="מחשבון ריבית הוצאה לפועל — תיקון 9 (2025)"
+  description="חשב כמה אתה חייב לפי תיקון 9 שנכנס לתוקף בינואר 2025. ריבית בסיס + דמי פיגורים רבעוניים. חינם, מיידי, עם פירוט מלא."
+  {schema}
+>
+  <Header />
+  <main class="max-w-3xl mx-auto px-4 py-10">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <a href="/tools/">כלים</a> › <span class="text-gray-700">מחשבון ריבית</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-2">מחשבון ריבית הוצאה לפועל</h1>
+    <p class="text-gray-600 mb-2">כולל תיקון 9 — בתוקף מ-1 בינואר 2025</p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8 text-sm text-blue-800">
+      <strong>מה חדש בתיקון 9?</strong> — במקום ריבית דריבית אחת, יש עכשיו שני רכיבים נפרדים: ריבית בסיס (כלכלית) ודמי פיגורים רבעוניים עם תקרה. זה יכול לחסוך לך כסף.
+    </div>
+
+    <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-sm">
+      <InterestCalculator client:idle />
+    </div>
+
+  </main>
+  <Footer />
+</BaseLayout>

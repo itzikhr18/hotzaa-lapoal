@@ -1,0 +1,152 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'כמה זמן יש לי להגיב למכתב מהוצאה לפועל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'בדרך כלל 20 ימים מיום קבלת הודעת התשלום. אם לא מגיבים — הנושה יכול לבקש לנקוט בהליכי גבייה כמו עיקולים.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה קורה אם אני מתעלם מהמכתב?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'אי מענה מאפשר לנושה להמשיך בהליכים — עיקול חשבון, עיקול משכורת, עיקול נכסים. כדאי מאוד לפעול.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם החוב יכול להיות שגוי?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כן. לפעמים מדובר בחוב שכבר שולם, חוב שלא שלך, או חוב שפג תוקף ההתיישנות שלו (7 שנים בדרך כלל). כדאי לבדוק.',
+      },
+    },
+  ],
+};
+---
+
+<GuideLayout
+  title="קיבלתי מכתב מהוצאה לפועל — מה עושים עכשיו?"
+  description="קיבלת מכתב מרשות האכיפה והגבייה? לא יודע מה לעשות? הנה מדריך שלב אחרי שלב — מה כתוב במכתב, מה הזכויות שלך, ומה הצעד הראשון."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'מכתב מהוצל"פ', href: '/guides/michtav-hotzaa/' }]}
+  publishDate="2025-01-20"
+  updateDate="2026-03-01"
+  readTime="5 דקות"
+  schema={faqSchema}
+>
+
+  <p>
+    הגיע מכתב עם הכותרת "הוצאה לפועל" ולב שקע. זה קורה לאנשים טובים — 570,000 ישראלים נמצאים
+    בדיוק במצב הזה. הצעד הכי חשוב עכשיו: לא להתעלם. אבל גם לא לבהל.
+  </p>
+
+  <h2>מה בדרך כלל כתוב במכתב?</h2>
+  <p>
+    ישנם כמה סוגי מכתבים שמגיעים מהוצאה לפועל. חשוב לדעת מה קיבלת:
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-3">סוגי מכתבים נפוצים:</p>
+    <ul class="space-y-2">
+      <li><strong>אזהרה (הודעת תשלום)</strong> — הנושה פתח תיק נגדך. יש לך 20 יום להגיב.</li>
+      <li><strong>צו עיקול</strong> — כבר הוצא צו על חשבון/משכורת/נכס שלך.</li>
+      <li><strong>זימון לחקירת יכולת</strong> — נדרש להגיע ולהצהיר על ההכנסות והנכסים שלך.</li>
+      <li><strong>הגבלות</strong> — הוטלו הגבלות כמו עיכוב יציאה מהארץ או שלילת רישיון נהיגה.</li>
+    </ul>
+  </div>
+
+  <h2>מה הצעד הראשון?</h2>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span><strong>קרא את המכתב בעיון</strong> — מצא את: מספר התיק, שם הנושה, סכום החוב הנטען, וסוג ההליך. כל המידע הזה נחוץ.</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span><strong>בדוק אם החוב אמיתי</strong> — האם אתה מכיר את החוב הזה? האם הוא כבר שולם? האם הסכום נכון? לפעמים מדובר בטעות.</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span><strong>בדוק התיישנות</strong> — חוב שהוא מעל 7 שנים (בדרך כלל) עשוי להיות מוגן בהתיישנות. זה דורש בדיקה משפטית.</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span><strong>הגב בתוך 20 יום</strong> — אם קיבלת "הודעת תשלום" — יש לך 20 יום להגיש בקשה לצו תשלומים או להגיש התנגדות.</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span><strong>שמור את כל המסמכים</strong> — כל מכתב, כל קבלה, כל תכתובת — שמור. זה יהיה חשוב בהמשך.</span>
+    </li>
+  </ol>
+
+  <h2>מה קורה אם לא מגיבים?</h2>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">⚠️ אל תתעלם — זה לא נעלם</p>
+    <p>
+      אי מענה בתוך 20 יום מאפשר לנושה לבקש הליכי גבייה מיידיים: עיקול חשבון,
+      עיקול משכורת, עיקול רכב, ואפילו עיכוב יציאה מהארץ. ככל שמאחרים — האפשרויות מצטמצמות.
+    </p>
+  </div>
+
+  <h2>מה אפשר לעשות — האפשרויות שלך</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 not-prose">
+    {[
+      { title: 'לשלם את החוב', desc: 'אם יש לך את הכסף — שלם ישירות דרך מערכת רשות האכיפה. קבל אישור בכתב.', color: 'border-green-200 bg-green-50' },
+      { title: 'לבקש צו תשלומים', desc: 'אין לך את הכסף בבת אחת? אפשר לפרוס לתשלומים חודשיים שאתה יכול לעמוד בהם.', color: 'border-blue-200 bg-blue-50' },
+      { title: 'להגיש התנגדות', desc: 'אם החוב שגוי, כבר שולם, או פג תוקף ההתיישנות — אפשר להגיש התנגדות רשמית.', color: 'border-orange-200 bg-orange-50' },
+      { title: 'לבקש הסדר ישיר', desc: 'לפעמים אפשר לפנות ישירות לנושה ולסגור הסדר — לפני שמגיעים לשלב מתקדם.', color: 'border-purple-200 bg-purple-50' },
+    ].map(opt => (
+      <div class={`border rounded-xl p-4 ${opt.color}`}>
+        <h3 class="font-bold text-gray-800 mb-1">{opt.title}</h3>
+        <p class="text-sm text-gray-600">{opt.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2>שאלות נפוצות</h2>
+
+  <div class="space-y-4 my-6">
+    {[
+      {
+        q: 'כמה זמן יש לי להגיב למכתב מהוצאה לפועל?',
+        a: '20 יום מיום קבלת הודעת התשלום. אחרי זה — הנושה יכול לבקש הליכי גבייה.',
+      },
+      {
+        q: 'מה קורה אם אני מתעלם מהמכתב?',
+        a: 'הנושה ממשיך בהליכים — עיקול חשבון, משכורת, נכסים. אל תתעלם.',
+      },
+      {
+        q: 'האם החוב יכול להיות שגוי?',
+        a: 'כן. לפעמים מדובר בחוב שכבר שולם, לא שלך, או שפג תוקף ההתיישנות. כדאי לבדוק.',
+      },
+    ].map(faq => (
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          {faq.q}
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <slot name="next-steps">
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">איך מגישים בקשה לצו תשלומים</a></li>
+      <li>← <a href="/guides/ikul-heshbon/" class="text-brand hover:underline">מה עושים אם עיקלו את החשבון</a></li>
+      <li>← <a href="/rights/" class="text-brand hover:underline">כל הזכויות שלך כחייב</a></li>
+    </ul>
+  </slot>
+
+</GuideLayout>

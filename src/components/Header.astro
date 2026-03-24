@@ -1,0 +1,96 @@
+---
+const navLinks = [
+  { label: 'מדריכים', href: '/guides/' },
+  { label: 'זכויות חייבים', href: '/rights/' },
+  { label: 'חדלות פירעון', href: '/insolvency/' },
+  { label: 'כלים', href: '/tools/' },
+  { label: 'עורכי דין', href: '/lawyers/' },
+  { label: 'שאלות נפוצות', href: '/faq/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white border-b border-neutral-border shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-1 font-bold text-xl text-brand-dark hover:opacity-80 transition-opacity">
+      הוצאה<span class="text-accent-red">לפועל</span><span class="text-neutral-muted text-base font-normal">.info</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden lg:flex items-center gap-6" aria-label="ניווט ראשי">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={`text-sm font-medium transition-colors hover:text-brand-dark ${
+            currentPath.startsWith(link.href)
+              ? 'text-brand-dark border-b-2 border-brand-dark pb-0.5'
+              : 'text-neutral-muted'
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA button -->
+    <a
+      href="/contact/"
+      class="hidden lg:inline-flex items-center gap-2 bg-accent-red text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+    >
+      שאל שאלה
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="lg:hidden p-2 text-neutral-muted hover:text-brand-dark"
+      aria-label="תפריט"
+      aria-expanded="false"
+    >
+      <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-neutral-border bg-white">
+    <nav class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="text-sm font-medium py-2.5 px-3 rounded-lg hover:bg-brand-pale hover:text-brand-dark transition-colors text-gray-700"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/contact/"
+        class="mt-2 text-center bg-accent-red text-white text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-red-700 transition-colors"
+      >
+        שאל שאלה
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

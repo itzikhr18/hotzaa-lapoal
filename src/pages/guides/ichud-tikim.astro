@@ -1,0 +1,180 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'מי יכול להגיש בקשה לאיחוד תיקים?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כל חייב שיש נגדו שני תיקים או יותר בהוצאה לפועל, ואין ביכולתו לשלם את כולם בנפרד.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם איחוד תיקים מבטל את החובות?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לא. האיחוד לא מבטל חובות — הוא קובע תשלום חודשי אחד שמחולק בין הנושים. החוב עדיין קיים אבל נוהל בצורה מסודרת.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה זמן נמשך הליך איחוד תיקים?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'הגשת הבקשה 2-4 שבועות. ההליך עצמו — עד שהחוב מסולק במלואו, בהתאם לסכום ולתשלום החודשי.',
+      },
+    },
+  ],
+};
+---
+
+<GuideLayout
+  title="איחוד תיקים בהוצאה לפועל — פתרון לחייב עם כמה תיקים"
+  description="יש לך כמה תיקים בהוצאה לפועל וכמה עיקולים? איחוד תיקים מאפשר לנהל הכל בתשלום אחד מסודר. למד מי זכאי, איך מגישים, ומה היתרונות."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'איחוד תיקים', href: '/guides/ichud-tikim/' }]}
+  publishDate="2025-02-10"
+  updateDate="2026-03-01"
+  readTime="5 דקות"
+  schema={faqSchema}
+>
+
+  <p>
+    יש לך שלושה תיקים בהוצאה לפועל, שניים עיקלו לך את החשבון, ואחד עיקל את המשכורת.
+    זה נשמע כאוס — ובצדק. איחוד תיקים נועד בדיוק לזה: לקחת את הבלגן הזה ולהפוך אותו
+    לתשלום חודשי אחד שאתה יכול לנהל.
+  </p>
+
+  <h2>מה זה איחוד תיקים?</h2>
+  <p>
+    איחוד תיקים הוא הליך שבו כל התיקים הפתוחים נגדך מאוחדים תחת ניהול של רשם אחד.
+    במקום להתמודד עם כל נושה בנפרד — קובעים תשלום חודשי אחד שמחולק בין כל הנושים לפי סדר עדיפויות.
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מה קורה ביום שמאשרים איחוד:</p>
+    <ul>
+      <li>כל העיקולים הפעילים מוקפאים</li>
+      <li>כל התיקים עוברים לניהול רשם אחד</li>
+      <li>נקבע תשלום חודשי אחד לפי יכולתך</li>
+      <li>הנושים מקבלים חלק יחסי מהתשלום</li>
+    </ul>
+  </div>
+
+  <h2>מי יכול להגיש?</h2>
+  <p>
+    כל חייב שיש נגדו שני תיקים או יותר, ואינו מסוגל לשלם לכולם בנפרד.
+    לא צריך להיות "חדל פירעון" — מספיק שאין ביכולתך לשלם לכולם במקביל.
+  </p>
+
+  <h2>היתרונות של איחוד תיקים</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 not-prose">
+    {[
+      { icon: '✅', title: 'עיקולים מוקפאים', desc: 'מרגע האישור — אין עיקולים חדשים כל עוד אתה עומד בתשלום.' },
+      { icon: '📋', title: 'תשלום אחד', desc: 'במקום לנהל כמה תיקים — תשלום חודשי אחד לרשות.' },
+      { icon: '🤝', title: 'כבוד ושקט', desc: 'הנושים לא יכולים לפנות ישירות אליך — הכל דרך הרשם.' },
+      { icon: '📈', title: 'אפשרות יציאה', desc: 'אחרי שהחוב מסולק — מקבלים אישור סגירה וחוזרים לחיים רגילים.' },
+    ].map(item => (
+      <div class="border border-neutral-border rounded-xl p-4 bg-white">
+        <div class="text-2xl mb-2">{item.icon}</div>
+        <h3 class="font-bold text-gray-800 mb-1">{item.title}</h3>
+        <p class="text-sm text-gray-600">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2>איך מגישים בקשה לאיחוד תיקים?</h2>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span><strong>מלא טופס בקשה לאיחוד תיקים</strong> — טופס 8 של רשות האכיפה. ניתן להוריד מאתר gov.il.</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span><strong>פרט את כל התיקים הפתוחים נגדך</strong> — שם הנושה, מספר תיק, סכום חוב. תמצא את זה במכתבים שקיבלת.</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span><strong>צרף מסמכים כלכליים</strong> — תלושי משכורת, דפי בנק, קבלות הוצאות קבועות.</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span><strong>הגש ללשכת ההוצאה לפועל</strong> — לפי מקום המגורים. הגשה פיזית בלבד לרוב.</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span><strong>דיון אצל הרשם</strong> — הרשם יזמן אותך ויקבע את התשלום החודשי לפי יכולתך.</span>
+    </li>
+  </ol>
+
+  <h2>מה ההבדל בין איחוד תיקים לחדלות פירעון?</h2>
+
+  <div class="overflow-x-auto my-6 not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="text-right p-3 border border-gray-200">קריטריון</th>
+          <th class="text-right p-3 border border-gray-200">איחוד תיקים</th>
+          <th class="text-right p-3 border border-gray-200">חדלות פירעון</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['מי מנהל', 'רשם הוצאה לפועל', 'בית משפט / רשם חדלות פירעון'],
+          ['ביטול חובות', 'לא — החוב נשמר', 'כן — אפשרי הפטר'],
+          ['משך הליך', 'עד סילוק החוב', 'כ-4 שנים בממוצע'],
+          ['עלות', 'אגרה בלבד', '8,000-25,000 ש"ח'],
+          ['מתאים כשיש', 'חובות שאפשר לשלם', 'חובות שאי אפשר לשלם'],
+        ].map(([k, a, b], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-medium text-gray-700">{k}</td>
+            <td class="p-3 border border-gray-200 text-gray-600">{a}</td>
+            <td class="p-3 border border-gray-200 text-gray-600">{b}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>שאלות נפוצות</h2>
+
+  <div class="space-y-4 my-6">
+    {[
+      {
+        q: 'מי יכול להגיש בקשה לאיחוד תיקים?',
+        a: 'כל חייב עם שני תיקים או יותר שאינו מסוגל לשלם לכולם בנפרד.',
+      },
+      {
+        q: 'האם איחוד תיקים מבטל את החובות?',
+        a: 'לא. הוא קובע תשלום אחד מסודר. החוב ממשיך להתקיים עד לסילוקו.',
+      },
+      {
+        q: 'כמה זמן לוקח להגיש?',
+        a: 'הגשה 2-4 שבועות. ההליך כולו — עד לסילוק מלא של החוב.',
+      },
+    ].map(faq => (
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          {faq.q}
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <slot name="next-steps">
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">גם צו תשלומים יכול לעזור</a></li>
+      <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">מתי חדלות פירעון עדיפה?</a></li>
+      <li>← <a href="/tools/eligibility/" class="text-brand hover:underline">בדוק לאיזה הסדר אתה זכאי</a></li>
+    </ul>
+  </slot>
+
+</GuideLayout>
