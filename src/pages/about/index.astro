@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout
+  title="אודות הוצאהלפועל.info — מי אנחנו ולמה בנינו את האתר"
+  description="הוצאהלפועל.info נוצר כדי לעזור ל-570,000 ישראלים עם תיק הוצאה לפועל שאין להם ייצוג. מידע פשוט, כלים חינמיים, וחיבור לעורכי דין."
+>
+  <Header />
+  <main class="max-w-3xl mx-auto px-4 py-12">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <span class="text-gray-700">אודות</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-8">אודות הוצאהלפועל.info</h1>
+
+    <div class="rtl-prose space-y-6">
+
+      <div class="bg-brand-pale border border-brand-light rounded-2xl p-6">
+        <p class="text-lg text-brand-dark font-medium leading-relaxed">
+          570,000 ישראלים חיים עם תיק הוצאה לפועל פעיל. 77% מהם ללא ייצוג משפטי.
+          רק 1.2% מגישים בקשות — לא כי אין להם אפשרויות, אלא כי הם לא יודעים שיש להם.
+        </p>
+      </div>
+
+      <h2>למה בנינו את האתר הזה</h2>
+      <p>
+        המידע על הוצאה לפועל בישראל קיים — בחוק, בפסקי דין, באתרי ממשלה.
+        אבל הוא כתוב בשפה משפטית שאדם רגיל לא יכול להבין.
+      </p>
+      <p>
+        בנינו את הוצאהלפועל.info כדי לגשר על הפער הזה. לתרגם את המידע המשפטי
+        לעברית פשוטה, להוסיף כלים שלא היו קיימים (כמו מחשבון ריבית תיקון 9),
+        ולחבר בין חייבים לעורכי דין שיכולים לעזור.
+      </p>
+
+      <h2>מה אנחנו מציעים</h2>
+      <ul>
+        <li><strong>מדריכים בעברית פשוטה</strong> — לכל שלב בהוצאה לפועל</li>
+        <li><strong>מחשבון ריבית תיקון 9</strong> — לחישוב גובה החוב המעודכן</li>
+        <li><strong>שאלות נפוצות</strong> — 50+ תשובות לשאלות נפוצות</li>
+        <li><strong>אינדקס עורכי דין</strong> — חיבור לעורכי דין מתמחים</li>
+        <li><strong>מידע מעודכן</strong> — כולל תיקון 9 (2025) וסכומי סף 2026</li>
+      </ul>
+
+      <h2>מה אנחנו לא</h2>
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 not-prose">
+        <ul class="text-sm text-amber-800 space-y-1">
+          <li>✗ לא משרד עורכי דין</li>
+          <li>✗ לא נותנים ייעוץ משפטי אישי</li>
+          <li>✗ לא אחראים לתוצאות בתיק הספציפי שלך</li>
+          <li>✗ המידע עשוי להשתנות — תמיד בדוק עם עורך דין לפני פעולה</li>
+        </ul>
+      </div>
+
+      <h2>מודל הכנסה — שקיפות מלאה</h2>
+      <p>
+        האתר מממן את עצמו כרגע דרך פרסום (Google AdSense) בלבד.
+        אנחנו לא אוספים פרטים אישיים, לא מעבירים מידע לצדדים שלישיים,
+        ולא גובים תשלום על שום שירות באתר.
+      </p>
+
+      <h2>צור קשר</h2>
+      <p>
+        שאלות, הצעות שיפור, או רוצה לדווח על שגיאה במידע?
+        <a href="/contact/">פנה אלינו</a> — נשמח לשמוע.
+      </p>
+
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

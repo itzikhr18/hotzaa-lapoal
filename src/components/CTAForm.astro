@@ -3,78 +3,49 @@ export interface Props {
   compact?: boolean;
   title?: string;
 }
-const {
-  compact = false,
-  title = 'צריך עורך דין?',
-} = Astro.props;
+const { compact = false } = Astro.props;
 ---
 
-<div class={`bg-brand-dark text-white rounded-xl p-6 ${compact ? '' : 'max-w-md mx-auto'}`}>
-  <h3 class={`font-bold mb-2 ${compact ? 'text-base' : 'text-xl'}`}>{title}</h3>
-  <p class={`text-brand-light mb-4 ${compact ? 'text-sm' : 'text-base'}`}>
-    {compact
-      ? 'השאר פרטים ועורך דין יחזור אליך.'
-      : 'השאר פרטים ועורך דין מנוסה יצור איתך קשר — ללא התחייבות.'}
+<div class={`bg-brand-pale border border-brand-light rounded-xl p-5 ${compact ? '' : 'max-w-md mx-auto'}`}>
+  <h3 class={`font-bold text-brand-dark mb-2 ${compact ? 'text-base' : 'text-lg'}`}>
+    צריך עזרה משפטית?
+  </h3>
+  <p class="text-sm text-gray-600 mb-4">
+    הגורמים הרשמיים הבאים מספקים סיוע חינמי או בעלות נמוכה:
   </p>
-
-  <form
-    id="lead-form"
-    class="space-y-3"
-    onsubmit="handleLeadSubmit(event)"
-  >
-    <input
-      type="tel"
-      name="phone"
-      placeholder="מספר טלפון"
-      required
-      dir="rtl"
-      class="w-full bg-white text-gray-900 rounded-lg px-4 py-2.5 text-sm border-0 focus:ring-2 focus:ring-brand-light focus:outline-none"
-    />
-
-    {!compact && (
-      <input
-        type="text"
-        name="name"
-        placeholder="שם (אופציונלי)"
-        dir="rtl"
-        class="w-full bg-white text-gray-900 rounded-lg px-4 py-2.5 text-sm border-0 focus:ring-2 focus:ring-brand-light focus:outline-none"
-      />
-    )}
-
-    <!-- Explicit opt-in — required by privacy law -->
-    <label class="flex items-start gap-2 cursor-pointer">
-      <input
-        type="checkbox"
-        name="consent"
-        required
-        class="mt-1 rounded accent-accent-green"
-      />
-      <span class="text-xs text-brand-light">
-        אני מסכים/ה להעברת פרטי הקשר שלי לעורך דין מתאים בתחום הוצאה לפועל.
-        <a href="/legal/privacy/" class="underline hover:text-white">מדיניות פרטיות</a>
-      </span>
-    </label>
-
-    <button
-      type="submit"
-      class="w-full bg-accent-green hover:bg-green-700 text-white font-semibold py-2.5 rounded-lg text-sm transition-colors"
-    >
-      שלח פרטים
-    </button>
-  </form>
-
-  <p class="text-xs text-brand-light mt-3 opacity-75">
-    ✓ ללא עמלות ✓ ללא לחץ ✓ ניתן לביטול בכל עת
-  </p>
+  <ul class="space-y-3 text-sm">
+    <li>
+      <a
+        href="https://www.gov.il/he/departments/legal_aid"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-brand hover:text-brand-dark hover:underline transition-colors font-medium"
+      >
+        ← הלשכה לסיוע משפטי — משרד המשפטים
+      </a>
+      <span class="text-xs text-neutral-muted">ייצוג חינמי לזכאים לפי הכנסה</span>
+    </li>
+    <li>
+      <a
+        href="https://www.kolzchut.org.il"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-brand hover:text-brand-dark hover:underline transition-colors font-medium"
+      >
+        ← כל-זכות — מידע על זכויות בישראל
+      </a>
+      <span class="text-xs text-neutral-muted">מידע משפטי מקיף בחינם</span>
+    </li>
+    <li>
+      <a
+        href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-brand hover:text-brand-dark hover:underline transition-colors font-medium"
+      >
+        ← רשות האכיפה והגבייה — אתר רשמי
+      </a>
+      <span class="text-xs text-neutral-muted">הגשת בקשות וטפסים רשמיים</span>
+    </li>
+  </ul>
 </div>
-
-<script>
-function handleLeadSubmit(e: Event) {
-  e.preventDefault();
-  const form = e.target as HTMLFormElement;
-  const phone = (form.elements.namedItem('phone') as HTMLInputElement).value;
-  // TODO: send to your backend / CRM
-  console.log('Lead submitted:', phone);
-  form.innerHTML = '<p class="text-center text-green-300 font-semibold py-4">✓ קיבלנו את פרטיך! עורך דין יחזור אליך בהקדם.</p>';
-}
-</script>
