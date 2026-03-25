@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import ChatBot from '../../components/ChatBot';
 
 // מפתח ה-API נקרא ממשתנה סביבה — לא נכנס לקוד!
-const apiKey = import.meta.env.GEMINI_API_KEY ?? '';
+const apiKey = import.meta.env.PUBLIC_GEMINI_API_KEY ?? '';
 ---
 
 <BaseLayout
