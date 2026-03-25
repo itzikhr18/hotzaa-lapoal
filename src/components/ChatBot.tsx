@@ -151,6 +151,16 @@ export default function ChatBot({ apiKey }: { apiKey: string }) {
         </div>
       )}
 
+      {/* Clear button */}
+      {messages.length > 1 && (
+        <button
+          onClick={() => { setMessages([{ role: 'assistant', text: 'שלום! אני כאן לעזור עם שאלות על הוצאה לפועל וחדלות פירעון. מה השאלה שלך?' }]); setInput(''); }}
+          className="text-xs text-gray-400 hover:text-gray-600 text-right transition-colors"
+        >
+          נקה שיחה ←
+        </button>
+      )}
+
       {/* Input */}
       <div className="flex gap-2">
         <input
