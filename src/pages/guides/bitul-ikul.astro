@@ -1,0 +1,197 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'איך מבטלים עיקול בהוצאה לפועל?',
+      acceptedAnswer: { '@type': 'Answer', text: 'מגישים טופס 214 (בקשה לביטול/עיכוב/חידוש הליכים) לרשם ההוצאה לפועל. מסמנים קוד 62 ("ביטול הליכים") ומפרטים את הנימוקים. ניתן להגיש פיזית בלשכה או באזור האישי באתר רשות האכיפה.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה זמן לוקח לבטל עיקול על חשבון בנק?',
+      acceptedAnswer: { '@type': 'Answer', text: 'בדרך כלל 5-14 ימי עסקים לאחר אישור הבקשה. הרשם מחויב לשלוח הודעה לבנק תוך 24 שעות מקבלת ההחלטה.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם אפשר לבטל עיקול לבד ללא עורך דין?',
+      acceptedAnswer: { '@type': 'Answer', text: 'כן. חייב שאינו מיוצג יכול להגיש בקשה לביטול עיקול בעצמו דרך טופס 214. אבל אם מדובר בסכומים גדולים או נכסים — מומלץ ייעוץ משפטי.' },
+    },
+  ],
+};
+---
+
+<GuideLayout
+  title="איך מבטלים עיקול בהוצאה לפועל — מדריך שלב אחר שלב"
+  description="עיקלו לך חשבון בנק, משכורת, או נכס? הנה המדריך המעשי לביטול עיקול — אילו טפסים צריך, איפה מגישים, ואיזה נימוקים עובדים. מעודכן 2026."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'ביטול עיקול', href: '/guides/bitul-ikul/' }]}
+  publishDate="2026-02-10"
+  updateDate="2026-03-15"
+  readTime="7 דקות"
+  schema={faqSchema}
+>
+
+  <p>
+    קיבלת הודעה על עיקול — ועכשיו אתה רוצה לדעת איך מבטלים אותו. הבשורה הטובה:
+    ניתן לבטל עיקולים, ולפעמים מהר מאוד. הבשורה הפחות טובה: צריך לדעת בדיוק איך לפעול.
+  </p>
+
+  <h2>קודם כל — למה אפשר לבטל עיקול?</h2>
+  <p>
+    יש שלוש סיבות עיקריות שבהן רשם ההוצאה לפועל יבטל עיקול:
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">עילות לביטול עיקול:</p>
+    <ul class="space-y-2">
+      <li>
+        <strong>החוב שולם</strong> — שילמת את החוב במלואו (או הגעת להסדר תשלומים)
+      </li>
+      <li>
+        <strong>העיקול לא חוקי</strong> — עוקל כסף מוגן (קצבאות ביטוח לאומי, שכר מינימום), או שנעשה שגיאה בהליך
+      </li>
+      <li>
+        <strong>העיקול פוגע קשות בפרנסה</strong> — למשל עיקול רכב שמשמש לעבודה, ציוד מקצועי, או מכונה שממנה מתפרנסים
+      </li>
+    </ul>
+  </div>
+
+  <h2>הטופס שצריך — טופס 214</h2>
+  <p>
+    כל בקשה לביטול עיקול מוגשת דרך <strong>טופס 214</strong> — "בקשה לביטול / עיכוב / חידוש הליכים והגבלות".
+    זה הטופס היחיד שמטפלים בו, לכל סוגי העיקולים.
+  </p>
+
+  <div class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-6">
+    <p class="font-bold text-gray-800 mb-3">מה ממלאים בטופס 214:</p>
+    <ol class="space-y-2 text-sm text-gray-700">
+      <li class="flex gap-2"><span class="font-bold text-brand-dark">שדה 3:</span> <span>סמן קוד <strong>62</strong> — "ביטול הליכים"</span></li>
+      <li class="flex gap-2"><span class="font-bold text-brand-dark">שדה 4:</span> <span>סמן את <strong>סוג ההליך הספציפי</strong> שמבקשים לבטל (עיקול בנק / עיקול משכורת / עיקול נכס)</span></li>
+      <li class="flex gap-2"><span class="font-bold text-brand-dark">שדה 7:</span> <span>כתוב <strong>פירוט מלא של הנימוקים</strong> — מדוע מבקשים לבטל</span></li>
+    </ol>
+    <p class="text-xs text-neutral-muted mt-3">* ניתן להוריד טופס 214 מאתר רשות האכיפה והגבייה (gov.il)</p>
+  </div>
+
+  <h2>ביטול עיקול על כסף מוגן — מהיר יותר</h2>
+  <p>
+    אם עיקלו כסף שמקורו בקצבאות ביטוח לאומי — זו בקשה קלה יחסית.
+    הכסף הזה מוגן לחלוטין בחוק, ולרשם אין שיקול דעת — הוא חייב לבטל.
+  </p>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>הדפס <strong>דפי חשבון בנק</strong> המראים הפקדות מביטוח לאומי (הסכום והתאריך)</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>מלא טופס 214 — ציין בשדה 7 שמדובר בכספי קצבה מוגנים</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>הגש לרשם עם הדפי בנק כנספח</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>הרשם מחויב להיעתר — אין לו שיקול דעת במקרה זה</span>
+    </li>
+  </ol>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">💡 טיפ</p>
+    <p>שמור את כספי הקצבאות בחשבון נפרד מכל הכנסה אחרת. זה מקל מאוד על הוכחה שמדובר בכסף מוגן.</p>
+  </div>
+
+  <h2>ביטול עיקול כי הגעת להסדר תשלומים</h2>
+  <p>
+    אחת הדרכים הנפוצות ביותר לביטול עיקול היא הגשת בקשה לצו תשלומים.
+    ברגע שהרשם מאשר צו תשלומים — הוא בדרך כלל מורה גם על עיכוב העיקולים.
+  </p>
+  <p>
+    הנושה יכול להתנגד, אבל אם עומדים בתשלומים — העיקול לא יחזור.
+  </p>
+
+  <h2>ביטול עיקול כי הוא פוגע בפרנסה</h2>
+  <p>
+    אפשר לבקש ביטול עיקול ספציפי אם הוא מונע ממך להתפרנס. לדוגמה:
+  </p>
+  <ul>
+    <li><strong>עיקול רכב שמשמש לעבודה</strong> — נהג, שליח, עצמאי שנוסע ללקוחות</li>
+    <li><strong>עיקול ציוד מקצועי</strong> — מכונות, כלי עבודה, מחשב לעצמאי</li>
+    <li><strong>עיקול שמונע קבלת שכר</strong> — כשהעיקול על המשכורת גבוה מהמותר</li>
+  </ul>
+  <p>
+    חשוב: כשמגישים בקשה כזו — צריך <strong>ראיות</strong>. חוזה עבודה, הסכם עם לקוחות,
+    או כל מסמך שמוכיח שהנכס נחוץ לפרנסה.
+  </p>
+
+  <h2>איפה מגישים את הבקשה?</h2>
+
+  <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+    <div class="bg-white border border-neutral-border rounded-xl p-5">
+      <h3 class="font-bold text-gray-800 mb-2">🖥️ אונליין (מומלץ)</h3>
+      <p class="text-sm text-gray-600 mb-2">דרך האזור האישי באתר רשות האכיפה והגבייה. מהיר יותר ואין צורך בתור.</p>
+      <p class="text-xs text-neutral-muted">gov.il → רשות האכיפה → אזור אישי</p>
+    </div>
+    <div class="bg-white border border-neutral-border rounded-xl p-5">
+      <h3 class="font-bold text-gray-800 mb-2">🏢 פיזית בלשכה</h3>
+      <p class="text-sm text-gray-600 mb-2">הגש ישירות בלשכת ההוצאה לפועל שבה מתנהל התיק. קח תעודת זהות ועותקים של המסמכים.</p>
+      <p class="text-xs text-neutral-muted">ניתן גם בדואר רשום</p>
+    </div>
+  </div>
+
+  <h2>מה קורה אחרי שהגשת?</h2>
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span>הרשם שולח עותק לנושה — יש לו שבוע להגיב</span></li>
+    <li><span class="step-num">2</span><span>אחרי שבוע (בין אם הנושה הגיב ולא) — הרשם מקבל החלטה</span></li>
+    <li><span class="step-num">3</span><span>אם אושר — הלשכה שולחת הודעה לבנק / למעסיק תוך 24 שעות</span></li>
+    <li><span class="step-num">4</span><span>הכסף משתחרר תוך 5-14 ימי עסקים</span></li>
+  </ol>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">⚠️ חשוב לדעת</p>
+    <p>
+      אם הנושה <strong>הסכים</strong> לביטול — הרשם חייב לאשר מיד, ללא שיקול דעת.
+      אם הנושה <strong>מתנגד</strong> — הרשם שוקל את הנימוקים ומחליט.
+    </p>
+  </div>
+
+  <h2>שאלות נפוצות</h2>
+  <div class="space-y-4 my-6">
+    {[
+      {
+        q: 'איך מבטלים עיקול בהוצאה לפועל?',
+        a: 'מגישים טופס 214 לרשם ההוצאה לפועל, מסמנים קוד 62 ומפרטים את הנימוקים. ניתן להגיש פיזית בלשכה או באזור האישי באתר רשות האכיפה.',
+      },
+      {
+        q: 'כמה זמן לוקח לבטל עיקול על חשבון בנק?',
+        a: 'בדרך כלל 5-14 ימי עסקים לאחר אישור הבקשה. הרשם מחויב לשלוח הודעה לבנק תוך 24 שעות מקבלת ההחלטה.',
+      },
+      {
+        q: 'האם אפשר לבטל עיקול לבד ללא עורך דין?',
+        a: 'כן. חייב שאינו מיוצג יכול להגיש בקשה בעצמו דרך טופס 214. לסכומים גדולים או נכסים — מומלץ ייעוץ משפטי.',
+      },
+    ].map(faq => (
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          {faq.q}
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/guides/ikul-heshbon/" class="text-brand hover:underline">עיקול חשבון בנק — המדריך המלא</a></li>
+      <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">הגש צו תשלומים — עוצר עיקולים</a></li>
+      <li>← <a href="/rights/skhomim-mugganim/" class="text-brand hover:underline">אילו כספים מוגנים לחלוטין?</a></li>
+    </ul>
+  </div>
+
+</GuideLayout>

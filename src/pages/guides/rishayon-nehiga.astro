@@ -1,0 +1,161 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'האם עדיין ניתן לשלול רישיון נהיגה בהוצאה לפועל?',
+      acceptedAnswer: { '@type': 'Answer', text: 'לא. מפברואר 2022 הגבלת רישיון נהיגה בוטלה לחלוטין כהליך בהוצאה לפועל. לא ניתן להטיל הגבלה חדשה, וכל הגבלות הרישיון שהיו קיימות בוטלו אוטומטית.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'יש לי הגבלה ישנה על הרישיון — האם היא בתוקף?',
+      acceptedAnswer: { '@type': 'Answer', text: 'לא. כל הגבלות הרישיון שהיו קיימות בהוצאה לפועל בוטלו אוטומטית בעקבות תיקון 69 לחוק. אם הגבלה עדיין מופיעה — פנה לרשות האכיפה לתיקון טעות.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה ניתן לעשות נגד חייב שלא משלם — אם לא רישיון?',
+      acceptedAnswer: { '@type': 'Answer', text: 'כלים אחרים נשארו: עיכוב יציאה מהארץ, חשבון בנק מוגבל, איסור כרטיסי אשראי, ואיסור ייסוד חברה. עיקולים על חשבון ומשכורת ממשיכים כרגיל.' },
+    },
+  ],
+};
+---
+
+<GuideLayout
+  title="הגבלת רישיון נהיגה בהוצאה לפועל — בוטלה! מה שחשוב לדעת"
+  description="שמעת שהוצאה לפועל יכולה לשלול רישיון נהיגה? זה כבר לא נכון. מפברואר 2022 הגבלה זו בוטלה לחלוטין. מה השתנה ומה ההגבלות שעדיין קיימות."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'רישיון נהיגה', href: '/guides/rishayon-nehiga/' }]}
+  publishDate="2026-02-05"
+  updateDate="2026-03-12"
+  readTime="5 דקות"
+  schema={faqSchema}
+>
+
+  <div class="not-prose bg-green-50 border-2 border-green-300 rounded-2xl p-6 mb-8">
+    <div class="flex items-start gap-3">
+      <span class="text-3xl">🎉</span>
+      <div>
+        <p class="font-bold text-green-800 text-lg mb-1">חדשות טובות — הגבלת רישיון בוטלה</p>
+        <p class="text-green-700 text-sm">
+          מפברואר 2022, לפי תיקון 69 לחוק ההוצאה לפועל, <strong>לא ניתן עוד להגביל רישיון נהיגה
+          של חייב</strong>. כל ההגבלות הקיימות בוטלו אוטומטית.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    שנים ארוכות, הגבלת רישיון נהיגה הייתה אחד מכלי הלחץ של ההוצאה לפועל.
+    חייבים שלא שילמו מצאו את עצמם לא יכולים לחדש את הרישיון — מה שפגע
+    ביכולתם להגיע לעבודה ולהתפרנס.
+  </p>
+  <p>
+    אבל ב-10 בפברואר 2022 שינה המחוקק את הכללים.
+  </p>
+
+  <h2>למה בוטלה ההגבלה?</h2>
+  <p>
+    הכנסת הגיעה למסקנה שהגבלת רישיון נהיגה <strong>מחטיאה את המטרה</strong>:
+  </p>
+  <ul>
+    <li>חייב שלא יכול להגיע לעבודה — לא יכול להרוויח כסף ולשלם</li>
+    <li>ההגבלה פגעה קשה בחייבים שגרים בפריפריה ואין תחבורה ציבורית</li>
+    <li>היא פגעה גם בבני משפחה תלויים שזקוקים לרכב</li>
+    <li>בתי המשפט קיבלו עשרות עתירות מחייבים נגד ההגבלה</li>
+  </ul>
+  <p>
+    לכן — הוחלט לבטל אותה לחלוטין, לכולם, ללא יוצא מן הכלל.
+  </p>
+
+  <h2>מה קורה אם עדיין מופיעה הגבלה על הרישיון שלי?</h2>
+  <p>
+    כל הגבלות הרישיון שהיו קיימות <strong>בוטלו אוטומטית</strong> עם כניסת החוק לתוקף.
+    לא היה צריך להגיש בקשה — זה קרה בלי שאתה צריך לעשות כלום.
+  </p>
+  <p>
+    אם מסיבה כלשהי הגבלה עדיין מופיעה במשרד הרישוי — זו <strong>טעות בירוקרטית</strong>.
+    פנה לרשות האכיפה והגבייה עם טפסי 214 ובקש תיקון, או פנה ישירות למשרד הרישוי.
+  </p>
+
+  <h2>אילו הגבלות עדיין קיימות?</h2>
+  <p>
+    חשוב לדעת: ביטול הגבלת הרישיון לא ביטל את כל ההגבלות האחרות.
+    הגבלות שעדיין בתוקף:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">הגבלה</th>
+          <th class="text-right p-3 border border-gray-200">סטאטוס</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['הגבלת רישיון נהיגה', '🟢 בוטלה לחלוטין — פברואר 2022'],
+          ['עיכוב יציאה מהארץ', '🔴 עדיין קיים'],
+          ['חשבון בנק מוגבל מיוחד', '🔴 עדיין קיים'],
+          ['איסור כרטיסי חיוב', '🔴 עדיין קיים'],
+          ['איסור ייסוד חברה', '🔴 עדיין קיים'],
+          ['עיקולים (בנק, משכורת, נכסים)', '🔴 עדיין קיימים'],
+        ].map(([restriction, status], i) => (
+          <tr class={i === 0 ? 'bg-green-50 font-semibold' : i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200">{restriction}</td>
+            <td class="p-3 border border-gray-200 text-sm">{status}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>אז מה עושים עם ההגבלות שעדיין קיימות?</h2>
+  <p>
+    גם ההגבלות האחרות ניתנות לביטול — אבל צריך לבקש אותו.
+    הדרכים העיקריות:
+  </p>
+  <ul>
+    <li><strong>הגעה להסדר עם הנושה</strong> — הדרך המהירה ביותר</li>
+    <li><strong>צו תשלומים</strong> — עוצר הגבלות חדשות ומאפשר לבקש ביטול קיימות</li>
+    <li><strong>הגשת בקשה לרשם</strong> — עם נימוקים ומסמכים תומכים</li>
+  </ul>
+
+  <h2>שאלות נפוצות</h2>
+  <div class="space-y-4 my-6">
+    {[
+      {
+        q: 'האם עדיין ניתן לשלול רישיון נהיגה בהוצאה לפועל?',
+        a: 'לא. מפברואר 2022 הגבלת רישיון נהיגה בוטלה לחלוטין. לא ניתן להטיל הגבלה חדשה, וכל ההגבלות הישנות בוטלו אוטומטית.',
+      },
+      {
+        q: 'יש לי הגבלה ישנה על הרישיון — האם היא בתוקף?',
+        a: 'לא. כל הגבלות הרישיון בוטלו אוטומטית. אם עדיין מופיעה — פנה לרשות האכיפה לתיקון טעות.',
+      },
+      {
+        q: 'מה ניתן לעשות נגד חייב שלא משלם — אם לא רישיון?',
+        a: 'כלים אחרים נשארו: עיכוב יציאה מהארץ, חשבון בנק מוגבל, איסור כרטיסי אשראי, ואיסור ייסוד חברה. עיקולים ממשיכים כרגיל.',
+      },
+    ].map(faq => (
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          {faq.q}
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/guides/hayav-mugbal/" class="text-brand hover:underline">חייב מוגבל — כל ההגבלות ואיך יוצאים</a></li>
+      <li>← <a href="/rights/hagbalot/" class="text-brand hover:underline">הגבלות על חייב — מה מותר ומה אסור</a></li>
+      <li>← <a href="/guides/bitul-ikul/" class="text-brand hover:underline">ביטול עיקולים — מדריך מלא</a></li>
+    </ul>
+  </div>
+
+</GuideLayout>

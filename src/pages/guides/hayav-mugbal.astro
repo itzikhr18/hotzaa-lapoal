@@ -1,0 +1,197 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'מה זה חייב מוגבל באמצעים?',
+      acceptedAnswer: { '@type': 'Answer', text: 'חייב שהוכרז כ"בעל יכולת המשתמט מתשלום" — כלומר רשם ההוצאה לפועל קבע שיש לו יכולת לשלם אבל הוא מתחמק. זה שונה מחייב שפשוט אין לו כסף.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם שלילת רישיון נהיגה עדיין אפשרית בהוצאה לפועל?',
+      acceptedAnswer: { '@type': 'Answer', text: 'לא. לפי תיקון 69 לחוק ההוצאה לפועל, הגבלת רישיון נהיגה בוטלה לחלוטין ואינה ניתנת להטלה. כל הגבלות הרישיון שהיו קיימות בוטלו אוטומטית.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'איך מבטלים הכרזה על חייב מוגבל?',
+      acceptedAnswer: { '@type': 'Answer', text: 'מגישים טופס נפרד — "בקשה לביטול הכרזה על חייב מוגבל באמצעים" — לרשם ההוצאה לפועל. צריך להוכיח שאין יכולת תשלום אמיתית, או להגיע להסדר עם הנושים.' },
+    },
+  ],
+};
+---
+
+<GuideLayout
+  title="חייב מוגבל באמצעים — מה זה, מה ההגבלות, ואיך יוצאים מזה"
+  description="הוכרזת כ'חייב מוגבל באמצעים'? מה זה אומר בפועל, אילו הגבלות מוטלות, ומה עושים כדי לצאת ממצב זה — מעודכן לכולל תיקון 69 לחוק (2022)."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'חייב מוגבל', href: '/guides/hayav-mugbal/' }]}
+  publishDate="2026-01-20"
+  updateDate="2026-03-10"
+  readTime="6 דקות"
+  schema={faqSchema}
+>
+
+  <p>
+    "חייב מוגבל באמצעים" זה אחד הביטויים המפחידים ביותר בהוצאה לפועל.
+    אבל כמו הרבה דברים בהוצאה לפועל — ברגע שמבינים מה זה, זה פחות מפחיד.
+  </p>
+
+  <h2>מה ההבדל בין "חייב רגיל" ל"חייב מוגבל"?</h2>
+  <p>
+    <strong>חייב רגיל</strong> — נפתח נגדו תיק, אבל לא הוכרז רשמית כמתחמק.
+    יכולים לנקוט נגדו עיקולים, אבל לא כל ההגבלות הקיצוניות.
+  </p>
+  <p>
+    <strong>חייב מוגבל באמצעים</strong> — רשם ההוצאה לפועל קבע רשמית שהוא
+    <em>"בעל יכולת המשתמט מתשלום חובותיו"</em>. זאת אומרת — יש לו כסף אבל הוא
+    לא משלם במכוון. המצב הזה פותח את הדלת להגבלות קיצוניות הרבה יותר.
+  </p>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-2">⚠️ מה מוביל להכרזה?</p>
+    <p>ההכרזה קורית כשחייב לא מגיע לדיונים, לא מגיב לבקשות, לא מגיש מסמכים, ולא עומד בתשלומים. שיתוף פעולה עם הרשם הוא ההגנה הכי טובה.</p>
+  </div>
+
+  <h2>ההגבלות שמוטלות על חייב מוגבל</h2>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">הגבלה</th>
+          <th class="text-right p-3 border border-gray-200">משמעות בפועל</th>
+          <th class="text-right p-3 border border-gray-200">ניתן לבטל?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['עיכוב יציאה מהארץ', 'אסור לצאת לחו"ל ללא אישור', '✓ בבקשה לרשם + תצהיר'],
+          ['חשבון בנק מוגבל מיוחד', 'לא ניתן למשוך שיקים, לא ניתן לפתוח חשבון חדש', '✓ עם הסדרת חוב'],
+          ['איסור שימוש בכרטיסי חיוב', 'חסימת כרטיסי אשראי ודביט', '✓ עם הסדרת חוב'],
+          ['איסור ייסוד חברה', 'לא ניתן לפתוח חברה או להיות בעל עניין בתאגיד', '✓ עם ביטול ההכרזה'],
+          ['רישיון נהיגה — בוטל!', 'הגבלה זו בוטלה לחלוטין בפברואר 2022', '✅ לא רלוונטי'],
+        ].map(([restriction, meaning, cancellable], i) => (
+          <tr class={i === 4 ? 'bg-green-50' : i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-800">{restriction}</td>
+            <td class="p-3 border border-gray-200 text-gray-600 text-xs">{meaning}</td>
+            <td class={`p-3 border border-gray-200 text-xs font-semibold ${i === 4 ? 'text-green-700' : 'text-brand'}`}>{cancellable}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>🎉 עדכון חשוב: רישיון נהיגה — לא עוד</h2>
+  <p>
+    בפברואר 2022 נכנס לתוקף <strong>תיקון 69 לחוק ההוצאה לפועל</strong> — ומחק לחלוטין
+    את הגבלת רישיון הנהיגה ככלי נגד חייבים.
+  </p>
+  <p>
+    הסיבה: המחוקק הבין שהגבלת הרישיון פוגעת ביכולת החייב לעבוד ולשלם — ובכך
+    משיגה את ההיפך מהמטרה. <strong>כיום לא ניתן להטיל הגבלה על רישיון נהיגה בהוצאה לפועל,
+    ולכל מי שהייתה לו הגבלה — היא בוטלה אוטומטית.</strong>
+  </p>
+
+  <h2>איך מבטלים הכרזה על חייב מוגבל?</h2>
+  <p>
+    חשוב לדעת: ביטול הכרזה על חייב מוגבל הוא הליך <strong>נפרד</strong> מביטול הגבלות ספציפיות.
+    לא מגישים טופס 214 אלא טופס ייעודי.
+  </p>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>
+        הגש <strong>"בקשה לביטול הכרזה על חייב מוגבל באמצעים"</strong> דרך האזור האישי
+        באתר רשות האכיפה, או בלשכה
+      </span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>
+        צרף <strong>הוכחות ליכולת תשלום מוגבלת</strong> — תלושי שכר, דפי בנק, אישורי הוצאות
+      </span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>
+        או — הגע להסדר תשלומים עם הנושה ועם הרשם (<strong>הדרך המהירה ביותר</strong>)
+      </span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>
+        אם אושר — כל ההגבלות מבוטלות, הרשם שולח הודעה לכל הגופים הרלוונטיים
+        (בנקים, משרד הפנים, חברות אשראי) <strong>תוך 24 שעות</strong>
+      </span>
+    </li>
+  </ol>
+
+  <h2>ביטול הגבלות ספציפיות (ללא ביטול ההכרזה)</h2>
+  <p>
+    לפעמים לא צריך לבטל את כל ההכרזה — אלא הגבלה ספציפית בלבד.
+    לדוגמה: ביטול עיכוב יציאה לצורך נסיעת עבודה.
+  </p>
+  <p>
+    במקרה כזה מגישים טופס 214 עם קוד <strong>311</strong> — "ביטול הגבלת חייב לא מוגבל באמצעים",
+    ומציינים את ההגבלה הספציפית שמבקשים לבטל עם נימוקים.
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">⏰ כמה זמן לוקח?</p>
+    <ul>
+      <li>החלטה על הבקשה: עד <strong>45 יום</strong> מיום ההגשה</li>
+      <li>ביטול בפועל (אם אושר): <strong>24 שעות</strong> מההחלטה</li>
+      <li>עדכון הרישומים בגורמים החיצוניים: <strong>כמה ימי עסקים נוספים</strong></li>
+    </ul>
+  </div>
+
+  <h2>הדרך הכי מהירה לצאת מהמצב</h2>
+  <p>
+    הניסיון מראה שהדרך המהירה ביותר לביטול הגבלות היא לא בקשה משפטית — אלא
+    יצירת קשר ישיר עם הנושה והגעה להסדר.
+  </p>
+  <p>
+    נושה שמסכים לתשלומים מגיש בעצמו בקשה לביטול ההגבלות — ואז הרשם <strong>חייב</strong>
+    לאשר מיד, ללא שיקול דעת.
+  </p>
+
+  <h2>שאלות נפוצות</h2>
+  <div class="space-y-4 my-6">
+    {[
+      {
+        q: 'מה זה חייב מוגבל באמצעים?',
+        a: 'חייב שהוכרז כ"בעל יכולת המשתמט מתשלום" — כלומר הרשם קבע שיש לו יכולת לשלם אבל הוא מתחמק. שונה מחייב שפשוט אין לו כסף.',
+      },
+      {
+        q: 'האם שלילת רישיון נהיגה עדיין אפשרית?',
+        a: 'לא. לפי תיקון 69 (פברואר 2022), הגבלת רישיון נהיגה בוטלה לחלוטין. כל הגבלות הרישיון שהיו קיימות בוטלו אוטומטית.',
+      },
+      {
+        q: 'איך מבטלים הכרזה על חייב מוגבל?',
+        a: 'מגישים בקשה ייעודית לרשם עם הוכחות לאי-יכולת תשלום, או מגיעים להסדר עם הנושה. הגעה להסדר היא הדרך המהירה ביותר.',
+      },
+    ].map(faq => (
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          {faq.q}
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/guides/bitul-ikul/" class="text-brand hover:underline">איך מבטלים עיקול — המדריך המלא</a></li>
+      <li>← <a href="/rights/hagbalot/" class="text-brand hover:underline">כל ההגבלות על חייב — מה מותר ומה אסור</a></li>
+      <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">צו תשלומים — עוצר הגבלות</a></li>
+    </ul>
+  </div>
+
+</GuideLayout>
