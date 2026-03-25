@@ -23,7 +23,7 @@ const apiKey = import.meta.env.PUBLIC_GEMINI_API_KEY ?? '';
     <p class="text-gray-500 mb-8">שאל כל שאלה — מקבל תשובה בעברית פשוטה, מיידית, בחינם</p>
 
     {apiKey ? (
-      <ChatBot apiKey={apiKey} client:load />
+      <ChatBot apiKey={import.meta.env.PUBLIC_GEMINI_API_KEY || ''} client:load />
     ) : (
       <div class="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
         <p class="font-bold text-red-800 mb-2">הצ'אטבוט אינו זמין כרגע</p>
