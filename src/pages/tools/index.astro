@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout
+  title="כלים חינמיים להוצאה לפועל — מחשבון ריבית וצ'אטבוט"
+  description="כלים חינמיים לחייבים בהוצאה לפועל: מחשבון ריבית תיקון 9 וצ'אטבוט AI שעונה על שאלות 24/7."
+>
+  <Header />
+  <main class="max-w-4xl mx-auto px-4 py-10">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <span class="text-gray-700">כלים</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-2">כלים חינמיים</h1>
+    <p class="text-gray-500 mb-10">ייחודיים בשוק — פותחנו אותם כי הם לא היו קיימים</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <a href="/tools/calculator/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mb-4">🧮</div>
+        <div class="inline-block bg-orange-100 text-orange-700 text-xs font-bold px-2.5 py-1 rounded-full mb-3">חדש! תיקון 9</div>
+        <h2 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand-dark transition-colors">מחשבון ריבית הוצאה לפועל</h2>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">
+          חשב כמה אתה באמת חייב לפי החוק החדש מינואר 2025.
+          ריבית בסיס + דמי פיגורים רבעוניים — עם פירוט מלא.
+        </p>
+        <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">פתח מחשבון ←</span>
+      </a>
+
+      <a href="/tools/chatbot/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
+        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl mb-4">💬</div>
+        <div class="inline-block bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full mb-3">AI + עברית</div>
+        <h2 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand-dark transition-colors">צ'אטבוט מידע</h2>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">
+          שאל כל שאלה על הוצאה לפועל וחדלות פירעון —
+          מקבל תשובה מיידית בעברית פשוטה, 24/7, בחינם.
+        </p>
+        <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">פתח צ'אטבוט ←</span>
+      </a>
+
+    </div>
+
+    <!-- בדיקת זכאות — בקרוב -->
+    <div class="mt-6 border-2 border-dashed border-neutral-border rounded-2xl p-7 opacity-60">
+      <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl mb-4">✅</div>
+      <div class="inline-block bg-gray-100 text-gray-500 text-xs font-bold px-2.5 py-1 rounded-full mb-3">בקרוב</div>
+      <h2 class="text-xl font-bold text-gray-600 mb-2">בדיקת זכאות</h2>
+      <p class="text-gray-400 text-sm leading-relaxed">
+        האם אתה זכאי לצו תשלומים, איחוד תיקים, או חדלות פירעון?
+        5 דקות שיכולות לשנות הכל.
+      </p>
+    </div>
+
+    <div class="mt-10 bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+      ⚠️ הכלים מיועדים להערכה ולמידע כללי בלבד. אינם מהווים ייעוץ משפטי.
+    </div>
+
+  </main>
+  <Footer />
+</BaseLayout>
