@@ -86,12 +86,13 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
     <p>ההגבלות האלה מוטלות בדרך כלל כשחייב <strong>לא שיתף פעולה</strong> עם הרשות. השיתוף פעולה — הגעה לדיונים, הגשת מסמכים, הגשת בקשות — הוא ההגנה הכי טובה שיש.</p>
   </div>
 
-  <slot name="next-steps">
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/rights/10-zchuyot/" class="text-brand hover:underline">כל הזכויות שמגיעות לך</a></li>
       <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">צו תשלומים — הדרך לצאת ממעגל ההגבלות</a></li>
       <li>← <a href="/guides/ichud-tikim/" class="text-brand hover:underline">איחוד תיקים — לחייב עם הרבה חובות</a></li>
     </ul>
-  </slot>
+  </div>
 
 </GuideLayout>

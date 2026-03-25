@@ -81,11 +81,7 @@ const articleSchema = {
 
         <slot />
 
-        <!-- What's next block -->
-        <div class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
-          <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
-          <slot name="next-steps" />
-        </div>
+        <slot name="next-steps" />
       </article>
 
       <!-- Sidebar -->

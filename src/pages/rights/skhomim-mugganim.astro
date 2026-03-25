@@ -119,12 +119,13 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
     <p>אם אתה מקבל קצבאות ביטוח לאומי — מומלץ לשמור אותן בחשבון נפרד. זה מקל מאוד על הוכחה שהכסף מוגן.</p>
   </div>
 
-  <slot name="next-steps">
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/rights/10-zchuyot/" class="text-brand hover:underline">כל 10 הזכויות שמגיעות לך</a></li>
       <li>← <a href="/rights/bayit-muggan/" class="text-brand hover:underline">האם אפשר לעקל את הבית שלי?</a></li>
       <li>← <a href="/guides/ikul-maskoret/" class="text-brand hover:underline">מדריך עיקול משכורת</a></li>
     </ul>
-  </slot>
+  </div>
 
 </GuideLayout>

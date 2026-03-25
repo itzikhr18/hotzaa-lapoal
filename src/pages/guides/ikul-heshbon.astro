@@ -141,12 +141,13 @@ const faqSchema = {
     ))}
   </div>
 
-  <slot name="next-steps">
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">קרא על בקשה לצו תשלומים</a></li>
       <li>← <a href="/rights/" class="text-brand hover:underline">לכל הזכויות שלך כחייב</a></li>
       <li>← <a href="/tools/calculator/" class="text-brand hover:underline">חשב כמה אתה באמת חייב (מחשבון ריבית)</a></li>
     </ul>
-  </slot>
+  </div>
 
 </GuideLayout>

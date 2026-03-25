@@ -150,12 +150,13 @@ const faqSchema = {
     ))}
   </div>
 
-  <slot name="next-steps">
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/guides/ichud-tikim/" class="text-brand hover:underline">איחוד תיקים — כשיש כמה תיקים</a></li>
       <li>← <a href="/tools/calculator/" class="text-brand hover:underline">חשב כמה אתה חייב בסך הכל</a></li>
       <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">מתי כדאי לשקול חדלות פירעון?</a></li>
     </ul>
-  </slot>
+  </div>
 
 </GuideLayout>

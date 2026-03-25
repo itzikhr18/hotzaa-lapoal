@@ -42,6 +42,15 @@ const faqSchema = {
 
   <h2>שני סוגי עיקול שחשוב להכיר</h2>
 
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-1">מה זה ממוש?</p>
+    <p class="text-sm">
+      <strong>ממוש</strong> = מכירה כפויה בפועל. כלומר — הנושה לא מסתפק בעיקול רישומי (שמונע ממך למכור),
+      אלא מבקש מבית המשפט לאשר מכירה של הנכס, למצוא קונה, ולקחת את הכסף מהתמורה.
+      זה השלב שכולם פוחדים ממנו — והוא הרבה פחות שכיח ממה שחושבים.
+    </p>
+  </div>
+
   <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
     <div class="border-2 border-orange-200 bg-orange-50 rounded-xl p-5">
       <h3 class="font-bold text-orange-800 mb-2">עיקול רישומי</h3>
@@ -164,12 +173,13 @@ const faqSchema = {
     ))}
   </div>
 
-  <slot name="next-steps">
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/rights/bayit-muggan/" class="text-brand hover:underline">הגנות חוקיות על דירת מגורים</a></li>
       <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">הגש צו תשלומים לפני שמממשים</a></li>
       <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">חדלות פירעון — אפשרות לאיפוס</a></li>
     </ul>
-  </slot>
+  </div>
 
 </GuideLayout>

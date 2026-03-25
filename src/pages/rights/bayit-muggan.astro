@@ -71,12 +71,13 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
     <li><span class="step-num">4</span><span><strong>התייעץ עם עורך דין</strong> — בעניין דירה, ייצוג משפטי שווה את הכסף</span></li>
   </ol>
 
-  <slot name="next-steps">
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/rights/skhomim-mugganim/" class="text-brand hover:underline">מה עוד מוגן מעיקול?</a></li>
       <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">איך מגישים צו תשלומים לעצור הליכים</a></li>
       <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">האם חדלות פירעון יכולה לעזור?</a></li>
     </ul>
-  </slot>
+  </div>
 
 </GuideLayout>

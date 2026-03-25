@@ -100,12 +100,13 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
     ))}
   </div>
 
-  <slot name="next-steps">
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/insolvency/costs/" class="text-brand hover:underline">כמה עולה ההליך? פירוט עלויות</a></li>
       <li>← <a href="/insolvency/haftar/" class="text-brand hover:underline">ההפטר — מה בדיוק מוחק</a></li>
       <li>← <a href="/insolvency/eligibility/" class="text-brand hover:underline">האם אני זכאי להגיש?</a></li>
     </ul>
-  </slot>
+  </div>
 
 </GuideLayout>

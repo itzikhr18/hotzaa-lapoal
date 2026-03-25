@@ -90,12 +90,13 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
     <p>חדלות פירעון היא הליך ארוך ויקר. אם אתה לא בטוח — התייעץ עם עורך דין לפני הגשה. ייעוץ ראשוני הרבה פעמים חינמי או זול מאוד.</p>
   </div>
 
-  <slot name="next-steps">
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/insolvency/process/" class="text-brand hover:underline">שלבי ההליך — מה קורה בכל שלב</a></li>
       <li>← <a href="/insolvency/costs/" class="text-brand hover:underline">כמה עולה? פירוט עלויות</a></li>
       <li>← <a href="/guides/ichud-tikim/" class="text-brand hover:underline">אולי איחוד תיקים יספיק?</a></li>
     </ul>
-  </slot>
+  </div>
 
 </GuideLayout>
