@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import EligibilityChecker from '../../components/EligibilityChecker';
+---
+
+<BaseLayout
+  title="בדיקת מצב מהירה — מה הפתרון הנכון לך?"
+  description="4 שאלות פשוטות ותקבל המלצה מה לעשות עכשיו — צו תשלומים, איחוד תיקים, או חדלות פירעון. חינם, מיידי, בעברית."
+>
+  <Header />
+  <main class="max-w-2xl mx-auto px-4 py-10">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <a href="/tools/">כלים</a> › <span class="text-gray-700">בדיקת מצב</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-2">בדיקת מצב מהירה</h1>
+    <p class="text-gray-500 mb-8">4 שאלות פשוטות — ותדע מה לעשות עכשיו</p>
+
+    <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-sm">
+      <EligibilityChecker client:load />
+    </div>
+
+    <div class="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+      ⚠️ הכלי מספק הכוונה כללית בלבד ואינו מהווה ייעוץ משפטי. לייעוץ אישי — פנה לעורך דין.
+    </div>
+
+  </main>
+  <Footer />
+</BaseLayout>

@@ -18,7 +18,7 @@ import Footer from '../../components/Footer.astro';
     <h1 class="text-3xl font-bold text-brand-dark mb-2">כלים חינמיים</h1>
     <p class="text-gray-500 mb-10">ייחודיים בשוק — פותחנו אותם כי הם לא היו קיימים</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <a href="/tools/calculator/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
         <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mb-4">🧮</div>
@@ -44,16 +44,16 @@ import Footer from '../../components/Footer.astro';
 
     </div>
 
-    <!-- בדיקת זכאות — בקרוב -->
-    <div class="mt-6 border-2 border-dashed border-neutral-border rounded-2xl p-7 opacity-60">
-      <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl mb-4">✅</div>
-      <div class="inline-block bg-gray-100 text-gray-500 text-xs font-bold px-2.5 py-1 rounded-full mb-3">בקרוב</div>
-      <h2 class="text-xl font-bold text-gray-600 mb-2">בדיקת זכאות</h2>
-      <p class="text-gray-400 text-sm leading-relaxed">
-        האם אתה זכאי לצו תשלומים, איחוד תיקים, או חדלות פירעון?
-        5 דקות שיכולות לשנות הכל.
-      </p>
-    </div>
+      <a href="/tools/eligibility/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
+        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl mb-4">🔍</div>
+        <div class="inline-block bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-full mb-3">4 שאלות בלבד</div>
+        <h2 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand-dark transition-colors">בדיקת מצב מהירה</h2>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">
+          ענה על 4 שאלות פשוטות ותקבל המלצה — מה לעשות עכשיו.
+          צו תשלומים? איחוד תיקים? חדלות פירעון?
+        </p>
+        <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">התחל בדיקה ←</span>
+      </a>
 
     <div class="mt-10 bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
       ⚠️ הכלים מיועדים להערכה ולמידע כללי בלבד. אינם מהווים ייעוץ משפטי.
