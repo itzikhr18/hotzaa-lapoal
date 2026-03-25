@@ -6,40 +6,52 @@ import Footer from '../../components/Footer.astro';
 
 <BaseLayout
   title="יצירת קשר"
-  description="שאלה על הוצאה לפועל? צור קשר עם הוצאהלפועל.info"
+  description="שאלה על הוצאה לפועל? השתמש בצ'אטבוט שלנו לתשובה מיידית, או עיין במדריכים ובשאלות הנפוצות."
 >
   <Header />
-  <main class="max-w-3xl mx-auto px-4 py-12">
+  <main class="max-w-2xl mx-auto px-4 py-12">
 
     <nav class="text-sm text-neutral-muted mb-6">
       <a href="/">בית</a> › <span class="text-gray-700">יצירת קשר</span>
     </nav>
 
     <h1 class="text-3xl font-bold text-brand-dark mb-3">יצירת קשר</h1>
-    <p class="text-gray-600 mb-10">שאלה? הצעה? רוצה לדווח על שגיאה? אנחנו כאן.</p>
+    <p class="text-gray-600 mb-10">האתר מנגיש מידע לציבור בחינם. הנה הדרכים הטובות ביותר לקבל עזרה:</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="space-y-4">
 
-      <div class="bg-white border border-neutral-border rounded-xl p-5">
-        <h2 class="font-bold text-gray-800 mb-3">📧 דואר אלקטרוני</h2>
-        <p class="text-sm text-gray-600 mb-1">לשאלות כלליות:</p>
-        <p class="font-medium text-brand">info@hotzaa-lapoal.info</p>
-        <p class="text-sm text-gray-600 mt-3 mb-1">לנושאי פרטיות:</p>
-        <p class="font-medium text-brand">privacy@hotzaa-lapoal.info</p>
-      </div>
+      <a href="/tools/chatbot/" class="flex gap-5 items-start bg-white border-2 border-brand rounded-xl p-5 hover:bg-brand-pale transition-all block group">
+        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl shrink-0">💬</div>
+        <div>
+          <div class="inline-block bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full mb-1">הכי מהיר</div>
+          <h2 class="font-bold text-gray-800 group-hover:text-brand-dark transition-colors">צ'אטבוט AI — תשובה מיידית</h2>
+          <p class="text-sm text-gray-500 mt-1">שאל כל שאלה על הוצאה לפועל — עונה 24/7 בעברית פשוטה, בחינם.</p>
+        </div>
+        <span class="text-brand text-lg mt-1 mr-auto">←</span>
+      </a>
 
-      <div class="bg-white border border-neutral-border rounded-xl p-5">
-        <h2 class="font-bold text-gray-800 mb-3">⏱️ זמן תגובה</h2>
-        <ul class="text-sm text-gray-600 space-y-1">
-          <li>• שאלות כלליות: 1-2 ימי עסקים</li>
-          <li>• בקשות מחיקת מידע: עד 30 יום</li>
-        </ul>
-      </div>
+      <a href="/faq/" class="flex gap-5 items-start bg-white border border-neutral-border rounded-xl p-5 hover:border-brand hover:bg-brand-pale transition-all block group">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl shrink-0">❓</div>
+        <div>
+          <h2 class="font-bold text-gray-800 group-hover:text-brand-dark transition-colors">שאלות נפוצות — 47 תשובות</h2>
+          <p class="text-sm text-gray-500 mt-1">רוב השאלות כבר נענו — בדוק אם התשובה שלך כאן.</p>
+        </div>
+        <span class="text-brand text-lg mt-1 mr-auto">←</span>
+      </a>
+
+      <a href="/guides/" class="flex gap-5 items-start bg-white border border-neutral-border rounded-xl p-5 hover:border-brand hover:bg-brand-pale transition-all block group">
+        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl shrink-0">📚</div>
+        <div>
+          <h2 class="font-bold text-gray-800 group-hover:text-brand-dark transition-colors">מדריכים מפורטים</h2>
+          <p class="text-sm text-gray-500 mt-1">6 מדריכים מעמיקים — עיקולים, הסדרים, זכויות.</p>
+        </div>
+        <span class="text-brand text-lg mt-1 mr-auto">←</span>
+      </a>
 
     </div>
 
-    <div class="mt-8 bg-brand-pale border border-brand-light rounded-xl p-5">
-      <h2 class="font-bold text-brand-dark mb-3">צריך עזרה משפטית?</h2>
+    <div class="mt-10 bg-brand-pale border border-brand-light rounded-xl p-5">
+      <h2 class="font-bold text-brand-dark mb-3">צריך עזרה משפטית אישית?</h2>
       <p class="text-sm text-gray-600 mb-4">אנחנו לא משרד עורכי דין. לסיוע משפטי — פנה לגורמים הרשמיים:</p>
       <ul class="space-y-2 text-sm">
         <li><a href="https://www.gov.il/he/departments/ministry_of_justice_legal_aid/govil-landing-page" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline font-medium">← הלשכה לסיוע משפטי — ייצוג חינמי לזכאים</a></li>
