@@ -4,20 +4,74 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTAForm from '../components/CTAForm.astro';
 
-const homeSchema = {
+const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'הוצאהלפועל.info',
   url: 'https://hotzaa-lapoal.info',
   description: 'מידע על הוצאה לפועל וחדלות פירעון בישראל — כלים חינמיים, מדריכים בעברית פשוטה',
   inLanguage: 'he',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://hotzaa-lapoal.info/?s={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'הוצאהלפועל.info',
+  url: 'https://hotzaa-lapoal.info',
+  logo: 'https://hotzaa-lapoal.info/favicon.svg',
+  description: 'מידע חינמי על הוצאה לפועל וחדלות פירעון לחייבים בישראל',
+  inLanguage: 'he',
+  areaServed: 'IL',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    availableLanguage: 'Hebrew',
+    url: 'https://hotzaa-lapoal.info/contact/',
+  },
+};
+
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'כמה זמן יש לי להגיב אחרי קבלת מכתב הוצאה לפועל?',
+      acceptedAnswer: { '@type': 'Answer', text: '20 יום מיום קבלת האזהרה. לאחר 20 יום הנושה יכול לבקש עיקולים והגבלות. כדאי לפעול מוקדם ככל האפשר.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם ניתן לפרוס חוב לתשלומים?',
+      acceptedAnswer: { '@type': 'Answer', text: 'כן. ניתן להגיש בקשה לצו תשלומים לרשם ההוצאה לפועל. הרשם קובע סכום חודשי לפי יכולתך, וכשיש צו פעיל — אין עיקולים חדשים.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'אילו כספים לא ניתן לעקל?',
+      acceptedAnswer: { '@type': 'Answer', text: 'קצבאות ביטוח לאומי (ילדים, נכות, זקנה, שאירים) מוגנות לחלוטין. גם שכר מינימום (6,247 ₪) לא ניתן לעיקול מלא.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה זה תיקון 9 ואיך הוא משפיע עליי?',
+      acceptedAnswer: { '@type': 'Answer', text: 'תיקון 9 (ינואר 2025) שינה את חישוב ריבית הפיגורים. כיום: ריבית בנק ישראל (4.5%) + 3.5% + 1% שנתי דמי פיגורים. חוב שלא משלמים גדל בכ-9% בשנה.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'מתי כדאי לשקול חדלות פירעון?',
+      acceptedAnswer: { '@type': 'Answer', text: 'כשסך החובות גדול משמעותית מהיכולת לשלמם, ואין נכסים לממש. בהליך חדלות פירעון ניתן לקבל הפטר (מחיקת חובות) לאחר ~3 שנים.' },
+    },
+  ],
 };
 ---
 
 <BaseLayout
   title="הוצאה לפועל — מידע, זכויות וכלים חינמיים לחייבים בישראל"
   description="570,000 ישראלים עם תיק הוצאה לפועל פעיל. קבל מידע ברור על זכויותיך, מחשבון ריבית תיקון 9, ועזרה להסדיר את החוב. חינם, בעברית פשוטה."
-  schema={homeSchema}
+  schema={[websiteSchema, organizationSchema, homeFaqSchema]}
 >
   <Header />
 
@@ -31,16 +85,16 @@ const homeSchema = {
         </div>
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5">
           קיבלת מכתב מהוצאה לפועל?<br>
-          <span class="text-accent-red">אל תבהל. יש לך זכויות.</span>
+          <span class="text-brand">אל תבהל. יש לך זכויות.</span>
         </h1>
         <p class="text-xl text-gray-600 max-w-xl mx-auto mb-10 leading-relaxed">
           570,000 ישראלים עם תיק פעיל — רובם לא יודעים שיש להם אפשרויות. אנחנו כאן לעזור.
         </p>
         <div class="flex flex-wrap gap-6 justify-center">
           {[
-            { num: '570K', label: 'ישראלים עם תיק פעיל' },
-            { num: '77%', label: 'ללא ייצוג משפטי' },
-            { num: '1.2%', label: 'בלבד מגישים בקשות' },
+            { num: '570K', label: 'ישראלים במצבך' },
+            { num: '77%', label: 'ללא ייצוג — לא לבד' },
+            { num: '1.2%', label: 'מגישים בקשות — אפשר לשנות' },
           ].map(s => (
             <div class="text-center">
               <div class="text-3xl font-bold text-brand-dark">{s.num}</div>
@@ -51,20 +105,39 @@ const homeSchema = {
       </div>
     </section>
 
+    <!-- 2025 UPDATE BANNER -->
+    <section class="bg-amber-50 border-y border-amber-200 py-4">
+      <div class="max-w-4xl mx-auto px-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-amber-600 text-xl">📢</span>
+          <div>
+            <span class="font-bold text-amber-800">עדכון ינואר 2025 — תיקון 9:</span>
+            <span class="text-amber-700 text-sm mr-1">שיטת חישוב ריבית הפיגורים השתנתה. בדוק כמה אתה חייב עכשיו.</span>
+          </div>
+        </div>
+        <a href="/guides/tikunim-2025/" class="text-sm font-semibold text-amber-800 bg-amber-100 hover:bg-amber-200 px-4 py-2 rounded-full transition-colors whitespace-nowrap">
+          קרא על תיקון 9 ←
+        </a>
+      </div>
+    </section>
+
     <!-- SITUATION SELECTOR -->
     <section class="max-w-4xl mx-auto px-4 py-14">
       <div class="text-center mb-8">
-        <p class="text-accent-red text-sm font-bold uppercase tracking-wide mb-2">התחל כאן</p>
+        <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">התחל כאן</p>
         <h2 class="text-3xl font-bold text-gray-900 mb-2">מה קרה לך?</h2>
         <p class="text-gray-500">בחר את המצב שלך — נפנה אותך בדיוק למה שאתה צריך</p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3" id="situation-grid">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3" id="situation-grid">
         {[
           { id: 'account',  icon: '🏦', title: 'עיקלו לי את החשבון',   desc: 'הבנק חסם את הכסף שלי',      href: '/guides/ikul-heshbon/' },
           { id: 'salary',   icon: '💼', title: 'עיקלו את המשכורת',      desc: 'מנכים לי כסף מהמשכורת',    href: '/guides/ikul-maskoret/' },
           { id: 'letter',   icon: '✉️', title: 'קיבלתי מכתב מהוצל"פ', desc: 'לא יודע מה לעשות',          href: '/guides/michtav-hotzaa/' },
+          { id: 'mazamot',  icon: '👨‍👧', title: 'חוב מזונות',           desc: 'הוצאה לפועל על מזונות',     href: '/guides/mazamot/' },
           { id: 'property', icon: '🏠', title: 'מאיימים לעקל נכס',     desc: 'דירה, רכב או ציוד',         href: '/guides/ikul-nechassim/' },
+          { id: 'bankrupt', icon: '📋', title: 'שוקל פשיטת רגל',        desc: 'חדלות פירעון ומחיקת חובות', href: '/guides/pshitat-regel/' },
+          { id: 'close',    icon: '✅', title: 'רוצה לסגור את התיק',    desc: 'איך מסגרים תיק הוצאה לפועל',href: '/guides/sgor-tik/' },
           { id: 'unknown',  icon: '❓', title: 'לא יודע מאיפה להתחיל', desc: 'אני מבולבל לגמרי',          href: '/guides/' },
         ].map(s => (
           <a
@@ -83,7 +156,7 @@ const homeSchema = {
     <section class="bg-gray-50 border-y border-neutral-border py-14">
       <div class="max-w-4xl mx-auto px-4">
         <div class="text-center mb-8">
-          <p class="text-accent-red text-sm font-bold uppercase tracking-wide mb-2">כלים חינמיים</p>
+          <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">כלים חינמיים</p>
           <h2 class="text-3xl font-bold text-gray-900 mb-2">כלים שעובדים בשבילך</h2>
           <p class="text-gray-500">ייחודיים בשוק — פותחנו אותם כי הם לא היו קיימים</p>
         </div>
@@ -132,7 +205,7 @@ const homeSchema = {
     <!-- GUIDES -->
     <section class="max-w-4xl mx-auto px-4 py-14">
       <div class="text-center mb-8">
-        <p class="text-accent-red text-sm font-bold uppercase tracking-wide mb-2">מדריכים</p>
+        <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">מדריכים</p>
         <h2 class="text-3xl font-bold text-gray-900 mb-2">המדריכים הכי נקראים</h2>
         <p class="text-gray-500">כתובים בשפה פשוטה — בלי ז'רגון משפטי מיותר</p>
       </div>
@@ -140,9 +213,11 @@ const homeSchema = {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {[
           { cat: 'עיקולים',         title: 'איך מבטלים עיקול על חשבון בנק?',            desc: 'מה הצעדים המדויקים, אילו טפסים צריך, ואיפה מגישים',  href: '/guides/ikul-heshbon/',    kw: '9,500 חיפושים/חודש' },
-          { cat: 'הסדרים',          title: 'צו תשלומים — איך מגישים ומה הסיכויים',     desc: 'הדרך הנפוצה ביותר להסדיר תשלומים בצורה מסודרת',     href: '/guides/tzav-tashlumim/', kw: '5,100 חיפושים/חודש' },
-          { cat: 'כלים מתקדמים',   title: 'איחוד תיקים — פתרון לחייב עם כמה תיקים',   desc: 'אפשרות שמעטים יודעים עליה, שיכולה לפשט הכל',          href: '/guides/ichud-tikim/',    kw: '3,800 חיפושים/חודש' },
           { cat: 'זכויות',          title: '10 זכויות שכל חייב חייב להכיר',            desc: 'רשימה שאנשים לא יודעים — ויש להם מה להפסיד',         href: '/rights/',                kw: '7,600 חיפושים/חודש' },
+          { cat: 'עיקולים',         title: 'ביטול עיקול — כל הסוגים, כל הטפסים',       desc: 'מדריך שלב-אחר-שלב לביטול עיקול על כל נכס',           href: '/guides/bitul-ikul/',      kw: '8,200 חיפושים/חודש' },
+          { cat: 'מזונות',          title: 'מזונות בהוצאה לפועל — עיקולים וגבייה',     desc: 'כל מה שצריך לדעת על הוצאה לפועל בתיקי מזונות',       href: '/guides/mazamot/',        kw: '6,500 חיפושים/חודש' },
+          { cat: 'הסדרים',          title: 'צו תשלומים — איך מגישים ומה הסיכויים',     desc: 'הדרך הנפוצה ביותר להסדיר תשלומים בצורה מסודרת',     href: '/guides/tzav-tashlumim/', kw: '5,100 חיפושים/חודש' },
+          { cat: 'חדלות פירעון',    title: 'פשיטת רגל — מה השתנה ואיך מגישים 2026',   desc: 'המדריך המעודכן לחדלות פירעון — זכאות, עלויות, תהליך', href: '/guides/pshitat-regel/',  kw: '5,900 חיפושים/חודש' },
         ].map(g => (
           <a href={g.href} class="group flex gap-4 items-start p-5 bg-white border border-neutral-border rounded-xl hover:border-brand hover:bg-brand-pale transition-all">
             <div class="flex-1">
@@ -159,6 +234,66 @@ const homeSchema = {
         <a href="/guides/" class="inline-flex items-center gap-2 text-brand font-semibold hover:text-brand-dark transition-colors">
           לכל המדריכים ←
         </a>
+      </div>
+    </section>
+
+    <!-- EXPLAINER SECTION -->
+    <section class="max-w-4xl mx-auto px-4 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-2xl font-bold text-brand-dark mb-4">מה זה הוצאה לפועל?</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            הוצאה לפועל היא המערכת המשפטית בישראל שמאפשרת לנושה לגבות חוב שנקבע בפסק דין.
+            הגוף שמנהל את ההליכים נקרא <strong>רשות האכיפה והגבייה</strong> ומתפקד תחת משרד המשפטים.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            כיום <strong>570,000 ישראלים</strong> עם תיק הוצאה לפועל פעיל — רובם לא מודעים לכל הזכויות והאפשרויות העומדות לפניהם.
+            להיות חייב לא אומר שאין לך זכויות — החוק מגן עליך בדרכים רבות.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            חשוב לפעול בתוך <strong>20 יום</strong> מקבלת מכתב ההוצאה לפועל — לאחר מכן הנושה יכול לבקש עיקולים, הגבלות ועיכוב יציאה מהארץ.
+          </p>
+        </div>
+        <div class="space-y-3">
+          {[
+            { icon: '📋', title: 'מה אפשר לעשות?', body: 'לבקש צו תשלומים, לבקש איחוד תיקים, לערער על גובה החוב, לבקש ביטול עיקול על כספים מוגנים, או לשקול חדלות פירעון.' },
+            { icon: '🛡️', title: 'מה מוגן בחוק?', body: 'קצבאות ביטוח לאומי, שכר מינימום, כלי עבודה, ציוד רפואי — כולם מוגנים מעיקול. לא ניתן לקחת ממך הכל.' },
+            { icon: '⏱️', title: 'כמה זמן יש לך?', body: '20 יום מרגע קבלת האזהרה לפני שהנושה יכול לנקוט בהליכי גבייה. בית המשפט יכול להאריך את הזמן בנסיבות מסוימות.' },
+          ].map(item => (
+            <div class="flex gap-4 p-4 bg-gray-50 rounded-xl">
+              <span class="text-2xl mt-0.5">{item.icon}</span>
+              <div>
+                <p class="font-semibold text-gray-800 mb-1">{item.title}</p>
+                <p class="text-sm text-gray-600">{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="max-w-4xl mx-auto px-4 py-14">
+      <div class="text-center mb-8">
+        <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">שאלות נפוצות</p>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">שאלות שכולם שואלים</h2>
+      </div>
+      <div class="space-y-3 max-w-2xl mx-auto">
+        {[
+          { q: 'כמה זמן יש לי להגיב אחרי קבלת מכתב הוצאה לפועל?', a: '20 יום מיום קבלת האזהרה. לאחר 20 יום הנושה יכול לבקש עיקולים והגבלות. כדאי לפעול מוקדם ככל האפשר.' },
+          { q: 'האם ניתן לפרוס חוב לתשלומים?', a: 'כן. ניתן להגיש בקשה לצו תשלומים לרשם ההוצאה לפועל. הרשם קובע סכום חודשי לפי יכולתך, וכשיש צו פעיל — אין עיקולים חדשים.' },
+          { q: 'אילו כספים לא ניתן לעקל?', a: 'קצבאות ביטוח לאומי (ילדים, נכות, זקנה, שאירים) מוגנות לחלוטין. גם שכר מינימום (6,247 ₪) לא ניתן לעיקול מלא.' },
+          { q: 'מה זה תיקון 9 ואיך הוא משפיע עליי?', a: 'תיקון 9 (ינואר 2025) שינה את חישוב ריבית הפיגורים. כיום: ריבית בנק ישראל (4.5%) + 3.5% + 1% שנתי דמי פיגורים. חוב שלא משלמים גדל בכ-9% בשנה.' },
+          { q: 'מתי כדאי לשקול חדלות פירעון?', a: 'כשסך החובות גדול משמעותית מהיכולת לשלמם, ואין נכסים לממש. בהליך חדלות פירעון ניתן לקבל הפטר (מחיקת חובות) לאחר ~3 שנים.' },
+        ].map(faq => (
+          <details class="border border-neutral-border rounded-xl group bg-white">
+            <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+              {faq.q}
+              <span class="text-neutral-muted group-open:rotate-180 transition-transform flex-shrink-0 mr-3">▼</span>
+            </summary>
+            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
+          </details>
+        ))}
       </div>
     </section>
 
@@ -187,7 +322,7 @@ const homeSchema = {
   </main>
 
   <!-- Disclaimer bar -->
-  <div class="bg-amber-50 border-t border-amber-200 py-3 px-4 text-center text-xs text-amber-800">
+  <div class="bg-blue-50 border-t border-blue-200 py-3 px-4 text-center text-xs text-gray-700">
     ⚠️ המידע באתר זה הוא כללי בלבד ואינו מהווה ייעוץ משפטי. לייעוץ אישי — פנה לעורך דין.
   </div>
 

@@ -1,0 +1,629 @@
+---
+// כפתור נגישות לפי תקן ישראלי 5568 ו-WCAG 2.1 AA
+---
+
+<!-- Accessibility Widget -->
+<div id="a11y-widget" dir="rtl">
+
+  <!-- כפתור פתיחה — קבוע בצד שמאל -->
+  <button
+    id="a11y-toggle"
+    aria-label="פתח תפריט נגישות"
+    aria-expanded="false"
+    aria-controls="a11y-panel"
+    title="נגישות"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="3.5" r="2"/>
+      <path d="M19 13h-5.5l-1-3H17a1 1 0 000-2h-4.85l-.47-1.4A2 2 0 009.8 5H7a1 1 0 000 2h2.3l2.2 6.6A2 2 0 0013.4 15H19a1 1 0 000-2z"/>
+      <path d="M8.5 12.5A5.5 5.5 0 1014 18h-2.1A3.5 3.5 0 118.5 14.5V12.5z"/>
+    </svg>
+    <span>נגישות</span>
+  </button>
+
+  <!-- פאנל נגישות -->
+  <div
+    id="a11y-panel"
+    role="dialog"
+    aria-label="תפריט נגישות"
+    aria-modal="false"
+    hidden
+  >
+    <div class="a11y-header">
+      <h2 id="a11y-panel-title">הגדרות נגישות</h2>
+      <button id="a11y-close" aria-label="סגור תפריט נגישות">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="a11y-body">
+
+      <!-- גודל טקסט -->
+      <section aria-labelledby="a11y-font-label">
+        <p id="a11y-font-label" class="a11y-section-title">גודל טקסט</p>
+        <div class="a11y-group" role="group" aria-labelledby="a11y-font-label">
+          <button class="a11y-opt active" data-group="font" data-val="" aria-pressed="true">
+            <span style="font-size:0.9rem">א</span> רגיל
+          </button>
+          <button class="a11y-opt" data-group="font" data-val="a11y-text-lg" aria-pressed="false">
+            <span style="font-size:1.1rem">א</span> גדול
+          </button>
+          <button class="a11y-opt" data-group="font" data-val="a11y-text-xl" aria-pressed="false">
+            <span style="font-size:1.3rem">א</span> גדול מאוד
+          </button>
+        </div>
+      </section>
+
+      <!-- ניגודיות -->
+      <section aria-labelledby="a11y-contrast-label">
+        <p id="a11y-contrast-label" class="a11y-section-title">ניגודיות צבעים</p>
+        <div class="a11y-group" role="group" aria-labelledby="a11y-contrast-label">
+          <button class="a11y-opt active" data-group="contrast" data-val="" aria-pressed="true">
+            רגילה
+          </button>
+          <button class="a11y-opt" data-group="contrast" data-val="a11y-contrast-dark" aria-pressed="false">
+            ⬛ כהה
+          </button>
+          <button class="a11y-opt" data-group="contrast" data-val="a11y-contrast-yellow" aria-pressed="false">
+            🟡 צהוב-שחור
+          </button>
+          <button class="a11y-opt" data-group="contrast" data-val="a11y-contrast-light" aria-pressed="false">
+            ⬜ בהיר
+          </button>
+        </div>
+      </section>
+
+      <!-- מתגים -->
+      <section aria-labelledby="a11y-extra-label">
+        <p id="a11y-extra-label" class="a11y-section-title">אפשרויות נוספות</p>
+        <div class="a11y-switches">
+          <button class="a11y-switch" role="switch" aria-checked="false" data-cls="a11y-grayscale">
+            <span class="a11y-switch-track" aria-hidden="true"></span>
+            גווני אפור
+          </button>
+          <button class="a11y-switch" role="switch" aria-checked="false" data-cls="a11y-links">
+            <span class="a11y-switch-track" aria-hidden="true"></span>
+            הדגשת קישורים
+          </button>
+          <button class="a11y-switch" role="switch" aria-checked="false" data-cls="a11y-readable-font">
+            <span class="a11y-switch-track" aria-hidden="true"></span>
+            פונט קריא (Arial)
+          </button>
+          <button class="a11y-switch" role="switch" aria-checked="false" data-cls="a11y-no-anim">
+            <span class="a11y-switch-track" aria-hidden="true"></span>
+            עצור אנימציות
+          </button>
+          <button class="a11y-switch" role="switch" aria-checked="false" data-cls="a11y-big-cursor">
+            <span class="a11y-switch-track" aria-hidden="true"></span>
+            סמן גדול
+          </button>
+          <button class="a11y-switch" role="switch" aria-checked="false" data-cls="a11y-highlight-focus">
+            <span class="a11y-switch-track" aria-hidden="true"></span>
+            הדגשת פוקוס
+          </button>
+        </div>
+      </section>
+
+      <!-- פס פעולות -->
+      <div class="a11y-footer">
+        <button id="a11y-reset">
+          ↺ איפוס הגדרות
+        </button>
+        <a href="/legal/accessibility/" id="a11y-statement-link">
+          הצהרת נגישות
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  /* ===== CSS משתנים בסיסיים ===== */
+  :root {
+    --a11y-font-scale: 1;
+  }
+
+  /* ===== גודל טקסט ===== */
+  html.a11y-text-lg { font-size: 120%; }
+  html.a11y-text-xl { font-size: 140%; }
+
+  /* ===== ניגודיות כהה ===== */
+  html.a11y-contrast-dark,
+  html.a11y-contrast-dark body {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  html.a11y-contrast-dark header,
+  html.a11y-contrast-dark footer,
+  html.a11y-contrast-dark nav,
+  html.a11y-contrast-dark section,
+  html.a11y-contrast-dark article,
+  html.a11y-contrast-dark aside,
+  html.a11y-contrast-dark div,
+  html.a11y-contrast-dark main {
+    background: #000 !important;
+    border-color: #555 !important;
+    color: #fff !important;
+  }
+  html.a11y-contrast-dark a { color: #7dd3fc !important; }
+  html.a11y-contrast-dark button:not(#a11y-toggle):not(#a11y-close):not(#a11y-reset):not(.a11y-opt):not(.a11y-switch) {
+    background: #1d4ed8 !important;
+    color: #fff !important;
+    border-color: #93c5fd !important;
+  }
+  html.a11y-contrast-dark input,
+  html.a11y-contrast-dark textarea,
+  html.a11y-contrast-dark select {
+    background: #111 !important;
+    color: #fff !important;
+    border-color: #555 !important;
+  }
+  html.a11y-contrast-dark img:not([src*=".svg"]) {
+    filter: brightness(0.85) contrast(1.2) !important;
+  }
+
+  /* ===== ניגודיות צהוב-שחור ===== */
+  html.a11y-contrast-yellow,
+  html.a11y-contrast-yellow body,
+  html.a11y-contrast-yellow div,
+  html.a11y-contrast-yellow header,
+  html.a11y-contrast-yellow footer,
+  html.a11y-contrast-yellow nav,
+  html.a11y-contrast-yellow section,
+  html.a11y-contrast-yellow article,
+  html.a11y-contrast-yellow aside,
+  html.a11y-contrast-yellow main,
+  html.a11y-contrast-yellow p,
+  html.a11y-contrast-yellow span,
+  html.a11y-contrast-yellow li,
+  html.a11y-contrast-yellow h1,
+  html.a11y-contrast-yellow h2,
+  html.a11y-contrast-yellow h3,
+  html.a11y-contrast-yellow h4,
+  html.a11y-contrast-yellow h5,
+  html.a11y-contrast-yellow h6 {
+    background: #000 !important;
+    color: #ffff00 !important;
+    border-color: #ffff00 !important;
+  }
+  html.a11y-contrast-yellow a { color: #00ffff !important; text-decoration: underline !important; }
+  html.a11y-contrast-yellow button:not(#a11y-toggle):not(#a11y-close):not(#a11y-reset):not(.a11y-opt):not(.a11y-switch) {
+    background: #333 !important;
+    color: #ffff00 !important;
+    border: 2px solid #ffff00 !important;
+  }
+  html.a11y-contrast-yellow img { filter: brightness(0.6) !important; }
+
+  /* ===== ניגודיות בהירה ===== */
+  html.a11y-contrast-light,
+  html.a11y-contrast-light body,
+  html.a11y-contrast-light div,
+  html.a11y-contrast-light header,
+  html.a11y-contrast-light section,
+  html.a11y-contrast-light article,
+  html.a11y-contrast-light main {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  html.a11y-contrast-light a { color: #0000cc !important; text-decoration: underline !important; }
+
+  /* ===== גווני אפור ===== */
+  html.a11y-grayscale { filter: grayscale(100%) !important; }
+
+  /* ===== הדגשת קישורים ===== */
+  html.a11y-links a {
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 3px !important;
+    outline: 2px solid currentColor !important;
+    outline-offset: 2px !important;
+    border-radius: 2px !important;
+  }
+
+  /* ===== פונט קריא ===== */
+  html.a11y-readable-font,
+  html.a11y-readable-font * {
+    font-family: Arial, Helvetica, sans-serif !important;
+    letter-spacing: 0.03em !important;
+    word-spacing: 0.05em !important;
+  }
+
+  /* ===== עצור אנימציות ===== */
+  html.a11y-no-anim *,
+  html.a11y-no-anim *::before,
+  html.a11y-no-anim *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* ===== סמן גדול ===== */
+  html.a11y-big-cursor,
+  html.a11y-big-cursor * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M8 4 L8 32 L14 26 L19 36 L23 34 L18 24 L26 24 Z' fill='black' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 4, auto !important;
+  }
+
+  /* ===== הדגשת פוקוס ===== */
+  html.a11y-highlight-focus *:focus {
+    outline: 4px solid #f59e0b !important;
+    outline-offset: 4px !important;
+    box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.3) !important;
+  }
+
+  /* ===== עיצוב הווידג'ט עצמו ===== */
+  /* חשוב: אין transform על הcontainer — transform שובר position:fixed של הפאנל */
+  #a11y-widget {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+    direction: rtl;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  #a11y-toggle {
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: #1d4ed8;
+    color: white;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 10px;
+    cursor: pointer;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.25);
+    transition: background 0.2s, box-shadow 0.2s;
+    min-width: 52px;
+  }
+  #a11y-toggle:hover { background: #1e40af; box-shadow: 3px 0 16px rgba(0,0,0,0.3); }
+  #a11y-toggle:focus-visible {
+    outline: 3px solid #fbbf24;
+    outline-offset: 2px;
+  }
+
+  #a11y-panel {
+    pointer-events: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: calc(100vw - 20px);
+    background: #fff;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+    overflow-y: auto;
+    z-index: 10000;
+    font-family: 'Assistant', sans-serif;
+    direction: rtl;
+  }
+  #a11y-panel[hidden] { display: none; }
+
+  .a11y-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1d4ed8;
+    color: white;
+    padding: 14px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .a11y-header h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white !important;
+  }
+  #a11y-close {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #a11y-close:hover { background: rgba(255,255,255,0.15); }
+  #a11y-close:focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
+
+  .a11y-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .a11y-section-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 8px 0;
+  }
+
+  .a11y-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .a11y-opt {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #f3f4f6;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 0.85rem;
+    font-family: 'Assistant', sans-serif;
+    cursor: pointer;
+    color: #374151;
+    transition: all 0.15s;
+    flex: 1;
+    min-width: 80px;
+    justify-content: center;
+  }
+  .a11y-opt:hover { border-color: #1d4ed8; background: #eff6ff; color: #1d4ed8; }
+  .a11y-opt.active {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    color: white;
+    font-weight: 700;
+  }
+  .a11y-opt:focus-visible { outline: 3px solid #fbbf24; outline-offset: 2px; }
+
+  .a11y-switches {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .a11y-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.9rem;
+    color: #374151;
+    padding: 6px 4px;
+    text-align: right;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .a11y-switch:hover { background: #f3f4f6; }
+  .a11y-switch:focus-visible { outline: 3px solid #fbbf24; outline-offset: 2px; }
+
+  .a11y-switch-track {
+    flex-shrink: 0;
+    width: 44px;
+    height: 24px;
+    background: #d1d5db;
+    border-radius: 999px;
+    position: relative;
+    transition: background 0.2s;
+    margin-right: auto;
+  }
+  .a11y-switch-track::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .a11y-switch[aria-checked="true"] .a11y-switch-track {
+    background: #1d4ed8;
+  }
+  .a11y-switch[aria-checked="true"] .a11y-switch-track::after {
+    transform: translateX(-20px);
+  }
+
+  .a11y-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 4px;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  #a11y-reset {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #374151;
+    transition: all 0.15s;
+    width: 100%;
+  }
+  #a11y-reset:hover { background: #fee2e2; border-color: #fca5a5; color: #dc2626; }
+  #a11y-reset:focus-visible { outline: 3px solid #fbbf24; outline-offset: 2px; }
+
+  #a11y-statement-link {
+    display: block;
+    text-align: center;
+    font-size: 0.82rem;
+    color: #1d4ed8;
+    text-decoration: underline;
+    padding: 4px;
+    border-radius: 4px;
+  }
+  #a11y-statement-link:hover { color: #1e40af; }
+  #a11y-statement-link:focus-visible { outline: 3px solid #fbbf24; outline-offset: 2px; }
+
+  /* overlay כאשר הפאנל פתוח במובייל */
+  @media (max-width: 640px) {
+    #a11y-panel::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: -1;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const html = document.documentElement;
+    const STORAGE_KEY = 'a11y-prefs';
+    const FONT_GROUP = 'font';
+    const CONTRAST_GROUP = 'contrast';
+    const TOGGLE_CLASSES = ['a11y-grayscale','a11y-links','a11y-readable-font','a11y-no-anim','a11y-big-cursor','a11y-highlight-focus'];
+    const FONT_CLASSES = ['a11y-text-lg','a11y-text-xl'];
+    const CONTRAST_CLASSES = ['a11y-contrast-dark','a11y-contrast-yellow','a11y-contrast-light'];
+    const ALL_CLASSES = [...FONT_CLASSES, ...CONTRAST_CLASSES, ...TOGGLE_CLASSES];
+
+    // --- טעינת העדפות שמורות ---
+    function loadPrefs() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : { fontVal: '', contrastVal: '', toggles: [] };
+      } catch(e) { return { fontVal: '', contrastVal: '', toggles: [] }; }
+    }
+
+    function savePrefs(prefs) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs)); } catch(e) {}
+    }
+
+    function applyPrefs(prefs) {
+      // הסרת הכל
+      ALL_CLASSES.forEach(c => html.classList.remove(c));
+
+      // גופן
+      if (prefs.fontVal) html.classList.add(prefs.fontVal);
+
+      // ניגודיות
+      if (prefs.contrastVal) html.classList.add(prefs.contrastVal);
+
+      // מתגים
+      (prefs.toggles || []).forEach(c => html.classList.add(c));
+
+      // סנכרון UI
+      syncUI(prefs);
+    }
+
+    function syncUI(prefs) {
+      // קבוצת גופן
+      document.querySelectorAll('.a11y-opt[data-group="font"]').forEach(btn => {
+        const active = btn.dataset.val === prefs.fontVal;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+
+      // קבוצת ניגודיות
+      document.querySelectorAll('.a11y-opt[data-group="contrast"]').forEach(btn => {
+        const active = btn.dataset.val === prefs.contrastVal;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+
+      // מתגים
+      document.querySelectorAll('.a11y-switch').forEach(btn => {
+        const cls = btn.dataset.cls;
+        const on = (prefs.toggles || []).includes(cls);
+        btn.setAttribute('aria-checked', String(on));
+      });
+    }
+
+    // --- פתיחה/סגירה ---
+    const toggleBtn = document.getElementById('a11y-toggle');
+    const panel = document.getElementById('a11y-panel');
+    const closeBtn = document.getElementById('a11y-close');
+    const resetBtn = document.getElementById('a11y-reset');
+
+    function openPanel() {
+      panel.hidden = false;
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      closeBtn.focus();
+    }
+
+    function closePanel() {
+      panel.hidden = true;
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.focus();
+    }
+
+    toggleBtn?.addEventListener('click', () => {
+      panel.hidden ? openPanel() : closePanel();
+    });
+
+    closeBtn?.addEventListener('click', closePanel);
+
+    // סגירה ב-Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.hidden) closePanel();
+    });
+
+    // סגירה בלחיצה מחוץ לפאנל (מובייל)
+    document.addEventListener('click', (e) => {
+      if (!panel.hidden && !panel.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+        closePanel();
+      }
+    });
+
+    // --- כפתורי קבוצה ---
+    document.querySelectorAll('.a11y-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const group = btn.dataset.group;
+        const val = btn.dataset.val;
+        const prefs = loadPrefs();
+
+        if (group === FONT_GROUP) prefs.fontVal = val;
+        if (group === CONTRAST_GROUP) prefs.contrastVal = val;
+
+        savePrefs(prefs);
+        applyPrefs(prefs);
+      });
+    });
+
+    // --- מתגים ---
+    document.querySelectorAll('.a11y-switch').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cls = btn.dataset.cls;
+        const prefs = loadPrefs();
+        const idx = prefs.toggles.indexOf(cls);
+
+        if (idx === -1) prefs.toggles.push(cls);
+        else prefs.toggles.splice(idx, 1);
+
+        savePrefs(prefs);
+        applyPrefs(prefs);
+      });
+    });
+
+    // --- איפוס ---
+    resetBtn?.addEventListener('click', () => {
+      const empty = { fontVal: '', contrastVal: '', toggles: [] };
+      savePrefs(empty);
+      applyPrefs(empty);
+    });
+
+    // --- טעינה ראשונית ---
+    applyPrefs(loadPrefs());
+  })();
+</script>

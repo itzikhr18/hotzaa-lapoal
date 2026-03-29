@@ -20,23 +20,82 @@ const faqSchema = {
       name: 'האם אפשר לבטל עיקול לבד ללא עורך דין?',
       acceptedAnswer: { '@type': 'Answer', text: 'כן. חייב שאינו מיוצג יכול להגיש בקשה לביטול עיקול בעצמו דרך טופס 214. אבל אם מדובר בסכומים גדולים או נכסים — מומלץ ייעוץ משפטי.' },
     },
+    {
+      '@type': 'Question',
+      name: 'כמה עולה ביטול עיקול?',
+      acceptedAnswer: { '@type': 'Answer', text: 'הגשת טופס 214 עצמה אינה כרוכה בתשלום אגרה. אם מיוצג על ידי עורך דין — עלות שכר הטרחה תלויה בעורך הדין ובמורכבות התיק, ונעה בדרך כלל בין 500 ל-3,000 ש"ח לטיפול בבקשה בודדת.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם הנושה יכול לחדש את העיקול?',
+      acceptedAnswer: { '@type': 'Answer', text: 'כן. אם בוטל עיקול בשל הסדר תשלומים ולא עמדת בתשלומים, הנושה רשאי לבקש מהרשם להחזיר את העיקול. אם בוטל בגלל כסף מוגן — הנושה לא יוכל לחדש את העיקול על אותם כספים.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה עושים אם הרשם דחה את הבקשה?',
+      acceptedAnswer: { '@type': 'Answer', text: 'ניתן לערער על החלטת הרשם לבית המשפט המחוזי תוך 20 יום מיום קבלת ההחלטה. כמו כן ניתן להגיש בקשה חוזרת עם נימוקים חדשים או ראיות שלא הוגשו בבקשה הקודמת.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה זמן תקף ביטול עיקול?',
+      acceptedAnswer: { '@type': 'Answer', text: 'ביטול עיקול שניתן בשל כסף מוגן הוא קבוע. ביטול שניתן כחלק מהסדר תשלומים תקף כל עוד עומדים בתשלומים. ביטול זמני (עיכוב הליכים) תקף לתקופה שנקבעה בצו — בדרך כלל 30-90 יום.' },
+    },
   ],
 };
 ---
 
 <GuideLayout
   title="איך מבטלים עיקול בהוצאה לפועל — מדריך שלב אחר שלב"
-  description="עיקלו לך חשבון בנק, משכורת, או נכס? הנה המדריך המעשי לביטול עיקול — אילו טפסים צריך, איפה מגישים, ואיזה נימוקים עובדים. מעודכן 2026."
+  description="עיקלו לך חשבון בנק, משכורת, רכב, או נכס? הנה המדריך המעשי לביטול עיקול — אילו טפסים צריך, איפה מגישים, ואיזה נימוקים עובדים. מעודכן 2026."
   breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'ביטול עיקול', href: '/guides/bitul-ikul/' }]}
   publishDate="2026-02-10"
-  updateDate="2026-03-15"
-  readTime="7 דקות"
-  schema={faqSchema}
+  updateDate="2026-03-28"
+  readTime="12 דקות"
+  schema={[faqSchema, {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'איך מבטלים עיקול בהוצאה לפועל',
+    description: 'מדריך שלב-אחר-שלב לביטול עיקול על חשבון בנק, משכורת, רכב או נכס',
+    totalTime: 'P3D',
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'זהה את סוג העיקול',
+        text: 'קבל את מכתב ההודעה על העיקול וסמן: האם זה עיקול חשבון בנק, משכורת, רכב, או נכס? לכל סוג יש נוהל שונה מעט.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'בדוק אם הכסף מוגן',
+        text: 'אם הכסף מגיע מקצבת ביטוח לאומי, קצבת ילדים, קצבת נכות, דמי אבטלה, דמי לידה — הוא מוגן מעיקול לחלוטין. המשכורת מוגנת אם היא נמוכה משכר מינימום.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'מלא טופס 214',
+        text: 'הורד טופס 214 מאתר רשות האכיפה והגבייה. סמן קוד 62 (ביטול הליכים) ופרט את הנימוקים: כסף מוגן, הסדר תשלומים, טעות, או נימוק אחר. צרף מסמכים תומכים.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 4,
+        name: 'הגש ללשכת ההוצאה לפועל',
+        text: 'הגש את הטופס פיזית בלשכת ההוצאה לפועל הרלוונטית, או דרך האזור האישי באתר רשות האכיפה והגבייה. שמור אישור הגשה.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 5,
+        name: 'המתן להחלטת הרשם',
+        text: 'הרשם ידון בבקשה. בדרך כלל תוך 3-10 ימי עסקים. אם אושרה — הבנק יקבל הודעה תוך 24 שעות ויסיר את העיקול תוך 5-14 ימים.',
+      },
+    ],
+  }]}
 >
 
   <p>
     קיבלת הודעה על עיקול — ועכשיו אתה רוצה לדעת איך מבטלים אותו. הבשורה הטובה:
-    ניתן לבטל עיקולים, ולפעמים מהר מאוד. הבשורה הפחות טובה: צריך לדעת בדיוק איך לפעול.
+    ניתן לבטל עיקולים, ולפעמים מהר מאוד. הבשורה הפחות טובה: צריך לדעת בדיוק איך לפעול,
+    ולכל סוג עיקול יש דרך קצת שונה. המדריך הזה מכסה את כולם.
   </p>
 
   <h2>קודם כל — למה אפשר לבטל עיקול?</h2>
@@ -59,6 +118,56 @@ const faqSchema = {
     </ul>
   </div>
 
+  <h2>טבלת סוגי עיקולים — איך מבטלים כל אחד?</h2>
+  <p>
+    לא כל עיקול מבוטל באותה דרך. הטבלה הבאה מסכמת את ההבדלים המרכזיים:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">סוג עיקול</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מסמכים נדרשים</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">זמן עד שחרור</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">הערות מיוחדות</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיקול חשבון בנק</td>
+          <td class="border border-gray-300 px-4 py-2">טופס 214 + דפי חשבון (אם מוגן)</td>
+          <td class="border border-gray-300 px-4 py-2">5–14 ימי עסקים</td>
+          <td class="border border-gray-300 px-4 py-2">הבנק מחכה להודעה רשמית מהלשכה</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיקול משכורת</td>
+          <td class="border border-gray-300 px-4 py-2">טופס 214 + תלושי שכר אחרונים</td>
+          <td class="border border-gray-300 px-4 py-2">2–4 שבועות</td>
+          <td class="border border-gray-300 px-4 py-2">המעסיק מופסק בהודעה לצד שלישי</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיקול רכב</td>
+          <td class="border border-gray-300 px-4 py-2">טופס 214 + רישיון רכב + הוכחת שימוש לעבודה</td>
+          <td class="border border-gray-300 px-4 py-2">7–21 ימי עסקים</td>
+          <td class="border border-gray-300 px-4 py-2">יש לעדכן גם את רשות הרישוי</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיקול נכס / דירה</td>
+          <td class="border border-gray-300 px-4 py-2">טופס 214 + נסח טאבו + הוכחת בעלות</td>
+          <td class="border border-gray-300 px-4 py-2">3–6 שבועות</td>
+          <td class="border border-gray-300 px-4 py-2">מחייב עדכון בלשכת רישום המקרקעין (טאבו)</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיקול כספי קצבה</td>
+          <td class="border border-gray-300 px-4 py-2">טופס 214 + אישור ביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2">3–7 ימי עסקים</td>
+          <td class="border border-gray-300 px-4 py-2">ביטול אוטומטי — אין שיקול דעת לרשם</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <h2>הטופס שצריך — טופס 214</h2>
   <p>
     כל בקשה לביטול עיקול מוגשת דרך <strong>טופס 214</strong> — "בקשה לביטול / עיכוב / חידוש הליכים והגבלות".
@@ -75,7 +184,159 @@ const faqSchema = {
     <p class="text-xs text-neutral-muted mt-3">* ניתן להוריד טופס 214 מאתר רשות האכיפה והגבייה (gov.il)</p>
   </div>
 
-  <h2>ביטול עיקול על כסף מוגן — מהיר יותר</h2>
+  <h2>ביטול עיקול בנק דחוף — חלון ה-24 שעות</h2>
+  <p>
+    עיקול על חשבון בנק הוא המצב הדחוף ביותר — כסף קפוא, עסקאות נדחות, ולעיתים גם
+    עמלות חריגות מהבנק. אם העיקול נעשה בטעות או על כסף מוגן, יש צעד דחוף שרוב האנשים לא מכירים:
+  </p>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">טיפ: בקשת עיכוב דחופה תוך 24 שעות</p>
+    <p>
+      ניתן להגיש <strong>בקשה דחופה לעיכוב ביצוע</strong> ישירות לרשם — עוד לפני שמגישים את הבקשה המלאה לביטול.
+      אם יש ראיה ברורה שהעיקול שגוי (למשל, כספי ביטוח לאומי בחשבון), הרשם יכול להוציא
+      צו עיכוב ביצוע תוך יום עסקים — ולהפשיר את הכסף זמנית בזמן שמתנהלת הבקשה המלאה.
+    </p>
+  </div>
+
+  <h3>שלבים לביטול דחוף של עיקול בנק</h3>
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>צלצל ללשכת ההוצאה לפועל <strong>מיד</strong> בבוקר — ובקש תור דחוף לרשם באותו יום</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>הדפס <strong>3 חודשים אחרונים</strong> של דפי חשבון בנק — הדגש הפקדות מוגנות (ביטוח לאומי, שכר מינימום)</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>מלא טופס 214 — בשדה 7 ציין במפורש: "מבוקש עיכוב דחוף — כספי קצבה מוגנים לפי סעיף 45 לחוק"</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>הגש פיזית בלשכה עם כל המסמכים — לא דרך האינטרנט (בבקשות דחופות עדיף פנים אל פנים)</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span>לאחר אישור הרשם — בקש מהלשכה לשלוח את ההודעה לבנק <strong>בפקס באותו יום</strong></span>
+    </li>
+    <li>
+      <span class="step-num">6</span>
+      <span>התקשר לבנק לוודא שקיבל את ההודעה ומתי הכסף יוּפשר</span>
+    </li>
+  </ol>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">שים לב — זמן תגובת הבנק</p>
+    <p>
+      גם לאחר שהרשם אישר ביטול ושלח הודעה לבנק — הבנק עצמו צריך לעבד את ההוראה.
+      בפועל זה לוקח בין יום עסקים אחד לשבעה ימים, תלוי בבנק. הבנקים הגדולים
+      (פועלים, לאומי, דיסקונט) בדרך כלל מהירים יותר.
+    </p>
+  </div>
+
+  <h2>ביטול עיקול משכורת — טופס 214 ופרטים שחשוב לדעת</h2>
+  <p>
+    עיקול משכורת שונה מעיקול בנק: הוא מתנהל דרך המעסיק, ולמעסיק יש מחויבות חוקית
+    להעביר את הסכום המעוקל ישירות ללשכת ההוצאה לפועל. ביטולו דורש עדכון של שרשרת שלמה.
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מה חשוב לדעת על עיקול משכורת:</p>
+    <ul class="space-y-1">
+      <li>החוק מגביל עיקול משכורת: לא יותר מ-<strong>1/3 מהשכר הנטו</strong>, ולעולם לא מתחת לשכר המינימום</li>
+      <li>אם משכורתך נמוכה — ייתכן שהעיקול כולו אינו חוקי</li>
+      <li>ביטול עיקול משכורת ייכנס לתוקף בדרך כלל <strong>בחודש שאחרי</strong> אישור הביטול</li>
+      <li>המעסיק מחויב להפסיק את העברת הכספים ברגע שקיבל הודעה מהלשכה</li>
+    </ul>
+  </div>
+
+  <h3>שלבים לביטול עיקול משכורת</h3>
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>אסוף <strong>תלושי שכר של 3 חודשים אחרונים</strong> — יש לצרף לטופס 214</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>חשב: האם הסכום המעוקל עולה על שליש השכר הנטו? אם כן — ציין זאת בשדה 7 כנימוק מרכזי</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>מלא טופס 214 — בשדה 4 סמן "עיקול שכר עבודה", בשדה 7 פרט את הנימוק</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>הגש ללשכה — פיזית או דרך האזור האישי</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span>לאחר שהרשם אישר — הלשכה שולחת <strong>הודעה ישירות למעסיק</strong> להפסיק את הניכוי</span>
+    </li>
+    <li>
+      <span class="step-num">6</span>
+      <span>מומלץ לעדכן את מחלקת השכר אצל המעסיק ולוודא שההודעה התקבלה</span>
+    </li>
+  </ol>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">טיפ: בדוק חישוב ביתר</p>
+    <p>
+      לפעמים המעסיק ממשיך לנכות שכר אחרי שהביטול אושר — בשל עיכוב בהעברת ההודעה.
+      שמור את אישור הביטול ובקש החזר אם ניכו יותר מהמגיע.
+    </p>
+  </div>
+
+  <h2>ביטול עיקול רכב — שלבים ספציפיים</h2>
+  <p>
+    עיקול רכב מורכב יותר מביטול עיקול בנק — כי הוא מופיע גם ברישום ברשות הרישוי,
+    וצריך לעדכן שני גורמים: לשכת ההוצאה לפועל ורשות הרישוי.
+  </p>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>
+        הכן את המסמכים: <strong>רישיון רכב</strong>, <strong>תעודת בעלות</strong>,
+        ואם הרכב משמש לעבודה — <strong>הוכחת שימוש</strong> (חוזה עם לקוחות, אישור מעביד, רישיון עסק)
+      </span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>מלא טופס 214 — בשדה 4 סמן "עיקול רכב/כלי רכב", בשדה 7 פרט אם הרכב נחוץ לפרנסה</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>הגש לרשם עם כל המסמכים — המתן להחלטה</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>לאחר אישור — הלשכה שולחת הודעה לרשות הרישוי להסרת הרישום</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span>
+        בדוק ב<strong>אתר רשות הרישוי</strong> (gov.il) שהעיקול הוסר מרישום הרכב —
+        לפעמים העדכון לוקח 7-14 ימים נוספים
+      </span>
+    </li>
+    <li>
+      <span class="step-num">6</span>
+      <span>אם הרכב נגרר ונמצא בחניון לשכת ההוצאה לפועל — תיאם את שחרורו עם הלשכה לאחר האישור</span>
+    </li>
+  </ol>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">עיקול רכב שמשמש לעבודה — נימוק חזק</p>
+    <p>
+      חוק ההוצאה לפועל מגן על כלי עבודה הנחוצים לפרנסה. אם הרכב הוא כלי עבודה עיקרי
+      (נהג, שליח, קבלן, איש מכירות שטח) — זה נימוק חזק מאוד לביטול. כדאי לצרף כמה שיותר
+      מסמכים התומכים בכך.
+    </p>
+  </div>
+
+  <h2>ביטול עיקול על כסף מוגן — המהיר ביותר</h2>
   <p>
     אם עיקלו כסף שמקורו בקצבאות ביטוח לאומי — זו בקשה קלה יחסית.
     הכסף הזה מוגן לחלוטין בחוק, ולרשם אין שיקול דעת — הוא חייב לבטל.
@@ -88,11 +349,11 @@ const faqSchema = {
     </li>
     <li>
       <span class="step-num">2</span>
-      <span>מלא טופס 214 — ציין בשדה 7 שמדובר בכספי קצבה מוגנים</span>
+      <span>מלא טופס 214 — ציין בשדה 7 שמדובר בכספי קצבה מוגנים לפי סעיף 45 לחוק ההוצאה לפועל</span>
     </li>
     <li>
       <span class="step-num">3</span>
-      <span>הגש לרשם עם הדפי בנק כנספח</span>
+      <span>הגש לרשם עם דפי הבנק כנספח</span>
     </li>
     <li>
       <span class="step-num">4</span>
@@ -101,7 +362,7 @@ const faqSchema = {
   </ol>
 
   <div class="warn-box">
-    <p class="font-semibold text-amber-800 mb-1">💡 טיפ</p>
+    <p class="font-semibold text-amber-800 mb-1">טיפ לעתיד</p>
     <p>שמור את כספי הקצבאות בחשבון נפרד מכל הכנסה אחרת. זה מקל מאוד על הוכחה שמדובר בכסף מוגן.</p>
   </div>
 
@@ -112,6 +373,7 @@ const faqSchema = {
   </p>
   <p>
     הנושה יכול להתנגד, אבל אם עומדים בתשלומים — העיקול לא יחזור.
+    חשוב: הסדר תשלומים <strong>אינו</strong> מוחק את החוב — הוא רק משעה את האכיפה.
   </p>
 
   <h2>ביטול עיקול כי הוא פוגע בפרנסה</h2>
@@ -132,30 +394,91 @@ const faqSchema = {
 
   <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
     <div class="bg-white border border-neutral-border rounded-xl p-5">
-      <h3 class="font-bold text-gray-800 mb-2">🖥️ אונליין (מומלץ)</h3>
+      <h3 class="font-bold text-gray-800 mb-2">אונליין (מומלץ)</h3>
       <p class="text-sm text-gray-600 mb-2">דרך האזור האישי באתר רשות האכיפה והגבייה. מהיר יותר ואין צורך בתור.</p>
-      <p class="text-xs text-neutral-muted">gov.il → רשות האכיפה → אזור אישי</p>
+      <p class="text-xs text-neutral-muted">gov.il ← רשות האכיפה ← אזור אישי</p>
     </div>
     <div class="bg-white border border-neutral-border rounded-xl p-5">
-      <h3 class="font-bold text-gray-800 mb-2">🏢 פיזית בלשכה</h3>
+      <h3 class="font-bold text-gray-800 mb-2">פיזית בלשכה</h3>
       <p class="text-sm text-gray-600 mb-2">הגש ישירות בלשכת ההוצאה לפועל שבה מתנהל התיק. קח תעודת זהות ועותקים של המסמכים.</p>
-      <p class="text-xs text-neutral-muted">ניתן גם בדואר רשום</p>
+      <p class="text-xs text-neutral-muted">ניתן גם בדואר רשום — שמור אישור מסירה</p>
     </div>
+  </div>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-1">מומלץ: הגש פיזית בלשכה כשמדובר בבקשה דחופה</p>
+    <p>
+      הגשה אונליין מהירה יותר לבקשות רגילות, אבל לבקשות דחופות (עיקול שחוסם גישה לכסף לצרכי קיום בסיסיים)
+      — עדיף להגיע פיזית ולבקש תור ישיר לרשם. הנוכחות הפיזית מאותתת על דחיפות.
+    </p>
   </div>
 
   <h2>מה קורה אחרי שהגשת?</h2>
   <ol class="step-list">
     <li><span class="step-num">1</span><span>הרשם שולח עותק לנושה — יש לו שבוע להגיב</span></li>
     <li><span class="step-num">2</span><span>אחרי שבוע (בין אם הנושה הגיב ולא) — הרשם מקבל החלטה</span></li>
-    <li><span class="step-num">3</span><span>אם אושר — הלשכה שולחת הודעה לבנק / למעסיק תוך 24 שעות</span></li>
-    <li><span class="step-num">4</span><span>הכסף משתחרר תוך 5-14 ימי עסקים</span></li>
+    <li><span class="step-num">3</span><span>אם אושר — הלשכה שולחת הודעה לבנק / למעסיק / לרשות הרישוי תוך 24 שעות</span></li>
+    <li><span class="step-num">4</span><span>הכסף משתחרר / המגבלה מוסרת תוך 5-14 ימי עסקים</span></li>
   </ol>
 
   <div class="warn-box">
-    <p class="font-semibold text-amber-800 mb-1">⚠️ חשוב לדעת</p>
+    <p class="font-semibold text-amber-800 mb-1">חשוב לדעת</p>
     <p>
       אם הנושה <strong>הסכים</strong> לביטול — הרשם חייב לאשר מיד, ללא שיקול דעת.
       אם הנושה <strong>מתנגד</strong> — הרשם שוקל את הנימוקים ומחליט.
+    </p>
+  </div>
+
+  <h2>מה קורה אחרי ביטול — האם העיקול יחזור?</h2>
+  <p>
+    שאלה שרבים שואלים: ביטלתי את העיקול — האם הנושה יכול להחזיר אותו? התשובה תלויה בסיבה שבגללה בוטל:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">סיבת הביטול</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">האם העיקול יכול לחזור?</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה צריך לדעת</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2">החוב שולם במלואו</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">לא — החוב סגור</td>
+          <td class="border border-gray-300 px-4 py-2">שמור קבלה על תשלום מלא</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2">הסדר תשלומים</td>
+          <td class="border border-gray-300 px-4 py-2 text-amber-700 font-semibold">כן — אם לא עומדים בתשלומים</td>
+          <td class="border border-gray-300 px-4 py-2">כשל בתשלום מאפשר לנושה לבקש חידוש</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2">כסף מוגן (קצבה/שכר מינימום)</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">לא — על אותם כספים</td>
+          <td class="border border-gray-300 px-4 py-2">החוב עצמו עדיין קיים — רק על אותו מקור הגנה</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2">ביטול זמני (עיכוב הליכים)</td>
+          <td class="border border-gray-300 px-4 py-2 text-red-700 font-semibold">כן — בתום תקופת הצו</td>
+          <td class="border border-gray-300 px-4 py-2">נדרש להגיש הסדר קבוע לפני תום הצו</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2">עיקול פוגע בפרנסה (רכב/ציוד)</td>
+          <td class="border border-gray-300 px-4 py-2 text-amber-700 font-semibold">תלוי בנסיבות</td>
+          <td class="border border-gray-300 px-4 py-2">אם הנסיבות השתנו — הנושה יכול לבקש שוב</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">המסקנה: ביטול עיקול לא פותר את החוב</p>
+    <p>
+      ביטול עיקול הוא <strong>הסרת האמצעי</strong>, לא מחיקת החוב. כל עוד החוב לא שולם,
+      הנושה יכול לבקש אמצעי גבייה חלופיים — עיקולים אחרים, הגבלות נסיעה, הגבלה על חשבון בנק וכו'.
+      הפתרון האמיתי הוא סגירת החוב או הסדר תשלומים מחייב.
     </p>
   </div>
 
@@ -173,6 +496,22 @@ const faqSchema = {
       {
         q: 'האם אפשר לבטל עיקול לבד ללא עורך דין?',
         a: 'כן. חייב שאינו מיוצג יכול להגיש בקשה בעצמו דרך טופס 214. לסכומים גדולים או נכסים — מומלץ ייעוץ משפטי.',
+      },
+      {
+        q: 'כמה עולה ביטול עיקול?',
+        a: 'הגשת טופס 214 עצמה אינה כרוכה בתשלום אגרה. אם מיוצג על ידי עורך דין — עלות שכר הטרחה תלויה בעורך הדין ובמורכבות התיק, ונעה בדרך כלל בין 500 ל-3,000 ש"ח לטיפול בבקשה בודדת.',
+      },
+      {
+        q: 'האם הנושה יכול לחדש את העיקול?',
+        a: 'כן. אם בוטל עיקול בשל הסדר תשלומים ולא עמדת בתשלומים — הנושה רשאי לבקש מהרשם להחזיר את העיקול. אם בוטל בגלל כסף מוגן — הנושה לא יוכל לחדש את העיקול על אותם כספים, אך החוב עדיין קיים.',
+      },
+      {
+        q: 'מה עושים אם הרשם דחה את הבקשה?',
+        a: 'ניתן לערער על החלטת הרשם לבית המשפט המחוזי תוך 20 יום מיום קבלת ההחלטה. כמו כן ניתן להגיש בקשה חוזרת עם נימוקים חדשים או ראיות שלא הוגשו בבקשה הקודמת.',
+      },
+      {
+        q: 'כמה זמן תקף ביטול עיקול?',
+        a: 'ביטול עיקול שניתן בשל כסף מוגן הוא קבוע. ביטול שניתן כחלק מהסדר תשלומים תקף כל עוד עומדים בתשלומים. ביטול זמני (עיכוב הליכים) תקף לתקופה שנקבעה בצו — בדרך כלל 30-90 יום.',
       },
     ].map(faq => (
       <details class="border border-neutral-border rounded-xl group">

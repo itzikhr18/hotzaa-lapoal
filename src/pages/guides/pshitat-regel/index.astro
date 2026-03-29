@@ -1,0 +1,554 @@
+---
+import GuideLayout from '../../../layouts/GuideLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'מה ההבדל בין פשיטת רגל לחדלות פירעון?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'אין הבדל מהותי — מדובר בשמות שונים לאותו הליך. "פשיטת רגל" הוא המונח הישן לפי פקודת פשיטת הרגל (1980). מאז ספטמבר 2019 הוחלפה הפקודה בחוק חדלות פירעון ושיקום כלכלי, תשע"ח-2018, והמינוח הרשמי הוא "חדלות פירעון". ההליך עצמו — בקשה לבית המשפט, מינוי נאמן, תקופת שיקום, ומחיקת חובות — קיים בשני המשטרים, אבל החוק החדש הוסיף הגנות חשובות לחייב.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה חוב צריך לפשיטת רגל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'נכון ל-2026, סכום החוב המינימלי לפתיחת הליכי חדלות פירעון עבור יחיד הוא 57,445 ₪. הסכום מתעדכן מדי שנה לפי מדד המחירים לצרכן. בנוסף לסכום, צריך להוכיח שאין יכולת לפרוע את החוב בתנאים סבירים.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה זמן נמשכת פשיטת רגל בישראל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לפי החוק החדש, ההליך נמשך בדרך כלל 3 שנים מיום מתן צו לפתיחת ההליכים. בנסיבות מיוחדות — כמו שיתוף פעולה מלא ומצב כלכלי קשה במיוחד — ניתן לקצר ל-18 חודשים. לעומת זאת, בפקודה הישנה ההליך יכול היה לקחת 7 שנים ויותר. ההפטר (מחיקת החובות) ניתן בתום תקופת השיקום.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם פשיטת רגל מוחקת את כל החובות?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לא את כולם. ההפטר מוחק את רוב החובות האזרחיים — הלוואות, כרטיסי אשראי, משיכות יתר, חובות לספקים. אבל ישנם חובות שאינם נמחקים: מזונות ילדים ובן/בת זוג, קנסות פליליים, חובות שנוצרו במרמה, פיצויים בגין נזק גוף מכוון, וחובות לרשויות המס שנוצרו ממעשה מרמה.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה קורה לדירה שלי בפשיטת רגל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'זה תלוי בנסיבות. אם יש משכנתה ואין הון עצמי משמעותי — ייתכן שהדירה תישאר. אם יש הון עצמי גדול, הנאמן עשוי להוציאה לכינוס נכסים ולחלק את הכסף בין הנושים. החוק החדש קובע כי אם הדירה היא דירת מגורים יחידה ושוויה נמוך יחסית, בית המשפט ישקול את צרכי המשפחה. בכל מקרה — מדובר בהחלטה שיקולית של בית המשפט.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם ניתן לעבוד בזמן פשיטת רגל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כן, בהחלט. בניגוד למיתוס, פשיטת רגל לא אוסרת עליך לעבוד. אבל הנאמן קובע "דמי קיום" שאתה רשאי לשמור לעצמך (בהתאם לצרכי המשפחה), ואת היתרה מהכנסתך תשלם לנאמן. חובות חדשים שצוברים לאחר פתיחת ההליך לא נכללים בהפטר. ישנם תפקידים מסוימים שאינם מותרים לחדל פירעון — כמו מנהל חברה ציבורית.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה קורה לבן/בת הזוג?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'הליך חדלות פירעון הוא אישי — בן/בת הזוג אינם חלק מהליך החייב, אלא אם הם ערבו לחובות או שהחוב רשום על שמם גם. עם זאת, נכסים משותפים (כמו דירה בבעלות משותפת) עשויים להיות מושפעים. חשוב מאוד לבצע הפרדה רכושית ברורה לפני פתיחת ההליך ולהתייעץ עם עורך דין.',
+      },
+    },
+  ],
+};
+---
+
+<GuideLayout
+  title="פשיטת רגל בישראל — מה השתנה ואיך מגישים בקשה (2026)"
+  description="'פשיטת רגל' הוא השם הישן. מאז 2019 ישנה חדלות פירעון — הליך מתוקן ומתקדם יותר. מי זכאי, איך מגישים, כמה עולה, ומה נמחק בסוף."
+  breadcrumb={[
+    { label: 'מדריכים', href: '/guides/' },
+    { label: 'פשיטת רגל', href: '/guides/pshitat-regel/' },
+  ]}
+  publishDate="2026-03-28"
+  updateDate="2026-03-28"
+  readTime="8 דקות"
+  schema={[faqSchema, {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'איך מגישים בקשה לחדלות פירעון (פשיטת רגל) בישראל',
+    description: 'תהליך הגשת בקשה לחדלות פירעון לבית המשפט המחוזי — שלב אחר שלב',
+    totalTime: 'P3Y',
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'בדוק זכאות',
+        text: 'וודא שסך חובותיך עולה על 57,445 ₪ (2026), ושאינך יכול לפרוע אותם בתנאים סבירים. אם יש לך נכסים משמעותיים — ייתכן שאינך זכאי.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'אסוף מסמכים',
+        text: 'תדפיסי בנק לשנה, תלושי שכר, רשימת חובות לכל הנושים, מסמכי נכסים (דירה, רכב), שומות מס, ותעודת זהות.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'הגש בקשה לבית המשפט המחוזי',
+        text: 'הגש בקשה לצו פתיחת הליכים לבית המשפט המחוזי (לא לרשם ההוצאה לפועל). שלם אגרה של כ-1,655 ₪. ניתן לבקש פטור מאגרה במצב של מחסור.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 4,
+        name: 'שלב שיקום — 3 שנים',
+        text: 'לאחר מתן הצו, ממונה נאמן. תשלם לנאמן תשלום חודשי קבוע (מעבר ל"דמי קיום"). תשתף פעולה עם הנאמן, תדווח על שינויים בהכנסה, ולא תיקח הלוואות חדשות.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 5,
+        name: 'קבל הפטר — מחיקת החובות',
+        text: 'בתום תקופת השיקום (בדרך כלל 3 שנים), בית המשפט מעניק הפטר — מחיקת רוב החובות. מרגע ההפטר אתה מתחיל מחדש, חופשי מהחובות הישנים.',
+      },
+    ],
+  }]}
+>
+
+  <!-- מבוא -->
+  <p>
+    אם הגעת לכאן עם החיפוש "פשיטת רגל" — אתה לא לבד. עשרות אלפי ישראלים מחפשים כל חודש
+    את המילים האלו, שכן זה המונח שכולם מכירים. הבשורה הטובה: מאז 2019 ישנה בישראל מסגרת
+    חדשה, מתקדמת ומגנה יותר — <strong>חדלות פירעון ושיקום כלכלי</strong> — שמחליפה את
+    "פשיטת הרגל" הישנה ומציעה דרך אמיתית לצאת מהמצוק הכלכלי.
+  </p>
+
+  <!-- באנר הבהרה -->
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-1">פשיטת רגל = חדלות פירעון — אותו הליך, שם חדש</p>
+    <p>
+      "פשיטת רגל" ו"חדלות פירעון" מתארים את אותו ההליך המשפטי: פנייה לבית המשפט בגלל חוסר
+      יכולת לפרוע חובות, מינוי נאמן, תקופת שיקום — ובסוף, מחיקת החובות (הפטר).
+      ההבדל הוא רק בשם ובחוק שחל: הפקודה הישנה מ-1980 הוחלפה ב-2019 בחוק חדש ומוגן יותר.
+    </p>
+  </div>
+
+  <!-- תוכן עניינים -->
+  <nav class="not-prose my-8 p-5 bg-gray-50 border border-neutral-border rounded-xl" aria-label="תוכן עניינים">
+    <p class="font-bold text-gray-800 mb-3">תוכן עניינים</p>
+    <ol class="space-y-1 text-sm text-brand list-decimal list-inside">
+      <li><a href="#old-vs-new" class="hover:underline">מה השתנה — הישן מול החדש</a></li>
+      <li><a href="#eligibility" class="hover:underline">מי זכאי — תנאי הסף לפתיחת ההליך</a></li>
+      <li><a href="#process" class="hover:underline">4 שלבי ההליך — מהגשה עד הפטר</a></li>
+      <li><a href="#what-gets-cancelled" class="hover:underline">מה נמחק בסוף — ומה לא</a></li>
+      <li><a href="#costs" class="hover:underline">עלויות ההליך</a></li>
+      <li><a href="#credit" class="hover:underline">השפעה על דירוג האשראי</a></li>
+      <li><a href="#faq" class="hover:underline">שאלות נפוצות</a></li>
+    </ol>
+  </nav>
+
+  <!-- סעיף 1: ישן מול חדש -->
+  <section id="old-vs-new">
+    <h2>מה השתנה — פקודת פשיטת הרגל מול חוק חדלות פירעון</h2>
+
+    <p>
+      שני החוקים שואפים לאותה מטרה: לתת לאדם שנקלע לחובות מוצא הוגן, ובמקביל להגן
+      על הנושים. אבל החוק החדש (שנכנס לתוקף בספטמבר 2019) שינה את הכללים לטובת החייב
+      במגוון דרכים:
+    </p>
+
+    <div class="not-prose overflow-x-auto my-6">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-brand-pale">
+            <th class="border border-neutral-border px-4 py-3 text-right font-semibold">נושא</th>
+            <th class="border border-neutral-border px-4 py-3 text-right font-semibold">פקודת פשיטת הרגל (עד 2019)</th>
+            <th class="border border-neutral-border px-4 py-3 text-right font-semibold">חוק חדלות פירעון (2019 ואילך)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-neutral-border px-4 py-3 font-medium">שם החוק</td>
+            <td class="border border-neutral-border px-4 py-3">פקודת פשיטת הרגל, 1980</td>
+            <td class="border border-neutral-border px-4 py-3">חוק חדלות פירעון ושיקום כלכלי, תשע"ח-2018</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-neutral-border px-4 py-3 font-medium">משך ההליך</td>
+            <td class="border border-neutral-border px-4 py-3">7 שנים ויותר במקרים רבים</td>
+            <td class="border border-neutral-border px-4 py-3 text-green-700 font-semibold">3 שנים (ניתן לקצר ל-18 חודשים)</td>
+          </tr>
+          <tr>
+            <td class="border border-neutral-border px-4 py-3 font-medium">גורם מנהל</td>
+            <td class="border border-neutral-border px-4 py-3">כונס נכסים רשמי</td>
+            <td class="border border-neutral-border px-4 py-3">הממונה על הליכי חדלות פירעון + נאמן</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-neutral-border px-4 py-3 font-medium">סכום מינימלי</td>
+            <td class="border border-neutral-border px-4 py-3">לא היה סכום מוגדר</td>
+            <td class="border border-neutral-border px-4 py-3">57,445 ₪ (2026)</td>
+          </tr>
+          <tr>
+            <td class="border border-neutral-border px-4 py-3 font-medium">הגנת דמי קיום</td>
+            <td class="border border-neutral-border px-4 py-3">מוגבלת</td>
+            <td class="border border-neutral-border px-4 py-3 text-green-700 font-semibold">מוגנת בחוק — רמת חיים בסיסית מובטחת</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-neutral-border px-4 py-3 font-medium">שיקום כלכלי</td>
+            <td class="border border-neutral-border px-4 py-3">פחות דגש</td>
+            <td class="border border-neutral-border px-4 py-3 text-green-700 font-semibold">עיקרון מרכזי בחוק — שיקום ולא ענישה</td>
+          </tr>
+          <tr>
+            <td class="border border-neutral-border px-4 py-3 font-medium">הפטר מיידי</td>
+            <td class="border border-neutral-border px-4 py-3">לא קיים</td>
+            <td class="border border-neutral-border px-4 py-3 text-green-700 font-semibold">קיים במקרי מצוקה קיצונית</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip-box">
+      <p>
+        <strong>מה זה אומר בפועל?</strong> אם פתחת הליך לפי הפקודה הישנה לפני 2019,
+        ייתכן שאתה עדיין נמצא בהליך ישן עם תנאים פחות נוחים.
+        ניתן לבקש מבית המשפט מעבר להליך לפי החוק החדש — מומלץ להתייעץ עם עורך דין.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 2: זכאות -->
+  <section id="eligibility">
+    <h2>מי זכאי — תנאי הסף לפתיחת ההליך</h2>
+
+    <p>
+      לא כל מי שיש לו חובות יכול (או צריך) לפתוח הליכי חדלות פירעון.
+      החוק קובע תנאים ברורים:
+    </p>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <span>
+          <strong>סכום חוב מינימלי:</strong> 57,445 ₪ (נכון ל-2026, מתעדכן מדי שנה לפי מדד המחירים לצרכן).
+          החוב יכול להיות מפוזר בין מספר נושים.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>
+          <strong>חדלות פירעון:</strong> עליך להוכיח שאין לך יכולת לפרוע את חובותיך במהלך
+          השנה הקרובה. זה לא סתם "חוסר כסף" — אלא חוסר יכולת מוכח.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>
+          <strong>לא חברה:</strong> החוק מחלק בין יחידים לחברות. מדריך זה עוסק ביחידים
+          — אנשים פרטיים ועצמאים. לחברות בע"מ יש הליך נפרד (פירוק / הבראה).
+        </span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span>
+          <strong>לא הליך פתוח אחר:</strong> אם כבר מתנהל נגדך הליך פשיטת רגל או חדלות
+          פירעון, לא ניתן לפתוח הליך חדש במקביל.
+        </span>
+      </li>
+    </ol>
+
+    <div class="warn-box">
+      <p class="font-semibold mb-1">מתי לא כדאי לפתוח הליך?</p>
+      <p class="text-sm">
+        אם החוב זמני (פיטורים, מחלה, אבל יש נכס שתוכל למכור), אם יש לך עסק פורח שיאפשר
+        פרעון בהסדר, או אם החוב מתחת לסכום המינימלי — ייתכן שפתרון אחר (כמו הסדר עם
+        הנושים, חדלות פירעון מחוץ לבית משפט, או בקשת צו תשלומים) עדיף.
+        התייעץ לפני שמחליטים.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 3: תהליך -->
+  <section id="process">
+    <h2>4 שלבי ההליך — מהגשה עד הפטר</h2>
+
+    <p>
+      ההליך מוגדר בחוק ועובר בארבעה שלבים עיקריים. ציר הזמן המשוער הוא 3 שנים,
+      ובנסיבות מיוחדות ניתן לקצרו:
+    </p>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <span>
+          <strong>הגשת הבקשה לבית המשפט המחוזי</strong> — ממלאים טופס מפורט עם פירוט
+          כל החובות, ההכנסות, הנכסים וההוצאות. מצרפים מסמכים: תלושי שכר, דפי חשבון,
+          חוזים, פסקי דין. מגישים ביחד עם תשלום אגרת בית משפט (1,564 ₪ נכון ל-2026).
+          <br /><span class="text-sm text-gray-500 mt-1 block">ציר זמן: שבוע-שבועיים להכנה</span>
+        </span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>
+          <strong>צו לפתיחת הליכים ומינוי נאמן</strong> — בית המשפט דן בבקשה ואם מאשר,
+          מוציא "צו לפתיחת הליכים". מרגע זה: הנושים לא יכולים לנקוט הליכים נגדך (עיקולים
+          מושהים), ומתמנה נאמן שמנהל את ההליך. הנאמן בוחן את נכסיך, הכנסותיך, וקובע
+          "דמי קיום" שיישארו לך מדי חודש.
+          <br /><span class="text-sm text-gray-500 mt-1 block">ציר זמן: חודש-חודשיים מהגשה</span>
+        </span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>
+          <strong>תקופת השיקום</strong> — 3 שנים (לרוב) שבהן אתה ממשיך לחיות ולעבוד,
+          משלם לנאמן חלק מהכנסותיך מעבר ל"דמי הקיום", ועומד בתנאי ההליך: שיתוף פעולה
+          מלא עם הנאמן, לא צבירת חובות חדשים, דיווח על שינויי הכנסה. הנאמן מחלק את
+          הכספים שנאספו לנושים לפי סדר עדיפות.
+          <br /><span class="text-sm text-gray-500 mt-1 block">ציר זמן: 18 חודשים–3 שנים</span>
+        </span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span>
+          <strong>ההפטר — מחיקת החובות</strong> — בתום תקופת השיקום, בית המשפט בוחן אם
+          עמדת בתנאים. אם כן, ניתן צו הפטר שמוחק את יתרת החובות שנותרו (כולל חובות שלא
+          נפרעו כלל לנושים). מרגע ההפטר — דף חדש. אתה פנוי מהחובות שנכללו בהליך.
+          <br /><span class="text-sm text-gray-500 mt-1 block">ציר זמן: בתום תקופת השיקום</span>
+        </span>
+      </li>
+    </ol>
+
+    <div class="info-box">
+      <p class="font-semibold text-blue-800 mb-2">האם ניתן לקצר את ההליך?</p>
+      <p class="text-sm">
+        כן. החוק מאפשר קיצור ל-18 חודשים במקרים של שיתוף פעולה מלא, מצב כלכלי קשה
+        במיוחד, גיל מתקדם, מחלה קשה, או כאשר אין ולא יהיה יכולת לשלם כמעט דבר.
+        בית המשפט מחליט לפי נסיבות אישיות. חשוב לטעון זאת בבקשה מראש.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 4: מה נמחק -->
+  <section id="what-gets-cancelled">
+    <h2>מה נמחק בסוף — ומה לא</h2>
+
+    <p>
+      ההפטר הוא הלב של ההליך — אבל הוא לא מוחק הכל. חשוב לדעת מראש מה ייכנס
+      למסגרת ההפטר ומה יישאר:
+    </p>
+
+    <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+      <div class="border border-green-200 bg-green-50 rounded-xl p-5">
+        <h3 class="font-bold text-green-800 mb-3">חובות שנמחקים בהפטר</h3>
+        <ul class="text-sm text-gray-700 space-y-2">
+          <li>• הלוואות מבנקים ומוסדות פיננסיים</li>
+          <li>• חובות כרטיסי אשראי</li>
+          <li>• משיכות יתר בחשבון</li>
+          <li>• חובות לספקים ועסקים</li>
+          <li>• חובות ארנונה ומים (עד לפתיחת ההליך)</li>
+          <li>• חובות שכירות</li>
+          <li>• הלוואות מאנשים פרטיים</li>
+          <li>• רוב חובות המס (בתנאים מסוימים)</li>
+        </ul>
+      </div>
+      <div class="border border-red-200 bg-red-50 rounded-xl p-5">
+        <h3 class="font-bold text-red-800 mb-3">חובות שאינם נמחקים</h3>
+        <ul class="text-sm text-gray-700 space-y-2">
+          <li>• מזונות ילדים ובן/בת זוג</li>
+          <li>• קנסות פליליים</li>
+          <li>• חובות שנוצרו במרמה מוכחת</li>
+          <li>• פיצויים בגין נזק גוף מכוון</li>
+          <li>• חובות מס שנוצרו מהכחשה ומרמה</li>
+          <li>• חובות לאחר פתיחת ההליך</li>
+          <li>• אגרות בית משפט ועלויות ההליך עצמו</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <p class="font-semibold mb-1">חוב מזונות — תשומת לב מיוחדת</p>
+      <p class="text-sm">
+        חוב מזונות לא נמחק בהפטר. אם יש לך חוב מזונות — הוא יישאר גם אחרי שכל שאר
+        החובות נמחקים. חשוב לתכנן זאת מראש ולהגיע להסדר עם הנושה על חוב המזונות
+        בנפרד, אם אפשר.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 5: עלויות -->
+  <section id="costs">
+    <h2>עלויות ההליך</h2>
+
+    <p>
+      חדלות פירעון כרוכה בהוצאות. חשוב להיכנס לתהליך עם עיניים פקוחות לגבי העלויות:
+    </p>
+
+    <div class="not-prose overflow-x-auto my-6">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-brand-pale">
+            <th class="border border-neutral-border px-4 py-3 text-right font-semibold">רכיב עלות</th>
+            <th class="border border-neutral-border px-4 py-3 text-right font-semibold">סכום משוער (2026)</th>
+            <th class="border border-neutral-border px-4 py-3 text-right font-semibold">הערות</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-neutral-border px-4 py-3 font-medium">אגרת בית משפט</td>
+            <td class="border border-neutral-border px-4 py-3 font-bold">1,564 ₪</td>
+            <td class="border border-neutral-border px-4 py-3">משולמת בעת הגשת הבקשה. ניתן לבקש פטור בגין חוסר יכולת.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-neutral-border px-4 py-3 font-medium">שכר עורך דין</td>
+            <td class="border border-neutral-border px-4 py-3 font-bold">6,000–20,000 ₪</td>
+            <td class="border border-neutral-border px-4 py-3">תלוי במורכבות התיק, מספר הנושים, ונכסים. ניתן בתשלומים.</td>
+          </tr>
+          <tr>
+            <td class="border border-neutral-border px-4 py-3 font-medium">שכר טרחת נאמן</td>
+            <td class="border border-neutral-border px-4 py-3 font-bold">נקבע ע"י ביהמ"ש</td>
+            <td class="border border-neutral-border px-4 py-3">משולם מהכספים שנגבים, לא ישירות מכיסך.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-neutral-border px-4 py-3 font-medium">תשלומים חודשיים לנאמן</td>
+            <td class="border border-neutral-border px-4 py-3 font-bold">לפי יכולת</td>
+            <td class="border border-neutral-border px-4 py-3">ההפרש בין הכנסתך לבין "דמי הקיום" שנקבעו. יכול להיות אפס.</td>
+          </tr>
+          <tr>
+            <td class="border border-neutral-border px-4 py-3 font-medium">סיוע משפטי חינמי</td>
+            <td class="border border-neutral-border px-4 py-3 font-bold text-green-700">0 ₪</td>
+            <td class="border border-neutral-border px-4 py-3">זכאים בעלי הכנסה נמוכה — מנהל הסיוע המשפטי במשרד המשפטים.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box">
+      <p class="font-semibold text-blue-800 mb-1">זכאות לסיוע משפטי חינמי</p>
+      <p class="text-sm">
+        אם הכנסתך נמוכה, ייתכן שמגיע לך ייצוג חינמי על ידי מנהל הסיוע המשפטי
+        במשרד המשפטים. הסיוע המשפטי מייצג חייבים בהליכי חדלות פירעון ללא תשלום.
+        ניתן לבדוק זכאות ב<a href="https://www.gov.il/he/departments/legal_aid" target="_blank" rel="noopener" class="text-brand hover:underline">אתר הסיוע המשפטי</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 6: השפעה על אשראי -->
+  <section id="credit">
+    <h2>השפעה על דירוג האשראי ודוח נתוני האשראי</h2>
+
+    <p>
+      פתיחת הליכי חדלות פירעון משפיעה על <strong>דוח נתוני האשראי</strong> שלך
+      — הדוח הממוחשב שהבנקים ומוסדות האשראי משתמשים בו:
+    </p>
+
+    <ul class="space-y-3 my-4">
+      <li>
+        <strong>משך הרישום בדוח:</strong> נתוני הליך חדלות פירעון נשמרים בדוח
+        האשראי <strong>7 שנים</strong> מיום מתן ההפטר (מחיקת החובות) — לא מיום פתיחת ההליך.
+      </li>
+      <li>
+        <strong>קבלת אשראי בתקופה:</strong> בתקופת ההליך, בית המשפט בדרך כלל אוסר
+        על נטילת אשראי חדש ללא אישורו. הפרת האיסור עלולה לפגוע בהליך.
+      </li>
+      <li>
+        <strong>חשבון בנק:</strong> החוק מחייב את הבנקים לאפשר לחדל פירעון לנהל
+        חשבון בנק בסיסי — אתה לא תישאר בלי חשבון.
+      </li>
+      <li>
+        <strong>אחרי ההפטר:</strong> 7 שנים לאחר ההפטר, הנתונים נמחקים מהדוח
+        ואתה מתחיל דף נקי — ניתן לקבל הלוואות, משכנתאות, ולחיות חיים כלכליים רגילים.
+      </li>
+    </ul>
+
+    <div class="tip-box">
+      <p>
+        <strong>טיפ:</strong> ניתן לבקש עותק חינמי של דוח נתוני האשראי שלך פעם בשנה
+        מבנק ישראל ולוודא שהנתונים נכונים. לאחר ההפטר — בדוק שהרישום עודכן בהתאם.
+      </p>
+    </div>
+  </section>
+
+  <!-- שאלות נפוצות -->
+  <section id="faq">
+    <h2>שאלות נפוצות</h2>
+
+    <div class="space-y-4 my-6">
+      {[
+        {
+          q: 'מה ההבדל בין פשיטת רגל לחדלות פירעון?',
+          a: 'אין הבדל מהותי — מדובר בשמות שונים לאותו הליך. "פשיטת רגל" הוא המונח הישן לפי פקודת פשיטת הרגל (1980). מאז ספטמבר 2019 הוחלפה הפקודה בחוק חדלות פירעון ושיקום כלכלי, תשע"ח-2018, והמינוח הרשמי הוא "חדלות פירעון". ההליך עצמו — בקשה לבית המשפט, מינוי נאמן, תקופת שיקום, ומחיקת חובות — קיים בשני המשטרים, אבל החוק החדש הוסיף הגנות חשובות לחייב.',
+        },
+        {
+          q: 'כמה חוב צריך לפשיטת רגל?',
+          a: 'נכון ל-2026, סכום החוב המינימלי הוא 57,445 ₪. הסכום מתעדכן מדי שנה לפי מדד המחירים לצרכן. בנוסף לסכום, צריך להוכיח שאין יכולת לפרוע את החוב בתנאים סבירים.',
+        },
+        {
+          q: 'כמה זמן נמשכת פשיטת רגל בישראל?',
+          a: 'לפי החוק החדש, ההליך נמשך בדרך כלל 3 שנים מיום מתן צו לפתיחת ההליכים. בנסיבות מיוחדות ניתן לקצר ל-18 חודשים. לעומת זאת, בפקודה הישנה ההליך יכול היה לקחת 7 שנים ויותר.',
+        },
+        {
+          q: 'האם פשיטת רגל מוחקת את כל החובות?',
+          a: 'לא את כולם. ההפטר מוחק את רוב החובות האזרחיים — הלוואות, כרטיסי אשראי, משיכות יתר, חובות לספקים. אבל ישנם חובות שאינם נמחקים: מזונות ילדים ובן/בת זוג, קנסות פליליים, חובות שנוצרו במרמה, פיצויים בגין נזק גוף מכוון.',
+        },
+        {
+          q: 'מה קורה לדירה שלי בפשיטת רגל?',
+          a: 'זה תלוי בנסיבות. אם יש משכנתה ואין הון עצמי משמעותי — ייתכן שהדירה תישאר. אם יש הון עצמי גדול, הנאמן עשוי להוציאה לכינוס נכסים ולחלק את הכסף בין הנושים. החוק החדש קובע כי בית המשפט ישקול את צרכי המשפחה. בכל מקרה — מדובר בהחלטה שיקולית של בית המשפט.',
+        },
+        {
+          q: 'האם ניתן לעבוד בזמן פשיטת רגל?',
+          a: 'כן, בהחלט. פשיטת רגל לא אוסרת עליך לעבוד. אבל הנאמן קובע "דמי קיום" שאתה רשאי לשמור לעצמך, ואת היתרה מהכנסתך תשלם לנאמן. ישנם תפקידים מסוימים שאינם מותרים לחדל פירעון — כמו מנהל חברה ציבורית.',
+        },
+        {
+          q: 'מה קורה לבן/בת הזוג?',
+          a: 'הליך חדלות פירעון הוא אישי — בן/בת הזוג אינם חלק מהליך החייב, אלא אם הם ערבו לחובות או שהחוב רשום על שמם גם. עם זאת, נכסים משותפים (כמו דירה בבעלות משותפת) עשויים להיות מושפעים. חשוב לבצע הפרדה רכושית ברורה ולהתייעץ עם עורך דין.',
+        },
+      ].map(faq => (
+        <details class="border border-neutral-border rounded-xl group">
+          <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+            {faq.q}
+            <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- מקורות -->
+  <section>
+    <h2>מקורות ומידע רשמי</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="https://www.nevo.co.il/law_html/Law01/999_2018_14.htm" target="_blank" rel="noopener" class="text-brand hover:underline">
+          חוק חדלות פירעון ושיקום כלכלי, תשע"ח-2018 — נבו
+        </a>
+      </li>
+      <li>
+        <a href="https://www.gov.il/he/departments/insolvency_official" target="_blank" rel="noopener" class="text-brand hover:underline">
+          הממונה על הליכי חדלות פירעון — אתר רשמי
+        </a>
+      </li>
+      <li>
+        <a href="https://www.kolzchut.org.il/he/%D7%97%D7%93%D7%9C%D7%95%D7%AA_%D7%A4%D7%99%D7%A8%D7%A2%D7%95%D7%9F" target="_blank" rel="noopener" class="text-brand hover:underline">
+          כל זכות — חדלות פירעון
+        </a>
+      </li>
+      <li>
+        <a href="https://www.gov.il/he/departments/legal_aid" target="_blank" rel="noopener" class="text-brand hover:underline">
+          הסיוע המשפטי — משרד המשפטים
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- הצעדים הבאים -->
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">המשך לקרוא — מדריכי חדלות פירעון</h3>
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">מה זה חדלות פירעון — הסבר מלא</a></li>
+      <li>← <a href="/insolvency/eligibility/" class="text-brand hover:underline">מי זכאי לחדלות פירעון — כל התנאים</a></li>
+      <li>← <a href="/insolvency/costs/" class="text-brand hover:underline">כמה עולה הליך חדלות פירעון — טבלת עלויות</a></li>
+      <li>← <a href="/insolvency/process/" class="text-brand hover:underline">שלבי ההליך — מהגשה עד הפטר</a></li>
+    </ul>
+  </div>
+
+</GuideLayout>

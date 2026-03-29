@@ -4,16 +4,16 @@ import GuideLayout from '../../../layouts/GuideLayout.astro';
 
 const title = "עיכוב יציאה מהארץ בהוצאה לפועל — המדריך המלא לחייבים";
 const description = "קיבלת צו עיכוב יציאה מהארץ? הנה מה זה אומר, מתי מוציאים אותו, מה זכויותיך, ואיך אפשר לבטל או להשהות אותו.";
-const publishDate = new Date("2025-01-15");
-const updateDate = new Date("2026-03-25");
+const publishDate = "2025-01-15";
+const updateDate = "2026-03-25";
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": title,
   "description": description,
-  "datePublished": publishDate.toISOString(),
-  "dateModified": updateDate.toISOString(),
+  "datePublished": publishDate,
+  "dateModified": updateDate,
   "inLanguage": "he",
   "author": {
     "@type": "Organization",
@@ -83,16 +83,26 @@ const faqSchema = {
   description={description}
   publishDate={publishDate}
   updateDate={updateDate}
-  canonicalUrl="/guides/ikul-yetzia/"
-  breadcrumbs={[
-    { label: "בית", href: "/" },
+  readTime="8 דקות"
+  breadcrumb={[
     { label: "מדריכים", href: "/guides/" },
     { label: "עיכוב יציאה מהארץ", href: "/guides/ikul-yetzia/" }
   ]}
+  schema={[faqSchema, {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'איך מבטלים עיכוב יציאה מהארץ בהוצאה לפועל',
+    description: 'שלבים לביטול צו עיכוב יציאה מהארץ — מהגשת בקשה ועד לאישור',
+    totalTime: 'P14D',
+    step: [
+      { '@type': 'HowToStep', position: 1, name: 'בדוק אם יש צו על שמך', text: 'פנה לרשות האכיפה והגבייה ובקש לברר אם קיים צו עיכוב יציאה על שמך. ניתן לבדוק גם דרך נמל התעופה לפני הטיסה.' },
+      { '@type': 'HowToStep', position: 2, name: 'בחר את דרך הביטול', text: 'יש 4 דרכים לביטול: (א) פירעון מלא של החוב. (ב) הגשת ערבות בנקאית. (ג) הגשת בקשה לצו תשלומים עם עמידה בתשלומים. (ד) בקשה הומניטרית לנסיעה ספציפית.' },
+      { '@type': 'HowToStep', position: 3, name: 'הגש בקשה לרשם', text: 'הגש לרשם ההוצאה לפועל בקשה בכתב לביטול הצו. פרט את הנימוקים, צרף מסמכים (ערבות, הסכם תשלומים, מסמך רפואי לצורך הומניטרי). בקש "עיכוב ביצוע" בינתיים אם יש טיסה קרובה.' },
+      { '@type': 'HowToStep', position: 4, name: 'בקש אישור יציאה זמני', text: 'אם יש נסיבות דחופות (טיפול רפואי, עבודה, שבעה), ניתן לבקש מהרשם אישור יציאה זמני עם תאריכים מוגדרים. צרף הוכחות: כרטיס טיסה, מסמך רפואי, הזמנה לעבודה.' },
+      { '@type': 'HowToStep', position: 5, name: 'קבל אישור ועדכן גבולות', text: 'לאחר ביטול הצו — רשות האכיפה מעדכנת את רשויות הגבול. תהליך עדכון הגבולות לוקח בדרך כלל 24-48 שעות.' },
+    ],
+  }]}
 >
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head-extra" />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head-extra" />
 
   <!-- תוכן ראשי -->
   <article class="guide-content" dir="rtl" lang="he">

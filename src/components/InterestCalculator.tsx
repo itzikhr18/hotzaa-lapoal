@@ -169,7 +169,7 @@ export default function InterestCalculator() {
       </button>
 
       {/* Disclaimer */}
-      <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-4">
+      <p className="text-xs text-gray-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 mt-4">
         ⚠️ מחשבון זה מיועד להערכה בלבד. לחישוב מדויק — פנה לעורך דין או לרשות האכיפה והגבייה.
       </p>
 

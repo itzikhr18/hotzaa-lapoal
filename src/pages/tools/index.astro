@@ -2,11 +2,26 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
+const toolsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'כלים חינמיים להוצאה לפועל',
+  description: "כלים חינמיים לחייבים בהוצאה לפועל: מחשבון ריבית תיקון 9 וצ'אטבוט AI שעונה על שאלות 24/7",
+  url: 'https://hotzaa-lapoal.info/tools/',
+  inLanguage: 'he',
+  hasPart: [
+    { '@type': 'WebApplication', name: 'מחשבון ריבית הוצאה לפועל — תיקון 9', url: 'https://hotzaa-lapoal.info/tools/calculator/' },
+    { '@type': 'WebApplication', name: "צ'אטבוט הוצאה לפועל", url: 'https://hotzaa-lapoal.info/tools/chatbot/' },
+    { '@type': 'WebApplication', name: 'בדיקת מצב מהירה', url: 'https://hotzaa-lapoal.info/tools/eligibility/' },
+  ],
+};
 ---
 
 <BaseLayout
   title="כלים חינמיים להוצאה לפועל — מחשבון ריבית וצ'אטבוט"
   description="כלים חינמיים לחייבים בהוצאה לפועל: מחשבון ריבית תיקון 9 וצ'אטבוט AI שעונה על שאלות 24/7."
+  schema={toolsSchema}
 >
   <Header />
   <main class="max-w-4xl mx-auto px-4 py-10">
@@ -55,7 +70,7 @@ import Footer from '../../components/Footer.astro';
         <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">התחל בדיקה ←</span>
       </a>
 
-    <div class="mt-10 bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+    <div class="mt-10 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700">
       ⚠️ הכלים מיועדים להערכה ולמידע כללי בלבד. אינם מהווים ייעוץ משפטי.
     </div>
 

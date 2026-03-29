@@ -6,11 +6,24 @@ import ChatBot from '../../components/ChatBot';
 
 // מפתח ה-API נקרא ממשתנה סביבה — לא נכנס לקוד!
 const apiKey = import.meta.env.PUBLIC_GEMINI_API_KEY ?? '';
+
+const chatbotSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: "צ'אטבוט הוצאה לפועל",
+  description: "צ'אטבוט AI שעונה על שאלות בנושא הוצאה לפועל וחדלות פירעון בעברית פשוטה, 24/7",
+  url: 'https://hotzaa-lapoal.info/tools/chatbot/',
+  inLanguage: 'he',
+  applicationCategory: 'LegalApplication',
+  operatingSystem: 'All',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
+};
 ---
 
 <BaseLayout
   title="צ'אטבוט הוצאה לפועל — שאל שאלה וקבל תשובה"
   description="שאל שאלה על הוצאה לפועל וחדלות פירעון — צ'אטבוט AI שעונה בעברית פשוטה, 24/7, בחינם."
+  schema={chatbotSchema}
 >
   <Header />
   <main class="max-w-2xl mx-auto px-4 py-10">

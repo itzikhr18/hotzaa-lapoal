@@ -108,7 +108,7 @@ export default function ChatBot({ apiKey }: { apiKey: string }) {
     <div dir="rtl" className="flex flex-col gap-4 font-sans">
 
       {/* Disclaimer */}
-      <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-800">
+      <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 text-sm text-gray-700">
         🤖 צ'אטבוט AI — עלול לטעות. אינו מחליף ייעוץ משפטי אישי.
       </div>
 

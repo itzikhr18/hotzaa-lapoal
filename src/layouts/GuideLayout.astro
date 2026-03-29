@@ -11,7 +11,7 @@ export interface Props {
   breadcrumb: { label: string; href: string }[];
   publishDate?: string;
   updateDate?: string;
-  schema?: object;
+  schema?: object | object[];
   readTime?: string;
 }
 
@@ -25,6 +25,8 @@ const {
   readTime = '5 דקות',
 } = Astro.props;
 
+const siteUrl = 'https://hotzaa-lapoal.info';
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -35,15 +37,32 @@ const articleSchema = {
   publisher: {
     '@type': 'Organization',
     name: 'הוצאהלפועל.info',
-    url: 'https://hotzaa-lapoal.info',
+    url: siteUrl,
   },
   datePublished: publishDate,
   dateModified: updateDate ?? publishDate,
-  ...schema,
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'בית', item: siteUrl },
+    ...breadcrumb.map((crumb, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: crumb.label,
+      item: `${siteUrl}${crumb.href}`,
+    })),
+  ],
+};
+
+const schemas = schema
+  ? [articleSchema, ...(Array.isArray(schema) ? schema : [schema]), breadcrumbSchema]
+  : [articleSchema, breadcrumbSchema];
 ---
 
-<BaseLayout {title} {description} schema={articleSchema}>
+<BaseLayout {title} {description} ogType="article" schema={schemas}>
   <Header />
 
   <main class="max-w-4xl mx-auto px-4 py-8">
@@ -88,14 +107,62 @@ const articleSchema = {
       <aside class="lg:sticky lg:top-24 space-y-6">
         <CTAForm compact />
 
-        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-sm">
-          <p class="font-semibold text-yellow-800 mb-1">⚠️ שים לב</p>
-          <p class="text-yellow-700">המידע כאן הוא כללי בלבד. לייעוץ אישי בתיק שלך — פנה לעורך דין.</p>
+        <!-- Popular guides box -->
+        <div class="bg-white border border-neutral-border rounded-xl p-4 text-sm">
+          <p class="font-semibold text-gray-800 mb-3">מדריכים פופולריים</p>
+          <ul class="space-y-2">
+            {[
+              { title: 'עיקול חשבון בנק', href: '/guides/ikul-heshbon/' },
+              { title: 'ביטול עיקול', href: '/guides/bitul-ikul/' },
+              { title: 'עיקול משכורת', href: '/guides/ikul-maskoret/' },
+              { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
+              { title: 'פשיטת רגל (חדלות פירעון)', href: '/guides/pshitat-regel/' },
+            ].map(g => (
+              <li>
+                <a href={g.href} class="text-brand hover:text-brand-dark transition-colors flex items-center gap-1.5">
+                  <span class="text-xs">←</span>
+                  {g.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm">
+          <p class="font-semibold text-blue-800 mb-1">ℹ️ שים לב</p>
+          <p class="text-gray-700">המידע כאן הוא כללי בלבד. לייעוץ אישי בתיק שלך — פנה לעורך דין.</p>
         </div>
       </aside>
 
     </div>
   </main>
+
+  <!-- Related Guides -->
+  <section class="bg-gray-50 border-t border-neutral-border py-10">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-gray-800 mb-5">מדריכים קשורים</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {[
+          { title: 'עיקול חשבון בנק', href: '/guides/ikul-heshbon/', icon: '🏦' },
+          { title: 'ביטול עיקול', href: '/guides/bitul-ikul/', icon: '✅' },
+          { title: 'עיקול משכורת', href: '/guides/ikul-maskoret/', icon: '💼' },
+          { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/', icon: '📋' },
+          { title: 'פשיטת רגל', href: '/guides/pshitat-regel/', icon: '⚖️' },
+          { title: 'מזונות בהוצאה לפועל', href: '/guides/mazamot/', icon: '👨‍👧' },
+          { title: 'עיכוב יציאה מהארץ', href: '/guides/ikul-yetzia/', icon: '✈️' },
+          { title: 'איחוד תיקים', href: '/guides/ichud-tikim/', icon: '📂' },
+          { title: 'עיקול רכב', href: '/guides/ikul-rechev/', icon: '🚗' },
+          { title: 'כינוס נכסים', href: '/guides/kinnus-nechasim/', icon: '🏛️' },
+          { title: 'כל המדריכים', href: '/guides/', icon: '→' },
+        ].map(g => (
+          <a href={g.href} class="flex items-center gap-3 p-3 bg-white border border-neutral-border rounded-xl hover:border-brand hover:bg-brand-pale transition-all text-sm font-medium text-gray-700 hover:text-brand-dark">
+            <span class="text-xl">{g.icon}</span>
+            {g.title}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <Disclaimer />
   <Footer />

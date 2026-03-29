@@ -3,38 +3,131 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
-const guides = [
-  { title: 'עיקלו לי את חשבון הבנק — מה עושים?', cat: 'עיקולים', href: '/guides/ikul-heshbon/', kw: '9,500/חודש', ready: true },
-  { title: 'קיבלתי מכתב מהוצאה לפועל', cat: 'התחלה', href: '/guides/michtav-hotzaa/', kw: '6,200/חודש', ready: true },
-  { title: 'עיקול משכורת — מתי מותר ואיך מבטלים', cat: 'עיקולים', href: '/guides/ikul-maskoret/', kw: '5,800/חודש', ready: true },
-  { title: 'בקשה לצו תשלומים — איך מגישים לבד', cat: 'הסדרים', href: '/guides/tzav-tashlumim/', kw: '5,100/חודש', ready: true },
-  { title: 'איחוד תיקים בהוצאה לפועל', cat: 'הסדרים', href: '/guides/ichud-tikim/', kw: '3,800/חודש', ready: true },
-  { title: 'עיקול על נכסים — דירה ורכב', cat: 'עיקולים', href: '/guides/ikul-nechassim/', kw: '', ready: true },
-  { title: 'איך מבטלים עיקול', cat: 'עיקולים', href: '/guides/bitul-ikul/', kw: '8,200/חודש', ready: true },
-  { title: 'חייב מוגבל באמצעים — מה עושים', cat: 'הגבלות', href: '/guides/hayav-mugbal/', kw: '', ready: true },
-  { title: 'הגבלת רישיון נהיגה — בוטלה!', cat: 'הגבלות', href: '/guides/rishayon-nehiga/', kw: '', ready: true },
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'מדריכים לחייבים — הוצאה לפועל בעברית פשוטה',
+  description: 'מדריכים מפורטים לכל שלב בהוצאה לפועל — עיקולים, הסדרים, זכויות. כתוב בשפה פשוטה, עדכני ל-2026.',
+  inLanguage: 'he',
+  url: 'https://hotzaa-lapoal.info/guides/',
+  hasPart: [
+    { '@type': 'Article', name: 'עיקול חשבון בנק', url: 'https://hotzaa-lapoal.info/guides/ikul-heshbon/' },
+    { '@type': 'Article', name: 'ביטול עיקול', url: 'https://hotzaa-lapoal.info/guides/bitul-ikul/' },
+    { '@type': 'Article', name: 'עיקול משכורת', url: 'https://hotzaa-lapoal.info/guides/ikul-maskoret/' },
+    { '@type': 'Article', name: 'צו תשלומים', url: 'https://hotzaa-lapoal.info/guides/tzav-tashlumim/' },
+    { '@type': 'Article', name: 'פשיטת רגל — חדלות פירעון', url: 'https://hotzaa-lapoal.info/guides/pshitat-regel/' },
+    { '@type': 'Article', name: 'מזונות בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/mazamot/' },
+    { '@type': 'Article', name: 'עיכוב יציאה מהארץ', url: 'https://hotzaa-lapoal.info/guides/ikul-yetzia/' },
+    { '@type': 'Article', name: 'איחוד תיקים', url: 'https://hotzaa-lapoal.info/guides/ichud-tikim/' },
+  ],
+};
+
+const categories = [
+  {
+    name: 'קיבלתי מכתב — מה עושים?',
+    icon: '✉️',
+    guides: [
+      { title: 'קיבלתי מכתב מהוצאה לפועל', href: '/guides/michtav-hotzaa/', kw: '6,200/חודש' },
+    ]
+  },
+  {
+    name: 'עיקולים',
+    icon: '🔒',
+    guides: [
+      { title: 'עיקלו לי את חשבון הבנק — מה עושים?', href: '/guides/ikul-heshbon/', kw: '9,500/חודש' },
+      { title: 'עיקול משכורת — מתי מותר ואיך מבטלים', href: '/guides/ikul-maskoret/', kw: '5,800/חודש' },
+      { title: 'עיקול על נכסים — דירה ורכב', href: '/guides/ikul-nechassim/', kw: '' },
+      { title: 'עיקול רכב בהוצאה לפועל — מה מותר ואיך מבטלים', href: '/guides/ikul-rechev/', kw: '3,800/חודש' },
+      { title: 'כינוס נכסים — מה זה ואיך עוצרים את זה', href: '/guides/kinnus-nechasim/', kw: '4,200/חודש' },
+      { title: 'איך מבטלים עיקול', href: '/guides/bitul-ikul/', kw: '8,200/חודש' },
+    ]
+  },
+  {
+    name: 'הסדרת החוב',
+    icon: '🤝',
+    guides: [
+      { title: 'בקשה לצו תשלומים — איך מגישים לבד', href: '/guides/tzav-tashlumim/', kw: '5,100/חודש' },
+      { title: 'איחוד תיקים בהוצאה לפועל', href: '/guides/ichud-tikim/', kw: '3,800/חודש' },
+      { title: 'חייב מוגבל באמצעים — מה עושים', href: '/guides/hayav-mugbal/', kw: '' },
+    ]
+  },
+  {
+    name: 'הגבלות על החייב',
+    icon: '⚠️',
+    guides: [
+      { title: 'עיכוב יציאה מהארץ — המדריך המלא', href: '/guides/ikul-yetzia/', kw: '4,400/חודש' },
+      { title: 'הגבלת רישיון נהיגה — בוטלה! (תיקון 69)', href: '/guides/rishayon-nehiga/', kw: '' },
+    ]
+  },
+  {
+    name: 'הליכים משפטיים',
+    icon: '⚖️',
+    guides: [
+      { title: 'ערב בהוצאה לפועל — זכויות והגנות', href: '/guides/arev/', kw: '3,500/חודש' },
+      { title: 'חקירת יכולת — מה זה ואיך להתכונן', href: '/guides/hakirat-yecholet/', kw: '3,600/חודש' },
+      { title: 'התנגדות לתיק הוצאה לפועל', href: '/guides/hitnagdut-letik/', kw: '2,900/חודש' },
+      { title: 'התיישנות חוב — האם החוב שלי עוד תקף?', href: '/guides/hitiyashnoot-chov/', kw: '3,200/חודש' },
+    ]
+  },
+  {
+    name: 'מדריכים מיוחדים',
+    icon: '📋',
+    guides: [
+      { title: 'הוצאה לפועל לעצמאים — מדריך לבעלי עסקים', href: '/guides/atzmait/', kw: '2,400/חודש' },
+      { title: 'חוב ארנונה — עיקולים, הנחות וזכויות', href: '/guides/chov-arnona/', kw: '3,100/חודש' },
+      { title: 'פשיטת רגל בישראל — מה השתנה ואיך מגישים', href: '/guides/pshitat-regel/', kw: '5,900/חודש' },
+      { title: 'סגירת תיק הוצאה לפועל — כיצד ומתי', href: '/guides/sgor-tik/', kw: '2,600/חודש' },
+      { title: 'מזונות בהוצאה לפועל — עיקולים, גבייה וזכויות', href: '/guides/mazamot/', kw: '6,500/חודש' },
+    ]
+  },
+  {
+    name: 'חוקים ועדכונים 2025–2026',
+    icon: '📰',
+    guides: [
+      { title: 'תיקון 9 לחוק ריבית — מה השתנה מינואר 2025', href: '/guides/tikunim-2025/', kw: '2,800/חודש' },
+    ]
+  },
 ];
 ---
 
 <BaseLayout
   title="מדריכים לחייבים — הוצאה לפועל בעברית פשוטה"
-  description="מדריכים מפורטים לכל שלב בהוצאה לפועל — עיקולים, הסדרים, זכויות. כתוב בשפה פשוטה, עדכני ל-2025."
+  description="מדריכים מפורטים לכל שלב בהוצאה לפועל — עיקולים, הסדרים, זכויות. כתוב בשפה פשוטה, עדכני ל-2026."
+  schema={schema}
 >
   <Header />
   <main class="max-w-4xl mx-auto px-4 py-10">
-    <h1 class="text-3xl font-bold text-brand-dark mb-2">מדריכים לחייבים</h1>
-    <p class="text-gray-500 mb-8">כתוב בשפה פשוטה — בלי ז'רגון משפטי</p>
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-brand-dark mb-2">מדריכים לחייבים</h1>
+      <p class="text-gray-500">כתוב בשפה פשוטה — בלי ז'רגון משפטי</p>
+    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {guides.map(g => (
-        <a href={g.href} class="flex items-start gap-4 p-5 bg-white border border-neutral-border rounded-xl hover:border-brand hover:bg-brand-pale transition-all group">
-          <div class="flex-1">
-            <span class="text-xs font-bold text-neutral-muted uppercase tracking-wide">{g.cat}</span>
-            <h2 class="text-base font-bold text-gray-800 mt-1 group-hover:text-brand-dark transition-colors">{g.title}</h2>
-            {g.kw && <p class="text-xs text-neutral-muted mt-1">🔍 {g.kw}</p>}
+    <div class="space-y-10">
+      {categories.map(cat => (
+        <section>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xl">{cat.icon}</span>
+            <h2 class="text-lg font-bold text-brand-dark">{cat.name}</h2>
           </div>
-          <span class="text-brand-dark text-lg mt-1 group-hover:translate-x-[-4px] transition-transform">←</span>
-        </a>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {cat.guides.map(g => (
+              <a
+                href={g.href}
+                class="flex items-start justify-between gap-4 p-4 bg-white border border-neutral-border rounded-xl hover:border-brand hover:bg-brand-pale transition-all group"
+              >
+                <div class="flex-1">
+                  <h3 class="text-sm font-bold text-gray-800 group-hover:text-brand-dark transition-colors leading-snug">
+                    {g.title}
+                  </h3>
+                  {g.kw && (
+                    <p class="text-xs text-neutral-muted mt-1.5">🔍 {g.kw}</p>
+                  )}
+                </div>
+                <span class="text-brand-dark text-base mt-0.5 group-hover:translate-x-[-4px] transition-transform flex-shrink-0">←</span>
+              </a>
+            ))}
+          </div>
+        </section>
       ))}
     </div>
   </main>

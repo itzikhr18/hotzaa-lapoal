@@ -1,0 +1,695 @@
+---
+import GuideLayout from '../../../layouts/GuideLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'כיצד סוגרים תיק הוצאה לפועל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'סגירת תיק הוצאה לפועל מתבצעת בכמה דרכים: פירעון מלא של החוב — הנושה מגיש בקשת סגירה ורשם ההוצאה לפועל מאשר; ויתור נושה — הנושה מגיש הצהרת ויתור לרשם; פסיקת בית משפט — לאחר התנגדות מוצלחת; או בנסיבות מיוחדות כגון התיישנות, פטירת נושה ללא יורשים, ועוד.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה זמן לוקח לסגור תיק הוצאה לפועל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לאחר הגשת בקשת הסגירה, הרשם מאשר בדרך כלל תוך 7–14 ימי עסקים. ההסרה ממאגרי ההגבלות (BDI, בנקים, משרד הפנים) לוקחת עוד 7–30 יום נוספים בהתאם לסוג ההגבלה. בסך הכל יש לצפות לתהליך של כחודש עד לניקוי מלא.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם הנושה יכול לסגור תיק?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כן — הנושה (הזוכה) הוא הצד שמגיש את בקשת הסגירה ברוב המקרים. הוא יכול לסגור את התיק לאחר קבלת תשלום מלא, או לוותר על התביעה מכל סיבה שהיא. החייב אינו יכול לסגור את התיק מיוזמתו, אלא אם כן הגיש התנגדות מוצלחת שהתקבלה.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה קורה לרישומים אחרי סגירת תיק?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לאחר סגירת התיק: ההגבלות (עיקולים, עיכוב יציאה, כרטיסי אשראי) מוסרות בהדרגה תוך שבועות. הרישום בלשכת ההוצאה לפועל נשמר כ-7 שנים. דירוג האשראי בBDI ובנקים עשוי להתעדכן תוך 30–90 יום. כדאי לבקש אישור סגירה בכתב ולשמור אותו.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם ניתן לסגור תיק הוצאה לפועל ללא תשלום?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כן — ישנן מספר דרכים לסגירת תיק ללא תשלום מלא: ויתור נושה (הנושה מוחל על החוב), פסיקת בית משפט לטובת החייב בהתנגדות, מחיקת חוב עקב חדלות פירעון (הפטר), התיישנות התביעה, או פטירת הנושה ללא יורשים. בכל מקרה כזה נדרש הליך משפטי פורמלי.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה ההבדל בין עיכוב הליכים לסגירת תיק?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'עיכוב הליכים (הקפאה) הוא השהיית פעולות הגבייה באופן זמני — התיק עדיין פתוח, החוב עדיין קיים, והנושה יכול לחדש את ההליכים. סגירת תיק היא סיום מוחלט ובלתי הפיך — ההליכים מסתיימים, ההגבלות מוסרות, והתיק נסגר לצמיתות. עיכוב הוא ארעי, סגירה היא קבועה.',
+      },
+    },
+  ],
+};
+---
+
+<GuideLayout
+  title="סגירת תיק הוצאה לפועל — כיצד, מתי ואיך מבקשים"
+  description="מתי ניתן לסגור תיק הוצאה לפועל? פירעון מלא, מחיקת חוב, ויתור נושה — כל הדרכים לסגירת תיק, שלב אחרי שלב. מעודכן 2026."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'סגירת תיק', href: '/guides/sgor-tik/' }]}
+  publishDate="2026-03-28"
+  updateDate="2026-03-28"
+  readTime="6 דקות"
+  schema={[faqSchema, {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'איך סוגרים תיק הוצאה לפועל',
+    description: 'שלבים לסגירת תיק הוצאה לפועל — מפירעון מלא ועד הסרת כל ההגבלות',
+    totalTime: 'P30D',
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'שלם את מלוא החוב',
+        text: 'בדוק את יתרת החוב המדויקת כולל ריבית, הוצאות, ואגרות. שלם ישירות לנושה (הזוכה) או לחשבון ההוצאה לפועל — לפי הוראות הלשכה.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'הנושה מגיש בקשת סגירה',
+        text: 'לאחר קבלת התשלום, הנושה (לא אתה) מגיש לרשם ההוצאה לפועל בקשה לסגירת התיק. בקש מהנושה אישור בכתב שהתיק סגור.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'רשם מאשר את הסגירה',
+        text: 'רשם ההוצאה לפועל מאשר את הסגירה תוך 7–14 ימי עסקים. הוא שולח הודעה רשמית לכל הגורמים הרלוונטיים להסרת ההגבלות.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 4,
+        name: 'המתן להסרת הגבלות',
+        text: 'העיקולים, עיכוב היציאה, וההגבלות הבנקאיות מוסרות בהדרגה תוך 7–30 יום. שמור את אישור הסגירה — תצטרך אותו בפניות לבנקים.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 5,
+        name: 'בדוק דירוג אשראי',
+        text: 'לאחר כ-30-90 יום בדוק את דירוג האשראי שלך ב-BDI ובבנקים. אם הרישום לא הוסר — פנה לרשם עם אישור הסגירה ובקש תיקון.',
+      },
+    ],
+  }]}
+>
+
+  <p>
+    שילמת את החוב, הגעת להסדר עם הנושה, או זכית בהתנגדות — עכשיו אתה רוצה שהתיק
+    ייסגר לצמיתות ושכל ההגבלות יוסרו. אבל איך בדיוק עושים את זה, מי אחראי,
+    וכמה זמן זה לוקח?
+  </p>
+
+  <p>
+    המדריך הזה מסביר את כל הדרכים לסגירת תיק הוצאה לפועל — מהדרך הנפוצה ביותר
+    (פירעון מלא) ועד מקרים מיוחדים כמו ויתור נושה, פסיקת בית משפט והתיישנות.
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-1">מה זה אומר "סגירת תיק"?</p>
+    <p>
+      סגירת תיק הוצאה לפועל היא סיום רשמי ומוחלט של ההליך. לאחר הסגירה —
+      כל ההגבלות שהוטלו (עיקולים, עיכוב יציאה מהארץ, הגבלת כרטיסי אשראי) מוסרות,
+      ולנושה אין עוד יכולת לנקוט בהליכים נוספים באותו תיק.
+      זה שונה מ"עיכוב הליכים" שהוא השהיה זמנית בלבד.
+    </p>
+  </div>
+
+  <nav class="table-of-contents" aria-label="תוכן עניינים">
+    <h2>תוכן עניינים</h2>
+    <ol>
+      <li><a href="#reasons">4 הדרכים לסגירת תיק</a></li>
+      <li><a href="#full-payment">1. פירעון מלא — השלבים</a></li>
+      <li><a href="#waiver">2. ויתור נושה</a></li>
+      <li><a href="#court-order">3. פסיקת בית משפט</a></li>
+      <li><a href="#other">4. סיבות אחרות — התיישנות ועוד</a></li>
+      <li><a href="#after-closure">מה קורה אחרי הסגירה</a></li>
+      <li><a href="#deletion-vs-paid">מחיקה לעומת פירעון מלא</a></li>
+      <li><a href="#verify">איך לוודא שהתיק באמת נסגר</a></li>
+      <li><a href="#faq">שאלות נפוצות</a></li>
+    </ol>
+  </nav>
+
+  <!-- סעיף 1: הדרכים -->
+  <section id="reasons">
+    <h2>4 הדרכים לסגירת תיק הוצאה לפועל</h2>
+
+    <p>
+      תיק הוצאה לפועל לא נסגר מעצמו — נדרשת פעולה פעילה. ישנן ארבע דרכים עיקריות:
+    </p>
+
+    <div class="overflow-x-auto my-6">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-brand-pale">
+            <th class="border border-neutral-border px-4 py-2 text-right font-semibold">דרך הסגירה</th>
+            <th class="border border-neutral-border px-4 py-2 text-right font-semibold">מי מגיש?</th>
+            <th class="border border-neutral-border px-4 py-2 text-right font-semibold">תשלום נדרש?</th>
+            <th class="border border-neutral-border px-4 py-2 text-right font-semibold">שכיחות</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-neutral-border px-4 py-2 font-medium">פירעון מלא</td>
+            <td class="border border-neutral-border px-4 py-2">הנושה (לאחר קבלת תשלום)</td>
+            <td class="border border-neutral-border px-4 py-2 text-green-700">כן — מלא</td>
+            <td class="border border-neutral-border px-4 py-2">הנפוצה ביותר</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-neutral-border px-4 py-2 font-medium">ויתור נושה</td>
+            <td class="border border-neutral-border px-4 py-2">הנושה מרצונו</td>
+            <td class="border border-neutral-border px-4 py-2 text-amber-700">לפעמים חלקי</td>
+            <td class="border border-neutral-border px-4 py-2">נפוצה בהסדרים</td>
+          </tr>
+          <tr>
+            <td class="border border-neutral-border px-4 py-2 font-medium">פסיקת בית משפט</td>
+            <td class="border border-neutral-border px-4 py-2">בית המשפט</td>
+            <td class="border border-neutral-border px-4 py-2 text-red-700">לא</td>
+            <td class="border border-neutral-border px-4 py-2">לאחר התנגדות</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-neutral-border px-4 py-2 font-medium">סיבות מיוחדות</td>
+            <td class="border border-neutral-border px-4 py-2">החייב / רשם</td>
+            <td class="border border-neutral-border px-4 py-2 text-red-700">לא</td>
+            <td class="border border-neutral-border px-4 py-2">נדירה יחסית</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- סעיף 2: פירעון מלא -->
+  <section id="full-payment">
+    <h2>1. פירעון מלא — השלבים המדויקים</h2>
+
+    <p>
+      הדרך הנפוצה ביותר לסגירת תיק היא תשלום מלא של החוב — קרן, ריבית, אגרות ושכר טרחה.
+      לאחר קבלת התשלום, הנושה מגיש בקשת סגירה ורשם ההוצאה לפועל מאשר אותה.
+    </p>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <span>
+          <strong>ברר את יתרת החוב המדויקת</strong> — פנה לרשם ההוצאה לפועל או לנושה
+          ובקש אישור יתרה עדכנית לתאריך נקוב. הסכום כולל קרן + ריבית פיגורים + אגרות + שכר טרחה.
+          אל תשלם לפי הנחשה.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>
+          <strong>שלם דרך הערוץ הרשמי</strong> — ניתן לשלם דרך אתר רשות האכיפה והגבייה,
+          בבנק הדואר, בבנק, או בקופת לשכת ההוצאה לפועל. שמור את האישור.
+          תשלום ישיר לנושה (מחוץ למערכת) אפשרי — אך חייב לקבל אישור בכתב ולוודא שהנושה
+          מגיש את בקשת הסגירה בפועל.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>
+          <strong>וודא שהנושה מגיש בקשת סגירה</strong> — לאחר קבלת התשלום, הנושה
+          מחויב להגיש לרשם "בקשה לסגירת תיק" (טופס מס' 11). אם הנושה מעכב — ניתן
+          לפנות לרשם ולדרוש ממנו לסגור את התיק לאחר הצגת הוכחת תשלום.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span>
+          <strong>קבל אישור סגירה בכתב מהרשם</strong> — לאחר אישור הרשם, תקבל
+          "אישור סגירת תיק". שמור מסמך זה לצמיתות — הוא ישמש אותך להוכיח שהתיק
+          נסגר מול בנקים, BDI, מעסיקים ועוד.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <span>
+          <strong>בקש הסרת הגבלות</strong> — חלק מההגבלות מוסרות אוטומטית, אחרות
+          דורשות פנייה מפורשת. שלח את אישור הסגירה לבנק שלך, לחברות כרטיסי האשראי,
+          ואם היה עיכוב יציאה מהארץ — לרשות האוכלוסין.
+        </span>
+      </li>
+    </ol>
+
+    <div class="warn-box">
+      <p class="font-semibold text-amber-800 mb-1">שים לב — הסגירה לא קורית אוטומטית</p>
+      <p class="text-sm">
+        אפילו אחרי תשלום מלא, התיק לא נסגר מאליו. הנושה חייב להגיש בקשת סגירה.
+        אם שילמת ישירות לנושה — וודא בכתב שהוא מתחייב להגיש את הבקשה תוך מספר ימים.
+        אחרת ייתכן שתגלה שהתיק עדיין "פתוח" במאגרים.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 3: ויתור נושה -->
+  <section id="waiver">
+    <h2>2. ויתור נושה — כשהנושה מוחל על החוב</h2>
+
+    <p>
+      ויתור נושה קורה כאשר הנושה מחליט — מרצונו — לסגור את התיק מבלי שהחוב שולם במלואו.
+      זה יכול לקרות במספר נסיבות:
+    </p>
+
+    <ul class="space-y-2 my-4">
+      <li>
+        <strong>הסדר חוב (מחיקה חלקית)</strong> — הגעתם להסכם שבו החייב שילם חלק מהחוב
+        והנושה ויתר על השאר. מקובל בחובות ישנים וקשים לגבייה.
+      </li>
+      <li>
+        <strong>ויתור מסחרי</strong> — הנושה מחליט שעלות המשך ההליכים גבוהה מהתועלת,
+        ומעדיף לסגור.
+      </li>
+      <li>
+        <strong>טעות בפתיחת התיק</strong> — הנושה פתח תיק בטעות, על אדם שגוי, או על חוב
+        שכבר שולם.
+      </li>
+      <li>
+        <strong>הסכם מחוץ לכותלי בית המשפט</strong> — גישור, פשרה, או הסכם פרטי שאושר.
+      </li>
+    </ul>
+
+    <h3>כיצד לבקש מהנושה לוותר?</h3>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <span>
+          <strong>פנה לנושה ישירות</strong> — בכתב (אימייל או מכתב רשום). הצג את
+          מצבך הכלכלי, הצע סכום פשרה, והסבר למה סגירת התיק עדיפה לשניכם.
+          נושים רבים מעדיפים "ציפור ביד" על פני המתנה ממושכת.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>
+          <strong>קבל את ההסכם בכתב חתום</strong> — לאחר שהגעתם להסכמה, הכן מסמך
+          שמפרט: הסכום שמשולם, ההתחייבות של הנושה לסגור את התיק, ומועד הגשת בקשת הסגירה.
+          חתום שני הצדדים.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>
+          <strong>הנושה מגיש הצהרת ויתור לרשם</strong> — הנושה מגיש "הצהרת ויתור
+          על הזכות בתיק" לרשם ההוצאה לפועל ומבקש סגירת התיק. הרשם מאשר.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span>
+          <strong>קבל אישור סגירה</strong> — בדיוק כמו בפירעון מלא, קבל אישור סגירה
+          בכתב מהרשם ושמור אותו.
+        </span>
+      </li>
+    </ol>
+
+    <div class="tip-box">
+      <p>
+        <strong>טיפ:</strong> נושים מוסדיים (בנקים, חברות אשראי, חברות ביטוח)
+        לעיתים מוכנים לסגור תיק תמורת 30–60% מסכום החוב, בפרט אם החוב ישן.
+        כדאי להתייעץ עם עורך דין לפני הפנייה — הוא יכול לנהל את המשא ומתן
+        ולהשיג תנאים טובים יותר.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 4: פסיקת בית משפט -->
+  <section id="court-order">
+    <h2>3. פסיקת בית משפט — אחרי התנגדות מוצלחת</h2>
+
+    <p>
+      אם הגשת התנגדות לתיק ובית המשפט קיבל את ההתנגדות — התיק נסגר כתוצאה מפסיקה שיפוטית.
+      זה קורה כאשר:
+    </p>
+
+    <ul class="space-y-2 my-4">
+      <li>
+        <strong>החוב הוכח כשגוי</strong> — הוכחת שהחוב לא שלך, כבר שולם, או שהסכום שגוי.
+      </li>
+      <li>
+        <strong>פגיעה בזכויות דיוניות</strong> — ההמצאה הייתה פגומה, לא קיבלת הודעה כנדרש,
+        או שנפלה טעות הליכית בפתיחת התיק.
+      </li>
+      <li>
+        <strong>התיישנות</strong> — בית המשפט קיבל את טענת ההתיישנות שלך.
+      </li>
+      <li>
+        <strong>פגמים בשטר / בפסק הדין</strong> — הבסיס המשפטי לתיק הוכח כפגום.
+      </li>
+    </ul>
+
+    <div class="info-box">
+      <p class="font-semibold text-blue-800 mb-1">מה קורה לאחר פסיקה לטובתך?</p>
+      <p>
+        לאחר פסיקת בית המשפט לסגירת התיק — הרשם מחויב לסגור את התיק,
+        כל ההגבלות מוסרות, וכל הסכומים שנגבו ביתר מוחזרים. אם נגרם לך נזק
+        (כגון עיקול משכורת שלא היה מוצדק) — ייתכן שיש לך עילת תביעה נגד הנושה.
+        התייעץ עם עורך דין.
+      </p>
+    </div>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <span>
+          <strong>הגש התנגדות תוך 20 יום</strong> — מרגע קבלת האזהרה, יש לך 20 יום
+          להגיש התנגדות. לאחר פרק זמן זה, קשה הרבה יותר לפתוח את התיק מחדש.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>
+          <strong>הדיון בבית המשפט</strong> — בית המשפט ידון בהתנגדות. בצד הנושה
+          להוכיח שהחוב אמיתי ותקין; בצד החייב להוכיח שיש עילה לביטול.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>
+          <strong>קבלת פסיקה לסגירת התיק</strong> — אם ההתנגדות התקבלה, בית המשפט
+          מוציא פסק דין הכולל הוראה לסגירת התיק ולהסרת כל ההגבלות.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span>
+          <strong>הגשת פסיקה לרשם</strong> — הגש את פסיקת בית המשפט ללשכת ההוצאה לפועל.
+          הרשם יפעל לפי הפסיקה וייסגר התיק רשמית.
+        </span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- סעיף 5: סיבות אחרות -->
+  <section id="other">
+    <h2>4. סיבות אחרות לסגירת תיק</h2>
+
+    <p>
+      מעבר לשלוש הדרכים העיקריות, ישנן נסיבות נוספות שבהן תיק עשוי להיסגר:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 not-prose">
+      <div class="border border-neutral-border rounded-xl p-4">
+        <h3 class="font-bold text-gray-800 mb-2">התיישנות התביעה</h3>
+        <p class="text-sm text-gray-600">
+          חוב אזרחי שלא נתבע תוך 7 שנים מיום הפירעון האחרון עשוי להיות מוגן
+          בהתיישנות. אם תיק נפתח על חוב מתושן — ניתן לבקש סגירתו.
+          חשוב: טענת התיישנות חייבת להיות מוגשת בבקשה מפורשת, אינה אוטומטית.
+        </p>
+      </div>
+
+      <div class="border border-neutral-border rounded-xl p-4">
+        <h3 class="font-bold text-gray-800 mb-2">פטירת הנושה ללא יורשים</h3>
+        <p class="text-sm text-gray-600">
+          אם הנושה נפטר ואין יורשים שמוכנים לקחת על עצמם את ניהול התיק — ניתן
+          לבקש סגירתו. הדבר מחייב הוכחה מתאימה (צו ירושה, עיזבון ריק וכדומה).
+        </p>
+      </div>
+
+      <div class="border border-neutral-border rounded-xl p-4">
+        <h3 class="font-bold text-gray-800 mb-2">הפטר בחדלות פירעון</h3>
+        <p class="text-sm text-gray-600">
+          לאחר הליך חדלות פירעון מוצלח ומתן "הפטר" מבית המשפט — תיקי הוצאה לפועל
+          שנכללים בהליך נסגרים, וחובות הנכללים בהפטר נמחקים לצמיתות.
+          ראה: <a href="/insolvency/" class="text-brand hover:underline">הליך חדלות פירעון</a>.
+        </p>
+      </div>
+
+      <div class="border border-neutral-border rounded-xl p-4">
+        <h3 class="font-bold text-gray-800 mb-2">פטירת החייב</h3>
+        <p class="text-sm text-gray-600">
+          במקרה פטירת החייב, ההליכים מועברים לעיזבון. אם לעיזבון אין נכסים
+          לפירעון, הנושים מגישים תביעות לעיזבון ואם אין נכסים — התיק מסתיים.
+          עורכי דין לדיני ירושה יכולים לסייע.
+        </p>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <p class="font-semibold text-amber-800 mb-1">שים לב — בכל מקרה מיוחד</p>
+      <p class="text-sm">
+        בכל אחד מהמקרים הנדירים הללו נדרש ייצוג משפטי. אל תנסה לטפל בהם לבד.
+        טעות בהגשה עלולה לסגור בפניך את האפשרות לסגור את התיק בדרך זו.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 6: מה קורה אחרי -->
+  <section id="after-closure">
+    <h2>מה קורה אחרי סגירת התיק?</h2>
+
+    <p>
+      סגירת התיק היא תחילתו של תהליך הסרת ההשפעות. כך זה עובד בפועל:
+    </p>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <span>
+          <strong>הגבלות מוסרות בהדרגה</strong> — עיקולי בנק מוסרים תוך 3–7 ימי עסקים
+          לאחר הסגירה הרשמית. עיכוב יציאה מהארץ — עד 7 ימים. הגבלת כרטיסי אשראי
+          וחשבונות — תלוי בבנק, לרוב 7–14 יום.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>
+          <strong>BDI ולשכות אשראי</strong> — דירוג האשראי ב-BDI מתעדכן תוך 30–90 יום.
+          ייתכן שיישאר "רישום היסטורי" שמציין שהיה תיק הוצאה לפועל שנסגר, אך לא חוב פעיל.
+          הרישום ב-BDI נמחק לאחר 7 שנים.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>
+          <strong>לשכת ההוצאה לפועל</strong> — הרישום בלשכה נשמר לפחות 7 שנים
+          אפילו לאחר הסגירה, אך מסומן כ"סגור". גורמים שיש להם גישה (בנקים, גופים
+          מורשים) יוכלו לראות שהיה תיק שנסגר.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span>
+          <strong>עיקולי נכסים (רכב, דירה)</strong> — הסרת עיקול ממרשם המקרקעין
+          או ממשרד הרישוי דורשת פנייה ספציפית עם אישור הסגירה. לפעמים נדרש
+          עורך דין לביצוע ההסרה הטכנית.
+        </span>
+      </li>
+    </ol>
+
+    <div class="tip-box">
+      <p>
+        <strong>המלצה:</strong> לאחר סגירת התיק, הפק דו"ח BDI (ניתן לקבל
+        דו"ח עצמי אחד בשנה בחינם) ובדוק שהמידע מעודכן. אם יש שגיאות — ניתן
+        להגיש פנייה לתיקון הרישום.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 7: מחיקה לעומת פירעון מלא -->
+  <section id="deletion-vs-paid">
+    <h2>מחיקת חוב לעומת פירעון מלא — מה ההבדל?</h2>
+
+    <p>
+      יש הבדל מהותי בין שני סוגי הסגירה, הן מבחינה משפטית והן מבחינת ההשפעה
+      על הדירוג הפיננסי שלך:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 not-prose">
+      <div class="border border-green-200 bg-green-50 rounded-xl p-5">
+        <h3 class="font-bold text-gray-800 mb-3">פירעון מלא</h3>
+        <ul class="text-sm text-gray-700 space-y-2">
+          <li>החוב שולם במלואו</li>
+          <li>רישום ב-BDI: "תיק נסגר — שולם"</li>
+          <li>ניתן לקבל אישור "ללא חוב" מרשם ההוצאה לפועל</li>
+          <li>דירוג אשראי מתאושש מהר יותר</li>
+          <li>קל יותר לקבל אשראי בעתיד</li>
+        </ul>
+      </div>
+
+      <div class="border border-amber-200 bg-amber-50 rounded-xl p-5">
+        <h3 class="font-bold text-gray-800 mb-3">מחיקת חוב (ויתור / הפטר)</h3>
+        <ul class="text-sm text-gray-700 space-y-2">
+          <li>החוב לא שולם במלואו</li>
+          <li>רישום ב-BDI: "תיק נסגר — מחיקה / ויתור"</li>
+          <li>השפעה שלילית ארוכה יותר על דירוג אשראי</li>
+          <li>גופים פיננסיים עשויים לסרב לאשראי בעתיד</li>
+          <li>חוסך כסף בטווח הקצר</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <p class="font-semibold text-blue-800 mb-1">מה עדיף?</p>
+      <p>
+        אם יש לך אפשרות לשלם — עדיף לשלם את מלוא החוב ולקבל אישור "ללא חוב".
+        אם אין לך יכולת — ויתור נושה עדיין עדיף מהשארת התיק פתוח עם כל
+        ההגבלות הנלוות. בכל מקרה, ייעוץ עורך דין יסייע לבחור את הדרך הנכונה.
+      </p>
+    </div>
+  </section>
+
+  <!-- סעיף 8: וידוא סגירה -->
+  <section id="verify">
+    <h2>איך לוודא שהתיק באמת נסגר?</h2>
+
+    <p>
+      אל תסמוך על הבטחות בעל פה. הנה הדרכים המעשיות לוודא שהסגירה בוצעה בפועל:
+    </p>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <span>
+          <strong>בקש אישור סגירה בכתב מהרשם</strong> — זהו המסמך הרשמי ביותר.
+          שמור אותו לתמיד. לאישור זה יש תוקף מול כל גוף — בנק, BDI, מעסיק, ממשלה.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>
+          <strong>בדוק באתר רשות האכיפה והגבייה</strong> — כנס לאתר
+          <a href="https://www.gov.il/he/departments/enforcement_and_collection_authority" target="_blank" rel="noopener" class="text-brand hover:underline">ממשל זמין</a>
+          ובדוק את סטטוס התיק עם מספר הזהות שלך. התיק הסגור צריך להופיע כ"סגור".
+        </span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>
+          <strong>פנה ישירות ללשכת ההוצאה לפועל</strong> — ניתן לבדוק בפנייה
+          טלפונית או אישית ללשכה הרלוונטית עם ת"ז. שוחח עם פקיד ובקש
+          אישור מפורש שהתיק נסגר.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span>
+          <strong>הזמן דו"ח BDI</strong> — לאחר 4–6 שבועות מסגירת התיק, הפק דו"ח BDI
+          ובדוק שהמידע עודכן. אם לא — פנה ל-BDI עם אישור הסגירה ובקש תיקון הרישום.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <span>
+          <strong>בדוק עם הבנק שלך</strong> — ודא עם הבנק שעיקולים הוסרו
+          ושחשבון מוגבל חזר לתפקוד מלא. לפעמים נדרשת פנייה ישירה עם אישור הסגירה.
+        </span>
+      </li>
+    </ol>
+
+    <div class="warn-box">
+      <p class="font-semibold text-amber-800 mb-1">מה אם התיק "נסגר" אבל ההגבלות עדיין פעילות?</p>
+      <p class="text-sm">
+        לעיתים יש פער בין מועד הסגירה הרשמי לבין הסרת ההגבלות במערכות שונות.
+        אם עברו יותר מ-30 יום מסגירת התיק וההגבלות עדיין פעילות — פנה לרשם
+        ודרוש הסרה מפורשת, ואת אישור הסגירה שלח לכל גוף רלוונטי בנפרד.
+      </p>
+    </div>
+  </section>
+
+  <!-- שאלות נפוצות -->
+  <section id="faq">
+    <h2>שאלות נפוצות</h2>
+
+    <div class="space-y-4 my-6">
+
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          כיצד סוגרים תיק הוצאה לפועל?
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">
+          סגירת תיק הוצאה לפועל מתבצעת בכמה דרכים: פירעון מלא — הנושה מגיש בקשת סגירה לאחר קבלת
+          תשלום; ויתור נושה — הנושה מגיש הצהרת ויתור לרשם; פסיקת בית משפט — לאחר התנגדות מוצלחת;
+          או בנסיבות מיוחדות כגון התיישנות, פטירת נושה ללא יורשים, או הפטר בחדלות פירעון.
+          בכל מקרה, הרשם הוא שמאשר את הסגירה ומוציא את האישור הרשמי.
+        </p>
+      </details>
+
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          כמה זמן לוקח לסגור תיק הוצאה לפועל?
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">
+          לאחר הגשת בקשת הסגירה, הרשם מאשר בדרך כלל תוך 7–14 ימי עסקים. ההסרה ממאגרי ההגבלות
+          (BDI, בנקים, משרד הפנים) לוקחת עוד 7–30 יום נוספים בהתאם לסוג ההגבלה.
+          בסך הכל יש לצפות לתהליך של כחודש עד לניקוי מלא של כל הרישומים.
+        </p>
+      </details>
+
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          האם הנושה יכול לסגור תיק?
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">
+          כן — הנושה (הזוכה) הוא הצד שמגיש את בקשת הסגירה ברוב המקרים.
+          הוא יכול לסגור את התיק לאחר קבלת תשלום מלא, או לוותר על התביעה מכל סיבה שהיא.
+          החייב אינו יכול לסגור את התיק מיוזמתו — אלא אם כן הגיש התנגדות מוצלחת שהתקבלה בבית המשפט.
+        </p>
+      </details>
+
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          מה קורה לרישומים אחרי סגירת תיק?
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">
+          לאחר סגירת התיק: ההגבלות (עיקולים, עיכוב יציאה, כרטיסי אשראי) מוסרות בהדרגה תוך שבועות.
+          הרישום בלשכת ההוצאה לפועל נשמר כ-7 שנים (מסומן כ"סגור"). דירוג האשראי ב-BDI
+          מתעדכן תוך 30–90 יום. כדאי לבקש אישור סגירה בכתב ולשמור אותו — הוא יוכיח
+          את הסגירה מול כל גוף פיננסי בעתיד.
+        </p>
+      </details>
+
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          האם ניתן לסגור תיק הוצאה לפועל ללא תשלום?
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">
+          כן — ישנן מספר דרכים לסגירת תיק ללא תשלום מלא: ויתור נושה (הנושה מוחל על החוב),
+          פסיקת בית משפט לטובת החייב בהתנגדות, מחיקת חוב עקב חדלות פירעון (הפטר),
+          התיישנות התביעה, או פטירת הנושה ללא יורשים. בכל מקרה כזה נדרש הליך משפטי פורמלי
+          ובדרך כלל גם ייעוץ של עורך דין.
+        </p>
+      </details>
+
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          מה ההבדל בין עיכוב הליכים לסגירת תיק?
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">
+          עיכוב הליכים (הקפאה) הוא השהיית פעולות הגבייה באופן זמני — התיק עדיין פתוח,
+          החוב עדיין קיים, והנושה יכול לחדש את ההליכים בכל עת. סגירת תיק היא סיום מוחלט
+          ובלתי הפיך — ההליכים מסתיימים, ההגבלות מוסרות, והתיק נסגר לצמיתות.
+          עיכוב הוא ארעי; סגירה היא קבועה.
+        </p>
+      </details>
+
+    </div>
+  </section>
+
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה הצעד הבא שלך?</h3>
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/guides/bitul-ikul/" class="text-brand hover:underline">ביטול עיקול — כל הדרכים</a></li>
+      <li>← <a href="/guides/tzav-tashlumim/" class="text-brand hover:underline">איך מגישים בקשה לצו תשלומים</a></li>
+      <li>← <a href="/guides/hitiyashnoot-chov/" class="text-brand hover:underline">התיישנות חוב — מתי החוב פוקע?</a></li>
+    </ul>
+  </div>
+
+</GuideLayout>

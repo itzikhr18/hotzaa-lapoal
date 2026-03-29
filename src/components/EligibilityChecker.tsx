@@ -253,7 +253,7 @@ export default function EligibilityChecker() {
           </div>
         </div>
 
-        <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+        <p className="text-xs text-gray-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2">
           ⚠️ תוצאות אלו הן הכוונה כללית בלבד ואינן ייעוץ משפטי. לייעוץ אישי — פנה לעורך דין.
         </p>
 

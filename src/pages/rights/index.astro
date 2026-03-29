@@ -3,13 +3,26 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'זכויות חייב בהוצאה לפועל — המדריך המלא',
-  description: 'כל הזכויות שיש לך כחייב בהוצאה לפועל — מה מוגן מעיקול, אילו הגבלות מותרות, ואיך מגנים על עצמך',
-  inLanguage: 'he',
-};
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'זכויות חייב בהוצאה לפועל — המדריך המלא',
+    description: 'כל הזכויות שיש לך כחייב בהוצאה לפועל — מה מוגן מעיקול, אילו הגבלות מותרות, ואיך מגנים על עצמך',
+    inLanguage: 'he',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'האם ניתן לעקל את כל המשכורת שלי?', acceptedAnswer: { '@type': 'Answer', text: 'לא. החוק מגן על שכר מינימום (6,247.67 ₪ ברוטו נכון לאפריל 2025) לחלוטין. מהסכום שמעל שכר המינימום — ניתן לעקל לכל היותר שליש.' } },
+      { '@type': 'Question', name: 'האם קצבאות ביטוח לאומי ניתנות לעיקול?', acceptedAnswer: { '@type': 'Answer', text: 'לא. קצבאות ביטוח לאומי (קצבת ילדים, נכות, זקנה, שאירים, דמי אבטלה, גמלת סיעוד) מוגנות לחלוטין מעיקול. אם עיקלו אותן — ניתן לבקש ביטול מיידי.' } },
+      { '@type': 'Question', name: 'האם יכולים לעקל את כלי העבודה שלי?', acceptedAnswer: { '@type': 'Answer', text: 'לא. כלי עבודה נחוצים לפרנסה — מחשב לעצמאי, כלי חשמל, ציוד מקצועי — מוגנים מעיקול. גם ציוד רפואי חיוני, בגדים ורהיטים בסיסיים לבית — מוגנים.' } },
+      { '@type': 'Question', name: 'האם יכולים לשלוח אותי לכלא על חוב?', acceptedAnswer: { '@type': 'Answer', text: 'בישראל לא נשלחים לכלא על חוב כספי רגיל. מאסר אפשרי רק בשני מקרים: אי-תשלום מזונות, או הוכחת השתמטות מכוונת מתשלום (הסתרת נכסים).' } },
+      { '@type': 'Question', name: 'מה עושים אם עיקלו כסף מוגן?', acceptedAnswer: { '@type': 'Answer', text: 'פנה מיד לרשם ההוצאה לפועל עם הוכחות (תלושי שכר, אישור ביטוח לאומי) ובקש ביטול העיקול. הרשם מחויב לבטל עיקול על כספים מוגנים — אין לו שיקול דעת במקרה זה.' } },
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -107,7 +120,28 @@ const schema = {
       </div>
     </div>
 
-    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-brand-dark mb-6">שאלות נפוצות על זכויות חייבים</h2>
+      <div class="space-y-3">
+        {[
+          { q: 'האם ניתן לעקל את כל המשכורת שלי?', a: 'לא. שכר מינימום (6,247.67 ₪ ברוטו, אפריל 2025) מוגן לחלוטין. מהסכום שמעל — ניתן לעקל לכל היותר שליש.' },
+          { q: 'האם קצבאות ביטוח לאומי ניתנות לעיקול?', a: 'לא. כל קצבאות הביטוח הלאומי מוגנות לחלוטין — קצבת ילדים, נכות, זקנה, שאירים, דמי אבטלה. עיקול עליהן — לא חוקי.' },
+          { q: 'האם יכולים לשלוח אותי לכלא על חוב?', a: 'בישראל לא נשלחים לכלא על חוב כספי רגיל. מאסר אפשרי רק בשני מקרים: אי-תשלום מזונות, או הוכחת השתמטות מכוונת (הסתרת נכסים).' },
+          { q: 'מה עושים אם עיקלו כסף מוגן?', a: 'פנה מיד לרשם ההוצאה לפועל עם הוכחות (תלושי שכר, אישור ביטוח לאומי). הרשם מחויב לבטל — אין לו שיקול דעת על כספים מוגנים.' },
+          { q: 'האם חייב יכול לעיין בתיק שנגדו?', a: 'כן. זכות עיון בתיק ההוצאה לפועל מובטחת בחוק. ניתן לפנות ללשכה עם תעודת זהות, או דרך המערכת המקוונת של רשות האכיפה והגבייה.' },
+        ].map(faq => (
+          <details class="border border-neutral-border rounded-xl group">
+            <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+              {faq.q}
+              <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700">
       ⚠️ המידע כאן הוא כללי בלבד ואינו מהווה ייעוץ משפטי. לייעוץ אישי — פנה לעורך דין.
     </div>
 

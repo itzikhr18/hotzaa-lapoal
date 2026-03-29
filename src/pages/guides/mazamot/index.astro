@@ -1,0 +1,640 @@
+---
+import GuideLayout from '../../../layouts/GuideLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'האם ניתן למחוק חוב מזונות בהליך חדלות פירעון?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לא. חוב מזונות אינו בר-מחיקה בהליך חדלות פירעון (פשיטת רגל). גם לאחר קבלת "הפטר" מכלל החובות, חוב המזונות נשאר בתוקפו המלא. זהו אחד החובות היחידים שמוחרגים במפורש מהפטר על-פי חוק חדלות פירעון ושיקום כלכלי, תשע"ח-2018.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה קורה כשאב לא משלם מזונות? מתי מתערב ביטוח לאומי?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כאשר האב לא משלם מזונות ולא ניתן לגבות ממנו בהוצאה לפועל, האם יכולה להגיש תביעה לביטוח לאומי לקבלת "גמלת מזונות". ביטוח לאומי ישלם לאם עד תקרה חודשית (כ-1,550 ש"ח לילד הראשון נכון ל-2025) ויפעל בעצמו לגביית החוב מהאב. הזכאות מותנית בכך שהאם היא תושבת ישראל, הילד מתגורר עמה, ויש פסק דין מזונות תקף שלא בוצע.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה מהמשכורת ניתן לעקל בגין מזונות?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'עיקול שכר בגין מזונות מיוחד משאר חובות. בעוד שבחובות רגילים המגבלה היא שליש מהשכר הנטו, בחוב מזונות ניתן לעקל עד 50% מהמשכורת. בנוסף, עיקול מזונות חל גם על שכר שאינו עולה על שכר המינימום — מה שאינו מותר בחובות רגילים.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם צו עיכוב יציאה מהארץ מוצא אוטומטית בגין חוב מזונות?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כן. בשונה מחובות כספיים רגילים, בגין פיגור בתשלום מזונות ניתן להוציא צו עיכוב יציאה מהארץ ללא צורך בפנייה מיוחדת של הזוכה — הדבר יכול להיעשות באופן יזום על-ידי רשם ההוצאה לפועל. הצו מוצא ברגע שנצבר פיגור משמעותי, ומוסר לרשויות הגבול.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'איך מפחיתים חוב מזונות שנצבר?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ניתן לפנות לבית המשפט לענייני משפחה ולבקש "הפחתת מזונות" או "ביטול פיגורים" (מחיקת חוב צבור). הבית משפט יבחן את הנסיבות — שינוי במצב הכלכלי של האב, נישואין שניים, ילדים נוספים, מצב הילד. חשוב לדעת: ניתן לבקש הפחתה לעתיד, אך ביטול פיגורי עבר הוא נדיר ומצריך הוכחת נסיבות חריגות. לא ניתן לבטל חוב מזונות בהוצאה לפועל עצמה — רק בית המשפט הוא הסמכות לכך.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה ההבדל בין מזונות ילדים למזונות אישה בהוצאה לפועל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'שניהם ניתנים לאכיפה בהוצאה לפועל, אך ישנם הבדלים: מזונות ילדים נהנים מעדיפות גבוהה יותר בסדר הגבייה ומגמלת ביטוח לאומי. מזונות אישה (מדור, מזון, ביגוד לפי הדין האישי) ניתנים לאכיפה בגדרי הדין הדתי — לרוב בבית הדין הרבני — אך ניתן לפתוח תיק גבייה גם בהוצאה לפועל. שיעור עיקול השכר זהה בשני המקרים (עד 50%).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם בית הדין הרבני או בית המשפט לענייני משפחה מוסמכים לדון במזונות?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'בישראל יש תחרות סמכויות. בית הדין הרבני מוסמך לדון במזונות אישה כשהצדדים יהודים, ובמזונות ילדים אם הוגשה גם תביעת גירושין. בית המשפט לענייני משפחה מוסמך לדון במזונות ילדים בכל עת, ובמזונות אישה אם תביעת הגירושין לא הוגשה לבית הדין. בפועל, לאחר גירושין, מרבית תיקי המזונות מטופלים בבית המשפט לענייני משפחה. ביצוע פסק הדין — גביית הכסף בפועל — נעשה תמיד דרך לשכת ההוצאה לפועל.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה עושים כשהאב מסתיר נכסים כדי להתחמק מתשלום מזונות?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ניתן לנקוט בכמה פעולות: (1) לבקש מרשם ההוצאה לפועל לזמן את החייב לחקירת יכולת — גם אם יש חשש שהוא מסתיר הכנסות. (2) לדרוש גילוי נכסים מלא. (3) לפנות לרשות המסים ולמוסד לביטוח לאומי לקבלת מידע. (4) להגיש תביעה נפרדת בבית המשפט לקביעת "מזונות מוגברים" אם מתברר שהאב הרוויח יותר מהצהרתו. הסתרת נכסים מהוצאה לפועל עלולה להוות עבירה פלילית.',
+      },
+    },
+  ],
+};
+---
+
+<GuideLayout
+  title="מזונות בהוצאה לפועל — עיקולים, גבייה וזכויות (2026)"
+  description="מדריך מקיף לגביית מזונות ילדים ואישה בהוצאה לפועל בישראל: עיקול שכר עד 50%, גמלת מזונות ביטוח לאומי, עיכוב יציאה אוטומטי לחייב מזונות, ואיך מפחיתים חוב שנצבר."
+  breadcrumb={[
+    { label: 'מדריכים', href: '/guides/' },
+    { label: 'מזונות', href: '/guides/mazamot/' },
+  ]}
+  publishDate="2025-03-01"
+  updateDate="2026-03-28"
+  readTime="7 דקות"
+  schema={[faqSchema, {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'איך גובים מזונות דרך הוצאה לפועל',
+    description: 'שלבי פתיחת תיק מזונות בהוצאה לפועל וגביית הכסף',
+    totalTime: 'P14D',
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'השג פסק דין מזונות',
+        text: 'יש לך פסק דין מזונות מבית המשפט לענייני משפחה או מבית הדין הרבני? זו הדרישה הראשונה. ללא פסק דין לא ניתן לפתוח תיק הוצאה לפועל.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'פתח תיק הוצאה לפועל',
+        text: 'הגש בקשה לפתיחת תיק גבייה ללשכת ההוצאה לפועל הקרובה. צרף: פסק הדין, תעודת זהות, ופרטי הנתבע. התיק נפתח במסלול מזונות עם עדיפות גבוהה.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'בקש עיקולים מיידיים',
+        text: 'ברגע שהתיק נפתח, ניתן לבקש עיקול משכורת עד 50%, עיקול חשבון בנק, ועיכוב יציאה מהארץ אוטומטי. כל הכלים הללו חזקים יותר מאשר בתיקים רגילים.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 4,
+        name: 'פנה לביטוח לאומי אם אין גבייה',
+        text: 'אם הגבייה מהאב נכשלת, זכאית להגיש תביעה לגמלת מזונות בביטוח לאומי. ביטוח לאומי ישלם לך ויגבה בעצמו מהאב.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 5,
+        name: 'אכוף דרך חקירת יכולת',
+        text: 'אם החייב מסתיר נכסים, בקש מרשם ההוצאה לפועל לזמנו לחקירת יכולת. הסתרת נכסים מהוצאה לפועל היא עבירה פלילית.',
+      },
+    ],
+  }]}
+>
+
+  <div class="alert-box warning-box" style="background:#fff8e1;border-right:4px solid #f59e0b;padding:1rem 1.25rem;border-radius:0.5rem;margin-bottom:1.5rem;">
+    <p><strong>גילויי נאות:</strong> המידע במאמר זה הוא כללי בלבד ואינו מהווה ייעוץ משפטי. לכל מקרה ספציפי יש להתייעץ עם עורך דין משפחה.</p>
+  </div>
+
+  <p class="lead-paragraph" style="font-size:1.1rem;line-height:1.75;margin-bottom:1.5rem;">
+    תיק מזונות בהוצאה לפועל הוא אחד התיקים החמורים ביותר שניתן לנהל מול חייב — ולא בכדי.
+    המחוקק הישראלי העניק לגבייה זו מעמד עדיף, כלים חזקים במיוחד, וחסינות מוחלטת מפני מחיקה.
+    אם אתם צד כלשהו בתיק מזונות — קורבן או חייב — הבנת הכללים חשובה לכם.
+  </p>
+
+  <!-- תוכן עניינים -->
+  <nav aria-label="תוכן עניינים" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:0.75rem;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+    <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">תוכן עניינים</h2>
+    <ol style="margin:0;padding-right:1.25rem;line-height:2;">
+      <li><a href="#what-is-mazamot">מהם מזונות בהוצאה לפועל?</a></li>
+      <li><a href="#priority">עדיפות חוב מזונות על פני חובות אחרים</a></li>
+      <li><a href="#tools">כלי האכיפה המיוחדים</a></li>
+      <li><a href="#salary-garnishment">עיקול שכר — עד 50%</a></li>
+      <li><a href="#travel-ban">עיכוב יציאה מהארץ אוטומטי</a></li>
+      <li><a href="#bituach-leumi">גמלת מזונות מביטוח לאומי</a></li>
+      <li><a href="#reduce-debt">איך מפחיתים חוב מזונות?</a></li>
+      <li><a href="#jurisdiction">סמכות שיפוט: בית הדין הרבני לעומת בית משפט משפחה</a></li>
+      <li><a href="#process">תהליך פתיחת תיק גבייה</a></li>
+      <li><a href="#faq">שאלות נפוצות</a></li>
+    </ol>
+  </nav>
+
+  <!-- סעיף 1 -->
+  <section id="what-is-mazamot">
+    <h2>מהם מזונות בהוצאה לפועל?</h2>
+
+    <p>
+      מזונות הם תשלום תקופתי שבית משפט או בית דין מחייב צד אחד (לרוב האב) לשלם לטובת ילדיו
+      ו/או בן-הזוג לשעבר. כשהחייב אינו משלם, הדרך לגבות את הכסף בפועל עוברת דרך
+      <strong>לשכת ההוצאה לפועל</strong>.
+    </p>
+
+    <p>
+      שלא כמו חובות כספיים רגילים (הלוואות, כרטיסי אשראי, פסקי דין), מזונות מהווים
+      קטגוריה משפטית נפרדת עם כללים נוקשים הרבה יותר:
+    </p>
+
+    <ul>
+      <li>אינם ניתנים למחיקה בכל הליך משפטי, כולל פשיטת רגל/חדלות פירעון</li>
+      <li>נהנים מעדיפות בסדר הגבייה מנכסי החייב</li>
+      <li>מאפשרים עיקול שכר גבוה יותר מחובות רגילים</li>
+      <li>מזכים בצו עיכוב יציאה מהארץ ללא תנאים מיוחדים</li>
+    </ul>
+
+    <div style="background:#ecfdf5;border-right:4px solid #10b981;padding:1rem 1.25rem;border-radius:0.5rem;margin-top:1rem;">
+      <p style="margin:0;"><strong>עובדה קריטית:</strong> פסיקה ישראלית עקבית קובעת כי זכות ילד למזונות גוברת על כמעט כל זכות אחרת.
+      גם אב שנמצא בהליך חדלות פירעון וקיבל הפטר מכלל חובותיו — חוב המזונות נשאר.</p>
+    </div>
+  </section>
+
+  <!-- סעיף 2 -->
+  <section id="priority">
+    <h2>עדיפות חוב מזונות על פני חובות אחרים</h2>
+
+    <p>
+      סעיף 80 לחוק ההוצאה לפועל, תשכ"ז-1967, קובע כי בחלוקת כספים שנגבו מחייב,
+      מזונות מקבלים <strong>עדיפות ראשונה</strong> לפני חובות אחרים — גם לפני מינהל מקרקעי ישראל
+      וגם לפני נושים מובטחים בנסיבות מסוימות.
+    </p>
+
+    <p>בפועל, סדר העדיפויות בחלוקת כספים שנגבו:</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem;">
+      <thead>
+        <tr style="background:#1e3a5f;color:#fff;">
+          <th style="padding:0.6rem 0.8rem;text-align:right;">מקום</th>
+          <th style="padding:0.6rem 0.8rem;text-align:right;">סוג חוב</th>
+          <th style="padding:0.6rem 0.8rem;text-align:right;">הערות</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f0fdf4;">
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">1</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;"><strong>מזונות</strong></td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">עדיפות מוחלטת</td>
+        </tr>
+        <tr>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">2</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">שכר עבודה ופיצויי פיטורין</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">עדיפות מיוחדת</td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">3</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">חובות מובטחים (משכנתא, שעבוד)</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">עד גובה הביטחון</td>
+        </tr>
+        <tr>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">4</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">חובות לרשויות המדינה (מסים)</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;"> </td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:0.6rem 0.8rem;">5</td>
+          <td style="padding:0.6rem 0.8rem;">חובות רגילים (בנקים, אשראי)</td>
+          <td style="padding:0.6rem 0.8rem;">לפי תאריך הגשה</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- סעיף 3 -->
+  <section id="tools">
+    <h2>כלי האכיפה המיוחדים בתיקי מזונות</h2>
+
+    <p>
+      רשם ההוצאה לפועל מחויב לפעול בתיקי מזונות באופן יזום יותר מבתיקים רגילים.
+      כלי האכיפה הזמינים הם:
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;">
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.5rem;padding:1rem;">
+        <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.5rem;">עיקול חשבון בנק</h3>
+        <p style="margin:0;font-size:0.9rem;">עיקול ישיר על חשבונות הבנק של החייב, כולל חשבונות שיש עליהם הגבלה בגין נסיבות אחרות.</p>
+      </div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.5rem;padding:1rem;">
+        <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.5rem;">עיקול שכר</h3>
+        <p style="margin:0;font-size:0.9rem;">הוראה ישירה למעסיק לנכות מהמשכורת — עד 50% בתיקי מזונות.</p>
+      </div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.5rem;padding:1rem;">
+        <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.5rem;">עיקול נכסים ומכירה</h3>
+        <p style="margin:0;font-size:0.9rem;">תפיסה ומכירה של רכב, רהיטים, ציוד עסקי ואף נדל"ן.</p>
+      </div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.5rem;padding:1rem;">
+        <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.5rem;">עיכוב יציאה מהארץ</h3>
+        <p style="margin:0;font-size:0.9rem;">מוצא אוטומטית עם צבירת פיגור. לא מותנה בתנאים כמו בחובות רגילים.</p>
+      </div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.5rem;padding:1rem;">
+        <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.5rem;">שלילת רישיון נהיגה</h3>
+        <p style="margin:0;font-size:0.9rem;">בפיגור משמעותי ניתן לבקש שלילת רישיון — אמצעי לחץ אפקטיבי.</p>
+      </div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.5rem;padding:1rem;">
+        <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.5rem;">מאסר אזרחי</h3>
+        <p style="margin:0;font-size:0.9rem;">בנסיבות קיצוניות — חייב שמסרב לשלם למרות יכולת — ניתן להורות על מאסר.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- סעיף 4 -->
+  <section id="salary-garnishment">
+    <h2>עיקול שכר — עד 50% בתיקי מזונות</h2>
+
+    <p>
+      ברוב תיקי ההוצאה לפועל, הגבלת עיקול השכר היא <strong>שליש (33.3%)</strong> מהשכר נטו,
+      ורק מעל שכר המינימום. בתיקי מזונות הכללים שונים לגמרי:
+    </p>
+
+    <ul>
+      <li><strong>עד 50% מהשכר נטו</strong> ניתן לעיקול</li>
+      <li>העיקול חל גם על שכר שאינו עולה על שכר המינימום (בניגוד לחובות רגילים)</li>
+      <li>ניתן לעקל קצבאות, דמי לידה ותשלומים אחרים מהמדינה — בתנאים</li>
+      <li>העיקול מועבר ישירות למוטב (האם/ילדים) — לא נכנס לקופת ההוצאה לפועל</li>
+    </ul>
+
+    <div style="background:#fff8e1;border-right:4px solid #f59e0b;padding:1rem 1.25rem;border-radius:0.5rem;margin-top:1rem;">
+      <p style="margin:0;"><strong>דוגמה מספרית:</strong> אב מרוויח 8,000 ₪ נטו.
+      בחוב רגיל — עיקול מקסימלי כ-2,200 ₪. בתיק מזונות — עיקול אפשרי עד 4,000 ₪.</p>
+    </div>
+
+    <p style="margin-top:1rem;">
+      יחד עם זאת, הרשם בוחן את כלל הנסיבות ועשוי לקבוע שיעור נמוך יותר אם 50% יפגע קשות
+      ביכולת החייב לקיים את עצמו ברמה בסיסית.
+    </p>
+  </section>
+
+  <!-- סעיף 5 -->
+  <section id="travel-ban">
+    <h2>עיכוב יציאה מהארץ אוטומטי בתיקי מזונות</h2>
+
+    <p>
+      בניגוד לתיקים כספיים רגילים שבהם הזוכה צריך לבקש צו עיכוב יציאה ולהוכיח חשש לבריחה —
+      בתיקי מזונות, עיכוב יציאה מהארץ מוצא <strong>כמעט אוטומטית</strong> עם צבירת פיגור,
+      ולעתים ביוזמת רשם ההוצאה לפועל בלי שהאם צריכה לבקש.
+    </p>
+
+    <h3>מתי מוצא הצו?</h3>
+    <ul>
+      <li>כשנצבר פיגור בתשלומים (לרוב שלושה חודשים או יותר)</li>
+      <li>כשהחייב לא עמד בצו התשלומים שנקבע</li>
+      <li>כשהחייב לא הגיע לדיון שנקבע בלשכת ההוצאה לפועל</li>
+    </ul>
+
+    <h3>איך מבטלים?</h3>
+    <p>
+      ביטול עיכוב יציאה בתיק מזונות קשה יותר מאשר בחובות רגילים. לרוב נדרש:
+    </p>
+    <ol>
+      <li>סילוק הפיגורים במלואם, או</li>
+      <li>הסדר תשלומים מאושר בידי הרשם + ערבות, או</li>
+      <li>בנסיבות הומניטריות — בקשה מנומקת עם מסמכים לאישור יציאה זמנית</li>
+    </ol>
+
+    <p>למידע מורחב על צווי עיכוב יציאה, ראו את <a href="/guides/ikul-yetzia/">המדריך המלא לעיכוב יציאה מהארץ</a>.</p>
+  </section>
+
+  <!-- סעיף 6 -->
+  <section id="bituach-leumi">
+    <h2>גמלת מזונות מביטוח לאומי</h2>
+
+    <p>
+      כאשר האב אינו משלם מזונות ולא ניתן לגבות ממנו — המדינה מספקת "רשת ביטחון"
+      דרך <strong>גמלת מזונות</strong> של המוסד לביטוח לאומי.
+    </p>
+
+    <h3>תנאי זכאות (2025)</h3>
+    <ul>
+      <li>יש פסק דין מזונות תקף</li>
+      <li>פסק הדין לא בוצע — לא שולם המזונות</li>
+      <li>הוגש תיק הוצאה לפועל (או הוכח שגביה בלתי אפשרית)</li>
+      <li>הילד מתגורר עם האם בישראל ואינו נשוי</li>
+      <li>הילד מתחת לגיל 18 (בנסיבות מסוימות עד 21)</li>
+      <li>האם היא תושבת ישראל</li>
+    </ul>
+
+    <h3>גובה הגמלה (2025–2026)</h3>
+
+    <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem;">
+      <thead>
+        <tr style="background:#1e3a5f;color:#fff;">
+          <th style="padding:0.6rem 0.8rem;text-align:right;">ילד</th>
+          <th style="padding:0.6rem 0.8rem;text-align:right;">סכום חודשי מרבי</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f0fdf4;">
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">ילד ראשון</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">כ-1,550 ₪</td>
+        </tr>
+        <tr>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">ילד שני</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">כ-1,110 ₪</td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:0.6rem 0.8rem;">ילד שלישי ומעלה</td>
+          <td style="padding:0.6rem 0.8rem;">כ-830 ₪ לילד</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      הגמלה מוגבלת לגובה פסק הדין — אם פסק הדין קובע 800 ₪ לחודש, ביטוח לאומי ישלם 800 ₪,
+      לא יותר. לאחר תשלום הגמלה, ביטוח לאומי הופך לזוכה ממשי ומנהל את הגבייה מהאב.
+    </p>
+
+    <div style="background:#ecfdf5;border-right:4px solid #10b981;padding:1rem 1.25rem;border-radius:0.5rem;">
+      <p style="margin:0;"><strong>איך מגישים?</strong> יש לפנות לסניף הביטוח הלאומי הקרוב עם: פסק דין מזונות,
+      אישור פתיחת תיק הוצאה לפועל, תעודות הילדים ותעודת זהות. ניתן גם להגיש באתר הביטוח הלאומי.</p>
+    </div>
+  </section>
+
+  <!-- סעיף 7 -->
+  <section id="reduce-debt">
+    <h2>איך מפחיתים חוב מזונות שנצבר?</h2>
+
+    <p>
+      חייב מזונות שנקלע לקשיים כלכליים ואינו יכול לשלם את הסכום שנפסק — <strong>אסור לו להמתין</strong>.
+      ככל שהפיגור גדל, קשה יותר לטפל בו. הדרכים החוקיות:
+    </p>
+
+    <div class="steps-container">
+
+      <div style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin-bottom:1rem;">
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">שלב 1: בקשה להפחתת מזונות לעתיד</h3>
+        <p style="margin:0;">
+          יש לפנות לבית המשפט לענייני משפחה ולהגיש "בקשה לשינוי פסק מזונות". הבית משפט יבחן
+          שינוי נסיבות מהותי: ירידה משמעותית בהכנסות האב, אובדן עבודה, מחלה, ילדים נוספים.
+          הפחתה אפשרית — אך אינה אוטומטית.
+        </p>
+      </div>
+
+      <div style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin-bottom:1rem;">
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">שלב 2: בקשה לביטול פיגורי עבר</h3>
+        <p style="margin:0;">
+          ניתן לבקש מבית המשפט למחוק פיגורים שנצברו בעבר בנסיבות חריגות — חוסר יכולת מוחלטת
+          לשלם, אשפוז, כליאה. זה נדיר ומצריך הוכחות מוצקות. <strong>לא ניתן לבטל פיגורים בלשכת הוצאה לפועל — רק בית משפט מוסמך לכך.</strong>
+        </p>
+      </div>
+
+      <div style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin-bottom:1rem;">
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">שלב 3: הסדר מחוץ לכתלי בית המשפט</h3>
+        <p style="margin:0;">
+          לעתים, הסדר ישיר עם האם (בנוכחות עורכי דין ולפעמים גישור) יכול להביא להסכמה
+          על סכום חוב מופחת בתמורה לתשלום מיידי. הסכם כזה עדיין צריך אישור בית המשפט.
+        </p>
+      </div>
+
+    </div>
+
+    <div style="background:#fee2e2;border-right:4px solid #ef4444;padding:1rem 1.25rem;border-radius:0.5rem;margin-top:0.5rem;">
+      <p style="margin:0;"><strong>אזהרה:</strong> פשיטת רגל / חדלות פירעון אינה פותרת חוב מזונות.
+      גם לאחר קבלת "הפטר" — חוב המזונות ממשיך לתפקד ונגבה באופן רגיל.</p>
+    </div>
+  </section>
+
+  <!-- סעיף 8 -->
+  <section id="jurisdiction">
+    <h2>סמכות שיפוט: בית הדין הרבני לעומת בית משפט לענייני משפחה</h2>
+
+    <p>
+      בישראל קיימת "תחרות סמכויות" בין שתי ערכאות. ההבנה של ההבדל חשובה
+      כדי לדעת היכן לפנות:
+    </p>
+
+    <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem;">
+      <thead>
+        <tr style="background:#1e3a5f;color:#fff;">
+          <th style="padding:0.6rem 0.8rem;text-align:right;">נושא</th>
+          <th style="padding:0.6rem 0.8rem;text-align:right;">בית הדין הרבני</th>
+          <th style="padding:0.6rem 0.8rem;text-align:right;">בית משפט משפחה</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f8fafc;">
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">מזונות ילדים</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">רק אם הוגשה גם תביעת גירושין</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">בכל עת — סמכות מקבילה</td>
+        </tr>
+        <tr>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">מזונות אישה</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">כשצדדים יהודים ובתוך הליך גירושין</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">מחוץ להליך גירושין</td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;">ביצוע פסק הדין</td>
+          <td style="padding:0.6rem 0.8rem;border-bottom:1px solid #e2e8f0;" colspan="2">תמיד דרך הוצאה לפועל — בשני המקרים</td>
+        </tr>
+        <tr>
+          <td style="padding:0.6rem 0.8rem;">שינוי פסק הדין</td>
+          <td style="padding:0.6rem 0.8rem;">הערכאה שנתנה אותו, בד"כ</td>
+          <td style="padding:0.6rem 0.8rem;">ניתן לפנות לבית משפט משפחה גם אם הפסק ניתן ברבני</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      חשוב: <strong>ביצוע פסק הדין — גביית הכסף בפועל — נעשה תמיד ואך ורק דרך לשכת ההוצאה לפועל</strong>,
+      ללא קשר לאיזה בית משפט נתן את פסק הדין.
+    </p>
+  </section>
+
+  <!-- סעיף 9 -->
+  <section id="process">
+    <h2>תהליך פתיחת תיק גבייה בהוצאה לפועל</h2>
+
+    <p>
+      יש לכם פסק דין מזונות שלא מבוצע? כך פותחים תיק גבייה:
+    </p>
+
+    <ol style="line-height:2.2;">
+      <li>
+        <strong>פנו לעורך דין</strong> — מומלץ להיעזר בעו"ד משפחה שיגיש את התיק ויפעיל את הכלים הנכונים.
+        תיקי מזונות מורכבים ויש ניואנסים חשובים.
+      </li>
+      <li>
+        <strong>פתיחת תיק בלשכת ההוצאה לפועל</strong> — מגישים את פסק הדין + בקשה לפתיחת תיק.
+        ניתן להגיש בלשכה פיזית או דרך פורטל ממשל זמין.
+      </li>
+      <li>
+        <strong>שליחת אזהרה לחייב</strong> — הלשכה שולחת לחייב אזהרה לתשלום תוך 20 ימים.
+      </li>
+      <li>
+        <strong>אם לא שולם — הגשת בקשות אכיפה</strong>: עיקול חשבון, עיקול שכר, צו עיכוב יציאה.
+        בתיקי מזונות הרשם יעבוד בצורה יזומה יותר.
+      </li>
+      <li>
+        <strong>אם האב חסר יכולת</strong> — פנייה לביטוח לאומי לקבלת גמלת מזונות.
+      </li>
+    </ol>
+
+    <div style="background:#eff6ff;border-right:4px solid #3b82f6;padding:1rem 1.25rem;border-radius:0.5rem;margin-top:1rem;">
+      <p style="margin:0;"><strong>טיפ חשוב:</strong> בקשו מהלשכה לפתוח את התיק כ"תיק מזונות" ולא כתיק כספי רגיל.
+      ההגדרה קובעת אילו כלי אכיפה זמינים ואת סדר העדיפויות בגבייה.</p>
+    </div>
+  </section>
+
+  <!-- שאלות נפוצות -->
+  <section id="faq">
+    <h2>שאלות נפוצות</h2>
+
+    <div class="faq-list">
+
+      <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+        <summary style="font-weight:600;cursor:pointer;">האם ניתן למחוק חוב מזונות בהליך חדלות פירעון?</summary>
+        <p style="margin-top:0.75rem;">
+          לא. חוב מזונות אינו בר-מחיקה בהליך חדלות פירעון (פשיטת רגל). גם לאחר קבלת "הפטר"
+          מכלל החובות, חוב המזונות נשאר בתוקפו המלא. זהו אחד החובות היחידים שמוחרגים
+          במפורש מהפטר על-פי חוק חדלות פירעון ושיקום כלכלי, תשע"ח-2018.
+        </p>
+      </details>
+
+      <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+        <summary style="font-weight:600;cursor:pointer;">מה קורה כשאב לא משלם מזונות? מתי מתערב ביטוח לאומי?</summary>
+        <p style="margin-top:0.75rem;">
+          כאשר האב לא משלם ולא ניתן לגבות ממנו, האם יכולה לפנות לביטוח לאומי לקבלת
+          "גמלת מזונות". ביטוח לאומי ישלם לאם עד תקרה חודשית ויפעל בעצמו לגבייה מהאב.
+          הזכאות מותנית בפסק דין תקף, ילד מתגורר עם האם בישראל, ותיק הוצאה לפועל פתוח.
+        </p>
+      </details>
+
+      <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+        <summary style="font-weight:600;cursor:pointer;">כמה מהמשכורת ניתן לעקל בגין מזונות?</summary>
+        <p style="margin-top:0.75rem;">
+          בתיקי מזונות ניתן לעקל עד <strong>50% מהמשכורת נטו</strong> — לעומת שליש בלבד בחובות רגילים.
+          בנוסף, עיקול מזונות חל גם על שכר שאינו עולה על שכר המינימום, מה שאינו מותר בחובות רגילים.
+        </p>
+      </details>
+
+      <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+        <summary style="font-weight:600;cursor:pointer;">האם צו עיכוב יציאה מהארץ מוצא אוטומטית בגין חוב מזונות?</summary>
+        <p style="margin-top:0.75rem;">
+          כן. בשונה מחובות כספיים רגילים, בגין פיגור בתשלום מזונות ניתן להוציא צו עיכוב יציאה
+          ללא צורך בפנייה מיוחדת של הזוכה — הדבר יכול להיעשות ביוזמת רשם ההוצאה לפועל.
+          הצו מוצא ברגע שנצבר פיגור משמעותי.
+        </p>
+      </details>
+
+      <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+        <summary style="font-weight:600;cursor:pointer;">איך מפחיתים חוב מזונות שנצבר?</summary>
+        <p style="margin-top:0.75rem;">
+          ניתן לפנות לבית המשפט לענייני משפחה ולבקש "הפחתת מזונות" לעתיד או "ביטול פיגורים".
+          ביטול פיגורי עבר הוא נדיר ומצריך הוכחת נסיבות חריגות. חשוב: לא ניתן לבטל חוב
+          מזונות בהוצאה לפועל עצמה — רק בית המשפט הוא הסמכות לכך.
+        </p>
+      </details>
+
+      <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+        <summary style="font-weight:600;cursor:pointer;">מה ההבדל בין מזונות ילדים למזונות אישה בהוצאה לפועל?</summary>
+        <p style="margin-top:0.75rem;">
+          שניהם נאכפים בהוצאה לפועל, אך מזונות ילדים נהנים מעדיפות גבוהה יותר ומגמלת ביטוח לאומי.
+          מזונות אישה לרוב נקבעים בגדרי הדין הדתי — בבית הדין הרבני — אך ניתנים לגבייה
+          בהוצאה לפועל באותו אופן. שיעור עיקול השכר זהה בשני המקרים (עד 50%).
+        </p>
+      </details>
+
+      <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+        <summary style="font-weight:600;cursor:pointer;">מה עושים כשהאב מסתיר נכסים כדי להתחמק ממזונות?</summary>
+        <p style="margin-top:0.75rem;">
+          ניתן לבקש מרשם ההוצאה לפועל לזמן את החייב לחקירת יכולת, לדרוש גילוי נכסים מלא,
+          ולפנות לרשות המסים לקבלת מידע. בנוסף ניתן להגיש תביעה לבית המשפט לקביעת
+          "מזונות מוגברים" אם מתברר שהאב הרוויח יותר מהצהרתו. הסתרת נכסים מהוצאה לפועל
+          עלולה להוות עבירה פלילית.
+        </p>
+      </details>
+
+      <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+        <summary style="font-weight:600;cursor:pointer;">האם בית הדין הרבני או בית המשפט לענייני משפחה מוסמכים לדון במזונות?</summary>
+        <p style="margin-top:0.75rem;">
+          יש תחרות סמכויות. בית הדין הרבני מוסמך לדון במזונות ילדים כשהוגשה גם תביעת גירושין,
+          ובמזונות אישה בין צדדים יהודים. בית המשפט לענייני משפחה מוסמך לדון בכל עת.
+          <strong>ביצוע פסק הדין — גביית הכסף — נעשה תמיד דרך לשכת ההוצאה לפועל.</strong>
+        </p>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- מקורות -->
+  <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid #e2e8f0;">
+    <h2>מקורות ומידע נוסף</h2>
+    <ul style="line-height:2.2;">
+      <li>
+        <a href="https://www.nevo.co.il/law_html/Law01/P209_001.htm" target="_blank" rel="noopener">
+          חוק ההוצאה לפועל, התשכ"ז-1967
+        </a>
+      </li>
+      <li>
+        <a href="https://www.btl.gov.il/benefits/alimony/Pages/default.aspx" target="_blank" rel="noopener">
+          גמלת מזונות — המוסד לביטוח לאומי
+        </a>
+      </li>
+      <li>
+        <a href="https://www.kolzchut.org.il/he/%D7%92%D7%91%D7%99%D7%99%D7%AA_%D7%9E%D7%96%D7%95%D7%A0%D7%95%D7%AA_%D7%91%D7%94%D7%95%D7%A6%D7%90%D7%94_%D7%9C%D7%A4%D7%95%D7%A2%D7%9C" target="_blank" rel="noopener">
+          כל זכות — גביית מזונות בהוצאה לפועל
+        </a>
+      </li>
+      <li>
+        <a href="https://www.gov.il/he/departments/enforcement_and_collection_authority" target="_blank" rel="noopener">
+          רשות האכיפה והגבייה — אתר רשמי
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <div slot="next-steps" style="background:#f0fdf4;border:1px solid #86efac;border-radius:0.75rem;padding:1.5rem;margin-top:2rem;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">מדריכים קשורים</h2>
+    <ul style="line-height:2.2;margin:0;">
+      <li>
+        <a href="/guides/ikul-yetzia/">עיכוב יציאה מהארץ — המדריך המלא</a>
+        — מה עושים כשיש צו עיכוב יציאה
+      </li>
+      <li>
+        <a href="/guides/ikul-heshbon/">עיקול חשבון בנק</a>
+        — הבנת תהליך עיקול חשבון הבנק וזכויות החייב
+      </li>
+      <li>
+        <a href="/guides/hayav-mugbal/">חייב מוגבל באמצעים</a>
+        — מה פירוש הגדרה זו ומה אפשר לעשות
+      </li>
+      <li>
+        <a href="/insolvency/">חדלות פירעון ופשיטת רגל</a>
+        — מה כולל ההליך ואיך מתחילים (אך זכרו: לא פוטר ממזונות)
+      </li>
+      <li>
+        <a href="/tools/eligibility/">בדיקת זכאות לסיוע</a>
+        — שאלון קצר לבדיקת האפשרויות שלך
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>

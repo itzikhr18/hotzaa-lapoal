@@ -10,7 +10,7 @@ const faqSchema = {
       name: 'כמה עולה להגיש בקשה לצו תשלומים?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'הגשה עצמית כמעט חינמית — אגרה של כמה עשרות שקלים בלבד. ייצוג עורך דין עולה 3,000-6,000 ש"ח בהתאם למורכבות.',
+        text: 'הגשה עצמית כמעט חינמית — אגרת הגשה של כמה עשרות שקלים בלבד. אין חובה להיות מיוצג על ידי עורך דין. אם תרצה ייצוג משפטי, עלויות עורך דין נעות בין 3,000 ל-6,000 ש"ח בהתאם למורכבות התיק. עבור רוב האנשים, הגשה עצמית היא אפשרית לחלוטין.',
       },
     },
     {
@@ -18,7 +18,7 @@ const faqSchema = {
       name: 'האם הרשם חייב לאשר את הבקשה?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'לא. הרשם יבחן את ההכנסות וההוצאות שלך ויקבע תשלום שלפי הערכתו אתה יכול לעמוד בו. זה לא תמיד מה שביקשת.',
+        text: 'לא. הרשם יבחן את ההכנסות וההוצאות שלך ויקבע תשלום שלפי הערכתו אתה יכול לעמוד בו — לא בהכרח את הסכום שביקשת. הרשם אינו יכול לקבוע סכום שאינך יכול לשלם באמת, אבל גם לא חייב לאשר את הסכום שהצעת. אם הצו שנקבע גבוה מדי, ניתן לערער עליו.',
       },
     },
     {
@@ -26,7 +26,39 @@ const faqSchema = {
       name: 'מה קורה אם לא עומדים בצו תשלומים?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'הנושה יכול לבקש לבטל את הצו ולהמשיך בהליכי גבייה. אם נסיבותיך השתנו — אפשר לבקש עדכון הצו.',
+        text: 'אם תפספס תשלום, הנושה יכול לבקש מהרשם להחזיר את הליכי האכיפה — עיקולים, עיכוב יציאה מהארץ וכדומה. הדרך הנכונה: אם ידעת שלא תוכל לשלם — פנה לרשם לפני המועד ובקש עדכון צו. אל תחכה לפיגור.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם הנושה יכול להתנגד לצו תשלומים?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כן. הנושה רשאי להגיש התנגדות לתוכנית התשלומים. הרשם ישמע את שני הצדדים — אתה ואת הנושה — ויקבע צו בהתאם לנסיבות. ברוב המקרים הרשם מאזן בין יכולת החייב לבין האינטרס של הנושה לקבל את כספו.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה זמן נמשך צו תשלומים?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'בדרך כלל 3–4 שנים, תלוי בגובה החוב ובסכום התשלום החודשי שנקבע. אם לא יכולת לפרוע את מלוא החוב בתקופה המקורית, ניתן לבקש הארכה של עד 3 שנים נוספות. בסיום ותשלום מלוא החוב מקבלים אישור סגירת תיק.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה ההבדל בין צו תשלומים לאיחוד תיקים?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'צו תשלומים מסדיר תיק הוצאה לפועל אחד — קובע תשלום חודשי לכיסוי חוב ספציפי. איחוד תיקים (איחוד תיקים) מאחד מספר תיקים פתוחים לתיק אחד עם תשלום חודשי משותף. אם יש לך יותר מתיק אחד פתוח, שקול בקשת איחוד תיקים במקום צו תשלומים נפרד לכל תיק.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם אפשר לשנות את צו התשלומים אחרי שניתן?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כן. אם נסיבותיך השתנו — פוטרת, חלית, נולד לך ילד, עלו הוצאותיך — ניתן להגיש בקשה לשינוי צו תשלומים. הגש את הבקשה בהקדם האפשרי ולא אחרי שכבר פיגרת בתשלומים. הרשם ישקול את הנסיבות החדשות ויכול להפחית את הסכום החודשי.',
       },
     },
   ],
@@ -34,128 +66,376 @@ const faqSchema = {
 ---
 
 <GuideLayout
-  title="בקשה לצו תשלומים בהוצאה לפועל — איך מגישים לבד"
-  description="צו תשלומים הוא הכלי הנפוץ ביותר להסדרת חוב בהוצאה לפועל. למד מה זה, איך מגישים בקשה בעצמך, ומה הסיכויים שהרשם יאשר."
+  title="צו תשלומים בהוצאה לפועל 2025-2026 — המדריך המלא להגשה עצמית"
+  description="צו תשלומים הוא הכלי הנפוץ ביותר להסדרת חוב בהוצאה לפועל. מדריך מפורט: מה זה, מי יכול להגיש, אילו מסמכים דרושים, שלב אחרי שלב, ומה לעשות אם הרשם קבע יותר מדי."
   breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'צו תשלומים', href: '/guides/tzav-tashlumim/' }]}
   publishDate="2025-02-01"
-  updateDate="2026-02-11"
-  readTime="6 דקות"
-  schema={faqSchema}
+  updateDate="2026-03-28"
+  readTime="10 דקות"
+  schema={[faqSchema, {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'איך מגישים בקשה לצו תשלומים בהוצאה לפועל',
+    description: 'הגשת בקשה לצו תשלומים לרשם ההוצאה לפועל — לבד, ללא עורך דין',
+    totalTime: 'PT2H',
+    step: [
+      { '@type': 'HowToStep', position: 1, name: 'אסוף מסמכים', text: 'תלושי שכר 3 חודשים אחרונים, דפי חשבון בנק, קבלות הוצאות קבועות (שכר דירה, תרופות, חינוך), ותעודת זהות.' },
+      { '@type': 'HowToStep', position: 2, name: 'מלא את הטפסים', text: 'הורד טפסי בקשה לצו תשלומים מאתר רשות האכיפה (gov.il). מלא פרטי הכנסה, הוצאות, ונכסים.' },
+      { '@type': 'HowToStep', position: 3, name: 'הגש ללשכת ההוצאה לפועל', text: 'הגש את הבקשה ואת המסמכים ללשכת ההוצאה לפועל הרלוונטית — פיזית או דרך המערכת המקוונת. שלם אגרת הגשה של כמה עשרות שקלים.' },
+      { '@type': 'HowToStep', position: 4, name: 'הגע לחקירת יכולת', text: 'הרשם יזמן אותך לחקירת יכולת. הגע עם כל המסמכים. הרשם יקבע תשלום חודשי לפי יכולתך האמיתית.' },
+      { '@type': 'HowToStep', position: 5, name: 'שלם בקביעות', text: 'עמוד בתשלומים החודשיים. ברגע שהצו פעיל ואתה משלם — הנושה לא יכול לפתוח הליכים נוספים.' },
+    ],
+  }]}
 >
 
   <p>
-    צו תשלומים הוא הדרך הנפוצה ביותר להסדיר חוב בהוצאה לפועל. במקום שינכו לך מהמשכורת
-    או יעקלו את החשבון — אתה פונה לרשם ומבקש לפרוס את החוב לתשלומים שאתה יכול לעמוד בהם.
-    זה חוקי, זה עובד, ורוב הבקשות מתקבלות.
+    קיבלת אזהרה מהוצאה לפועל ואתה לא יודע מה לעשות? הכלי החוקי הנפוץ ביותר הוא <strong>צו תשלומים</strong> — בקשה לרשם ההוצאה לפועל לפרוס את החוב לתשלומים חודשיים שאתה יכול באמת לעמוד בהם.
+    ברגע שהצו נכנס לתוקף ואתה עומד בו, הנושה אינו יכול לפתוח בהליכי אכיפה נוספים.
+    אין צורך בעורך דין — רוב האנשים מגישים לבד, ורוב הבקשות מתקבלות.
   </p>
 
-  <h2>מה זה צו תשלומים?</h2>
+  <h2>מה זה צו תשלומים ולמה כדאי לבקש אחד?</h2>
   <p>
-    צו תשלומים הוא החלטה של רשם ההוצאה לפועל שקובעת כמה תשלם כל חודש לכיסוי החוב.
-    ברגע שיש צו פעיל ואתה עומד בו — הנושה לא יכול לנקוט בעיקולים נוספים.
+    צו תשלומים (<em>צו"ת</em>) הוא החלטה של רשם ההוצאה לפועל הקובעת כמה תשלם כל חודש לכיסוי החוב שנפסק נגדך.
+    הרשם מחויב על פי חוק לקחת בחשבון את ההכנסות וההוצאות שלך, ולקבוע סכום שאתה <em>באמת</em> יכול לשלם — לא סכום תיאורטי.
   </p>
   <p>
-    החוק מחייב את הרשם לקחת בחשבון את ההכנסות וההוצאות שלך. התשלום צריך להיות סכום שאתה <em>באמת</em> יכול לעמוד בו.
-  </p>
-
-  <h2>מי יכול להגיש בקשה לצו תשלומים?</h2>
-  <p>
-    כל חייב שנפתח נגדו תיק בהוצאה לפועל יכול להגיש בקשה. לא צריך עורך דין — אפשר לגמרי לבד.
-    הבקשה הנפוצה ביותר נגישה דרך האתר של רשות האכיפה והגבייה.
+    ללא צו תשלומים פעיל, הנושה יכול לנקוט בכל הליכי האכיפה העומדים לרשותו: עיקול חשבון בנק, עיקול משכורת, עיקול רכב, עיכוב יציאה מן הארץ ועוד.
+    ברגע שהצו ניתן ואתה עומד בו — כל הפעולות האלה מושהות. זאת הסיבה שמומלץ להגיש בקשה בהקדם האפשרי.
   </p>
 
-  <h2>איך מגישים בקשה — שלב אחרי שלב</h2>
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מה קורה ברגע שצו התשלומים מאושר?</p>
+    <ul class="space-y-1 text-blue-900">
+      <li>עיקולי בנק ומשכורת — מושהים כל עוד אתה עומד בצו</li>
+      <li>הנושה אינו יכול לפתוח בהליכי אכיפה נוספים</li>
+      <li>עיכוב יציאה מהארץ — בדרך כלל מוסר לאחר קבלת הצו (תלוי בתיק)</li>
+      <li>לאחר תשלום מלוא החוב מקבלים <strong>אישור סגירת תיק</strong></li>
+    </ul>
+  </div>
+
+  <h2>מי יכול להגיש ומתי?</h2>
+  <p>
+    <strong>כל חייב</strong> שנפתח נגדו תיק בהוצאה לפועל יכול להגיש בקשה לצו תשלומים — בין אם מדובר בחוב של כמה אלפי שקלים ובין אם מדובר בחוב גדול יותר.
+    לא צריך עורך דין; הגשה עצמית היא לגיטימית לחלוטין ומקובלת.
+  </p>
+  <p>
+    <strong>מתי עדיף להגיש?</strong> ניתן להגיש בכל שלב לאחר פתיחת תיק, אך ההמלצה היא:
+  </p>
+  <ul>
+    <li><strong>תוך 20 יום מקבלת האזהרה</strong> — אם הגשת בתוך 20 יום, הנושה לא יכול לנקוט בהליכים עד להחלטת הרשם.</li>
+    <li><strong>בכל עת אחרת</strong> — ניתן להגיש גם מאוחר יותר, אם כי ייתכן שהאכיפה כבר התחילה.</li>
+    <li><strong>מייד כשנסיבותיך משתנות לרעה</strong> — פיטורים, מחלה, הפחתת שכר — אל תחכה לפיגור.</li>
+  </ul>
+
+  <h2>המסמכים שצריך לאסוף</h2>
+  <p>
+    לפני שממלאים את הטופס, כדאי להכין את כל המסמכים הרלוונטיים. הרשם לוקח בחשבון רק מה שמוצג בפניו — מסמך שלא הגשת לא ייספר לטובתך.
+  </p>
+
+  <div class="space-y-3 my-4">
+    <div class="bg-white border border-neutral-border rounded-xl p-4">
+      <p class="font-semibold text-gray-800 mb-2">הכנסות — להוכחת ההכנסה שלך</p>
+      <ul class="text-gray-600 space-y-1 text-sm">
+        <li>תלושי משכורת של 3 חודשים אחרונים</li>
+        <li>אם עצמאי: דו"ח הכנסות ממחצית השנה האחרונה</li>
+        <li>אם מקבל קצבה (ביטוח לאומי, נכות, זקנה): מכתב מביטוח לאומי עם הסכום</li>
+        <li>כל מקור הכנסה נוסף שיש לך</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-neutral-border rounded-xl p-4">
+      <p class="font-semibold text-gray-800 mb-2">הוצאות קבועות — להוכחת עלות המחיה שלך</p>
+      <ul class="text-gray-600 space-y-1 text-sm">
+        <li>חוזה שכירות או הוכחת משכנתא (תשלום חודשי)</li>
+        <li>חשבונות חשמל, גז, מים, ועד בית</li>
+        <li>קבלות על תרופות קבועות ועלויות רפואיות</li>
+        <li>מסמכים על מזונות שאתה משלם (פסק דין או הסכם)</li>
+        <li>חשבון תחבורה (כרטיסייה, ביטוח רכב אם ההכרחי לפרנסה)</li>
+        <li>הוצאות ילדים (גן, חינוך, פעילויות הכרחיות)</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-neutral-border rounded-xl p-4">
+      <p class="font-semibold text-gray-800 mb-2">מסמכי הבנק</p>
+      <ul class="text-gray-600 space-y-1 text-sm">
+        <li>דפי חשבון בנק של 3 חודשים אחרונים — מראים את תזרים המזומנים האמיתי שלך</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>שלב אחרי שלב — איך מגישים בקשה לצו תשלומים</h2>
 
   <ol class="step-list">
     <li>
       <span class="step-num">1</span>
       <span>
-        <strong>אסוף מסמכים</strong> — תלושי משכורת של 3 חודשים אחרונים, דפי חשבון בנק, קבלות להוצאות קבועות (שכר דירה, חשמל, תרופות).
+        <strong>אסוף את כל המסמכים</strong> — תלושי משכורת, דפי בנק, קבלות הוצאות קבועות. ככל שהתיעוד מלא יותר, כך גדל הסיכוי שהרשם יקבע סכום ריאלי ונמוך.
       </span>
     </li>
     <li>
       <span class="step-num">2</span>
       <span>
-        <strong>מלא טופס בקשה לצו תשלומים</strong> — טופס 6 של רשות האכיפה. ניתן להוריד מאתר gov.il או לקחת בלשכה.
+        <strong>הורד את טופס 6 — "בקשה לצו תשלומים"</strong> — זהו הטופס הרשמי של רשות האכיפה והגבייה. ניתן להוריד מאתר <a href="https://www.gov.il" target="_blank" rel="noopener" class="text-brand hover:underline">gov.il</a> או לקחת פיזית בלשכת ההוצאה לפועל הקרובה אליך.
       </span>
     </li>
     <li>
       <span class="step-num">3</span>
       <span>
-        <strong>פרט את ההכנסות וההוצאות</strong> — הרשם יבחן את המצב הכלכלי שלך. כנה וממצה — הוסף כל הוצאה שיש לה ביסוס.
+        <strong>מלא את הטופס בכנות ובמדויק</strong> — פרט את כל ההכנסות (שכר, קצבאות, כל מקור אחר) ואת כל ההוצאות ההכרחיות. הרשם יבחן את הנתונים האלה. כנות עדיפה על הגזמה — אם יסתבר שהצהרת על פחות ממה שיש לך, זה עלול לפגוע באמינותך.
       </span>
     </li>
     <li>
       <span class="step-num">4</span>
       <span>
-        <strong>הגש בלשכה או אונליין</strong> — ניתן להגיש פיזית בלשכת ההוצאה לפועל הקרובה אליך, או דרך מערכת ההגשה המקוונת.
+        <strong>צרף את כל המסמכים</strong> — לכל הוצאה שציינת, צרף תיעוד. בקשה עם מסמכים מלאים מתקבלת מהר יותר ובצורה טובה יותר.
       </span>
     </li>
     <li>
       <span class="step-num">5</span>
       <span>
-        <strong>המתן להחלטת הרשם</strong> — בדרך כלל 2-4 שבועות. הרשם עשוי לזמן אותך לדיון או לקבוע צו ישירות.
+        <strong>הגש את הבקשה</strong> — ניתן להגיש בשתי דרכים:
+        <br/><strong>אונליין (מומלץ):</strong> דרך פורטל רשות האכיפה והגבייה — מהיר יותר ונוח יותר.
+        <br/><strong>פיזית:</strong> בלשכת ההוצאה לפועל שבה פתוח התיק שלך — הגע בשעות הקבלה עם כל המסמכים.
       </span>
     </li>
     <li>
       <span class="step-num">6</span>
       <span>
-        <strong>עמוד בתשלומים</strong> — ברגע שיש צו — עמוד בו בקביעות. פיגור בתשלומים מאפשר לנושה לחדש את ההליכים.
+        <strong>המתן להחלטת הרשם</strong> — לרוב 2–6 שבועות. הרשם עשוי לזמן אותך לדיון (ובמקרים רבים יחליט ישירות מהמסמכים). קבל את ההחלטה, עיין בה, ואם הסכום ריאלי — עמוד בו.
       </span>
     </li>
   </ol>
 
-  <h2>טיפ: כמה לבקש לשלם?</h2>
-
   <div class="info-box">
-    <p class="font-semibold text-blue-800 mb-2">איך מחשבים סכום ריאלי:</p>
-    <p>
-      קח את הכנסתך נטו → הפחת הוצאות חיוניות (שכר דירה, אוכל, חשמל, גז, תחבורה, תרופות, מזונות) → מה שנשאר הוא הסכום שאפשר להצע.
+    <p class="font-semibold text-blue-800 mb-2">חישוב מעשי: כמה להציע לשלם?</p>
+    <p class="mb-3">
+      הנוסחה הבסיסית לחישוב הסכום שתציע לרשם:
     </p>
-    <p class="mt-2">
-      אל תבקש יותר ממה שאתה יכול. עדיף צו קטן שתעמוד בו, מאשר צו גדול שיפגר.
+    <div class="bg-blue-100 rounded-lg p-3 font-mono text-sm text-blue-900 mb-3">
+      הכנסה נטו חודשית<br/>
+      <span class="text-blue-500">פחות:</span> שכר דירה / משכנתא<br/>
+      <span class="text-blue-500">פחות:</span> חשמל + גז + מים + ועד בית<br/>
+      <span class="text-blue-500">פחות:</span> אוכל (הערכת הוצאה חודשית)<br/>
+      <span class="text-blue-500">פחות:</span> תחבורה<br/>
+      <span class="text-blue-500">פחות:</span> תרופות וטיפולים רפואיים<br/>
+      <span class="text-blue-500">פחות:</span> מזונות שאתה משלם (אם יש)<br/>
+      <span class="text-blue-500">פחות:</span> הוצאות ילדים הכרחיות<br/>
+      <strong class="text-blue-800">= הסכום הפנוי לתשלום חוב</strong>
+    </div>
+    <p class="text-sm">
+      <strong>טיפ חשוב:</strong> עדיף לבקש סכום שתוכל לשלם באופן קבוע, מאשר סכום גבוה שתפגר בו.
+      לרשם אין מינימום נוקשה — הוא מחויב לקבוע סכום שאתה <em>יכול לשלם בפועל</em>.
     </p>
   </div>
 
-  <h2>מה קורה אם הרשם קובע יותר ממה שיכולתי?</h2>
+  <h2>מה קורה אחרי שהגשת?</h2>
   <p>
-    אפשר לבקש ערעור על ההחלטה או לבקש עדכון הצו אם נסיבותיך השתנו (פיטורים, מחלה, הוצאה לא צפויה).
-    זה נקרא "בקשה לשינוי צו תשלומים".
+    לאחר הגשת הבקשה, הרשם יבחן את המסמכים שהגשת. ישנן שתי אפשרויות:
+  </p>
+  <ul>
+    <li>
+      <strong>החלטה ישירות מהמסמכים</strong> — אם התיעוד מלא ומשכנע, הרשם עשוי לקבוע את הצו ללא דיון. זה המקרה הנפוץ כשהמסמכים ברורים.
+    </li>
+    <li>
+      <strong>זימון לדיון</strong> — הרשם עשוי לזמן אותך (ואת הנושה) לדיון. בדיון תוכל להציג את עמדתך ולהסביר את מצבך הכלכלי. הנושה רשאי להתנגד לתוכנית התשלומים, והרשם ישמע את שני הצדדים.
+    </li>
+  </ul>
+  <p>
+    בדרך כלל לוקח 2–6 שבועות עד לקבלת ההחלטה. לאחר שניתן הצו, תקבל הודעה לפי פרטי הקשר שסיפקת.
+  </p>
+  <p>
+    <strong>לאחר קבלת הצו:</strong> שלם את הסכום שנקבע מדי חודש בחודשו. ניתן לשלם בדרך כלל בהוראת קבע, בדואר, או באתר הרשות. שמור את כל אישורי התשלום.
+  </p>
+
+  <h2>מה עושים אם הרשם קבע יותר ממה שיכולתי לשלם?</h2>
+  <p>
+    יש לך שתי אפשרויות עיקריות:
+  </p>
+  <ul>
+    <li>
+      <strong>ערעור על ההחלטה</strong> — ניתן לערער בפני בית משפט השלום בתוך 20 יום מקבלת ההחלטה. הערעור מתאים כשסבור שהרשם לא לקח בחשבון נתונים מהותיים.
+    </li>
+    <li>
+      <strong>בקשה לשינוי צו תשלומים</strong> — ניתן להגיש בקשה לעדכון הצו בכל עת שנסיבותיך משתנות: פיטורים, מחלה, גידול במשפחה, עלייה בהוצאות. הרשם ישקול את הנסיבות החדשות.
+    </li>
+  </ul>
+  <p>
+    <strong>המלצה מעשית:</strong> אם הצו שנקבע גבוה מ-30% מהסכום שהצעת — שקול ברצינות להגיש ערעור או בקשת שינוי עם תיעוד מלא יותר של הוצאותיך.
+  </p>
+
+  <div class="warn-box">
+    <p class="font-semibold mb-2">מה קורה אם לא עומדים בצו?</p>
+    <p class="mb-2">
+      אם לא שילמת תשלום אחד, הנושה יכול לבקש מהרשם להחזיר את הליכי האכיפה — עיקול חשבון, עיקול משכורת, עיכוב יציאה מהארץ.
+    </p>
+    <p class="mb-2">
+      <strong>אל תחכה לפיגור.</strong> אם יודע שחודש מסוים קשה לך — פנה לרשם <em>לפני</em> מועד התשלום ובקש עדכון צו. הרשם מעדיף חייב שמתקשר ומבקש עדכון מאשר חייב שנעלם.
+    </p>
+    <p>
+      גם אם פיגרת כבר — פנה לרשם באופן יזום, הסבר את המצב, וצרף תיעוד. זה עדיף על פני המתנה שהנושה ינקוט בצעדים.
+    </p>
+  </div>
+
+  <h2>צו תשלומים, איחוד תיקים או חדלות פירעון — מה מתאים לך?</h2>
+  <p>
+    בחירת הכלי הנכון תלויה במצבך הספציפי. הטבלה הבאה עוזרת לזהות את הנתיב המתאים:
+  </p>
+
+  <div class="overflow-x-auto my-4">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="border border-gray-200 p-3 text-right font-semibold">קריטריון</th>
+          <th class="border border-gray-200 p-3 text-right font-semibold">צו תשלומים</th>
+          <th class="border border-gray-200 p-3 text-right font-semibold">איחוד תיקים</th>
+          <th class="border border-gray-200 p-3 text-right font-semibold">חדלות פירעון</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-gray-200 p-3 font-medium">מספר תיקים פתוחים</td>
+          <td class="border border-gray-200 p-3">תיק אחד</td>
+          <td class="border border-gray-200 p-3">מספר תיקים</td>
+          <td class="border border-gray-200 p-3">כל מצב</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-200 p-3 font-medium">האם תוכל לפרוע את החוב?</td>
+          <td class="border border-gray-200 p-3">כן, בפריסה</td>
+          <td class="border border-gray-200 p-3">כן, בפריסה מאוחדת</td>
+          <td class="border border-gray-200 p-3">לא — חוב אינו בר-פירעון</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-200 p-3 font-medium">מורכבות</td>
+          <td class="border border-gray-200 p-3">נמוכה — בלי עורך דין</td>
+          <td class="border border-gray-200 p-3">בינונית</td>
+          <td class="border border-gray-200 p-3">גבוהה — מומלץ ייעוץ</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-200 p-3 font-medium">השפעה על אשראי</td>
+          <td class="border border-gray-200 p-3">מינורית</td>
+          <td class="border border-gray-200 p-3">מינורית</td>
+          <td class="border border-gray-200 p-3">משמעותית — 7 שנים</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-200 p-3 font-medium">משך ההליך</td>
+          <td class="border border-gray-200 p-3">3–4 שנים</td>
+          <td class="border border-gray-200 p-3">3–7 שנים</td>
+          <td class="border border-gray-200 p-3">4–7 שנים</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-200 p-3 font-medium">מחיקת חוב?</td>
+          <td class="border border-gray-200 p-3">לא</td>
+          <td class="border border-gray-200 p-3">לא</td>
+          <td class="border border-gray-200 p-3">כן — עם "הפטר"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm text-gray-600">
+    <strong>כלל אצבע:</strong> אם יש לך תיק אחד — צו תשלומים. אם יש כמה תיקים — בדוק איחוד תיקים. אם החוב הרבה מעבר ליכולתך גם בפריסה ארוכה — שקול יעוץ על חדלות פירעון.
   </p>
 
   <h2>שאלות נפוצות</h2>
 
   <div class="space-y-4 my-6">
-    {[
-      {
-        q: 'כמה עולה להגיש בקשה לצו תשלומים?',
-        a: 'הגשה עצמית — כמה עשרות שקלים אגרה בלבד. ייצוג עורך דין עולה 3,000-6,000 ש"ח.',
-      },
-      {
-        q: 'האם הרשם חייב לאשר את הבקשה?',
-        a: 'לא. הרשם יקבע תשלום שלפי הערכתו מתאים ליכולתך — לא בהכרח מה שביקשת.',
-      },
-      {
-        q: 'מה קורה אם לא עומדים בצו?',
-        a: 'הנושה יכול לבקש לבטל את הצו ולחדש עיקולים. אם נסיבותיך השתנו — בקש עדכון הצו מיד.',
-      },
-    ].map(faq => (
-      <details class="border border-neutral-border rounded-xl group">
-        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-          {faq.q}
-          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
-      </details>
-    ))}
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        כמה עולה להגיש בקשה לצו תשלומים?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        הגשה עצמית כמעט חינמית — אגרת הגשה של כמה עשרות שקלים בלבד. אין חובה להיות מיוצג על ידי עורך דין.
+        אם תרצה ייצוג משפטי, עלויות עורך דין נעות בין ₪3,000 ל-₪6,000 בהתאם למורכבות התיק.
+        עבור רוב האנשים, הגשה עצמית היא אפשרית לחלוטין.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם הרשם חייב לאשר את הבקשה?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        לא. הרשם יבחן את ההכנסות וההוצאות שלך ויקבע תשלום שלפי הערכתו אתה יכול לעמוד בו — לא בהכרח את הסכום שביקשת.
+        הרשם אינו יכול לקבוע סכום שאינך יכול לשלם באמת, אבל גם לא חייב לאשר את הסכום שהצעת.
+        אם הצו שנקבע גבוה מדי, ניתן לערער עליו או לבקש שינוי.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה קורה אם לא עומדים בצו תשלומים?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        אם תפספס תשלום, הנושה יכול לבקש מהרשם להחזיר את הליכי האכיפה — עיקולים, עיכוב יציאה מהארץ וכדומה.
+        הדרך הנכונה: אם ידעת שלא תוכל לשלם — פנה לרשם לפני המועד ובקש עדכון צו. אל תחכה לפיגור.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם הנושה יכול להתנגד לצו תשלומים?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        כן. הנושה רשאי להגיש התנגדות לתוכנית התשלומים. הרשם ישמע את שני הצדדים — אותך ואת הנושה — ויקבע צו בהתאם לנסיבות.
+        ברוב המקרים הרשם מאזן בין יכולת החייב לבין האינטרס של הנושה לקבל את כספו.
+        הרשם הוא הצד המכריע — לא הנושה.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        כמה זמן נמשך צו תשלומים?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        בדרך כלל 3–4 שנים, תלוי בגובה החוב ובסכום התשלום החודשי שנקבע.
+        אם לא יכולת לפרוע את מלוא החוב בתקופה המקורית, ניתן לבקש הארכה של עד 3 שנים נוספות.
+        בסיום ותשלום מלוא החוב מקבלים <strong>אישור סגירת תיק</strong> — מסמך שמוכיח שהחוב נפרע.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה ההבדל בין צו תשלומים לאיחוד תיקים?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        צו תשלומים מסדיר תיק הוצאה לפועל אחד — קובע תשלום חודשי לכיסוי חוב ספציפי.
+        איחוד תיקים מאחד מספר תיקים פתוחים לתיק אחד עם תשלום חודשי משותף לכל הנושים.
+        אם יש לך יותר מתיק אחד פתוח, שקול בקשת איחוד תיקים — זה בדרך כלל פשוט יותר לניהול.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם אפשר לשנות את צו התשלומים אחרי שניתן?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        כן. אם נסיבותיך השתנו — פוטרת, חלית, נולד לך ילד, עלו הוצאותיך — ניתן להגיש בקשה לשינוי צו תשלומים.
+        הגש את הבקשה בהקדם האפשרי ולא אחרי שכבר פיגרת בתשלומים.
+        הרשם ישקול את הנסיבות החדשות ויכול להפחית את הסכום החודשי.
+      </p>
+    </details>
+  </div>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-2">טיפ: תעד הכל לאורך כל הדרך</p>
+    <p>
+      שמור כל אישור תשלום שתשלם לאורך כל תקופת הצו. בסיום התשלומים יהיה עליך להוכיח שפרעת את מלוא החוב
+      כדי לקבל את אישור סגירת התיק. תיק מסודר עם כל הקבלות חוסך טרחה מיותרת בסוף הדרך.
+    </p>
   </div>
 
   <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
     <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
-      <li>← <a href="/guides/ichud-tikim/" class="text-brand hover:underline">איחוד תיקים — כשיש כמה תיקים</a></li>
-      <li>← <a href="/tools/calculator/" class="text-brand hover:underline">חשב כמה אתה חייב בסך הכל</a></li>
-      <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">מתי כדאי לשקול חדלות פירעון?</a></li>
+      <li>← <a href="/guides/ichud-tikim/" class="text-brand hover:underline">איחוד תיקים — כשיש כמה תיקים פתוחים</a></li>
+      <li>← <a href="/guides/ikul-heshbon/" class="text-brand hover:underline">מדריך: עיקול חשבון בנק — מה לעשות</a></li>
+      <li>← <a href="/tools/calculator/" class="text-brand hover:underline">מחשבון ריבית — חשב כמה אתה חייב בסך הכל</a></li>
+      <li>← <a href="/tools/eligibility/" class="text-brand hover:underline">בדוק את זכויותיך — כלי בדיקת זכאות</a></li>
     </ul>
   </div>
 

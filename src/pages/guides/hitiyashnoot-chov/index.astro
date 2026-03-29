@@ -1,0 +1,661 @@
+---
+// src/pages/guides/hitiyashnoot-chov/index.astro
+import GuideLayout from '../../../layouts/GuideLayout.astro';
+
+const title = "התיישנות חוב בהוצאה לפועל — המדריך המלא 2025";
+const description = "חוב ישן מעל 7 שנים עשוי להיות מוגן מגבייה. מה זה התיישנות חוב, איך בודקים, ואיך מגישים טענת התיישנות — מדריך מלא ומעודכן.";
+const publishDate = "2026-03-28";
+const updateDate = "2026-03-28";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": publishDate,
+  "dateModified": updateDate,
+  "inLanguage": "he",
+  "author": {
+    "@type": "Organization",
+    "name": "הוצאהלפועל.info"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "הוצאהלפועל.info",
+    "url": "https://hotzaa-lapoal.pages.dev"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hotzaa-lapoal.pages.dev/guides/hitiyashnoot-chov/"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "מה זה התיישנות חוב?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "התיישנות חוב היא עקרון משפטי לפיו לאחר שחלף פרק זמן מוגדר בחוק ללא פעולה משפטית, הנושה מאבד את הזכות לאכוף את החוב דרך בית המשפט. בישראל, על פי חוק ההתיישנות תשי\"ח-1958, תקופת ההתיישנות הרגילה לחובות אזרחיים היא 7 שנים מיום שנולדה עילת התביעה."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "כמה שנים עד שחוב מתיישן בישראל?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "לרוב החובות האזרחיים — 7 שנים מיום שנוצרה עילת התביעה (לרוב מועד הפירעון האחרון). לחוב שכבר קיבל פסק דין חלוט — 25 שנה. לחובות מס ולחובות ממשלתיים מסוימים — כללים שונים. חשוב לבדוק בכל מקרה לגופו."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "האם החוב נעלם אוטומטית אחרי 7 שנים?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "לא. התיישנות אינה אוטומטית ואינה מוחקת את החוב. על החייב לטעון אקטיבית את טענת ההתיישנות בפני רשם ההוצאה לפועל או בית המשפט, בתוך 20 יום מקבלת האזהרה. אם לא מגישים התנגדות בזמן — הזכות נאבדת גם אם החוב ישן."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "איך מגישים טענת התיישנות?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "יש להגיש התנגדות (טענת התיישנות) ללשכת ההוצאה לפועל בתוך 20 יום מקבלת מכתב האזהרה. בהתנגדות יש לציין את עילת ההתיישנות, לצרף ראיות (כגון תאריך תשלום אחרון), ולבקש עיכוב הליכים. מומלץ להיעזר בעורך דין או בסיוע משפטי."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "מה מפסיק את מניין ההתיישנות?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "מניין ההתיישנות נפסק ומתחיל מחדש כאשר: החייב מבצע תשלום כלשהו (אפילו חלקי), החייב מודה בחוב בכתב, הנושה מגיש תביעה לבית המשפט, או בית המשפט נותן פסיקה בעניין. גם נסיבות מסוימות כמו קטינות, שהות בחו\"ל חוסר כושר משפטי עשויות לעכב את מניין ההתיישנות."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "האם פסק דין גם מתיישן?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "כן, אך בתקופה ארוכה הרבה יותר — 25 שנה מיום מתן פסק הדין החלוט. כלומר, אם קיבל נגדך פסק דין ב-2005, הנושה יכול לפתוח בהליכי הוצאה לפועל עד שנת 2030. בפועל, מרבית פסקי הדין מנוצלים הרבה לפני כן."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "האם חוב ישן משפיע על דוח האשראי?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "כן. רישומים שליליים בדוח האשראי נשארים למשך 7 שנים ממועד הרישום — ללא קשר למצב ההתיישנות של החוב עצמו. כלומר, גם אם חוב מוגן מגבייה בגלל התיישנות, הוא עדיין עשוי להופיע בדוח האשראי ולפגוע בדירוג."
+      }
+    }
+  ]
+};
+---
+
+<GuideLayout
+  title={title}
+  description={description}
+  publishDate={publishDate}
+  updateDate={updateDate}
+  readTime="7 דקות"
+  schema={[faqSchema, {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'איך לטעון התיישנות חוב בהוצאה לפועל',
+    description: 'צעדים לבדיקת התיישנות חוב והגשת טענת התיישנות ללשכת ההוצאה לפועל',
+    totalTime: 'P20D',
+    step: [
+      { '@type': 'HowToStep', position: 1, name: 'בדוק את תאריך יצירת החוב', text: 'מתי נוצר החוב? מתי היה אמור להיפרע? מתי שילמת לאחרונה? ספור 7 שנים מהאירוע האחרון שיכול להפסיק את ההתיישנות.' },
+      { '@type': 'HowToStep', position: 2, name: 'וודא שלא הפסקת את מניין הזמן', text: 'בדוק: האם שילמת גם תשלום קטן אחרי יצירת החוב? האם הודית בחוב בכתב? האם הוגשה תביעה? כל אחד מאלה מתחיל את מניין 7 השנים מחדש.' },
+      { '@type': 'HowToStep', position: 3, name: 'הגש התנגדות תוך 20 יום', text: 'מרגע קבלת אזהרת ההוצאה לפועל — יש לך 20 יום בלבד להגיש התנגדות. שלח טופס התנגדות ללשכת ההוצאה לפועל עם ציון "טענת התיישנות" כעילה.' },
+      { '@type': 'HowToStep', position: 4, name: 'צרף ראיות לתמיכה', text: 'צרף: מסמך שמוכיח את תאריך החוב המקורי, ראיה שלא היה תשלום/הודאה בתוך 7 השנים (תדפיסי חשבון), ומסמכים אחרים רלוונטיים.' },
+      { '@type': 'HowToStep', position: 5, name: 'הגע לדיון', text: 'הרשם יקבע דיון. הצג את הראיות. אם ההתנגדות תתקבל — התיק ייסגר. אם תידחה — יש אפשרות לערעור לבית משפט.' },
+    ],
+  }]}
+  breadcrumb={[
+    { label: "מדריכים", href: "/guides/" },
+    { label: "התיישנות חוב", href: "/guides/hitiyashnoot-chov/" }
+  ]}
+>
+
+  <article class="guide-content" dir="rtl" lang="he">
+
+    <div class="alert-box warning-box">
+      <p>
+        <strong>גילוי נאות:</strong> המידע במאמר זה הוא כללי בלבד ואינו מהווה ייעוץ משפטי.
+        לכל מקרה ספציפי — במיוחד לפני הגשת התנגדות — יש להתייעץ עם עורך דין.
+      </p>
+    </div>
+
+    <p class="lead-paragraph">
+      קיבלת מכתב על חוב מלפני שנים רבות — אולי עשר שנים, אולי יותר — וחשבת שהנושה כבר שכח ממך?
+      פתאום מגיעה אזהרה מהוצאה לפועל, ואתה לא יודע מה לעשות.
+      ייתכן שיש לך הגנה משפטית שרוב האנשים לא יודעים עליה: <strong>טענת התיישנות</strong>.
+    </p>
+
+    <p>
+      חוק ההתיישנות, תשי"ח-1958, קובע שנושה שלא פעל מספיק שנים איבד — בתנאים מסוימים —
+      את הזכות לאכוף את החוב דרך בית המשפט. אבל יש כלל אחד קריטי שחייבים להכיר:
+      ההתיישנות לא קורית לבד. צריך לתבוע אותה.
+    </p>
+
+    <nav class="table-of-contents" aria-label="תוכן עניינים">
+      <h2>תוכן עניינים</h2>
+      <ol>
+        <li><a href="#what-is">מה זה התיישנות חוב?</a></li>
+        <li><a href="#years-table">כמה שנים עד להתיישנות — לפי סוג החוב</a></li>
+        <li><a href="#not-automatic">ההתיישנות אינה אוטומטית</a></li>
+        <li><a href="#what-stops">מה מפסיק את מניין ההתיישנות?</a></li>
+        <li><a href="#how-to-check">איך יודעים אם חוב התיישן?</a></li>
+        <li><a href="#how-to-file">שלב אחרי שלב — איך מגישים טענת התיישנות</a></li>
+        <li><a href="#old-debt-case">מה קורה אם פתחו תיק על חוב ישן?</a></li>
+        <li><a href="#judgment-25">פסק דין — 25 שנה</a></li>
+        <li><a href="#tax-exceptions">חובות מיסים וארנונה — שונה</a></li>
+        <li><a href="#faq">שאלות נפוצות</a></li>
+      </ol>
+    </nav>
+
+    <!-- סעיף 1: מה זה התיישנות -->
+    <section id="what-is">
+      <h2>מה זה התיישנות חוב?</h2>
+
+      <p>
+        התיישנות חוב היא עקרון משפטי יסודי שמגן על חייבים מפני תביעות ישנות מדי.
+        הרעיון הוא פשוט: לאחר שחלף פרק זמן ממושך ללא שהנושה נקט בהליכים משפטיים,
+        הדין קובע שאין לאכוף את החוב דרך בית המשפט — גם אם החוב עצמו קיים.
+      </p>
+
+      <p>
+        הבסיס החוקי הוא <strong>חוק ההתיישנות, תשי"ח-1958</strong>.
+        החוק קובע תקופות שונות לסוגי חובות שונים, ומגדיר מתי ואיך ניתן לעצור או להאריך את מניין הזמן.
+      </p>
+
+      <div class="info-box">
+        <p class="font-semibold text-blue-800 mb-1">העיקרון המרכזי</p>
+        <p>
+          התיישנות לא מוחקת את החוב — היא מונעת מהנושה לגבות אותו בכפייה דרך בית המשפט.
+          החוב ממשיך "להתקיים" במובן המוסרי, אך אין לנושה כלי אכיפה משפטי.
+          ההבדל: לחייב יש הגנה — אם הוא משתמש בה.
+        </p>
+      </div>
+    </section>
+
+    <!-- סעיף 2: טבלת שנות התיישנות -->
+    <section id="years-table">
+      <h2>כמה שנים עד להתיישנות — לפי סוג החוב</h2>
+
+      <p>
+        לא כל החובות מתיישנים באותה תקופה. הנה סיכום לפי סוגי חוב נפוצים:
+      </p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse border border-neutral-border rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-brand-pale text-brand-dark">
+              <th class="p-3 text-right border border-neutral-border font-semibold">סוג החוב</th>
+              <th class="p-3 text-right border border-neutral-border font-semibold">תקופת התיישנות</th>
+              <th class="p-3 text-right border border-neutral-border font-semibold">הערה</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white">
+              <td class="p-3 border border-neutral-border">חוב אזרחי כללי (הלוואה, שיק, חוזה)</td>
+              <td class="p-3 border border-neutral-border font-semibold">7 שנים</td>
+              <td class="p-3 border border-neutral-border text-gray-600">מיום שנולדה עילת התביעה</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 border border-neutral-border">פסק דין חלוט (סופי)</td>
+              <td class="p-3 border border-neutral-border font-semibold">25 שנים</td>
+              <td class="p-3 border border-neutral-border text-gray-600">מיום מתן פסק הדין</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="p-3 border border-neutral-border">חוב ארנונה (מס עירוני)</td>
+              <td class="p-3 border border-neutral-border font-semibold">7 שנים (או שונה)</td>
+              <td class="p-3 border border-neutral-border text-gray-600">לרשות המקומית כוחות אכיפה שונים — ראה סעיף נפרד</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 border border-neutral-border">חוב מס הכנסה / מע"מ</td>
+              <td class="p-3 border border-neutral-border font-semibold">כללים שונים</td>
+              <td class="p-3 border border-neutral-border text-gray-600">לרשות המיסים יש סמכויות אכיפה מנהליות עצמאיות</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="p-3 border border-neutral-border">שיק דחוי (צ'ק)</td>
+              <td class="p-3 border border-neutral-border font-semibold">7 שנים</td>
+              <td class="p-3 border border-neutral-border text-gray-600">מיום פירעון השיק</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 border border-neutral-border">חוב לחברת אשראי / בנק</td>
+              <td class="p-3 border border-neutral-border font-semibold">7 שנים</td>
+              <td class="p-3 border border-neutral-border text-gray-600">מיום הפירעון האחרון שנדרש</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-sm text-gray-600">
+        <strong>דוגמה מעשית:</strong> שיק דחוי (שיק חוזר) שהוצג לפירעון בינואר 2016,
+        ומאז לא בוצע אף תשלום ולא הוגשה תביעה — ככל הנראה התיישן בינואר 2023.
+        אם הנושה פתח תיק בהוצאה לפועל עכשיו, ניתן לטעון התיישנות.
+      </p>
+    </section>
+
+    <!-- סעיף 3: לא אוטומטי -->
+    <section id="not-automatic">
+      <h2>ההתיישנות אינה אוטומטית — חובה לתבוע אותה</h2>
+
+      <div class="warn-box">
+        <p class="font-semibold text-amber-800 mb-2">אזהרה חשובה: טעות שעולה ביוקר</p>
+        <p>
+          חוב שחלפו עליו 7 שנים <strong>לא נעלם לבד</strong>.
+          רשם ההוצאה לפועל לא בודק התיישנות באופן יזום.
+          אם קיבלת אזהרה ולא הגשת התנגדות בתוך <strong>20 יום</strong> —
+          הנושה יוכל לגבות ממך, גם אם החוב מבחינה עקרונית "מוגן".
+          הסיבה: בלי הגשת טענת התיישנות, הרשם ממשיך בהליכי גבייה.
+        </p>
+      </div>
+
+      <p>
+        הרבה נושים — ובעיקר חברות ניהול חובות שרוכשות חובות ישנים — פותחים תיקים
+        בהוצאה לפועל בדיוק מתוך ידיעה שרוב החייבים לא יגיבו בזמן.
+        הם סומכים על כך שלא תדע שיש לך הגנה.
+        המידע הזה הוא ההגנה שלך.
+      </p>
+    </section>
+
+    <!-- סעיף 4: מה מפסיק -->
+    <section id="what-stops">
+      <h2>מה מפסיק את מניין ההתיישנות?</h2>
+
+      <p>
+        מניין ה-7 שנים אינו בהכרח רצוף. ישנן פעולות שגורמות לו <strong>להתחיל מחדש</strong> (הפסקת התיישנות),
+        ופעולות שגורמות לו <strong>לעצור זמנית</strong> (עיכוב התיישנות).
+      </p>
+
+      <h3>פעולות שמתחילות את המניין מחדש (הפסקת התיישנות):</h3>
+
+      <ul>
+        <li>
+          <strong>תשלום חלקי</strong> — אפילו תשלום קטן אחד של ₪50 מאפס את השעון.
+          שנת ה-7 מתחילה להיספר מחדש מיום התשלום.
+        </li>
+        <li>
+          <strong>הודאה בחוב בכתב</strong> — מכתב, הודעת WhatsApp, מייל שבו אתה מאשר שאתה חייב
+          — גם זה מפסיק את ההתיישנות. אל תאשר חובות ישנים בכתב ללא ייעוץ.
+        </li>
+        <li>
+          <strong>הגשת תביעה על ידי הנושה</strong> — הרגע שהנושה מגיש תביעה לבית המשפט
+          מפסיק את מניין ההתיישנות.
+        </li>
+        <li>
+          <strong>פסיקת בית משפט</strong> — כאשר ניתן פסק דין, מתחיל מניין חדש של 25 שנה (ראה סעיף נפרד).
+        </li>
+      </ul>
+
+      <h3>נסיבות שעוצרות זמנית את המניין (עיכוב התיישנות):</h3>
+
+      <ul>
+        <li><strong>קטינות</strong> — מניין ההתיישנות לא רץ כנגד קטין עד שיגיע לגיל 18.</li>
+        <li><strong>שהות בחו"ל</strong> — תקופת שהייה ממושכת מחוץ לישראל עשויה לעצור את המניין.</li>
+        <li><strong>חוסר כשרות משפטית</strong> — אדם שאינו כשיר משפטית מוגן מהרצת מניין ההתיישנות.</li>
+      </ul>
+
+      <div class="info-box">
+        <p class="font-semibold text-blue-800 mb-1">כלל אצבע מעשי</p>
+        <p>
+          בדוק את <strong>תאריך התשלום האחרון</strong> שביצעת לחוב הזה — לא את תאריך פתיחת החוב.
+          מניין ה-7 שנים מתחיל ברוב המקרים מיום הפירעון האחרון שנדרשת לשלמו.
+          אם לא שילמת דבר ולא הייתה שום פעולה מאז — הספירה ממשיכה מאותו יום.
+        </p>
+      </div>
+    </section>
+
+    <!-- סעיף 5: איך יודעים -->
+    <section id="how-to-check">
+      <h2>איך יודעים אם חוב התיישן — רשימת בדיקה מעשית</h2>
+
+      <p>
+        לפני שמגישים התנגדות, צריך לבדוק שהחוב אכן עומד בתנאי ההתיישנות.
+        הנה שאלות שכדאי לענות עליהן:
+      </p>
+
+      <ul>
+        <li>
+          <strong>מתי בוצע התשלום האחרון לחוב?</strong>
+          חפש קבלות, תדפיסי בנק, או העברות. אם מעל 7 שנים — יש סיכוי טוב.
+        </li>
+        <li>
+          <strong>האם שלחת אי פעם הודאה בכתב?</strong>
+          בדוק אם פנית בכתב לנושה ואישרת את קיום החוב — זה עלול לאפס את המניין.
+        </li>
+        <li>
+          <strong>האם הנושה הגיש תביעה בבית משפט בעבר?</strong>
+          בדוק אם יש פסק דין. אם יש — תקופת ההתיישנות היא 25 שנה, לא 7.
+        </li>
+        <li>
+          <strong>האם הייתה כל פעולה משפטית מצד הנושה?</strong>
+          פנייה דרך עורך דין, מכתב דרישה רשמי עם אישור מסירה — בדוק היסטוריה.
+        </li>
+        <li>
+          <strong>מה טיב החוב?</strong>
+          חוב לרשות המיסים או ארנונה עובד בכללים שונים (ראה סעיף נפרד).
+        </li>
+        <li>
+          <strong>האם שהית בחו"ל תקופה ממושכת?</strong>
+          זה עלול לשנות את חישוב התקופה.
+        </li>
+      </ul>
+
+      <p>
+        אם ענית "כן, מעל 7 שנים, ללא תשלום, ללא פסק דין, ללא הודאה בכתב" — ייתכן שהחוב מוגן בהתיישנות.
+        הצעד הבא: הגשת התנגדות.
+      </p>
+    </section>
+
+    <!-- סעיף 6: שלב אחרי שלב -->
+    <section id="how-to-file">
+      <h2>שלב אחרי שלב — איך מגישים טענת התיישנות</h2>
+
+      <p>
+        קיבלת אזהרה מהוצאה לפועל? יש לך <strong>20 יום</strong> מיום קבלת האזהרה להגיש התנגדות.
+        כך עושים זאת:
+      </p>
+
+      <ol class="step-list">
+        <li>
+          <span class="step-num">1</span>
+          <span>
+            <strong>קרא את האזהרה בעיון</strong> — זהה את מספר התיק, שם הנושה, סכום החוב,
+            ומועד פתיחת התיק. רשום את תאריך קבלת האזהרה — ממנו רצים ה-20 יום.
+          </span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span>
+            <strong>אסוף ראיות לתאריך התשלום האחרון</strong> — תדפיס בנק, קבלה, כל מסמך שמוכיח
+            שמאז תאריך מסוים לא בוצע תשלום. ככל שהראיות ברורות יותר — כך ההתנגדות חזקה יותר.
+          </span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span>
+            <strong>הכן את טופס ההתנגדות</strong> — ניתן להשיג את הטפסים בלשכת ההוצאה לפועל הקרובה
+            או דרך אתר רשות האכיפה והגבייה. בטופס יש לציין שאתה מגיש התנגדות על בסיס התיישנות
+            (סעיף 2 לחוק ההתיישנות).
+          </span>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <span>
+            <strong>הגש את ההתנגדות ללשכת ההוצאה לפועל</strong> — בצירוף העתק האזהרה, הראיות,
+            וטופס הבקשה. שמור עותק חתום עם חותמת הלשכה. ניתן גם להגיש דרך האזור האישי באתר.
+          </span>
+        </li>
+        <li>
+          <span class="step-num">5</span>
+          <span>
+            <strong>בקש עיכוב הליכים</strong> — ביחד עם ההתנגדות, הגש בקשה לעיכוב הליכים זמני
+            עד להכרעה בטענת ההתיישנות. ללא בקשה זו, ההליכים ממשיכים גם כשיש התנגדות תלויה.
+          </span>
+        </li>
+        <li>
+          <span class="step-num">6</span>
+          <span>
+            <strong>הופע לדיון אם נקבע</strong> — הרשם עשוי לזמן דיון לבירור הטענות.
+            הגע מוכן עם כל הראיות. אם קשה לך להתמודד לבד — שקול ייצוג על ידי עורך דין
+            או סיוע משפטי חינמי.
+          </span>
+        </li>
+      </ol>
+
+      <div class="info-box">
+        <p class="font-semibold text-blue-800 mb-1">20 יום — מועד שאסור לפספס</p>
+        <p>
+          אם לא הגשת התנגדות בתוך 20 יום מיום קבלת האזהרה, <strong>תאבד את הזכות</strong> לטעון התיישנות
+          באותו הליך. הנושה יוכל להמשיך בגבייה כאילו החוב תקף לחלוטין.
+          אם פספסת — יש עדיין אפשרויות מסוימות, אך הן מורכבות יותר. פנה מיד לעורך דין.
+        </p>
+      </div>
+    </section>
+
+    <!-- סעיף 7: תיק על חוב ישן -->
+    <section id="old-debt-case">
+      <h2>מה קורה אם פתחו תיק על חוב ישן</h2>
+
+      <p>
+        תופעה נפוצה: חברות שרוכשות חובות ישנים (פורטפוליו חובות) פותחות תיקי הוצאה לפועל
+        על חובות שהוזנחו שנים רבות.
+        הן יודעות שאחוז גדול מהחייבים לא ייענה — ואז הן גובות ממי שלא הגיש התנגדות.
+      </p>
+
+      <p>
+        אם קיבלת אזהרה על חוב ישן — אל תניח שהנושה "יוותר".
+        גם אם אתה בטוח שהחוב התיישן, עליך לנקוט פעולה. הנה מה לעשות:
+      </p>
+
+      <ul>
+        <li>
+          <strong>בדוק את תאריך יצירת החוב</strong> — מצא מסמכים מקוריים של ההסכם, השיק, או ההלוואה.
+        </li>
+        <li>
+          <strong>בדוק שאין פסק דין קיים</strong> — חפש בתיקי בית המשפט (ניתן דרך עורך דין).
+          אם יש פסק דין, תקופת ההתיישנות היא 25 שנה.
+        </li>
+        <li>
+          <strong>הגש התנגדות בזמן</strong> — גם אם אתה לא בטוח 100%, עדיף להגיש ולאפשר לרשם לבחון.
+          אי הגשה מבטיחה שתפסיד.
+        </li>
+        <li>
+          <strong>שקול ייעוץ משפטי</strong> — בתיקים על סכומים גבוהים, עורך דין יכול לחסוך
+          הרבה יותר מעלות הייצוג שלו.
+        </li>
+      </ul>
+    </section>
+
+    <!-- סעיף 8: פסק דין 25 שנה -->
+    <section id="judgment-25">
+      <h2>פסק דין — 25 שנה</h2>
+
+      <p>
+        זהו אחד ההבדלים הקריטיים שחייבים להבין: <strong>פסק דין חלוט (סופי) מתיישן בתוך 25 שנה, לא 7.</strong>
+      </p>
+
+      <p>
+        כלומר, אם נגדך ניתן פסק דין בשנת 2005 — הנושה יכול לפתוח הליכי הוצאה לפועל לביצועו עד שנת 2030.
+        זו תקופה ארוכה מאוד, ולא ניתן לטעון התיישנות של 7 שנים על חוב שיש לו פסק דין.
+      </p>
+
+      <p>
+        לכן, לפני שמגישים טענת התיישנות, חשוב לבדוק:
+      </p>
+
+      <ul>
+        <li>האם הנושה הגיש בעבר תביעה לבית המשפט?</li>
+        <li>האם יש פסק דין שניתן נגדך — אפילו בהיעדרך?</li>
+        <li>האם קיבלת אי פעם זימון לדיון?</li>
+      </ul>
+
+      <div class="warn-box">
+        <p class="font-semibold text-amber-800 mb-1">בדיקה לפני הכל</p>
+        <p>
+          אם יש ספק לגבי קיום פסק דין — בדוק דרך עורך דין או דרך ממשל זמין לפני הגשת ההתנגדות.
+          טענת התיישנות של 7 שנים על חוב שיש לו פסק דין לא תתקבל, ועלולה לפגוע במעמדך.
+        </p>
+      </div>
+    </section>
+
+    <!-- סעיף 9: מיסים וארנונה -->
+    <section id="tax-exceptions">
+      <h2>חובות מיסים וארנונה — שונה</h2>
+
+      <p>
+        חובות לרשות המקומית (ארנונה), לרשות המיסים (מס הכנסה, מע"מ), ולמדינה בכלל —
+        כפופים לכללים שונים שאינם תמיד זהים לחוק ההתיישנות הרגיל.
+      </p>
+
+      <ul>
+        <li>
+          <strong>ארנונה:</strong> לרשות המקומית יש כוחות אכיפה מנהליים עצמאיים שאינם מצריכים פניה לבית המשפט —
+          לכן כללי ההתיישנות הרגילים לא תמיד מגינים מפניה. פסיקה אחרונה כן הגבילה גבייה לאחור,
+          אך חשוב לבדוק עם עורך דין.
+        </li>
+        <li>
+          <strong>מס הכנסה / מע"מ:</strong> לרשות המיסים סמכויות גבייה מנהליות מיוחדות על פי פקודת המסים.
+          תקופות ההתיישנות שונות, ולעתים הרשות יכולה לפעול גם על חובות ישנים יותר.
+        </li>
+        <li>
+          <strong>ביטוח לאומי:</strong> גם כאן — כללים מיוחדים שונים מהחוק הכללי.
+        </li>
+      </ul>
+
+      <p>
+        אם החוב שלך הוא לרשות ממשלתית — <strong>אל תסמוך על חוק ההתיישנות הרגיל</strong>.
+        פנה לייעוץ משפטי לבדיקת הכללים הספציפיים.
+      </p>
+
+      <div class="tip-box">
+        <p class="font-semibold text-green-800 mb-1">שמור תיעוד לשנים</p>
+        <p>
+          לתאריך התשלום האחרון שלך יש ערך משפטי עצום.
+          שמור קבלות, תדפיסי בנק, ואישורי העברה לפחות ל-10 שנים.
+          בלי ראיות — קשה מאוד להוכיח התיישנות אפילו אם היא קיימת בפועל.
+          סרוק מסמכים חשובים ושמור אותם בענן.
+        </p>
+      </div>
+    </section>
+
+    <!-- שאלות נפוצות -->
+    <section id="faq">
+      <h2>שאלות נפוצות</h2>
+
+      <div class="space-y-4 my-6">
+
+        <details class="border border-neutral-border rounded-xl group">
+          <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+            מה זה התיישנות חוב?
+            <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="px-4 pb-4 text-gray-600">
+            התיישנות חוב היא עקרון משפטי לפיו לאחר שחלפה תקופה מוגדרת בחוק (7 שנים לחוב אזרחי רגיל),
+            הנושה מאבד את הזכות לאכוף את החוב דרך בית המשפט.
+            הבסיס החוקי הוא חוק ההתיישנות, תשי"ח-1958.
+            חשוב: ההתיישנות לא מוחקת את החוב — היא רק מונעת גבייה בכפייה משפטית.
+          </p>
+        </details>
+
+        <details class="border border-neutral-border rounded-xl group">
+          <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+            כמה שנים עד שחוב מתיישן בישראל?
+            <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="px-4 pb-4 text-gray-600">
+            לרוב החובות האזרחיים — 7 שנים מיום שנולדה עילת התביעה (בדרך כלל מועד הפירעון האחרון).
+            לחוב שקיבל פסק דין חלוט — 25 שנים.
+            לחובות מס, ארנונה, וחובות ממשלתיים — כללים שונים שאינם בהכרח 7 שנים.
+          </p>
+        </details>
+
+        <details class="border border-neutral-border rounded-xl group">
+          <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+            האם החוב נעלם אוטומטית אחרי 7 שנים?
+            <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="px-4 pb-4 text-gray-600">
+            לא. ההתיישנות אינה אוטומטית ואינה מוחקת את החוב.
+            על החייב לטעון אקטיבית את טענת ההתיישנות — בהגשת התנגדות ללשכת ההוצאה לפועל בתוך 20 יום מקבלת האזהרה.
+            אם לא הגשת — אתה מאבד את הזכות, גם אם החוב ישן מאוד.
+          </p>
+        </details>
+
+        <details class="border border-neutral-border rounded-xl group">
+          <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+            איך מגישים טענת התיישנות?
+            <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="px-4 pb-4 text-gray-600">
+            מגישים התנגדות ללשכת ההוצאה לפועל בתוך 20 יום מקבלת האזהרה.
+            בטופס ההתנגדות מציינים את עילת ההתיישנות ומצרפים ראיות (תאריך תשלום אחרון, תדפיסי בנק).
+            כדאי גם לבקש עיכוב הליכים זמני.
+            מומלץ להתייעץ עם עורך דין לפני ההגשה, במיוחד בסכומים גבוהים.
+          </p>
+        </details>
+
+        <details class="border border-neutral-border rounded-xl group">
+          <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+            מה מפסיק את מניין ההתיישנות?
+            <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="px-4 pb-4 text-gray-600">
+            מניין ההתיישנות מתאפס כאשר: החייב מבצע תשלום כלשהו (אפילו חלקי), החייב מודה בחוב בכתב,
+            הנושה מגיש תביעה לבית המשפט, או בית המשפט נותן פסיקה בעניין.
+            מניין עשוי להיעצר זמנית (ולא להתאפס) עקב קטינות, שהות בחו"ל, או חוסר כשרות משפטית.
+          </p>
+        </details>
+
+        <details class="border border-neutral-border rounded-xl group">
+          <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+            האם פסק דין גם מתיישן?
+            <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="px-4 pb-4 text-gray-600">
+            כן, אך תקופת ההתיישנות על פסק דין חלוט היא 25 שנה — לא 7.
+            כלומר אם ניתן פסק דין נגדך בשנת 2005, הנושה יכול לבקש ביצועו דרך הוצאה לפועל עד שנת 2030.
+            לא ניתן לטעון התיישנות של 7 שנים על חוב שיש לו פסק דין.
+          </p>
+        </details>
+
+        <details class="border border-neutral-border rounded-xl group">
+          <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+            האם חוב ישן משפיע על דוח האשראי?
+            <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="px-4 pb-4 text-gray-600">
+            כן. רישומים שליליים בדוח האשראי נשמרים 7 שנים מרגע הרישום — ללא קשר לסטטוס ההתיישנות של החוב.
+            גם אם חוב מוגן מגבייה בגלל התיישנות, הרישום עשוי עדיין להופיע בדוח ולפגוע בדירוג האשראי שלך.
+            לאחר 7 שנים מיום הרישום, הערך נמחק מהדוח אוטומטית.
+          </p>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- מקורות -->
+    <section class="sources-section">
+      <h2>מקורות ומידע נוסף</h2>
+      <ul>
+        <li>
+          <a href="https://www.nevo.co.il/law_html/Law01/P204_001.htm" target="_blank" rel="noopener">
+            חוק ההתיישנות, תשי"ח-1958 — נבו
+          </a>
+        </li>
+        <li>
+          <a href="https://www.gov.il/he/departments/enforcement_and_collection_authority" target="_blank" rel="noopener">
+            רשות האכיפה והגבייה — אתר רשמי
+          </a>
+        </li>
+        <li>
+          <a href="https://www.kolzchut.org.il/he/%D7%94%D7%AA%D7%99%D7%99%D7%A9%D7%A0%D7%95%D7%AA_%D7%97%D7%95%D7%91" target="_blank" rel="noopener">
+            כל זכות — התיישנות חוב
+          </a>
+        </li>
+        <li>
+          <a href="https://www.gov.il/he/departments/legal_aid" target="_blank" rel="noopener">
+            הסיוע המשפטי — משרד המשפטים
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </article>
+
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
+    <ul class="space-y-2 text-sm">
+      <li>← <a href="/guides/hitnagdut-letik/" class="text-brand hover:underline">מדריך התנגדות לתיק הוצאה לפועל — הגשה נכונה</a></li>
+      <li>← <a href="/guides/michtav-hotzaa/" class="text-brand hover:underline">קיבלת מכתב מהוצאה לפועל? מה כתוב שם ומה לעשות</a></li>
+      <li>← <a href="/rights/10-zchuyot/" class="text-brand hover:underline">10 זכויות שכל חייב חייב להכיר</a></li>
+    </ul>
+  </div>
+
+</GuideLayout>

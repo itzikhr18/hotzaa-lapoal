@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import AccessibilityWidget from '../components/AccessibilityWidget.astro';
 
 export interface Props {
   title: string;
@@ -7,8 +8,12 @@ export interface Props {
   canonicalUrl?: string;
   ogTitle?: string;
   ogDescription?: string;
-  schema?: object;
+  ogImage?: string;
+  ogType?: string;
+  schema?: object | object[];
 }
+
+const siteUrl = 'https://hotzaa-lapoal.info';
 
 const {
   title,
@@ -16,11 +21,13 @@ const {
   canonicalUrl = Astro.url.href,
   ogTitle = title,
   ogDescription = description,
+  ogImage = `${siteUrl}/og-image.png`,
+  ogType = 'website',
   schema,
 } = Astro.props;
 
-const siteUrl = 'https://hotzaa-lapoal.info';
 const fullTitle = title.includes('הוצאה לפועל') ? title : `${title} | הוצאהלפועל.info`;
+const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
 ---
 
 <!DOCTYPE html>
@@ -35,17 +42,22 @@ const fullTitle = title.includes('הוצאה לפועל') ? title : `${title} | 
   <link rel="canonical" href={canonicalUrl} />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:title" content={ogTitle} />
   <meta property="og:description" content={ogDescription} />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="הוצאהלפועל.info" />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={ogTitle} />
   <meta name="twitter:description" content={ogDescription} />
+  <meta name="twitter:image" content={ogImage} />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,17 +71,19 @@ const fullTitle = title.includes('הוצאה לפועל') ? title : `${title} | 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- Schema.org JSON-LD -->
-  {schema && (
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-  )}
+  {schemas.map(s => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
 
   <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="X5NDXZCjqVjRvuyONLtPJ0UBFHrgFZRr-ybS83-hUWo" />
+  <meta name="google-site-verification" content="S0rlBUmhG4a_Mtd6kXKk9PaMPyGMJN5xVDVh8cfJo1k" />
 
   <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your GA4 ID -->
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
 </head>
 <body class="bg-neutral-bg text-gray-900 font-sans antialiased">
+  <AccessibilityWidget />
   <slot />
 </body>
 </html>

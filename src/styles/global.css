@@ -62,7 +62,7 @@
 
   /* Warning box */
   .warn-box {
-    @apply bg-amber-50 border border-amber-200 rounded-xl p-5 my-6;
+    @apply bg-blue-50 border border-blue-200 rounded-xl p-5 my-6;
   }
 
   /* Step list */
@@ -83,4 +83,38 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: #AED6F1 transparent;
+}
+
+/* עיצוב אמפתי — רקע Hero */
+.hero-gradient {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 50%, #f5f7fa 100%);
+}
+
+/* כרטיסיות מדריכים — hover חם */
+.guide-card {
+  transition: all 0.2s ease;
+}
+.guide-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30, 58, 95, 0.10);
+}
+
+/* Disclaimer — נקי ולא מאיים */
+.disclaimer-bar {
+  background: #f8f9fa;
+  border-top: 1px solid #e5e7eb;
+  color: #6B7280;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.6rem 1rem;
+}
+
+/* סטטיסטיקות — מרגיע */
+.stat-number {
+  color: #1B4F72;
+  font-weight: 700;
+}
+.stat-label {
+  color: #6B7280;
+  font-size: 0.85rem;
 }

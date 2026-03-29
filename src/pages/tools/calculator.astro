@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import InterestCalculator from '../../components/InterestCalculator';
 
-const schema = {
+const appSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'מחשבון ריבית הוצאה לפועל — תיקון 9',
@@ -13,12 +13,24 @@ const schema = {
   applicationCategory: 'FinanceApplication',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'מה שינה תיקון 9 בחישוב ריבית הוצאה לפועל?', acceptedAnswer: { '@type': 'Answer', text: 'תיקון 9 (ינואר 2025) ביטל את שיטת ריבית דריבית הישנה. במקומה: ריבית בסיס לפי שיעור בנק ישראל + 3.5% על קרן החוב, ודמי פיגורים רבעוניים של 0.25% עם תקרה של 80% מהקרן (70% אם עומדים בצו תשלומים). זה מגביל את הצמיחה האינסופית של החוב.' } },
+    { '@type': 'Question', name: 'כמה ריבית חייבים לשלם על חוב בהוצאה לפועל ב-2025?', acceptedAnswer: { '@type': 'Answer', text: 'לפי תיקון 9: ריבית בסיס = שיעור בנק ישראל (4.5% נכון לינואר 2025) + 3.5% = בסביבות 8% בשנה. בנוסף, דמי פיגורים רבעוניים של 0.25% (כ-1% בשנה). סה"כ בערך 9% בשנה, עם תקרה מוחלטת.' } },
+    { '@type': 'Question', name: 'האם תיקון 9 חל גם על חובות ישנים?', acceptedAnswer: { '@type': 'Answer', text: 'כן. תיקון 9 חל על כל החובות שעדיין פתוחים בהוצאה לפועל ועל חובות חדשים שנוצרו אחרי ינואר 2025. עבור חובות שנוצרו לפני ינואר 2025, הריבית מינואר 2025 ואילך חושבת לפי הנוסחה החדשה.' } },
+    { '@type': 'Question', name: 'מה התקרה המקסימלית לריבית?', acceptedAnswer: { '@type': 'Answer', text: 'דמי הפיגורים מוגבלים ל-80% מסכום קרן החוב המקורי (70% אם עומדים בצו תשלומים). ריבית הבסיס אינה מוגבלת בנפרד אך בשילוב התקרה הכוללת — הצמיחה האינסופית נמנעת.' } },
+    { '@type': 'Question', name: 'איך יודעים מה הסכום המדויק שאני חייב?', acceptedAnswer: { '@type': 'Answer', text: 'ניתן לבקש "פירוט תיק" מלשכת ההוצאה לפועל הרלוונטית, דרך האזור האישי באתר רשות האכיפה, או על ידי הצגת תעודת זהות בלשכה. הפירוט יכלול קרן, ריבית, ועלויות ביצוע.' } },
+  ],
+};
 ---
 
 <BaseLayout
   title="מחשבון ריבית הוצאה לפועל — תיקון 9 (2026)"
   description="חשב כמה אתה חייב לפי תיקון 9 שנכנס לתוקף בינואר 2025. ריבית בסיס + דמי פיגורים רבעוניים. חינם, מיידי, עם פירוט מלא."
-  {schema}
+  schema={[appSchema, faqSchema]}
 >
   <Header />
   <main class="max-w-3xl mx-auto px-4 py-10">
@@ -71,6 +83,53 @@ const schema = {
 
     <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-sm">
       <InterestCalculator client:idle />
+    </div>
+
+    <!-- הסבר על תיקון 9 -->
+    <div class="mt-10 border-t pt-8 border-gray-200">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">איך עובד תיקון 9?</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+        {[
+          { label: 'ריבית בסיס', val: 'שיעור בנק ישראל + 3.5%', desc: 'נכון לינואר 2025: ~8% בשנה' },
+          { label: 'דמי פיגורים', val: '0.25% לרבעון', desc: 'כ-1% בשנה — מוגבלים בתקרה' },
+          { label: 'תקרה', val: '80% מהקרן', desc: '70% אם עומדים בצו תשלומים' },
+        ].map(item => (
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+            <p class="text-xs text-gray-500 mb-1">{item.label}</p>
+            <p class="font-bold text-brand-dark">{item.val}</p>
+            <p class="text-xs text-gray-400 mt-1">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">שאלות נפוצות</h2>
+      <div class="space-y-3">
+        {[
+          { q: 'מה שינה תיקון 9 בחישוב ריבית?', a: 'תיקון 9 (ינואר 2025) ביטל ריבית דריבית חוקית בלתי מוגבלת. כעת יש תקרה: דמי פיגורים מוגבלים ל-80% מהקרן (70% בצו תשלומים). ריבית בסיס היא שיעור בנק ישראל + 3.5%.' },
+          { q: 'האם תיקון 9 חל על חובות ישנים?', a: 'כן. מינואר 2025 ואילך, גם חובות ישנים שנוצרו לפני כן מחושבים לפי הנוסחה החדשה. הצבירה שלפני ינואר 2025 נשארת, אבל הצמיחה העתידית מחושבת לפי הכללים החדשים.' },
+          { q: 'מה זה "דמי פיגורים"?', a: 'תשלום נוסף מעבר לריבית הבסיס — 0.25% מהקרן לכל רבעון שחלף (כ-1% בשנה). ה"תקרה" מגבילה את הסכום הכולל שניתן לגבות מעמלות אלה.' },
+          { q: 'כיצד בודקים כמה אני חייב בדיוק?', a: 'בקש "פירוט תיק" ממשרד ההוצאה לפועל הרלוונטי, דרך האזור האישי באתר רשות האכיפה, או בלשכה עם תעודת זהות. הפירוט מראה קרן, ריבית, ועלויות ביצוע.' },
+        ].map(faq => (
+          <details class="border border-neutral-border rounded-xl group">
+            <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center text-sm">
+              {faq.q}
+              <span class="text-neutral-muted group-open:rotate-180 transition-transform flex-shrink-0 mr-2">▼</span>
+            </summary>
+            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/guides/tikunim-2025/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
+          ← קרא עוד על תיקון 9
+        </a>
+        <span class="text-gray-300">|</span>
+        <a href="/guides/michtav-hotzaa/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
+          ← קיבלת מכתב מהוצאה לפועל?
+        </a>
+      </div>
     </div>
 
   </main>

@@ -1,5 +1,32 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'איך לתכנן את עלויות הליך חדלות פירעון',
+  description: 'שלבים לתכנון נכון של עלויות הגשת בקשה לחדלות פירעון בישראל — אגרות, עורך דין, ונאמן',
+  totalTime: 'PT1H',
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'בדוק זכאות לפטור מאגרה', text: 'אגרת הגשה היא 1,564 ₪. אם אין לך יכולת לשלם — ניתן לבקש פטור מלא או חלקי. הבקשה מוגשת יחד עם הבקשה הראשית לחדלות פירעון.' },
+    { '@type': 'HowToStep', position: 2, name: 'בדוק זכאות לסיוע משפטי חינמי', text: 'הלשכה לסיוע משפטי מציעה ייצוג חינמי לזכאים לפי רמת הכנסה. קליניקות משפטיות באוניברסיטאות מציעות ייעוץ חינמי. בדוק זאת לפני שכירת עורך דין פרטי.' },
+    { '@type': 'HowToStep', position: 3, name: 'השווה שכר טרחת עורכי דין', text: 'שכר טרחה נע בין 6,000 ל-20,000 ₪. פנה לפחות ל-3 עורכי דין לקבלת הצעות מחיר. בדוק ניסיון ספציפי בחדלות פירעון.' },
+    { '@type': 'HowToStep', position: 4, name: 'שקול שמאות נכסים', text: 'אם יש לך נכסים (דירה, רכב) — ייתכן צורך בשמאות. עלות שמאות: 1,500–3,000 ₪. הנאמן עשוי לדרוש זאת.' },
+    { '@type': 'HowToStep', position: 5, name: 'חשב את כדאיות ההליך', text: 'חשב: עלות ההליך (~15,000 ₪) + תשלומים חודשיים (4 שנים) מול סך החוב שיימחק. על חוב של 350,000 ₪ — החיסכון הנטו עומד על כ-287,000 ₪.' },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'כמה עולה הגשת בקשה לחדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'אגרת בית המשפט עומדת על 1,564 ₪. שכר טרחת עורך דין נע בין 6,000 ל-20,000 ₪ לפי מורכבות התיק. סה"כ עלות משוערת: 8,000-25,000 ₪.' } },
+    { '@type': 'Question', name: 'האם ניתן לקבל פטור מאגרת בית המשפט?', acceptedAnswer: { '@type': 'Answer', text: 'כן. אנשים שאין ביכולתם לשלם יכולים לבקש פטור מלא או חלקי. הבקשה מוגשת יחד עם הבקשה הראשית לחדלות פירעון.' } },
+    { '@type': 'Question', name: 'האם חובה לשכור עורך דין לחדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'לא חובה, אבל מומלץ מאוד. ניתן להגיש בעצמך, אך ההליך מורכב ומלא דקויות בירוקרטיות. טעויות יכולות לעכב בחודשים. לזכאים — הלשכה לסיוע משפטי מציעה ייצוג חינמי.' } },
+    { '@type': 'Question', name: 'מי משלם לנאמן?', acceptedAnswer: { '@type': 'Answer', text: 'שכר הנאמן נקבע על ידי בית המשפט ומשולם מתוך הכספים שנגבים לטובת הנושים — לא ישירות מכיסך.' } },
+    { '@type': 'Question', name: 'האם ההשקעה משתלמת?', acceptedAnswer: { '@type': 'Answer', text: 'לרוב כן. על חוב של 350,000 ₪ — עלות ההליך ~15,000 ₪, תשלומים ~48,000 ₪ לאורך 4 שנים, ובסוף נמחקים ~287,000 ₪. החיסכון הנטו משמעותי.' } },
+  ],
+};
 ---
 
 <GuideLayout
@@ -7,8 +34,9 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
   description="העלות הכוללת של הליך חדלות פירעון נעה בין 8,000 ל-25,000 ₪. פירוט אגרות, שכר טרחה עורך דין, ועלויות נסתרות — לפני שמחליטים."
   breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'עלויות', href: '/insolvency/costs/' }]}
   publishDate="2025-03-01"
-  updateDate="2026-01-15"
-  readTime="4 דקות"
+  updateDate="2026-03-28"
+  readTime="5 דקות"
+  schema={[faqSchema, howToSchema]}
 >
 
   <p>
@@ -91,6 +119,24 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
         <p class="font-bold text-green-800">חיסכון נטו: כ-287,000 ₪ 💚</p>
       </div>
     </div>
+  </div>
+
+  <h2>שאלות נפוצות</h2>
+  <div class="space-y-4 my-6">
+    {[
+      { q: 'כמה עולה הגשת בקשה לחדלות פירעון?', a: 'אגרת בית המשפט: 1,564 ₪. שכר עורך דין: 6,000-20,000 ₪. סה"כ: 8,000-25,000 ₪ בהתאם למורכבות.' },
+      { q: 'האם ניתן לקבל פטור מאגרת בית המשפט?', a: 'כן. מי שאין ביכולתו לשלם יכול לבקש פטור מלא או חלקי יחד עם הגשת הבקשה.' },
+      { q: 'האם חובה לשכור עורך דין?', a: 'לא חובה, אבל מומלץ מאוד. לזכאים — הלשכה לסיוע משפטי מציעה ייצוג חינמי.' },
+      { q: 'מי משלם לנאמן?', a: 'שכר הנאמן נקבע בבית המשפט ומשולם מהכספים שנגבים לנושים — לא ישירות מהחייב.' },
+    ].map(faq => (
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          {faq.q}
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
+      </details>
+    ))}
   </div>
 
   <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">

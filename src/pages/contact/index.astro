@@ -2,11 +2,31 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'יצירת קשר — הוצאהלפועל.info',
+  description: 'שאל שאלה על הוצאה לפועל וחדלות פירעון. צ\'אטבוט AI זמין 24/7, מדריכים מפורטים, ושאלות נפוצות.',
+  url: 'https://hotzaa-lapoal.info/contact/',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'הוצאהלפועל.info',
+    url: 'https://hotzaa-lapoal.info',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      availableLanguage: 'Hebrew',
+      areaServed: 'IL',
+    },
+  },
+};
 ---
 
 <BaseLayout
-  title="יצירת קשר"
-  description="שאלה על הוצאה לפועל? השתמש בצ'אטבוט שלנו לתשובה מיידית, או עיין במדריכים ובשאלות הנפוצות."
+  title="יצירת קשר — שאל שאלה על הוצאה לפועל"
+  description="שאלה על הוצאה לפועל? צ'אטבוט AI עונה 24/7 בחינם, מדריכים מפורטים, ושאלות נפוצות. ייעוץ אישי — ראה גורמי סיוע."
+  schema={schema}
 >
   <Header />
   <main class="max-w-2xl mx-auto px-4 py-12">
@@ -33,7 +53,7 @@ import Footer from '../../components/Footer.astro';
       <a href="/faq/" class="flex gap-5 items-start bg-white border border-neutral-border rounded-xl p-5 hover:border-brand hover:bg-brand-pale transition-all block group">
         <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl shrink-0">❓</div>
         <div>
-          <h2 class="font-bold text-gray-800 group-hover:text-brand-dark transition-colors">שאלות נפוצות — 47 תשובות</h2>
+          <h2 class="font-bold text-gray-800 group-hover:text-brand-dark transition-colors">שאלות נפוצות — 60 תשובות</h2>
           <p class="text-sm text-gray-500 mt-1">רוב השאלות כבר נענו — בדוק אם התשובה שלך כאן.</p>
         </div>
         <span class="text-brand text-lg mt-1 mr-auto">←</span>
@@ -43,7 +63,7 @@ import Footer from '../../components/Footer.astro';
         <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl shrink-0">📚</div>
         <div>
           <h2 class="font-bold text-gray-800 group-hover:text-brand-dark transition-colors">מדריכים מפורטים</h2>
-          <p class="text-sm text-gray-500 mt-1">9 מדריכים מעמיקים — עיקולים, הסדרים, זכויות, הגבלות.</p>
+          <p class="text-sm text-gray-500 mt-1">25+ מדריכים מעמיקים — עיקולים, הסדרים, זכויות, הגבלות, מזונות ועוד.</p>
         </div>
         <span class="text-brand text-lg mt-1 mr-auto">←</span>
       </a>
@@ -60,7 +80,7 @@ import Footer from '../../components/Footer.astro';
       </ul>
     </div>
 
-    <div class="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+    <div class="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700">
       ⚠️ אנחנו לא משרד עורכי דין ולא נותנים ייעוץ משפטי אישי.
     </div>
 

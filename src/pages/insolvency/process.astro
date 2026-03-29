@@ -1,5 +1,52 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'שלבי הליך חדלות פירעון — מדריך שלב אחר שלב',
+  description: 'הסבר מפורט על 4 שלבי הליך חדלות פירעון בישראל — מהגשת הבקשה ועד ההפטר',
+  totalTime: 'P4Y',
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'הגשת הבקשה לצו פתיחת הליכים', text: 'הגש בקשה לבית משפט השלום (חוב מעל 176,923 ₪) או לרשם חדלות פירעון. כלול: רשימת נושים, דוחות הכנסה/הוצאות, רשימת נכסים ומסמכי זיהוי. לאחר אישור — כל ההליכים נגדך מוקפאים.' },
+    { '@type': 'HowToStep', position: 2, name: 'תקופת ביניים — שיתוף פעולה עם הנאמן', text: 'בתקופת הביניים (כשנה) הנאמן חוקר את מצבך הכלכלי. שתף פעולה מלא: ספק מסמכים מבוקשים, הגש דיווחים, והשתתף בחקירת היכולת.' },
+    { '@type': 'HowToStep', position: 3, name: 'אישור תוכנית שיקום', text: 'הנאמן מגבש תוכנית שיקום — כמה תשלם כל חודש ולכמה זמן. בית המשפט מאשר את התוכנית. סכום התשלום נקבע לפי יכולתך הכלכלית.' },
+    { '@type': 'HowToStep', position: 4, name: 'תקופת שיקום — עמידה בתנאים', text: 'שלם את התשלום החודשי בזמן. הגש דיווחים דו-חודשיים. קבל אישור לפני יציאה לחו"ל ולפני רכישות גדולות. השתתף בהכשרה פיננסית.' },
+    { '@type': 'HowToStep', position: 5, name: 'קבלת ההפטר', text: 'בסיום תקופת השיקום (כ-3 שנים) — בית המשפט מעניק הפטר. יתרת החובות נמחקת. ניתן לחזור לחיים נורמליים ללא הגבלות.' },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'כמה זמן נמשך הליך חדלות פירעון?',
+      acceptedAnswer: { '@type': 'Answer', text: 'הליך חדלות פירעון נמשך בממוצע כ-4 שנים: כ-שנה לתקופת הביניים (בחינה וגיבוש תוכנית שיקום) ועוד כ-3 שנים לתקופת השיקום עצמה. בסוף התקופה, בית המשפט מעניק הפטר — ביטול יתרת החובות.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה זה נאמן חדלות פירעון?',
+      acceptedAnswer: { '@type': 'Answer', text: 'נאמן חדלות פירעון הוא גורם מקצועי (עו"ד או רו"ח) שבית המשפט ממנה לנהל את ענייניו הכלכליים של החייב במהלך ההליך. הנאמן בוחן את נכסי החייב, מגבש תוכנית שיקום, מפקח על תשלומים, ומדווח לבית המשפט. הנאמן ממונה בתיקים עם חוב מעל 176,923 ₪.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם אפשר לצאת לחו"ל בזמן ההליך?',
+      acceptedAnswer: { '@type': 'Answer', text: 'לא ללא אישור. במהלך הליך חדלות פירעון נדרש אישור מהנאמן או מבית המשפט לפני כל יציאה לחו"ל. ניתן לקבל אישור לנסיעות עבודה, רפואיות או אחרות, אך אין לצאת ללא קבלת אישור מראש.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה קורה אם לא עומדים בתשלומים?',
+      acceptedAnswer: { '@type': 'Answer', text: 'אי-עמידה בתשלומים החודשיים עלולה לגרום לעיכוב מתן ההפטר או אף לביטולו. בית המשפט רשאי להאריך את תקופת השיקום, להגדיל את סכום התשלום החודשי, או במקרים קיצוניים — לבטל את ההליך לחלוטין.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה ההבדל בין תקופת הביניים לתקופת השיקום?',
+      acceptedAnswer: { '@type': 'Answer', text: 'תקופת הביניים (כשנה) היא שלב הבחינה: הנאמן חוקר את מצב החייב, הנושים מגישים תביעות חוב, ומגובשת תוכנית שיקום. תקופת השיקום (כ-3 שנים) היא שלב הביצוע: החייב מבצע תשלומים חודשיים קבועים, מדווח לנאמן ועומד בכל תנאי ההליך עד לקבלת הפטר.' },
+    },
+  ],
+};
 ---
 
 <GuideLayout
@@ -7,8 +54,9 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
   description="הליך חדלות פירעון נמשך כ-4 שנים ומורכב מ-3 שלבים עיקריים. מה קורה בכל שלב, מה נדרש ממך, ומתי מקבלים הפטר — מדריך שלב אחר שלב."
   breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'שלבי ההליך', href: '/insolvency/process/' }]}
   publishDate="2025-03-01"
-  updateDate="2026-01-30"
+  updateDate="2026-03-28"
   readTime="7 דקות"
+  schema={[faqSchema, howToSchema]}
 >
 
   <p>
@@ -98,6 +146,33 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
         <span class="text-sm text-gray-700">{item.label}</span>
       </div>
     ))}
+  </div>
+
+  <h2>שאלות נפוצות</h2>
+  <div class="space-y-4 my-6">
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        כמה זמן נמשך הליך חדלות פירעון?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">בממוצע כ-4 שנים: שנה לתקופת הביניים (בחינה וגיבוש תוכנית) ועוד כ-3 שנים לתקופת השיקום. בסיום — בית המשפט מעניק הפטר ומבטל את יתרת החובות.</p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה זה נאמן חדלות פירעון?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">גורם מקצועי (עו"ד או רו"ח) שבית המשפט ממנה לנהל את ענייניו הכלכליים של החייב. הנאמן בוחן נכסים, מגבש תוכנית שיקום, מפקח על תשלומים ומדווח לבית המשפט. ממונה בתיקים עם חוב מעל 176,923 ₪.</p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה ההבדל בין תקופת הביניים לתקופת השיקום?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">תקופת הביניים (כשנה) היא שלב הבחינה — הנאמן חוקר את מצב החייב ומגבש תוכנית שיקום. תקופת השיקום (כ-3 שנים) היא שלב הביצוע — תשלומים חודשיים קבועים, דיווחים ועמידה בתנאים עד לקבלת הפטר.</p>
+    </details>
   </div>
 
   <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
