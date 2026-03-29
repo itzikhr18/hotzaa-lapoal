@@ -24,7 +24,7 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Assistant', 'Noto Sans Hebrew', 'sans-serif'],
+        sans: ['Assistant', 'sans-serif'],
       },
       typography: {
         DEFAULT: {

@@ -59,13 +59,18 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
   <meta name="twitter:description" content={ogDescription} />
   <meta name="twitter:image" content={ogImage} />
 
-  <!-- Fonts -->
+  <!-- Fonts — Assistant only (supports Hebrew natively), reduced weights for faster load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Noto+Sans+Hebrew:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet" />
+  </noscript>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

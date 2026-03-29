@@ -9,12 +9,12 @@
   }
 
   body {
-    font-family: 'Assistant', 'Noto Sans Hebrew', sans-serif;
+    font-family: 'Assistant', sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Assistant', 'Noto Sans Hebrew', sans-serif;
+    font-family: 'Assistant', sans-serif;
     font-weight: 700;
   }
 }
