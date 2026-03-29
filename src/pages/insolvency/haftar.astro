@@ -8,11 +8,36 @@ const howToSchema = {
   description: 'שלבים לקבלת הפטר — ביטול יתרת החובות — בסיום הליך חדלות פירעון בישראל',
   totalTime: 'P4Y',
   step: [
-    { '@type': 'HowToStep', position: 1, name: 'עמוד בתשלומים החודשיים', text: 'שלם את התשלום החודשי שנקבע בתוכנית השיקום בדיוק ובזמן. אי-עמידה בתשלומים עלולה לגרום לדחיית ההפטר או ביטולו.' },
-    { '@type': 'HowToStep', position: 2, name: 'הגש דיווחים תקופתיים', text: 'הגש דיווח דו-חודשי על הכנסותיך ושינויים כלכליים. שמור על שקיפות מלאה — הסתרת הכנסות עלולה לגרום לביטול ההפטר.' },
-    { '@type': 'HowToStep', position: 3, name: 'עמוד בכל תנאי ההליך', text: 'קבל אישור מהנאמן לפני יציאה לחו"ל ולפני רכישות גדולות. אל תיקח אשראי חדש ללא אישור. השתתף בהכשרה פיננסית.' },
-    { '@type': 'HowToStep', position: 4, name: 'בקש את ההפטר בסיום השיקום', text: 'בסיום תקופת השיקום, הנאמן מגיש המלצה לבית המשפט. בית המשפט בוחן שעמדת בכל התנאים ומעניק הפטר.' },
-    { '@type': 'HowToStep', position: 5, name: 'התחל מחדש לאחר ההפטר', text: 'לאחר ההפטר ניתן לפתוח חשבון בנק, לרכוש נכסים, לצאת לחו"ל ולחזור לחיים רגילים. חובות שנמחקו — הנושים לא יכולים לתבוע אותך עליהם לעולם.' },
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'הגש בקשה לחדלות פירעון',
+      text: 'הגש בקשה לבית משפט השלום (חוב מעל 176,923 ₪) או לרשם חדלות פירעון (חוב 57,445–176,923 ₪). צרף רשימת נושים, פירוט נכסים, הכנסות והוצאות. תשלום אגרת בית משפט נדרש.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'עבור את שנת הביניים',
+      text: 'בשנת הביניים (כ-12 חודשים) מתמנה נאמן, מתבצעת חקירת נכסים ומצב כלכלי, ומוגדר תשלום חודשי זמני. עליך לדווח על הכנסות ולשתף פעולה מלא עם הנאמן.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'אשר תוכנית שיקום',
+      text: 'לאחר שנת הביניים, הנאמן מגיש לבית המשפט המלצה לתוכנית שיקום — סכום תשלום חודשי לתקופה של כ-3 שנים. בית המשפט מאשר את התוכנית בצו.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'עמוד בכל תנאי תוכנית השיקום',
+      text: 'שלם את התשלום החודשי בדיוק ובזמן. הגש דיווחים דו-חודשיים על הכנסות. קבל אישור מהנאמן לפני יציאה לחו"ל ולפני רכישות גדולות. אל תיקח אשראי חדש ללא אישור.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 5,
+      name: 'קבל הפטר בסיום השיקום',
+      text: 'בסיום תקופת השיקום, הנאמן מגיש המלצה לבית המשפט. בית המשפט בוחן שעמדת בכל התנאים ומעניק צו הפטר. מרגע זה — יתרת החובות מבוטלת לצמיתות.',
+    },
   ],
 };
 
@@ -20,117 +45,625 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'מה זה הפטר בחדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'הפטר הוא החלטה שיפוטית שמבטלת את יתרת החובות שלא שולמה. מרגע ההפטר — הנושים לא יכולים לתבוע אותך יותר על אותם חובות.' } },
-    { '@type': 'Question', name: 'האם ההפטר מוחק את כל החובות?', acceptedAnswer: { '@type': 'Answer', text: 'לא הכל. מזונות, קנסות פליליים, עיצומים מנהליים, וחובות שנוצרו במרמה — לא נמחקים. רוב החובות הרגילים (הלוואות, אשראי, שיקים) — כן.' } },
-    { '@type': 'Question', name: 'כמה זמן עד לקבלת הפטר?', acceptedAnswer: { '@type': 'Answer', text: 'לרוב כ-4 שנים מהגשת הבקשה: שנת ביניים + כ-3 שנות שיקום. ניתן לקיצור אם הייתה שיתוף פעולה יוצא דופן.' } },
-    { '@type': 'Question', name: 'מה ניתן לעשות אחרי קבלת הפטר?', acceptedAnswer: { '@type': 'Answer', text: 'מרגע ההפטר — ניתן לפתוח חשבון בנק, לרכוש נכסים, לצאת לחו"ל, לפתוח עסק, ולחזור לחיים רגילים ללא הגבלות.' } },
-    { '@type': 'Question', name: 'מה הפטר מותנה?', acceptedAnswer: { '@type': 'Answer', text: 'הפטר שמחייב עמידה בתנאים נוספים לתקופה קצרה לאחר סיום ההליך הרשמי. לאחר עמידה בתנאים — הופך לבלתי מוגבל.' } },
+    {
+      '@type': 'Question',
+      name: 'מה זה הפטר בחדלות פירעון?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'הפטר הוא החלטה שיפוטית שמבטלת את יתרת החובות שלא שולמה לאחר סיום הליך חדלות פירעון. מרגע ההפטר — הנושים לא יכולים לתבוע אותך יותר על אותם חובות — לא היום ולא בעוד עשר שנים. מדובר בביטול משפטי מוחלט של החוב, לא בדחיית תשלום.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם ההפטר מוחק את כל החובות?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לא הכל. רוב החובות הרגילים (הלוואות, אשראי, שיקים, חובות לספקים) נמחקים. אך חובות מסוימים שורדים את ההפטר: מזונות לילדים ובן/בת זוג לשעבר, קנסות פליליים, עיצומים מנהליים, חובות שנוצרו במרמה שהוכחה בבית משפט, ונזקי גוף מכוונים.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה זמן עד לקבלת הפטר?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לרוב כ-4 שנים מהגשת הבקשה: שנה אחת של שנת ביניים ועוד כ-3 שנות שיקום. בית המשפט רשאי לקצר את התקופה אם הייתה שיתוף פעולה יוצא דופן ותשלום מעבר לנדרש, או להאריך את התקופה אם היו הפרות.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה קורה אם לא עמדתי בתשלום חודשי אחד?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'פיגור חד-פעמי בתשלום לא בהכרח מבטל את ההליך. הנאמן ובית המשפט לוקחים בחשבון נסיבות. עם זאת, פיגורים חוזרים או אי-עמידה ממושכת בתנאים עלולים לגרום לדחיית ההפטר, הארכת תקופת השיקום, או במקרים קיצוניים — ביטול ההליך.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה הפטר מותנה?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'הפטר מותנה הוא הפטר שמחייב עמידה בתנאים נוספים לתקופה קצרה לאחר סיום ההליך הרשמי. לדוגמה, המשך דיווח על הכנסות לתקופה נוספת. לאחר עמידה בתנאים — ההפטר הופך לבלתי מוגבל ומוחלט.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה זמן הרישום נשאר בדוח האשראי לאחר הפטר?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '7 שנים ממועד קבלת ההפטר. לאחר תום 7 השנים הרישום נמחק אוטומטית ממאגרי נתוני האשראי של בנק ישראל ולא ניתן יהיה לראותו בדוח אשראי עתידי.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם אפשר לקחת הלוואה אחרי הפטר?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'כן — ההפטר מסיר את ההגבלות המשפטיות על לקיחת אשראי. עם זאת, הרישום בדוח האשראי נשאר 7 שנים, וחלק מהבנקים ינהגו בזהירות בתקופה זו. ניתן לבנות היסטוריית אשראי בהדרגה — להתחיל עם כרטיס אשראי מגובה פיקדון או הלוואה קטנה, ולהגדיל בהדרגה.',
+      },
+    },
   ],
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'ההפטר בחדלות פירעון — מה נמחק, מה לא, ומה קורה אחרי',
+  description: 'מדריך מלא על הפטר — ביטול משפטי של יתרת חובות בסיום הליך חדלות פירעון. מה נמחק, מה שורד, לוח הזמנים, וחיים אחרי ההפטר.',
+  inLanguage: 'he',
+  datePublished: '2025-03-01',
+  dateModified: '2026-03-28',
 };
 ---
 
 <GuideLayout
   title="ההפטר בחדלות פירעון — מה נמחק ומה לא"
-  description="ההפטר הוא הפרס בסוף הליך חדלות פירעון — ביטול משפטי של יתרת החובות. מה בדיוק נמחק, מה לא, ומה קורה אחרי — מדריך מלא."
+  description="ההפטר הוא הפרס בסוף הליך חדלות פירעון — ביטול משפטי של יתרת החובות. מה בדיוק נמחק, מה לא, לוח הזמנים המלא, ומה קורה אחרי — מדריך מקיף ל-2025–2026."
   breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'ההפטר', href: '/insolvency/haftar/' }]}
   publishDate="2025-03-01"
   updateDate="2026-03-28"
-  readTime="5 דקות"
-  schema={[faqSchema, howToSchema]}
+  readTime="8 דקות"
+  schema={[faqSchema, howToSchema, articleSchema]}
 >
 
   <p>
     ההפטר הוא המטרה של כל ההליך. אחרי שנים של שיתוף פעולה, תשלומים ומגבלות —
-    בית המשפט מעניק לך ניקיון מחובות ומאפשר לך להתחיל מחדש.
+    בית המשפט מעניק לך ניקיון מחובות ומאפשר לך להתחיל מחדש. זו לא דחיית תשלום,
+    זה לא הסדר — זה ביטול משפטי מוחלט של יתרת החוב שנותרה לאחר תקופת השיקום.
   </p>
-
-  <h2>מה זה הפטר?</h2>
-  <p>
-    הפטר הוא החלטה שיפוטית שמבטלת את יתרת החובות שלך שלא שולמה במהלך ההליך.
-    מרגע ההפטר — הנושים לא יכולים לתבוע אותך יותר על אותם חובות. לא היום, לא בעוד 10 שנים.
-  </p>
-
-  <h2>מה ההפטר מוחק?</h2>
 
   <div class="info-box">
-    <p class="font-semibold text-blue-800 mb-2">✅ ניתנים להפטר (נמחקים):</p>
-    <ul class="space-y-1">
-      <li>הלוואות בנקאיות</li>
-      <li>חובות לכרטיסי אשראי</li>
-      <li>שיקים שחזרו</li>
-      <li>חובות לספקים ועסקים</li>
-      <li>חובות ארנונה ועירייה (בדרך כלל)</li>
-      <li>חובות משכנתה שנותרו אחרי מכירת נכס</li>
+    <p class="font-semibold text-blue-800 mb-2">מה תמצא במדריך זה:</p>
+    <ul class="space-y-1 text-sm">
+      <li>מה ההבדל בין הפטר לסיום תשלומים רגיל</li>
+      <li>תנאי הזכאות להפטר לפי חוק חדלות פירעון 2018</li>
+      <li>לוח הזמנים המלא — 4 שלבים עד ההפטר</li>
+      <li>אילו חובות נמחקים ואילו שורדים</li>
+      <li>מה יכול לעכב או למנוע הפטר</li>
+      <li>חיים אחרי ההפטר — דוח אשראי, חשבון בנק, התחלה מחדש</li>
+      <li>הפטר מלא לעומת הפטר מותנה ומוגבל</li>
     </ul>
   </div>
 
-  <div class="warn-box mt-4">
-    <p class="font-semibold text-amber-800 mb-2">❌ לא ניתנים להפטר (נשארים):</p>
-    <ul class="space-y-1">
-      <li><strong>מזונות</strong> — לבן/בת זוג לשעבר וילדים</li>
-      <li><strong>קנסות פליליים</strong> — מבית משפט פלילי</li>
-      <li><strong>עיצומים מנהליים</strong> — מרשויות המדינה</li>
-      <li><strong>חובות שנוצרו במרמה</strong> — אם הוכח בבית משפט</li>
-      <li><strong>נזקי גוף מכוונים</strong> — שגרמת לאדם אחר</li>
-      <li><strong>חובות שנוצרו אחרי פתיחת ההליך</strong></li>
+  <h2>מה זה הפטר — ההגדרה המשפטית</h2>
+  <p>
+    הפטר הוא החלטה שיפוטית המבטלת את יתרת החובות שלך שלא שולמה במהלך תקופת השיקום.
+    מרגע ההפטר — הנושים לא יכולים לתבוע אותך יותר על אותם חובות. לא היום, לא בעוד 10 שנים,
+    לא לעולם. החוב חדל להתקיים מבחינה משפטית.
+  </p>
+  <p>
+    חוק חדלות פירעון ושיקום כלכלי, תשע"ח-2018 (החוק החדש שהחליף את פקודת פשיטת הרגל)
+    עיגן את ההפטר כאמצעי לשיקום כלכלי אמיתי — לא כרחמים, אלא כזכות מובנית של מי שעמד
+    בכל תנאי ההליך.
+  </p>
+
+  <h2>הפטר לעומת סיום תשלומים — מה ההבדל?</h2>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">מאפיין</th>
+          <th class="text-right p-3 border border-gray-200">סיום תשלומים רגיל</th>
+          <th class="text-right p-3 border border-gray-200">הפטר בחדלות פירעון</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['מה קורה לחוב?', 'נסגר לאחר תשלום מלא', 'יתרת החוב מבוטלת לצמיתות'],
+          ['האם הנושה יכול לתבוע שוב?', 'כן, אם יש חוב שנותר', 'לא — לעולם לא'],
+          ['האם נדרש לשלם את כל החוב?', 'כן', 'לא — רק חלק יחסי לפי יכולת'],
+          ['מי מחליט?', 'הסכם בין הצדדים / ראש הוצל"פ', 'בית משפט (צו הפטר)'],
+          ['מה קורה אחרי?', 'חיים רגילים', 'חיים רגילים + 7 שנות רישום אשראי'],
+        ].map(([feature, regular, haftar], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-700">{feature}</td>
+            <td class="p-3 border border-gray-200 text-gray-600">{regular}</td>
+            <td class="p-3 border border-gray-200 text-brand-dark font-medium">{haftar}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>תנאי הזכאות להפטר לפי החוק</h2>
+  <p>
+    לא כל מי שנמצא בהליך חדלות פירעון מקבל הפטר אוטומטית. בית המשפט בוחן מספר תנאים:
+  </p>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <div>
+        <strong>עמידה בתשלומים החודשיים</strong> — שולמו כל התשלומים שנקבעו בתוכנית השיקום,
+        או שהייתה סיבה מוצדקת לפיגורים שאושרה על ידי הנאמן ובית המשפט.
+      </div>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <div>
+        <strong>שיתוף פעולה מלא עם הנאמן</strong> — הוגשו דיווחים שוטפים, לא הוסתרו הכנסות
+        או נכסים, והנאמן קיבל את כל המידע שביקש.
+      </div>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <div>
+        <strong>תום לב לאורך כל ההליך</strong> — לא בוצעו עסקאות למראית עין, לא הועברו נכסים
+        לצד שלישי כדי להבריחם, ולא ננקטו פעולות שמטרתן לפגוע בנושים.
+      </div>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <div>
+        <strong>עמידה בתנאי ההליך</strong> — לא נלקח אשראי חדש ללא אישור, לא נצאת לחו"ל
+        ללא אישור (בתקופות שבהן היה עיכוב יציאה), והשתתפת בהכשרה פיננסית אם נדרשת.
+      </div>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <div>
+        <strong>המלצת הנאמן</strong> — הנאמן מגיש לבית המשפט המלצה מפורשת להעניק הפטר,
+        בצירוף דוח מסכם על מצב ההליך.
+      </div>
+    </li>
+  </ol>
+
+  <h2>לוח הזמנים — 4 שלבים עד ההפטר</h2>
+  <p>
+    הדרך להפטר עוברת בארבעה שלבים עיקריים. להלן טבלת הזמנים הממוצעת:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">שלב</th>
+          <th class="text-right p-3 border border-gray-200">שם השלב</th>
+          <th class="text-right p-3 border border-gray-200">משך משוער</th>
+          <th class="text-right p-3 border border-gray-200">מה קורה</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['1', 'הגשת הבקשה ואישורה', '1–3 חודשים', 'הגשת הבקשה, בדיקת תנאי סף, מינוי נאמן ראשוני'],
+          ['2', 'שנת הביניים', 'כ-12 חודשים', 'חקירת נכסים, בדיקת הכנסות, תשלום חודשי זמני, קביעת תוכנית שיקום'],
+          ['3', 'תקופת השיקום', 'כ-3 שנים', 'תשלומים חודשיים קבועים, דיווחים שוטפים, עמידה בכל תנאי ההליך'],
+          ['4', 'הפטר', '1–2 חודשים', 'המלצת הנאמן, דיון בבית המשפט, מתן צו הפטר'],
+        ].map(([step, name, duration, what], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 text-center font-bold text-brand-dark text-lg">{step}</td>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-800">{name}</td>
+            <td class="p-3 border border-gray-200 text-brand font-medium whitespace-nowrap">{duration}</td>
+            <td class="p-3 border border-gray-200 text-gray-600 text-xs">{what}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="text-xs text-neutral-muted mt-2">* הזמנים הם ממוצעים. בית המשפט רשאי לקצר או להאריך בהתאם לנסיבות.</p>
+  </div>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">טיפ: קיצור תקופת השיקום</p>
+    <p>
+      בית המשפט רשאי לקצר את תקופת השיקום (לפחות 18 חודשים במקום 3 שנים) אם החייב
+      שילם סכום משמעותי מעבר לנדרש, שיתף פעולה באופן יוצא דופן, או שנסיבות חייו השתפרו
+      והאפשרו פירעון מהיר יותר של החוב.
+    </p>
+  </div>
+
+  <h2>מה החובות שנמחקים בהפטר</h2>
+  <p>
+    ככלל, ההפטר מבטל את כל החובות שנוצרו לפני פתיחת ההליך, למעט החריגים שיפורטו להלן.
+    רשימת החובות שנמחקים:
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-3">חובות שנמחקים בהפטר:</p>
+    <ul class="space-y-2 text-sm">
+      <li><strong>הלוואות בנקאיות</strong> — כולל הלוואות מובטחות שאין להן כיסוי נכסי</li>
+      <li><strong>חובות לכרטיסי אשראי</strong> — כל יתרת החוב שלא שולמה</li>
+      <li><strong>שיקים שחזרו</strong> — לרבות שיקים שנמצאים בהוצאה לפועל</li>
+      <li><strong>חובות לספקים ועסקים</strong> — חובות מסחריים מכל סוג</li>
+      <li><strong>חובות ארנונה ועירייה</strong> — ברוב המקרים, אם לא נקבע אחרת</li>
+      <li><strong>יתרת משכנתה לאחר מכירת נכס</strong> — אם הנכס נמכר ולא כיסה את כל החוב</li>
+      <li><strong>חובות לחברים ובני משפחה</strong> — אם הם נרשמו כנושים בהליך</li>
+      <li><strong>חובות לחברות ביטוח</strong> — תביעות שלא שולמו</li>
+      <li><strong>חובות לקופות גמל ופנסיה</strong> — ברוב המקרים</li>
+      <li><strong>חובות לחברות סלולר ואינטרנט</strong> — חובות שוטפים</li>
     </ul>
   </div>
 
-  <h2>מתי מקבלים הפטר?</h2>
+  <h2>מה החובות שלא נמחקים בהפטר</h2>
   <p>
-    ההפטר ניתן בסיום תקופת השיקום — לרוב כ-3 שנים אחרי אישור תוכנית השיקום,
-    כלומר כ-4 שנים מהגשת הבקשה הראשונית.
-  </p>
-  <p>
-    בית המשפט רשאי לקצר את תקופת השיקום אם החייב הפגין שיתוף פעולה יוצא דופן,
-    או להאריך אותה אם היו הפרות.
+    החוק קובע רשימה סגורה של חובות שאינם ניתנים למחיקה — גם לאחר הפטר. חשוב לדעת
+    אילו חובות ימשיכו לרדוף אותך גם אחרי שהמחיקה תאושר:
   </p>
 
-  <h2>מה קורה אחרי ההפטר?</h2>
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-3">חובות שלא נמחקים — גם לאחר הפטר:</p>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <strong>מזונות ומדור</strong> — תשלומי מזונות לילדים ולבן/בת זוג לשעבר, לרבות
+        חובות מזונות שנצברו לפני ההליך. אלה ממשיכים במלואם.
+      </li>
+      <li>
+        <strong>קנסות פליליים</strong> — קנסות שהוטלו בידי בית משפט פלילי. ביצוע עבירה
+        פלילית אינו מאפשר "לנקות" את הקנס בדרך של חדלות פירעון.
+      </li>
+      <li>
+        <strong>עיצומים מנהליים</strong> — קנסות מרשויות המדינה (רשות המסים, רשות ניירות
+        ערך, רשות ההגבלים העסקיים וכד') שהוטלו בשל הפרות מנהליות.
+      </li>
+      <li>
+        <strong>חובות שנוצרו במרמה</strong> — אם הוכח בבית משפט שהחוב נוצר עקב תרמית,
+        הונאה, או מצג שווא מכוון — חוב זה לא נמחק בהפטר.
+      </li>
+      <li>
+        <strong>נזקי גוף מכוונים</strong> — פיצויים שנפסקו עקב נזק גוף שגרמת לאחרים
+        בכוונה מכוונת (לא תאונות).
+      </li>
+      <li>
+        <strong>חובות שנוצרו לאחר פתיחת ההליך</strong> — כל חוב שנוצר מיום הגשת הבקשה
+        ואילך אינו כלול בהפטר ונשאר לחלוטין.
+      </li>
+      <li>
+        <strong>חובות עקב עבירות מס בכוונה פלילית</strong> — הונאת מס שהוכחה בהליך
+        פלילי, בניגוד לחובות מס רגילים שכן נמחקים.
+      </li>
+    </ul>
+  </div>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">סוג חוב</th>
+          <th class="text-right p-3 border border-gray-200">נמחק בהפטר?</th>
+          <th class="text-right p-3 border border-gray-200">הערה</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['הלוואה בנקאית', 'כן', 'נמחקת לחלוטין'],
+          ['כרטיס אשראי', 'כן', 'כולל ריבית שנצברה'],
+          ['שיק חוזר', 'כן', 'גם אם בהוצאה לפועל'],
+          ['חוב לספק', 'כן', 'כולל חובות עסקיים'],
+          ['מזונות ילדים', 'לא', 'ממשיכים לחלוטין'],
+          ['קנס פלילי', 'לא', 'גם קנסות ישנים'],
+          ['חוב מרמה (מוכחת)', 'לא', 'נדרש הוכחה בבית משפט'],
+          ['ארנונה עירייה', 'בדרך כלל כן', 'תלוי בפסיקה המקומית'],
+          ['חוב לרשות המסים', 'בדרך כלל כן', 'למעט חוב מהונאת מס פלילית'],
+          ['חובות אחרי פתיחת ההליך', 'לא', 'בשום מקרה'],
+        ].map(([debt, cancelled, note], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-medium text-gray-800">{debt}</td>
+            <td class={`p-3 border border-gray-200 font-bold ${cancelled === 'כן' ? 'text-green-700' : cancelled === 'לא' ? 'text-red-600' : 'text-amber-700'}`}>{cancelled}</td>
+            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{note}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>גורמים שיכולים לעכב או למנוע הפטר</h2>
+  <p>
+    לא כל חייב שמסיים את שנות השיקום מקבל הפטר אוטומטית. בית המשפט רשאי לדחות, להגביל,
+    או לבטל את ההפטר בנסיבות מסוימות:
+  </p>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-3">סיכונים שיכולים לפגוע בהפטר:</p>
+    <ul class="space-y-3 text-sm">
+      <li>
+        <strong>אי-שיתוף פעולה עם הנאמן</strong> — סירוב לספק מסמכים, אי-מענה לפניות,
+        הסתרת מידע. הנאמן יכול להמליץ שלא לתת הפטר.
+      </li>
+      <li>
+        <strong>הסתרת נכסים או הכנסות</strong> — אי-דיווח על הכנסה שנוספה, העלמת חשבון
+        בנק זר, או אי-הצהרה על ירושה שהתקבלה. מדובר גם בעבירה פלילית.
+      </li>
+      <li>
+        <strong>פיגורים חוזרים בתשלומים</strong> — לא עמידה שיטתית בתשלום החודשי,
+        ללא סיבה מוצדקת. בית המשפט עשוי להאריך את תקופת השיקום.
+      </li>
+      <li>
+        <strong>לקיחת אשראי ללא אישור</strong> — פתיחת הלוואה, כרטיס אשראי, או קניה
+        בתשלומים מבלי לקבל אישור מוקדם מהנאמן.
+      </li>
+      <li>
+        <strong>יציאה לחו"ל ללא אישור</strong> — כשיש צו עיכוב יציאה, יציאה ללא
+        רשות מהווה הפרת צו ועלולה לגרום לסנקציות.
+      </li>
+      <li>
+        <strong>עסקאות למראית עין</strong> — העברת נכסים לבן זוג, ילדים, או קרובים
+        כדי "להבריח" אותם מהנושים. הנאמן יכול לבטל עסקאות כאלה עד 5 שנים אחורה.
+      </li>
+      <li>
+        <strong>הגשת מידע כוזב בבקשה</strong> — אם התגלה שהמידע שהוגש בבקשה המקורית
+        היה כוזב או מטעה, בית המשפט רשאי לבטל את ההליך.
+      </li>
+    </ul>
+  </div>
+
+  <h2>סוגי הפטר — השוואה מלאה</h2>
+  <p>
+    לא כל הפטר זהה. בית המשפט יכול להעניק סוגים שונים של הפטר בהתאם לנסיבות:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">סוג הפטר</th>
+          <th class="text-right p-3 border border-gray-200">מה זה אומר</th>
+          <th class="text-right p-3 border border-gray-200">מתי ניתן</th>
+          <th class="text-right p-3 border border-gray-200">מה קורה אחרי</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          [
+            'הפטר מלא (מוחלט)',
+            'ביטול מוחלט של כל יתרת החובות הכשירים',
+            'עמידה מלאה בכל תנאי ההליך, שיתוף פעולה, תום לב',
+            'חיים רגילים לחלוטין. רישום בדוח אשראי 7 שנים.',
+          ],
+          [
+            'הפטר מותנה',
+            'הפטר שמחייב עמידה בתנאים נוספים לתקופה קצרה',
+            'כמעט עמד בתנאים, יש אי-ודאות קלה לגבי המשך',
+            'לאחר עמידה בתנאים — הופך לבלתי מוגבל',
+          ],
+          [
+            'הפטר מוגבל',
+            'הפטר שניתן אך עם הגבלות ספציפיות (לדוגמה על לקיחת אשראי)',
+            'הייתה בעיית תום לב חלקית, אך לא מספיקה לדחות הפטר לגמרי',
+            'ניתן לבקש הסרת ההגבלות לאחר תקופה',
+          ],
+          [
+            'דחיית הפטר',
+            'ההפטר נדחה — ההליך מוארך או החייב מחויב לתנאים חדשים',
+            'הפרות חמורות, אי-שיתוף פעולה, הסתרת נכסים',
+            'ניתן לחזור ולבקש הפטר בתנאים חדשים',
+          ],
+          [
+            'ביטול הפטר (לאחר מתן)',
+            'הפטר שניתן ולאחר מכן בוטל',
+            'התגלה שהחייב הסתיר נכסים או מסר מידע כוזב',
+            'חובות חוזרים לתוקף. ייתכן הליך פלילי.',
+          ],
+        ].map(([type, meaning, when, after], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-bold text-brand-dark">{type}</td>
+            <td class="p-3 border border-gray-200 text-gray-700 text-xs">{meaning}</td>
+            <td class="p-3 border border-gray-200 text-gray-600 text-xs">{when}</td>
+            <td class="p-3 border border-gray-200 text-gray-600 text-xs">{after}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>חיים אחרי ההפטר — מה השתנה</h2>
+  <p>
+    קבלת ההפטר פותחת דף חדש. הנה מה שמותר, מה שנשאר, ומה כדאי לדעת ביום שאחרי:
+  </p>
+
+  <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+    <div class="border border-green-200 rounded-xl p-5 bg-green-50">
+      <h3 class="font-bold text-green-800 mb-3">מה מותר מרגע ההפטר</h3>
+      <ul class="text-sm space-y-2 text-gray-700">
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span> לפתוח חשבון בנק רגיל</li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span> לצאת לחו"ל ללא הגבלה</li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span> לרכוש נכסים ורכב</li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span> לפתוח עסק או להיות עצמאי</li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span> לקחת אשראי (בכפוף לבנק)</li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span> לקבל ירושה ללא הגבלה</li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span> לחזור לחיים פיננסיים רגילים</li>
+      </ul>
+    </div>
+    <div class="border border-amber-200 rounded-xl p-5 bg-amber-50">
+      <h3 class="font-bold text-amber-800 mb-3">מה עדיין נשאר (לתשומת לבך)</h3>
+      <ul class="text-sm space-y-2 text-gray-700">
+        <li class="flex gap-2"><span class="text-amber-600 font-bold">!</span> רישום בדוח אשראי — 7 שנים</li>
+        <li class="flex gap-2"><span class="text-amber-600 font-bold">!</span> בנקים עשויים לנהוג בזהירות בתחילה</li>
+        <li class="flex gap-2"><span class="text-amber-600 font-bold">!</span> חובות שלא כוסו בהפטר ממשיכים</li>
+        <li class="flex gap-2"><span class="text-amber-600 font-bold">!</span> מגבלה על הגשת חדלות פירעון נוספת (7 שנים)</li>
+        <li class="flex gap-2"><span class="text-amber-600 font-bold">!</span> חובות מזונות ממשיכים לחלוטין</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>דוח האשראי לאחר הפטר</h2>
+  <p>
+    ההפטר אינו מוחק מיידית את הרישום בדוח האשראי. לפי חוק נתוני אשראי, תשע"ו-2016,
+    מידע על הליך חדלות פירעון והפטר נשמר במאגרי נתוני האשראי של בנק ישראל במשך
+    <strong>7 שנים ממועד ההפטר</strong>. לאחר מכן — נמחק אוטומטית.
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">בניית היסטוריית אשראי מחדש — שלב אחר שלב:</p>
+    <ol class="space-y-2 text-sm list-decimal list-inside">
+      <li><strong>פתח חשבון בנק רגיל</strong> — כל הבנקים חייבים לאפשר פתיחת חשבון בסיסי</li>
+      <li><strong>קבל כרטיס חיוב מיידי (דביט)</strong> — לא מחייב היסטוריית אשראי</li>
+      <li><strong>שקול כרטיס אשראי מגובה פיקדון</strong> — מאפשר לבנות היסטוריה בסיכון נמוך</li>
+      <li><strong>שמור על יתרות חיוביות</strong> — אל תכנס לחריגה בחשבון</li>
+      <li><strong>לאחר שנה-שנתיים</strong> — בנקים רבים יסכימו לאשראי רגיל בסכומים קטנים</li>
+      <li><strong>הגדל בהדרגה</strong> — אל תיקח מוצרים פיננסיים רבים מדי בבת אחת</li>
+    </ol>
+  </div>
+
+  <h2>פתיחת חשבון בנק לאחר הפטר</h2>
+  <p>
+    חוק הבנקאות (שירות ללקוח) מחייב כל בנק לאפשר פתיחת חשבון בנק בסיסי לכל אזרח ישראלי,
+    גם אם יש לו רישום שלילי בנתוני האשראי. לכן, ביום שאחרי ההפטר — ניתן לפנות לכל בנק
+    ולפתוח חשבון בסיסי.
+  </p>
+  <p>
+    עם זאת, ייתכן שהבנק יסרב להעניק מסגרת אשראי, כרטיס אשראי סדיר, או הלוואות בתקופה
+    הקרובה. זה לגיטימי — אך בניית יחסי אמון הדרגתיים עם הבנק תאפשר לך להתקדם.
+  </p>
+
+  <h2>שאלות נפוצות על הפטר</h2>
+  <div class="space-y-4 my-6">
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה זה הפטר בחדלות פירעון?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        הפטר הוא החלטה שיפוטית שמבטלת את יתרת החובות שלא שולמה לאחר סיום הליך
+        חדלות פירעון. מרגע ההפטר — הנושים לא יכולים לתבוע אותך יותר על אותם חובות —
+        לא היום ולא בעוד עשר שנים. מדובר בביטול משפטי מוחלט של החוב, לא בדחיית תשלום.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם ההפטר מוחק את כל החובות?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        לא הכל. רוב החובות הרגילים (הלוואות, אשראי, שיקים) נמחקים. אך מזונות,
+        קנסות פליליים, עיצומים מנהליים, חובות שנוצרו במרמה, ונזקי גוף מכוונים —
+        לא נמחקים בשום מקרה וממשיכים לחלוטין גם לאחר ההפטר.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        כמה זמן עד לקבלת הפטר?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        לרוב כ-4 שנים מהגשת הבקשה: כ-12 חודשי שנת ביניים ועוד כ-3 שנות שיקום.
+        בית המשפט רשאי לקצר (לפחות 18 חודשי שיקום) אם הייתה שיתוף פעולה יוצא דופן,
+        או להאריך אם היו הפרות.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה קורה אם לא עמדתי בתשלום חודשי אחד?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        פיגור חד-פעמי בנסיבות מוצדקות לא בהכרח מבטל את ההליך. כדאי לפנות מיידית
+        לנאמן, להסביר את הנסיבות, ולהסדיר את הפיגור. בית המשפט לוקח בחשבון תום לב.
+        פיגורים חוזרים ושיטתיים לעומת זאת עלולים לגרום לדחיית ההפטר.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה הפטר מותנה?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        הפטר מותנה הוא הפטר שמחייב עמידה בתנאים נוספים לתקופה קצרה לאחר סיום ההליך
+        הרשמי. לדוגמה — המשך דיווח חודשי על הכנסות לתקופה של 6–12 חודשים נוספים.
+        לאחר עמידה בתנאים — ההפטר הופך למוחלט ובלתי מוגבל.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        כמה זמן הרישום נשאר בדוח האשראי?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        7 שנים ממועד קבלת ההפטר. לאחר תום 7 השנים הרישום נמחק אוטומטית ממאגרי
+        נתוני האשראי של בנק ישראל ולא ניתן יהיה לראותו בדוח אשראי עתידי.
+      </p>
+    </details>
+
+    <details class="border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם אפשר לקחת הלוואה אחרי הפטר?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">
+        כן — ההפטר מסיר את ההגבלות המשפטיות על לקיחת אשראי. הרישום בדוח האשראי
+        נשאר 7 שנים, ובמהלכן בנקים עשויים לנהוג בזהירות. מומלץ לבנות בהדרגה —
+        להתחיל עם כרטיס מגובה פיקדון, ולהגדיל את האשראי לאורך זמן בצורה אחראית.
+      </p>
+    </details>
+  </div>
+
+  <h2>טיפים חשובים לשמירה על הדרך להפטר</h2>
 
   <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
     {[
-      { icon: '✅', title: 'מה מותר מחר בבוקר', items: ['לפתוח חשבון בנק רגיל', 'לקחת אשראי (תלוי בבנק)', 'לצאת מהארץ ללא הגבלה', 'לרכוש נכסים ורכב', 'לפתוח עסק'] },
-      { icon: '⚠️', title: 'מה כדאי לדעת', items: ['הרישום בנתוני האשראי נשאר זמן מה', 'בנקים עשויים לנהוג בזהירות בתחילה', 'חובות שלא בהפטר — ממשיכים', 'כדאי לבנות היסטוריית אשראי בהדרגה'] },
-    ].map(col => (
+      {
+        title: 'תעד הכל',
+        body: 'שמור קבלות על כל תשלום. תעד כל שיחה עם הנאמן. שמור עותקים של כל דיווח שהגשת. תיעוד טוב יגן עליך אם יתעוררו שאלות.',
+      },
+      {
+        title: 'דווח על כל שינוי',
+        body: 'קיבלת ירושה? קיבלת העלאת שכר? זכית בפיס? דווח לנאמן מיד. הסתרת הכנסות היא הסיכון הגדול ביותר לאיבוד ההפטר.',
+      },
+      {
+        title: 'שאל לפני שפועל',
+        body: 'לפני כל החלטה כלכלית משמעותית — שאל את הנאמן. רכישת רכב, הלוואה קטנה, כרטיס אשראי — כולם דורשים אישור מוקדם.',
+      },
+      {
+        title: 'הכשרה פיננסית',
+        body: 'בית המשפט עשוי לדרוש השתתפות בהכשרה פיננסית. אל תזניח את זה — זה לא רק חובה, זה גם כלי אמיתי לשינוי ממשי.',
+      },
+    ].map(tip => (
       <div class="border border-neutral-border rounded-xl p-5 bg-white">
-        <h3 class="font-bold text-gray-800 mb-3">{col.icon} {col.title}</h3>
-        <ul class="text-sm space-y-1 text-gray-600">
-          {col.items.map(item => <li>• {item}</li>)}
-        </ul>
+        <h3 class="font-bold text-gray-800 mb-2">{tip.title}</h3>
+        <p class="text-sm text-gray-600">{tip.body}</p>
       </div>
     ))}
   </div>
 
-  <h2>הפטר מותנה לעומת הפטר מוחלט</h2>
+  <h2>הגשת חדלות פירעון שוב לאחר הפטר</h2>
   <p>
-    לפעמים בית המשפט נותן <strong>הפטר מותנה</strong> — שמחייב עמידה בתנאים נוספים לתקופה
-    קצרה לאחר סיום ההליך הרשמי. לאחר עמידה בתנאים — הופך לבלתי מוגבל.
+    מי שקיבל הפטר בהליך חדלות פירעון לא יוכל להגיש הליך נוסף במשך <strong>7 שנים</strong>
+    מיום ההפטר. בית המשפט ידחה בקשה שהוגשה לפני תום תקופה זו בהיעדר נסיבות יוצאות דופן.
+  </p>
+  <p>
+    מגבלה זו נועדה למנוע שימוש לרעה בהליך ולהבטיח שהחייב אכן מנסה לשקם את מצבו הכלכלי
+    לאחר ההפטר, ולא משתמש בהליך שוב ושוב כמנגנון להימנעות מתשלום חובות.
   </p>
 
-  <h2>שאלות נפוצות</h2>
-  <div class="space-y-4 my-6">
-    {[
-      { q: 'מה זה הפטר בחדלות פירעון?', a: 'ביטול משפטי של יתרת החובות שלא שולמה. מרגע ההפטר — הנושים לא יכולים לתבוע אותך יותר על אותם חובות — לא היום ולא בעוד שנים.' },
-      { q: 'האם ההפטר מוחק את כל החובות?', a: 'לא הכל. מזונות, קנסות פליליים, וחובות שנוצרו במרמה — לא נמחקים. רוב החובות הרגילים כן.' },
-      { q: 'כמה זמן עד לקבלת הפטר?', a: 'לרוב כ-4 שנים: שנת ביניים + 3 שנות שיקום. ניתן לקיצור בשיתוף פעולה יוצא דופן.' },
-      { q: 'מה ניתן לעשות אחרי הפטר?', a: 'לפתוח חשבון בנק, לרכוש נכסים, לצאת לחו"ל חופשי, לפתוח עסק — חיים רגילים ללא הגבלות.' },
-    ].map(faq => (
-      <details class="border border-neutral-border rounded-xl group">
-        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-          {faq.q}
-          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
-      </details>
-    ))}
+  <div class="tip-box">
+    <p class="font-semibold mb-1">חשוב לדעת: ייעוץ משפטי</p>
+    <p>
+      הכללים לגבי מה נמחק ומה לא הם מורכבים ומשתנים מפסיקה לפסיקה. אם יש לך חוב
+      שאינך בטוח לגביו — התייעץ עם עורך דין שמתמחה בחדלות פירעון לפני שאתה מניח
+      שהוא יימחק. הלשכה לסיוע משפטי מציעה ייצוג חינמי לזכאים.
+    </p>
   </div>
 
   <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
     <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/insolvency/what-is/" class="text-brand hover:underline">התחל מהתחלה — מהי חדלות פירעון?</a></li>
-      <li>← <a href="/insolvency/eligibility/" class="text-brand hover:underline">האם אני זכאי?</a></li>
+      <li>← <a href="/insolvency/eligibility/" class="text-brand hover:underline">האם אני זכאי להגיש?</a></li>
+      <li>← <a href="/insolvency/process/" class="text-brand hover:underline">שלבי ההליך בפירוט</a></li>
+      <li>← <a href="/insolvency/costs/" class="text-brand hover:underline">כמה עולה הליך חדלות פירעון?</a></li>
       <li>← <a href="/contact/" class="text-brand hover:underline">רוצה ייעוץ אישי? צור קשר</a></li>
     </ul>
   </div>
