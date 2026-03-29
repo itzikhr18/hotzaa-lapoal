@@ -50,7 +50,7 @@ const faqSchema = {
       name: 'מה ההבדל בין צו תשלומים לאיחוד תיקים?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'צו תשלומים מסדיר תיק הוצאה לפועל אחד — קובע תשלום חודשי לכיסוי חוב ספציפי. איחוד תיקים (איחוד תיקים) מאחד מספר תיקים פתוחים לתיק אחד עם תשלום חודשי משותף. אם יש לך יותר מתיק אחד פתוח, שקול בקשת איחוד תיקים במקום צו תשלומים נפרד לכל תיק.',
+        text: 'צו תשלומים מסדיר תיק הוצאה לפועל אחד — קובע תשלום חודשי לכיסוי חוב ספציפי. איחוד תיקים מאחד מספר תיקים פתוחים לתיק אחד עם תשלום חודשי משותף. אם יש לך יותר מתיק אחד פתוח, שקול בקשת איחוד תיקים במקום צו תשלומים נפרד לכל תיק.',
       },
     },
     {
@@ -80,10 +80,10 @@ const faqSchema = {
     totalTime: 'PT2H',
     step: [
       { '@type': 'HowToStep', position: 1, name: 'אסוף מסמכים', text: 'תלושי שכר 3 חודשים אחרונים, דפי חשבון בנק, קבלות הוצאות קבועות (שכר דירה, תרופות, חינוך), ותעודת זהות.' },
-      { '@type': 'HowToStep', position: 2, name: 'מלא את הטפסים', text: 'הורד טפסי בקשה לצו תשלומים מאתר רשות האכיפה (gov.il). מלא פרטי הכנסה, הוצאות, ונכסים.' },
+      { '@type': 'HowToStep', position: 2, name: 'מלא טופס 7 — בקשה לצו תשלומים', text: 'הורד טופס 7 מאתר רשות האכיפה (gov.il). מלא פרטי הכנסה, הוצאות, ונכסים בכנות ובמדויק. כנות עדיפה — הרשם בודק.' },
       { '@type': 'HowToStep', position: 3, name: 'הגש ללשכת ההוצאה לפועל', text: 'הגש את הבקשה ואת המסמכים ללשכת ההוצאה לפועל הרלוונטית — פיזית או דרך המערכת המקוונת. שלם אגרת הגשה של כמה עשרות שקלים.' },
       { '@type': 'HowToStep', position: 4, name: 'הגע לחקירת יכולת', text: 'הרשם יזמן אותך לחקירת יכולת. הגע עם כל המסמכים. הרשם יקבע תשלום חודשי לפי יכולתך האמיתית.' },
-      { '@type': 'HowToStep', position: 5, name: 'שלם בקביעות', text: 'עמוד בתשלומים החודשיים. ברגע שהצו פעיל ואתה משלם — הנושה לא יכול לפתוח הליכים נוספים.' },
+      { '@type': 'HowToStep', position: 5, name: 'שלם בקביעות ותעד הכל', text: 'עמוד בתשלומים החודשיים. ברגע שהצו פעיל ואתה משלם — הנושה לא יכול לפתוח הליכים נוספים. שמור כל אישור תשלום לאורך כל הדרך.' },
     ],
   }]}
 >
@@ -114,11 +114,45 @@ const faqSchema = {
     </ul>
   </div>
 
-  <h2>מי יכול להגיש ומתי?</h2>
+  <h2>תנאי הזכאות — מי יכול לבקש ומתי?</h2>
   <p>
     <strong>כל חייב</strong> שנפתח נגדו תיק בהוצאה לפועל יכול להגיש בקשה לצו תשלומים — בין אם מדובר בחוב של כמה אלפי שקלים ובין אם מדובר בחוב גדול יותר.
     לא צריך עורך דין; הגשה עצמית היא לגיטימית לחלוטין ומקובלת.
   </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">תנאי</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">פרטים</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">תיק פתוח בהוצאה לפועל</td>
+          <td class="border border-gray-300 px-4 py-2">נדרש לפחות תיק אחד פתוח ופעיל נגדך</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">קבלת אזהרה</td>
+          <td class="border border-gray-300 px-4 py-2">לרוב נדרש שקיבלת אזהרה מהנושה; ניתן להגיש גם לפני</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הכנסה מוכחת</td>
+          <td class="border border-gray-300 px-4 py-2">הרשם צריך לראות שיש לך מקור הכנסה לשלם ממנו — שכר, קצבה, הכנסה עצמאית</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">גובה החוב</td>
+          <td class="border border-gray-300 px-4 py-2">אין סף מינימלי — מאלפי שקלים ועד מיליונים</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">ייצוג משפטי</td>
+          <td class="border border-gray-300 px-4 py-2">לא נדרש — ניתן להגיש בעצמך ללא עורך דין</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <p>
     <strong>מתי עדיף להגיש?</strong> ניתן להגיש בכל שלב לאחר פתיחת תיק, אך ההמלצה היא:
   </p>
@@ -127,6 +161,237 @@ const faqSchema = {
     <li><strong>בכל עת אחרת</strong> — ניתן להגיש גם מאוחר יותר, אם כי ייתכן שהאכיפה כבר התחילה.</li>
     <li><strong>מייד כשנסיבותיך משתנות לרעה</strong> — פיטורים, מחלה, הפחתת שכר — אל תחכה לפיגור.</li>
   </ul>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">טיפ: חלון 20 הימים</p>
+    <p>
+      ברגע שקיבלת אזהרה מרשם ההוצאה לפועל — יש לך 20 יום להגיש בקשה לצו תשלומים.
+      הגשה בחלון זה מקנה לך <strong>הגנה מיידית</strong>: הנושה לא יכול לנקוט בשום הליך
+      נגדך כל עוד תלויה ועומדת הבקשה. אחרי 20 יום ניתן עדיין להגיש, אך ההגנה האוטומטית אינה חלה.
+    </p>
+  </div>
+
+  <h2>אילו שיקולים לוקח הרשם בחשבון?</h2>
+  <p>
+    כשהרשם בוחן את בקשתך, הוא שוקל מספר גורמים שנקבעו בחוק ההוצאה לפועל. ידיעת הגורמים הללו
+    תעזור לך להכין בקשה טובה יותר ולהצטייד בתיעוד הנכון.
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">גורם</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה הרשם בוחן</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">המסמך הנדרש</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הכנסה חודשית</td>
+          <td class="border border-gray-300 px-4 py-2">שכר נטו, קצבאות, הכנסות עצמאיות, דמי שכירות</td>
+          <td class="border border-gray-300 px-4 py-2">תלושי שכר / אישור ביטוח לאומי / דו"ח הכנסות</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הוצאות קיום</td>
+          <td class="border border-gray-300 px-4 py-2">שכ"ד/משכנתא, מזון, חשמל, תרופות, תחבורה</td>
+          <td class="border border-gray-300 px-4 py-2">חוזה שכירות, קבלות חשבונות, מרשמים רפואיים</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">חובות נוספים</td>
+          <td class="border border-gray-300 px-4 py-2">תשלומי חובה אחרים (מזונות, הלוואות)</td>
+          <td class="border border-gray-300 px-4 py-2">פסקי דין, הסכמי הלוואה</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">מספר נפשות</td>
+          <td class="border border-gray-300 px-4 py-2">בן/בת זוג, ילדים — עולים עלויות המחיה</td>
+          <td class="border border-gray-300 px-4 py-2">תעודות לידה, אישור מגורים</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">נכסים</td>
+          <td class="border border-gray-300 px-4 py-2">דירה, רכב, חסכונות — לבדוק האם ניתן לממש</td>
+          <td class="border border-gray-300 px-4 py-2">נסח טאבו, רישיון רכב, דפי חשבון</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">התנהלות עבר</td>
+          <td class="border border-gray-300 px-4 py-2">האם עמדת בצווים קודמים? האם שיתפת פעולה?</td>
+          <td class="border border-gray-300 px-4 py-2">אישורי תשלומים קודמים</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">אל תצהיר פחות ממה שיש לך</p>
+    <p>
+      כנות היא לא רק ערך מוסרי — היא גם אינטרס מעשי. אם הרשם יגלה שהצהרת על הכנסות נמוכות מהאמת,
+      הוא יכול לביטול הצו, להטיל סנקציות, ואפילו להפנות לתביעה פלילית.
+      הצג את המציאות כמות שהיא — עם כל הקשיים האמיתיים.
+    </p>
+  </div>
+
+  <h2>השוואה: צו תשלומים, איחוד תיקים, חדלות פירעון</h2>
+  <p>
+    בחירת הכלי הנכון תלויה במצבך הספציפי. הטבלה הבאה מסכמת את ההבדלים המרכזיים בין שלוש האפשרויות:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">קריטריון</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">צו תשלומים</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">איחוד תיקים</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">חדלות פירעון</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-medium">למי זה מתאים</td>
+          <td class="border border-gray-300 px-4 py-2">תיק אחד, יכולת לפרוע בפריסה</td>
+          <td class="border border-gray-300 px-4 py-2">מספר תיקים, יכולת לפרוע בפריסה</td>
+          <td class="border border-gray-300 px-4 py-2">חוב שאינו בר-פירעון בשום דרך</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-medium">מספר תיקים פתוחים</td>
+          <td class="border border-gray-300 px-4 py-2">תיק אחד</td>
+          <td class="border border-gray-300 px-4 py-2">שניים ויותר</td>
+          <td class="border border-gray-300 px-4 py-2">כל מצב</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-medium">עלות ממוצעת</td>
+          <td class="border border-gray-300 px-4 py-2">עשרות ש"ח (אגרה בלבד)</td>
+          <td class="border border-gray-300 px-4 py-2">מאות ש"ח + ייעוץ אפשרי</td>
+          <td class="border border-gray-300 px-4 py-2">אלפי ש"ח + עו"ד</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-medium">השפעה על עיקולים</td>
+          <td class="border border-gray-300 px-4 py-2">מושהים בזמן הצו</td>
+          <td class="border border-gray-300 px-4 py-2">מוקפאים מיד עם האישור</td>
+          <td class="border border-gray-300 px-4 py-2">מוקפאים לאורך כל ההליך</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-medium">משך ההליך</td>
+          <td class="border border-gray-300 px-4 py-2">3–4 שנים</td>
+          <td class="border border-gray-300 px-4 py-2">3–7 שנים</td>
+          <td class="border border-gray-300 px-4 py-2">4–7 שנים</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-medium">מחיקת חוב?</td>
+          <td class="border border-gray-300 px-4 py-2">לא</td>
+          <td class="border border-gray-300 px-4 py-2">לא</td>
+          <td class="border border-gray-300 px-4 py-2">כן — עם "הפטר"</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-medium">השפעה על אשראי</td>
+          <td class="border border-gray-300 px-4 py-2">מינורית</td>
+          <td class="border border-gray-300 px-4 py-2">מינורית</td>
+          <td class="border border-gray-300 px-4 py-2">משמעותית — 7 שנים</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-medium">מורכבות ההגשה</td>
+          <td class="border border-gray-300 px-4 py-2">נמוכה — ללא עורך דין</td>
+          <td class="border border-gray-300 px-4 py-2">בינונית</td>
+          <td class="border border-gray-300 px-4 py-2">גבוהה — מומלץ ייעוץ</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-sm text-gray-600">
+    <strong>כלל אצבע:</strong> אם יש לך תיק אחד — צו תשלומים. אם יש כמה תיקים — בדוק איחוד תיקים. אם החוב הרבה מעבר ליכולתך גם בפריסה ארוכה — שקול יעוץ על חדלות פירעון.
+  </p>
+
+  <h2>דוגמה מחושבת — כמה לבקש לשלם?</h2>
+  <p>
+    לפני שמגישים את הבקשה, כדאי לחשב מראש את הסכום הריאלי שניתן להציע לרשם.
+    ההצגה הטובה ביותר היא טבלת הכנסות מול הוצאות ברורה ומתועדת. הנה דוגמה מפורטת:
+  </p>
+
+  <div class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-6">
+    <p class="font-bold text-gray-800 mb-4">דוגמה: רועי, שכיר עם ילד אחד ושכ"ד</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-white">
+            <th class="border border-gray-200 px-3 py-2 text-right font-semibold text-gray-700">סעיף</th>
+            <th class="border border-gray-200 px-3 py-2 text-right font-semibold text-gray-700">סכום (ש"ח)</th>
+            <th class="border border-gray-200 px-3 py-2 text-right font-semibold text-gray-700">הערה</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-semibold text-green-700">הכנסה נטו ממשכורת</td>
+            <td class="border border-gray-200 px-3 py-2 text-green-700">+7,200</td>
+            <td class="border border-gray-200 px-3 py-2 text-gray-500">לפי תלוש שכר</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-semibold text-green-700">קצבת ילדים (ביטוח לאומי)</td>
+            <td class="border border-gray-200 px-3 py-2 text-green-700">+180</td>
+            <td class="border border-gray-200 px-3 py-2 text-gray-500">מוגנת מעיקול</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-bold text-green-800 border-t-2">סך הכנסה חודשית</td>
+            <td class="border border-gray-200 px-3 py-2 font-bold text-green-800 border-t-2">7,380</td>
+            <td class="border border-gray-200 px-3 py-2 border-t-2"></td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 text-red-700">שכר דירה</td>
+            <td class="border border-gray-200 px-3 py-2 text-red-700">−3,200</td>
+            <td class="border border-gray-200 px-3 py-2 text-gray-500">חוזה שכירות</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 text-red-700">חשמל + גז + מים + ועד</td>
+            <td class="border border-gray-200 px-3 py-2 text-red-700">−550</td>
+            <td class="border border-gray-200 px-3 py-2 text-gray-500">ממוצע 3 חשבונות</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 text-red-700">מזון וצריכה בסיסית</td>
+            <td class="border border-gray-200 px-3 py-2 text-red-700">−1,800</td>
+            <td class="border border-gray-200 px-3 py-2 text-gray-500">הערכה מקובלת לשניים</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 text-red-700">תחבורה (כרטיסייה + ביטוח)</td>
+            <td class="border border-gray-200 px-3 py-2 text-red-700">−400</td>
+            <td class="border border-gray-200 px-3 py-2 text-gray-500">קבלות</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 text-red-700">תרופות וטיפולים</td>
+            <td class="border border-gray-200 px-3 py-2 text-red-700">−300</td>
+            <td class="border border-gray-200 px-3 py-2 text-gray-500">מרשמים רפואיים</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 text-red-700">חינוך ילד (גן)</td>
+            <td class="border border-gray-200 px-3 py-2 text-red-700">−450</td>
+            <td class="border border-gray-200 px-3 py-2 text-gray-500">חשבונית גן ילדים</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-bold text-gray-800 border-t-2">סך הוצאות חודשיות</td>
+            <td class="border border-gray-200 px-3 py-2 font-bold text-red-800 border-t-2">−6,700</td>
+            <td class="border border-gray-200 px-3 py-2 border-t-2"></td>
+          </tr>
+          <tr class="bg-blue-50">
+            <td class="border border-gray-200 px-3 py-2 font-bold text-blue-900">סכום פנוי לתשלום חוב</td>
+            <td class="border border-gray-200 px-3 py-2 font-bold text-blue-900">680</td>
+            <td class="border border-gray-200 px-3 py-2 text-blue-700 text-xs">מה שניתן להציע לרשם</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-gray-500 mt-3">
+      * רועי יגיש בקשה לצו תשלומים של <strong>600–650 ש"ח בחודש</strong> — מותיר לו כרית בטחון קטנה למקרה חריג.
+    </p>
+  </div>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">טיפ: אל תבקש בדיוק את מה שנשאר</p>
+    <p>
+      הנוסחה שלעיל נותנת לך <em>תקרה</em> — לא את הסכום שאתה חייב להציע.
+      השאר לעצמך כרית קטנה (10–15%) למקרה של הוצאה בלתי צפויה: רכב תקול, ביקור רופא,
+      תיקון בדירה. אם תבקש סכום שגדול מדי ותכשל — זה יגרום נזק רב יותר מאשר להתחיל
+      בסכום נמוך יותר וניתן לפירעון.
+    </p>
+  </div>
 
   <h2>המסמכים שצריך לאסוף</h2>
   <p>
@@ -138,31 +403,37 @@ const faqSchema = {
       <p class="font-semibold text-gray-800 mb-2">הכנסות — להוכחת ההכנסה שלך</p>
       <ul class="text-gray-600 space-y-1 text-sm">
         <li>תלושי משכורת של 3 חודשים אחרונים</li>
-        <li>אם עצמאי: דו"ח הכנסות ממחצית השנה האחרונה</li>
+        <li>אם עצמאי: דו"ח הכנסות ממחצית השנה האחרונה או אישור רואה חשבון</li>
         <li>אם מקבל קצבה (ביטוח לאומי, נכות, זקנה): מכתב מביטוח לאומי עם הסכום</li>
-        <li>כל מקור הכנסה נוסף שיש לך</li>
+        <li>כל מקור הכנסה נוסף שיש לך — שכר דירה מהשכרת נכס, עבודה נוספת</li>
       </ul>
     </div>
     <div class="bg-white border border-neutral-border rounded-xl p-4">
       <p class="font-semibold text-gray-800 mb-2">הוצאות קבועות — להוכחת עלות המחיה שלך</p>
       <ul class="text-gray-600 space-y-1 text-sm">
         <li>חוזה שכירות או הוכחת משכנתא (תשלום חודשי)</li>
-        <li>חשבונות חשמל, גז, מים, ועד בית</li>
-        <li>קבלות על תרופות קבועות ועלויות רפואיות</li>
+        <li>חשבונות חשמל, גז, מים, ועד בית — ממוצע 3 חודשים</li>
+        <li>קבלות על תרופות קבועות ועלויות רפואיות — כולל מרשמים</li>
         <li>מסמכים על מזונות שאתה משלם (פסק דין או הסכם)</li>
         <li>חשבון תחבורה (כרטיסייה, ביטוח רכב אם ההכרחי לפרנסה)</li>
-        <li>הוצאות ילדים (גן, חינוך, פעילויות הכרחיות)</li>
+        <li>הוצאות ילדים (גן, חינוך, פעילויות הכרחיות) — חשבוניות ממוסד</li>
       </ul>
     </div>
     <div class="bg-white border border-neutral-border rounded-xl p-4">
-      <p class="font-semibold text-gray-800 mb-2">מסמכי הבנק</p>
+      <p class="font-semibold text-gray-800 mb-2">מסמכי זהות ובנק</p>
       <ul class="text-gray-600 space-y-1 text-sm">
+        <li>תעודת זהות + ספח (כולל פרטי בני המשפחה)</li>
         <li>דפי חשבון בנק של 3 חודשים אחרונים — מראים את תזרים המזומנים האמיתי שלך</li>
+        <li>אם יש נכסים (רכב, דירה) — מסמכי בעלות</li>
       </ul>
     </div>
   </div>
 
-  <h2>שלב אחרי שלב — איך מגישים בקשה לצו תשלומים</h2>
+  <h2>שלב אחרי שלב — טופס 7 ואיך מגישים</h2>
+  <p>
+    הבקשה לצו תשלומים מוגשת באמצעות <strong>טופס 7 — "בקשה לצו תשלומים"</strong> של רשות האכיפה והגבייה.
+    להלן המדריך המלא שלב אחרי שלב:
+  </p>
 
   <ol class="step-list">
     <li>
@@ -174,7 +445,7 @@ const faqSchema = {
     <li>
       <span class="step-num">2</span>
       <span>
-        <strong>הורד את טופס 6 — "בקשה לצו תשלומים"</strong> — זהו הטופס הרשמי של רשות האכיפה והגבייה. ניתן להוריד מאתר <a href="https://www.gov.il" target="_blank" rel="noopener" class="text-brand hover:underline">gov.il</a> או לקחת פיזית בלשכת ההוצאה לפועל הקרובה אליך.
+        <strong>הורד את טופס 7 — "בקשה לצו תשלומים"</strong> — זהו הטופס הרשמי של רשות האכיפה והגבייה. ניתן להוריד מאתר <a href="https://www.gov.il" target="_blank" rel="noopener" class="text-brand hover:underline">gov.il</a> או לקחת פיזית בלשכת ההוצאה לפועל הקרובה אליך.
       </span>
     </li>
     <li>
@@ -186,65 +457,218 @@ const faqSchema = {
     <li>
       <span class="step-num">4</span>
       <span>
-        <strong>צרף את כל המסמכים</strong> — לכל הוצאה שציינת, צרף תיעוד. בקשה עם מסמכים מלאים מתקבלת מהר יותר ובצורה טובה יותר.
+        <strong>מלא את שדה "הצעת תשלום"</strong> — ציין את הסכום החודשי שאתה מציע לשלם. השתמש בחישוב שעשית מראש (ראה דוגמת החישוב למעלה). ציין גם את מועד התשלום המועדף עליך (תחילת החודש, אמצע החודש).
       </span>
     </li>
     <li>
       <span class="step-num">5</span>
       <span>
-        <strong>הגש את הבקשה</strong> — ניתן להגיש בשתי דרכים:
-        <br/><strong>אונליין (מומלץ):</strong> דרך פורטל רשות האכיפה והגבייה — מהיר יותר ונוח יותר.
-        <br/><strong>פיזית:</strong> בלשכת ההוצאה לפועל שבה פתוח התיק שלך — הגע בשעות הקבלה עם כל המסמכים.
+        <strong>צרף את כל המסמכים</strong> — לכל הוצאה שציינת, צרף תיעוד. בקשה עם מסמכים מלאים מתקבלת מהר יותר ובצורה טובה יותר.
       </span>
     </li>
     <li>
       <span class="step-num">6</span>
       <span>
-        <strong>המתן להחלטת הרשם</strong> — לרוב 2–6 שבועות. הרשם עשוי לזמן אותך לדיון (ובמקרים רבים יחליט ישירות מהמסמכים). קבל את ההחלטה, עיין בה, ואם הסכום ריאלי — עמוד בו.
+        <strong>הגש את הבקשה</strong> — ניתן להגיש בשתי דרכים:
+        <br/><strong>אונליין (מומלץ):</strong> דרך פורטל רשות האכיפה והגבייה — מהיר יותר ונוח יותר.
+        <br/><strong>פיזית:</strong> בלשכת ההוצאה לפועל שבה פתוח התיק שלך — הגע בשעות הקבלה עם כל המסמכים.
+        <br/>שלם את <strong>אגרת ההגשה</strong> (כמה עשרות שקלים) ושמור אישור תשלום.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">7</span>
+      <span>
+        <strong>המתן לזימון לחקירת יכולת</strong> — הרשם יזמן אותך לדיון. בדרך כלל 2–4 שבועות. הגע עם <em>כל</em> המסמכים — כולל המקוריים ועותקים. הרשם עשוי לשאול שאלות ישירות על ההוצאות וההכנסות.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">8</span>
+      <span>
+        <strong>קבל את הצו ועמוד בו</strong> — לאחר שניתן הצו, תקבל הודעה בכתב. שלם את הסכום שנקבע מדי חודש בחודשו — בהוראת קבע, באתר הרשות, בדואר, או בסניף בנק. שמור כל אישור תשלום.
       </span>
     </li>
   </ol>
 
+  <div class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-6">
+    <p class="font-bold text-gray-800 mb-3">מה ממלאים בטופס 7 — שדות מרכזיים:</p>
+    <ol class="space-y-2 text-sm text-gray-700">
+      <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק א׳:</span> <span>פרטים אישיים — שם, ת"ז, כתובת, מספר תיק, פרטי הנושה</span></li>
+      <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק ב׳:</span> <span>הכנסות — שכר, קצבאות, כל מקור אחר — ציין ברוטו ונטו</span></li>
+      <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק ג׳:</span> <span>הוצאות קבועות — שכ"ד, חשמל, אוכל, תרופות, חינוך, תחבורה</span></li>
+      <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק ד׳:</span> <span>נכסים — דירה, רכב, חסכונות, ניירות ערך</span></li>
+      <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק ה׳:</span> <span>הצעת תשלום — הסכום שאתה מציע לשלם בחודש</span></li>
+      <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק ו׳:</span> <span>נסיבות מיוחדות — מחלה, נכות, ילדים קטנים, חובות נוספים</span></li>
+    </ol>
+    <p class="text-xs text-neutral-muted mt-3">* ניתן להוריד טופס 7 מאתר רשות האכיפה והגבייה (gov.il)</p>
+  </div>
+
+  <h2>מה קורה לעיקולים אחרי שהצו ניתן?</h2>
+  <p>
+    זו שאלת המפתח שמעסיקה רוב האנשים. התשובה: ברגע שרשם ההוצאה לפועל מאשר את הצו,
+    הוא מוציא <strong>הודעה לכל הגורמים הרלוונטיים</strong> — הבנק, המעסיק, רשות הרישוי — להקפיא את הליכי האכיפה.
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">סוג ההליך</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה קורה אחרי מתן הצו</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">לוח זמנים</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיקול חשבון בנק</td>
+          <td class="border border-gray-300 px-4 py-2">מוקפא — הבנק מפסיק לחסום כספים חדשים</td>
+          <td class="border border-gray-300 px-4 py-2">5–14 ימי עסקים מהודעת הלשכה לבנק</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיקול משכורת</td>
+          <td class="border border-gray-300 px-4 py-2">המעסיק מפסיק לנכות — הרשם שולח הודעה ישירות</td>
+          <td class="border border-gray-300 px-4 py-2">ייכנס לתוקף בחודש שאחרי האישור</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיקול רכב</td>
+          <td class="border border-gray-300 px-4 py-2">מוקפא — לא ניתן למכור, אך לרוב ניתן להשתמש</td>
+          <td class="border border-gray-300 px-4 py-2">עדכון ברשות הרישוי 7–21 ימים</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיכוב יציאה מהארץ</td>
+          <td class="border border-gray-300 px-4 py-2">בדרך כלל מוסר — אך לא אוטומטי, דורש בקשה נוספת</td>
+          <td class="border border-gray-300 px-4 py-2">תלוי בהחלטת הרשם בכל תיק</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הגבלת רישיון נהיגה</td>
+          <td class="border border-gray-300 px-4 py-2">לרוב מוסר עם קבלת הצו — בדוק מול הלשכה</td>
+          <td class="border border-gray-300 px-4 py-2">7–14 ימים מהודעה לרשות הרישוי</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="info-box">
-    <p class="font-semibold text-blue-800 mb-2">חישוב מעשי: כמה להציע לשלם?</p>
-    <p class="mb-3">
-      הנוסחה הבסיסית לחישוב הסכום שתציע לרשם:
-    </p>
-    <div class="bg-blue-100 rounded-lg p-3 font-mono text-sm text-blue-900 mb-3">
-      הכנסה נטו חודשית<br/>
-      <span class="text-blue-500">פחות:</span> שכר דירה / משכנתא<br/>
-      <span class="text-blue-500">פחות:</span> חשמל + גז + מים + ועד בית<br/>
-      <span class="text-blue-500">פחות:</span> אוכל (הערכת הוצאה חודשית)<br/>
-      <span class="text-blue-500">פחות:</span> תחבורה<br/>
-      <span class="text-blue-500">פחות:</span> תרופות וטיפולים רפואיים<br/>
-      <span class="text-blue-500">פחות:</span> מזונות שאתה משלם (אם יש)<br/>
-      <span class="text-blue-500">פחות:</span> הוצאות ילדים הכרחיות<br/>
-      <strong class="text-blue-800">= הסכום הפנוי לתשלום חוב</strong>
-    </div>
-    <p class="text-sm">
-      <strong>טיפ חשוב:</strong> עדיף לבקש סכום שתוכל לשלם באופן קבוע, מאשר סכום גבוה שתפגר בו.
-      לרשם אין מינימום נוקשה — הוא מחויב לקבוע סכום שאתה <em>יכול לשלם בפועל</em>.
+    <p class="font-semibold text-blue-800 mb-2">חשוב: עיקול שכבר בוצע לפני הצו</p>
+    <p class="text-blue-900">
+      אם כספים כבר הועברו לנושה <em>לפני</em> מתן הצו — הם לא יוחזרו אוטומטית.
+      הצו מונע הליכי אכיפה <strong>מכאן ואילך</strong>, לא רטרואקטיבית.
+      לכן חשוב להגיש את הבקשה מוקדם ככל האפשר.
     </p>
   </div>
 
-  <h2>מה קורה אחרי שהגשת?</h2>
+  <h2>תוצאות אי-עמידה בצו — מה קורה אם מפספסים תשלום</h2>
   <p>
-    לאחר הגשת הבקשה, הרשם יבחן את המסמכים שהגשת. ישנן שתי אפשרויות:
+    פיגור בתשלום הוא הסיכון המרכזי של צו תשלומים. חשוב להבין את השלכותיו
+    ולדעת כיצד לפעול אם המצב הכלכלי משתנה.
   </p>
-  <ul>
+
+  <div class="warn-box">
+    <p class="font-semibold mb-2">מה קורה אם לא שילמת תשלום אחד?</p>
+    <p class="mb-2">
+      אם לא שילמת תשלום אחד, הנושה יכול לבקש מהרשם להחזיר את הליכי האכיפה — עיקול חשבון, עיקול משכורת, עיכוב יציאה מהארץ.
+    </p>
+    <p class="mb-2">
+      <strong>אל תחכה לפיגור.</strong> אם יודע שחודש מסוים קשה לך — פנה לרשם <em>לפני</em> מועד התשלום ובקש עדכון צו. הרשם מעדיף חייב שמתקשר ומבקש עדכון מאשר חייב שנעלם.
+    </p>
+    <p>
+      גם אם פיגרת כבר — פנה לרשם באופן יזום, הסבר את המצב, וצרף תיעוד. זה עדיף על פני המתנה שהנושה ינקוט בצעדים.
+    </p>
+  </div>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מצב</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה יכול לקרות</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה לעשות</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">פיגור בתשלום אחד</td>
+          <td class="border border-gray-300 px-4 py-2">הנושה יכול לבקש חידוש הליכים</td>
+          <td class="border border-gray-300 px-4 py-2">פנה לרשם מיד, בקש עדכון צו</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">פיגור חוזר ונשנה</td>
+          <td class="border border-gray-300 px-4 py-2">ביטול הצו, חידוש כל הליכי האכיפה</td>
+          <td class="border border-gray-300 px-4 py-2">הגש בקשת שינוי צו עם תיעוד קשיים</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">שינוי נסיבות (פיטורים, מחלה)</td>
+          <td class="border border-gray-300 px-4 py-2">הצו עלול להיות לא ישים</td>
+          <td class="border border-gray-300 px-4 py-2">הגש בקשת שינוי צו מיד — לפני פיגור</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">שיפור מצב כלכלי</td>
+          <td class="border border-gray-300 px-4 py-2">הנושה יכול לבקש העלאת סכום הצו</td>
+          <td class="border border-gray-300 px-4 py-2">שקול תשלום מוגבר לקיצור תקופת הצו</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>איך לשנות צו תשלומים קיים</h2>
+  <p>
+    נסיבות החיים משתנות — פיטורים, מחלה, לידה, עלייה בהוצאות. כשמצבך השתנה באופן מהותי,
+    ניתן — ורצוי — להגיש <strong>בקשה לשינוי צו תשלומים</strong>.
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מתי ניתן לבקש שינוי צו?</p>
+    <ul class="space-y-1 text-blue-900">
+      <li>פוטרת מהעבודה או שכרך הופחת</li>
+      <li>נולד לך ילד נוסף או גדלו ההוצאות על ילדים</li>
+      <li>חלית ויש לך הוצאות רפואיות גדולות</li>
+      <li>עלה שכר הדירה שלך משמעותית</li>
+      <li>נוסף חוב חדש שמכביד על יכולת התשלום</li>
+      <li>המצב הכלכלי שלך השתפר — ורוצה לסגור מהר יותר</li>
+    </ul>
+  </div>
+
+  <h3>שלבים לבקשת שינוי צו תשלומים</h3>
+
+  <ol class="step-list">
     <li>
-      <strong>החלטה ישירות מהמסמכים</strong> — אם התיעוד מלא ומשכנע, הרשם עשוי לקבוע את הצו ללא דיון. זה המקרה הנפוץ כשהמסמכים ברורים.
+      <span class="step-num">1</span>
+      <span>
+        <strong>אסוף תיעוד לשינוי הנסיבות</strong> — מכתב פיטורים, אישור רפואי, הסכם שכירות חדש, תלוש שכר מעודכן. ככל שהתיעוד ברור יותר — כך הסיכויים לאישור גדולים יותר.
+      </span>
     </li>
     <li>
-      <strong>זימון לדיון</strong> — הרשם עשוי לזמן אותך (ואת הנושה) לדיון. בדיון תוכל להציג את עמדתך ולהסביר את מצבך הכלכלי. הנושה רשאי להתנגד לתוכנית התשלומים, והרשם ישמע את שני הצדדים.
+      <span class="step-num">2</span>
+      <span>
+        <strong>הכן טבלת הכנסות-הוצאות מעודכנת</strong> — הצג את המצב החדש בצורה ברורה. השתמש בפורמט של הדוגמה לעיל. חשב מה הסכום החדש שאתה יכול לשלם.
+      </span>
     </li>
-  </ul>
-  <p>
-    בדרך כלל לוקח 2–6 שבועות עד לקבלת ההחלטה. לאחר שניתן הצו, תקבל הודעה לפי פרטי הקשר שסיפקת.
-  </p>
-  <p>
-    <strong>לאחר קבלת הצו:</strong> שלם את הסכום שנקבע מדי חודש בחודשו. ניתן לשלם בדרך כלל בהוראת קבע, בדואר, או באתר הרשות. שמור את כל אישורי התשלום.
-  </p>
+    <li>
+      <span class="step-num">3</span>
+      <span>
+        <strong>הגש בקשה לשינוי צו</strong> — ניתן להגיש אותה בכתב חופשי לרשם, בצירוף המסמכים. יש לציין במפורש: "בקשה לשינוי צו תשלומים" ולפרט את הנסיבות החדשות.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>
+        <strong>הגש לפני שפיגרת</strong> — הגשה <em>לפני</em> פיגור מוכיחה תום לב ומשפרת את הסיכוי לאישור. הגשה <em>אחרי</em> פיגור נתפסת לרוב כניסיון "לצאת מבעיה" ומעוררת ספק.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span>
+        <strong>המתן לדיון</strong> — הרשם יזמן אותך לדיון או יחליט מהמסמכים. הנושה רשאי לטעון בעניין. הרשם ישקול את הנסיבות ויחליט על סכום חדש.
+      </span>
+    </li>
+  </ol>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">טיפ: שינוי צו אינו בקשה חדשה לגמרי</p>
+    <p>
+      בקשת שינוי צו היא הרחבה של ההליך הקיים — לא פתיחת תיק חדש. לכן לרוב אין אגרה נוספת,
+      ולרוב הרשם שכבר מכיר את התיק שלך יהיה מוכן יותר לשמוע אותך.
+    </p>
+  </div>
 
   <h2>מה עושים אם הרשם קבע יותר ממה שיכולתי לשלם?</h2>
   <p>
@@ -260,78 +684,6 @@ const faqSchema = {
   </ul>
   <p>
     <strong>המלצה מעשית:</strong> אם הצו שנקבע גבוה מ-30% מהסכום שהצעת — שקול ברצינות להגיש ערעור או בקשת שינוי עם תיעוד מלא יותר של הוצאותיך.
-  </p>
-
-  <div class="warn-box">
-    <p class="font-semibold mb-2">מה קורה אם לא עומדים בצו?</p>
-    <p class="mb-2">
-      אם לא שילמת תשלום אחד, הנושה יכול לבקש מהרשם להחזיר את הליכי האכיפה — עיקול חשבון, עיקול משכורת, עיכוב יציאה מהארץ.
-    </p>
-    <p class="mb-2">
-      <strong>אל תחכה לפיגור.</strong> אם יודע שחודש מסוים קשה לך — פנה לרשם <em>לפני</em> מועד התשלום ובקש עדכון צו. הרשם מעדיף חייב שמתקשר ומבקש עדכון מאשר חייב שנעלם.
-    </p>
-    <p>
-      גם אם פיגרת כבר — פנה לרשם באופן יזום, הסבר את המצב, וצרף תיעוד. זה עדיף על פני המתנה שהנושה ינקוט בצעדים.
-    </p>
-  </div>
-
-  <h2>צו תשלומים, איחוד תיקים או חדלות פירעון — מה מתאים לך?</h2>
-  <p>
-    בחירת הכלי הנכון תלויה במצבך הספציפי. הטבלה הבאה עוזרת לזהות את הנתיב המתאים:
-  </p>
-
-  <div class="overflow-x-auto my-4">
-    <table class="w-full text-sm border-collapse">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="border border-gray-200 p-3 text-right font-semibold">קריטריון</th>
-          <th class="border border-gray-200 p-3 text-right font-semibold">צו תשלומים</th>
-          <th class="border border-gray-200 p-3 text-right font-semibold">איחוד תיקים</th>
-          <th class="border border-gray-200 p-3 text-right font-semibold">חדלות פירעון</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="border border-gray-200 p-3 font-medium">מספר תיקים פתוחים</td>
-          <td class="border border-gray-200 p-3">תיק אחד</td>
-          <td class="border border-gray-200 p-3">מספר תיקים</td>
-          <td class="border border-gray-200 p-3">כל מצב</td>
-        </tr>
-        <tr class="bg-gray-50">
-          <td class="border border-gray-200 p-3 font-medium">האם תוכל לפרוע את החוב?</td>
-          <td class="border border-gray-200 p-3">כן, בפריסה</td>
-          <td class="border border-gray-200 p-3">כן, בפריסה מאוחדת</td>
-          <td class="border border-gray-200 p-3">לא — חוב אינו בר-פירעון</td>
-        </tr>
-        <tr>
-          <td class="border border-gray-200 p-3 font-medium">מורכבות</td>
-          <td class="border border-gray-200 p-3">נמוכה — בלי עורך דין</td>
-          <td class="border border-gray-200 p-3">בינונית</td>
-          <td class="border border-gray-200 p-3">גבוהה — מומלץ ייעוץ</td>
-        </tr>
-        <tr class="bg-gray-50">
-          <td class="border border-gray-200 p-3 font-medium">השפעה על אשראי</td>
-          <td class="border border-gray-200 p-3">מינורית</td>
-          <td class="border border-gray-200 p-3">מינורית</td>
-          <td class="border border-gray-200 p-3">משמעותית — 7 שנים</td>
-        </tr>
-        <tr>
-          <td class="border border-gray-200 p-3 font-medium">משך ההליך</td>
-          <td class="border border-gray-200 p-3">3–4 שנים</td>
-          <td class="border border-gray-200 p-3">3–7 שנים</td>
-          <td class="border border-gray-200 p-3">4–7 שנים</td>
-        </tr>
-        <tr class="bg-gray-50">
-          <td class="border border-gray-200 p-3 font-medium">מחיקת חוב?</td>
-          <td class="border border-gray-200 p-3">לא</td>
-          <td class="border border-gray-200 p-3">לא</td>
-          <td class="border border-gray-200 p-3">כן — עם "הפטר"</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="text-sm text-gray-600">
-    <strong>כלל אצבע:</strong> אם יש לך תיק אחד — צו תשלומים. אם יש כמה תיקים — בדוק איחוד תיקים. אם החוב הרבה מעבר ליכולתך גם בפריסה ארוכה — שקול יעוץ על חדלות פירעון.
   </p>
 
   <h2>שאלות נפוצות</h2>
@@ -369,6 +721,7 @@ const faqSchema = {
       <p class="px-4 pb-4 text-gray-600">
         אם תפספס תשלום, הנושה יכול לבקש מהרשם להחזיר את הליכי האכיפה — עיקולים, עיכוב יציאה מהארץ וכדומה.
         הדרך הנכונה: אם ידעת שלא תוכל לשלם — פנה לרשם לפני המועד ובקש עדכון צו. אל תחכה לפיגור.
+        גם אחרי פיגור — פנה מיד, הסבר את הנסיבות, וצרף תיעוד.
       </p>
     </details>
 
@@ -426,6 +779,7 @@ const faqSchema = {
     <p>
       שמור כל אישור תשלום שתשלם לאורך כל תקופת הצו. בסיום התשלומים יהיה עליך להוכיח שפרעת את מלוא החוב
       כדי לקבל את אישור סגירת התיק. תיק מסודר עם כל הקבלות חוסך טרחה מיותרת בסוף הדרך.
+      מומלץ לשמור גם עותק של כל בקשה שהגשת ושל כל החלטה שקיבלת.
     </p>
   </div>
 
@@ -433,6 +787,7 @@ const faqSchema = {
     <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
       <li>← <a href="/guides/ichud-tikim/" class="text-brand hover:underline">איחוד תיקים — כשיש כמה תיקים פתוחים</a></li>
+      <li>← <a href="/guides/bitul-ikul/" class="text-brand hover:underline">ביטול עיקול — מדריך שלב אחר שלב</a></li>
       <li>← <a href="/guides/ikul-heshbon/" class="text-brand hover:underline">מדריך: עיקול חשבון בנק — מה לעשות</a></li>
       <li>← <a href="/tools/calculator/" class="text-brand hover:underline">מחשבון ריבית — חשב כמה אתה חייב בסך הכל</a></li>
       <li>← <a href="/tools/eligibility/" class="text-brand hover:underline">בדוק את זכויותיך — כלי בדיקת זכאות</a></li>
