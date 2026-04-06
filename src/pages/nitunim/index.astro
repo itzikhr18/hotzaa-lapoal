@@ -13,6 +13,7 @@ const datasetSchema = {
   dateModified: '2026-03-31',
   temporalCoverage: '2025/2026',
   spatialCoverage: 'IL',
+  license: 'https://creativecommons.org/licenses/by-sa/4.0/',
   creator: {
     '@type': 'Organization',
     name: 'הוצאהלפועל.info',
@@ -20,18 +21,30 @@ const datasetSchema = {
   },
   citation: [
     {
-      '@type': 'GovernmentOrganization',
-      name: 'רשות האכיפה והגבייה',
+      '@type': 'CreativeWork',
+      name: 'נתוני רשות האכיפה והגבייה',
+      author: {
+        '@type': 'GovernmentOrganization',
+        name: 'רשות האכיפה והגבייה',
+      },
       url: 'https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority',
     },
     {
-      '@type': 'GovernmentOrganization',
-      name: 'הלשכה המרכזית לסטטיסטיקה',
+      '@type': 'CreativeWork',
+      name: 'נתוני הלשכה המרכזית לסטטיסטיקה',
+      author: {
+        '@type': 'GovernmentOrganization',
+        name: 'הלשכה המרכזית לסטטיסטיקה',
+      },
       url: 'https://www.cbs.gov.il',
     },
     {
-      '@type': 'GovernmentOrganization',
-      name: 'בנק ישראל',
+      '@type': 'CreativeWork',
+      name: 'נתוני בנק ישראל',
+      author: {
+        '@type': 'GovernmentOrganization',
+        name: 'בנק ישראל',
+      },
       url: 'https://www.boi.org.il',
     },
   ],
