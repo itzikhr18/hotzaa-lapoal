@@ -59,18 +59,9 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
   <meta name="twitter:description" content={ogDescription} />
   <meta name="twitter:image" content={ogImage} />
 
-  <!-- Fonts — Assistant only (supports Hebrew natively), reduced weights for faster load -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    rel="preload"
-    as="style"
-    href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap"
-    onload="this.onload=null;this.rel='stylesheet'"
-  />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet" />
-  </noscript>
+  <!-- Fonts — self-hosted for zero CDN latency -->
+  <link rel="preload" as="font" href="/fonts/assistant-hebrew.woff2" type="font/woff2" crossorigin />
+  <link rel="preload" as="font" href="/fonts/assistant-latin.woff2" type="font/woff2" crossorigin />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -84,8 +75,8 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
   <meta name="google-site-verification" content="X5NDXZCjqVjRvuyONLtPJ0UBFHrgFZRr-ybS83-hUWo" />
   <meta name="google-site-verification" content="S0rlBUmhG4a_Mtd6kXKk9PaMPyGMJN5xVDVh8cfJo1k" />
 
-  <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your GA4 ID -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1249745886248914" crossorigin="anonymous"></script>
 </head>
 <body class="bg-neutral-bg text-gray-900 font-sans antialiased">
   <AccessibilityWidget />

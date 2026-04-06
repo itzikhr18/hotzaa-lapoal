@@ -95,6 +95,10 @@ const schemas = schema
             {updateDate && <span>עודכן: {updateDate}</span>}
             <span>זמן קריאה: {readTime}</span>
           </div>
+          <div class="flex items-center gap-2 mt-2 text-xs text-gray-500">
+            <span>✓</span>
+            <span>המידע מבוסס על חוק ההוצאה לפועל תשכ"ז-1967 ועדכוני 2025–2026</span>
+          </div>
           <p class="mt-4 text-lg text-gray-600 leading-relaxed">{description}</p>
         </header>
 
@@ -156,6 +160,17 @@ const schemas = schema
           { title: 'ערב בהוצאה לפועל', href: '/guides/arev/', icon: '🤝' },
           { title: 'התיישנות חוב', href: '/guides/hitiyashnoot-chov/', icon: '⏰' },
           { title: 'סגירת תיק הוצאה לפועל', href: '/guides/sgor-tik/', icon: '🔒' },
+          { title: 'עיקול פנסיה וקצבאות', href: '/guides/ikul-pensiya/', icon: '🏛️' },
+          { title: 'עיקול דירה ומקרקעין', href: '/guides/ikul-dira/', icon: '🏠' },
+          { title: 'הסדר חוב עם נושים', href: '/guides/hisdurim-chov/', icon: '🤝' },
+          { title: 'בדיקת תיק הוצאה לפועל', href: '/guides/bdika-tik/', icon: '🔍' },
+          { title: 'ריבית בהוצאה לפועל', href: '/guides/ribit-hotzaa/', icon: '📈' },
+          { title: 'ביטול הגבלות', href: '/guides/bitul-hagbalot/', icon: '🔓' },
+          { title: 'עיקול זמני', href: '/guides/ikul-zman/', icon: '⏱️' },
+          { title: 'ערעור על הוצאה לפועל', href: '/guides/irur-hotzaa/', icon: '⚖️' },
+          { title: 'לשכת הוצאה לפועל', href: '/guides/lishkat-hotzaa/', icon: '🏛️' },
+          { title: 'פסק דין בהוצאה לפועל', href: '/guides/psak-din/', icon: '📄' },
+          { title: 'עורך דין הוצאה לפועל', href: '/guides/orech-din/', icon: '👨‍⚖️' },
           { title: 'כל המדריכים', href: '/guides/', icon: '→' },
         ].map(g => (
           <a href={g.href} class="flex items-center gap-3 p-3 bg-white border border-neutral-border rounded-xl hover:border-brand hover:bg-brand-pale transition-all text-sm font-medium text-gray-700 hover:text-brand-dark">

@@ -10,9 +10,9 @@ const howToSchema = {
   step: [
     { '@type': 'HowToStep', position: 1, name: 'בדוק זכאות לפטור מאגרה', text: 'אגרת הגשה היא 1,564 ₪. אם אין לך יכולת לשלם — ניתן לבקש פטור מלא או חלקי. הבקשה מוגשת יחד עם הבקשה הראשית לחדלות פירעון.' },
     { '@type': 'HowToStep', position: 2, name: 'בדוק זכאות לסיוע משפטי חינמי', text: 'הלשכה לסיוע משפטי מציעה ייצוג חינמי לזכאים לפי רמת הכנסה. קליניקות משפטיות באוניברסיטאות מציעות ייעוץ חינמי. בדוק זאת לפני שכירת עורך דין פרטי.' },
-    { '@type': 'HowToStep', position: 3, name: 'השווה שכר טרחת עורכי דין', text: 'שכר טרחה נע בין 6,000 ל-20,000 ₪. פנה לפחות ל-3 עורכי דין לקבלת הצעות מחיר. בדוק ניסיון ספציפי בחדלות פירעון.' },
+    { '@type': 'HowToStep', position: 3, name: 'השווה שכר טרחת עורכי דין', text: 'שכר טרחה נע בין 5,000 ל-20,000 ₪. פנה לפחות ל-3 עורכי דין לקבלת הצעות מחיר. בדוק ניסיון ספציפי בחדלות פירעון.' },
     { '@type': 'HowToStep', position: 4, name: 'שקול שמאות נכסים', text: 'אם יש לך נכסים (דירה, רכב) — ייתכן צורך בשמאות. עלות שמאות: 1,500–3,000 ₪. הנאמן עשוי לדרוש זאת.' },
-    { '@type': 'HowToStep', position: 5, name: 'חשב את כדאיות ההליך', text: 'חשב: עלות ההליך (~15,000 ₪) + תשלומים חודשיים (4 שנים) מול סך החוב שיימחק. על חוב של 350,000 ₪ — החיסכון הנטו עומד על כ-287,000 ₪.' },
+    { '@type': 'HowToStep', position: 5, name: 'חשב את כדאיות ההליך', text: 'חשב: עלות ההליך (~15,000 ₪) + תשלומים חודשיים (3-4 שנים) מול סך החוב שיימחק. על חוב של 350,000 ₪ — החיסכון הנטו עומד על כ-287,000 ₪.' },
   ],
 };
 
@@ -20,10 +20,11 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'כמה עולה הגשת בקשה לחדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'אגרת בית המשפט עומדת על 1,564 ₪. שכר טרחת עורך דין נע בין 6,000 ל-20,000 ₪ לפי מורכבות התיק. סה"כ עלות משוערת: 8,000-25,000 ₪.' } },
+    { '@type': 'Question', name: 'כמה עולה הגשת בקשה לחדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'אגרת בית המשפט: 1,564 ₪. שכר נאמן: 2,500–5,000 ₪ (נקבע בבית המשפט). שכר עורך דין: 5,000–20,000 ₪. סה"כ משוער: 8,000–25,000 ₪.' } },
     { '@type': 'Question', name: 'האם ניתן לקבל פטור מאגרת בית המשפט?', acceptedAnswer: { '@type': 'Answer', text: 'כן. אנשים שאין ביכולתם לשלם יכולים לבקש פטור מלא או חלקי. הבקשה מוגשת יחד עם הבקשה הראשית לחדלות פירעון.' } },
     { '@type': 'Question', name: 'האם חובה לשכור עורך דין לחדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'לא חובה, אבל מומלץ מאוד. ניתן להגיש בעצמך, אך ההליך מורכב ומלא דקויות בירוקרטיות. טעויות יכולות לעכב בחודשים. לזכאים — הלשכה לסיוע משפטי מציעה ייצוג חינמי.' } },
     { '@type': 'Question', name: 'מי משלם לנאמן?', acceptedAnswer: { '@type': 'Answer', text: 'שכר הנאמן נקבע על ידי בית המשפט ומשולם מתוך הכספים שנגבים לטובת הנושים — לא ישירות מכיסך.' } },
+    { '@type': 'Question', name: 'מה קורה אם אי אפשר לשלם אפילו את האגרה?', acceptedAnswer: { '@type': 'Answer', text: 'ניתן לבקש פטור מלא מהאגרה במסגרת הבקשה לחדלות פירעון. אם אין לך ייצוג משפטי — הלשכה לסיוע משפטי יכולה לייצג אותך חינמית. בית המשפט אינו דוחה בקשות על בסיס חוסר יכולת כלכלית בלבד.' } },
     { '@type': 'Question', name: 'האם ההשקעה משתלמת?', acceptedAnswer: { '@type': 'Answer', text: 'לרוב כן. על חוב של 350,000 ₪ — עלות ההליך ~15,000 ₪, תשלומים ~48,000 ₪ לאורך 4 שנים, ובסוף נמחקים ~287,000 ₪. החיסכון הנטו משמעותי.' } },
   ],
 };
@@ -31,17 +32,18 @@ const faqSchema = {
 
 <GuideLayout
   title="כמה עולה הליך חדלות פירעון? — פירוט עלויות 2026"
-  description="העלות הכוללת של הליך חדלות פירעון נעה בין 8,000 ל-25,000 ₪. פירוט אגרות, שכר טרחה עורך דין, ועלויות נסתרות — לפני שמחליטים."
+  description="העלות הכוללת של הליך חדלות פירעון נעה בין 8,000 ל-25,000 ₪. פירוט אגרות, שכר טרחה עורך דין, שכר נאמן, ועלויות נסתרות — לפני שמחליטים."
   breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'עלויות', href: '/insolvency/costs/' }]}
   publishDate="2025-03-01"
   updateDate="2026-03-28"
-  readTime="5 דקות"
+  readTime="9 דקות"
   schema={[faqSchema, howToSchema]}
 >
 
   <p>
     אחת השאלות הראשונות שאנשים שואלים היא כמה זה עולה. התשובה הכנה: לא מעט —
     אבל ביחס לחובות שנמחקים בסוף, רוב האנשים שעברו את ההליך אומרים שהיה שווה.
+    הנה פירוט מלא של כל עלות, אפשרויות לפטור, ומה קורה אם אין לך כסף בכלל.
   </p>
 
   <h2>סיכום עלויות — 2026</h2>
@@ -52,20 +54,24 @@ const faqSchema = {
         <tr class="bg-brand-dark text-white">
           <th class="text-right p-3 border border-gray-200">פריט</th>
           <th class="text-right p-3 border border-gray-200">עלות משוערת</th>
+          <th class="text-right p-3 border border-gray-200">אפשרות לפטור?</th>
           <th class="text-right p-3 border border-gray-200">הערות</th>
         </tr>
       </thead>
       <tbody>
         {[
-          ['אגרת בית משפט', '1,564 ₪', 'ניתן לבקש פטור במצוקה כלכלית'],
-          ['שכר טרחה עורך דין', '6,000 – 20,000 ₪', 'לפי מורכבות התיק ונכסים'],
-          ['שכר נאמן', 'נקבע על ידי בית המשפט', 'מתוך כספי הנושים בדרך כלל'],
-          ['שמאות נכסים (אם נדרש)', '1,500 – 3,000 ₪', 'רק אם יש נכסים לשום'],
-          ['סה"כ משוער', '8,000 – 25,000 ₪', 'ממוצע: כ-12,000-15,000 ₪'],
-        ].map(([item, cost, note], i) => (
-          <tr class={i === 4 ? 'bg-blue-50 font-bold' : i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+          ['אגרת הגשה לבית משפט', '1,564 ₪', 'כן — ניתן לבקש פטור מלא', 'מוגשת עם הבקשה הראשית'],
+          ['אגרות בית משפט נוספות', '200–600 ₪', 'כן — לפי מצב כלכלי', 'דיונים, ערעורים, בקשות'],
+          ['שכר טרחת עורך דין', '5,000 – 20,000 ₪', 'כן — סיוע משפטי חינמי', 'לפי מורכבות התיק ונכסים'],
+          ['שכר נאמן', '2,500 – 5,000 ₪', 'לא — נקבע בבית המשפט', 'מתוך כספי הנושים בדרך כלל'],
+          ['שמאות נכסים (אם נדרש)', '1,500 – 3,000 ₪', 'לא', 'רק אם יש נכסים לשום'],
+          ['תרגום מסמכים (אם נדרש)', '500 – 1,500 ₪', 'לא', 'למי שמסמכים בשפה זרה'],
+          ['סה"כ משוער', '8,000 – 25,000 ₪', 'חלקי', 'ממוצע: כ-12,000-15,000 ₪'],
+        ].map(([item, cost, exempt, note], i) => (
+          <tr class={i === 6 ? 'bg-blue-50 font-bold' : i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
             <td class="p-3 border border-gray-200">{item}</td>
             <td class="p-3 border border-gray-200 text-brand-dark font-semibold">{cost}</td>
+            <td class="p-3 border border-gray-200 text-xs">{exempt}</td>
             <td class="p-3 border border-gray-200 text-gray-500 text-xs">{note}</td>
           </tr>
         ))}
@@ -73,70 +79,318 @@ const faqSchema = {
     </table>
   </div>
 
-  <h2>אגרת בית המשפט — ואפשרות לפטור</h2>
+  <h2>אגרת בית המשפט — פירוט ואפשרויות פטור</h2>
   <p>
-    אגרת הגשת בקשה לחדלות פירעון עומדת על <strong>1,564 ₪</strong> (נכון ל-2026).
-    אנשים שאין ביכולתם לשלם את האגרה יכולים לבקש פטור מלא או חלקי ממנה.
-    הבקשה לפטור מוגשת יחד עם הבקשה הראשית.
+    אגרת הגשת בקשה לחדלות פירעון עומדת על <strong>1,564 ₪</strong> (נכון ל-2026, צמודה למדד).
+    זו האגרה הראשונית — יתכנו אגרות נוספות על דיונים, ערעורים ובקשות ספציפיות, אך הן קטנות יחסית.
   </p>
-
-  <h2>שכר טרחה עורך דין — האם חובה?</h2>
-  <p>
-    עורך דין אינו חובה — אפשר להגיש בעצמך. אבל:
-  </p>
-  <ul>
-    <li>ההליך מורכב ומלא מלכודות בירוקרטיות</li>
-    <li>טעויות בהגשה יכולות לעכב את ההליך בחודשים</li>
-    <li>עורך דין טוב יכול לשפר את תנאי תוכנית השיקום</li>
-    <li>בתיקים עם נכסים (דירה, רכב) — ייצוג חשוב מאוד</li>
-  </ul>
 
   <div class="info-box">
-    <p class="font-semibold text-blue-800 mb-2">כיצד לחסוך בשכר טרחה:</p>
-    <ul>
-      <li><strong>הלשכה לסיוע משפטי</strong> — ייצוג חינמי לזכאים לפי הכנסה</li>
-      <li><strong>קליניקות משפטיות</strong> — אוניברסיטאות מציעות ייעוץ בחינם</li>
-      <li><strong>השוואת מחירים</strong> — שכר הטרחה שונה מאוד בין עורכי דין. שאל לפחות 2-3</li>
+    <p class="font-semibold text-blue-800 mb-2">מי זכאי לפטור מאגרה?</p>
+    <ul class="space-y-1">
+      <li><strong>הכנסה מתחת לסף קיום</strong> — מי שהכנסתו מתחת לקו העוני מקבל פטור מלא בדרך כלל</li>
+      <li><strong>מקבלי קצבאות סוציאליות</strong> — נכות כללית, הבטחת הכנסה — פטור אוטומטי כמעט</li>
+      <li><strong>מי שאין לו נכסים</strong> — נכסים אפסיים תומכים בבקשת הפטור</li>
+      <li><strong>כיצד מגישים</strong> — בקשת פטור מאגרה מוגשת יחד עם הבקשה הראשית, ללא עלות נוספת</li>
     </ul>
   </div>
 
-  <h2>שכר נאמן — מי משלם?</h2>
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">שימו לב — אגרה חלקית</p>
+    <p>בית המשפט עשוי לאשר פטור חלקי — למשל, לשלם 500 ₪ במקום 1,564 ₪. גם פטור חלקי הוא עזרה משמעותית. המסמך המרכזי לצירוף לבקשת פטור הוא תלוש שכר, אישור גמלה, או תצהיר הכנסות.</p>
+  </div>
+
+  <h2>שכר נאמן — 2,500 עד 5,000 ₪</h2>
   <p>
-    הנאמן שממונה על ידי בית המשפט מקבל שכר מהכספים שנגבים מהחייב לטובת הנושים.
-    כלומר — שכר הנאמן לא יוצא ישירות מכיסך, אלא מהתשלומים שממילא אתה משלם.
+    בתיקים עם חוב מעל 176,923 ₪, בית המשפט ממנה נאמן לניהול ההליך.
+    שכר הנאמן נקבע על ידי בית המשפט — לא על ידי הנאמן עצמו — ונע בדרך כלל בין <strong>2,500 ₪ ל-5,000 ₪</strong>,
+    בתוספת מע"מ. בתיקים מורכבים עם נכסים רבים, שכר הנאמן עשוי להיות גבוה יותר.
   </p>
 
-  <h2>האם ההשקעה משתלמת?</h2>
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מי משלם לנאמן בפועל?</p>
+    <p>שכר הנאמן מגיע בראש ובראשונה מהכספים שנגבים מהחייב ומועברים לנושים. כלומר — מבחינה מעשית, הנושים "מממנים" חלק מהנאמן. אם אין כספים מספיקים, ייתכן שהנאמן יקבל שכרו מהמדינה (קרן נאמן). בכל מקרה — לא מוסיפים את שכר הנאמן על גבי התשלומים החודשיים שלך.</p>
+  </div>
 
-  <div class="not-prose bg-green-50 border border-green-200 rounded-xl p-5 my-6">
-    <p class="font-semibold text-green-800 mb-3">דוגמה מספרית:</p>
-    <div class="text-sm text-gray-700 space-y-1">
-      <p>סכום חוב כולל: <strong>350,000 ₪</strong></p>
-      <p>עלות ההליך: <strong>~15,000 ₪</strong></p>
-      <p>תשלומים במהלך 4 שנים: <strong>~48,000 ₪</strong> (1,000 ₪/חודש)</p>
-      <p>חוב שנמחק בהפטר: <strong>~287,000 ₪</strong></p>
-      <div class="mt-3 pt-3 border-t border-green-200">
-        <p class="font-bold text-green-800">חיסכון נטו: כ-287,000 ₪ 💚</p>
+  <h2>שכר טרחת עורך דין — 5,000 עד 20,000 ₪</h2>
+  <p>
+    שכר הטרחה תלוי בגורמים רבים:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">סוג התיק</th>
+          <th class="text-right p-3 border border-gray-200">שכר טרחה משוער</th>
+          <th class="text-right p-3 border border-gray-200">מה כלול</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['תיק פשוט — אין נכסים, שכיר', '5,000 – 8,000 ₪', 'הגשה, ייצוג בדיונים, תוכנית שיקום'],
+          ['תיק בינוני — נכסים מועטים', '8,000 – 14,000 ₪', 'הנ"ל + טיפול בנכסים, ערעורים'],
+          ['תיק מורכב — דירה, עסק', '14,000 – 20,000 ₪', 'הנ"ל + משא ומתן עם נושים, שומות'],
+          ['עצמאי — ייצוג בלבד בחלקים', '3,000 – 5,000 ₪', 'ייעוץ בלבד, הגשה עצמאית עם ליווי'],
+        ].map(([type, fee, includes], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold">{type}</td>
+            <td class="p-3 border border-gray-200 text-brand-dark font-semibold">{fee}</td>
+            <td class="p-3 border border-gray-200 text-gray-600 text-xs">{includes}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>ייצוג עצמי — האם אפשרי?</h2>
+  <p>
+    כן — החוק אינו מחייב ייצוג משפטי. אפשר להגיש בקשה לחדלות פירעון בעצמך.
+    אבל כדאי לדעת מה מחכה לך:
+  </p>
+
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>מסמכים מורכבים</strong> — הבקשה כוללת טפסים ארוכים, תצהירים, רשימות נושים מפורטות ודוחות כספיים. טעות אחת עלולה לגרום לדחיית הבקשה.</span></li>
+    <li><span class="step-num">2</span><span><strong>דיוני בית משפט</strong> — תצטרך להופיע בדיונים, להתמודד עם שאלות מהנאמן ומהנושים, ולהציג את מצבך הכלכלי בצורה מסודרת.</span></li>
+    <li><span class="step-num">3</span><span><strong>תוכנית שיקום</strong> — הנאמן קובע מה תשלם. ללא ייצוג, קשה יותר להתמקח על תנאי התוכנית ולהוכיח שהסכום שנדרש ממך גבוה מדי.</span></li>
+    <li><span class="step-num">4</span><span><strong>נושים פעילים</strong> — אם יש לך נושים שמתנגדים להפטר או לתנאי ההליך, ייצוג משפטי חיוני.</span></li>
+  </ol>
+
+  <div class="tip-box">
+    <p class="font-semibold text-green-800 mb-2">מתי ייצוג עצמי הגיוני?</p>
+    <ul class="space-y-1">
+      <li>כשאין לך נכסים כלל (שוכר, אין רכב, אין חסכונות)</li>
+      <li>כשכל הנושים הם גופים פיננסיים (בנקים, כרטיסי אשראי) ואין חובות אישיים</li>
+      <li>כשיש לך זמן ויכולת ללמוד את ההליך לעומק</li>
+      <li>כשאתה מגיש דרך הלשכה לסיוע משפטי שעוזרת לך</li>
+    </ul>
+  </div>
+
+  <h2>הלשכה לסיוע משפטי — ייצוג חינמי לזכאים</h2>
+  <p>
+    הלשכה לסיוע משפטי היא זרוע של משרד המשפטים המספקת ייצוג משפטי חינמי לאנשים שאינם יכולים להרשות לעצמם עורך דין.
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">קריטריון</th>
+          <th class="text-right p-3 border border-gray-200">פרטים</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['הכנסה חודשית מירבית (יחיד)', 'כ-7,500 ₪ נטו (משתנה לפי גודל משפחה)'],
+          ['הכנסה חודשית מירבית (זוג + 2 ילדים)', 'כ-13,000 ₪ נטו'],
+          ['נכסים', 'אין נכסים בעלי ערך ניכר (דירה, חסכונות גדולים)'],
+          ['מה הלשכה מכסה?', 'ייצוג בכל שלבי ההליך — הגשה, דיונים, ערעורים'],
+          ['מה הלשכה לא מכסה?', 'אגרות בית משפט (אפשר לבקש פטור בנפרד)'],
+          ['כיצד פונים?', 'לסניף הלשכה לסיוע משפטי הקרוב — יש לקבוע תור'],
+        ].map(([crit, detail], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-700">{crit}</td>
+            <td class="p-3 border border-gray-200 text-gray-600">{detail}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">אפשרויות נוספות לסיוע חינמי:</p>
+    <ul class="space-y-1">
+      <li><strong>קליניקות משפטיות באוניברסיטאות</strong> — אוניברסיטת תל אביב, בר-אילן, חיפה, ירושלים — מציעות ייעוץ ולעיתים ייצוג חינמי</li>
+      <li><strong>עמותת "פרוטקשן"</strong> — מלווה חייבים בהליכי חדלות פירעון בחינם</li>
+      <li><strong>ייעוץ ראשוני חינמי</strong> — חלק גדול מעורכי הדין מציעים שיחה ראשונה ללא עלות</li>
+    </ul>
+  </div>
+
+  <h2>תוכנית תשלום לעלויות ההליך עצמו</h2>
+  <p>
+    מה קורה כשאין לך כסף לשלם לעורך דין? יש מספר פתרונות:
+  </p>
+
+  <ol class="step-list">
+    <li><span class="step-num">א</span><span><strong>תשלום בתשלומים לעורך הדין</strong> — רוב עורכי הדין המתמחים בחדלות פירעון מציעים תשלום מפורס. נהוג לשלם חלק מראש ואת היתרה לאורך ההליך.</span></li>
+    <li><span class="step-num">ב</span><span><strong>שכר טרחה דחוי</strong> — חלק מהעורכים מסכימים שהחלק הגדול ישולם רק בסוף ההליך — ממקורות שישתחררו.</span></li>
+    <li><span class="step-num">ג</span><span><strong>הלשכה לסיוע משפטי</strong> — ייצוג חינמי לזכאים.</span></li>
+    <li><span class="step-num">ד</span><span><strong>קרן קהילתית</strong> — בחלק מהמקרים, ארגוני צדקה וגמ"חים מסייעים בעלויות הליכים משפטיים.</span></li>
+  </ol>
+
+  <h2>מה קורה אם אי אפשר לשלם אפילו את האגרה?</h2>
+
+  <div class="alert-box">
+    <p class="font-semibold text-red-800 mb-2">חשוב לדעת — אל תוותר על ההליך בגלל חוסר כסף</p>
+    <p>בית המשפט בישראל <strong>לא דוחה</strong> בקשות לחדלות פירעון אך ורק מסיבת חוסר יכולת לשלם אגרה. ישנן מספר שכבות הגנה:</p>
+  </div>
+
+  <ul class="mt-4 space-y-2">
+    <li><strong>פטור מלא מאגרה</strong> — בקשה מנומקת עם מסמכי הכנסה. אם מתקבלת, הגשת הבקשה היא ללא עלות.</li>
+    <li><strong>דחיית תשלום האגרה</strong> — בית המשפט יכול לאשר דחיית תשלום עד לשלב מאוחר יותר בהליך.</li>
+    <li><strong>הלשכה לסיוע משפטי</strong> — מייצגת גם אנשים ללא כל יכולת כלכלית.</li>
+    <li><strong>ייצוג עצמי ללא עורך דין</strong> — חוקי לחלוטין, וכשאין ברירה — אפשרי.</li>
+  </ul>
+
+  <h2>השוואת עלויות: חדלות פירעון מול השארות בחוב</h2>
+  <p>
+    לאנשים רבים, השאלה האמיתית היא לא "כמה עולה ההליך" אלא "מה יקרה אם לא אעשה כלום".
+    הנה השוואה ל-5 שנים על חוב של 300,000 ₪:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">פרמטר</th>
+          <th class="text-right p-3 border border-gray-200">חדלות פירעון</th>
+          <th class="text-right p-3 border border-gray-200">השארות בחוב</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['עלות ההליך / קנסות', '15,000 ₪ (חד פעמי)', 'ריבית + קנסות: ~30,000 ₪/שנה'],
+          ['תשלומים חודשיים', '1,000–2,000 ₪ (לפי יכולת)', 'לחץ נושים + עיקולי שכר'],
+          ['מצב בסוף 5 שנים', 'חוב מחוק, תחילה חדשה', 'חוב גדל ל-450,000+ ₪'],
+          ['הגבלות', 'יציאה לחו"ל + אשראי (זמני)', 'עיקול שכר, עיקול חשבון (קבוע)'],
+          ['השפעה על חיים', 'מוגבל 4 שנים — ואז חופשי', 'מוגבל לא מוגדר — ועולה'],
+          ['סיכוי למחיקת חוב', '95%+', 'אפס'],
+        ].map(([param, insolvency, debt], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-700">{param}</td>
+            <td class="p-3 border border-gray-200 text-green-700 font-semibold">{insolvency}</td>
+            <td class="p-3 border border-gray-200 text-red-700">{debt}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tip-box">
+    <p class="font-semibold text-green-800 mb-2">מסקנה מהטבלה:</p>
+    <p>בחוב של 300,000 ₪ — לאחר 5 שנים בחדלות פירעון, החוב נמחק. לאחר 5 שנים ללא טיפול — החוב גדל ל-450,000 ₪ ויותר, הגבלות נמשכות, ואין סוף בנראה לעין. עלות ההליך היא עלות חד-פעמית. עלות ההתחמקות — צוברת ריבית.</p>
+  </div>
+
+  <h2>פרויקציה ל-5 שנים — דוגמה מספרית</h2>
+
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-xl p-5 my-6">
+    <p class="font-bold text-blue-800 mb-4">הנחות: חוב 350,000 ₪, ריבית הוצאה לפועל 8%, תשלום חודשי בחדלות פירעון 1,200 ₪</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-lg p-4 border border-blue-200">
+        <p class="font-bold text-green-700 mb-3">מסלול חדלות פירעון</p>
+        <div class="text-sm space-y-1.5 text-gray-700">
+          <p>שנה 1: עלות ההליך 15,000 ₪, תשלומים 14,400 ₪</p>
+          <p>שנה 2-4: תשלומים 14,400 ₪/שנה</p>
+          <p>סה"כ הוצאה: <strong>~58,200 ₪</strong></p>
+          <p>חוב שנמחק: <strong>350,000 ₪</strong></p>
+          <p class="font-bold text-green-700 mt-2">חיסכון נטו: ~291,800 ₪</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg p-4 border border-red-200">
+        <p class="font-bold text-red-700 mb-3">מסלול ללא טיפול</p>
+        <div class="text-sm space-y-1.5 text-gray-700">
+          <p>שנה 1: חוב + ריבית = 378,000 ₪</p>
+          <p>שנה 2: 408,240 ₪</p>
+          <p>שנה 3: 440,899 ₪</p>
+          <p>שנה 4: 476,171 ₪</p>
+          <p>שנה 5: 514,264 ₪</p>
+          <p class="font-bold text-red-700 mt-2">+ עיקולים, הגבלות, לחץ מנטלי</p>
+        </div>
       </div>
     </div>
   </div>
 
   <h2>שאלות נפוצות</h2>
   <div class="space-y-4 my-6">
-    {[
-      { q: 'כמה עולה הגשת בקשה לחדלות פירעון?', a: 'אגרת בית המשפט: 1,564 ₪. שכר עורך דין: 6,000-20,000 ₪. סה"כ: 8,000-25,000 ₪ בהתאם למורכבות.' },
-      { q: 'האם ניתן לקבל פטור מאגרת בית המשפט?', a: 'כן. מי שאין ביכולתו לשלם יכול לבקש פטור מלא או חלקי יחד עם הגשת הבקשה.' },
-      { q: 'האם חובה לשכור עורך דין?', a: 'לא חובה, אבל מומלץ מאוד. לזכאים — הלשכה לסיוע משפטי מציעה ייצוג חינמי.' },
-      { q: 'מי משלם לנאמן?', a: 'שכר הנאמן נקבע בבית המשפט ומשולם מהכספים שנגבים לנושים — לא ישירות מהחייב.' },
-    ].map(faq => (
-      <details class="border border-neutral-border rounded-xl group">
-        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-          {faq.q}
-          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
-      </details>
-    ))}
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        כמה עולה הגשת בקשה לחדלות פירעון?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">אגרת בית המשפט: 1,564 ₪. שכר נאמן: 2,500–5,000 ₪ (נקבע בבית המשפט, משולם מכספי הנושים). שכר עורך דין: 5,000–20,000 ₪. סה"כ משוער: 8,000–25,000 ₪ בהתאם למורכבות.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם ניתן לקבל פטור מאגרת בית המשפט?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">כן. מי שאין ביכולתו לשלם יכול לבקש פטור מלא או חלקי יחד עם הגשת הבקשה. מצרפים מסמכי הכנסה (תלוש שכר, אישור גמלה, תצהיר), ובית המשפט מחליט. פטור מלא שכיח למקבלי קצבאות.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם חובה לשכור עורך דין?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">לא חובה — אפשר להגיש בעצמך. אבל ההליך מורכב: תצהירים, דיונים, תוכנית שיקום. טעויות בהגשה יכולות לעכב בחודשים. אם יש לך נכסים (דירה, רכב), ייצוג חשוב מאוד. לזכאים — הלשכה לסיוע משפטי מציעה ייצוג חינמי.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מי משלם לנאמן?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">שכר הנאמן נקבע בבית המשפט ומשולם מהכספים שנגבים לנושים — לא ישירות מהחייב. בתיקים שבהם אין כספים מספיקים, ייתכן שהמדינה תממן את שכר הנאמן מקרן מיוחדת.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה קורה אם אין לי כסף לשלם אפילו את האגרה?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">ניתן לבקש פטור מלא מהאגרה — אם מתקבל, אין עלות הגשה. הלשכה לסיוע משפטי יכולה לייצגך חינמית. בית המשפט לא דוחה בקשות רק בגלל חוסר יכולת כלכלית. יש לפעול — לא להמתין עד שיהיה כסף.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם ההשקעה בהליך משתלמת?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">ברוב המקרים — כן בצורה מובהקת. על חוב של 350,000 ₪: עלות ההליך ~15,000 ₪, תשלומים ~43,200 ₪ ל-3 שנים, סה"כ הוצאה ~58,000 ₪. החוב שנמחק: ~292,000 ₪. לחלופין — ריבית וקנסות ממשיכים לצבור כל עוד לא מטפלים.</p>
+    </details>
+  </div>
+
+  <h2>טיפים לחיסכון בעלויות ההליך</h2>
+
+  <div class="tip-box">
+    <p class="font-semibold text-green-800 mb-3">7 דרכים להפחית עלויות:</p>
+    <ol class="space-y-2 list-decimal list-inside text-sm">
+      <li><strong>בדוק זכאות לסיוע משפטי לפני הכל</strong> — זה חוסך 5,000–20,000 ₪ על שכר טרחה</li>
+      <li><strong>אסוף את כל המסמכים לפני הפגישה הראשונה עם עורך הדין</strong> — שעות פחות = כסף פחות</li>
+      <li><strong>בקש הצעות מחיר מ-3 עורכי דין לפחות</strong> — הפרש של 5,000 ₪ שכיח</li>
+      <li><strong>בדוק אם מגיע לך פטור מאגרה</strong> — אגרת 1,564 ₪ היא לא מה שמוריד רוב האנשים, אבל שווה לבדוק</li>
+      <li><strong>שאל אם עורך הדין מציע תשלום בתשלומים</strong> — רובם כן</li>
+      <li><strong>גש לקליניקה משפטית לייעוץ ראשוני</strong> — חינמי, ויכול לחסוך שעות בשלב מאוחר יותר</li>
+      <li><strong>אל תתמהמה</strong> — ככל שהחוב גדל בריבית, כך "עלות ההתנהגות" גדלה ביחס ל"עלות הפתרון"</li>
+    </ol>
+  </div>
+
+  <h2>שאלה שצריך לשאול את עורך הדין לפני שחותמים</h2>
+  <div class="not-prose overflow-x-auto my-4">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">שאלה</th>
+          <th class="text-right p-3 border border-gray-200">למה חשוב?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['מה כלול בשכר הטרחה שאתה מציע?', 'לוודא שלא יהיו הפתעות בתשלומים נוספים'],
+          ['כמה תיקי חדלות פירעון טיפלת בשנה האחרונה?', 'ניסיון ספציפי — לא כל עורך דין מוסמך מבין את ההליך'],
+          ['האם יש עלויות נוספות מעבר לשכר הטרחה?', 'אגרות, שמאויות, אגרות נוספות — מי משלם?'],
+          ['מה קורה אם ההליך מסתבך — האם יהיו עלויות נוספות?', 'תיקים יכולים להתמשך יותר מצפוי'],
+          ['האם אתה מקבל תשלום בתשלומים?', 'לרוב כן — אבל כדאי לאשר'],
+          ['מה הסיכוי שאקבל הפטר מוחלט?', 'הערכה מקצועית על בסיס מצבך הספציפי'],
+        ].map(([q, why], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-700">{q}</td>
+            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{why}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </div>
 
   <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
@@ -144,6 +398,7 @@ const faqSchema = {
     <ul class="space-y-2 text-sm">
       <li>← <a href="/insolvency/process/" class="text-brand hover:underline">שלבי ההליך — מה קורה בכל שלב</a></li>
       <li>← <a href="/insolvency/haftar/" class="text-brand hover:underline">ההפטר — מה בדיוק נמחק</a></li>
+      <li>← <a href="/insolvency/eligibility/" class="text-brand hover:underline">האם אני זכאי להגיש?</a></li>
       <li>← <a href="/contact/" class="text-brand hover:underline">רוצה ייעוץ? צור קשר עם עורך דין</a></li>
     </ul>
   </div>

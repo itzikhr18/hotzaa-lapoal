@@ -1,0 +1,1046 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const publishDate = '2026-03-31';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  name: 'מילון מושגים — הוצאה לפועל בעברית פשוטה',
+  description: '100+ מושגי הוצאה לפועל מוסברים בעברית פשוטה. מאגר המונחים המקיף ביותר לחייבים בישראל.',
+  inLanguage: 'he',
+  url: 'https://hotzaa-lapoal.info/milon/',
+  datePublished: publishDate,
+  hasDefinedTerm: [
+    {
+      '@type': 'DefinedTerm',
+      name: 'עיקול',
+      description: 'צו משפטי המונע מהחייב להשתמש בנכס מסוים או בכספים עד לפירעון החוב.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'צו תשלומים',
+      description: 'החלטת רשם ההוצאה לפועל הקובעת לוח זמנים לפירעון החוב בתשלומים חודשיים.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'חייב מוגבל באמצעים',
+      description: 'מעמד רשמי שמוענק לחייב שאינו יכול לשלם את חובותיו, המקנה לו הגנות מסוימות.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'כינוס נכסים',
+      description: 'הליך שבו ממנים כונס נכסים שמוכר את נכסי החייב לשם פירעון חובותיו.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'חדלות פירעון',
+      description: 'מצב שבו אדם אינו מסוגל לפרוע את חובותיו, ועשוי לעבור הליך שיקום כלכלי.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'הפטר',
+      description: 'שחרור סופי מחובות בסיום הליך חדלות פירעון או פשיטת רגל.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'עיכוב יציאה מהארץ',
+      description: 'הגבלה המונעת מחייב לצאת מישראל עד לפירעון חובו.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'זוכה',
+      description: 'הנושה — הצד שזכה בפסק הדין ופתח תיק הוצאה לפועל לגביית חובו.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'ריבית פיגורים',
+      description: 'ריבית גבוהה המצטברת על חוב שלא שולם במועד, לפי חוק פסיקת ריבית והצמדה.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'איחוד תיקים',
+      description: 'הליך המאגד מספר תיקי הוצאה לפועל לתיק אחד, עם תשלום חודשי אחד מפוצל בין הנושים.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="מילון מושגים — הוצאה לפועל בעברית פשוטה"
+  description="100+ מושגי הוצאה לפועל מוסברים בעברית פשוטה. מאגר המונחים המקיף ביותר לחייבים בישראל."
+  canonicalUrl="https://hotzaa-lapoal.info/milon/"
+  ogType="website"
+  schema={schema}
+>
+  <Header />
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-l from-blue-700 to-blue-900 text-white py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-blue-200 text-sm font-medium mb-2">מאגר מונחים | עודכן מרץ 2026</p>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">מילון מושגים — הוצאה לפועל בעברית פשוטה</h1>
+        <p class="text-lg text-blue-100 max-w-2xl mx-auto">
+          100+ מושגי הוצאה לפועל, עיקולים וחדלות פירעון — מוסברים בשפה ברורה, ללא עורכי דין.
+          מאגר המונחים המקיף ביותר לחייבים בישראל.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sticky alpha nav -->
+    <nav aria-label="ניווט לפי אות" class="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm overflow-x-auto">
+      <div class="max-w-4xl mx-auto px-2 py-2 flex gap-1 flex-nowrap text-sm font-medium">
+        <a href="#alef"   class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">א</a>
+        <a href="#bet"    class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ב</a>
+        <a href="#gimel"  class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ג</a>
+        <a href="#dalet"  class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ד</a>
+        <a href="#he"     class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ה</a>
+        <a href="#vav"    class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ו</a>
+        <a href="#zayin"  class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ז</a>
+        <a href="#chet"   class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ח</a>
+        <a href="#tet"    class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ט</a>
+        <a href="#yod"    class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">י</a>
+        <a href="#kaf"    class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">כ</a>
+        <a href="#lamed"  class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ל</a>
+        <a href="#mem"    class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">מ</a>
+        <a href="#nun"    class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">נ</a>
+        <a href="#samech" class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ס</a>
+        <a href="#ayin"   class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ע</a>
+        <a href="#pe"     class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">פ</a>
+        <a href="#tsadi"  class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">צ</a>
+        <a href="#kuf"    class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ק</a>
+        <a href="#resh"   class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ר</a>
+        <a href="#shin"   class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ש</a>
+        <a href="#tav"    class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">ת</a>
+      </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 py-10">
+
+      <!-- א -->
+      <section id="alef" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">א</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">אגרה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            תשלום חובה הנגבה על ידי לשכת ההוצאה לפועל בעת פתיחת תיק או הגשת בקשה מסוימת.
+            גובה האגרה נקבע לפי שווי החוב הנתבע ומתעדכן מעת לעת. האגרה מתווספת לחוב המקורי ומוטלת על החייב.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">אזהרה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            המסמך הרשמי הראשון שמקבל החייב לאחר פתיחת תיק הוצאה לפועל נגדו.
+            האזהרה מפרטת את סכום החוב ומזהירה שאם לא יפרע תוך 20 יום, ינקטו כנגדו הליכי גבייה.
+            חשוב מאוד לפעול מיידית עם קבלת האזהרה — אל תתעלמו ממנה.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">איחוד תיקים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הליך שמאחד מספר תיקי הוצאה לפועל פתוחים של אותו חייב לתיק אחד מרכזי.
+            כתוצאה מכך משלם החייב סכום חודשי אחד בלבד, המחולק בין כל הנושים לפי הסדר עדיפויות.
+            מאפשר ניהול סדור ומניעת ריבוי הגבלות מקבילות.
+            <a href="/guides/ichud-tikim/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">אכיפה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            פעולות שנוקטת לשכת ההוצאה לפועל כדי לגבות את החוב בפועל — עיקולים, מכירת נכסים, הגבלות ועוד.
+            הזוכה רשאי לבקש אכיפה לאחר שחלפו 20 יום מהמצאת האזהרה לחייב ולא שולם.
+            האכיפה כוללת מגוון כלים חוקיים להפעלת לחץ על החייב.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">ארנונה — חוב</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            חוב ארנונה לרשות המקומית הוא חוב מוכר שניתן לגבותו בהוצאה לפועל.
+            הרשות המקומית רשאית לפתוח תיק גבייה ישיר ואף לנקוט בהליכי עיקול על נכסי החייב.
+            חוב ארנונה מתיישן לאחר 7 שנים אם לא ננקטה פעולת גבייה.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ב -->
+      <section id="bet" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ב</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">בית משפט שלום</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הערכאה הנמוכה ביותר בהיררכיה השיפוטית בישראל, דנה בתביעות כספיות עד 2.5 מיליון ש"ח.
+            רוב תיקי ההוצאה לפועל מבוססים על פסקי דין של בית משפט שלום.
+            ניתן לערער על פסיקתו לבית משפט מחוזי.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">בית משפט מחוזי</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            ערכאת ביניים הדנה בתביעות מעל 2.5 מיליון ש"ח ובערעורים על פסיקת בית משפט שלום.
+            עניינים מסוימים של חדלות פירעון ופשיטת רגל נדונים ישירות בבית המשפט המחוזי.
+            פסיקתו ניתנת לערעור לבית המשפט העליון.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">בית משפט לענייני משפחה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            ערכאה מיוחדת הדנה בנושאי גירושין, מזונות, משמורת ורכוש הנוגעים לבני זוג וילדים.
+            פסקי דין של בית המשפט לענייני משפחה בנושא מזונות ניתנים לאכיפה דרך הוצאה לפועל.
+            לחוב מזונות ניתנת עדיפות מיוחדת בדיני האכיפה.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">ביטול עיקול</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הליך שבו מבקש החייב לבטל עיקול שהוטל על נכסיו או חשבונו.
+            ניתן לבקש ביטול עיקול בשל פגמים בהטלתו, חוסר יכולת כלכלית, או הגעה להסדר עם הנושה.
+            הבקשה מוגשת לרשם ההוצאה לפועל, שיחליט לאחר שמיעת שני הצדדים.
+            <a href="/guides/bitul-ikul/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">ביטוח לאומי — פטור מעיקול</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            קצבאות המשולמות על ידי המוסד לביטוח לאומי כגון קצבת נכות, קצבת זקנה ודמי אבטלה מוגנות מפני עיקול.
+            מדובר בהכנסה הנחשבת כ"בסיס קיום" ולכן אינה ניתנת לעיקול על ידי נושה רגיל.
+            חריג קיים לחובות מזונות, שכן ניתן לעקל חלק מהקצבה גם במקרה זה.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">בקשה לרשם</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            פנייה רשמית לרשם ההוצאה לפועל לצורך קבלת החלטה בעניין מסוים — ביטול עיקול, קביעת תשלומים, הסרת הגבלה וכדומה.
+            הבקשה מוגשת בכתב בצירוף תצהיר ואסמכתאות רלוונטיות.
+            יש לשלם אגרה עבור הגשת בקשות מסוימות.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ג -->
+      <section id="gimel" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ג</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">גביית חוב</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            כלל הפעולות המשפטיות והמעשיות שנוקט נושה כדי לקבל את כספו מהחייב.
+            כוללת שליחת דרישות תשלום, פתיחת תיק הוצאה לפועל, הטלת עיקולים ומכירת נכסים.
+            ישנם גבולות חוקיים ברורים לגביית חוב — אין מדובר בשרות עצמי.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">גמלה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            תשלום תקופתי המשולם לאדם הזכאי לו — לרוב מהביטוח הלאומי או ממקום עבודה לשעבר.
+            גמלאות רבות מוגנות מפני עיקול מאחר שהן מהוות מקור פרנסה בסיסי.
+            יש לבדוק בכל מקרה לגופו אם הגמלה הספציפית ניתנת לעיקול ובאיזה שיעור.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">גרעון</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הפרש שלילי בין הכנסות לבין הוצאות ו/או התחייבויות.
+            בהקשר של הוצאה לפועל — כאשר חייב אינו מסוגל לכסות את חובותיו מהכנסותיו השוטפות.
+            גרעון מתמשך עשוי להוביל לחדלות פירעון ולהליך שיקום כלכלי.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">גישור</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הליך חוץ-משפטי שבו צד שלישי ניטרלי (המגשר) מסייע לחייב ולנושה להגיע להסכמה מרצון.
+            גישור מוצלח בנושא חוב יכול למנוע את ההגעה לבית משפט ולחסוך עלויות לשני הצדדים.
+            ניתן לנסות גישור גם לאחר פתיחת תיק הוצאה לפועל — הסכם שמושג יגרור סגירת התיק.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ד -->
+      <section id="dalet" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ד</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">דמי פיגורים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            תוספת לחוב המקורי הנגבית עקב איחור בתשלום — מעבר לריבית הרגילה.
+            בתיקי הוצאה לפועל, דמי הפיגורים מצטברים על גבי הקרן ועלולים לנפח משמעותית את יתרת החוב.
+            חשוב לפעול מהר כדי לעצור את צבירת דמי הפיגורים.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">דירוג אשראי</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            ציון המבטא את רמת האמינות הפיננסית של אדם, המחושב על בסיס היסטוריית תשלומים ומצב חובות.
+            תיק הוצאה לפועל פתוח פוגע קשות בדירוג האשראי ומקשה על קבלת הלוואות, משכנתאות ושירותים בנקאיים.
+            סגירת התיק ופירעון החוב תורמים להתאוששות הדירוג לאורך זמן.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">דרכון — הגבלה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            רשם ההוצאה לפועל רשאי להורות על עיכוב יציאה מהארץ, אך אינו יכול לבטל את הדרכון עצמו.
+            ה"הגבלת הדרכון" שנשמעת לפעמים מתייחסת בפועל לצו עיכוב יציאה מהארץ.
+            ניתן לבקש הסרת הגבלה זו עם הסרת הגבלות אחרות מעמד חייב מוגבל.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ה -->
+      <section id="he" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ה</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">הגבלות — רשימה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            כאשר חייב מוכרז כ"מוגבל באמצעים" מוטלות עליו הגבלות: עיכוב יציאה מהארץ, פסילת רישיון נהיגה (בוטלה ב-2015), הגבלת שימוש בכרטיסי אשראי ושיקים, ואיסור כהונה כדירקטור.
+            ההגבלות מוסרות עם פירעון החוב, הסדר מאושר, או בקשה מוצדקת לרשם.
+            <a href="/guides/hayav-mugbal/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">הגנה על דירת מגורים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            החוק קובע שדירת מגורים יחידה של חייב מוגנת בפני מכירה כפויה אם ערכה אינו עולה על תקרה מסוימת.
+            עם זאת, ניתן לרשום עיקול על הדירה ולמנוע את מכירתה על ידי החייב עצמו.
+            בתנאים מסוימים בית המשפט רשאי לאשר מכירה גם של דירה יחידה, בפרט בחובות גדולים.
+            <a href="/guides/ikul-dira/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">הוצאה לפועל — הגדרה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            המנגנון המשפטי שמאפשר לנושה לממש פסק דין או שטר חוב ולגבות את כספו מהחייב בסיוע המדינה.
+            מנוהלת על ידי רשות האכיפה והגבייה שפועלת מטעם משרד המשפטים.
+            הליך ההוצאה לפועל כולל עיקולים, הגבלות, מכירת נכסים ועוד.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">הוצל"פ נט</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            מערכת מקוונת של רשות האכיפה והגבייה המאפשרת לחייבים ולזוכים לבצע פעולות דרך האינטרנט.
+            דרכה ניתן לבדוק יתרת חוב, לשלם, לעיין בתיק ולהגיש בקשות מסוימות.
+            כתובת: enforcement.moj.gov.il
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">המצאה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            מסירה רשמית של מסמך משפטי לנמען — כגון אזהרה, צו עיקול, או הזמנה לדיון.
+            ההמצאה יוצרת את "שעון הזמן" לתגובת החייב — ממנה מתחיל מניין הימים לפעולה.
+            ניתן לבצע המצאה ידנית, בדואר רשום, או בדרכים אלקטרוניות שאושרו בחוק.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">הפטר</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            שחרור סופי וחוקי מכל החובות שנכללו בהליך חדלות פירעון או פשיטת רגל.
+            לאחר קבלת הפטר, הנושים אינם יכולים לתבוע את החייב בגין אותם חובות.
+            ניתן לאחר שהחייב עמד בכל תנאי תוכנית הפירעון שקבע הכנ"ר.
+            <a href="/guides/pshitat-regel/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">הצהרת נכסים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            מסמך שחייב נדרש להגיש בו פירוט מלא של כל נכסיו, הכנסותיו, הוצאותיו וחובותיו.
+            מוגשת לרשם ההוצאה לפועל לצורך קביעת יכולת הפירעון ותנאי התשלום.
+            מסירת פרטים כוזבים בהצהרת נכסים עלולה להוות עבירה פלילית.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">התיישנות</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            חסימה משפטית של תביעה לאחר שחלפה תקופה קבועה בחוק (בדרך כלל 7 שנים לחובות כספיים).
+            חוב שהתיישן אינו ניתן לאכיפה בבית משפט, אך על החייב לטעון את הטענה מפורשות.
+            פעולות גבייה מסוימות מפסיקות את מרוץ ההתיישנות ומחזירות אותו לאפס.
+            <a href="/guides/hitiyashnoot-chov/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ו -->
+      <section id="vav" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ו</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">ועדת ערר</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            גוף מינהלי שאפשר לערור בפניו על החלטות רשויות מסוימות (כגון הרשות המקומית בענין ארנונה).
+            בהקשר הוצאה לפועל — הערר מוגש לרשם ההוצאה לפועל ולאחריו לבית המשפט.
+            יש לשים לב למועדי הגשה קצרים שנקבעים בחוק.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">ויתור על חוב</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הסכמה של הנושה לוותר על חלק מהחוב או על כולו — לרוב כחלק מהסדר פשרה.
+            ויתור רשמי מחייב תיעוד כתוב ואישור סגירת תיק ההוצאה לפועל.
+            מוותר על חוב? בדוק עם רואה חשבון — במקרים מסוימים מדובר בהכנסה חייבת במס.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ז -->
+      <section id="zayin" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ז</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">זוכה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הצד שפתח תיק הוצאה לפועל — הנושה שזכה בפסק דין ורוצה לגבות את חובו.
+            הזוכה הוא הצד הפעיל בתיק: הוא מגיש בקשות לנקיטת הליכים ובוחר את אמצעי הגבייה.
+            בשיח היומיומי משתמשים לפעמים גם במושג "הנושה" לאותו גורם.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">זכות עיון</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הזכות של חייב לעיין בכל מסמכי תיק ההוצאה לפועל הנוגעים לו — כולל הבקשות, הצווים וההחלטות.
+            ניתן לממש זכות זו בלשכת ההוצאה לפועל הרלוונטית.
+            עיון בתיק חיוני לבניית טענות הגנה מדויקות.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">זכות קיום — בסיס קיום</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            עיקרון חוקי לפיו לחייב מובטחת הכנסה מינימלית בסיסית שאינה ניתנת לעיקול.
+            הסכום מחושב לפי שכר המינימום (בערך) ומותאם לגודל המשפחה.
+            המדינה מכירה בכך שאין להותיר חייב ומשפחתו ללא אמצעי מחיה.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ח -->
+      <section id="chet" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ח</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">חדלות פירעון</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            מצב משפטי ופיננסי שבו חייב אינו מסוגל לפרוע את חובותיו במועדם.
+            מאז 2019 הוחלף הליך "פשיטת הרגל" הישן בהליך חדלות פירעון ושיקום כלכלי, שמקנה מסלול שיקום קצר ומהיר יותר.
+            ניתן ליזום את ההליך גם לבקשת הנושה וגם ביוזמת החייב עצמו.
+            <a href="/guides/pshitat-regel/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">חוב — הגדרה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            התחייבות כספית שאדם חייב לאדם אחר, לגוף פיננסי, לרשות ממשלתית או לחברה.
+            בהוצאה לפועל מדובר בחוב שקיבל תוקף משפטי — בפסק דין, שטר חוב, המחאה שחזרה ועוד.
+            החוב כולל לרוב קרן, ריבית, הצמדה ואגרות שנצברו.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">חוב מוכר</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            חוב שהחייב הסכים לו רשמית או לא חלק עליו בהזדמנות הראשונה.
+            "הכרה בחוב" עלולה להפסיק את מרוץ ההתיישנות ולחדש את תוקפו המשפטי.
+            לפני הכרה בכל חוב — בעל פה או בכתב — מומלץ להיוועץ עם גורם מקצועי.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">חוב מזונות</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            חוב הנובע מפסק דין מזונות לילדים או לבן/בת זוג.
+            לחוב מזונות מעמד מועדף בדיני האכיפה — הוא קודם לחובות אחרים ואינו ניתן לכלול בהליך חדלות פירעון.
+            ניתן לגבות חוב מזונות גם מגמלאות ביטוח לאומי שאחרת פטורות מעיקול.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">חייב</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הצד שנגדו נפתח תיק ההוצאה לפועל — מי שחייב כסף לזוכה ואינו שילם.
+            החייב הוא הצד "הסביל" בתיק: הוא מגיב לבקשות הזוכה ויכול להגיש התנגדויות ובקשות.
+            זכויות החייב מוגנות בחוק — אין לנהוג בו בשרירות.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">חייב מוגבל באמצעים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            מעמד שמוענק לחייב שהוכיח שאין ביכולתו לפרוע את חובותיו בשל קשיים כלכליים.
+            מעמד זה מאפשר לקבל הגנות מסוימות — כגון הקפאת ריבית וחלוקה לתשלומים — אך גם מקנה הגבלות.
+            על החייב לעדכן את הרשם בשינויים במצבו הכלכלי.
+            <a href="/guides/hayav-mugbal/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">חקירת יכולת</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            דיון שבו נחקר החייב בפני רשם ההוצאה לפועל על מצבו הכלכלי — הכנסות, הוצאות, נכסים וחובות.
+            הרשם משתמש במידע שנאסף לצורך קביעת צו תשלומים ו/או מתן מעמד חייב מוגבל.
+            הגעה לחקירת יכולת היא חובה חוקית — אי-הופעה עלולה לגרור הוצאת צו מאסר.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ט -->
+      <section id="tet" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ט</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">טאבו — רישום מקרקעין</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            לשכת רישום המקרקעין ("טאבו") שומרת את רישומי הבעלות על קרקעות ובתים בישראל.
+            כאשר מוטל עיקול על נכס מקרקעין, הוא נרשם בטאבו ומונע מכירה עתידית ללא אישור.
+            כל אדם יכול לבדוק רישומי טאבו באופן מקוון לגבי כל נכס.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">טופס 7</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            טופס רשמי שמגיש הזוכה לפתיחת תיק הוצאה לפועל, הכולל פרטי החוב, הצדדים ואסמכתאות.
+            יחד עם אגרת הפתיחה, הגשת טופס 7 היא הצעד הראשון בפתיחת הליך גבייה.
+            כינויו ה"עממי" הוא "טופס פתיחת תיק".
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">טפסי הוצאה לפועל</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            מגוון רחב של טפסים רשמיים המשמשים לפעולות שונות בתיק — פתיחת תיק, בקשות, תגובות, תצהירים וכדומה.
+            ניתן להוריד את הטפסים מאתר רשות האכיפה והגבייה או לקבלם בלשכה.
+            מילוי נכון ומדויק של הטפסים הוא קריטי — טעויות עלולות לגרום לדחיית הבקשה.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- י -->
+      <section id="yod" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">י</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">יכולת פירעון</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הערכה של מידת יכולתו של חייב לשלם את חובותיו, בהתבסס על הכנסותיו, נכסיו והוצאותיו הבסיסיות.
+            הרשם מעריך יכולת פירעון בחקירת יכולת ולאחר עיון בהצהרת הנכסים.
+            ממצאי ההערכה קובעים את גובה התשלום החודשי ואת הזכאות למעמד חייב מוגבל.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">יורש וחוב</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            יורש עזבון שנפטר אינו חייב בחובות המנוח מכיסו הפרטי — הוא אחראי רק עד לגובה ירושתו.
+            כלומר, נושים של המנוח יוכלו לגבות רק מהעיזבון ולא מהרכוש הפרטי של היורש.
+            אם לא נותר דבר בעיזבון, הנושים לא יוכלו לתבוע את היורשים.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- כ -->
+      <section id="kaf" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">כ</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">כינוס נכסים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הליך שבו בית המשפט ממנה כונס נכסים — בדרך כלל עורך דין — לנהל ולממש נכסי חייב לשם פירעון חובותיו.
+            כינוס נכסים מתבצע לרוב על נכס ספציפי (כמו דירה) ולא על כלל נכסי החייב.
+            הוא פולשני יותר מאמצעי גבייה רגילים ומשמש ביחס לחובות גדולים.
+            <a href="/guides/kinnus-nechasim/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">כלי עבודה — פטור</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            כלים וציוד המשמשים חייב לפרנסתו מוגנים מפני עיקול עד לשווי מסוים הקבוע בחוק.
+            ההגיון הוא שאם ייעקל הכלי מפרנסתו, לא יוכל החייב לכסות את חובו בעתיד.
+            הפטור חל על כלי עבודה בסיסיים ולא על ציוד יקר ערך הניתן להחלפה.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">כל-זכות</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            אתר ממשלתי (kol-zchut.gov.il) המרכז מידע על זכויות הציבור בישראל, כולל בנושא הוצאה לפועל.
+            מקור מידע אמין ומוסמך הכתוב בשפה נגישה, מומלץ לצד המידע שתמצאו כאן.
+            כולל מידע על הגבלות, הטבות, ועוד.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">כרטיס אשראי — עיקול</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            חייב מוגבל באמצעים עלול לאבד את זכותו לכרטיסי אשראי כחלק מהגבלות החוק.
+            חברות כרטיסי האשראי רשאיות לבטל את הכרטיס עם הטלת ההגבלה.
+            ישנם כרטיסים חיוביים (דביט) שאינם מושפעים מהליכי הוצאה לפועל.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ל -->
+      <section id="lamed" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ל</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">לשכת הוצאה לפועל</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הגוף המקומי שמנהל את תיקי ההוצאה לפועל, בפיקוח רשות האכיפה והגבייה.
+            ישנן לשכות רבות ברחבי הארץ — החייב פונה לפי מקום המגורים או מיקום הנכס.
+            בלשכה ניתן להגיש בקשות, לשלם חוב, לעיין בתיק ולהיפגש עם רשם.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">לשכת רישום מקרקעין</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הגוף הממשלתי האחראי לרישום בעלות ועסקאות מקרקעין (הידוע בכינוי "טאבו").
+            בעת עיקול נכס נדל"ן, ההוצאה לפועל מורה ללשכה לרשום הערה על הנכס.
+            ניתן לבדוק רישומים בלשכה ולגלות אם יש עיקול על נכס מסוים.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- מ -->
+      <section id="mem" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">מ</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">מזונות</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            תשלום חודשי שחייב אדם לשלם לבן/בת זוגו לשעבר ו/או לילדיו הקטינים בהתאם לפסק דין.
+            חובות מזונות הם בעלי עדיפות גבוהה במיוחד בדיני האכיפה — לא ניתן לפשוט רגל מחובות מזונות.
+            ניתן לגבות פיגורי מזונות בהוצאה לפועל ולהטיל עיקול על משכורת, חשבון בנק ועוד.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">מנהל מיוחד</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            גורם שממנה בית המשפט בהליך חדלות פירעון לנהל את ענייני החייב ולחלק את הנכסים לנושים.
+            תפקידו דומה לכונס נכסים אך מקיף יותר — הוא מנהל את כלל הנכסים ולא רק נכס ספציפי.
+            המנהל המיוחד פועל בפיקוח הכנ"ר (כונס הנכסים הרשמי) ובית המשפט.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">מסמכי אכיפה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            מסמכים המהווים בסיס לפתיחת תיק הוצאה לפועל — פסק דין, שטר חוב, המחאה חוזרת, חוזה שאינו נפרע ועוד.
+            בלא מסמך אכיפה תקף, לא ניתן לפתוח תיק.
+            סוג המסמך משפיע על הליך ההוצאה לפועל ועל זכויות החייב.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">מעקל</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            השם לנכס או לכסף שהוטל עליו עיקול — "נכס מעוקל" הוא נכס שעליו הוטל עיקול.
+            מעקל גם מתייחס לגורם המחזיק בנכס המעוקל (כמו בנק המחזיק בכספי החייב).
+            ניתן גם לכנות "מעקל" את הגורם שמוטל עליו חובה להעביר כספים לתיק.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">מעקל — צד שלישי</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            גורם שבידיו מוחזקים כספים או נכסים של החייב, כמו בנק, מעביד, לקוח עסקי.
+            כאשר מוטל עיקול אצל צד שלישי, הוא מחויב בחוק להעביר את הכספים לתיק ההוצאה לפועל.
+            אי-ציות לצו עיקול מצד שלישי עלול לחייב אותו לשלם את הסכום מכיסו.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">מקרקעין — עיקול</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            עיקול על נכס נדל"ן — דירה, קרקע, מחסן, חנות וכדומה — הנרשם בלשכת רישום המקרקעין.
+            העיקול מונע מהחייב למכור את הנכס מבלי להסדיר את החוב תחילה.
+            בנסיבות מסוימות ניתן למכור את הנכס בכפייה לאחר קבלת אישור בית המשפט.
+            <a href="/guides/ikul-dira/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">משכורת — עיקול</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            עיקול המוטל על שכר העבודה של החייב, כאשר המעביד מנכה חלק ממשכורתו ומעביר לתיק ההוצאה לפועל.
+            לחייב מובטח "שכר מינימום נקי" שאינו ניתן לעיקול בשום מצב.
+            שיעור העיקול נקבע לפי היחס בין ההכנסה לבין בסיס הקיום.
+            <a href="/guides/ikul-maskoret/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">משכנתא</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הלוואה לרכישת נדל"ן שבה הנכס עצמו משמש ערבות (שעבוד) להלוואה.
+            אי-עמידה בתשלומי משכנתא עלולה להוביל לכינוס נכסים ומכירת הנכס על ידי הבנק.
+            הבנק הממשכן נחשב לנושה מובטח ויש לו עדיפות על פני נושים אחרים.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- נ -->
+      <section id="nun" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">נ</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">נושה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            האדם או הגוף שלזכותו קיים החוב — מי שמגיע לו הכסף מהחייב.
+            נושה יכול להיות בנק, ספק, בן משפחה, רשות ממשלתית, חברת אשראי וכדומה.
+            נושה מובטח (כמו בנק עם משכנתא) נחשב בעל עדיפות על פני נושה רגיל.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">נכס — הגדרה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            כל דבר בעל ערך כספי שהחייב הוא הבעלים שלו — כסף, דירה, רכב, ניירות ערך, חסכונות, זכויות וכדומה.
+            נכסים מהווים את הבסיס לגביית החוב: הנושה מנסה לאתר נכסים ולממשם.
+            ישנם נכסים מוגנים מפני עיקול, ואחרים שניתן לעקל ולמכור.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">נכסים מוגנים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            נכסים שהחוק קובע שאינם ניתנים לעיקול, כגון: כלי עבודה בסיסיים, ריהוט בית ביתי, בגדים, ספרי לימוד, ועוד.
+            ההגנה נועדה לאפשר לחייב להמשיך לתפקד ולפרנס את משפחתו.
+            הרשימה המדויקת קבועה בתקנות ההוצאה לפועל ומתעדכנת מדי פעם.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ס -->
+      <section id="samech" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ס</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">סגירת תיק</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            סיום תיק ההוצאה לפועל עם פירעון מלא של החוב, הסדר מוסכם, או התיישנות.
+            עם סגירת התיק מוסרות כל ההגבלות וההערות הרשומות על שם החייב.
+            חשוב לבקש מהזוכה אישור בכתב על סגירת התיק ולוודא שהלשכה עדכנה את הרישומים.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">סיוע משפטי</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            שירות ממשלתי המספק ייעוץ וייצוג משפטי חינמי לאנשים שאינם יכולים לממן עורך דין.
+            ניתן לפנות ללשכות הסיוע המשפטי בכל הארץ בענייני הוצאה לפועל ואכיפה.
+            הזכאות נבדקת לפי מצב כלכלי — לא כולם זכאים, אך חייבים רבים עומדים בתנאים.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ע -->
+      <section id="ayin" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ע</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיכוב הליכים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            צו שיורה בית המשפט להפסיק באופן זמני את פעולות ההוצאה לפועל כנגד חייב.
+            ניתן לבקש עיכוב הליכים בעת פתיחת הליך חדלות פירעון או בעת ערעור על פסק הדין הבסיסי.
+            עיכוב הליכים מספק "הקפאה" שמאפשרת לחייב להסדיר את ענייניו בלי לחץ מיידי.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיכוב יציאה מהארץ</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הגבלה המוטלת על חייב מוגבל באמצעים, המונעת ממנו לצאת מישראל.
+            מונפקת על ידי רשם ההוצאה לפועל ומועברת לרשויות הגבול.
+            ניתן לבקש הסרת ההגבלה זמנית לצורך נסיעה דחופה, בהוכחת נסיבות מיוחדות.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיקול</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            צו משפטי המקפיא נכס של החייב ומונע ממנו להשתמש בו או למכרו עד לפירעון החוב.
+            עיקול יכול לחול על חשבון בנק, משכורת, רכב, דירה, פנסיה וכל נכס אחר.
+            הטלת עיקול אינה אוטומטית — הזוכה צריך לבקש אותה, והרשם אמור לאשרה.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיקול זמני</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            עיקול המוטל לפני מתן פסק דין, כדי למנוע מהחייב להבריח נכסים עד לסיום ההליך המשפטי.
+            עיקול זמני מחייב צד המבקשו להפקיד ערבות ולהוכיח ראייה לכאורית לחובו.
+            אם זוכה התובע בדין — העיקול הזמני הופך לסופי. אם הפסיד — העיקול מוסר.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיקול חשבון בנק</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            עיקול על כספים בחשבון עו"ש, חסכון או כל חשבון בנק אחר של החייב.
+            הבנק מקבל הוראה מלשכת ההוצאה לפועל להקפיא את הכספים ולהעבירם.
+            החשבון יקפא עד לגובה החוב הנקוב בצו — לא מעבר לכך.
+            <a href="/guides/ikul-heshbon/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיקול משכורת</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            עיקול המוטל על שכר עבודתו של החייב — המעביד מחויב להעביר חלק מהמשכורת ישירות לתיק.
+            שיעור העיקול מחושב לפי נוסחה הלוקחת בחשבון את מצב המשפחה ואת ההכנסה.
+            לא ניתן לפטר עובד בשל עיקול משכורת — זוהי עילת פיטורין אסורה.
+            <a href="/guides/ikul-maskoret/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיקול נכסים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            עיקול המוטל על נכסים מוחשיים שבבעלות החייב — ריהוט, ציוד, מלאי עסקי, כלי רכב ועוד.
+            נכסים מעוקלים ניתנים בסופו של דבר למכירה בהוצאה לפועל אם החוב אינו משולם.
+            ישנם חפצים פטורים מעיקול בשל חשיבותם הבסיסית לחייב ולמשפחתו.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיקול פנסיה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            קרן פנסיה וקרן השתלמות מוגנות מפני עיקול בשלב הצבירה, אך כאשר החייב מושך את הכספים הם עשויים להיות חשופים.
+            קצבת פנסיה (תשלום חודשי לגמלאי) ניתנת לעיקול חלקי בדומה לשכר עבודה.
+            הכללים שונים לגבי ביטוח מנהלים, קרן פנסיה מקיפה ופנסיה תקציבית.
+            <a href="/guides/ikul-pensiya/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיקול רכב</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            עיקול על כלי רכב של החייב — נרשם ברשות הרישוי ומונע העברת הבעלות.
+            אם הרכב דרוש לחייב לצורך פרנסתו (כגון מונית, משאית), ניתן לבקש להסיר את העיקול.
+            ניתן גם לעקל רכב פיזית — לגרור אותו ולמכרו — בנסיבות מסוימות.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">עיקול שלילי</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            תוצאה שבה עיקול חשבון הבנק הביא ליתרת חשבון שלילית בשל נכיית כספים שהיו בחשבון.
+            מצב זה עלול לגרום לקשיים בניהול השוטף — שיקים שחוזרים, תשלומים קבועים שאינם מכובדים.
+            יש לפעול מיידית להסדרת המצב — פנו ללשכה ולבנק בהקדם.
+            <a href="/guides/ikul-heshbon/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">ערב</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            אדם שחתם על ערבות להלוואה או לחוב של אדם אחר — אם החייב לא ישלם, הנושה יפנה לערב.
+            ערב יכול להיות חשוף לאותם הליכי הוצאה לפועל כמו החייב עצמו.
+            קיימת הגנה מיוחדת ל"ערב מוגן" בחוק הערבות.
+            <a href="/guides/arev/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">ערב מוגן</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            קטגוריה מיוחדת של ערב שחוק הערבות מעניק לו הגנות נוספות — לרוב מדובר בערב שאינו בעל עניין בהלוואה.
+            הנושה חייב להזהיר ערב מוגן על הסיכונים ולהודיע לו על אי-תשלום לפני פנייה לערב.
+            הערב המוגן רשאי לבטל את ערבותו בתנאים מסוימים.
+            <a href="/guides/arev/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">ערעור</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            פנייה לערכאה גבוהה יותר כדי לשנות החלטה של ערכאה נמוכה יותר.
+            על החלטות רשם ההוצאה לפועל ניתן לערער לבית משפט שלום תוך 20 יום.
+            על פסק דין של בית משפט שלום ניתן לערער לבית משפט מחוזי. מועדי הגשה קצרים — אל תפספסו.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- פ -->
+      <section id="pe" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">פ</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">פסק דין</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            ההחלטה הסופית של בית משפט בתיק משפטי — המחייבת צד אחד לשלם לצד אחר.
+            פסק דין הוא הבסיס הנפוץ ביותר לפתיחת תיק הוצאה לפועל.
+            לאחר שניתן פסק דין, הנושה יכול לממשו תוך 25 שנה מיום מתן הפסיקה.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">פסק דין בהיעדר</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            פסק דין שניתן כאשר הנתבע לא התייצב לדיון ולא הגיש כתב הגנה.
+            ניתן לבקש ביטול פסק דין בהיעדר אם יש הצדקה לאי-ההתייצבות וסיכוי להגנה.
+            יש לפעול מהר — הגשת הבקשה חייבת להיות תוך 30 יום מיום שנודע לנתבע על פסק הדין.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">פשיטת רגל</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            ההליך המשפטי הישן (טרם 2019) שאִפשר לחייב שאינו יכול לפרוע חובותיו לקבל הפטר בתום תהליך.
+            מאז 2019 הוחלף ב"הליך חדלות פירעון ושיקום כלכלי" המהיר יותר ויעיל יותר.
+            המושג "פשיטת רגל" עדיין נפוץ בשיח היומיומי ומתייחס בפועל להליך החדש.
+            <a href="/guides/pshitat-regel/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">פתיחת תיק</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הצעד הראשון שנוקט הנושה (הזוכה) — הגשת בקשה רשמית ללשכת ההוצאה לפועל לפתיחת תיק גבייה.
+            כוללת תשלום אגרת פתיחה, הגשת מסמך האכיפה (פסק דין וכדומה) וטופס הבקשה.
+            לאחר אישור הפתיחה, נשלחת אזהרה לחייב.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- צ -->
+      <section id="tsadi" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">צ</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">צו הריסה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            צו שיפוטי המורה על הריסת מבנה שנבנה ללא היתר או בניגוד לתנאי ההיתר.
+            ניתן לאכוף צו הריסה דרך הוצאה לפועל אם בעל הנכס מסרב לציית.
+            חוב הנובע מאי-ציות לצו הריסה עשוי לצמוח לסכומים גבוהים מאוד.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">צו תשלומים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            החלטת רשם ההוצאה לפועל הקובעת לוח תשלומים חודשי לפירעון החוב.
+            הצו מבסס תשלום חודשי ריאלי לפי יכולת החייב, ומפסיק הטלת הגבלות נוספות.
+            אי-עמידה בצו תשלומים עלולה לחדש את ההליכים — חשוב לעמוד בתשלומים במועד.
+            <a href="/guides/tzav-tashlumim/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">צו עיקול</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הצו הרשמי שמנפיקה לשכת ההוצאה לפועל להטלת עיקול על נכס ספציפי.
+            הצו נשלח לגורם המחזיק בנכס (בנק, מעביד, רשם מקרקעין) עם הוראה לפעול.
+            מרגע קבלת הצו, הגורם המחזיק חייב לציית תוך זמן קצוב.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ק -->
+      <section id="kuf" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ק</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">קופת גמל</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            חיסכון פנסיוני לטווח ארוך שכספי החיסכון בו אינם ניתנים לעיקול בשלב הצבירה.
+            עם פדיון הקרן (משיכה בגיל פרישה) הכספים עשויים להיות חשופים לעיקול.
+            בנסיבות מסוימות ניתן לבקש פדיון מוקדם — אך שים לב לעיקול שעשוי לחול.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">קרן השתלמות</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            חיסכון לטווח קצר-בינוני (לרוב 6 שנים) עם הטבות מס — ניתן לפדיון לאחר תקופת ותק.
+            מוגנת מפני עיקול בשלב הצבירה ולפני הבשלת הזכאות לפדיון.
+            לאחר שניתן לפדות את הקרן, כספים שנמשכו עשויים להיות חשופים לעיקול.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">קרן פנסיה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            חיסכון חובה לגיל פרישה המשולם לעובד כקצבה חודשית (ולא כסכום חד-פעמי).
+            כספי קרן פנסיה מוגנים מעיקול בשלב הצבירה, אך הקצבה החודשית ניתנת לעיקול חלקי.
+            שיעור העיקול על קצבת פנסיה מחושב בדומה לעיקול משכורת.
+            <a href="/guides/ikul-pensiya/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ר -->
+      <section id="resh" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ר</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">ריבית פיגורים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            ריבית גבוהה (כ-10-15% לשנה, צמודה) הנצברת על חוב שלא שולם מיום הפסיקה.
+            בתיקי הוצאה לפועל ריבית הפיגורים מצטברת ועלולה להכפיל את החוב תוך מספר שנים.
+            מוסדרת בחוק פסיקת ריבית והצמדה — השיעור מתפרסם על ידי בנק ישראל.
+            <a href="/guides/ribit-hotzaa/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">רישיון נהיגה — הגבלה (בוטלה)</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            עד שנת 2015, רשם ההוצאה לפועל היה רשאי להתלות רישיון נהיגה של חייב מוגבל.
+            תיקון חוק בשנת 2015 ביטל את הסמכות הזו, שכן נמצא שפוגעת ביכולת החייב לעבוד ולפרוע את חובו.
+            כיום לא ניתן להגביל רישיון נהיגה בגין חוב כספי רגיל.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">רשות האכיפה והגבייה</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הגוף הממשלתי הכולל את כלל לשכות ההוצאה לפועל ברחבי ישראל ופועל מטעם משרד המשפטים.
+            מנהל את כל ההליכים שבין חייבים ונושים, כולל עיקולים, הגבלות ומכירות נכסים.
+            אתר רשמי: enforcement.moj.gov.il
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">רשם הוצאה לפועל</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            בעל תפקיד שיפוטי-מינהלי בלשכת ההוצאה לפועל, שמוסמך להחליט בבקשות שמגישים הצדדים.
+            הרשם שומע טענות, מחליט על עיקולים, קובע תשלומים, מעניק מעמד חייב מוגבל ועוד.
+            על החלטות הרשם ניתן לערער לבית משפט שלום.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ש -->
+      <section id="shin" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ש</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">שכר מינימום — פטור</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הכנסה עד לגובה שכר המינימום נטו פטורה מעיקול משכורת — זהו "בסיס הקיום" המוגן.
+            שיעור הפטור מותאם למספר נפשות שהחייב מפרנס.
+            גם אם צו עיקול כולל סכומים גדולים, אסור לגבות מעל לתקרה המותרת.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">שכר טרחת עורך דין</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            תשלום לעורך הדין של הנושה שלרוב מתווסף לחוב ומושת על החייב בנוסף לקרן ולריבית.
+            שכר הטרחה נפסק על ידי בית המשפט ונקבע לפי תעריף מינימלי קבוע.
+            חשוב לבדוק שהסכום הכולל בתיק כולל פירוט של כל מרכיביו.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">שעבוד</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            זכות קניינית שמוענקת לנושה על נכס ספציפי של החייב כבטוחה להלוואה.
+            שעבוד (כמו משכנתא) מקנה לנושה עדיפות על פני נושים אחרים בנכס המשועבד.
+            בניגוד לעיקול רגיל, שעבוד נרשם מראש ובהסכמת שני הצדדים.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- ת -->
+      <section id="tav" class="mb-10 scroll-mt-16">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">ת</h2>
+        <dl>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">תביעה כספית</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הליך משפטי שבו אדם תובע תשלום כסף מאחר בבית המשפט.
+            תביעה כספית שהסתיימה בפסק דין לזכות התובע מאפשרת לתובע לפתוח תיק הוצאה לפועל.
+            ניתן להגיש תביעות קטנות (עד כ-35,000 ש"ח) בהליך מהיר ועצמאי ללא עורך דין.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">תיק הוצאה לפועל</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הרשומה הרשמית המנהלת את כל ההליכים, התשלומים וההחלטות בין חייב לנושה ספציפי.
+            לחייב יכולים להיות מספר תיקים פתוחים בו-זמנית מול נושים שונים.
+            ניתן לבדוק תיקים פתוחים דרך הוצל"פ נט או בלשכה עצמה.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">תיק מרוכז</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            תיק שנוצר לאחר הליך איחוד תיקים ומרכז את כל חובות החייב לנושים שונים תחת ניהול אחד.
+            בתיק מרוכז קובע הרשם תשלום חודשי יחיד שמחולק בין הנושים.
+            הניהול המרוכז מפשט את חיי החייב ומונע ריבוי הגבלות ועיקולים מקבילים.
+            <a href="/guides/ichud-tikim/" class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">תיקון 9</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            תיקון משמעותי לחוק ההוצאה לפועל שנכנס לתוקף ב-2008 ושינה את אופן הטיפול בחייבים מוגבלים באמצעים.
+            הביא לסטנדרטיזציה של תהליך ההכרה בחייב מוגבל, לקביעת תשלומים ריאליים ולשיפור ההגנה על חייבים.
+            מרבית ההגנות שחייבים מכירים כיום בהוצאה לפועל נובעות מתיקון 9.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">תכנית תשלומים</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הסדר המפרט את לוח הזמנים ואת הסכומים שישלם החייב עד לפירעון מלא של חובו.
+            ניתן להגיע לתכנית תשלומים בהסכמה עם הנושה או בהחלטה של רשם.
+            עמידה בתכנית התשלומים עוצרת הגבלות, מפחיתה ריבית ומביאה בסופו של דבר לסגירת התיק.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">תצהיר</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            הצהרה כתובה ומאומתת בחתימה בפני עו"ד או נוטריון, שלה תוקף כעדות שבשבועה.
+            בהוצאה לפועל מגישים תצהירים לתמיכה בבקשות שונות — הצהרת נכסים, בקשה לביטול עיקול וכדומה.
+            מסירת תצהיר כוזב מהווה עבירה פלילית — חובה לציין רק עובדות אמיתיות.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">תסקיר כלכלי</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            מסמך המסכם את מצבו הכלכלי של החייב, לרוב נערך בידי עובד סוציאלי או יועץ כלכלי לצורך הליכי חדלות פירעון.
+            הרשם ובית המשפט עשויים להתבסס עליו לקביעת תנאי תוכנית הפירעון.
+            תסקיר מפורט ומבוסס יכול לסייע לחייב לקבל תנאי פירעון נוחים יותר.
+          </dd>
+
+          <dt class="font-bold text-gray-800 text-base mt-4">תשלום חלקי</dt>
+          <dd class="text-gray-600 text-sm mb-3">
+            תשלום של חלק מסכום החוב — חשוב לקבל אישור בכתב על כל תשלום חלקי.
+            תשלום חלקי ללא הסכמה מפורשת של הנושה אינו מחייב את הנושה לקבל את יתרת החוב בתשלומים.
+            רצוי לדאוג שכל סידור תשלומים יתועד בהסכם כתוב ומאושר.
+          </dd>
+
+        </dl>
+      </section>
+
+      <!-- CTA / disclaimer -->
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 mt-8">
+        <h2 class="text-xl font-bold text-blue-800 mb-2">לא מצאתם מושג? יש שאלה?</h2>
+        <p class="text-gray-700 text-sm mb-4">
+          מילון זה מכיל למעלה מ-100 מונחים ומתעדכן באופן שוטף. אם מושג שאתם מחפשים אינו מופיע — פנו אלינו ונוסיף אותו.
+          למידע נוסף בקרו בעמוד <a href="/guides/" class="text-blue-600 hover:underline">המדריכים המלאים</a>.
+        </p>
+        <p class="text-xs text-gray-500">
+          המידע במילון זה הוא כללי ואינו מהווה ייעוץ משפטי. לשאלות ספציפיות פנו לעורך דין או ללשכת הסיוע המשפטי.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

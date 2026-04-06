@@ -20,6 +20,17 @@ const schema = {
     { '@type': 'Article', name: 'עיכוב יציאה מהארץ', url: 'https://hotzaa-lapoal.info/guides/ikul-yetzia/' },
     { '@type': 'Article', name: 'איחוד תיקים', url: 'https://hotzaa-lapoal.info/guides/ichud-tikim/' },
     { '@type': 'Article', name: 'ערב בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/arev/' },
+    { '@type': 'Article', name: 'עיקול פנסיה וקצבאות', url: 'https://hotzaa-lapoal.info/guides/ikul-pensiya/' },
+    { '@type': 'Article', name: 'עיקול דירה ומקרקעין', url: 'https://hotzaa-lapoal.info/guides/ikul-dira/' },
+    { '@type': 'Article', name: 'הסדר חוב עם נושים', url: 'https://hotzaa-lapoal.info/guides/hisdurim-chov/' },
+    { '@type': 'Article', name: 'בדיקת תיק הוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/bdika-tik/' },
+    { '@type': 'Article', name: 'ריבית בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/ribit-hotzaa/' },
+    { '@type': 'Article', name: 'ביטול הגבלות בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/bitul-hagbalot/' },
+    { '@type': 'Article', name: 'עיקול זמני', url: 'https://hotzaa-lapoal.info/guides/ikul-zman/' },
+    { '@type': 'Article', name: 'ערעור על החלטת הוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/irur-hotzaa/' },
+    { '@type': 'Article', name: 'לשכת הוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/lishkat-hotzaa/' },
+    { '@type': 'Article', name: 'עורך דין הוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/orech-din/' },
+    { '@type': 'Article', name: 'פסק דין בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/psak-din/' },
   ],
 };
 
@@ -29,6 +40,8 @@ const categories = [
     icon: '✉️',
     guides: [
       { title: 'קיבלתי מכתב מהוצאה לפועל', href: '/guides/michtav-hotzaa/', kw: '6,200/חודש' },
+      { title: 'בדיקת תיק הוצאה לפועל — כל הדרכים', href: '/guides/bdika-tik/', kw: '8,000/חודש' },
+      { title: 'לשכת הוצאה לפועל — המדריך המלא', href: '/guides/lishkat-hotzaa/', kw: '5,000/חודש' },
     ]
   },
   {
@@ -39,6 +52,8 @@ const categories = [
       { title: 'עיקול משכורת — מתי מותר ואיך מבטלים', href: '/guides/ikul-maskoret/', kw: '5,800/חודש' },
       { title: 'עיקול על נכסים — דירה ורכב', href: '/guides/ikul-nechassim/', kw: '' },
       { title: 'עיקול רכב בהוצאה לפועל — מה מותר ואיך מבטלים', href: '/guides/ikul-rechev/', kw: '3,800/חודש' },
+      { title: 'עיקול דירה ומקרקעין — הגנות וזכויות', href: '/guides/ikul-dira/', kw: '5,200/חודש' },
+      { title: 'עיקול פנסיה וקצבאות — מה מוגן', href: '/guides/ikul-pensiya/', kw: '4,500/חודש' },
       { title: 'כינוס נכסים — מה זה ואיך עוצרים את זה', href: '/guides/kinnus-nechasim/', kw: '4,200/חודש' },
       { title: 'איך מבטלים עיקול', href: '/guides/bitul-ikul/', kw: '8,200/חודש' },
     ]
@@ -48,6 +63,8 @@ const categories = [
     icon: '🤝',
     guides: [
       { title: 'בקשה לצו תשלומים — איך מגישים לבד', href: '/guides/tzav-tashlumim/', kw: '5,100/חודש' },
+      { title: 'הסדר חוב עם נושים — משא ומתן ומחיקה', href: '/guides/hisdurim-chov/', kw: '7,800/חודש' },
+      { title: 'ריבית בהוצאה לפועל — חישוב ועצירה', href: '/guides/ribit-hotzaa/', kw: '5,000/חודש' },
       { title: 'איחוד תיקים בהוצאה לפועל', href: '/guides/ichud-tikim/', kw: '3,800/חודש' },
       { title: 'חייב מוגבל באמצעים — מה עושים', href: '/guides/hayav-mugbal/', kw: '' },
     ]
@@ -57,6 +74,8 @@ const categories = [
     icon: '⚠️',
     guides: [
       { title: 'עיכוב יציאה מהארץ — המדריך המלא', href: '/guides/ikul-yetzia/', kw: '4,400/חודש' },
+      { title: 'ביטול הגבלות בהוצאה לפועל — המדריך המלא', href: '/guides/bitul-hagbalot/', kw: '4,500/חודש' },
+      { title: 'עיקול זמני — מה זה ואיך מבטלים', href: '/guides/ikul-zman/', kw: '3,800/חודש' },
       { title: 'הגבלת רישיון נהיגה — בוטלה! (תיקון 69)', href: '/guides/rishayon-nehiga/', kw: '' },
     ]
   },
@@ -65,6 +84,9 @@ const categories = [
     icon: '⚖️',
     guides: [
       { title: 'ערב בהוצאה לפועל — זכויות והגנות', href: '/guides/arev/', kw: '3,500/חודש' },
+      { title: 'ערעור על החלטת הוצאה לפועל', href: '/guides/irur-hotzaa/', kw: '2,900/חודש' },
+      { title: 'פסק דין בהוצאה לפועל — מה לעשות', href: '/guides/psak-din/', kw: '8,000/חודש' },
+      { title: 'עורך דין הוצאה לפועל — מתי צריך', href: '/guides/orech-din/', kw: '6,000/חודש' },
       { title: 'חקירת יכולת — מה זה ואיך להתכונן', href: '/guides/hakirat-yecholet/', kw: '3,600/חודש' },
       { title: 'התנגדות לתיק הוצאה לפועל', href: '/guides/hitnagdut-letik/', kw: '2,900/חודש' },
       { title: 'התיישנות חוב — האם החוב שלי עוד תקף?', href: '/guides/hitiyashnoot-chov/', kw: '3,200/חודש' },
@@ -101,6 +123,7 @@ const categories = [
     <div class="mb-10">
       <h1 class="text-3xl font-bold text-brand-dark mb-2">מדריכים לחייבים</h1>
       <p class="text-gray-500">כתוב בשפה פשוטה — בלי ז'רגון משפטי</p>
+      <span class="inline-block mt-2 px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full border border-green-200">עדכני לתיקון 9 — מרץ 2026</span>
     </div>
 
     <div class="space-y-10">

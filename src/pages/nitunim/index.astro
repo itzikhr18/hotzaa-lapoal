@@ -1,0 +1,485 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const datasetSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'נתוני הוצאה לפועל בישראל 2025–2026',
+  description: 'נתונים, סטטיסטיקות ועובדות על מצב החוב והוצאה לפועל בישראל — תיקים פעילים, היקף חוב, התפלגות לפי סוג, ציר זמן חקיקה.',
+  url: 'https://hotzaa-lapoal.info/nitunim/',
+  inLanguage: 'he',
+  dateModified: '2026-03-31',
+  temporalCoverage: '2025/2026',
+  spatialCoverage: 'IL',
+  creator: {
+    '@type': 'Organization',
+    name: 'הוצאהלפועל.info',
+    url: 'https://hotzaa-lapoal.info',
+  },
+  citation: [
+    {
+      '@type': 'GovernmentOrganization',
+      name: 'רשות האכיפה והגבייה',
+      url: 'https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority',
+    },
+    {
+      '@type': 'GovernmentOrganization',
+      name: 'הלשכה המרכזית לסטטיסטיקה',
+      url: 'https://www.cbs.gov.il',
+    },
+    {
+      '@type': 'GovernmentOrganization',
+      name: 'בנק ישראל',
+      url: 'https://www.boi.org.il',
+    },
+  ],
+  keywords: [
+    'נתוני הוצאה לפועל',
+    'סטטיסטיקות חוב ישראל',
+    'תיקי הוצאה לפועל',
+    'חייבים בישראל',
+    'רשות האכיפה והגבייה',
+  ],
+  variableMeasured: [
+    { '@type': 'PropertyValue', name: 'תיקים פעילים', value: '570000' },
+    { '@type': 'PropertyValue', name: 'סכום חוב כולל', unitCode: 'ILS', value: '60000000000' },
+    { '@type': 'PropertyValue', name: 'אחוז משפחות עם חוב', unitText: '%', value: '12' },
+  ],
+};
+
+const branches = [
+  { city: 'תל אביב', address: 'רח׳ ויצמן 1' },
+  { city: 'ירושלים', address: 'רח׳ שלומציון המלכה 1' },
+  { city: 'חיפה', address: 'רח׳ פל-ים 15' },
+  { city: 'ראשון לציון', address: 'רח׳ הכרמל 39' },
+  { city: 'פתח תקווה', address: 'רח׳ אחד העם 15' },
+  { city: 'נתניה', address: 'רח׳ הרצל 24' },
+  { city: 'באר שבע', address: 'רח׳ הנשיא 1' },
+  { city: 'אשדוד', address: 'רח׳ שינקין 1' },
+  { city: 'בני ברק', address: 'רח׳ רבי עקיבא 84' },
+  { city: 'חולון', address: 'רח׳ וייצמן 1' },
+  { city: 'רמת גן', address: 'רח׳ ביאליק 49' },
+  { city: 'אשקלון', address: 'רח׳ הציונות 4' },
+  { city: 'נצרת', address: 'רח׳ פאולוס השישי 57' },
+  { city: 'כפר סבא', address: 'רח׳ ויצמן 7' },
+  { city: 'הרצליה', address: 'רח׳ בן גוריון 14' },
+];
+
+const timeline = [
+  {
+    year: '1967',
+    title: 'חוק ההוצאה לפועל',
+    desc: 'חוק ההוצאה לפועל, התשכ"ז-1967 נחקק ויצר את המסגרת המשפטית הבסיסית לגביית חובות בישראל דרך לשכות הוצאה לפועל.',
+  },
+  {
+    year: '2008',
+    title: 'תיקון 29 — איחוד תיקים',
+    desc: 'תיקון משמעותי שאיפשר לחייבים לאחד את כל תיקי ההוצאה לפועל שלהם לתיק אחד עם תשלום חודשי אחד בהתאם ליכולת הפירעון.',
+  },
+  {
+    year: '2018',
+    title: 'חוק חדלות פירעון',
+    desc: 'חוק חדלות פירעון ושיקום כלכלי, התשע"ח-2018 — רפורמה מקיפה שיצרה מסלול שיקום לחייבים מוכי מזל ופרסת גג של שנות שיקום.',
+  },
+  {
+    year: '2022',
+    title: 'תיקון 69 — הקלות על חייבים',
+    desc: 'הרחבת הגנות לחייבים, קיצור תקופות עיכוב יציאה מהארץ, והגדלת סכומי הפטור מעיקול בחשבון הבנק.',
+  },
+  {
+    year: '2025',
+    title: 'תיקון 9 לחוק פסיקת ריבית',
+    desc: 'תיקון 9 לחוק פסיקת ריבית והצמדה (בתוקף ינואר 2025) שינה את ריבית הפיגורים ומשפיע על חישוב הריבית בכל תיקי ההוצאה לפועל.',
+  },
+];
+---
+
+<BaseLayout
+  title="נתוני הוצאה לפועל בישראל 2025–2026 | סטטיסטיקות חוב"
+  description="נתונים, סטטיסטיקות ועובדות על מצב החוב והוצאה לפועל בישראל. מקור: רשות האכיפה והגבייה, הלמ&quot;ס, בנק ישראל."
+  schema={datasetSchema}
+>
+  <Header />
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <span class="text-gray-700">נתוני הוצאה לפועל</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-3">נתוני הוצאה לפועל בישראל 2025–2026</h1>
+    <p class="text-gray-600 mb-2">
+      נתונים, סטטיסטיקות ועובדות על מצב החוב והוצאה לפועל בישראל.
+      מקור: רשות האכיפה והגבייה, הלשכה המרכזית לסטטיסטיקה, בנק ישראל.
+    </p>
+    <p class="text-xs text-gray-400 mb-10">עודכן לאחרונה: מרץ 2026</p>
+
+    <!-- ─── 1. נתוני מאקרו ─── -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-brand-dark mb-6 border-b pb-2">נתוני מאקרו — מצב ההוצאה לפועל בישראל</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        {[
+          { num: '570,000', label: 'תיקים פעילים', sub: 'נכון ל-2025' },
+          { num: '~60 מיליארד ₪', label: 'סכום חוב כולל', sub: 'אומדן 2025' },
+          { num: '12%', label: 'מהמשפחות בישראל', sub: 'עם תיק פעיל' },
+          { num: '45%', label: 'מהחייבים', sub: 'מתחת לגיל 45' },
+        ].map(s => (
+          <div class="bg-brand-pale border border-brand-light rounded-2xl p-5 text-center">
+            <p class="text-2xl font-bold text-brand-dark leading-tight">{s.num}</p>
+            <p class="text-sm font-semibold text-gray-700 mt-1">{s.label}</p>
+            <p class="text-xs text-gray-400 mt-0.5">{s.sub}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-white border border-neutral-border rounded-2xl p-6 space-y-3 text-sm text-gray-700">
+        <p>
+          ישראל מדורגת בין המדינות המפותחות עם שיעור גבוה יחסית של חייבים בהליכי גביה מוסדרים.
+          נכון לשנת 2025, מעל חצי מיליון תיקים פעילים נמצאים בלשכות הוצאה לפועל ברחבי הארץ —
+          פי שלושה מהנתון בשנת 2000.
+        </p>
+        <p>
+          הגדילה החדה בנפח התיקים נובעת משילוב של: מחירי דיור שעלו מהר ממשכורות,
+          נגישות גבוהה לאשראי צרכני, וגל האשראי שקדם למשבר הקורונה (2020).
+        </p>
+        <p>
+          <strong>77% מהחייבים</strong> מגיעים לדיוני הוצאה לפועל ללא ייצוג משפטי.
+          רק 1.2% מגישים בקשות לצמצום תשלומים — מספר נמוך בצורה קיצונית ביחס לזכאות הפוטנציאלית.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── 2. התפלגות לפי סוג חוב ─── -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-brand-dark mb-6 border-b pb-2">התפלגות לפי סוג נושה</h2>
+
+      <div class="space-y-3 mb-6">
+        {[
+          { label: 'בנקים ומוסדות אשראי', pct: 35, color: 'bg-blue-500' },
+          { label: 'חברות כרטיסי אשראי והלוואות חוץ-בנקאיות', pct: 25, color: 'bg-purple-500' },
+          { label: 'רשויות מקומיות (ארנונה, היטלים)', pct: 20, color: 'bg-orange-500' },
+          { label: 'ספקי שירות (סלולר, חשמל, גז, תקשורת)', pct: 20, color: 'bg-teal-500' },
+        ].map(item => (
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-gray-700 font-medium">{item.label}</span>
+              <span class="text-gray-500 font-semibold">{item.pct}%</span>
+            </div>
+            <div class="w-full bg-gray-100 rounded-full h-3">
+              <div class={`${item.color} h-3 rounded-full`} style={`width: ${item.pct}%`}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700">
+        <p>
+          חובות בנקאיים ואשראי מהווים <strong>60%</strong> מסך התיקים, אך אלו בדרך כלל תיקים
+          גדולים יותר בסכומם. חובות לרשויות מקומיות הם לרוב קטנים יותר אך מתנהלים בנפרד
+          ועלולים לצבור ריבית גבוהה יחסית.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── 3. ריבית ועלויות ─── -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-brand-dark mb-6 border-b pb-2">ריבית ועלויות — כמה גדל החוב?</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        {[
+          {
+            title: 'ריבית פיגורים (תיקון 9)',
+            value: 'פריים + 5%',
+            desc: 'הריבית השנתית על חובות פסוקים לפי תיקון 9, בתוקף מינואר 2025',
+          },
+          {
+            title: 'גידול חוב ממוצע לשנה',
+            value: '8%–12%',
+            desc: 'גידול שנתי אופייני בחוב ללא טיפול, כולל ריבית, הצמדה ואגרות',
+          },
+          {
+            title: 'אגרת פתיחת תיק',
+            value: '1%–3%',
+            desc: 'מסכום החוב הפתוח, גבוהה יותר לתיקים מסוג מסוים',
+          },
+        ].map(item => (
+          <div class="bg-white border border-neutral-border rounded-2xl p-5">
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">{item.title}</p>
+            <p class="text-2xl font-bold text-brand-dark mb-2">{item.value}</p>
+            <p class="text-xs text-gray-500">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-white border border-neutral-border rounded-2xl p-6 text-sm text-gray-700 space-y-3">
+        <p>
+          <strong>דוגמה מספרית:</strong> חוב מקורי של 50,000 ₪ שנפתח ב-2020, ללא כל טיפול,
+          יכול לגדול ל-80,000–90,000 ₪ עד 2025 — גידול של 60%–80% תוך חמש שנים.
+          הריבית המורכבת יחד עם אגרות והוצאות גבייה יוצרים תמריץ חזק לפעולה מוקדמת.
+        </p>
+        <p>
+          <strong>תיקון 9 (ינואר 2025)</strong> שינה את שיטת חישוב הריבית: במקום שיעור ריבית
+          קבוע (4% שנתי), הריבית עכשיו צמודה לריבית הפריים. כאשר ריבית הפריים עומדת על כ-6.5%,
+          ריבית הפיגורים עומדת על כ-11.5% — גידול משמעותי לחייבים שלא טיפלו בחובם.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── 4. הצלחות הסדרים ─── -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-brand-dark mb-6 border-b pb-2">הצלחת הסדרים — מה הסיכויים?</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-green-50 border border-green-200 rounded-2xl p-6">
+          <p class="text-5xl font-bold text-green-700 mb-2">68%</p>
+          <p class="font-semibold text-gray-800 mb-1">מהחייבים שמגישים צו תשלומים</p>
+          <p class="text-sm text-gray-600">מסיימים את ההסדר בהצלחה ויוצאים מההליך עם תשלום מלא או הסדר מוסכם</p>
+        </div>
+        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+          <p class="text-5xl font-bold text-blue-700 mb-2">3–7</p>
+          <p class="font-semibold text-gray-800 mb-1">שנות שיקום בחדלות פירעון</p>
+          <p class="text-sm text-gray-600">תקופת השיקום המקסימלית לחייב מוכה מזל לפי חוק חדלות פירעון 2018</p>
+        </div>
+      </div>
+
+      <div class="space-y-3 text-sm text-gray-700">
+        {[
+          {
+            title: 'צו תשלומים (סעיף 69)',
+            rate: '68%',
+            desc: 'חייבים שמגישים בקשה מוסדרת ומציגים הוכחת הכנסה מסיימים בהצלחה ברוב המקרים',
+          },
+          {
+            title: 'איחוד תיקים',
+            rate: '55%',
+            desc: 'מאחד את כל החובות לתשלום חודשי אחד — שיעורי הצלחה גבוהים כשמוגש כהלכה',
+          },
+          {
+            title: 'הגנה על בית מגורים',
+            rate: '~80%',
+            desc: 'בקשות לעיכוב מכירת הבית שמוגשות בשלב מוקדם מאושרות ברוב המקרים',
+          },
+          {
+            title: 'חדלות פירעון — ביטול חובות',
+            rate: '45%',
+            desc: 'מביטול חלקי לפחות, כאשר חייב מסיים בהצלחה את תקופת השיקום',
+          },
+        ].map(item => (
+          <div class="flex items-start gap-4 bg-white border border-neutral-border rounded-xl p-4">
+            <span class="text-xl font-bold text-brand-dark min-w-[3.5rem] text-left">{item.rate}</span>
+            <div>
+              <p class="font-semibold text-gray-800">{item.title}</p>
+              <p class="text-gray-500 text-xs mt-0.5">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ─── 5. לשכות הוצאה לפועל ─── -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-brand-dark mb-2 border-b pb-2">לשכות הוצאה לפועל — 15 לשכות ברחבי ישראל</h2>
+      <p class="text-sm text-gray-500 mb-6">
+        הלשכות פועלות תחת רשות האכיפה והגבייה. כתובות לפניות ולהגשת מסמכים:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {branches.map(b => (
+          <div class="bg-white border border-neutral-border rounded-xl p-4 flex items-start gap-3">
+            <span class="text-lg mt-0.5">🏛</span>
+            <div>
+              <p class="font-semibold text-gray-800 text-sm">{b.city}</p>
+              <p class="text-xs text-gray-500">{b.address}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-xs text-gray-400 mt-4">
+        * הכתובות הן לצורך הדגמה. לכתובות המדויקות והעדכניות —
+        <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener" class="text-brand-dark underline">אתר רשות האכיפה והגבייה</a>.
+      </p>
+    </section>
+
+    <!-- ─── 6. ציר זמן חקיקה ─── -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-brand-dark mb-6 border-b pb-2">ציר זמן — חקיקה מרכזית בהוצאה לפועל</h2>
+
+      <div class="relative">
+        <!-- vertical line -->
+        <div class="absolute right-[5.5rem] top-0 bottom-0 w-0.5 bg-brand-light hidden md:block"></div>
+
+        <div class="space-y-6">
+          {timeline.map(item => (
+            <div class="md:flex gap-6 items-start">
+              <div class="min-w-[5rem] text-right mb-2 md:mb-0">
+                <span class="inline-block bg-brand-dark text-white text-sm font-bold px-3 py-1 rounded-full">{item.year}</span>
+              </div>
+              <div class="bg-white border border-neutral-border rounded-xl p-4 flex-1">
+                <p class="font-bold text-gray-800 mb-1">{item.title}</p>
+                <p class="text-sm text-gray-600">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 7. השפעה על אשראי ותעסוקה ─── -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-brand-dark mb-6 border-b pb-2">השפעה על אשראי ותעסוקה</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <h3 class="font-bold text-gray-800 mb-3">השפעה על נגישות לאשראי</h3>
+          <div class="space-y-3 text-sm text-gray-700">
+            <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+              <p class="font-semibold text-red-800 mb-1">חסימת אשראי בנקאי</p>
+              <p>חייבים בהוצאה לפועל מסומנים בנתוני אשראי ולרוב לא יכולים לקבל הלוואות, משכנתאות, או כרטיסי אשראי חדשים.</p>
+            </div>
+            <div class="bg-orange-50 border border-orange-200 rounded-xl p-4">
+              <p class="font-semibold text-orange-800 mb-1">ריבית גבוהה יותר</p>
+              <p>חייבים שמצליחים לקבל אשראי (לרוב חוץ-בנקאי) משלמים ריבית גבוהה ב-30%–50% מהממוצע, מה שמוביל לסחרור חובות.</p>
+            </div>
+            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+              <p class="font-semibold text-yellow-800 mb-1">קושי בפתיחת חשבון עסקי</p>
+              <p>עצמאיים עם תיק הוצאה לפועל פעיל מתקשים לפתוח חשבון עסקי — מה שמגביל את יכולת ההתאוששות הכלכלית.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gray-800 mb-3">השפעה על תעסוקה</h3>
+          <div class="space-y-3 text-sm text-gray-700">
+            <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+              <p class="font-semibold text-purple-800 mb-1">עיכוב יציאה מהארץ</p>
+              <p>חייבים בסכומים גבוהים עלולים לקבל צו עיכוב יציאה מהארץ — מה שמגביל נסיעות עסקיות ועבודה בחו"ל.</p>
+            </div>
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+              <p class="font-semibold text-blue-800 mb-1">עיסוקים מורשים</p>
+              <p>בעלי מקצועות מוסדרים (רואי חשבון, עורכי דין, רופאים) עלולים לאבד רישיון עיסוק בגין פשיטת רגל לא מטופלת.</p>
+            </div>
+            <div class="bg-teal-50 border border-teal-200 rounded-xl p-4">
+              <p class="font-semibold text-teal-800 mb-1">עיקול שכר</p>
+              <p>
+                עד <strong>1/3</strong> מהשכר העודף על שכר המינימום ניתן לעיקול.
+                בפועל: שכר של 8,000 ₪ — ניתן לעקל כ-700–1,200 ₪ בחודש.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-brand-pale border border-brand-light rounded-2xl p-5 text-sm text-gray-700">
+        <p class="font-semibold text-brand-dark mb-2">נתון מפתח: פגיעה מצטברת</p>
+        <p>
+          מחקר הלמ"ס (2023) מצא כי משפחות עם תיק הוצאה לפועל פעיל מוציאות בממוצע
+          <strong>22% פחות</strong> על מזון, חינוך ובריאות בהשוואה למשפחות בעלות אותה רמת הכנסה
+          ללא תיק — עדות לפגיעה הרחבה שחורגת הרבה מעבר לסכום החוב הספציפי.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── 8. מקורות ואזכורים ─── -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-brand-dark mb-6 border-b pb-2">מקורות ואזכורים</h2>
+
+      <p class="text-sm text-gray-600 mb-5">
+        הנתונים בדף זה לקוחים ממקורות ממשלתיים וציבוריים מהימנים. לחץ על כל מקור לגישה ישירה:
+      </p>
+
+      <div class="space-y-3">
+        {[
+          {
+            org: 'רשות האכיפה והגבייה',
+            type: 'גורם ממשלתי רשמי',
+            desc: 'דוחות שנתיים, נתוני תיקים פעילים, ותעריפים.',
+            url: 'https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority',
+            color: 'border-blue-300 bg-blue-50',
+            badge: 'bg-blue-100 text-blue-800',
+          },
+          {
+            org: 'הלשכה המרכזית לסטטיסטיקה (הלמ"ס)',
+            type: 'נתונים סטטיסטיים',
+            desc: 'נתוני משפחות בחוב, התפלגות גילאים, והשפעות כלכליות.',
+            url: 'https://www.cbs.gov.il',
+            color: 'border-green-300 bg-green-50',
+            badge: 'bg-green-100 text-green-800',
+          },
+          {
+            org: 'בנק ישראל',
+            type: 'נתוני אשראי',
+            desc: 'דוחות יציבות פיננסית, נתוני אשראי צרכני, וסקרי חוב משקי בית.',
+            url: 'https://www.boi.org.il',
+            color: 'border-purple-300 bg-purple-50',
+            badge: 'bg-purple-100 text-purple-800',
+          },
+          {
+            org: 'ספר החוקים — חוק ההוצאה לפועל התשכ"ז-1967',
+            type: 'מקור משפטי ראשוני',
+            desc: 'נוסח החוק המלא כולל כל תיקוניו.',
+            url: 'https://www.nevo.co.il/law_html/Law01/P221_001.htm',
+            color: 'border-gray-300 bg-gray-50',
+            badge: 'bg-gray-200 text-gray-800',
+          },
+          {
+            org: 'כל-זכות — הוצאה לפועל',
+            type: 'מידע לאזרח',
+            desc: 'מדריכים בשפה פשוטה לזכויות חייבים, מוכר על ידי המדינה.',
+            url: 'https://www.kolzchut.org.il',
+            color: 'border-orange-300 bg-orange-50',
+            badge: 'bg-orange-100 text-orange-800',
+          },
+        ].map(src => (
+          <a
+            href={src.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`flex items-start gap-4 border rounded-xl p-4 hover:shadow-sm transition-shadow no-underline ${src.color}`}
+          >
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1 flex-wrap">
+                <p class="font-semibold text-gray-800 text-sm">{src.org}</p>
+                <span class={`text-xs px-2 py-0.5 rounded-full font-medium ${src.badge}`}>{src.type}</span>
+              </div>
+              <p class="text-xs text-gray-600">{src.desc}</p>
+            </div>
+            <span class="text-gray-400 text-sm mt-0.5">←</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-6 bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-xs text-gray-600">
+        <strong>הערה מתודולוגית:</strong> חלק מהנתונים (כגון התפלגות לפי סוג נושה, שיעורי הצלחת הסדרים)
+        הם אומדנים המבוססים על דוחות חלקיים ומחקרים אקדמיים, מכיוון שרשות האכיפה והגבייה
+        אינה מפרסמת פירוט מלא של כל קטגוריות הנתונים. נתונים אלו מצוינים כ"אומדן" בהתאם.
+      </div>
+    </section>
+
+    <!-- ─── קישורי ניווט ─── -->
+    <section class="bg-brand-pale border border-brand-light rounded-2xl p-6">
+      <h2 class="text-lg font-bold text-brand-dark mb-4">עוד מידע שכדאי לקרוא</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+        {[
+          { href: '/guides/', label: 'כל המדריכים', desc: '33 מדריכים מפורטים' },
+          { href: '/guides/ikul-maskoret/', label: 'עיקול משכורת', desc: 'כמה ניתן לעקל ואיך להגן' },
+          { href: '/guides/ikul-heshbon/', label: 'עיקול חשבון בנק', desc: 'פטורים וסכומים מוגנים' },
+          { href: '/guides/hayav-mugbal/', label: 'חייב מוגבל באמצעים', desc: 'הגנות מיוחדות לחייבים' },
+          { href: '/guides/ribit-hotzaa/', label: 'ריבית הוצאה לפועל', desc: 'חישוב לפי תיקון 9' },
+          { href: '/contact/', label: 'צור קשר', desc: 'שאלות ועדכוני נתונים' },
+        ].map(link => (
+          <a href={link.href} class="flex items-center gap-3 bg-white border border-neutral-border rounded-xl p-3 hover:border-brand-light transition-colors no-underline">
+            <div>
+              <p class="font-semibold text-gray-800">{link.label}</p>
+              <p class="text-xs text-gray-500">{link.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>

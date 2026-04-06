@@ -5,14 +5,14 @@ const howToSchema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
   name: 'שלבי הליך חדלות פירעון — מדריך שלב אחר שלב',
-  description: 'הסבר מפורט על 4 שלבי הליך חדלות פירעון בישראל — מהגשת הבקשה ועד ההפטר',
+  description: 'הסבר מפורט על 5 שלבי הליך חדלות פירעון בישראל — מהגשת הבקשה ועד ההפטר',
   totalTime: 'P4Y',
   step: [
     { '@type': 'HowToStep', position: 1, name: 'הגשת הבקשה לצו פתיחת הליכים', text: 'הגש בקשה לבית משפט השלום (חוב מעל 176,923 ₪) או לרשם חדלות פירעון. כלול: רשימת נושים, דוחות הכנסה/הוצאות, רשימת נכסים ומסמכי זיהוי. לאחר אישור — כל ההליכים נגדך מוקפאים.' },
-    { '@type': 'HowToStep', position: 2, name: 'תקופת ביניים — שיתוף פעולה עם הנאמן', text: 'בתקופת הביניים (כשנה) הנאמן חוקר את מצבך הכלכלי. שתף פעולה מלא: ספק מסמכים מבוקשים, הגש דיווחים, והשתתף בחקירת היכולת.' },
-    { '@type': 'HowToStep', position: 3, name: 'אישור תוכנית שיקום', text: 'הנאמן מגבש תוכנית שיקום — כמה תשלם כל חודש ולכמה זמן. בית המשפט מאשר את התוכנית. סכום התשלום נקבע לפי יכולתך הכלכלית.' },
-    { '@type': 'HowToStep', position: 4, name: 'תקופת שיקום — עמידה בתנאים', text: 'שלם את התשלום החודשי בזמן. הגש דיווחים דו-חודשיים. קבל אישור לפני יציאה לחו"ל ולפני רכישות גדולות. השתתף בהכשרה פיננסית.' },
-    { '@type': 'HowToStep', position: 5, name: 'קבלת ההפטר', text: 'בסיום תקופת השיקום (כ-3 שנים) — בית המשפט מעניק הפטר. יתרת החובות נמחקת. ניתן לחזור לחיים נורמליים ללא הגבלות.' },
+    { '@type': 'HowToStep', position: 2, name: 'מינוי נאמן ובחינת המצב', text: 'הנאמן הממונה בוחן את מצבך הכלכלי לעומק — נכסים, הכנסות, חובות. שתף פעולה מלא: ספק מסמכים מבוקשים, הגש דיווחים, השתתף בחקירת היכולת.' },
+    { '@type': 'HowToStep', position: 3, name: 'ישיבת נושים ואישור תוכנית שיקום', text: 'הנושים מגישים תביעות חוב. מתקיימת ישיבת נושים שבה נדון היקף החובות ותנאי ההסדר. הנאמן מגבש תוכנית שיקום — כמה תשלם כל חודש ולכמה זמן. בית המשפט מאשר.' },
+    { '@type': 'HowToStep', position: 4, name: 'תקופת הבראה — 3 שנות תשלומים', text: 'שלם את התשלום החודשי בזמן. הגש דיווחים דו-חודשיים. קבל אישור לפני יציאה לחו"ל ולפני רכישות גדולות. השתתף בהכשרה פיננסית. שיתוף פעולה מלא חיוני.' },
+    { '@type': 'HowToStep', position: 5, name: 'קבלת ההפטר', text: 'בסיום תקופת השיקום (כ-3 שנים) — בית המשפט מעניק הפטר. יתרת החובות נמחקת. חוזרים לחיים נורמליים ללא הגבלות. כמה חובות (מזונות, קנסות פליליים) לא נמחקים.' },
   ],
 };
 
@@ -20,167 +20,390 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'כמה זמן נמשך הליך חדלות פירעון?',
-      acceptedAnswer: { '@type': 'Answer', text: 'הליך חדלות פירעון נמשך בממוצע כ-4 שנים: כ-שנה לתקופת הביניים (בחינה וגיבוש תוכנית שיקום) ועוד כ-3 שנים לתקופת השיקום עצמה. בסוף התקופה, בית המשפט מעניק הפטר — ביטול יתרת החובות.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'מה זה נאמן חדלות פירעון?',
-      acceptedAnswer: { '@type': 'Answer', text: 'נאמן חדלות פירעון הוא גורם מקצועי (עו"ד או רו"ח) שבית המשפט ממנה לנהל את ענייניו הכלכליים של החייב במהלך ההליך. הנאמן בוחן את נכסי החייב, מגבש תוכנית שיקום, מפקח על תשלומים, ומדווח לבית המשפט. הנאמן ממונה בתיקים עם חוב מעל 176,923 ₪.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'האם אפשר לצאת לחו"ל בזמן ההליך?',
-      acceptedAnswer: { '@type': 'Answer', text: 'לא ללא אישור. במהלך הליך חדלות פירעון נדרש אישור מהנאמן או מבית המשפט לפני כל יציאה לחו"ל. ניתן לקבל אישור לנסיעות עבודה, רפואיות או אחרות, אך אין לצאת ללא קבלת אישור מראש.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'מה קורה אם לא עומדים בתשלומים?',
-      acceptedAnswer: { '@type': 'Answer', text: 'אי-עמידה בתשלומים החודשיים עלולה לגרום לעיכוב מתן ההפטר או אף לביטולו. בית המשפט רשאי להאריך את תקופת השיקום, להגדיל את סכום התשלום החודשי, או במקרים קיצוניים — לבטל את ההליך לחלוטין.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'מה ההבדל בין תקופת הביניים לתקופת השיקום?',
-      acceptedAnswer: { '@type': 'Answer', text: 'תקופת הביניים (כשנה) היא שלב הבחינה: הנאמן חוקר את מצב החייב, הנושים מגישים תביעות חוב, ומגובשת תוכנית שיקום. תקופת השיקום (כ-3 שנים) היא שלב הביצוע: החייב מבצע תשלומים חודשיים קבועים, מדווח לנאמן ועומד בכל תנאי ההליך עד לקבלת הפטר.' },
-    },
+    { '@type': 'Question', name: 'כמה זמן נמשך הליך חדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'הליך חדלות פירעון נמשך בממוצע כ-4 שנים: כ-שנה לתקופת הביניים (בחינה וגיבוש תוכנית שיקום) ועוד כ-3 שנים לתקופת השיקום עצמה. בסוף התקופה, בית המשפט מעניק הפטר — ביטול יתרת החובות.' } },
+    { '@type': 'Question', name: 'מה זה נאמן חדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'נאמן חדלות פירעון הוא גורם מקצועי (עו"ד או רו"ח) שבית המשפט ממנה לנהל את ענייניו הכלכליים של החייב. הנאמן בוחן נכסים, מגבש תוכנית שיקום, מפקח על תשלומים ומדווח לבית המשפט. ממונה בתיקים עם חוב מעל 176,923 ₪.' } },
+    { '@type': 'Question', name: 'מה קורה בישיבת הנושים?', acceptedAnswer: { '@type': 'Answer', text: 'בישיבת הנושים מתכנסים הנושים, הנאמן ובית המשפט. הנושים יכולים להתנגד לתביעות זה של זה, לדון בהיקף החובות, ולהביע עמדות על תוכנית השיקום. ברוב המקרים הישיבה קצרה ופרוצדורלית.' } },
+    { '@type': 'Question', name: 'האם אפשר לצאת לחו"ל בזמן ההליך?', acceptedAnswer: { '@type': 'Answer', text: 'לא ללא אישור. במהלך ההליך נדרש אישור מהנאמן או מבית המשפט לפני כל יציאה לחו"ל. ניתן לקבל אישור לנסיעות עבודה, רפואיות ואחרות, אך אין לצאת ללא אישור מראש.' } },
+    { '@type': 'Question', name: 'מה קורה אם לא עומדים בתשלומים?', acceptedAnswer: { '@type': 'Answer', text: 'אי-עמידה בתשלומים עלולה לגרום לעיכוב מתן ההפטר, הארכת תקופת השיקום, הגדלת הסכום החודשי, או במקרים קיצוניים — ביטול ההליך. אם יש שינוי בהכנסות — יש לפנות לנאמן מיד ולא להמתין.' } },
+    { '@type': 'Question', name: 'אילו חובות לא נמחקים בהפטר?', acceptedAnswer: { '@type': 'Answer', text: 'לא נמחקים: חובות מזונות, חובות עוולה מכוונת (פיצויים בגין נזק גוף מכוון), קנסות פליליים, חובות שנוצרו במרמה, וחובות שלא הוגשה לגביהם תביעת חוב. רוב חובות הבנקים, כרטיסי אשראי, הלוואות ורשויות נמחקים.' } },
   ],
 };
 ---
 
 <GuideLayout
   title="שלבי הליך חדלות פירעון — מה קורה בכל שלב"
-  description="הליך חדלות פירעון נמשך כ-4 שנים ומורכב מ-3 שלבים עיקריים. מה קורה בכל שלב, מה נדרש ממך, ומתי מקבלים הפטר — מדריך שלב אחר שלב."
+  description="הליך חדלות פירעון נמשך כ-4 שנים ומורכב מ-5 שלבים עיקריים. מה קורה בכל שלב, מה נדרש ממך, ומתי מקבלים הפטר — מדריך שלב אחר שלב מעודכן 2026."
   breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'שלבי ההליך', href: '/insolvency/process/' }]}
   publishDate="2025-03-01"
   updateDate="2026-03-28"
-  readTime="7 דקות"
+  readTime="10 דקות"
   schema={[faqSchema, howToSchema]}
 >
 
   <p>
     אחת הסיבות שאנשים מתרחקים מחדלות פירעון היא שהם לא מבינים מה מצפה להם.
-    הנה התמונה המלאה — שלב אחרי שלב, בלי סיבוכים מיותרים.
+    הנה התמונה המלאה — כל שלב, מה בדיוק נדרש, ומה יכול להשתבש — בלי סיבוכים מיותרים.
   </p>
 
   <div class="not-prose bg-brand-pale border border-brand-light rounded-xl p-5 mb-8">
     <p class="font-semibold text-brand-dark mb-1">סיכום תמציתי:</p>
-    <p class="text-sm text-gray-600">הגשה → פתיחת הליכים → תקופת ביניים (שנה) → תקופת שיקום (3 שנים) → <strong>הפטר</strong></p>
+    <p class="text-sm text-gray-600">הגשה ← פתיחת הליכים ← תקופת ביניים (שנה) ← ישיבת נושים ← תקופת הבראה (3 שנים) ← <strong>הפטר</strong></p>
   </div>
 
-  <h2>שלב 1 — הגשת הבקשה ופתיחת ההליכים</h2>
-  <p>
-    מגישים בקשה לצו לפתיחת הליכים. ניתן להגיש בעצמך או דרך עורך דין.
-    הבקשה מוגשת לבית משפט השלום (חוב מעל 176,923 ₪) או לרשם חדלות פירעון (חוב נמוך יותר).
-  </p>
-  <p>
-    <strong>מה מגישים:</strong> טפסי הבקשה, רשימת נושים ופירוט חובות, דוחות הכנסה והוצאות,
-    רשימת נכסים, ומסמכי זיהוי.
-  </p>
-  <p>
-    <strong>מה קורה אחרי הגשה:</strong> בית המשפט בוחן את הבקשה. אם היא עומדת בתנאים — מוצא
-    "צו לפתיחת הליכים". מרגע הצו — כל ההליכים נגדך מוקפאים.
-  </p>
-
-  <h2>שלב 2 — תקופת הביניים (כשנה)</h2>
-  <p>
-    זו התקופה הכי אינטנסיבית. ממונה נאמן (בתיקים גדולים) שבוחן את מצבך הכלכלי לעומק.
-  </p>
-
-  <ol class="step-list">
-    <li><span class="step-num">א</span><span><strong>חקירת יכולת</strong> — הנאמן או הרשם בוחן את כל נכסיך, הכנסותיך, והוצאותיך</span></li>
-    <li><span class="step-num">ב</span><span><strong>הגשת תביעות חוב</strong> — הנושים מגישים תביעות; הנאמן בוחן אותן</span></li>
-    <li><span class="step-num">ג</span><span><strong>גיבוש תוכנית שיקום</strong> — כמה תשלם כל חודש, לכמה זמן</span></li>
-    <li><span class="step-num">ד</span><span><strong>אישור התוכנית</strong> — בית המשפט מאשר את תוכנית השיקום</span></li>
-  </ol>
-
-  <h2>שלב 3 — תקופת השיקום (כ-3 שנים)</h2>
-  <p>
-    זו התקופה הארוכה ביותר. אתה ממשיך לחיות את חייך, אבל עם מגבלות ומחויבויות.
-  </p>
-
-  <div class="info-box">
-    <p class="font-semibold text-blue-800 mb-2">מה נדרש ממך בתקופת השיקום:</p>
-    <ul class="space-y-1">
-      <li>✓ תשלום חודשי קבוע לנאמן לפי התוכנית שנקבעה</li>
-      <li>✓ דיווח דו-חודשי על הכנסות ושינויים כלכליים</li>
-      <li>✓ השתתפות בהכשרה פיננסית (קורס ניהול כספים)</li>
-      <li>✓ אישור מהנאמן לפני רכישות גדולות</li>
-      <li>✓ אישור ליציאה מהארץ</li>
-    </ul>
-  </div>
-
-  <h2>שלב 4 — ההפטר</h2>
-  <p>
-    אחרי שעמדת בכל תנאי תקופת השיקום — בית המשפט מעניק לך <strong>הפטר</strong>.
-    זה ביטול משפטי של יתרת החובות שלא שולמה.
-  </p>
-  <p>
-    מרגע ההפטר — אתה נקי. אין יותר חובות, אין יותר עיקולים, אין יותר הגבלות.
-    אתה יכול להתחיל מחדש.
-  </p>
-
-  <div class="warn-box">
-    <p class="font-semibold text-amber-800 mb-2">⚠️ מה יכול לעכב או לבטל את ההפטר</p>
-    <ul>
-      <li>אי-עמידה בתשלומים החודשיים</li>
-      <li>הסתרת הכנסות או נכסים</li>
-      <li>אי-הגשת דיווחים תקופתיים</li>
-      <li>לקיחת אשראי חדש ללא אישור</li>
-    </ul>
-    <p class="mt-2">שיתוף פעולה מלא עם הנאמן ובית המשפט הוא המפתח להגיע להפטר.</p>
-  </div>
-
-  <h2>ציר הזמן הממוצע</h2>
+  <h2>ציר הזמן הממוצע — סקירה ויזואלית</h2>
 
   <div class="not-prose my-6 space-y-2">
     {[
-      { time: 'חודש 1-2',    label: 'הגשת בקשה ופתיחת הליכים',         color: 'bg-blue-100 border-blue-300' },
-      { time: 'חודש 3-12',   label: 'תקופת ביניים — בחינה וגיבוש תוכנית', color: 'bg-purple-100 border-purple-300' },
-      { time: 'שנה 2-4',     label: 'תקופת שיקום — תשלומים ודיווחים',    color: 'bg-amber-100 border-amber-300' },
-      { time: 'סוף שנה 4',   label: 'הפטר — התחלה חדשה',               color: 'bg-green-100 border-green-300' },
+      { time: 'חודש 1–2',   label: 'הגשת בקשה ופתיחת הליכים',              color: 'bg-blue-100 border-blue-300' },
+      { time: 'חודש 3',     label: 'מינוי נאמן + הקפאת הליכים',             color: 'bg-indigo-100 border-indigo-300' },
+      { time: 'חודש 4–10',  label: 'בחינת נכסים + הגשת תביעות חוב',         color: 'bg-purple-100 border-purple-300' },
+      { time: 'חודש 11–12', label: 'ישיבת נושים + אישור תוכנית שיקום',       color: 'bg-amber-100 border-amber-300' },
+      { time: 'שנה 2–4',    label: 'תקופת הבראה — תשלומים ודיווחים',         color: 'bg-orange-100 border-orange-300' },
+      { time: 'סוף שנה 4',  label: 'הפטר — מחיקת יתרת חובות',               color: 'bg-green-100 border-green-300' },
     ].map(item => (
       <div class={`flex items-center gap-4 p-4 rounded-xl border ${item.color}`}>
-        <span class="text-sm font-bold text-gray-600 w-24 shrink-0">{item.time}</span>
+        <span class="text-sm font-bold text-gray-600 w-28 shrink-0">{item.time}</span>
         <span class="text-sm text-gray-700">{item.label}</span>
       </div>
     ))}
   </div>
 
+  <h2>שלב 1 — הגשת הבקשה ופתיחת ההליכים</h2>
+  <p>
+    ההליך מתחיל בהגשת בקשה לצו לפתיחת הליכים. ניתן להגיש בעצמך או דרך עורך דין.
+    הבקשה מוגשת לבית משפט השלום (חוב מעל 176,923 ₪) או לרשם חדלות פירעון (חוב נמוך יותר).
+  </p>
+
+  <h3>רשימת המסמכים הנדרשים להגשה</h3>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">מסמך</th>
+          <th class="text-right p-3 border border-gray-200">פרטים</th>
+          <th class="text-right p-3 border border-gray-200">חובה?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['טופס הבקשה לחדלות פירעון', 'טופס רשמי של בתי המשפט', 'חובה'],
+          ['תצהיר על מצב כלכלי', 'הכנסות, הוצאות, נכסים, חובות', 'חובה'],
+          ['רשימת נושים מפורטת', 'שם נושה, סכום, מועד יצירת חוב', 'חובה'],
+          ['3 תלושי שכר אחרונים', 'או אישור הכנסות אחר (עצמאי)', 'חובה'],
+          ['דפי חשבון בנק — 6 חודשים', 'כל החשבונות שבבעלותך', 'חובה'],
+          ['מסמכי זיהוי', 'תעודת זהות + ספח', 'חובה'],
+          ['רשימת נכסים', 'דירה, רכב, חסכונות, ציוד, ירושות', 'חובה'],
+          ['הסכמי שכירות / בעלות', 'על דירה שאתה גר בה או מחזיק', 'אם רלוונטי'],
+          ['הסכמי הלוואה', 'חוזי הלוואה קיימים', 'אם קיימים'],
+          ['פסקי דין נגדך', 'אם יש', 'אם קיימים'],
+          ['אישורי גמלה / קצבה', 'ביטוח לאומי, נכות וכו׳', 'אם רלוונטי'],
+          ['שאלון על גורמי החדלות', 'הסבר כיצד הגעת למצב החוב', 'חובה'],
+        ].map(([doc, detail, required], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-700">{doc}</td>
+            <td class="p-3 border border-gray-200 text-gray-600 text-xs">{detail}</td>
+            <td class={`p-3 border border-gray-200 text-xs font-semibold ${required === 'חובה' ? 'text-red-600' : 'text-gray-500'}`}>{required}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מה קורה מיד אחרי ההגשה?</p>
+    <ul class="space-y-1">
+      <li>בית המשפט בוחן את הבקשה — לרוב תוך 30–60 יום</li>
+      <li>אם עומדת בתנאים — מוצא "צו לפתיחת הליכים"</li>
+      <li>מרגע הצו — <strong>כל ההליכים נגדך מוקפאים</strong> (עיקולים, תביעות, הטרדות)</li>
+      <li>מתמנה נאמן לניהול ההליך (בתיקים גדולים)</li>
+    </ul>
+  </div>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-2">מה יכול להשתבש בשלב ההגשה?</p>
+    <ul class="space-y-1">
+      <li>מסמכים חסרים — הבקשה מוחזרת לתיקון, מתעכב בחודשים</li>
+      <li>חוב מינימלי לא עמד בסף הנדרש — הבקשה נדחית</li>
+      <li>תצהיר לא מלא — הנאמן יזמן לחקירה ויחפש סתירות</li>
+      <li>הסתרה של נכסים — עבירה פלילית ומבטלת את ההליך</li>
+    </ul>
+  </div>
+
+  <h2>שלב 2 — מינוי הנאמן ובחינת המצב הכלכלי</h2>
+  <p>
+    בתיקים עם חוב מעל 176,923 ₪, בית המשפט ממנה נאמן. הנאמן הוא עורך דין או רואה חשבון
+    עם הכשרה מיוחדת — <strong>הוא לא האויב שלך</strong>. תפקידו לנהל את ההליך בצורה הוגנת לשני הצדדים.
+  </p>
+
+  <h3>מה הנאמן עושה?</h3>
+
+  <ol class="step-list">
+    <li><span class="step-num">א</span><span><strong>חקירת יכולת</strong> — הנאמן זומן אותך לפגישה שבה הוא בוחן לעומק את מצבך: כל נכס, כל חשבון, כל מקור הכנסה. חובה להגיע ולענות בכנות.</span></li>
+    <li><span class="step-num">ב</span><span><strong>בחינת נכסים</strong> — הנאמן בוחן אם יש נכסים שניתן לממש (דירה, רכב, ירושות צפויות, זכויות). נכסים מסוימים מוגנים מפני מימוש.</span></li>
+    <li><span class="step-num">ג</span><span><strong>חקירת עבר כלכלי</strong> — הנאמן בוחן עסקאות של 3-5 שנים אחורה. העברות רכוש חשודות לפני ההגשה עלולות להתבטל.</span></li>
+    <li><span class="step-num">ד</span><span><strong>קביעת הכנסה פנויה</strong> — הנאמן מחשב כמה כסף נשאר לך אחרי הוצאות מינימליות. זה הבסיס לחישוב התשלום החודשי.</span></li>
+    <li><span class="step-num">ה</span><span><strong>גיבוש תוכנית שיקום</strong> — הנאמן מציג את המלצותיו לבית המשפט: כמה תשלם, לכמה זמן, ואילו תנאים נוספים.</span></li>
+    <li><span class="step-num">ו</span><span><strong>ניהול כספים</strong> — הנאמן מנהל את חשבון נאמנות שאליו עוברים תשלומיך ומשם מחולקים לנושים.</span></li>
+  </ol>
+
+  <div class="tip-box">
+    <p class="font-semibold text-green-800 mb-2">איך לעבוד נכון עם הנאמן?</p>
+    <ul class="space-y-1">
+      <li>ענה לכל פנייה תוך 48 שעות</li>
+      <li>ספק מסמכים שנדרשו מיד — אל תיגרר</li>
+      <li>אם הכנסתך השתנתה — דווח מיד, אל תמתין לדיווח הבא</li>
+      <li>אל תיקח אשראי חדש ללא אישור</li>
+      <li>אם יש אי-הסכמה על תוכנית השיקום — ניתן לערער בפני בית המשפט</li>
+    </ul>
+  </div>
+
+  <h2>שלב 3 — ישיבת הנושים</h2>
+  <p>
+    ישיבת הנושים היא פגישה רשמית שבה מתכנסים כל הגורמים: החייב, הנאמן, הנושים ובית המשפט.
+  </p>
+
+  <h3>מי מגיע לישיבת הנושים?</h3>
+
+  <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+    {[
+      {
+        title: 'חייבים להגיע',
+        items: ['החייב עצמו (אתה)', 'עורך דין של החייב (אם יש)', 'הנאמן'],
+        color: 'border-blue-200 bg-blue-50',
+        titleColor: 'text-blue-800',
+      },
+      {
+        title: 'רשאים להגיע',
+        items: ['כל נושה שהגיש תביעת חוב', 'עורכי דין מטעם הנושים', 'נציג משרד האוצר (בתיקים גדולים)'],
+        color: 'border-gray-200 bg-gray-50',
+        titleColor: 'text-gray-700',
+      },
+    ].map(col => (
+      <div class={`border-2 ${col.color} rounded-xl p-5`}>
+        <h3 class={`font-bold ${col.titleColor} mb-3`}>{col.title}</h3>
+        <ul class="text-sm space-y-1.5 text-gray-700">
+          {col.items.map(item => <li>• {item}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <h3>מה קורה בישיבה?</h3>
+  <ul>
+    <li><strong>הנושים מגישים תביעות חוב</strong> — כל נושה מפרט כמה חייבים לו ועל בסיס מה</li>
+    <li><strong>הנאמן מציג את ממצאיו</strong> — מצב כלכלי, נכסים, הכנסות, ומה מומלץ</li>
+    <li><strong>הנושים יכולים להתנגד</strong> — לתביעות של נושים אחרים, או להמליץ על תנאי הסדר שונים</li>
+    <li><strong>בית המשפט מחליט</strong> — על גובה התשלום החודשי ואורך התקופה</li>
+  </ul>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מה זה אומר בפועל?</p>
+    <p>ברוב המקרים, ישיבת הנושים היא פרוצדורלית יחסית ולא דרמטית. הנושים הגדולים (בנקים, כרטיסי אשראי) לרוב אינם שולחים נציגים לדיוני נושים קטנים. הנאמן מייצג את כלל האינטרסים ומציע תוכנית מאוזנת.</p>
+  </div>
+
+  <h2>שלב 4 — תקופת הבראה (כ-3 שנים)</h2>
+  <p>
+    זו התקופה הארוכה ביותר של ההליך — שלוש שנים שבהן אתה מבצע תשלומים חודשיים
+    ועומד בתנאי ההליך. אתה ממשיך לחיות את חייך, לעבוד, לגדל ילדים — אבל עם מגבלות ומחויבויות.
+  </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מה נדרש ממך בתקופת ההבראה:</p>
+    <ul class="space-y-1">
+      <li><strong>תשלום חודשי קבוע</strong> — סכום שנקבע בתוכנית השיקום, לפי יכולתך</li>
+      <li><strong>דיווח דו-חודשי</strong> — הכנסות, הוצאות, שינויים משמעותיים</li>
+      <li><strong>אישור ליציאה לחו"ל</strong> — חייב אישור הנאמן לכל נסיעה</li>
+      <li><strong>אישור לרכישות גדולות</strong> — רכב, ריהוט יקר, השקעות</li>
+      <li><strong>השתתפות בהכשרה פיננסית</strong> — קורס ניהול כספים (לרוב 10–15 שעות)</li>
+      <li><strong>הימנעות מאשראי חדש</strong> — ללא אישור הנאמן</li>
+      <li><strong>דיווח על שינויי הכנסה</strong> — קידום, ירושה, קבלת כסף — חייב דיווח</li>
+    </ul>
+  </div>
+
+  <h3>כיצד נקבע גובה התשלום החודשי?</h3>
+  <p>
+    הנאמן מחשב את <strong>ההכנסה הפנויה</strong>: הכנסה כוללת פחות הוצאות מחייה מינימליות (שכירות, מזון, חשמל, בגדים, ביטוח, תחבורה לעבודה, חינוך ילדים). מה שנשאר — חלק ממנו הולך לנושים.
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">מצב</th>
+          <th class="text-right p-3 border border-gray-200">הכנסה</th>
+          <th class="text-right p-3 border border-gray-200">הוצאות מינימום</th>
+          <th class="text-right p-3 border border-gray-200">תשלום חודשי טיפוסי</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['שכיר יחיד, שוכר', '8,000 ₪', '6,500 ₪', '500–800 ₪'],
+          ['שכיר עם משפחה (2 ילדים)', '12,000 ₪', '10,500 ₪', '800–1,200 ₪'],
+          ['שכיר בכיר, בעל דירה', '18,000 ₪', '12,000 ₪', '2,000–3,500 ₪'],
+          ['חסר הכנסה / נכות', 'קצבה בלבד', 'מלוא הקצבה', 'אפס או סמלי'],
+        ].map(([status, income, expenses, payment], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-700">{status}</td>
+            <td class="p-3 border border-gray-200">{income}</td>
+            <td class="p-3 border border-gray-200">{expenses}</td>
+            <td class="p-3 border border-gray-200 text-brand-dark font-semibold">{payment}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-2">מה יכול להשתבש בתקופת ההבראה?</p>
+    <ul class="space-y-1">
+      <li><strong>אי-עמידה בתשלומים</strong> — ההפטר יתעכב. עדיף לדווח לנאמן ולבקש הפחתה מאשר פשוט להפסיק</li>
+      <li><strong>אי-הגשת דיווחים</strong> — הנאמן יכול לפנות לבית המשפט לאכיפה</li>
+      <li><strong>יציאה לחו"ל ללא אישור</strong> — עבירה על תנאי ההליך, עלולה לבטל ההפטר</li>
+      <li><strong>קבלת ירושה ללא דיווח</strong> — עבירה חמורה. ירושה שנתקבלה תיכלל בהליך</li>
+      <li><strong>לקיחת הלוואה ללא אישור</strong> — יוצרת חוב חדש ומפרה את תנאי ההליך</li>
+    </ul>
+  </div>
+
+  <h2>שלב 5 — ההפטר</h2>
+  <p>
+    אחרי שעמדת בכל תנאי תקופת ההבראה — בית המשפט מעניק לך <strong>הפטר</strong>.
+    זה ביטול משפטי של יתרת החובות שלא שולמה.
+  </p>
+
+  <h3>סוגי ההפטר</h3>
+
+  <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+    {[
+      {
+        title: 'הפטר מוחלט',
+        desc: 'ביטול מלא של כל יתרת החובות הכשירים. הנפוץ ביותר.',
+        conditions: ['עמידה מלאה בכל תנאי ההליך', 'לא הוכח מרמה', 'שיתוף פעולה מלא עם הנאמן'],
+        color: 'border-green-200 bg-green-50',
+        titleColor: 'text-green-800',
+      },
+      {
+        title: 'הפטר מותנה',
+        desc: 'הפטר עם תנאים נוספים או ממושכים מהרגיל.',
+        conditions: ['עמידה חלקית בתשלומים', 'נסיבות מיוחדות שמצדיקות תקופה ארוכה יותר', 'נכסים שעדיין לא מומשו'],
+        color: 'border-amber-200 bg-amber-50',
+        titleColor: 'text-amber-800',
+      },
+    ].map(col => (
+      <div class={`border-2 ${col.color} rounded-xl p-5`}>
+        <h3 class={`font-bold ${col.titleColor} mb-2`}>{col.title}</h3>
+        <p class="text-sm text-gray-600 mb-3">{col.desc}</p>
+        <ul class="text-xs space-y-1 text-gray-600">
+          {col.conditions.map(c => <li>• {c}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <h3>מה נמחק בהפטר?</h3>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">סוג חוב</th>
+          <th class="text-right p-3 border border-gray-200">נמחק?</th>
+          <th class="text-right p-3 border border-gray-200">הערה</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['הלוואות בנקאיות', 'כן', ''],
+          ['חובות כרטיסי אשראי', 'כן', ''],
+          ['חובות למס הכנסה / ביטוח לאומי', 'כן (ברוב המקרים)', 'תלוי בנסיבות'],
+          ['חובות ספקים (עסקיים)', 'כן', ''],
+          ['שטרות חוב', 'כן', ''],
+          ['חובות מזונות (לבן/בת זוג, ילדים)', 'לא', 'לעולם לא נמחקים'],
+          ['קנסות פליליים', 'לא', 'פסקי דין של בית משפט פלילי'],
+          ['חובות שנוצרו במרמה', 'לא', 'אם הוכחה מרמה'],
+          ['חובות עוולה מכוונת', 'לא', 'נזק גוף מכוון, לשון הרע'],
+          ['חובות שלא הוגשה לגביהם תביעת חוב', 'לא', 'הנושה לא הגיש בזמן'],
+        ].map(([type, erased, note], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 text-gray-700">{type}</td>
+            <td class={`p-3 border border-gray-200 font-semibold ${erased === 'כן' ? 'text-green-600' : erased === 'לא' ? 'text-red-600' : 'text-amber-600'}`}>{erased}</td>
+            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{note}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert-box">
+    <p class="font-semibold text-red-800 mb-2">מה יכול לבטל את ההפטר?</p>
+    <ul class="space-y-1">
+      <li>אי-עמידה מתמשכת בתשלומים ללא הסבר</li>
+      <li>הסתרת הכנסות או נכסים מהנאמן ובית המשפט</li>
+      <li>אי-הגשת דיווחים תקופתיים</li>
+      <li>לקיחת אשראי חדש ללא אישור</li>
+      <li>הברחת נכסים לצד שלישי (אפשרות לביטול העסקה)</li>
+    </ul>
+    <p class="mt-2">שיתוף פעולה מלא עם הנאמן ובית המשפט הוא המפתח להגיע להפטר.</p>
+  </div>
+
   <h2>שאלות נפוצות</h2>
   <div class="space-y-4 my-6">
-    <details class="border border-neutral-border rounded-xl group">
+    <details class="faq-item border border-neutral-border rounded-xl group">
       <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
         כמה זמן נמשך הליך חדלות פירעון?
         <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
       </summary>
-      <p class="px-4 pb-4 text-gray-600">בממוצע כ-4 שנים: שנה לתקופת הביניים (בחינה וגיבוש תוכנית) ועוד כ-3 שנים לתקופת השיקום. בסיום — בית המשפט מעניק הפטר ומבטל את יתרת החובות.</p>
+      <p class="px-4 pb-4 text-gray-600">בממוצע כ-4 שנים: שנה לתקופת הביניים (הגשה, מינוי נאמן, ישיבת נושים, אישור תוכנית) ועוד כ-3 שנים לתקופת ההבראה. בסיום — הפטר ומחיקת יתרת החובות.</p>
     </details>
 
-    <details class="border border-neutral-border rounded-xl group">
+    <details class="faq-item border border-neutral-border rounded-xl group">
       <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-        מה זה נאמן חדלות פירעון?
+        מה זה נאמן חדלות פירעון ומה הוא עושה?
         <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
       </summary>
-      <p class="px-4 pb-4 text-gray-600">גורם מקצועי (עו"ד או רו"ח) שבית המשפט ממנה לנהל את ענייניו הכלכליים של החייב. הנאמן בוחן נכסים, מגבש תוכנית שיקום, מפקח על תשלומים ומדווח לבית המשפט. ממונה בתיקים עם חוב מעל 176,923 ₪.</p>
+      <p class="px-4 pb-4 text-gray-600">גורם מקצועי (עו"ד או רו"ח) שבית המשפט ממנה לנהל את ענייניך הכלכליים. הנאמן בוחן נכסים, מגבש תוכנית שיקום, מפקח על תשלומים, ומדווח לבית המשפט. הנאמן אינו האויב שלך — הוא מנהל את ההליך בצורה מאוזנת.</p>
     </details>
 
-    <details class="border border-neutral-border rounded-xl group">
+    <details class="faq-item border border-neutral-border rounded-xl group">
       <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-        מה ההבדל בין תקופת הביניים לתקופת השיקום?
+        מה קורה בישיבת הנושים?
         <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
       </summary>
-      <p class="px-4 pb-4 text-gray-600">תקופת הביניים (כשנה) היא שלב הבחינה — הנאמן חוקר את מצב החייב ומגבש תוכנית שיקום. תקופת השיקום (כ-3 שנים) היא שלב הביצוע — תשלומים חודשיים קבועים, דיווחים ועמידה בתנאים עד לקבלת הפטר.</p>
+      <p class="px-4 pb-4 text-gray-600">הנושים מגישים תביעות חוב, הנאמן מציג את ממצאיו ומלצותיו, ובית המשפט מאשר את תוכנית השיקום. ברוב המקרים הישיבה פרוצדורלית — הנושים הגדולים (בנקים) לרוב לא שולחים נציגים לדיונים קטנים.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם אפשר לצאת לחו"ל בזמן ההליך?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">לא ללא אישור. נדרש אישור הנאמן לכל נסיעה. לרוב מקבלים אישור לנסיעות עבודה, רפואיות ומשפחתיות — אבל חייבים לבקש מראש. יציאה ללא אישור היא הפרת תנאי ההליך.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה קורה אם לא עומד בתשלומים?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">אי-עמידה בתשלומים עלולה לעכב או לבטל את ההפטר. אבל — אם הכנסה ירדה, יש לפנות לנאמן מיד ולבקש הפחתת תשלום. בית המשפט מאפשר התאמות לנסיבות. הבעיה היא שתיקה — לא קושי אמיתי.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        אילו חובות לא נמחקים בהפטר?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">חובות מזונות, קנסות פליליים, חובות שנוצרו במרמה, חובות עוולה מכוונת, וחובות שנושה לא הגיש לגביהם תביעת חוב בהליך. רוב חובות הבנקים, כרטיסי האשראי, הספקים וחובות עסקיים — נמחקים.</p>
     </details>
   </div>
 
   <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
     <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
     <ul class="space-y-2 text-sm">
-      <li>← <a href="/insolvency/costs/" class="text-brand hover:underline">כמה עולה ההליך? פירוט עלויות</a></li>
-      <li>← <a href="/insolvency/haftar/" class="text-brand hover:underline">ההפטר — מה בדיוק מוחק</a></li>
+      <li>← <a href="/insolvency/costs/" class="text-brand hover:underline">כמה עולה ההליך? פירוט עלויות מלא</a></li>
+      <li>← <a href="/insolvency/haftar/" class="text-brand hover:underline">ההפטר — מה בדיוק נמחק</a></li>
       <li>← <a href="/insolvency/eligibility/" class="text-brand hover:underline">האם אני זכאי להגיש?</a></li>
+      <li>← <a href="/contact/" class="text-brand hover:underline">רוצה ייעוץ? צור קשר עם עורך דין</a></li>
     </ul>
   </div>
 

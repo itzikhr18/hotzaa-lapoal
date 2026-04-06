@@ -5,23 +5,23 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'האם יכולים לעקל את הדירה שאני גר בה?', acceptedAnswer: { '@type': 'Answer', text: 'עיקול רישומי (רישום בטאבו) — כן, אפשרי. אבל עיקול רישומי לא גורם לך לעזוב את הבית. הוא מונע ממך למכור את הדירה בלי לסלק קודם את החוב. ממוש בפועל (מכירה כפויה) — הרבה קשה יותר, ומצריך הליך משפטי ארוך.' } },
-    { '@type': 'Question', name: 'האם יכולים לממש (למכור) את ביתי בכפייה?', acceptedAnswer: { '@type': 'Answer', text: 'בתיאוריה — כן. בפועל — הליך ממוש דירת מגורים ראשית, בפרט כשגרים בה ילדים קטינים, הוא ארוך, יקר ומורכב לנושה. בתי המשפט ורשמי ההוצאה לפועל מהססים מאוד, ורוב הנושים מעדיפים הסדר תשלומים.' } },
-    { '@type': 'Question', name: 'אם יש לי ילדים קטינים, האם הבית מוגן?', acceptedAnswer: { '@type': 'Answer', text: 'נוכחות ילדים קטינים בדירה היא שיקול כבד מאוד בהחלטה על ממוש. בתי המשפט מהססים מאוד לאשר מכירה כפויה כשיש ילדים שגרים בבית. אין הגנה מוחלטת, אבל זהו טיעון משמעותי.' } },
+    { '@type': 'Question', name: 'האם יכולים לעקל את הדירה שאני גר בה?', acceptedAnswer: { '@type': 'Answer', text: 'עיקול רישומי (רישום בטאבו) — כן, אפשרי. הוא מונע ממך למכור את הדירה בלי לסלק קודם את החוב. ממוש בפועל (מכירה כפויה) — הרבה קשה יותר, מצריך הליך משפטי ארוך ואישור בית משפט.' } },
+    { '@type': 'Question', name: 'מה זה "בית מוגן" לפי סעיף 38 לחוק ההוצאה לפועל?', acceptedAnswer: { '@type': 'Answer', text: 'סעיף 38 לחוק ההוצאה לפועל קובע שלא ניתן לממש דירת מגורים ראשית של חייב אם היא הדירה היחידה שלו, הוא גר בה בפועל, ואין לו נכסים אחרים לפרוע את חובו. בית המשפט צריך לשקול שיקולים רבים לפני אישור מכירה כפויה.' } },
+    { '@type': 'Question', name: 'מה קורה כשיש ילדים קטינים בדירה?', acceptedAnswer: { '@type': 'Answer', text: 'נוכחות ילדים קטינים היא שיקול כבד מאוד בהחלטה על ממוש. בתי המשפט מהססים מאוד לאשר מכירה כפויה כשיש ילדים שגרים בבית. זהו טיעון משמעותי להתנגדות לממוש.' } },
     { '@type': 'Question', name: 'מה ההבדל בין עיקול רישומי לממוש דירה?', acceptedAnswer: { '@type': 'Answer', text: 'עיקול רישומי = רישום הערה בטאבו שמונעת מכירה ללא סילוק החוב. אתה ממשיך לגור בדירה. ממוש = מכירה כפויה בפועל — הליך שדורש אישור בית משפט, שמאות, מכרז ופרסום.' } },
-    { '@type': 'Question', name: 'מה עושים כשעיקלו את הדירה?', acceptedAnswer: { '@type': 'Answer', text: 'אל תתעלם — פנה לרשם ההוצאה לפועל מיד. הגש בקשה לצו תשלומים שיכולה לעצור הליכי ממוש. הגש התנגדות לממוש אם יש טעמים (ילדים, דירה יחידה, חוב קטן ביחס לשווי). שקול ייעוץ עורך דין — בנושא דירה, ייצוג משפטי שווה את הכסף.' } },
-    { '@type': 'Question', name: 'כמה זמן לוקח להוציא אדם מביתו?', acceptedAnswer: { '@type': 'Answer', text: 'מהרישום בטאבו ועד פינוי בפועל — מדובר לרוב בשנים. כל שלב (בקשת ממוש, שמיעה, שמאות, מכרז, אישור בית משפט) לוקח חודשים. לנושה כדאי לנסות הסדר ישיר מאשר לעבור את כל ההליך.' } },
+    { '@type': 'Question', name: 'כיצד מגישים התנגדות לממוש?', acceptedAnswer: { '@type': 'Answer', text: 'מגישים בקשה בכתב לרשם ההוצאה לפועל, ומצרפים: מסמכי בעלות, הוכחת מגורים, פרטי ילדים קטינים, מסמכים רפואיים (אם רלוונטי), והסבר מדוע הממוש אינו פרופורציונלי. כדאי להיעזר בעורך דין.' } },
+    { '@type': 'Question', name: 'מה קורה אם הדירה רשומה גם על שם בן/בת הזוג?', acceptedAnswer: { '@type': 'Answer', text: 'חלקו של בן/בת הזוג שאינו חייב/ת אינו ניתן למימוש. ניתן לממש רק את חלק החייב. אם הדירה ברישום 50/50, ייתכן שיש לממש רק 50% — מה שיוצר מורכבות משפטית ומצמצם את כדאיות הממוש לנושה.' } },
   ],
 };
 ---
 
 <GuideLayout
-  title="האם אפשר לעקל את הבית שלי? — הגנה על דירת מגורים"
-  description="מתי ניתן לעקל דירת מגורים ראשית ומתי לא? מה ההבדל בין עיקול רישומי לממוש, מה מגן עליך כשיש ילדים, ואיך עוצרים את ההליך — מעודכן 2026."
+  title="האם אפשר לעקל את הבית שלי? — הגנת בית מוגן 2026"
+  description="מתי ניתן לעקל דירת מגורים ראשית ומתי לא? סעיף 38 לחוק ההוצאה לפועל, בית מוגן, הגנה על דירה עם ילדים, בעלות משותפת, ואיך עוצרים ממוש — מעודכן 2026."
   breadcrumb={[{ label: 'זכויות חייבים', href: '/rights/' }, { label: 'הבית שלי', href: '/rights/bayit-muggan/' }]}
   publishDate="2025-03-01"
   updateDate="2026-03-28"
-  readTime="6 דקות"
+  readTime="11 דקות"
   schema={[faqSchema, {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
@@ -41,6 +41,7 @@ const faqSchema = {
   <p>
     הפחד מאיבוד הבית הוא אחד הגדולים ביותר כשנכנסים להוצאה לפועל. האמת היא שעיקול
     וממוש של דירת מגורים ראשית הוא הליך קשה ומורכב לנושה — ויש לך הגנות חשובות בחוק.
+    מדריך זה מסביר את הזכויות שלך בצורה מלאה.
   </p>
 
   <h2>עיקול רישומי לעומת ממוש — ההבדל הקריטי</h2>
@@ -55,10 +56,10 @@ const faqSchema = {
           'לא תוכל למכור ללא סילוק החוב',
           'לא תוכל לשעבד את הדירה',
           'קל יחסית לרשם להטיל',
+          'לא פוגע בחיי היומיום',
         ],
         color: 'border-blue-200 bg-blue-50',
         titleColor: 'text-blue-800',
-        icon: '📋',
       },
       {
         title: 'ממוש דירה (מכירה כפויה)',
@@ -68,14 +69,14 @@ const faqSchema = {
           'שמאות, מכרז ופרסום',
           'שנים של הליכים משפטיים',
           'נדיר ביחס לדירה ראשית',
+          'עלות גבוהה לנושה',
         ],
         color: 'border-amber-200 bg-amber-50',
         titleColor: 'text-amber-800',
-        icon: '⚠️',
       },
     ].map(col => (
       <div class={`border-2 ${col.color} rounded-xl p-5`}>
-        <h3 class={`font-bold ${col.titleColor} mb-3`}>{col.icon} {col.title}</h3>
+        <h3 class={`font-bold ${col.titleColor} mb-3`}>{col.title}</h3>
         <ul class="text-sm space-y-1.5 text-gray-700">
           {col.items.map(item => <li>• {item}</li>)}
         </ul>
@@ -83,43 +84,228 @@ const faqSchema = {
     ))}
   </div>
 
-  <h2>מה מגן עליך מפני ממוש?</h2>
+  <h2>סעיף 38 לחוק ההוצאה לפועל — "בית מוגן"</h2>
+  <p>
+    סעיף 38 לחוק ההוצאה לפועל הוא ההגנה הבסיסית של החייב על דירת מגוריו.
+    הסעיף קובע שלא ניתן לממש דירת מגורים ראשית של חייב אם מתקיימים תנאים מסוימים.
+  </p>
 
   <div class="info-box">
-    <p class="font-semibold text-blue-800 mb-3">גורמים שמקשים מאוד על ממוש הדירה:</p>
-    <ul class="space-y-1.5">
-      <li><strong>זו הדירה היחידה שלך</strong> — בית יחיד נהנה מהגנה משמעותית יותר בחוק</li>
-      <li><strong>ילדים קטינים מתגוררים בה</strong> — שיקול כבד מאוד בכל החלטה שיפוטית</li>
-      <li><strong>שווי הדירה גבוה בהרבה מהחוב</strong> — ממוש לא יכסה אפילו את עלויות ההליך</li>
-      <li><strong>בן/בת זוג שלא חייב/ת</strong> — חלקו/ה בדירה מוגן; צריך הסכמה</li>
-      <li><strong>החוב קטן ביחס לשווי הדירה</strong> — הרשם עשוי לדחות בקשת ממוש כלא פרופורציונלית</li>
-      <li><strong>משכנתה גדולה על הדירה</strong> — אחרי פירעון המשכנתה יתכן שלא ישאר מה לחלק</li>
+    <p class="font-semibold text-blue-800 mb-2">עיקרי סעיף 38 לחוק ההוצאה לפועל:</p>
+    <ul class="space-y-2">
+      <li><strong>הדירה היחידה</strong> — ההגנה חלה רק אם זו דירת המגורים היחידה של החייב. אם יש לו דירה נוספת — ההגנה נחלשת.</li>
+      <li><strong>מגורים בפועל</strong> — החייב (ובני ביתו) חייבים לגור בדירה בפועל. לא מספיק שהדירה רשומה על שמו.</li>
+      <li><strong>היקף החוב</strong> — אם סכום החוב קטן ביחס לשווי הדירה, בית המשפט יקשה מאוד לאשר ממוש.</li>
+      <li><strong>שיקול דעת שיפוטי</strong> — בית המשפט חייב לאזן בין זכות הקניין של הנושה לבין הזכות לדיור.</li>
     </ul>
   </div>
 
-  <h2>שלבי הממוש — למה זה לוקח שנים</h2>
+  <h2>סעיף 38א — הגנה מוגברת</h2>
   <p>
-    כדי שנושה ימש דירה, הוא צריך לעבור תהליך ארוך, יקר ומסורבל:
+    סעיף 38א הוסף לחוק בשנת 2008 ומרחיב את ההגנה. הוא קובע שגם אם בית המשפט
+    אישר ממוש, יש לספק לחייב דיור חלוף — בדרך כלל בצורת קצבה חודשית לשכירות
+    ממדד הממוסד (כ-3,600–5,000 ₪ לחודש, לפי גודל משפחה ואזור).
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">הוראת החוק</th>
+          <th class="text-right p-3 border border-gray-200">מה היא מגנה?</th>
+          <th class="text-right p-3 border border-gray-200">הערה</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['סעיף 38 — ממוש דירה ראשית', 'אוסר ממוש אוטומטי, מחייב שיקול דעת שיפוטי', 'ההגנה הבסיסית'],
+          ['סעיף 38א — דיור חלוף', 'אם מאשרים ממוש — חובת קצבת שכירות לחייב', 'נוסף 2008'],
+          ['תקנות ניהול שכר דירה', 'גובה הקצבה החודשית לפי אזור ומשפחה', '3,600–5,000 ₪/חודש'],
+        ].map(([law, protection, note], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-700">{law}</td>
+            <td class="p-3 border border-gray-200 text-gray-600">{protection}</td>
+            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{note}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>תנאים לקבלת הגנת "בית מוגן"</h2>
+
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>דירה יחידה</strong> — זו הדירה היחידה שבבעלותך. אין לך דירה נוספת או נכס מקרקעין אחר שיכול לשמש למגורים.</span></li>
+    <li><span class="step-num">2</span><span><strong>מגורים בפועל</strong> — אתה (ובני ביתך) גרים בדירה בפועל, לא משכירים אותה ולא עוזבים אותה.</span></li>
+    <li><span class="step-num">3</span><span><strong>חוב פרופורציונלי</strong> — גובה החוב ביחס לשווי הדירה. אם הדירה שווה 2,000,000 ₪ והחוב 50,000 ₪ — הממוש לא פרופורציונלי.</span></li>
+    <li><span class="step-num">4</span><span><strong>אין דרכים חלופיות לפירעון</strong> — אם יש לחייב הכנסה קבועה, בית המשפט יעדיף צו תשלומים על פני ממוש.</span></li>
+  </ol>
+
+  <h2>שיקולי בית המשפט — מה משפיע על ההחלטה?</h2>
+  <p>
+    כאשר מוגשת בקשה לממוש דירה, בית המשפט שוקל שיקולים רבים:
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">שיקול</th>
+          <th class="text-right p-3 border border-gray-200">השפעה על ממוש</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['ילדים קטינים בדירה', 'מקשה מאוד על אישור ממוש'],
+          ['בני גיל שלישי (מעל 70)', 'שיקול הומניטרי משמעותי'],
+          ['חולה קשה או נכה', 'שיקול הומניטרי משמעותי'],
+          ['חוב קטן ביחס לשווי הדירה', 'ממוש אינו פרופורציונלי — סיכוי גבוה לדחייה'],
+          ['משכנתה גדולה על הדירה', 'לאחר תשלום הבנק ייתכן שלא נשאר מה לחלק'],
+          ['דירה יחידה ואין נכסים אחרים', 'ממוש עלול להשאיר חסר בית — שיקול כבד'],
+          ['חייב שיתף פעולה עם ההוצאה לפועל', 'מעיד על רצון טוב, מצמצם הצדקה לממוש'],
+          ['עיכוב תשלומים ממושך ללא שיתוף פעולה', 'מחזק את עמדת הנושה'],
+        ].map(([factor, effect], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-700">{factor}</td>
+            <td class="p-3 border border-gray-200 text-gray-600">{effect}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>דוגמאות מעשיות — האם בית המשפט יאשר מכירה?</h2>
+
+  <div class="not-prose grid grid-cols-1 gap-4 my-6">
+    {[
+      {
+        scenario: 'חוב 50,000 ₪ — דירה שווה 1,500,000 ₪',
+        verdict: 'סיכוי גבוה מאוד לדחיית ממוש',
+        reasoning: 'החוב הוא פחות מ-3.5% משווי הדירה. ממוש של דירה כולה עבור חוב קטן כזה אינו פרופורציונלי. בית המשפט יכוון להסדר תשלומים.',
+        color: 'border-green-200 bg-green-50',
+        verdictColor: 'text-green-700',
+      },
+      {
+        scenario: 'חוב 400,000 ₪ — דירה שווה 1,000,000 ₪ — 2 ילדים קטינים',
+        verdict: 'סיכוי בינוני — ממוש אפשרי אך קשה',
+        reasoning: 'החוב משמעותי (40% משווי הדירה). אבל נוכחות ילדים קטינים מקשה על האישור. בית המשפט ינסה להגיע לפתרון חלופי — תשלומים, מכירה מרצון, הסדר.',
+        color: 'border-amber-200 bg-amber-50',
+        verdictColor: 'text-amber-700',
+      },
+      {
+        scenario: 'חוב 600,000 ₪ — דירה שווה 800,000 ₪ — אין ילדים, אין שיתוף פעולה',
+        verdict: 'סיכוי גבוה לאישור ממוש',
+        reasoning: 'החוב הוא 75% משווי הדירה. אין ילדים קטינים. החייב לא שיתף פעולה עם ההוצאה לפועל. הנושה ויראה תמיכה שיפוטית.',
+        color: 'border-red-200 bg-red-50',
+        verdictColor: 'text-red-700',
+      },
+      {
+        scenario: 'חוב 200,000 ₪ — דירה שווה 900,000 ₪ — משכנתה 750,000 ₪',
+        verdict: 'סיכוי מאוד נמוך לממוש מוצלח',
+        reasoning: 'לאחר תשלום משכנתה לבנק (750,000 ₪), נשאר רק 150,000 ₪ — פחות מהחוב. לאחר עלויות הממוש (~50,000 ₪), לא נשאר כמעט כלום. נושה רציונלי לא ינקוט בהליך זה.',
+        color: 'border-blue-200 bg-blue-50',
+        verdictColor: 'text-blue-700',
+      },
+    ].map(ex => (
+      <div class={`border-2 ${ex.color} rounded-xl p-5`}>
+        <p class="font-bold text-gray-800 mb-1">{ex.scenario}</p>
+        <p class={`font-semibold ${ex.verdictColor} mb-2`}>{ex.verdict}</p>
+        <p class="text-sm text-gray-600">{ex.reasoning}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2>כיצד להפעיל את הגנת "בית מוגן" — מה להגיש ואיפה</h2>
+
+  <p>
+    הגנת בית מוגן אינה אוטומטית — עליך לתבוע אותה באופן פעיל. כך עושים זאת:
   </p>
 
   <ol class="step-list">
-    <li><span class="step-num">1</span><span>רישום עיקול בלשכת רישום המקרקעין (טאבו)</span></li>
-    <li><span class="step-num">2</span><span>הגשת בקשה לממוש לרשם ההוצאה לפועל</span></li>
-    <li><span class="step-num">3</span><span>שמיעת עמדת החייב ובני ביתו — בית משפט</span></li>
-    <li><span class="step-num">4</span><span>שמאות לקביעת שווי הנכס (1,500–3,000 ₪)</span></li>
-    <li><span class="step-num">5</span><span>פרסום מכרז ומכירה פומבית</span></li>
-    <li><span class="step-num">6</span><span>תשלום לנושים לפי סדר עדיפויות (בנק משכנתה ראשון)</span></li>
+    <li>
+      <span class="step-num">1</span>
+      <span><strong>הגשת התנגדות לממוש</strong> — כשמוגשת בקשת ממוש, מגישים "התנגדות לממוש דירת מגורים" לרשם ההוצאה לפועל. יש לציין את עילות ההגנה: דירה יחידה, מגורים בפועל, ילדים קטינים, חוסר פרופורציה.</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span><strong>צירוף מסמכים</strong> — מסמכי בעלות (נסח טאבו), הוכחת מגורים (חשבון ארנונה, חשמל, גז), תעודות לידה ילדים, תצהיר שזו הדירה היחידה.</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span><strong>הגשה לרשם ההוצאה לפועל</strong> — הבקשה מוגשת ללשכת ההוצאה לפועל שבה מתנהל התיק. יש לשלם אגרה (כ-200 ₪) ולהגיש עם העתק לנושה.</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span><strong>דיון בפני הרשם</strong> — הרשם מקיים דיון שבו שני הצדדים מציגים עמדות. ניתן להצביע על גורמים מקלים: ילדים, מצב בריאותי, שיתוף פעולה.</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span><strong>ערעור לבית משפט מחוזי</strong> — אם הרשם אישר ממוש, ניתן לערער לבית המשפט המחוזי. ערעור עוצר את הליך הממוש עד להחלטה.</span>
+    </li>
   </ol>
 
+  <div class="tip-box">
+    <p class="font-semibold text-green-800 mb-2">טיפ חשוב — הגש צו תשלומים במקביל</p>
+    <p>הגשת בקשה לצו תשלומים ועמידה בו לרוב עוצרת את הליכי הממוש. נושה לא יכול לנקוט הליכי ממוש בזמן שחייב עומד בצו תשלומים פעיל. זה הפתרון הפשוט והיעיל ביותר.</p>
+  </div>
+
+  <h2>בעלות משותפת — הגנת חלק בן/בת הזוג</h2>
   <p>
-    תהליך זה יכול לקחת <strong>2-5 שנים</strong> ועולה לנושה עשרות אלפי שקלים.
-    לכן — רוב הנושים מעדיפים הסדר תשלומים מחוץ לכותלי בית המשפט.
+    אחת השאלות הנפוצות ביותר: מה קורה כשהדירה רשומה על שם שני בני הזוג, אבל רק אחד מהם חייב?
   </p>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">הכלל המשפטי:</p>
+    <ul class="space-y-2">
+      <li><strong>לא ניתן לממש חלקו של מי שאינו חייב</strong> — אם הדירה 50/50, ניתן לממש רק 50% של החייב.</li>
+      <li><strong>מורכבות משפטית גבוהה</strong> — מכירת 50% בדירה למגורים קשה מאוד בפועל (מי יקנה חצי דירה?). לכן נושים לרוב מוותרים.</li>
+      <li><strong>זכות מגורים של בן/בת הזוג</strong> — גם אם מממשים חלק של החייב, יש לבן/בת הזוג זכות מגורים שיש להתחשב בה.</li>
+      <li><strong>פסיקה: כסף לחייב מהמכירה</strong> — אם בוצעה מכירה, חלקו של הצד שאינו חייב מגיע אליו — לא לנושים.</li>
+    </ul>
+  </div>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-2">אזהרה — העברת דירה לפני הגשת תביעה</p>
+    <p>אם מישהו מעביר דירה לשם בן/בת זוג כדי "להציל" אותה מנושים, בית המשפט יכול לבטל את ההעברה אם הוכח שנעשתה לשם כך. הלשכה לסיוע משפטי ממליצה לא לנסות להעביר נכסים כשיש הליכים בהוצאה לפועל — זה יכול להיות עבירה.</p>
+  </div>
+
+  <h2>מה קורה בזמן הגנת "בית מוגן"?</h2>
+  <p>
+    חשוב להבין: הגנת בית מוגן מגינה רק מפני ממוש — לא מפני כל הליכי הוצאה לפועל.
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-brand-dark text-white">
+          <th class="text-right p-3 border border-gray-200">הליך</th>
+          <th class="text-right p-3 border border-gray-200">מאפשר בזמן הגנה?</th>
+          <th class="text-right p-3 border border-gray-200">הסבר</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['עיקול רישומי (רישום הערה)', 'כן', 'ממשיך — מונע מכירה אבל לא מגורים'],
+          ['עיקול שכר', 'כן', 'אינו קשור לדירה'],
+          ['עיקול חשבון בנק', 'כן', 'אינו קשור לדירה'],
+          ['עיכוב יציאה מהארץ', 'כן', 'אינו קשור לדירה'],
+          ['ממוש הדירה', 'לא (בתנאי ההגנה)', 'המנגנון המרכזי של סעיף 38'],
+          ['פינוי מהדירה', 'לא (תוך כדי הגנה)', 'לא ניתן לפנות עד לפסיקה סופית'],
+        ].map(([action, allowed, explanation], i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td class="p-3 border border-gray-200 font-semibold text-gray-700">{action}</td>
+            <td class={`p-3 border border-gray-200 font-semibold ${allowed === 'כן' ? 'text-amber-600' : 'text-green-600'}`}>{allowed}</td>
+            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{explanation}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 
   <h2>מה כדאי לעשות אם עיקלו את הדירה?</h2>
 
   <div class="warn-box">
-    <p class="font-semibold text-amber-800 mb-1">⚠️ אל תתעלם</p>
+    <p class="font-semibold text-amber-800 mb-1">אל תתעלם</p>
     <p>עיקול רישומי על הדירה הוא אות אזהרה. עדיף לפעול מוקדם — לפני שמגיעים לשלב הממוש.</p>
   </div>
 
@@ -130,14 +316,18 @@ const faqSchema = {
     </li>
     <li>
       <span class="step-num">2</span>
-      <span><strong>הגש התנגדות לממוש</strong> אם הוגשה בקשה — ציין ילדים קטינים, מצב כלכלי, דירה יחידה, חוב לא פרופורציונלי.</span>
+      <span><strong>הגש התנגדות לממוש</strong> אם הוגשה בקשה — ציין ילדים קטינים, מצב כלכלי, דירה יחידה, חוב לא פרופורציונלי, מגורים בפועל.</span>
     </li>
     <li>
       <span class="step-num">3</span>
-      <span><strong>פנה ישירות לנושה</strong> — לרוב עדיף לנושה הסדר תשלומים מאשר הליך ממוש ארוך ויקר.</span>
+      <span><strong>פנה ישירות לנושה</strong> — לרוב עדיף לנושה הסדר תשלומים מאשר הליך ממוש ארוך ויקר. הצע תשלומים שיוכיחו רצון טוב.</span>
     </li>
     <li>
       <span class="step-num">4</span>
+      <span><strong>שקול חדלות פירעון</strong> — בחובות גדולים, הגשת בקשה לחדלות פירעון מקפיאת את כל ההליכים כולל הממוש. ייתכן שזה הפתרון הכולל הנכון.</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
       <span><strong>התייעץ עם עורך דין</strong> — בעניין דירה, ייצוג משפטי מחזיר את עצמו. קיים גם סיוע משפטי חינמי לזכאים.</span>
     </li>
   </ol>
@@ -148,25 +338,59 @@ const faqSchema = {
       <li><strong>הלשכה לסיוע משפטי</strong> — של משרד המשפטים, לפי קריטריוני הכנסה</li>
       <li><strong>קליניקות משפטיות</strong> — אוניברסיטאות תל אביב, בר אילן, חיפה</li>
       <li><strong>עמותת "אדווה"</strong> — דיור ושוק הדיור בישראל</li>
+      <li><strong>הסיוע בלשכת עורכי הדין</strong> — ייצוג בדיון ראשון</li>
     </ul>
   </div>
 
   <h2>שאלות נפוצות</h2>
   <div class="space-y-4 my-6">
-    {[
-      { q: 'האם יכולים לעקל את הדירה שאני גר בה?', a: 'עיקול רישומי — כן, אפשרי. הוא מונע ממך למכור בלי לסלק החוב, אבל אתה ממשיך לגור. ממוש בפועל — הרבה קשה יותר, מצריך הליך ארוך ואישור בית משפט.' },
-      { q: 'האם יכולים לממש את ביתי בכפייה?', a: 'בתיאוריה כן, בפועל — הליך ממוש דירת מגורים ראשית, בפרט עם ילדים קטינים, ארוך, יקר ומורכב. רוב הנושים מעדיפים הסדר ישיר.' },
-      { q: 'מה מגן עלי אם יש לי ילדים?', a: 'נוכחות ילדים קטינים היא שיקול כבד מאוד. בתי המשפט מהססים מאוד לאשר ממוש כשיש ילדים. אין הגנה מוחלטת, אבל זהו טיעון משמעותי בהתנגדות.' },
-      { q: 'מה עושים מיד כשעיקלו את הדירה?', a: 'פנה לרשם מיד והגש בקשה לצו תשלומים — זה יכול לעצור הליכי ממוש. גם שקול פנייה ישירה לנושה להסדר. התייעץ עם עורך דין.' },
-    ].map(faq => (
-      <details class="border border-neutral-border rounded-xl group">
-        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-          {faq.q}
-          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-        <p class="px-4 pb-4 text-gray-600">{faq.a}</p>
-      </details>
-    ))}
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        האם יכולים לעקל את הדירה שאני גר בה?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">עיקול רישומי — כן, אפשרי. הוא מונע ממך למכור בלי לסלק החוב, אבל אתה ממשיך לגור. ממוש בפועל — הרבה קשה יותר, מצריך הליך ארוך ואישור בית משפט, ומחייב שיקול דעת מהרשם.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה זה "בית מוגן" לפי סעיף 38?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">סעיף 38 לחוק ההוצאה לפועל קובע שלא ניתן לממש דירת מגורים ראשית אם היא הדירה היחידה של החייב, הוא גר בה בפועל, ואין לו נכסים אחרים. בית המשפט חייב לשקול את הנסיבות האישיות לפני אישור ממוש.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה קורה אם יש לי ילדים קטינים בדירה?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">נוכחות ילדים קטינים היא שיקול כבד מאוד. בתי המשפט מהססים מאוד לאשר ממוש כשיש ילדים שגרים בבית. זה לא הגנה מוחלטת, אבל זהו הטיעון הכי חזק שיש בהתנגדות לממוש. תמיד יש לציין גיל הילדים ופרטיהם בהתנגדות.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        כיצד מגישים התנגדות לממוש?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">מגישים בקשה בכתב לרשם ההוצאה לפועל המנהל את התיק. מצרפים: נסח טאבו, הוכחות מגורים (ארנונה, חשמל), תעודות לידה ילדים, תצהיר שזו הדירה היחידה, ונימוק מפורט. כדאי להיעזר בעורך דין.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        מה קורה אם הדירה על שם שניינו — אני ובן/בת זוגי?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">חלקו של בן/בת הזוג שאינו חייב/ת אינו ניתן למימוש. אם הדירה 50/50, ניתן לממש רק 50% של החייב — מה שמסבך מאוד את הממוש ומצמצם את כדאיותו לנושה. בפועל, מרבית הנושים מעדיפים הסדר תשלומים.</p>
+    </details>
+
+    <details class="faq-item border border-neutral-border rounded-xl group">
+      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+        כמה זמן לוקח להוציא אדם מביתו?
+        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <p class="px-4 pb-4 text-gray-600">מהרישום בטאבו ועד פינוי בפועל — מדובר לרוב ב-3–7 שנים. כל שלב (בקשת ממוש, דיון, שמיעת התנגדויות, שמאות, מכרז, אישור בית משפט) לוקח חודשים. לנושה כדאי לנסות הסדר ישיר מאשר לעבור את כל ההליך.</p>
+    </details>
   </div>
 
   <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">

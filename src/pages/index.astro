@@ -74,6 +74,21 @@ const homeFaqSchema = {
       name: 'קיבלתי תביעה כערב — מה עושים?',
       acceptedAnswer: { '@type': 'Answer', text: 'אם ערבת לחוב אישי עד 100,000 ₪ — ייתכן שאתה ערב מוגן. הנושה חייב לנסות לגבות מהחייב קודם. יש לך 20 יום להגיש התנגדות מרגע קבלת האזהרה.' },
     },
+    {
+      '@type': 'Question',
+      name: 'האם אפשר לבדוק אם יש נגדי תיק הוצאה לפועל?',
+      acceptedAnswer: { '@type': 'Answer', text: 'כן. ניתן לבדוק דרך מערכת הוצל"פ נט באתר gov.il או לפנות ישירות ללשכת הוצאה לפועל עם תעודת זהות. ראה מדריך בדיקת תיק.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'כמה זמן נמשך הליך הוצאה לפועל?',
+      acceptedAnswer: { '@type': 'Answer', text: 'תלוי בהסדר: צו תשלומים — לפי יכולתך (1-10 שנים). איחוד תיקים — בדרך כלל 3-7 שנים. חדלות פירעון — 3 שנים. תשלום מלא — מיידי.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם הוצאה לפועל משפיעה על דירוג האשראי?',
+      acceptedAnswer: { '@type': 'Answer', text: 'כן. תיק פעיל בהוצאה לפועל מופיע בדוח BDI ומשפיע לרעה על קבלת הלוואות, משכנתא וחוזים עסקיים. סגירת התיק משפרת את הדירוג בהדרגה.' },
+    },
   ],
 };
 ---
@@ -247,6 +262,126 @@ const homeFaqSchema = {
       </div>
     </section>
 
+    <!-- PROCESS STEPS -->
+    <section class="bg-gray-50 border-y border-neutral-border py-14">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">איך זה עובד</p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-2">שלבי הליך הוצאה לפועל</h2>
+          <p class="text-gray-500">מה קורה מרגע פתיחת התיק ועד סגירתו</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[
+            { num: '1', icon: '📂', title: 'פתיחת תיק', desc: 'הנושה פותח תיק בהוצאה לפועל ומצרף פסק דין או שטר חוב.' },
+            { num: '2', icon: '✉️', title: 'אזהרה לחייב', desc: 'החייב מקבל מכתב רשמי ויש לו 20 יום להגיב או לשלם.' },
+            { num: '3', icon: '🔒', title: 'הגבלות', desc: 'אם אין תגובה — עיקולים, עיכוב יציאה מהארץ והגבלות נוספות.' },
+            { num: '4', icon: '💸', title: 'גבייה', desc: 'עיקול חשבון בנק, ניכוי ממשכורת, ועיקול נכסים.' },
+            { num: '5', icon: '🤝', title: 'הסדר', desc: 'ניתן להגיע להסדר תשלומים בכל שלב ולהקפיא את הגבייה.' },
+            { num: '6', icon: '✅', title: 'סגירת תיק', desc: 'החוב שולם במלואו — התיק נסגר וכל ההגבלות מוסרות.' },
+          ].map(step => (
+            <div class="bg-white border border-neutral-border rounded-2xl p-5 flex flex-col gap-3">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-brand text-white text-sm font-bold flex items-center justify-center flex-shrink-0">{step.num}</span>
+                <span class="text-2xl">{step.icon}</span>
+              </div>
+              <div>
+                <p class="font-bold text-gray-800 mb-1">{step.title}</p>
+                <p class="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ALL GUIDE CATEGORIES -->
+    <section class="max-w-4xl mx-auto px-4 py-14">
+      <div class="text-center mb-10">
+        <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">כל המדריכים</p>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">מדריכים לפי נושא</h2>
+        <p class="text-gray-500">31 מדריכים מפורטים — בחר את הנושא הרלוונטי אליך</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          {
+            title: 'עיקולים',
+            icon: '🔒',
+            color: 'bg-blue-50 border-blue-200',
+            titleColor: 'text-blue-800',
+            guides: [
+              { label: 'ביטול עיקול חשבון בנק', href: '/guides/ikul-heshbon/' },
+              { label: 'עיקול משכורת — מה מותר ומה אסור', href: '/guides/ikul-maskoret/' },
+              { label: 'עיקול נכסים — דירה ורכב', href: '/guides/ikul-nechassim/' },
+              { label: 'עיקול פנסיה וקרן השתלמות', href: '/guides/ikul-pensiya/' },
+              { label: 'עיקול דירת מגורים', href: '/guides/ikul-dira/' },
+              { label: 'ביטול הגבלות — כרטיס אשראי ורישיון', href: '/guides/bitul-hagbalot/' },
+            ],
+          },
+          {
+            title: 'הסדרת חוב',
+            icon: '🤝',
+            color: 'bg-green-50 border-green-200',
+            titleColor: 'text-green-800',
+            guides: [
+              { label: 'צו תשלומים — איך מגישים', href: '/guides/tzav-tashlumim/' },
+              { label: 'איחוד תיקים — כל המידע', href: '/guides/ikul-heshbon/' },
+              { label: 'הסדר חוב מחוץ לכותלי בית המשפט', href: '/guides/hisdurim-chov/' },
+              { label: 'ריבית פיגורים — תיקון 9 חישוב', href: '/guides/ribit-hotzaa/' },
+              { label: 'מחיקת חוב — מתי אפשרי', href: '/guides/hayav-mugbal/' },
+            ],
+          },
+          {
+            title: 'זכויות והגנות',
+            icon: '🛡️',
+            color: 'bg-purple-50 border-purple-200',
+            titleColor: 'text-purple-800',
+            guides: [
+              { label: '10 זכויות שכל חייב חייב להכיר', href: '/rights/' },
+              { label: 'בית מוגן — הגנה על דירת מגורים', href: '/rights/bayit-muggan/' },
+              { label: 'כספים מוגנים מעיקול', href: '/rights/hagbalot/' },
+              { label: 'ערב מוגן — זכויות ערבים', href: '/guides/hayav-mugbal/' },
+              { label: 'התיישנות חובות — מתי חוב פוקע', href: '/guides/hitiyashnoot-chov/' },
+            ],
+          },
+          {
+            title: 'הליכים',
+            icon: '⚖️',
+            color: 'bg-amber-50 border-amber-200',
+            titleColor: 'text-amber-800',
+            guides: [
+              { label: 'פשיטת רגל וחדלות פירעון 2026', href: '/guides/pshitat-regel/' },
+              { label: 'בדיקת תיק הוצאה לפועל', href: '/guides/bdika-tik/' },
+              { label: 'תהליך הוצאה לפועל — שלב אחר שלב', href: '/insolvency/process/' },
+              { label: 'עלויות הליך חדלות פירעון', href: '/insolvency/costs/' },
+              { label: 'מזונות בהוצאה לפועל', href: '/guides/mazamot/' },
+            ],
+          },
+        ].map(cat => (
+          <div class={`border rounded-2xl p-6 ${cat.color}`}>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-xl">{cat.icon}</span>
+              <h3 class={`font-bold text-lg ${cat.titleColor}`}>{cat.title}</h3>
+            </div>
+            <ul class="space-y-2">
+              {cat.guides.map(g => (
+                <li>
+                  <a href={g.href} class="flex items-center gap-2 text-sm text-gray-700 hover:text-brand-dark font-medium transition-colors group">
+                    <span class="text-neutral-muted group-hover:text-brand transition-colors">←</span>
+                    {g.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/guides/" class="inline-flex items-center gap-2 text-brand font-semibold hover:text-brand-dark transition-colors">
+          לכל המדריכים ←
+        </a>
+      </div>
+    </section>
+
     <!-- EXPLAINER SECTION -->
     <section class="max-w-4xl mx-auto px-4 py-14">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -295,6 +430,9 @@ const homeFaqSchema = {
           { q: 'אילו כספים לא ניתן לעקל?', a: 'קצבאות ביטוח לאומי (ילדים, נכות, זקנה, שאירים) מוגנות לחלוטין. גם שכר מינימום (6,247 ₪) לא ניתן לעיקול מלא.' },
           { q: 'מה זה תיקון 9 ואיך הוא משפיע עליי?', a: 'תיקון 9 (ינואר 2025) שינה את חישוב ריבית הפיגורים. כיום: ריבית בנק ישראל (4.5%) + 3.5% + 1% שנתי דמי פיגורים. חוב שלא משלמים גדל בכ-9% בשנה.' },
           { q: 'מתי כדאי לשקול חדלות פירעון?', a: 'כשסך החובות גדול משמעותית מהיכולת לשלמם, ואין נכסים לממש. בהליך חדלות פירעון ניתן לקבל הפטר (מחיקת חובות) לאחר ~3 שנים.' },
+          { q: 'האם אפשר לבדוק אם יש נגדי תיק הוצאה לפועל?', a: 'כן. ניתן לבדוק דרך מערכת הוצל"פ נט באתר gov.il או לפנות ישירות ללשכת הוצאה לפועל עם תעודת זהות. ראה מדריך בדיקת תיק.' },
+          { q: 'כמה זמן נמשך הליך הוצאה לפועל?', a: 'תלוי בהסדר: צו תשלומים — לפי יכולתך (1-10 שנים). איחוד תיקים — בדרך כלל 3-7 שנים. חדלות פירעון — 3 שנים. תשלום מלא — מיידי.' },
+          { q: 'האם הוצאה לפועל משפיעה על דירוג האשראי?', a: 'כן. תיק פעיל בהוצאה לפועל מופיע בדוח BDI ומשפיע לרעה על קבלת הלוואות, משכנתא וחוזים עסקיים. סגירת התיק משפרת את הדירוג בהדרגה.' },
         ].map(faq => (
           <details class="border border-neutral-border rounded-xl group bg-white">
             <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
