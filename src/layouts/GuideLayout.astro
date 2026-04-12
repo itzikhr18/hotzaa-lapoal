@@ -13,7 +13,16 @@ export interface Props {
   updateDate?: string;
   schema?: object | object[];
   readTime?: string;
+  relatedGuides?: { title: string; href: string }[];
 }
+
+const defaultRelatedGuides = [
+  { title: 'עיקול חשבון בנק', href: '/guides/ikul-heshbon/' },
+  { title: 'ביטול עיקול', href: '/guides/bitul-ikul/' },
+  { title: 'עיקול משכורת', href: '/guides/ikul-maskoret/' },
+  { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
+  { title: 'פשיטת רגל (חדלות פירעון)', href: '/guides/pshitat-regel/' },
+];
 
 const {
   title,
@@ -23,6 +32,7 @@ const {
   updateDate,
   schema,
   readTime = '5 דקות',
+  relatedGuides = defaultRelatedGuides,
 } = Astro.props;
 
 const siteUrl = 'https://hotzaa-lapoal.info';
@@ -33,7 +43,7 @@ const articleSchema = {
   headline: title,
   description,
   inLanguage: 'he',
-  author: { '@type': 'Organization', name: 'הוצאהלפועל.info' },
+  author: { '@type': 'Organization', name: 'הוצאהלפועל.info', url: 'https://hotzaa-lapoal.info/about/' },
   publisher: {
     '@type': 'Organization',
     name: 'הוצאהלפועל.info',
@@ -102,6 +112,12 @@ const schemas = schema
           <p class="mt-4 text-lg text-gray-600 leading-relaxed">{description}</p>
         </header>
 
+        <!-- Table of Contents (auto-populated by client JS) -->
+        <nav id="toc" class="not-prose bg-brand-pale border border-brand-light rounded-xl p-5 mb-8 hidden" aria-label="תוכן עניינים">
+          <p class="font-bold text-brand-dark text-sm mb-3">תוכן עניינים</p>
+          <ol id="toc-list" class="space-y-1.5 text-sm list-decimal list-inside text-gray-700"></ol>
+        </nav>
+
         <slot />
 
         <slot name="next-steps" />
@@ -111,17 +127,11 @@ const schemas = schema
       <aside class="lg:sticky lg:top-24 space-y-6">
         <CTAForm compact />
 
-        <!-- Popular guides box -->
+        <!-- Related guides box -->
         <div class="bg-white border border-neutral-border rounded-xl p-4 text-sm">
-          <p class="font-semibold text-gray-800 mb-3">מדריכים פופולריים</p>
+          <p class="font-semibold text-gray-800 mb-3">מדריכים קשורים</p>
           <ul class="space-y-2">
-            {[
-              { title: 'עיקול חשבון בנק', href: '/guides/ikul-heshbon/' },
-              { title: 'ביטול עיקול', href: '/guides/bitul-ikul/' },
-              { title: 'עיקול משכורת', href: '/guides/ikul-maskoret/' },
-              { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
-              { title: 'פשיטת רגל (חדלות פירעון)', href: '/guides/pshitat-regel/' },
-            ].map(g => (
+            {relatedGuides.map(g => (
               <li>
                 <a href={g.href} class="text-brand hover:text-brand-dark transition-colors flex items-center gap-1.5">
                   <span class="text-xs">←</span>
@@ -184,4 +194,27 @@ const schemas = schema
 
   <Disclaimer />
   <Footer />
+
+  <script>
+    const article = document.querySelector('article');
+    const toc = document.getElementById('toc');
+    const tocList = document.getElementById('toc-list');
+    if (article && toc && tocList) {
+      const headings = article.querySelectorAll('h2');
+      if (headings.length >= 3) {
+        headings.forEach((h, i) => {
+          const id = h.id || `section-${i + 1}`;
+          h.id = id;
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = `#${id}`;
+          a.textContent = h.textContent;
+          a.className = 'hover:text-brand-dark transition-colors';
+          li.appendChild(a);
+          tocList.appendChild(li);
+        });
+        toc.classList.remove('hidden');
+      }
+    }
+  </script>
 </BaseLayout>
