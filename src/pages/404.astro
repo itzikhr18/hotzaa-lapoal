@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const popularGuides = [
+  { title: 'עיקול חשבון בנק', href: '/guides/ikul-heshbon/' },
+  { title: 'ביטול עיקול', href: '/guides/bitul-ikul/' },
+  { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
+  { title: 'בדיקת תיק הוצאה לפועל', href: '/guides/bdika-tik/' },
+  { title: 'חדלות פירעון', href: '/insolvency/' },
+  { title: 'זכויות חייבים', href: '/rights/' },
+];
+---
+
+<BaseLayout
+  title="הדף לא נמצא (404) | הוצאהלפועל.info"
+  description="הדף שחיפשת לא נמצא. ניתן לנווט חזרה לדף הבית או לעיין במדריכים הפופולריים שלנו."
+>
+  <Header />
+
+  <main class="max-w-2xl mx-auto px-4 py-20 text-center">
+    <p class="text-6xl font-bold text-brand mb-4">404</p>
+    <h1 class="text-2xl font-bold text-gray-800 mb-3">הדף שחיפשת לא נמצא</h1>
+    <p class="text-gray-600 mb-8">
+      ייתכן שהכתובת השתנתה, או שהדף הוסר. אפשר לחזור לדף הבית או לעיין במדריכים הפופולריים.
+    </p>
+
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 bg-brand-dark text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-trust transition-colors mb-12"
+    >
+      חזרה לדף הבית
+    </a>
+
+    <section>
+      <h2 class="text-lg font-bold text-gray-800 mb-4">מדריכים פופולריים</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-right">
+        {popularGuides.map(g => (
+          <a
+            href={g.href}
+            class="flex items-center gap-2 p-3 bg-white border border-neutral-border rounded-xl hover:border-brand hover:bg-brand-pale transition-all text-sm font-medium text-gray-700 hover:text-brand-dark"
+          >
+            <span class="text-xs">←</span>
+            {g.title}
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
