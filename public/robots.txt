@@ -1,5 +1,19 @@
+# hotzaa-lapoal.info — robots.txt
+# מידע על הוצאה לפועל וחדלות פירעון בישראל
+
 User-agent: *
 Allow: /
 Disallow: /cdn-cgi/
 
+# Sitemaps
 Sitemap: https://hotzaa-lapoal.info/sitemap-index.xml
+
+# Googlebot — crawl optimization
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
