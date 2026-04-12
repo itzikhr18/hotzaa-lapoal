@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "postbuild": "node scripts/ping-sitemap.mjs && node scripts/ping-indexnow.mjs",
+    "preview": "astro preview",
+    "ping": "node scripts/ping-sitemap.mjs && node scripts/ping-indexnow.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^3.6.0",
