@@ -8,12 +8,10 @@ Disallow: /cdn-cgi/
 # Sitemaps
 Sitemap: https://hotzaa-lapoal.info/sitemap-index.xml
 
-# Googlebot — crawl optimization
+# Googlebot
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 # Bingbot
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1

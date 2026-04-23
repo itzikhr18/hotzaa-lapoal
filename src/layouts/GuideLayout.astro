@@ -105,9 +105,19 @@ const schemas = schema
             {updateDate && <span>עודכן: {updateDate}</span>}
             <span>זמן קריאה: {readTime}</span>
           </div>
-          <div class="flex items-center gap-2 mt-2 text-xs text-gray-500">
-            <span>✓</span>
-            <span>המידע מבוסס על חוק ההוצאה לפועל תשכ"ז-1967 ועדכוני 2025–2026</span>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+            <span class="flex items-center gap-1">
+              <span>✓</span>
+              <span>המידע מבוסס על חוק ההוצאה לפועל תשכ"ז-1967 ועדכוני 2025–2026</span>
+            </span>
+            <span class="flex items-center gap-1">
+              <span>⚖️</span>
+              <span>נבדק ע"י צוות המשפטנים של הוצאהלפועל.info</span>
+            </span>
+            <a href="https://www.gov.il/he/departments/legalinfo/hotsaa_lapoal" rel="noopener noreferrer" target="_blank" class="flex items-center gap-1 text-brand hover:text-brand-dark transition-colors">
+              <span>🔗</span>
+              <span>מקור רשמי: רשות האכיפה והגבייה</span>
+            </a>
           </div>
           <p class="mt-4 text-lg text-gray-600 leading-relaxed">{description}</p>
         </header>
