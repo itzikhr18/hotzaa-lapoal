@@ -382,10 +382,14 @@ const homeFaqSchema = {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         <div>
           <h2 class="text-2xl font-bold text-brand-dark mb-4">מה זה הוצאה לפועל?</h2>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            הוצאה לפועל היא המערכת המשפטית בישראל שמאפשרת לנושה לגבות חוב שנקבע בפסק דין.
-            הגוף שמנהל את ההליכים נקרא <strong>רשות האכיפה והגבייה</strong> ומתפקד תחת משרד המשפטים.
-          </p>
+
+          <div class="bg-green-50 border-r-4 border-green-500 rounded-xl p-4 mb-5 text-sm text-gray-700">
+            <strong>הוצאה לפועל בישראל:</strong> מערכת משפטית שמאפשרת לנושה לגבות חוב שנקבע בפסק דין.
+            מנוהלת ע"י רשות האכיפה והגבייה (משרד המשפטים).
+            לחייב יש <strong>20 יום</strong> להגיב לאחר קבלת אזהרה לפני שיתחילו עיקולים.
+            <a href="/guides/michtav-hotzaa/" class="text-brand underline mr-1">קיבלתי מכתב — מה עושים? ←</a>
+          </div>
+
           <p class="text-gray-600 leading-relaxed mb-4">
             כיום <strong>570,000 ישראלים</strong> עם תיק הוצאה לפועל פעיל — רובם לא מודעים לכל הזכויות והאפשרויות העומדות לפניהם.
             להיות חייב לא אומר שאין לך זכויות — החוק מגן עליך בדרכים רבות.
@@ -408,6 +412,53 @@ const homeFaqSchema = {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON TABLE — featured snippet target -->
+    <section class="bg-gray-50 border-y border-neutral-border py-14">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-brand-dark mb-2">איזה הסדר מתאים לך?</h2>
+          <p class="text-gray-500 text-sm">השוואה מהירה בין שלוש האפשרויות הנפוצות</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+            <thead>
+              <tr class="bg-brand text-white">
+                <th class="p-3 text-right font-semibold">קריטריון</th>
+                <th class="p-3 text-center font-semibold">צו תשלומים</th>
+                <th class="p-3 text-center font-semibold">איחוד תיקים</th>
+                <th class="p-3 text-center font-semibold">חדלות פירעון</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { criterion: 'מה זה?', a: 'פריסת חוב לתשלומים חודשיים', b: 'איחוד כל התיקים לתשלום אחד', c: 'הליך שיקום + מחיקת חובות' },
+                { criterion: 'החוב נמחק?', a: 'לא', b: 'לא', c: 'כן — לאחר ~3 שנים' },
+                { criterion: 'מינימום חוב', a: 'אין', b: 'צריך מספר תיקים', c: '58,794 ₪ (2026)' },
+                { criterion: 'עיקולים?', a: 'מוקפאים בזמן הצו', b: 'מוקפאים מרגע אישור', c: 'נעצרים בפתיחת הליך' },
+                { criterion: 'עלות', a: 'כמה עשרות ₪', b: 'כמה עשרות ₪', c: '8,000–25,000 ₪' },
+                { criterion: 'משך', a: 'עד פירעון מלא', b: 'עד פירעון מלא', c: '~3 שנים' },
+                { criterion: 'מתאים למי?', a: 'חוב אחד, הכנסה קבועה', b: 'חובות מרובים', c: 'חוב גדול, אין יכולת לפרוע' },
+              ].map((row, i) => (
+                <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                  <td class="p-3 font-semibold text-gray-700 border-b border-gray-100">{row.criterion}</td>
+                  <td class="p-3 text-center text-gray-600 border-b border-gray-100">{row.a}</td>
+                  <td class="p-3 text-center text-gray-600 border-b border-gray-100">{row.b}</td>
+                  <td class="p-3 text-center text-gray-600 border-b border-gray-100">{row.c}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="flex flex-wrap gap-3 justify-center mt-6">
+          <a href="/guides/tzav-tashlumim/" class="text-sm font-medium text-brand hover:text-brand-dark transition-colors">מדריך צו תשלומים ←</a>
+          <span class="text-neutral-border">|</span>
+          <a href="/guides/ichud-tikim/" class="text-sm font-medium text-brand hover:text-brand-dark transition-colors">מדריך איחוד תיקים ←</a>
+          <span class="text-neutral-border">|</span>
+          <a href="/guides/pshitat-regel/" class="text-sm font-medium text-brand hover:text-brand-dark transition-colors">מדריך חדלות פירעון ←</a>
         </div>
       </div>
     </section>
