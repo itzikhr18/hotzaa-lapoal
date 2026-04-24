@@ -9,7 +9,7 @@ const schema = {
   name: 'אודות הוצאהלפועל.info',
   description: 'מי אנחנו, מה המטרה, ואיך אנחנו שומרים על דיוק המידע',
   url: 'https://hotzaa-lapoal.info/about/',
-  dateModified: '2026-03-31',
+  dateModified: '2026-04-24',
   mainEntity: {
     '@type': 'Organization',
     name: 'הוצאהלפועל.info',
@@ -149,6 +149,46 @@ const schema = {
       </section>
 
       <section>
+        <h2>מתודולוגיית הבדיקה שלנו</h2>
+        <p>
+          כל מאמר באתר עובר תהליך אימות בן שלושה שלבים לפני פרסום:
+        </p>
+        <ol>
+          <li>
+            <strong>בדיקת מקור ראשוני</strong> — כל טענה עובדתית מאומתת ישירות מול לשון החוק
+            (ספר החוקים נבו / רשומות), תקנות, או חוזרי הרשות. אין הסתמכות על אתרים אחרים ללא מקור ראשוני.
+          </li>
+          <li>
+            <strong>בדיקת עדכניות</strong> — בכל עדכון שכר מינימום, ריבית בנק ישראל, מדד המחירים לצרכן,
+            או תיקון חקיקה — כל המדריכים הרלוונטיים מתעדכנים תוך 48 שעות.
+          </li>
+          <li>
+            <strong>כתב ויתור מפורש</strong> — כל עמוד מכיל הבהרה ברורה שהמידע הוא כללי בלבד
+            ואינו מחליף ייעוץ משפטי מקצועי.
+          </li>
+        </ol>
+        <div class="not-prose mt-4 bg-white border border-neutral-border rounded-xl p-4 text-sm">
+          <p class="font-semibold text-gray-800 mb-3">מקורות רשמיים מרכזיים שאנו מסתמכים עליהם:</p>
+          <ul class="space-y-2">
+            {[
+              { label: 'רשות האכיפה והגבייה — נהלים, טפסים, ותעריפים', href: 'https://www.gov.il/he/departments/legalinfo/hotsaa_lapoal' },
+              { label: 'חוק ההוצאה לפועל, תשכ"ז-1967 — נבו', href: 'https://www.nevo.co.il/law_html/Law01/P221_001.htm' },
+              { label: 'חוק חדלות פירעון ושיקום כלכלי, תשע"ח-2018 — נבו', href: 'https://www.nevo.co.il/law_html/Law01/P218_1064.htm' },
+              { label: 'כל-זכות — זכויות חייבים בהוצאה לפועל', href: 'https://www.kolzchut.org.il/he/%D7%94%D7%95%D7%A6%D7%90%D7%94_%D7%9C%D7%A4%D7%95%D7%A2%D7%9C' },
+              { label: 'שכר מינימום — משרד העבודה', href: 'https://www.gov.il/he/departments/policies/work_minimum_wage' },
+              { label: 'ריבית בנק ישראל — פרסומים רשמיים', href: 'https://www.boi.org.il/he/monetarypolicy/interestratepolicyandforward/' },
+            ].map(src => (
+              <li>
+                <a href={src.href} target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark transition-colors flex items-center gap-1.5">
+                  <span>↗</span>{src.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section>
         <h2>המקורות שלנו</h2>
         <p>כל מידע באתר מבוסס על מקורות ראשוניים ורשמיים בלבד:</p>
         <ul>
@@ -183,7 +223,7 @@ const schema = {
         <h2>מדיניות עדכונים</h2>
         <p>
           המדריכים באתר מתעדכנים עם כל שינוי בחוק, בתקנות, או בתעריפים הרלוונטיים.
-          <strong>עדכון אחרון: מרץ 2026.</strong>
+          <strong>עדכון אחרון: אפריל 2026.</strong>
         </p>
         <p>
           לאחרונה עדכנו את כל המדריכים הקשורים לתיקון 9 לחוק פסיקת ריבית והצמדה
