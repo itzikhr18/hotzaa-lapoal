@@ -30,10 +30,11 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
           היא מיושמת בהתאם לחוק הגנת הפרטיות, התשמ"א-1981 ותקנות הגנת הפרטיות (אבטחת מידע), התשע"ז-2017.
         </p>
         <div class="bg-green-50 border border-green-200 rounded-xl p-4 my-4 text-sm not-prose">
-          <p class="font-semibold text-green-800 mb-1">✓ האתר אינו אוסף פרטים אישיים</p>
+          <p class="font-semibold text-green-800 mb-1">✓ האתר אינו אוסף פרטים מזהים</p>
           <p class="text-gray-700">
-            אין באתר טפסי יצירת קשר, רישום, או שדות להזנת פרטים אישיים כגון שם, מייל, או טלפון.
-            האתר הוא אתר מידע בלבד.
+            אין באתר טפסי רישום, התחברות, או שדות להזנת פרטים אישיים מזהים כגון שם, מייל, או טלפון.
+            האתר עושה שימוש ב-Google Analytics לאיסוף נתוני שימוש <strong>אנונימיים</strong> בלבד
+            (עמודים שנצפו, זמן שהייה, מדינה) לשיפור השירות — ללא זיהוי המשתמש האישי.
           </p>
         </div>
       </section>
@@ -41,7 +42,26 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
       <section>
         <h2>2. נתונים הנאספים אוטומטית</h2>
 
-        <h3>2.1 שירותי Google — פרסום (AdSense)</h3>
+        <h3>2.1 Google Analytics 4 — ניתוח תנועה</h3>
+        <p>
+          האתר משתמש ב-<strong>Google Analytics 4</strong> (Measurement ID: G-5PKTGJZMWL)
+          לניתוח תנועת המשתמשים. השירות אוסף נתונים אנונימיים כגון:
+          עמודים שנצפו, זמן שהייה בדף, מדינת מקור, סוג מכשיר, ומקור ההגעה לאתר.
+        </p>
+        <p>
+          נתונים אלו <strong>אינם כוללים</strong> זיהוי אישי (שם, מייל, IP מלא) —
+          כתובות IP מוסוות אוטומטית על ידי Google לפני האחסון.
+          המידע משמש אך ורק לשיפור תוכן ומבנה האתר.
+        </p>
+        <p>
+          ניתן לבטל מעקב Analytics:
+        </p>
+        <ul>
+          <li><a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">תוסף ביטול מעקב Google Analytics לדפדפן</a></li>
+          <li>דרך הגדרות הפרטיות של Google: <a href="https://myaccount.google.com/data-and-privacy" target="_blank" rel="noopener noreferrer">myaccount.google.com/data-and-privacy</a></li>
+        </ul>
+
+        <h3>2.2 שירותי Google — פרסום (AdSense)</h3>
         <p>
           האתר משתמש ב-<strong>Google AdSense</strong> להצגת פרסומות.
           כחלק מהשירות, Google אוספת מידע טכני כגון: כתובת IP, סוג דפדפן, מערכת הפעלה,
@@ -95,6 +115,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
         <h2>4. עוגיות (Cookies)</h2>
         <p>האתר עשוי להשתמש בעוגיות מהסוגים הבאים:</p>
         <ul>
+          <li><strong>Google Analytics 4:</strong> עוגיות ניתוח תנועה אנונימיות (<code>_ga</code>, <code>_ga_*</code>) — תוקף 2 שנים — מנוהלות על ידי Google</li>
           <li><strong>Google AdSense:</strong> עוגיות למיקוד פרסומות — מנוהלות על ידי Google</li>
           <li><strong>Cloudflare:</strong> עוגיות אבטחה וביצועים — מנוהלות על ידי Cloudflare</li>
         </ul>
