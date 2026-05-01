@@ -82,9 +82,9 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
   <meta name="google-site-verification" content="X5NDXZCjqVjRvuyONLtPJ0UBFHrgFZRr-ybS83-hUWo" />
   <meta name="google-site-verification" content="S0rlBUmhG4a_Mtd6kXKk9PaMPyGMJN5xVDVh8cfJo1k" />
 
-  <!-- Google Analytics 4 -->
-  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-5PKTGJZMWL"></script>
-  <script is:inline>
+  <!-- Google Analytics 4 — data-cfasync="false" prevents Cloudflare Rocket Loader from deferring these scripts -->
+  <script is:inline data-cfasync="false" async src="https://www.googletagmanager.com/gtag/js?id=G-5PKTGJZMWL"></script>
+  <script is:inline data-cfasync="false">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
