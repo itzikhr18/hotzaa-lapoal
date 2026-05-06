@@ -2,10 +2,10 @@
 // src/pages/guides/bdika-tik/index.astro
 import GuideLayout from '../../../layouts/GuideLayout.astro';
 
-const title = "בדיקת מצב תיק הוצאה לפועל — כל הדרכים לבדוק אם יש נגדך תיק";
-const description = "איך לבדוק אם יש נגדך תיק הוצאה לפועל? מדריך מלא: בדיקה דרך הוצל\"פ נט, פנייה ללשכה, הגבלות פעילות, משמעות כל סטטוס — ומה לעשות מיד אחרי שגיליתם.";
+const title = "בדיקת תיק הוצאה לפועל — איך בודקים אם יש נגדי תיק (2026)";
+const description = "איך בודקים אם יש נגדי תיק הוצאה לפועל? בדיקה לפי תעודת זהות דרך הוצל\"פ נט, בטלפון *3450, ובלשכה. מה המידע שרואים ומה לעשות אחרי שמגלים — מדריך מעודכן 2026.";
 const publishDate = "2026-03-29";
-const updateDate = "2026-04-24";
+const updateDate = "2026-05-06";
 const readTime = '6 דקות';
 
 const breadcrumb = [
@@ -125,6 +125,13 @@ const howToSchema = {
   {updateDate}
   {readTime}
   schema={[faqSchema, howToSchema]}
+  relatedGuides={[
+    { title: 'עיקול חשבון בנק — מה עושים?', href: '/guides/ikul-heshbon/' },
+    { title: 'ביטול עיקול', href: '/guides/bitul-ikul/' },
+    { title: 'סכומים מוגנים מעיקול', href: '/rights/skhomim-mugganim/' },
+    { title: 'ריבית הוצאה לפועל', href: '/guides/ribit-hotzaa/' },
+    { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
+  ]}
 >
 
   <!-- מבוא -->
@@ -144,6 +151,46 @@ const howToSchema = {
       <li>איך לבדוק הגבלות ספציפיות: עיכוב יציאה, עיקול בנק</li>
       <li>מה זה חקירת יכולת ומתי היא מגיעה</li>
     </ul>
+  </div>
+
+  <!-- ===== בדיקה לפי ת"ז ===== -->
+  <h2>בדיקת תיק הוצאה לפועל לפי תעודת זהות — שלב אחר שלב</h2>
+
+  <p>
+    הדרך המהירה והנגישה ביותר לבדוק אם יש נגדכם תיק הוצאה לפועל היא דרך מערכת <strong>הוצל"פ נט</strong>
+    — האתר הרשמי של משרד המשפטים. הבדיקה היא לפי <strong>מספר תעודת הזהות</strong>, חינמית, וניתן לבצע
+    אותה מכל מכשיר עם חיבור לאינטרנט.
+  </p>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>היכנסו לאתר <strong>hotzlapoal.justice.gov.il</strong> — האתר הרשמי של הוצאה לפועל.</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>לחצו על <strong>"כניסה לחייב"</strong> ובחרו באפשרות הזדהות (ת"ז + קוד SMS).</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>הזינו את <strong>תעודת הזהות</strong> שלכם (9 ספרות) ואמתו את זהותכם.</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>בחרו <strong>"שאילתת תיקים"</strong> — המערכת תציג את כל התיקים שנפתחו נגדכם.</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span>לחצו על מספר תיק ספציפי לצפייה בפרטים: שם הזוכה, סכום החוב, ריבית, סטטוס והגבלות.</span>
+    </li>
+  </ol>
+
+  <div class="tip-box">
+    <p class="font-semibold text-green-800 mb-1">לא מצליחים להיכנס?</p>
+    <p class="text-gray-700 text-sm">
+      אם המערכת לא מזהה את הטלפון שלכם (הטלפון לא רשום עדכני) — פנו ישירות ללשכת
+      הוצאה לפועל הקרובה עם ת"ז בתוקף, או חייגו ל-<strong>*3450</strong> לקבלת מידע טלפוני.
+    </p>
   </div>
 
   <!-- ===== חלק 1: 4 דרכים לבדוק ===== -->
