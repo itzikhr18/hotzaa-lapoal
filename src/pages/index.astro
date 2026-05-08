@@ -236,41 +236,6 @@ const homeFaqSchema = {
       </div>
     </section>
 
-    <!-- GUIDES -->
-    <section class="max-w-4xl mx-auto px-4 py-14">
-      <div class="text-center mb-8">
-        <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">מדריכים</p>
-        <h2 class="text-3xl font-bold text-gray-900 mb-2">המדריכים הכי נקראים</h2>
-        <p class="text-gray-500">כתובים בשפה פשוטה — בלי ז'רגון משפטי מיותר</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {[
-          { cat: 'עיקולים',         title: 'איך מבטלים עיקול על חשבון בנק?',            desc: 'מה הצעדים המדויקים, אילו טפסים צריך, ואיפה מגישים',  href: '/guides/ikul-heshbon/',    kw: '9,500 חיפושים/חודש' },
-          { cat: 'זכויות',          title: '10 זכויות שכל חייב חייב להכיר',            desc: 'רשימה שאנשים לא יודעים — ויש להם מה להפסיד',         href: '/rights/',                kw: '7,600 חיפושים/חודש' },
-          { cat: 'עיקולים',         title: 'ביטול עיקול — כל הסוגים, כל הטפסים',       desc: 'מדריך שלב-אחר-שלב לביטול עיקול על כל נכס',           href: '/guides/bitul-ikul/',      kw: '8,200 חיפושים/חודש' },
-          { cat: 'מזונות',          title: 'מזונות בהוצאה לפועל — עיקולים וגבייה',     desc: 'כל מה שצריך לדעת על הוצאה לפועל בתיקי מזונות',       href: '/guides/mazamot/',        kw: '6,500 חיפושים/חודש' },
-          { cat: 'הסדרים',          title: 'צו תשלומים — איך מגישים ומה הסיכויים',     desc: 'הדרך הנפוצה ביותר להסדיר תשלומים בצורה מסודרת',     href: '/guides/tzav-tashlumim/', kw: '5,100 חיפושים/חודש' },
-          { cat: 'חדלות פירעון',    title: 'פשיטת רגל — מה השתנה ואיך מגישים 2026',   desc: 'המדריך המעודכן לחדלות פירעון — זכאות, עלויות, תהליך', href: '/guides/pshitat-regel/',  kw: '5,900 חיפושים/חודש' },
-        ].map(g => (
-          <a href={g.href} class="group flex gap-4 items-start p-5 bg-white border border-neutral-border rounded-xl hover:border-brand hover:bg-brand-pale transition-all">
-            <div class="flex-1">
-              <span class="text-xs font-bold text-neutral-muted uppercase tracking-wide">{g.cat}</span>
-              <h3 class="font-bold text-gray-800 mt-1 mb-1 text-base leading-snug group-hover:text-brand-dark transition-colors">{g.title}</h3>
-              <p class="text-sm text-gray-500">{g.desc}</p>
-            </div>
-            <span class="text-brand-dark text-xl mt-1 group-hover:translate-x-[-4px] transition-transform">←</span>
-          </a>
-        ))}
-      </div>
-
-      <div class="text-center mt-8">
-        <a href="/guides/" class="inline-flex items-center gap-2 text-brand font-semibold hover:text-brand-dark transition-colors">
-          לכל המדריכים ←
-        </a>
-      </div>
-    </section>
-
     <!-- PROCESS STEPS -->
     <section class="bg-gray-50 border-y border-neutral-border py-14">
       <div class="max-w-4xl mx-auto px-4">
@@ -306,9 +271,9 @@ const homeFaqSchema = {
     <!-- ALL GUIDE CATEGORIES -->
     <section class="max-w-4xl mx-auto px-4 py-14">
       <div class="text-center mb-10">
-        <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">כל המדריכים</p>
+        <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">מדריכים</p>
         <h2 class="text-3xl font-bold text-gray-900 mb-2">מדריכים לפי נושא</h2>
-        <p class="text-gray-500">31 מדריכים מפורטים — בחר את הנושא הרלוונטי אליך</p>
+        <p class="text-gray-500">המדריכים שלנו מאורגנים לפי קטגוריות — בחר את הנושא הרלוונטי אליך</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {[
