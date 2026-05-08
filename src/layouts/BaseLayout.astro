@@ -103,5 +103,16 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
 <body class="bg-neutral-bg text-gray-900 font-sans antialiased">
   <AccessibilityWidget />
   <slot />
+
+  {Astro.url.pathname !== '/tools/chatbot/' && (
+    <a
+      href="/tools/chatbot/"
+      class="fixed bottom-5 left-5 z-40 bg-brand-dark hover:bg-brand-trust text-white rounded-full shadow-lg flex items-center gap-2 px-4 py-3 text-sm font-semibold transition-colors"
+      aria-label="פתח את הצ'אטבוט — שאל שאלה"
+    >
+      <span aria-hidden="true" class="text-base">💬</span>
+      <span class="hidden sm:inline">יש לי שאלה</span>
+    </a>
+  )}
 </body>
 </html>
