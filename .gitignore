@@ -21,3 +21,12 @@ Thumbs.db
 
 # claude local settings
 .claude/
+
+# wrangler
+.wrangler/
+wrangler.log
+
+# performance / audit reports
+lh-report.json
+psi_*.json
+lighthouse-*.json
