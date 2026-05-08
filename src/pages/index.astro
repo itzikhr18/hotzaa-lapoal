@@ -98,7 +98,7 @@ const homeFaqSchema = {
 
 <BaseLayout
   title="הוצאה לפועל — מידע, זכויות וכלים חינמיים לחייבים בישראל"
-  description="570,000 ישראלים עם תיק הוצאה לפועל פעיל. קבל מידע ברור על זכויותיך, מחשבון ריבית תיקון 9, ועזרה להסדיר את החוב. חינם, בעברית פשוטה."
+  description="כ-570,000 ישראלים עם תיק הוצאה לפועל פעיל. קבל מידע ברור על זכויותיך, מחשבון ריבית תיקון 9, ועזרה להסדיר את החוב. חינם, בעברית פשוטה."
   schema={[websiteSchema, organizationSchema, homeFaqSchema]}
 >
   <Header />
@@ -120,9 +120,9 @@ const homeFaqSchema = {
         </p>
         <div class="flex flex-wrap gap-6 justify-center">
           {[
-            { num: '570K', label: 'ישראלים במצבך' },
-            { num: '77%', label: 'ללא ייצוג — לא לבד' },
-            { num: '1.2%', label: 'מגישים בקשות — אפשר לשנות' },
+            { num: '~570K', label: 'תיקי הוצאה לפועל פעילים' },
+            { num: 'רוב', label: 'החייבים אינם מיוצגים' },
+            { num: 'מיעוט', label: 'מגישים בקשות — אפשר לשנות' },
           ].map(s => (
             <div class="text-center">
               <div class="text-3xl font-bold text-brand-dark">{s.num}</div>
@@ -130,6 +130,12 @@ const homeFaqSchema = {
             </div>
           ))}
         </div>
+        <p class="text-xs text-neutral-muted mt-4">
+          * מבוסס על דוחות
+          <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-dark">רשות האכיפה והגבייה</a>
+          ועל הערכות. לפרטים מלאים — ראו
+          <a href="/about/" class="underline hover:text-brand-dark">עמוד האודות</a>.
+        </p>
       </div>
     </section>
 
@@ -399,7 +405,8 @@ const homeFaqSchema = {
           </div>
 
           <p class="text-gray-600 leading-relaxed mb-4">
-            כיום <strong>570,000 ישראלים</strong> עם תיק הוצאה לפועל פעיל — רובם לא מודעים לכל הזכויות והאפשרויות העומדות לפניהם.
+            כיום כ-<strong>570,000 ישראלים</strong> עם תיק הוצאה לפועל פעיל (לפי דוחות
+            רשות האכיפה והגבייה) — רובם לא מודעים לכל הזכויות והאפשרויות העומדות לפניהם.
             להיות חייב לא אומר שאין לך זכויות — החוק מגן עליך בדרכים רבות.
           </p>
           <p class="text-gray-600 leading-relaxed">
