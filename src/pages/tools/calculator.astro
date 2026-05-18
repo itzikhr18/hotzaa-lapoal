@@ -4,14 +4,23 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import InterestCalculator from '../../components/InterestCalculator';
 
+const siteUrl = 'https://hotzaa-lapoal.info';
+
 const appSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'מחשבון ריבית הוצאה לפועל — תיקון 9',
   description: 'חישוב ריבית חוב בהוצאה לפועל לפי תיקון 9 שנכנס לתוקף בינואר 2025',
+  url: `${siteUrl}/tools/calculator/`,
   inLanguage: 'he',
   applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Any',
+  browserRequirements: 'Requires JavaScript',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
+  isAccessibleForFree: true,
+  audience: { '@type': 'Audience', audienceType: 'חייבים בהוצאה לפועל בישראל', geographicArea: { '@type': 'Country', name: 'Israel' } },
+  publisher: { '@type': 'Organization', name: 'הוצאהלפועל.info', url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}/og-image.png` } },
+  featureList: ['חישוב ריבית בסיס (בנק ישראל + 3.5%)', 'חישוב דמי פיגורים רבעוניים', 'תקרת 80% מהקרן (70% עם צו תשלומים)', 'פירוט מלא של רכיבי החוב', 'תיקון 9 — בתוקף מ-1.1.2025'],
 };
 
 const faqSchema = {

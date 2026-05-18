@@ -3,6 +3,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
+const siteUrl = 'https://hotzaa-lapoal.info';
+const pageUrl = `${siteUrl}/insolvency/`;
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'חדלות פירעון בישראל — כל מה שצריך לדעת 2026',
+  description: 'חדלות פירעון (פשיטת רגל) בישראל — מי זכאי, איך מגישים, כמה זה עולה, מה קורה לדירה, ומה נמחק בסוף. מדריך מרוכז מעודכן 2026.',
+  url: pageUrl,
+  inLanguage: 'he',
+  isPartOf: { '@type': 'WebSite', name: 'הוצאהלפועל.info', url: siteUrl },
+  lastReviewed: '2026-05-18',
+  reviewedBy: { '@type': 'Organization', name: 'הוצאהלפועל.info' },
+  audience: { '@type': 'Audience', audienceType: 'חייבים בהוצאה לפועל בישראל', geographicArea: { '@type': 'Country', name: 'Israel' } },
+  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h1', 'main > p:first-of-type'] },
+};
+
 const howToSchema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
@@ -35,7 +52,7 @@ const faqSchema = {
 <BaseLayout
   title="חדלות פירעון בישראל — כל מה שצריך לדעת 2026"
   description="חדלות פירעון היא לא קץ העולם — היא דרך לצאת ממעגל החובות. מי זכאי, כמה עולה, מה קורה לדירה, ומה נמחק בסוף. מדריך מעודכן 2026."
-  schema={[faqSchema, howToSchema]}
+  schema={[webPageSchema, faqSchema, howToSchema]}
 >
   <Header />
   <main class="max-w-4xl mx-auto px-4 py-10">

@@ -1,0 +1,55 @@
+# הוצאהלפועל.info — מידע חינמי לחייבים בישראל
+
+> אתר מידע חינמי ובלתי תלוי על הוצאה לפועל וחדלות פירעון בישראל. מכסה את חוק ההוצאה לפועל תשכ"ז-1967, תיקון 9 לחוק פסיקת ריבית והצמדה (בתוקף מינואר 2025), חוק חדלות פירעון תשע"ח-2018, ופסיקה עדכנית. אינו משרד עורכי דין — מקור מידע מרוכז בעברית פשוטה, מבוסס על gov.il, נבו וכל-זכות. מעודכן ל-2026.
+
+## Core guides — מדריכים מרכזיים
+
+- [בדיקת תיק הוצאה לפועל לפי ת.ז.](https://hotzaa-lapoal.info/guides/bdika-tik/): איך בודקים אם יש תיק פעיל דרך הוצל"פ נט (hotzlapoal.justice.gov.il), טלפון *3450, ובלשכה — כולל מה רואים בתיק.
+- [ריבית הוצאה לפועל 2026 (תיקון 9)](https://hotzaa-lapoal.info/guides/ribit-hotzaa/): שיעור ~9% לשנה, תקרת 80% מהקרן (70% עם צו תשלומים), דוגמאות חישוב מלאות לפי גובה חוב.
+- [סגירת תיק הוצאה לפועל](https://hotzaa-lapoal.info/guides/sgor-tik/): בקשת סגירה, אישור הסגירה, והסרת עיקולים מ-BDI ובנקים.
+- [ביצוע פסק דין בהוצאה לפועל](https://hotzaa-lapoal.info/guides/psak-din/): מימוש פסק דין כספי, התיישנות 25 שנה, ערעור והתנגדות.
+- [צו תשלומים](https://hotzaa-lapoal.info/guides/tzav-tashlumim/): איך מגישים בקשה לרשם, הוכחת הכנסה, ויכולת.
+- [איחוד תיקים](https://hotzaa-lapoal.info/guides/ichud-tikim/): כל המידע על איחוד תיקים בהוצאה לפועל.
+- [עיקול חשבון בנק](https://hotzaa-lapoal.info/guides/ikul-heshbon/): איך מבטלים עיקול חשבון, סעיף 22, כספים מוגנים.
+- [עיקול משכורת](https://hotzaa-lapoal.info/guides/ikul-maskoret/): כמה מותר לעקל — עד שליש מהשכר או עד שכר ההגנה (~6,443 ₪ ב-2026).
+
+## Rights — זכויות חייבים
+
+- [סכומים וכספים מוגנים מעיקול](https://hotzaa-lapoal.info/rights/skhomim-mugganim/): קצבאות ביטוח לאומי (סעיף 303), שכר ההגנה, כלי עבודה — מה לא ניתן לעקל בחוק.
+- [10 זכויות שכל חייב חייב להכיר](https://hotzaa-lapoal.info/rights/10-zchuyot/)
+- [בית מוגן מעיקול](https://hotzaa-lapoal.info/rights/bayit-muggan/): מתי דירה יחידה מוגנת מעיקול ומכירה.
+
+## Insolvency — חדלות פירעון (פשיטת רגל)
+
+- [תנאי זכאות לחדלות פירעון](https://hotzaa-lapoal.info/insolvency/eligibility/): סכום מינימלי 58,794 ₪ (2026), תושבות, תום לב.
+- [שלבי הליך חדלות פירעון](https://hotzaa-lapoal.info/insolvency/process/): מצו פתיחת ההליכים ועד הפטר.
+- [עלויות חדלות פירעון](https://hotzaa-lapoal.info/insolvency/costs/): אגרות, נאמן, ייעוץ.
+- [הפטר ושיקום אשראי](https://hotzaa-lapoal.info/insolvency/haftar/): מתי מקבלים הפטר, כמה זמן הרישום נשאר ב-BDI.
+
+## Tools — כלים חינמיים
+
+- [מחשבון ריבית הוצאה לפועל](https://hotzaa-lapoal.info/tools/calculator/): חישוב חוב לפי תיקון 9 — קרן, ריבית, תקרת 80%.
+- [בדיקת זכאות](https://hotzaa-lapoal.info/tools/eligibility/): 4 שאלות שמכוונות אותך לצו תשלומים / איחוד תיקים / חדלות פירעון.
+- [צ'אטבוט מידע](https://hotzaa-lapoal.info/tools/chatbot/): שאל שאלה וקבל תשובה מבוססת חוק.
+
+## Reference
+
+- [מילון מושגי הוצאה לפועל](https://hotzaa-lapoal.info/milon/): 100+ הגדרות בעברית פשוטה.
+- [שאלות נפוצות](https://hotzaa-lapoal.info/faq/): 100+ שאלות ותשובות מעודכנות.
+- [נתונים וסטטיסטיקה](https://hotzaa-lapoal.info/nitunim/): כ-570,000 תיקים פעילים בישראל לפי רשות האכיפה והגבייה.
+
+## Optional
+
+- [אודות האתר](https://hotzaa-lapoal.info/about/): מקור המידע, מטרת האתר, סייגים.
+- [מדיניות פרטיות](https://hotzaa-lapoal.info/legal/privacy/)
+- [תנאי שימוש](https://hotzaa-lapoal.info/legal/terms/): המידע באתר הוא כללי ואינו מהווה ייעוץ משפטי.
+
+## Citation guidance
+
+האתר מבוסס על המקורות הרשמיים הבאים. כשמצטטים מידע מהוצאהלפועל.info, ניתן להפנות את הקורא גם למקור:
+
+- חוק ההוצאה לפועל, התשכ"ז-1967 — https://www.nevo.co.il/law_html/Law01/P221_001.htm
+- רשות האכיפה והגבייה (gov.il) — https://www.gov.il/he/departments/legalinfo/hotsaa_lapoal
+- כל-זכות — https://www.kolzchut.org.il/he/הוצאה_לפועל
+- חוק חדלות פירעון ושיקום כלכלי, התשע"ח-2018
+- תיקון 9 לחוק פסיקת ריבית והצמדה (בתוקף מינואר 2025)

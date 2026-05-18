@@ -3,6 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
+const siteUrl = 'https://hotzaa-lapoal.info';
+const pageUrl = `${siteUrl}/rights/`;
+
 const schema = [
   {
     '@context': 'https://schema.org',
@@ -10,6 +13,20 @@ const schema = [
     headline: 'זכויות חייב בהוצאה לפועל — המדריך המלא',
     description: 'כל הזכויות שיש לך כחייב בהוצאה לפועל — מה מוגן מעיקול, אילו הגבלות מותרות, ואיך מגנים על עצמך',
     inLanguage: 'he',
+    url: pageUrl,
+    image: `${siteUrl}/og-image.png`,
+    author: { '@type': 'Organization', name: 'הוצאהלפועל.info', url: `${siteUrl}/about/` },
+    publisher: { '@type': 'Organization', name: 'הוצאהלפועל.info', url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}/og-image.png` } },
+    datePublished: '2026-03-01',
+    dateModified: '2026-05-18',
+    lastReviewed: '2026-05-18',
+    reviewedBy: { '@type': 'Organization', name: 'הוצאהלפועל.info' },
+    articleSection: 'זכויות חייבים',
+    genre: 'legal information',
+    isAccessibleForFree: true,
+    audience: { '@type': 'Audience', audienceType: 'חייבים בהוצאה לפועל בישראל', geographicArea: { '@type': 'Country', name: 'Israel' } },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h1', 'main > p:first-of-type'] },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
   },
   {
     '@context': 'https://schema.org',
