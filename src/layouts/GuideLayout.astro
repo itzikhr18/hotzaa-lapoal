@@ -49,6 +49,8 @@ const siteUrl = 'https://hotzaa-lapoal.info';
 
 const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
 
+const articleSection = breadcrumb[0]?.label ?? 'מדריכים';
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -70,6 +72,15 @@ const articleSchema = {
   },
   datePublished: publishDate,
   dateModified: updateDate ?? publishDate,
+  ...(updateDate ? { reviewedBy: { '@type': 'Organization', name: 'הוצאהלפועל.info' }, lastReviewed: updateDate } : {}),
+  articleSection,
+  genre: 'legal information',
+  isAccessibleForFree: true,
+  audience: { '@type': 'Audience', audienceType: 'חייבים בהוצאה לפועל בישראל', geographicArea: { '@type': 'Country', name: 'Israel' } },
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['article h1', 'article .info-box', 'article > p:first-of-type'],
+  },
   mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
 };
 
@@ -92,7 +103,15 @@ const schemas = schema
   : [articleSchema, breadcrumbSchema];
 ---
 
-<BaseLayout {title} {description} ogType="article" schema={schemas}>
+<BaseLayout
+  {title}
+  {description}
+  ogType="article"
+  publishedTime={publishDate}
+  modifiedTime={updateDate ?? publishDate}
+  articleSection={articleSection}
+  schema={schemas}
+>
   <Header />
 
   <main class="max-w-4xl mx-auto px-4 py-8">
