@@ -10,7 +10,7 @@ const faqSchema = {
       name: 'כמה אפשר לעקל ממשכורת בהוצאה לפועל?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'הכלל הרגיל לפי חוק ההוצאה לפועל: עד שליש מהמשכורת נטו או עד שכר ההגנה — לפי הנמוך. "נטו" מחושב לאחר ניכויי חובה (מס הכנסה, ביטוח לאומי, ביטוח בריאות) אך לפני ניכויים רצוניים. שכר ההגנה ברוטו עומד נכון לאפריל 2026 על כ-6,443.85 ₪. בתיקי מזונות יש כללים שונים שמאפשרים לעיתים עיקול גבוה יותר.',
+        text: 'הניכוי מוגבל ל-20% מהשכר הנטו לעובד חודשי (25% לעובד יומי), ובלבד שתישאר ביד החייב יתרה של לפחות שכר הגנה — סכום נטו שמשתנה לפי הרכב המשפחה: יחיד כ-2,596 ₪, זוג 3,893 ₪, זוג + ילד 4,516 ₪, זוג + 2+ ילדים 5,139 ₪, הורה יחיד + ילד 4,250 ₪, הורה יחיד + 2+ ילדים 5,289 ₪ (נכון ל-2026). "נטו" מחושב לאחר ניכויי חובה (מס הכנסה, ביטוח לאומי, ביטוח בריאות) אך לפני ניכויים רצוניים. בתיקי מזונות אין תקרת הגנה אוטומטית.',
       },
     },
     {
@@ -50,7 +50,7 @@ const faqSchema = {
       name: 'האם אפשר לבקש להפחית את שיעור עיקול המשכורת?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'כן. ניתן לפנות לרשם ההוצאה לפועל בבקשה להפחתת שיעור העיקול אם ניתן להוכיח שהניכוי הנוכחי מונע עמידה בהוצאות קיום בסיסיות: שכר דירה, מזון, תרופות, גן ילדים. יש להגיש בקשה בכתב עם מסמכים תומכים. הרשם יכול להפחית מ-33% ל-15% או פחות, בהתאם לנסיבות.',
+        text: 'כן. ניתן לפנות לרשם ההוצאה לפועל בבקשה להפחתת שיעור העיקול אם ניתן להוכיח שהניכוי הנוכחי מונע עמידה בהוצאות קיום בסיסיות: שכר דירה, מזון, תרופות, גן ילדים. יש להגיש בקשה בכתב עם מסמכים תומכים. הרשם יכול להפחית מ-20% ל-15% או פחות או פחות, בהתאם לנסיבות.',
       },
     },
     {
@@ -58,7 +58,7 @@ const faqSchema = {
       name: 'מה עושים אם ניכו ממני יותר מהמותר בחוק?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'אם ניכו ממך יותר משליש מהמשכורת נטו, או שעיקלו ממשכורת בגובה שכר מינימום — יש לפנות מיידית לרשם ההוצאה לפועל בבקשה להשבת הסכום העודף. יש לצרף תלושי שכר כראיה. הרשם מחויב לתקן את הצו ולהורות על החזר הסכום העודף. ניתן גם לפנות ישירות למעסיק לפני הפנייה לרשם.',
+        text: 'אם ניכו ממך יותר מ-20% מהמשכורת נטו (25% לעובד יומי), או שעיקלו ממשכורת שאינה עולה על שכר ההגנה המגיע לך — יש לפנות מיידית לרשם ההוצאה לפועל בבקשה להשבת הסכום העודף. יש לצרף תלושי שכר כראיה. הרשם מחויב לתקן את הצו ולהורות על החזר הסכום העודף. ניתן גם לפנות ישירות למעסיק לפני הפנייה לרשם.',
       },
     },
   ],
@@ -67,7 +67,7 @@ const faqSchema = {
 
 <GuideLayout
   title="עיקול משכורת בהוצאה לפועל 2026 — כמה מותר, מה מוגן, ואיך מבטלים"
-  description="עיקלו לך את המשכורת? מדריך מלא ועדכני: כמה מותר לעקל לפי החוק, אילו סכומים מוגנים, שכר מינימום עדכני 2026, השוואת תקרות, ואיך מגישים בקשה להפחתה או ביטול."
+  description="עיקלו לך את המשכורת? מדריך מלא ועדכני: כמה מותר לעקל לפי החוק (עד 20% מנטו), שכר הגנה לפי משפחה (2,596-5,289 ₪ ב-2026), השוואת תקרות לפי סוג חוב, ואיך מגישים בקשה להפחתה או ביטול."
   breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'עיקול משכורת', href: '/guides/ikul-maskoret/' }]}
   publishDate="2025-01-20"
   updateDate="2026-04-24"
@@ -83,7 +83,7 @@ const faqSchema = {
         '@type': 'HowToStep',
         position: 1,
         name: 'בדוק אם המשכורת מוגנת מראש',
-        text: 'אם משכורתך נטו אינה עולה על שכר ההגנה (כ-6,443.85 ₪ ברוטו, אפריל 2026) — בדרך כלל לא ניתן לעקל ממנה. פנה לרשם בבקשת ביטול וצרף תלוש שכר.',
+        text: 'אם משכורתך הנטו אינה עולה על שכר ההגנה שלך — לרוב לא ניתן לעקל. שכר ההגנה משתנה לפי משפחה: יחיד כ-2,596 ₪, זוג 3,893 ₪, זוג + 2+ ילדים 5,139 ₪, הורה יחיד + 2+ ילדים 5,289 ₪ נטו (2026). פנה לרשם בבקשת ביטול וצרף תלוש שכר.',
       },
       {
         '@type': 'HowToStep',
@@ -129,22 +129,25 @@ const faqSchema = {
   <div class="not-prose my-6 bg-green-50 border-r-4 border-green-500 rounded-xl p-5">
     <p class="font-bold text-green-800 mb-3 text-base">בקצרה: כמה מותר לעקל מהמשכורת? (2026)</p>
     <ul class="space-y-1.5 text-sm text-gray-700 list-none">
-      <li>• <strong>הכלל הרגיל</strong> — עד שליש מהשכר או עד גובה שכר ההגנה (כ-6,443 ₪) — לפי הנמוך.</li>
-      <li>• <strong>מעל שכר ההגנה</strong> — לרוב עד <strong>שליש (33%)</strong> מהסכום שמעל שכר ההגנה.</li>
-      <li>• <strong>בתיקי מזונות</strong> — כללים שונים, ייתכן עיקול גבוה יותר.</li>
+      <li>• <strong>תקרת אחוז</strong> — עד <strong>20% מהשכר הנטו</strong> (25% לעובד יומי).</li>
+      <li>• <strong>תקרת רצפה</strong> — תמיד תישאר ביד החייב יתרה של לפחות <strong>שכר הגנה</strong> (סכום נטו שמשתנה לפי הרכב המשפחה — 2,596 ₪ ליחיד עד 5,289 ₪ להורה יחיד עם 2+ ילדים).</li>
+      <li>• <strong>בתיקי מזונות</strong> — אין תקרת הגנה אוטומטית; ייתכן ניכוי גבוה יותר.</li>
       <li>• <strong>קצבאות ביטוח לאומי</strong> — נהנות מהגנה מיוחדת בכפוף לאופן ההפקדה ולהוראות הדין.</li>
       <li>• <strong>ניכו יותר מדי?</strong> — פנה לרשם ההוצאה לפועל עם תלושי שכר לשחרור הסכום העודף.</li>
     </ul>
   </div>
 
   <div class="info-box">
-    <p class="font-semibold text-blue-800 mb-2">מספרים עדכניים — מרץ 2026</p>
+    <p class="font-semibold text-blue-800 mb-2">שכר הגנה לפי משפחה (2026 — kolzchut)</p>
     <ul class="space-y-1 text-sm">
-      <li>שכר מינימום (מאפריל 2026): <strong>6,443.85 ₪ ברוטו לחודש</strong></li>
-      <li>מקסימום עיקול בחוב רגיל: <strong>שליש (33%) מהמשכורת נטו</strong></li>
-      <li>מקסימום עיקול בתיקי מזונות: <strong>עד מחצית (50%) מהמשכורת</strong></li>
-      <li>חובות לרשויות המדינה: <strong>ייתכן שיעור שונה — ראה טבלה למטה</strong></li>
+      <li>יחיד: <strong>~2,596 ₪ נטו</strong></li>
+      <li>זוג ללא ילדים: <strong>~3,893 ₪ נטו</strong></li>
+      <li>זוג + ילד 1: <strong>~4,516 ₪ נטו</strong></li>
+      <li>זוג + 2 ילדים ומעלה: <strong>~5,139 ₪ נטו</strong></li>
+      <li>הורה יחיד + ילד 1: <strong>~4,250 ₪ נטו</strong></li>
+      <li>הורה יחיד + 2 ילדים ומעלה: <strong>~5,289 ₪ נטו</strong></li>
     </ul>
+    <p class="text-xs text-gray-500 mt-2">סכומים מתעדכנים מעת לעת. לבדיקה עדכנית — <a href="https://www.kolzchut.org.il/he/%D7%A9%D7%9B%D7%A8_%D7%A2%D7%91%D7%95%D7%93%D7%94_%D7%A9%D7%9C%D7%90_%D7%A0%D7%99%D7%AA%D7%9F_%D7%9C%D7%A2%D7%A7%D7%9C_%D7%90%D7%95_%D7%9C%D7%A9%D7%A2%D7%91%D7%93" target="_blank" rel="noopener noreferrer">כל-זכות</a>.</p>
   </div>
 
   <h2>הבסיס החוקי — מה אומר חוק ההוצאה לפועל?</h2>
@@ -158,7 +161,7 @@ const faqSchema = {
     שלושה עקרונות יסוד עומדים בבסיס ההסדר:
   </p>
   <ul>
-    <li><strong>תקרת שליש</strong> — לא ניתן לגבות יותר משליש מהמשכורת נטו בחוב אזרחי רגיל</li>
+    <li><strong>תקרת אחוז</strong> — לא ניתן לגבות יותר מ-20% מהמשכורת נטו בחוב אזרחי רגיל (25% לעובד יומי)</li>
     <li><strong>הגנת שכר ההגנה</strong> — משכורת בגובה שכר ההגנה מוגנת ברוב המקרים</li>
     <li><strong>שיקול דעת הרשם</strong> — הרשם רשאי להפחית את שיעור העיקול בנסיבות מיוחדות</li>
   </ul>
@@ -192,32 +195,32 @@ const faqSchema = {
       <tbody>
         <tr class="bg-white">
           <td class="border border-gray-300 px-4 py-2 font-semibold">חוב אזרחי רגיל<br/><span class="font-normal text-gray-500">(הלוואה, ספק, שוכר)</span></td>
-          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-blue-700">33% מנטו</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">שכר מינימום — <strong>6,443.85 ₪</strong> ברוטו</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-blue-700">עד 20% מנטו<br/><span class="text-xs font-normal">(25% לעובד יומי)</span></td>
+          <td class="border border-gray-300 px-4 py-2 text-center">שכר הגנה — <strong>2,596-5,289 ₪</strong> נטו לפי משפחה</td>
           <td class="border border-gray-300 px-4 py-2">הרשם יכול להפחית לפי מצב כלכלי</td>
         </tr>
         <tr class="bg-gray-50">
           <td class="border border-gray-300 px-4 py-2 font-semibold">מזונות ילדים / בן זוג</td>
-          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-red-700">עד 50% מנטו</td>
-          <td class="border border-gray-300 px-4 py-2 text-center text-red-600">אין הגנת שכר מינימום</td>
-          <td class="border border-gray-300 px-4 py-2">ניתן לגבות עד 100% בהחלטת רשם מנומקת</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-red-700">ללא תקרת אחוז אוטומטית</td>
+          <td class="border border-gray-300 px-4 py-2 text-center text-red-600">אין תקרת הגנה אוטומטית</td>
+          <td class="border border-gray-300 px-4 py-2">הרשם או בית המשפט קובעים לפי סכום המזונות והיכולת</td>
         </tr>
         <tr class="bg-white">
           <td class="border border-gray-300 px-4 py-2 font-semibold">חובות לרשות המסים<br/><span class="font-normal text-gray-500">(מס הכנסה, מע"מ)</span></td>
-          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-orange-700">עד 33% מנטו</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">שכר מינימום בסיסי</td>
-          <td class="border border-gray-300 px-4 py-2">ניתן לגבות גם ישירות ממעסיק בצו מנהלי</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-orange-700">לפי פקודת המסים (גביה)</td>
+          <td class="border border-gray-300 px-4 py-2 text-center">סכומי הגנה לפי דין</td>
+          <td class="border border-gray-300 px-4 py-2">פועל במסלול נפרד — ייתכן צו מנהלי ישיר למעסיק</td>
         </tr>
         <tr class="bg-gray-50">
           <td class="border border-gray-300 px-4 py-2 font-semibold">חובות ביטוח לאומי</td>
-          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-orange-700">עד 33% מנטו</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">שכר מינימום בסיסי</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-orange-700">לפי תקנות ביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2 text-center">סכומי הגנה לפי דין</td>
           <td class="border border-gray-300 px-4 py-2">ביטוח לאומי פועל גם ישירות — לא רק דרך הוצאה לפועל</td>
         </tr>
         <tr class="bg-white">
           <td class="border border-gray-300 px-4 py-2 font-semibold">חוב לרשות מקומית<br/><span class="font-normal text-gray-500">(ארנונה, היטלים)</span></td>
-          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-blue-700">33% מנטו</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">שכר מינימום</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-blue-700">עד 20% מנטו</td>
+          <td class="border border-gray-300 px-4 py-2 text-center">שכר הגנה (לפי משפחה)</td>
           <td class="border border-gray-300 px-4 py-2">רשויות מקומיות מגישות לרוב לפי הנוהל הרגיל</td>
         </tr>
       </tbody>
@@ -227,22 +230,22 @@ const faqSchema = {
   <div class="warn-box">
     <p class="font-semibold text-amber-800 mb-1">חריג בתיקי מזונות</p>
     <p class="text-sm">
-      בתיקים של מזונות ילדים אין תקרת שליש ואין הגנת שכר מינימום.
+      בתיקים של מזונות ילדים אין תקרת אחוז אוטומטית ואין תקרת הגנה אוטומטית של שכר הגנה.
       הרשם יכול לעקל עד 100% מהמשכורת במקרים קיצוניים — בייחוד כשמדובר בחוב מזונות
       צבורים ("פיגורים"). זה הליך שונה לחלוטין מתיקי חוב רגילים.
     </p>
   </div>
 
-  <h2>הגנת שכר מינימום — הסכום המוגן בפירוט</h2>
+  <h2>הגנת שכר הגנה — הסכום המוגן בפירוט</h2>
   <p>
     זוהי אחת ההגנות החזקות ביותר שיש לחייבים בישראל:
-    <strong>אם המשכורת נטו שלך נמוכה משכר המינימום — אי אפשר לעקל ממנה שקל אחד.</strong>
+    <strong>אם המשכורת נטו שלך אינה עולה על שכר ההגנה המגיע לך — לרוב לא ניתן לעקל ממנה.</strong>
   </p>
   <p>
-    שכר המינימום עודכן ב-1 באפריל 2026 ל-<strong>6,443.85 ₪ ברוטו לחודש</strong>
-    (34.32 ₪ לשעה). בשכר נטו, מדובר בכ-5,400–5,600 ₪ תלוי בניכויים ובמספר נקודות
-    הזיכוי. אפילו אם חוב ענק תלוי עליך — אין מה לעשות לנושה אם המשכורת שלך בגובה המינימום.
-    זו הגנה חוקית מוחלטת שאין לעקוף.
+    שכר ההגנה הוא <strong>סכום נטו</strong> שמשתנה לפי הרכב המשפחה (2026):
+    יחיד כ-2,596 ₪, זוג 3,893 ₪, זוג + ילד 4,516 ₪, זוג + 2+ ילדים 5,139 ₪,
+    הורה יחיד + ילד 4,250 ₪, הורה יחיד + 2+ ילדים 5,289 ₪. אם השכר הנטו שלך
+    אינו עולה על השכר ההגנה המתאים למשפחתך — הניכוי אסור (למעט תיקי מזונות).
   </p>
 
   <h2>טבלת דוגמאות — כמה ינוכה מהמשכורת שלך?</h2>
@@ -256,7 +259,7 @@ const faqSchema = {
         <tr class="bg-gray-100 text-gray-700">
           <th class="border border-gray-300 px-4 py-2 text-right font-bold">משכורת ברוטו</th>
           <th class="border border-gray-300 px-4 py-2 text-right font-bold">משכורת נטו (משוער)</th>
-          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מקסימום עיקול (33%)</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">ניכוי מקסימלי (20% מנטו)</th>
           <th class="border border-gray-300 px-4 py-2 text-right font-bold">נשאר בידך</th>
           <th class="border border-gray-300 px-4 py-2 text-right font-bold">הערה</th>
         </tr>
@@ -265,29 +268,29 @@ const faqSchema = {
         <tr class="bg-red-50">
           <td class="border border-gray-300 px-4 py-2 font-semibold">6,443 ₪</td>
           <td class="border border-gray-300 px-4 py-2">~5,450 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-green-700">0 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold text-green-700">5,450 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מוגן ברוב המקרים — שכר ההגנה</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-green-700">עד 1,090 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 font-semibold text-green-700">≥4,360 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">ניכוי בפועל מוגבל כך שתישאר יתרה ≥ שכר הגנה (לפי משפחה)</td>
         </tr>
         <tr class="bg-white">
           <td class="border border-gray-300 px-4 py-2 font-semibold">8,000 ₪</td>
           <td class="border border-gray-300 px-4 py-2">~6,800 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-orange-700">~2,266 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">~4,534 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">ניכוי חד-חודשי משמעותי</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-orange-700">עד 1,360 ₪</td>
+          <td class="border border-gray-300 px-4 py-2">≥5,440 ₪</td>
+          <td class="border border-gray-300 px-4 py-2">למשפחות גדולות — ייתכן ניכוי נמוך יותר כדי להבטיח שכר הגנה</td>
         </tr>
         <tr class="bg-gray-50">
           <td class="border border-gray-300 px-4 py-2 font-semibold">12,000 ₪</td>
           <td class="border border-gray-300 px-4 py-2">~9,800 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-orange-700">~3,266 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">~6,534 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">שליש הוא הרף — ניתן לבקש הפחתה</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-orange-700">עד 1,960 ₪</td>
+          <td class="border border-gray-300 px-4 py-2">≥7,840 ₪</td>
+          <td class="border border-gray-300 px-4 py-2">20% הוא הרף — ניתן לבקש הפחתה לפי מצב כלכלי</td>
         </tr>
         <tr class="bg-white">
           <td class="border border-gray-300 px-4 py-2 font-semibold">20,000 ₪</td>
           <td class="border border-gray-300 px-4 py-2">~15,200 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-red-700">~5,066 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">~10,134 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold text-red-700">עד 3,040 ₪</td>
+          <td class="border border-gray-300 px-4 py-2">≥12,160 ₪</td>
           <td class="border border-gray-300 px-4 py-2">סכומים גדולים — כדאי לשקול צו תשלומים</td>
         </tr>
       </tbody>
@@ -440,7 +443,7 @@ const faqSchema = {
         <strong>בדוק אם המשכורת מוגנת מלכתחילה</strong>
         <p class="text-sm text-gray-600 mt-1">
           ראשית, בדוק את תלוש השכר: מה הנטו שלך לאחר ניכויי חובה?
-          אם הסכום קרוב לשכר מינימום (6,443.85 ₪ ברוטו) — ייתכן שהמשכורת מוגנת.
+          אם הסכום קרוב לשכר ההגנה המגיע לך (2,596-5,289 ₪ נטו לפי משפחה, 2026) — ייתכן שהמשכורת מוגנת.
           הגש לרשם בקשת ביטול עם תלוש שכר ובקש שחרור מיידי.
         </p>
       </div>
@@ -484,7 +487,7 @@ const faqSchema = {
         <strong>הגש בקשה מפורשת להפחתת שיעור</strong>
         <p class="text-sm text-gray-600 mt-1">
           אם לא רוצים לעבור לצו תשלומים, ניתן לבקש מהרשם להפחית את שיעור העיקול
-          מ-33% ל-15% (או פחות). הרשם ישקול זאת לפי המצב הכלכלי שהוצג. הגש ללשכת
+          מ-20% ל-15% או פחות (או פחות). הרשם ישקול זאת לפי המצב הכלכלי שהוצג. הגש ללשכת
           ההוצאה לפועל הרלוונטית — פיזית או דרך האזור האישי ב-gov.il. שמור אישור הגשה.
         </p>
       </div>
@@ -542,7 +545,7 @@ const faqSchema = {
   <p>
     פרילנסרים (עובדים עצמאיים עם הכנסה לא קבועה) יכולים גם הם להיות מושפעים מעיקולים.
     בעיה ייחודית שלהם: ההכנסה מגיעה בצ'קים, בהעברות בנקאיות — שכולן חשופות לעיקול
-    חשבון הבנק. בעיקול חשבון, ניתן לבקש שחרור סכום שווה ערך לשכר מינימום חודשי מדי חודש.
+    חשבון הבנק. בעיקול חשבון, ניתן לבקש שחרור סכום שווה ערך לשכר הגנה חודשי מדי חודש (לפי משפחה).
   </p>
 
   <h3>גמלאים — הכנסה מפנסיה</h3>
@@ -552,11 +555,11 @@ const faqSchema = {
   </p>
   <ul>
     <li><strong>פנסיה ממשלתית</strong> (עובדי מדינה, מורים, שוטרים) — מוגנת מעיקול לחלוטין</li>
-    <li><strong>פנסיה תעסוקתית</strong> (דרך קרן פנסיה פרטית) — ניתנת לעיקול חלקי בכפוף לאותם כללים של שכר מינימום ושליש</li>
+    <li><strong>פנסיה תעסוקתית</strong> (דרך קרן פנסיה פרטית) — ניתנת לעיקול חלקי בכפוף לאותם כללים: עד 20% מנטו, ובלבד שתישאר יתרה של שכר הגנה</li>
     <li><strong>קצבת זקנה מביטוח לאומי</strong> — מוגנת ברוב המקרים בכפוף לאופן ההפקדה</li>
   </ul>
   <p>
-    גמלאי שסכום הפנסיה שלו קרוב לשכר המינימום — יכול לבקש הגנה מוחלטת בדיוק כמו שכיר.
+    גמלאי שסכום הפנסיה שלו קרוב לשכר ההגנה המגיע לו — יכול לבקש הגנה מוחלטת בדיוק כמו שכיר.
     לפירוט מלא ראה: <a href="/guides/ikul-pensiya/" class="text-brand hover:underline">המדריך לעיקול פנסיה וקצבאות ←</a>
   </p>
 
@@ -567,7 +570,7 @@ const faqSchema = {
   <ol class="step-list">
     <li>
       <span class="step-num">1</span>
-      <span><strong>בדוק את תלוש השכר</strong> — חשב את שליש הנטו שלך ובדוק שהניכוי לא עלה על כך.</span>
+      <span><strong>בדוק את תלוש השכר</strong> — חשב 20% מהנטו שלך, ובדוק שהניכוי לא עלה על כך ושנשארת ביד יתרה ≥ שכר הגנה (לפי משפחה).</span>
     </li>
     <li>
       <span class="step-num">2</span>
@@ -583,7 +586,7 @@ const faqSchema = {
     </li>
     <li>
       <span class="step-num">5</span>
-      <span><strong>אם המשכורת מוגנת</strong> — הגש בקשת ביטול לאלתר. ניכוי מתוך משכורת ברמת שכר מינימום הוא עבירה על החוק.</span>
+      <span><strong>אם המשכורת מוגנת</strong> — הגש בקשת ביטול לאלתר. ניכוי מתוך משכורת שאינה עולה על שכר ההגנה המגיע לך הוא הפרת חוק.</span>
     </li>
   </ol>
 
@@ -616,7 +619,7 @@ const faqSchema = {
     {[
       {
         q: 'כמה אפשר לעקל ממשכורת בהוצאה לפועל?',
-        a: 'הכלל הרגיל בחוב רגיל: עד שליש מהמשכורת נטו או עד גובה שכר ההגנה — לפי הנמוך. שכר ההגנה ברוטו עומד נכון לאפריל 2026 על כ-6,443.85 ₪. בתיקי מזונות יש כללים שונים שמאפשרים לעיתים עיקול גבוה יותר בהחלטת רשם.',
+        a: 'בחוב אזרחי רגיל: עד 20% מהשכר הנטו (25% לעובד יומי), ובלבד שתישאר ביד החייב יתרה של לפחות שכר הגנה — סכום נטו שמשתנה לפי הרכב המשפחה (2,596-5,289 ₪, 2026). בתיקי מזונות אין תקרת הגנה אוטומטית — הרשם רשאי להורות על ניכוי גבוה יותר.',
       },
       {
         q: 'האם המעסיק יכול לפטר אותי בגלל עיקול משכורת?',
@@ -636,7 +639,7 @@ const faqSchema = {
       },
       {
         q: 'האם אפשר להפחית את שיעור העיקול?',
-        a: 'כן. מגישים בקשה לרשם עם מסמכים שמוכיחים קושי כלכלי. הרשם יכול להפחית מ-33% ל-15% או פחות, בהתאם לנסיבות.',
+        a: 'כן. מגישים בקשה לרשם עם מסמכים שמוכיחים קושי כלכלי. הרשם יכול להפחית מ-20% ל-15% או פחות או פחות, בהתאם לנסיבות.',
       },
       {
         q: 'מה עושים אם ניכו ממני יותר מהמותר?',
