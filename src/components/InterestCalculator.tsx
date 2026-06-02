@@ -1,17 +1,20 @@
 import { useState, useCallback } from 'react';
 
-// ── ריבית החשב הכללי לפי רבעונים (עדכן כל רבעון!) ──────────────────────────
+// ── ריבית בנק ישראל לפי רבעונים — עדכן כשבנק ישראל מחליט ──────────────────
+// המקור: https://www.boi.org.il (החלטות הוועדה המוניטרית)
+// RATES מכיל את ריבית בנק ישראל בלבד; הפונקציה מוסיפה 3.5% spread לתיקון 9
 const RATES: Record<string, number> = {
-  '2025-Q1': 0.046,
-  '2025-Q2': 0.046,
-  '2025-Q3': 0.043,
-  '2025-Q4': 0.043,
-  '2026-Q1': 0.043,
-  '2026-Q2': 0.043,
-  '2026-Q3': 0.043,
-  '2026-Q4': 0.043,
+  '2025-Q1': 0.045, // BoI 4.5%
+  '2025-Q2': 0.045, // BoI 4.5%
+  '2025-Q3': 0.045, // BoI 4.5% (אושר ב-29/9/2025)
+  '2025-Q4': 0.045, // BoI 4.5% עד 24/11 → 4.25% (הרוב הרבעון ב-4.5%)
+  '2026-Q1': 0.040, // BoI 4.0% (הפחתה 5/1/2026)
+  '2026-Q2': 0.0375, // BoI 3.75% (הפחתה מאי 2026)
+  '2026-Q3': 0.0375, // עדכן בהחלטה הבאה
+  '2026-Q4': 0.0375, // עדכן בהחלטה הבאה
 };
-const PENALTY_RATE_NEW = 0.02; // דמי פיגורים רבעוניים תיקון 9
+const PENALTY_RATE_NEW = 0.0025; // 0.25% לרבעון (1% בשנה) — דמי פיגורים תיקון 9
+const NEW_LAW_SPREAD = 0.035;   // 3.5% spread מעל ריבית בנק ישראל — ריבית בסיס תיקון 9
 const PENALTY_CAP_COMPLIANT = 0.70; // תקרה לחייב עומד בצו תשלומים
 const PENALTY_CAP_DEFAULT   = 0.80;
 const CUT_DATE = new Date('2025-01-01');
@@ -75,8 +78,8 @@ export default function InterestCalculator() {
       const isNewLaw = cur >= CUT_DATE;
 
       if (isNewLaw) {
-        // תיקון 9: ריבית בסיס על קרן בלבד
-        const baseInt = balance * annualRate * (days / 365);
+        // תיקון 9: ריבית בסיס = BoI + 3.5%, על קרן + ריבית בסיס מצטברת בלבד
+        const baseInt = balance * (annualRate + NEW_LAW_SPREAD) * (days / 365);
         balance += baseInt;
         totalBase += baseInt;
 
