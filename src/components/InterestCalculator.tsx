@@ -122,9 +122,11 @@ export default function InterestCalculator() {
       {/* Input form */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">סכום קרן החוב (₪)</label>
+          <label htmlFor="calc-principal" className="block text-sm font-semibold text-gray-700 mb-1">סכום קרן החוב (₪)</label>
           <input
+            id="calc-principal"
             type="text"
+            inputMode="numeric"
             value={principal}
             onChange={e => setPrincipal(e.target.value)}
             placeholder="למשל: 50000"
@@ -133,8 +135,9 @@ export default function InterestCalculator() {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">תאריך יצירת החוב</label>
+          <label htmlFor="calc-debt-date" className="block text-sm font-semibold text-gray-700 mb-1">תאריך יצירת החוב</label>
           <input
+            id="calc-debt-date"
             type="date"
             value={debtDate}
             onChange={e => setDebtDate(e.target.value)}
@@ -144,8 +147,9 @@ export default function InterestCalculator() {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">תאריך חישוב</label>
+          <label htmlFor="calc-date" className="block text-sm font-semibold text-gray-700 mb-1">תאריך חישוב</label>
           <input
+            id="calc-date"
             type="date"
             value={calcDate}
             onChange={e => setCalcDate(e.target.value)}
@@ -204,10 +208,10 @@ export default function InterestCalculator() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="bg-gray-100">
-                  <th className="text-right p-2 border border-gray-200">רבעון</th>
-                  <th className="text-right p-2 border border-gray-200 text-blue-700">ריבית בסיס</th>
-                  <th className="text-right p-2 border border-gray-200 text-orange-700">דמי פיגורים</th>
-                  <th className="text-right p-2 border border-gray-200">סה"כ מצטבר</th>
+                  <th scope="col" className="text-right p-2 border border-gray-200">רבעון</th>
+                  <th scope="col" className="text-right p-2 border border-gray-200 text-blue-700">ריבית בסיס</th>
+                  <th scope="col" className="text-right p-2 border border-gray-200 text-orange-700">דמי פיגורים</th>
+                  <th scope="col" className="text-right p-2 border border-gray-200">סה"כ מצטבר</th>
                 </tr>
               </thead>
               <tbody>

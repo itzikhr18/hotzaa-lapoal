@@ -74,13 +74,103 @@ const schema = {
       description: 'הליך המאגד מספר תיקי הוצאה לפועל לתיק אחד, עם תשלום חודשי אחד מפוצל בין הנושים.',
       inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
     },
+    {
+      '@type': 'DefinedTerm',
+      name: 'אזהרה',
+      description: 'המסמך הרשמי הראשון שמקבל החייב לאחר פתיחת תיק, המעניק לרוב 20 יום להגיב לפני תחילת הליכי גבייה.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'אגרה',
+      description: 'תשלום חובה הנגבה בעת פתיחת תיק או הגשת בקשה בלשכת ההוצאה לפועל, לפי שווי החוב.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'התנגדות',
+      description: 'בקשה של החייב לעצור את ההליכים בטענה שהחוב שגוי, שולם, התיישן או אינו שלו — מוגשת לרוב תוך 20 יום מהאזהרה.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'התיישנות',
+      description: 'מגבלת זמן חוקית על גביית חוב — לרוב 7 שנים לחוב רגיל ו-25 שנה לחוב שנפסק בפסק דין.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'חקירת יכולת',
+      description: 'דיון בפני רשם ההוצאה לפועל שבו החייב מצהיר על הכנסותיו, הוצאותיו ונכסיו לקביעת תשלום חודשי ריאלי.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'טענת פרעתי',
+      description: 'טענה של חייב שכבר שילם את החוב כולו או חלקו, המוגשת לרשם ההוצאה לפועל בצירוף ראיות.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'כונס נכסים',
+      description: 'עורך דין שממונה על ידי רשם ההוצאה לפועל או בית המשפט לתפוס ולממש נכס של חייב לטובת הנושים.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'לשכת הוצאה לפועל',
+      description: 'היחידה האזורית של רשות האכיפה והגבייה שמנהלת את תיקי ההוצאה לפועל — פתיחת תיקים, עיקולים ובקשות.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'מימוש',
+      description: 'מכירה כפויה של נכס מעוקל (דירה, רכב) והעברת התמורה לנושים — בשונה מעיקול רישומי בלבד.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'נאמן',
+      description: 'בעל תפקיד בהליך חדלות פירעון שבוחן את מצב החייב, מנהל את נכסיו ומפקח על תוכנית הפירעון.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'ערב מוגן',
+      description: 'יחיד שערב לחוב לא-עסקי עד תקרה הקבועה בחוק הערבות, שכלפיו הנושה חייב למצות הליכים נגד החייב תחילה.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'פסק דין',
+      description: 'הכרעה שיפוטית המחייבת תשלום — הבסיס הנפוץ לפתיחת תיק הוצאה לפועל.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'רשם ההוצאה לפועל',
+      description: 'בעל תפקיד שיפוטי בלשכת ההוצאה לפועל שמחליט בבקשות חייבים ונושים — צווי תשלומים, ביטול עיקולים והגבלות.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'שכר הגנה',
+      description: 'הסכום המינימלי מהשכר שאסור לעקל, הנקבע לפי הרכב המשפחה ומתעדכן מעת לעת.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
+    {
+      '@type': 'DefinedTerm',
+      name: 'תיקון 9',
+      description: 'תיקון לחוק פסיקת ריבית והצמדה (בתוקף מינואר 2025) ששינה את חישוב ריבית הפיגורים והגביל את דמי הפיגורים.',
+      inDefinedTermSet: 'https://hotzaa-lapoal.info/milon/',
+    },
   ],
 };
 ---
 
 <BaseLayout
   title="מילון מושגי הוצאה לפועל — 100+ הגדרות בעברית פשוטה (2026)"
-  description="מילון המונחים המקיף ביותר לחייבים: 100+ מושגי הוצאה לפועל מוסברים בעברית פשוטה — מ-עיקול חשבון בנק ועד תיקון 9. מאגר חינמי לבדיקה מהירה של כל מושג שלא הבנת במכתב מההוצאה לפועל."
+  description="מילון המונחים המקיף לחייבים: 100+ מושגי הוצאה לפועל מוסברים בעברית פשוטה — מעיקול חשבון בנק ועד תיקון 9. בדיקה מהירה וחינמית של כל מושג במכתב שקיבלת."
   canonicalUrl="https://hotzaa-lapoal.info/milon/"
   ogType="website"
   schema={schema}
