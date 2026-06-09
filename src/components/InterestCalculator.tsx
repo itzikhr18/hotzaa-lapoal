@@ -13,6 +13,7 @@ const RATES: Record<string, number> = {
   '2026-Q3': 0.0375, // עדכן בהחלטה הבאה
   '2026-Q4': 0.0375, // עדכן בהחלטה הבאה
 };
+const RATES_LAST_VERIFIED = 'מאי 2026'; // עדכן יחד עם RATES אחרי כל החלטת ריבית
 const PENALTY_RATE_NEW = 0.0025; // 0.25% לרבעון (1% בשנה) — דמי פיגורים תיקון 9
 const NEW_LAW_SPREAD = 0.035;   // 3.5% spread מעל ריבית בנק ישראל — ריבית בסיס תיקון 9
 const PENALTY_CAP_COMPLIANT = 0.70; // תקרה לחייב עומד בצו תשלומים
@@ -181,6 +182,13 @@ export default function InterestCalculator() {
       {/* Disclaimer */}
       <p className="text-xs text-gray-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 mt-4">
         ⚠️ מחשבון זה מיועד להערכה בלבד. לחישוב מדויק — פנה לעורך דין או לרשות האכיפה והגבייה.
+      </p>
+      <p className="text-xs text-gray-500 mt-2">
+        ריבית בנק ישראל במחשבון מעודכנת להחלטה האחרונה: {RATES_LAST_VERIFIED}.
+        ריביות מתעדכנות לאחר כל החלטת ועדה מוניטרית —{' '}
+        <a href="https://www.boi.org.il" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-700">
+          בדוק את הריבית הנוכחית באתר בנק ישראל
+        </a>.
       </p>
 
       {/* Results */}
