@@ -3,37 +3,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: 'מדריכים לחייבים — הוצאה לפועל בעברית פשוטה',
-  description: 'מדריכים מפורטים לכל שלב בהוצאה לפועל — עיקולים, הסדרים, זכויות. כתוב בשפה פשוטה, עדכני ל-2026.',
-  inLanguage: 'he',
-  url: 'https://hotzaa-lapoal.info/guides/',
-  hasPart: [
-    { '@type': 'Article', name: 'עיקול חשבון בנק', url: 'https://hotzaa-lapoal.info/guides/ikul-heshbon/' },
-    { '@type': 'Article', name: 'ביטול עיקול', url: 'https://hotzaa-lapoal.info/guides/bitul-ikul/' },
-    { '@type': 'Article', name: 'עיקול משכורת', url: 'https://hotzaa-lapoal.info/guides/ikul-maskoret/' },
-    { '@type': 'Article', name: 'צו תשלומים', url: 'https://hotzaa-lapoal.info/guides/tzav-tashlumim/' },
-    { '@type': 'Article', name: 'פשיטת רגל — חדלות פירעון', url: 'https://hotzaa-lapoal.info/guides/pshitat-regel/' },
-    { '@type': 'Article', name: 'מזונות בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/mazamot/' },
-    { '@type': 'Article', name: 'עיכוב יציאה מהארץ', url: 'https://hotzaa-lapoal.info/guides/ikul-yetzia/' },
-    { '@type': 'Article', name: 'איחוד תיקים', url: 'https://hotzaa-lapoal.info/guides/ichud-tikim/' },
-    { '@type': 'Article', name: 'ערב בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/arev/' },
-    { '@type': 'Article', name: 'עיקול פנסיה וקצבאות', url: 'https://hotzaa-lapoal.info/guides/ikul-pensiya/' },
-    { '@type': 'Article', name: 'עיקול דירה ומקרקעין', url: 'https://hotzaa-lapoal.info/guides/ikul-dira/' },
-    { '@type': 'Article', name: 'הסדר חוב עם נושים', url: 'https://hotzaa-lapoal.info/guides/hisdurim-chov/' },
-    { '@type': 'Article', name: 'בדיקת תיק הוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/bdika-tik/' },
-    { '@type': 'Article', name: 'ריבית בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/ribit-hotzaa/' },
-    { '@type': 'Article', name: 'ביטול הגבלות בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/bitul-hagbalot/' },
-    { '@type': 'Article', name: 'עיקול זמני', url: 'https://hotzaa-lapoal.info/guides/ikul-zman/' },
-    { '@type': 'Article', name: 'ערעור על החלטת הוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/irur-hotzaa/' },
-    { '@type': 'Article', name: 'לשכת הוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/lishkat-hotzaa/' },
-    { '@type': 'Article', name: 'עורך דין הוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/orech-din/' },
-    { '@type': 'Article', name: 'פסק דין בהוצאה לפועל', url: 'https://hotzaa-lapoal.info/guides/psak-din/' },
-  ],
-};
-
 const categories = [
   {
     name: 'קיבלתי מכתב — מה עושים?',
@@ -111,6 +80,23 @@ const categories = [
     ]
   },
 ];
+
+// CollectionPage schema — נבנית אוטומטית מכל המדריכים שמוצגים בעמוד
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'מדריכים לחייבים — הוצאה לפועל בעברית פשוטה',
+  description: 'מדריכים מפורטים לכל שלב בהוצאה לפועל — עיקולים, הסדרים, זכויות. כתוב בשפה פשוטה, עדכני ל-2026.',
+  inLanguage: 'he',
+  url: 'https://hotzaa-lapoal.info/guides/',
+  hasPart: categories.flatMap(cat =>
+    cat.guides.map(g => ({
+      '@type': 'Article',
+      name: g.title,
+      url: `https://hotzaa-lapoal.info${g.href}`,
+    }))
+  ),
+};
 ---
 
 <BaseLayout

@@ -113,7 +113,12 @@ export default function ChatBot({ apiKey }: { apiKey: string }) {
       </div>
 
       {/* Messages */}
-      <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 h-96 overflow-y-auto flex flex-col gap-3">
+      <div
+        className="bg-gray-50 border border-gray-200 rounded-xl p-4 h-96 overflow-y-auto flex flex-col gap-3"
+        role="log"
+        aria-live="polite"
+        aria-label="שיחה עם הצ'אטבוט"
+      >
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'user' ? 'justify-start' : 'justify-end'}`}>
             <div

@@ -278,7 +278,14 @@ export default function EligibilityChecker() {
           <span>שאלה {currentQ + 1} מתוך {questions.length}</span>
           <span>{progress}%</span>
         </div>
-        <div className="w-full bg-gray-100 rounded-full h-1.5">
+        <div
+          className="w-full bg-gray-100 rounded-full h-1.5"
+          role="progressbar"
+          aria-valuenow={progress}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={`שאלה ${currentQ + 1} מתוך ${questions.length}`}
+        >
           <div
             className="bg-blue-700 h-1.5 rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
