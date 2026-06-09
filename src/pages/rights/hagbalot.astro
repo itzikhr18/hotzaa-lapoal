@@ -1,5 +1,6 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
+import { wageSentence } from '../../data/protected-amounts';
 
 const howToSchema = {
   '@context': 'https://schema.org',
@@ -95,7 +96,7 @@ const faqSchema = {
     <p class="font-semibold text-blue-800 mb-2">מה אפשר לעקל מהשכר?</p>
     <ul class="space-y-1">
       <li><strong>לא ניתן לעקל את כל השכר</strong> — החוק מגן על "שכר הגנה" שנשאר בידי החייב</li>
-      <li><strong>שכר הגנה</strong> — סכום נטו שמשתנה לפי הרכב המשפחה (2026): יחיד כ-2,596 ₪, זוג 3,893 ₪, זוג + ילד 4,516 ₪, זוג + 2+ ילדים 5,139 ₪, הורה יחיד + ילד 4,250 ₪, הורה יחיד + 2+ ילדים 5,289 ₪</li>
+      <li><strong>שכר הגנה</strong> — סכום נטו שמשתנה לפי הרכב המשפחה: {wageSentence}</li>
       <li><strong>תקרת ניכוי</strong> — לרוב עד 20% מהשכר הנטו, ובלבד שתישאר ביד החייב יתרה של לפחות שכר ההגנה</li>
       <li><strong>חוב מזונות</strong> — אין תקרת הגנה אוטומטית; ניתן לעקל לפי החלטת רשם/בית משפט מעבר לסכומי הקיום הבסיסיים</li>
       <li><strong>ריבוי עיקולים</strong> — סכום העיקולים המצטבר מוגבל כך שתישאר יתרה לחיים בכבוד</li>
