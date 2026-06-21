@@ -16,12 +16,22 @@ const chatbotSchema = {
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: "האם הצ'אטבוט בחינם?", acceptedAnswer: { '@type': 'Answer', text: 'כן, לחלוטין. הצ\'אטבוט עונה על שאלות בנושא הוצאה לפועל וחדלות פירעון בעברית פשוטה, 24/7, ללא הרשמה וללא עלות.' } },
+    { '@type': 'Question', name: "על אילו נושאים הצ'אטבוט עונה?", acceptedAnswer: { '@type': 'Answer', text: 'עיקולים (חשבון, משכורת, רכב, נכסים), צו תשלומים, איחוד תיקים, סכומים מוגנים מעיקול, חדלות פירעון, ריבית לפי תיקון 9, והגבלות על חייב כמו עיכוב יציאה מהארץ.' } },
+    { '@type': 'Question', name: "האם תשובות הצ'אטבוט מהוות ייעוץ משפטי?", acceptedAnswer: { '@type': 'Answer', text: 'לא. הצ\'אטבוט נותן מידע כללי בלבד ויכול לטעות. הוא אינו מכיר את פרטי התיק שלך ואינו מחליף ייעוץ של עורך דין או פנייה ללשכה לסיוע משפטי.' } },
+  ],
+};
 ---
 
 <BaseLayout
   title="צ'אטבוט הוצאה לפועל — שאל שאלה וקבל תשובה"
   description="שאל שאלה על הוצאה לפועל וחדלות פירעון — צ'אטבוט AI שעונה בעברית פשוטה, 24/7, בחינם."
-  schema={chatbotSchema}
+  schema={[chatbotSchema, faqSchema]}
 >
   <Header />
   <main class="max-w-2xl mx-auto px-4 py-10">
@@ -43,6 +53,61 @@ const chatbotSchema = {
     <div class="mt-8">
       <Disclaimer variant="chatbot" />
     </div>
+
+    <!-- תוכן הסבר -->
+    <section class="mt-10 border-t pt-8 border-gray-200">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">במה הצ'אטבוט יכול לעזור?</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        הצ'אטבוט עונה על שאלות נפוצות בנושא הוצאה לפועל וחדלות פירעון בישראל, בעברית פשוטה ובחינם.
+        הוא מבוסס על חוק ההוצאה לפועל, חוק חדלות פירעון ותיקון 9 לחוק פסיקת ריבית — ונועד לתת
+        כיוון ראשוני ולהפנות אותך למדריך המתאים באתר.
+      </p>
+      <ul class="space-y-2 text-gray-600 text-sm leading-relaxed list-disc pr-5 mb-6">
+        <li>עיקולים — חשבון בנק, משכורת, רכב ונכסים — ומה אפשר לעשות</li>
+        <li>צו תשלומים, איחוד תיקים והסדרי חוב</li>
+        <li>סכומים וקצבאות מוגנים מעיקול</li>
+        <li>חדלות פירעון — זכאות, שלבים, עלויות והפטר</li>
+        <li>ריבית והצמדה לפי תיקון 9</li>
+        <li>הגבלות על חייב — עיכוב יציאה מהארץ ורישיון נהיגה</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">דוגמאות לשאלות שאפשר לשאול</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700">
+        {[
+          'עיקלו לי את חשבון הבנק — מה עושים?',
+          'כמה מהמשכורת מותר לעקל?',
+          'מה זה צו תשלומים ואיך מגישים בקשה?',
+          'האם קצבת ביטוח לאומי ניתנת לעיקול?',
+          'מי זכאי לחדלות פירעון וכמה זה עולה?',
+          'כמה ריבית משלמים על חוב לפי תיקון 9?',
+        ].map(q => (
+          <div class="bg-gray-50 border border-gray-200 rounded-lg px-3 py-2">„{q}”</div>
+        ))}
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">איך זה עובד?</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        הצ'אטבוט משתמש בבינה מלאכותית כדי להבין את השאלה ולנסח תשובה בהירה, על בסיס המידע המשפטי
+        העדכני בתחום ההוצאה לפועל. התשובות זמינות מיד, 24/7, ללא הרשמה וללא עלות. כדי לקבל תשובה
+        טובה — נסח שאלה אחת וברורה, וציין פרטים רלוונטיים (סוג העיקול, האם יש צו תשלומים וכד').
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">מגבלות חשובות</h2>
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-gray-700 leading-relaxed">
+        הצ'אטבוט נותן <strong>מידע כללי בלבד</strong> ואינו מהווה ייעוץ משפטי. הוא עלול לטעות,
+        ואינו מכיר את הפרטים הספציפיים של התיק שלך. לפני קבלת החלטה — כדאי לאמת את המידע מול
+        <a href="/guides/" class="text-brand hover:underline">המדריכים שלנו</a>, או לפנות לעורך דין /
+        <a href="https://www.gov.il/he/departments/ministry_of_justice_legal_aid/govil-landing-page" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">ללשכה לסיוע משפטי</a>.
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/faq/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">← 100+ שאלות ותשובות</a>
+        <span class="text-gray-300">|</span>
+        <a href="/guides/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">← כל המדריכים</a>
+        <span class="text-gray-300">|</span>
+        <a href="/tools/eligibility/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">← בדיקת מצב מהירה</a>
+      </div>
+    </section>
 
   </main>
   <Footer />
