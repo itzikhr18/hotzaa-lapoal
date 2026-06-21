@@ -58,7 +58,7 @@ const faqSchema = {
       name: 'מה ההבדל בין ריבית לדמי פיגורים?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'ריבית הוצאה לפועל (כ-8% לשנה) היא התמורה עבור השימוש בכסף שלא שולם. דמי פיגורים (1% לשנה = 0.25% לרבעון) הם קנס על האיחור בתשלום. שניהם גם יחד מגיעים לכ-9% לשנה. לפני תיקון 9 היו גם עמלות שרשרת נוספות שלא היו מוגבלות.',
+        text: 'ריבית הוצאה לפועל (כ-7.25% לשנה) היא התמורה עבור השימוש בכסף שלא שולם. דמי פיגורים (1% לשנה = 0.25% לרבעון) הם קנס על האיחור בתשלום. שניהם גם יחד מגיעים לכ-8.25% לשנה. לפני תיקון 9 היו גם עמלות שרשרת נוספות שלא היו מוגבלות.',
       },
     },
   ],
@@ -157,7 +157,7 @@ const howToSchema = {
   </ul>
 
   <div class="info-box">
-    <strong>סה"כ ריבית שנתית: כ-9% לשנה</strong><br />
+    <strong>סה"כ ריבית שנתית: כ-8.25% לשנה</strong><br />
     הריבית נצברת על הקרן המקורית שנפסקה בפסק הדין, לא על יתרת החוב המשתנה.
     ככל שהחוב גבוה יותר וכמה שיותר זמן עובר — כך הריבית גדולה יותר.
   </div>
@@ -195,14 +195,14 @@ const howToSchema = {
   <h3>מתי הריבית מגיעה לתקרה?</h3>
 
   <p>
-    בריבית של 9% לשנה, זמן ההגעה לתקרה (80%) הוא כ-<strong>8.9 שנים</strong>.
-    כלומר, חוב שנפתח היום יגיע לתקרת הריבית בסביבות שנת 2035. עם זאת, תשלומים חלקיים
+    בריבית של 8.25% לשנה, זמן ההגעה לתקרה (80%) הוא כ-<strong>9.7 שנים</strong>.
+    כלומר, חוב שנפתח היום יגיע לתקרת הריבית בסביבות שנת 2036. עם זאת, תשלומים חלקיים
     מפחיתים את הקרן ובכך גם מקצרים את הדרך לתקרה.
   </p>
 
   <h2 id="dugmaot">דוגמאות מחושבות — כמה שלם החוב שלך?</h2>
 
-  <p>להלן טבלת חישוב לדוגמה. החישוב מניח ריבית שנתית של 9% על הקרן המקורית:</p>
+  <p>להלן טבלת חישוב לדוגמה. החישוב מניח ריבית שנתית של 8.25% על הקרן המקורית:</p>
 
   <div style="overflow-x:auto; margin: 1.5rem 0;">
     <table style="width:100%; border-collapse:collapse; text-align:right; direction:rtl;">
@@ -219,29 +219,29 @@ const howToSchema = {
         <tr style="background:#eff6ff;">
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">30,000 ₪</td>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">1 שנה</td>
-          <td style="padding:10px 14px; border:1px solid #bfdbfe;">2,700 ₪</td>
-          <td style="padding:10px 14px; border:1px solid #bfdbfe;">32,700 ₪</td>
+          <td style="padding:10px 14px; border:1px solid #bfdbfe;">2,475 ₪</td>
+          <td style="padding:10px 14px; border:1px solid #bfdbfe;">32,475 ₪</td>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">לא (תקרה: 24,000 ₪)</td>
         </tr>
         <tr>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">50,000 ₪</td>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">1 שנה</td>
-          <td style="padding:10px 14px; border:1px solid #bfdbfe;">4,500 ₪</td>
-          <td style="padding:10px 14px; border:1px solid #bfdbfe;">54,500 ₪</td>
+          <td style="padding:10px 14px; border:1px solid #bfdbfe;">4,125 ₪</td>
+          <td style="padding:10px 14px; border:1px solid #bfdbfe;">54,125 ₪</td>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">לא (תקרה: 40,000 ₪)</td>
         </tr>
         <tr style="background:#eff6ff;">
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">50,000 ₪</td>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">5 שנים</td>
-          <td style="padding:10px 14px; border:1px solid #bfdbfe;">22,500 ₪</td>
-          <td style="padding:10px 14px; border:1px solid #bfdbfe;">72,500 ₪</td>
+          <td style="padding:10px 14px; border:1px solid #bfdbfe;">20,625 ₪</td>
+          <td style="padding:10px 14px; border:1px solid #bfdbfe;">70,625 ₪</td>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">לא (תקרה: 40,000 ₪)</td>
         </tr>
         <tr>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">100,000 ₪</td>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">3 שנים</td>
-          <td style="padding:10px 14px; border:1px solid #bfdbfe;">27,000 ₪</td>
-          <td style="padding:10px 14px; border:1px solid #bfdbfe;">127,000 ₪</td>
+          <td style="padding:10px 14px; border:1px solid #bfdbfe;">24,750 ₪</td>
+          <td style="padding:10px 14px; border:1px solid #bfdbfe;">124,750 ₪</td>
           <td style="padding:10px 14px; border:1px solid #bfdbfe;">לא (תקרה: 80,000 ₪)</td>
         </tr>
         <tr style="background:#eff6ff;">
@@ -263,13 +263,13 @@ const howToSchema = {
   <h3>דוגמה 1: חוב 50,000 ₪ שנפתח לפני שנה</h3>
 
   <p>
-    חוב קרן של 50,000 ₪ שנפתח לפני שנה בדיוק. בריבית שנתית של 9%:
+    חוב קרן של 50,000 ₪ שנפתח לפני שנה בדיוק. בריבית שנתית של 8.25%:
   </p>
   <ul>
-    <li>ריבית לשנה: 50,000 × 0.09 = <strong>4,500 ₪</strong></li>
-    <li>סה"כ חוב נוכחי: <strong>54,500 ₪</strong> (לא כולל הוצאות)</li>
+    <li>ריבית לשנה: 50,000 × 0.0825 = <strong>4,125 ₪</strong></li>
+    <li>סה"כ חוב נוכחי: <strong>54,125 ₪</strong> (לא כולל הוצאות)</li>
     <li>תקרת ריבית מקסימלית: 50,000 × 0.80 = <strong>40,000 ₪</strong></li>
-    <li>אם אין צו תשלומים, הריבית תמשיך לצבור עוד כ-7.9 שנים לפני שתעצור</li>
+    <li>אם אין צו תשלומים, הריבית תמשיך לצבור עוד כ-8.7 שנים לפני שתעצור</li>
   </ul>
 
   <h3>דוגמה 2: חוב 100,000 ₪ — מה התקרה המקסימלית?</h3>
@@ -278,10 +278,10 @@ const howToSchema = {
     חוב קרן של 100,000 ₪:
   </p>
   <ul>
-    <li>ריבית שנתית: 100,000 × 0.09 = <strong>9,000 ₪ לשנה</strong></li>
+    <li>ריבית שנתית: 100,000 × 0.0825 = <strong>8,250 ₪ לשנה</strong></li>
     <li>מקסימום ריבית כוללת: 100,000 × 0.80 = <strong>80,000 ₪</strong></li>
     <li>סה"כ מקסימלי ששתשלם (ריבית בלבד): <strong>180,000 ₪</strong></li>
-    <li>הריבית תגיע לתקרה בעוד כ-8.9 שנים ואז תיעצר לחלוטין</li>
+    <li>הריבית תגיע לתקרה בעוד כ-9.7 שנים ואז תיעצר לחלוטין</li>
   </ul>
 
   <h3>דוגמה 3: חוב 30,000 ₪ עם צו תשלומים — כמה חוסכים?</h3>
@@ -385,8 +385,8 @@ const howToSchema = {
   </p>
 
   <div class="info-box" style="font-family: monospace; font-size: 1.05rem;">
-    <strong>ריבית שנתית = קרן × 0.09</strong><br />
-    <strong>ריבית כוללת = קרן × 0.09 × מספר שנים</strong><br />
+    <strong>ריבית שנתית = קרן × 0.0825</strong><br />
+    <strong>ריבית כוללת = קרן × 0.0825 × מספר שנים</strong><br />
     <strong>תקרת ריבית = קרן × 0.80</strong> (או × 0.70 עם צו תשלומים)<br /><br />
     אם ריבית כוללת &gt; תקרת ריבית — הריבית מוגבלת לתקרה בלבד.
   </div>
@@ -395,11 +395,11 @@ const howToSchema = {
     <strong>דוגמה מספרית:</strong> קרן של 75,000 ₪, 6 שנים מאז פסיקת הדין:
   </p>
   <ul>
-    <li>ריבית שנתית: 75,000 × 0.09 = 6,750 ₪</li>
-    <li>ריבית כוללת ל-6 שנים: 6,750 × 6 = <strong>40,500 ₪</strong></li>
+    <li>ריבית שנתית: 75,000 × 0.0825 = 6,188 ₪</li>
+    <li>ריבית כוללת ל-6 שנים: 6,188 × 6 = <strong>37,125 ₪</strong></li>
     <li>תקרת ריבית: 75,000 × 0.80 = <strong>60,000 ₪</strong></li>
-    <li>מאחר ו-40,500 &lt; 60,000 — הריבית עדיין רצה ולא הגיעה לתקרה</li>
-    <li>סה"כ חוב משוער: 75,000 + 40,500 = <strong>115,500 ₪</strong></li>
+    <li>מאחר ו-37,125 &lt; 60,000 — הריבית עדיין רצה ולא הגיעה לתקרה</li>
+    <li>סה"כ חוב משוער: 75,000 + 37,125 = <strong>112,125 ₪</strong></li>
   </ul>
 
   <p>
@@ -548,7 +548,7 @@ const howToSchema = {
     <details>
       <summary>איך מחשבים ריבית הוצאה לפועל על חוב שלי?</summary>
       <p>
-        הנוסחה הבסיסית: ריבית שנתית = קרן × 0.09. ריבית כוללת = קרן × 0.09 × מספר שנים.
+        הנוסחה הבסיסית: ריבית שנתית = קרן × 0.0825. ריבית כוללת = קרן × 0.0825 × מספר שנים.
         אם הסכום שנחשב עולה על 80% מהקרן — מגבילים אותו לתקרה. לחישוב מדויק כולל
         הצמדה, הוצאות ואגרות — השתמש ב<a href="/tools/calculator/">כלי החישוב שלנו</a>.
       </p>
@@ -559,9 +559,9 @@ const howToSchema = {
     <details>
       <summary>מה ההבדל בין ריבית לדמי פיגורים?</summary>
       <p>
-        ריבית הוצאה לפועל (כ-8% לשנה) היא התמורה עבור השימוש בכסף שלא שולם — כמו ריבית
+        ריבית הוצאה לפועל (כ-7.25% לשנה) היא התמורה עבור השימוש בכסף שלא שולם — כמו ריבית
         רגילה על הלוואה. דמי פיגורים (1% לשנה) הם קנס על האיחור בתשלום החוב. לפי תיקון 9,
-        שני הרכיבים יחד מגיעים לכ-9% לשנה, וגם הם כפופים לתקרת ה-80%.
+        שני הרכיבים יחד מגיעים לכ-8.25% לשנה, וגם הם כפופים לתקרת ה-80%.
       </p>
     </details>
   </div>
@@ -592,7 +592,7 @@ const howToSchema = {
     <details>
       <summary>כמה זמן לוקח להגיע לתקרת הריבית?</summary>
       <p>
-        בריבית של 9% לשנה, נדרשות כ-8.9 שנים להגיע לתקרה של 80%. אבל זה מניח שלא שולם
+        בריבית של 8.25% לשנה, נדרשות כ-9.7 שנים להגיע לתקרה של 80%. אבל זה מניח שלא שולם
         כלום בינתיים. תשלומים חלקיים מורידים את הקרן ובכך "מזרזים" את ההגעה לתקרה
         (מכיוון שהתקרה היא אחוז מהקרן המקורית, לא מהיתרה). עם צו תשלומים — התקרה נמוכה יותר.
       </p>
@@ -603,7 +603,7 @@ const howToSchema = {
 
   <ul>
     <li>
-      <strong>הריבית היא כ-9% לשנה</strong> — גבוהה, אבל עכשיו עם תקרה של 80% מהקרן
+      <strong>הריבית היא כ-8.25% לשנה</strong> — גבוהה, אבל עכשיו עם תקרה של 80% מהקרן
     </li>
     <li>
       <strong>צו תשלומים</strong> מוריד את התקרה ל-70% וחוסך כסף אמיתי — כדאי להגיש

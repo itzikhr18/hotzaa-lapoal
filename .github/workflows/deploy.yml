@@ -24,8 +24,20 @@ jobs:
 
       - name: Build
         run: npm run build
+        # אין מפתח API בזמן ה-build. מפתח Gemini נשמר כסוד בצד השרת בלבד
+        # ונקרא ע"י ה-Pages Function (functions/api/chat.js) בזמן ריצה.
+        # הסוד מסונכרן אוטומטית ל-Cloudflare בשלב "Sync Gemini secret" שלמטה —
+        # אין צורך בהגדרה ידנית בדאשבורד.
+
+      # מסנכרן את מפתח Gemini ל-Cloudflare Pages כסוד בצד השרת (GEMINI_API_KEY),
+      # מתוך ה-GitHub secret הקיים — כך שאין צורך בהגדרה ידנית בדאשבורד.
+      # idempotent: רץ בכל דיפלוי ודורס את הערך הקיים באותו ערך.
+      - name: Sync Gemini secret to Cloudflare Pages
+        run: printf '%s' "$GEMINI_API_KEY" | npx wrangler@3 pages secret put GEMINI_API_KEY --project-name=hotzaa-lapoal
         env:
-          PUBLIC_GEMINI_API_KEY: ${{ secrets.PUBLIC_GEMINI_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: fc219626f8a49dc56bb0979ab7543862
+          GEMINI_API_KEY: ${{ secrets.PUBLIC_GEMINI_API_KEY }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
