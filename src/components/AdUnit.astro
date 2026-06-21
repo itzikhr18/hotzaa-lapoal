@@ -1,0 +1,47 @@
+---
+/**
+ * יחידת מודעה בודדת של AdSense.
+ * נשלטת מ-src/data/ads.ts — אם אין slot מוגדר, לא מוצג כלום.
+ *
+ * שימוש:
+ *   <AdUnit slot="sidebar" />
+ *   <AdUnit slot="inArticle" layout="in-article" />
+ */
+import { ADSENSE_CLIENT, ADS_ENABLED, AD_SLOTS } from '../data/ads';
+
+export interface Props {
+  slot: keyof typeof AD_SLOTS;
+  layout?: 'display' | 'in-article';
+  class?: string;
+}
+
+const { slot, layout = 'display', class: className = '' } = Astro.props;
+const slotId = AD_SLOTS[slot];
+const show = ADS_ENABLED && !!slotId;
+---
+
+{show && (
+  <div class={`ad-container my-8 text-center ${className}`} aria-hidden="true">
+    <span class="block text-[10px] uppercase tracking-wider text-neutral-muted mb-1">פרסומת</span>
+    {layout === 'in-article' ? (
+      <ins
+        class="adsbygoogle"
+        style="display:block; text-align:center;"
+        data-ad-client={ADSENSE_CLIENT}
+        data-ad-slot={slotId}
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+      ></ins>
+    ) : (
+      <ins
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client={ADSENSE_CLIENT}
+        data-ad-slot={slotId}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+    )}
+    <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+)}
