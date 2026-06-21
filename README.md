@@ -100,17 +100,22 @@ git push -u origin main
 ### הגדרת הצ'אטבוט (מפתח Gemini — בצד השרת בלבד)
 
 הצ'אטבוט פונה ל-Gemini דרך Pages Function (`functions/api/chat.js`), כך שהמפתח
-**לא נחשף בדפדפן**. יש להגדיר את המפתח פעם אחת כסוד בצד השרת:
+**לא נחשף בדפדפן**.
+
+**אוטומטי (ברירת המחדל):** ה-workflow ב-`.github/workflows/deploy.yml` מסנכרן בכל
+דיפלוי את הסוד `GEMINI_API_KEY` ל-Cloudflare Pages, מתוך ה-GitHub secret הקיים
+`PUBLIC_GEMINI_API_KEY`. **לא נדרשת שום פעולה ידנית** — רק שה-secret קיים ב-GitHub
+(Settings → Secrets and variables → Actions).
+
+הגדרה ידנית (רק אם מדלגים על ה-CI):
 
 ```bash
-# דרך הדאשבורד: Cloudflare Pages → הפרויקט → Settings → Environment variables →
-#   הוסף משתנה בשם GEMINI_API_KEY מסוג Secret
-# או דרך CLI:
 npx wrangler pages secret put GEMINI_API_KEY --project-name=hotzaa-lapoal
 ```
 
-> ⚠️ אין להשתמש יותר ב-`PUBLIC_GEMINI_API_KEY` — קידומת `PUBLIC_` אורזת את הערך לתוך
-> קוד הדפדפן וחושפת אותו. לבדיקה מקומית של הצ'אטבוט: `npx wrangler pages dev dist`.
+> ⚠️ אין להשתמש ב-`PUBLIC_GEMINI_API_KEY` **בקוד האתר עצמו** — קידומת `PUBLIC_` אורזת
+> את הערך לתוך קוד הדפדפן וחושפת אותו. (כשם GitHub secret זה תקין לחלוטין — הוא נקרא
+> רק בתוך ה-CI ולא מגיע לדפדפן.) לבדיקה מקומית של הצ'אטבוט: `npx wrangler pages dev dist`.
 
 ---
 
