@@ -15,12 +15,22 @@ const eligibilitySchema = {
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'בדיקת המצב מחייבת אותי למשהו?', acceptedAnswer: { '@type': 'Answer', text: 'לא. הבדיקה היא כלי מידע חינמי ואנונימי, ואינה שומרת או שולחת את תשובותיך לאף גורם. היא נועדה רק לעזור לך להבין לאן להתקדם.' } },
+    { '@type': 'Question', name: 'תוצאת הבדיקה היא החלטה סופית?', acceptedAnswer: { '@type': 'Answer', text: 'לא. זו הערכה ראשונית בלבד. ההחלטה על מסלול הסדר מתקבלת מול רשם ההוצאה לפועל או בית המשפט, ולעיתים כדאי להיוועץ בעורך דין לפני הגשה.' } },
+    { '@type': 'Question', name: 'מה ההבדל בין צו תשלומים, איחוד תיקים וחדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'צו תשלומים פורס חוב לתשלומים חודשיים לפי היכולת; איחוד תיקים מרכז כמה תיקים לתשלום אחד; חדלות פירעון היא הליך שיקום כלכלי שמוביל להפטר כשאין יכולת לפרוע את החוב.' } },
+  ],
+};
 ---
 
 <BaseLayout
   title="בדיקת מצב מהירה — מה הפתרון הנכון לך?"
   description="4 שאלות פשוטות ותקבל המלצה מה לעשות עכשיו — צו תשלומים, איחוד תיקים, או חדלות פירעון. חינם, מיידי, בעברית."
-  schema={eligibilitySchema}
+  schema={[eligibilitySchema, faqSchema]}
 >
   <Header />
   <main class="max-w-2xl mx-auto px-4 py-10">
@@ -39,6 +49,77 @@ const eligibilitySchema = {
     <div class="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700">
       ⚠️ הכלי מספק הכוונה כללית בלבד ואינו מהווה ייעוץ משפטי. לייעוץ אישי — פנה לעורך דין.
     </div>
+
+    <!-- תוכן הסבר -->
+    <section class="mt-10 border-t pt-8 border-gray-200">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">איך עובדת בדיקת המצב?</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        הבדיקה שואלת אותך ארבע שאלות קצרות — גובה החוב הכולל, מספר התיקים הפתוחים, ההכנסה
+        החודשית הפנויה, והאם יש לך נכסים שאפשר לממש. לפי התשובות, הכלי מכוון אותך למסלול ההסדר
+        שהכי מתאים למצב שלך. זו הערכה ראשונית בלבד שנועדה לעזור לך להבין לאן להתקדם — היא אינה
+        החלטה רשמית ואינה מחליפה ייעוץ משפטי אישי.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">שלושת המסלולים העיקריים</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          {
+            t: 'צו תשלומים',
+            d: 'פריסת החוב לתשלומים חודשיים לפי היכולת הכלכלית שלך. הרשם קובע סכום חודשי, וכל עוד עומדים בו ניתן לרוב למנוע או לצמצם עיקולים חדשים. מתאים כשיש הכנסה קבועה.',
+            href: '/guides/tzav-tashlumim/',
+          },
+          {
+            t: 'איחוד תיקים',
+            d: 'איחוד כל התיקים שלך לתשלום חודשי אחד מרוכז, במקום להתמודד עם כל נושה בנפרד. מתאים כשיש לך כמה תיקים פתוחים אצל נושים שונים.',
+            href: '/guides/ichud-tikim/',
+          },
+          {
+            t: 'חדלות פירעון',
+            d: 'הליך שיקום כלכלי שמוביל בסופו להפטר — מחיקת החובות. מתאים כשהחוב גבוה ואין יכולת ריאלית לפרוע אותו (דורש סכום חוב מינימלי — כ-58,794 ₪ ב-2026).',
+            href: '/guides/pshitat-regel/',
+          },
+        ].map(m => (
+          <a href={m.href} class="block bg-white border border-neutral-border rounded-xl p-5 hover:border-brand hover:bg-brand-pale transition-all">
+            <p class="font-bold text-brand-dark mb-2">{m.t}</p>
+            <p class="text-sm text-gray-600 leading-relaxed">{m.d}</p>
+            <span class="text-brand text-sm font-semibold mt-3 inline-block">למדריך המלא ←</span>
+          </a>
+        ))}
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">מתי כל מסלול מתאים?</h2>
+      <ul class="space-y-2 text-gray-600 text-sm leading-relaxed list-disc pr-5">
+        <li><strong>חוב אחד או שניים והכנסה יציבה</strong> — לרוב צו תשלומים הוא הפתרון הפשוט והמהיר.</li>
+        <li><strong>הרבה תיקים אצל נושים שונים</strong> — איחוד תיקים מרכז הכול לתשלום אחד ומונע כפל עיקולים.</li>
+        <li><strong>חוב גבוה ללא יכולת פירעון</strong> — חדלות פירעון מאפשרת שיקום כלכלי והפטר מהחובות.</li>
+        <li><strong>לא בטוח מה פתוח נגדך?</strong> — התחל מ<a href="/guides/bdika-tik/" class="text-brand hover:underline">בדיקת תיק הוצאה לפועל</a>, ואז חזור לבדיקה כאן.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">שאלות נפוצות</h2>
+      <div class="space-y-3">
+        {[
+          { q: 'הבדיקה מחייבת אותי למשהו?', a: 'לא. הבדיקה היא כלי מידע חינמי לחלוטין, אנונימי, ואינה שומרת או שולחת את תשובותיך לאף גורם. היא נועדה רק לעזור לך להבין לאן להתקדם.' },
+          { q: 'התוצאה היא החלטה סופית?', a: 'לא. זו הערכה ראשונית בלבד. ההחלטה על מסלול הסדר מתקבלת מול רשם ההוצאה לפועל או בית המשפט, ולעיתים כדאי להיוועץ בעורך דין לפני הגשה.' },
+          { q: 'מה אם אני לא יודע כמה אני חייב?', a: 'אפשר לבקש פירוט תיק מלשכת ההוצאה לפועל או דרך אתר רשות האכיפה. ראה גם את המדריך לבדיקת תיק הוצאה לפועל לפי תעודת זהות.' },
+        ].map(faq => (
+          <details class="border border-neutral-border rounded-xl group">
+            <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center text-sm">
+              {faq.q}
+              <span class="text-neutral-muted group-open:rotate-180 transition-transform flex-shrink-0 mr-2">▼</span>
+            </summary>
+            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/guides/tzav-tashlumim/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">← מדריך צו תשלומים</a>
+        <span class="text-gray-300">|</span>
+        <a href="/guides/ichud-tikim/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">← מדריך איחוד תיקים</a>
+        <span class="text-gray-300">|</span>
+        <a href="/insolvency/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">← חדלות פירעון</a>
+      </div>
+    </section>
 
   </main>
   <Footer />
