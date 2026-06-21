@@ -1,25 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
-const SYSTEM_PROMPT = `אתה עוזר מידע מקצועי בנושא הוצאה לפועל וחדלות פירעון בישראל.
-
-כללים מחייבים:
-- אתה עונה רק בעברית
-- אתה לא עורך דין ולא נותן ייעוץ משפטי אישי
-- אתה עונה בשפה פשוטה, חברית ואמפתית — כמו חבר חכם שמסביר
-- תשובות קצרות לשאלות פשוטות (2-3 משפטים), מפורטות לשאלות מורכבות
-- בסוף כל תשובה — הוסף disclaimer קצר: "מידע זה הוא כללי בלבד ואינו ייעוץ משפטי."
-- אם השאלה מחוץ לתחום הוצאה לפועל/חדלות פירעון — אמור בנימוס שאתה מתמחה רק בתחום זה
-
-נושאים שאתה מכסה:
-- הוצאה לפועל: עיקולים, צו תשלומים, איחוד תיקים, זכויות חייבים
-- חדלות פירעון: הליך, זכאות, עלויות, הפטר, שלבים
-- תיקון 9 לחוק פסיקת ריבית (מינואר 2025)
-- נכסים וסכומים מוגנים מעיקול
-- הגבלות על חייב (עיכוב יציאה, רישיון נהיגה)
-
-כשאתה לא יודע לענות — אמור בדיוק כך:
-"אין לי מידע מספיק על שאלה זו. מומלץ להתייעץ עם עורך דין המתמחה בהוצאה לפועל, או לפנות ללשכה לסיוע משפטי."
-ואז הצע מדריך רלוונטי מהאתר אם קיים.`;
+// המפתח של Gemini וה-SYSTEM_PROMPT נמצאים בצד השרת בלבד (functions/api/chat.js).
+// הרכיב הזה מדבר רק עם /api/chat ולעולם לא עם Gemini ישירות — כך המפתח לא נחשף בדפדפן.
 
 const SUGGESTED_QUESTIONS = [
   'עיקלו לי את חשבון הבנק — מה עושים?',
@@ -36,7 +18,7 @@ interface Message {
   loading?: boolean;
 }
 
-export default function ChatBot({ apiKey }: { apiKey: string }) {
+export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
@@ -59,32 +41,22 @@ export default function ChatBot({ apiKey }: { apiKey: string }) {
     setLoading(true);
 
     try {
-      const history = messages
-        .filter(m => !m.loading)
-        .map(m => ({
-          role: m.role === 'user' ? 'user' : 'model',
-          parts: [{ text: m.text }],
-        }));
+      // שולחים את כל היסטוריית השיחה (כולל ההודעה החדשה) ל-proxy בצד השרת.
+      // המפתח של Gemini נשמר בשרת (functions/api/chat.js) ולא נחשף בדפדפן.
+      const convo = [...messages.filter(m => !m.loading), { role: 'user' as const, text }];
 
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-            contents: [
-              ...history,
-              { role: 'user', parts: [{ text }] },
-            ],
-            generationConfig: { maxOutputTokens: 800, temperature: 0.3 },
-          }),
-        }
-      );
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: convo.map(m => ({ role: m.role, text: m.text })),
+        }),
+      });
 
       const data = await res.json();
       const reply =
-        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+        data?.reply ||
+        data?.error ||
         'מצטער, לא הצלחתי לעבד את השאלה. נסה שוב.';
 
       setMessages(prev => [
@@ -96,7 +68,7 @@ export default function ChatBot({ apiKey }: { apiKey: string }) {
         ...prev.slice(0, -1),
         {
           role: 'assistant',
-          text: 'אירעה שגיאה טכנית. בדוק שמפתח ה-API תקין ונסה שוב.',
+          text: 'אירעה שגיאה טכנית. נסה שוב מאוחר יותר.',
         },
       ]);
     } finally {

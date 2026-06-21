@@ -24,8 +24,11 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          PUBLIC_GEMINI_API_KEY: ${{ secrets.PUBLIC_GEMINI_API_KEY }}
+        # אין יותר מפתח API בזמן ה-build. מפתח Gemini נשמר כסוד בצד השרת בלבד
+        # ונקרא ע"י ה-Pages Function (functions/api/chat.js) בזמן ריצה.
+        # הגדרה חד-פעמית: Cloudflare Pages → הפרויקט → Settings → Environment variables →
+        # הוסף משתנה בשם GEMINI_API_KEY מסוג Secret
+        # (לחלופין: npx wrangler pages secret put GEMINI_API_KEY --project-name=hotzaa-lapoal).
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

@@ -5,9 +5,6 @@ import Footer from '../../components/Footer.astro';
 import ChatBot from '../../components/ChatBot';
 import Disclaimer from '../../components/Disclaimer.astro';
 
-// מפתח ה-API נקרא ממשתנה סביבה — לא נכנס לקוד!
-const apiKey = import.meta.env.PUBLIC_GEMINI_API_KEY ?? '';
-
 const chatbotSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
@@ -41,14 +38,7 @@ const chatbotSchema = {
       המידע באתר ובצ'אטבוט הוא מידע כללי בלבד ואינו מהווה ייעוץ משפטי. כל מקרה נבחן לפי נסיבותיו, ולכן מומלץ להתייעץ עם עורך דין לפני קבלת החלטות.
     </div>
 
-    {apiKey ? (
-      <ChatBot apiKey={apiKey} client:load />
-    ) : (
-      <div class="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
-        <p class="font-bold text-red-800 mb-2">הצ'אטבוט אינו זמין כרגע</p>
-        <p class="text-sm text-red-600">מפתח ה-API לא הוגדר. הוסף את <code>GEMINI_API_KEY</code> למשתני הסביבה.</p>
-      </div>
-    )}
+    <ChatBot client:load />
 
     <div class="mt-8">
       <Disclaimer variant="chatbot" />
