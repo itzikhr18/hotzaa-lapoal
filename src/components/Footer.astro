@@ -1,4 +1,6 @@
 ---
+import { SOCIAL_PROFILES } from '../data/site';
+
 const year = new Date().getFullYear();
 
 const columns = [
@@ -81,6 +83,25 @@ const columns = [
         </div>
       ))}
     </div>
+
+    <!-- Social profiles — renders only when SOCIAL_PROFILES is populated (see src/data/site.ts) -->
+    {SOCIAL_PROFILES.length > 0 && (
+      <div class="border-t border-neutral-border pt-6 mb-2 flex flex-wrap gap-3 items-center">
+        <span class="text-sm font-bold text-gray-800">עקבו אחרינו:</span>
+        {SOCIAL_PROFILES.map(p => (
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-sm text-neutral-muted hover:text-brand-dark transition-colors"
+            aria-label={p.label}
+          >
+            <span aria-hidden="true">{p.icon}</span>
+            <span>{p.label}</span>
+          </a>
+        ))}
+      </div>
+    )}
 
     <!-- Bottom bar -->
     <div class="border-t border-neutral-border pt-6 flex flex-col md:flex-row gap-3 justify-between items-start md:items-center text-xs text-neutral-muted">

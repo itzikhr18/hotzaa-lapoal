@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTAForm from '../components/CTAForm.astro';
+import { socialUrls } from '../data/site';
 
 const websiteSchema = {
   '@context': 'https://schema.org',
@@ -36,6 +37,8 @@ const organizationSchema = {
     availableLanguage: 'Hebrew',
     url: 'https://hotzaa-lapoal.info/contact/',
   },
+  // sameAs is emitted only once real social profiles are added in src/data/site.ts
+  ...(socialUrls().length ? { sameAs: socialUrls() } : {}),
 };
 
 const homeFaqSchema = {
