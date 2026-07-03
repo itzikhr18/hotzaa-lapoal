@@ -16,6 +16,12 @@ export interface Props {
   readTime?: string;
   relatedGuides?: { title: string; href: string }[];
   sources?: { label: string; href: string }[];
+  authorName?: string;
+  authorTitle?: string;
+  reviewerName?: string;
+  reviewerTitle?: string;
+  lastFactCheck?: string;
+  actionLinks?: { label: string; href: string; note: string }[];
 }
 
 const defaultRelatedGuides = [
@@ -24,6 +30,13 @@ const defaultRelatedGuides = [
   { title: 'ביטול עיקול', href: '/guides/bitul-ikul/' },
   { title: 'עיקול משכורת', href: '/guides/ikul-maskoret/' },
   { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
+];
+
+const defaultActionLinks = [
+  { label: 'בדיקת תיק לפי תעודת זהות', href: '/guides/bdika-tik/', note: 'להבין מה פתוח נגדך' },
+  { label: 'מחשבון ריבית תיקון 9', href: '/tools/calculator/', note: 'הערכת קרן, ריבית ודמי פיגורים' },
+  { label: 'בדיקת מצב מהירה', href: '/tools/eligibility/', note: 'צו תשלומים, איחוד תיקים או חדלות פירעון' },
+  { label: 'שאל את הצ׳אטבוט', href: '/tools/chatbot/', note: 'הכוונה כללית מיידית' },
 ];
 
 const {
@@ -36,6 +49,12 @@ const {
   readTime = '5 דקות',
   relatedGuides = defaultRelatedGuides,
   sources,
+  authorName = 'מערכת הוצאהלפועל.info',
+  authorTitle = 'עריכת תוכן משפטי לציבור',
+  reviewerName,
+  reviewerTitle,
+  lastFactCheck = updateDate,
+  actionLinks = defaultActionLinks,
 } = Astro.props;
 
 const defaultSources = [
@@ -52,6 +71,27 @@ const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
 
 const articleSection = breadcrumb[0]?.label ?? 'מדריכים';
 
+const authorSchema = authorName === 'מערכת הוצאהלפועל.info'
+  ? {
+      '@type': 'Organization',
+      name: authorName,
+      url: `${siteUrl}/about/`,
+    }
+  : {
+      '@type': 'Person',
+      name: authorName,
+      jobTitle: authorTitle,
+      url: `${siteUrl}/about/`,
+    };
+
+const reviewerSchema = reviewerName
+  ? {
+      '@type': 'Person',
+      name: reviewerName,
+      jobTitle: reviewerTitle,
+    }
+  : undefined;
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -60,11 +100,7 @@ const articleSchema = {
   inLanguage: 'he',
   url: canonicalUrl,
   image: `${siteUrl}/og-image.png`,
-  author: {
-    '@type': 'Organization',
-    name: 'הוצאהלפועל.info',
-    url: `${siteUrl}/about/`,
-  },
+  author: authorSchema,
   publisher: {
     '@type': 'Organization',
     name: 'הוצאהלפועל.info',
@@ -73,7 +109,8 @@ const articleSchema = {
   },
   datePublished: publishDate,
   dateModified: updateDate ?? publishDate,
-  ...(updateDate ? { reviewedBy: { '@type': 'Organization', name: 'הוצאהלפועל.info' }, lastReviewed: updateDate } : {}),
+  ...(reviewerSchema ? { reviewedBy: reviewerSchema } : {}),
+  ...(lastFactCheck ? { lastReviewed: lastFactCheck } : {}),
   articleSection,
   genre: 'legal information',
   isAccessibleForFree: true,
@@ -145,6 +182,29 @@ const schemas = schema
             {updateDate && <span>עודכן: {updateDate}</span>}
             <span>זמן קריאה: {readTime}</span>
           </div>
+
+          <div class="mt-4 grid gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-gray-700">
+            <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+              <p>
+                <strong class="text-blue-900">נכתב ונערך על ידי:</strong>
+                <a href="/about/" class="text-brand hover:text-brand-dark transition-colors">{authorName}</a>
+                <span class="text-gray-500"> — {authorTitle}</span>
+              </p>
+              {lastFactCheck && <p class="text-xs text-blue-800">בדיקת עובדות אחרונה: {lastFactCheck}</p>}
+            </div>
+            {reviewerName ? (
+              <p>
+                <strong class="text-blue-900">נבדק מקצועית על ידי:</strong>
+                {reviewerName}
+                {reviewerTitle && <span class="text-gray-500"> — {reviewerTitle}</span>}
+              </p>
+            ) : (
+              <p class="text-xs leading-relaxed text-gray-600">
+                המידע נבדק מול מקורות רשמיים ומוצג כהכוונה כללית בלבד. כאשר יתווסף בודק משפטי אישי, שמו ותפקידו יוצגו כאן במפורש.
+              </p>
+            )}
+          </div>
+
           <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
             <span class="flex items-center gap-1">
               <span>✓</span>
@@ -219,6 +279,20 @@ const schemas = schema
       <!-- Sidebar -->
       <aside class="lg:sticky lg:top-24 space-y-6">
         <CTAForm compact />
+
+        <div class="bg-white border border-neutral-border rounded-xl p-4 text-sm">
+          <p class="font-semibold text-gray-800 mb-3">פעולות מהירות</p>
+          <ul class="space-y-3">
+            {actionLinks.map(action => (
+              <li>
+                <a href={action.href} class="block rounded-lg border border-transparent p-2 -m-2 hover:border-brand-light hover:bg-brand-pale transition-colors">
+                  <span class="block font-semibold text-brand-dark">{action.label}</span>
+                  <span class="block text-xs text-neutral-muted mt-0.5">{action.note}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <!-- Related guides box -->
         <div class="bg-white border border-neutral-border rounded-xl p-4 text-sm">

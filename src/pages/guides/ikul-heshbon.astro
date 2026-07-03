@@ -94,6 +94,12 @@ const faqSchema = {
     { title: 'עיקול משכורת', href: '/guides/ikul-maskoret/' },
     { title: 'איחוד תיקים', href: '/guides/ichud-tikim/' },
   ]}
+  actionLinks={[
+    { label: 'בדוק אם הכסף מוגן', href: '/rights/skhomim-mugganim/', note: 'קצבאות, שכר הגנה ופנסיה' },
+    { label: 'בקש ביטול עיקול', href: '/guides/bitul-ikul/', note: 'נימוקים, מסמכים וטופס מתאים' },
+    { label: 'בקש צו תשלומים', href: '/guides/tzav-tashlumim/', note: 'כשיש חוב אמיתי וצריך פריסה' },
+    { label: 'שאל את הצ׳אטבוט', href: '/tools/chatbot/', note: 'להבין את הצעד הבא לפי המצב' },
+  ]}
 >
 
   <p>
@@ -113,6 +119,66 @@ const faqSchema = {
       <li><strong>הגש בקשת ביטול</strong> — טופס 214 ללשכת ההוצאה לפועל, עם כל ראיות הכספים המוגנים.</li>
       <li><strong>אם החוב אמיתי</strong> — בקש צו תשלומים במקביל; הצו מקפיא עיקולים חדשים.</li>
     </ol>
+  </div>
+
+  <h2>מה עושים עכשיו לפי רמת הדחיפות</h2>
+  <p>
+    אם גילית על עיקול חשבון בנק, השאלה הראשונה היא לא "האם החוב מוצדק" אלא
+    <strong>כמה זמן נשאר לפני שהכסף יעבור לנושה</strong>. ככל שפועלים מוקדם יותר,
+    כך קל יותר לעצור את מימוש הכסף ולבקש מהרשם לבדוק את מקור הכספים.
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">המצב שלך</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה לעשות עכשיו</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מסמכים שכדאי להכין</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הבנק הודיע היום על עיקול</td>
+          <td class="border border-gray-300 px-4 py-2">להגיש בקשה דחופה לעיכוב הליכים ולשחרור כספים מוגנים, עוד לפני העברת הכסף לנושה.</td>
+          <td class="border border-gray-300 px-4 py-2">דפי בנק, הודעת הבנק, אישורי קצבאות או תלושי שכר.</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הכסף הגיע מקצבה או שכר</td>
+          <td class="border border-gray-300 px-4 py-2">לבקש ביטול עיקול על כספים מוגנים ולהדגיש את מקור ההפקדה.</td>
+          <td class="border border-gray-300 px-4 py-2">אישור ביטוח לאומי, תלושי שכר, פירוט הפקדות ב-90 הימים האחרונים.</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">החוב אמיתי אבל אין יכולת לשלם בבת אחת</td>
+          <td class="border border-gray-300 px-4 py-2">להגיש בקשה לצו תשלומים במקביל לבקשת עיכוב או ביטול עיקול.</td>
+          <td class="border border-gray-300 px-4 py-2">פירוט הכנסות, הוצאות, חובות, דפי חשבון ותלושי שכר.</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">העיקול כבר מומש</td>
+          <td class="border border-gray-300 px-4 py-2">עדיין אפשר לבקש החזר או תיקון, אבל נטל ההוכחה גבוה יותר וכדאי לשקול ייעוץ משפטי.</td>
+          <td class="border border-gray-300 px-4 py-2">אישור מימוש, דפי בנק, מקור הכספים והחלטות קודמות בתיק.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>נוסח בסיסי לבקשה דחופה לעיכוב עיקול</h2>
+  <p>
+    הנוסח הבא הוא דוגמה כללית בלבד. יש להתאים אותו לפרטי התיק, לסוג הכספים,
+    ולמסמכים שיש בידיך. אם מדובר בסכום משמעותי, חוב מזונות, חשבון משותף או כסף שכבר הועבר,
+    מומלץ לקבל ייעוץ משפטי לפני הגשה.
+  </p>
+
+  <div class="not-prose my-6 rounded-xl border border-gray-300 bg-white p-5 text-sm leading-relaxed text-gray-700">
+    <p class="font-bold text-gray-900 mb-3">דוגמת נוסח:</p>
+    <p>
+      לכבוד רשם ההוצאה לפועל,<br />
+      אבקש להורות על עיכוב מימוש העיקול שהוטל על חשבון הבנק שלי ועל שחרור הכספים המוגנים.
+      הכספים בחשבון מקורם ב: [קצבת ביטוח לאומי / שכר עבודה / פנסיה / מקור אחר].
+      מצורפים דפי חשבון ואישורים המעידים על מקור ההפקדה.
+      מימוש העיקול יפגע ביכולתי לשלם הוצאות מחיה בסיסיות, ולכן אבקש החלטה דחופה.
+      ככל שהחוב בתיק קיים, אבקש לבחון גם פריסת תשלומים בהתאם ליכולתי הכלכלית.
+    </p>
   </div>
 
   <h2>מה זה בכלל עיקול חשבון בנק?</h2>
