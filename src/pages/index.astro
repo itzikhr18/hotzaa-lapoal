@@ -232,7 +232,7 @@ const homeFaqSchema = {
           <p class="text-gray-500">ייחודיים בשוק — פותחנו אותם כי הם לא היו קיימים</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
             {
               icon: '🧮',
@@ -260,6 +260,15 @@ const homeFaqSchema = {
               tag: '4 שאלות בלבד',
               tagColor: 'bg-purple-100 text-purple-700',
               href: '/tools/eligibility/',
+            },
+            {
+              icon: '📋',
+              bg: 'bg-amber-50',
+              name: 'טפסים ונוסחים',
+              desc: 'טופס 214, צו תשלומים ונוסחים קצרים לבקשות דחופות',
+              tag: 'להגשה עצמית',
+              tagColor: 'bg-amber-100 text-amber-700',
+              href: '/forms/',
             },
           ].map(tool => (
             <a href={tool.href} class="group bg-white border border-neutral-border rounded-2xl p-6 hover:border-brand hover:shadow-sm transition-all block">

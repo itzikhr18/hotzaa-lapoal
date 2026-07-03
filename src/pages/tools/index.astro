@@ -7,20 +7,21 @@ const toolsSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'כלים חינמיים להוצאה לפועל',
-  description: "כלים חינמיים לחייבים בהוצאה לפועל: מחשבון ריבית תיקון 9 וצ'אטבוט AI שעונה על שאלות 24/7",
+  description: "כלים חינמיים לחייבים בהוצאה לפועל: מחשבון ריבית תיקון 9, צ'אטבוט AI, בדיקת מצב וטפסים ונוסחים להגשה עצמית.",
   url: 'https://hotzaa-lapoal.info/tools/',
   inLanguage: 'he',
   hasPart: [
     { '@type': 'WebApplication', name: 'מחשבון ריבית הוצאה לפועל — תיקון 9', url: 'https://hotzaa-lapoal.info/tools/calculator/' },
     { '@type': 'WebApplication', name: "צ'אטבוט הוצאה לפועל", url: 'https://hotzaa-lapoal.info/tools/chatbot/' },
     { '@type': 'WebApplication', name: 'בדיקת מצב מהירה', url: 'https://hotzaa-lapoal.info/tools/eligibility/' },
+    { '@type': 'CreativeWork', name: 'טפסים ונוסחים להוצאה לפועל', url: 'https://hotzaa-lapoal.info/forms/' },
   ],
 };
 ---
 
 <BaseLayout
-  title="כלים חינמיים להוצאה לפועל — מחשבון ריבית וצ'אטבוט"
-  description="כלים חינמיים לחייבים בהוצאה לפועל: מחשבון ריבית תיקון 9 וצ'אטבוט AI שעונה על שאלות 24/7."
+  title="כלים חינמיים להוצאה לפועל — מחשבון, צ'אטבוט וטפסים"
+  description="כלים חינמיים לחייבים בהוצאה לפועל: מחשבון ריבית תיקון 9, צ'אטבוט AI, בדיקת מצב מהירה וטפסים ונוסחים להגשה עצמית."
   schema={toolsSchema}
 >
   <Header />
@@ -33,7 +34,7 @@ const toolsSchema = {
     <h1 class="text-3xl font-bold text-brand-dark mb-2">כלים חינמיים</h1>
     <p class="text-gray-500 mb-10">ייחודיים בשוק — פותחנו אותם כי הם לא היו קיימים</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
       <a href="/tools/calculator/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
         <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mb-4">🧮</div>
@@ -56,9 +57,6 @@ const toolsSchema = {
         </p>
         <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">פתח צ'אטבוט ←</span>
       </a>
-
-    </div>
-
       <a href="/tools/eligibility/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
         <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl mb-4">🔍</div>
         <div class="inline-block bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-full mb-3">4 שאלות בלבד</div>
@@ -69,6 +67,17 @@ const toolsSchema = {
         </p>
         <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">התחל בדיקה ←</span>
       </a>
+
+      <a href="/forms/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
+        <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-2xl mb-4">📋</div>
+        <div class="inline-block bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full mb-3">נוסחים לעריכה</div>
+        <h2 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand-dark transition-colors">טפסים ונוסחים</h2>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">
+          ריכוז טפסים ובקשות נפוצות: ביטול עיקול, צו תשלומים, בדיקת תיק ובקשה דחופה לעיכוב הליכים.
+        </p>
+        <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">פתח טפסים ←</span>
+      </a>
+    </div>
 
     <div class="mt-10 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700">
       ⚠️ הכלים מיועדים להערכה ולמידע כללי בלבד. אינם מהווים ייעוץ משפטי.
