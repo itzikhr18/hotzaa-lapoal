@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
 const siteUrl = 'https://hotzaa-lapoal.info';
+const lastVerified = '2026-07-03';
 
 const officialLinks = {
   personalArea: 'https://go.gov.il/ecagovernmentident',
@@ -28,6 +29,8 @@ const forms = [
       { label: 'מדריך מילוי טופס 214', href: '/guides/bitul-ikul/', external: false },
     ],
     note: 'באונליין בדרך כלל מגישים את הבקשה מתוך האזור האישי ומצרפים מסמכים. הנוסח שלנו הוא עזר לנימוקים, לא הטופס הרשמי עצמו.',
+    lastVerified,
+    sourceStatus: 'נבדק מול מסלול ההגשה באזור האישי. לפני הגשה ידנית יש לוודא באתר הרשות שהטופס או ההליך לא עודכנו.',
   },
   {
     title: 'בקשה לצו תשלומים',
@@ -43,6 +46,8 @@ const forms = [
       { label: 'נוסח עזר לצו תשלומים', href: '#template-tzav-tashlumim', external: false },
     ],
     note: 'כאן כן יש קבצים רשמיים מאומתים להורדה. בהגשה אונליין עדיין כדאי להכין אותם ואת המסמכים לפני שמתחילים.',
+    lastVerified,
+    sourceStatus: 'קישורי ההורדה לטופס 233 ולטופס 529 מפנים לקבצי gov.il רשמיים.',
   },
   {
     title: 'בקשה לבדיקת תיק והבנת מצב',
@@ -57,6 +62,8 @@ const forms = [
       { label: 'איתור לשכת הוצאה לפועל', href: officialLinks.bureaus, external: true },
     ],
     note: 'לבדיקת תיק אין בהכרח טופס להורדה. הדרך המעשית היא כניסה לאזור האישי או פנייה ללשכה עם תעודת זהות.',
+    lastVerified,
+    sourceStatus: 'הקישורים מפנים לאזור האישי, לזימון תור ולרשימת לשכות רשמית של רשות האכיפה והגבייה.',
   },
   {
     title: 'בקשה לביטול הגבלות',
@@ -71,7 +78,18 @@ const forms = [
       { label: 'מדריך ביטול הגבלות', href: '/guides/bitul-hagbalot/', external: false },
     ],
     note: 'הגבלות מבטלים בדרך כלל באמצעות בקשה בתיק וצירוף ראיות. אם מגישים ידנית, כדאי לשמור אישור מסירה או אישור תור.',
+    lastVerified,
+    sourceStatus: 'הבקשה מתבצעת בדרך כלל דרך האזור האישי או דרך לשכה; יש לבדוק את ההליך העדכני לפני הגשה.',
   },
+];
+
+const officialSources = [
+  { label: 'האזור האישי של רשות האכיפה והגבייה', href: officialLinks.personalArea },
+  { label: 'רשות האכיפה והגבייה באתר gov.il', href: officialLinks.authority },
+  { label: 'זימון תור ללשכת הוצאה לפועל', href: officialLinks.appointment },
+  { label: 'איתור לשכות הוצאה לפועל', href: officialLinks.bureaus },
+  { label: 'טופס 233 רשמי - בקשה לצו תשלומים', href: officialLinks.form233 },
+  { label: 'טופס 529 רשמי - כתב ויתור על סודיות', href: officialLinks.form529 },
 ];
 
 const quickTemplates = [
@@ -123,11 +141,13 @@ const pageSchema = {
   description: 'מרכז טפסים ונוסחים לחייבים בהוצאה לפועל: ביטול עיקול, צו תשלומים, בדיקת תיק, ביטול הגבלות ובקשות דחופות.',
   url: `${siteUrl}/forms/`,
   inLanguage: 'he',
+  dateModified: lastVerified,
   hasPart: forms.map(item => ({
     '@type': 'CreativeWork',
     name: item.title,
     description: item.intent,
     url: `${siteUrl}${item.guide}`,
+    dateModified: item.lastVerified,
   })),
 };
 
@@ -230,7 +250,12 @@ const faqSchema = {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {forms.map(item => (
           <article class="bg-white border border-neutral-border rounded-xl p-5">
-            <p class="text-xs font-bold text-brand mb-2">{item.form}</p>
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <p class="text-xs font-bold text-brand">{item.form}</p>
+              <span class="text-[11px] font-semibold text-gray-500 bg-gray-100 border border-gray-200 rounded-full px-2 py-0.5">
+                אומת: {item.lastVerified}
+              </span>
+            </div>
             <h3 class="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
             <p class="text-sm text-gray-600 mb-4 leading-relaxed">{item.intent}</p>
             <p class="text-sm font-semibold text-gray-800 mb-2">מסמכים שכדאי להכין:</p>
@@ -258,6 +283,9 @@ const faqSchema = {
               </a>
             </div>
             <p class="text-xs text-neutral-muted mt-3 leading-relaxed">{item.note}</p>
+            <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+              <strong>מקור:</strong> {item.sourceStatus}
+            </p>
           </article>
         ))}
       </div>
@@ -286,6 +314,24 @@ const faqSchema = {
         <li>כתבו בקשה קצרה וברורה: מה קרה, מה אתם מבקשים, ומה מצורף.</li>
         <li>שמרו אישור הגשה ומספר פנייה, ובדקו החלטות באזור האישי.</li>
       </ol>
+    </section>
+
+    <section class="mb-12 bg-white border border-neutral-border rounded-xl p-5">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">מקורות רשמיים לטפסים</h2>
+      <p class="text-sm text-gray-700 leading-relaxed mb-4">
+        הקישורים בעמוד נבדקו מול מקורות רשמיים של רשות האכיפה והגבייה. אם קישור רשמי משתנה,
+        יש להעדיף את האתר הממשלתי ואת האזור האישי על פני נוסח עזר כללי.
+      </p>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+        {officialSources.map(source => (
+          <li>
+            <a href={source.href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand hover:text-brand-dark font-semibold">
+              <span aria-hidden="true">↗</span>
+              {source.label}
+            </a>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section class="mb-12">
