@@ -5,6 +5,15 @@ import Footer from '../../components/Footer.astro';
 
 const siteUrl = 'https://hotzaa-lapoal.info';
 
+const officialLinks = {
+  personalArea: 'https://go.gov.il/ecagovernmentident',
+  appointment: 'https://go.gov.il/ecagovisit',
+  bureaus: 'https://www.gov.il/he/departments/Bureaus?OfficeId=c673e628-43e7-40e5-9610-19b2ffabce3b&cities=',
+  authority: 'https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority',
+  form233: 'https://www.gov.il/BlobFolder/generalpage/eca-digital-forms2/he/Forms_form233.docx',
+  form529: 'https://www.gov.il/BlobFolder/generalpage/eca-digital-forms2/he/Forms_form529.docx',
+};
+
 const forms = [
   {
     title: 'בקשה לביטול או עיכוב עיקול',
@@ -12,6 +21,13 @@ const forms = [
     intent: 'כשעוקל חשבון בנק, משכורת, רכב, דירה או כספים מוגנים.',
     documents: ['הודעת העיקול', 'דפי חשבון 3 חודשים', 'אישור מקור כספים מוגנים', 'תלושי שכר או אישור קצבה'],
     guide: '/guides/bitul-ikul/',
+    onlineHref: officialLinks.personalArea,
+    onlineLabel: 'הגשה אונליין באזור האישי',
+    manualLinks: [
+      { label: 'נוסח עזר לביטול עיקול', href: '#template-bitul-ikul', external: false },
+      { label: 'מדריך מילוי טופס 214', href: '/guides/bitul-ikul/', external: false },
+    ],
+    note: 'באונליין בדרך כלל מגישים את הבקשה מתוך האזור האישי ומצרפים מסמכים. הנוסח שלנו הוא עזר לנימוקים, לא הטופס הרשמי עצמו.',
   },
   {
     title: 'בקשה לצו תשלומים',
@@ -19,6 +35,14 @@ const forms = [
     intent: 'כשמודים בחוב אבל לא יכולים לשלם את כולו בבת אחת.',
     documents: ['צילום תעודת זהות וספח', '6 תלושי שכר אחרונים', 'דפי בנק 6 חודשים', 'הוצאות קבועות והתחייבויות'],
     guide: '/guides/tzav-tashlumim/',
+    onlineHref: officialLinks.personalArea,
+    onlineLabel: 'הגשה אונליין באזור האישי',
+    manualLinks: [
+      { label: 'הורדת טופס 233 רשמי', href: officialLinks.form233, external: true },
+      { label: 'הורדת טופס 529 רשמי', href: officialLinks.form529, external: true },
+      { label: 'נוסח עזר לצו תשלומים', href: '#template-tzav-tashlumim', external: false },
+    ],
+    note: 'כאן כן יש קבצים רשמיים מאומתים להורדה. בהגשה אונליין עדיין כדאי להכין אותם ואת המסמכים לפני שמתחילים.',
   },
   {
     title: 'בקשה לבדיקת תיק והבנת מצב',
@@ -26,6 +50,13 @@ const forms = [
     intent: 'כשלא ברור איזה תיק פתוח, מה סכום החוב או מי הזוכה.',
     documents: ['תעודת זהות', 'מספר תיק אם קיים', 'מכתב אזהרה או הודעת בנק', 'פרטי הזדהות ממשלתית'],
     guide: '/guides/bdika-tik/',
+    onlineHref: officialLinks.personalArea,
+    onlineLabel: 'כניסה לאזור האישי',
+    manualLinks: [
+      { label: 'זימון תור ללשכה', href: officialLinks.appointment, external: true },
+      { label: 'איתור לשכת הוצאה לפועל', href: officialLinks.bureaus, external: true },
+    ],
+    note: 'לבדיקת תיק אין בהכרח טופס להורדה. הדרך המעשית היא כניסה לאזור האישי או פנייה ללשכה עם תעודת זהות.',
   },
   {
     title: 'בקשה לביטול הגבלות',
@@ -33,11 +64,19 @@ const forms = [
     intent: 'כשיש הגבלת חשבון, כרטיס אשראי, דרכון, רישיון או עיכוב יציאה.',
     documents: ['החלטת ההגבלה', 'מסמכי הכנסה', 'הוכחת צורך דחוף', 'אישור תשלום ראשון אם יש צו'],
     guide: '/guides/bitul-hagbalot/',
+    onlineHref: officialLinks.personalArea,
+    onlineLabel: 'הגשה אונליין באזור האישי',
+    manualLinks: [
+      { label: 'נוסח עזר לעיכוב הליכים', href: '#template-urgent-delay', external: false },
+      { label: 'מדריך ביטול הגבלות', href: '/guides/bitul-hagbalot/', external: false },
+    ],
+    note: 'הגבלות מבטלים בדרך כלל באמצעות בקשה בתיק וצירוף ראיות. אם מגישים ידנית, כדאי לשמור אישור מסירה או אישור תור.',
   },
 ];
 
 const quickTemplates = [
   {
+    id: 'template-bitul-ikul',
     title: 'נוסח קצר לביטול עיקול חשבון בנק',
     text: `לכבוד רשם ההוצאה לפועל,
 
@@ -50,6 +89,7 @@ const quickTemplates = [
 שם, תאריך, חתימה`,
   },
   {
+    id: 'template-tzav-tashlumim',
     title: 'נוסח קצר לצו תשלומים',
     text: `לכבוד רשם ההוצאה לפועל,
 
@@ -62,6 +102,7 @@ const quickTemplates = [
 שם, תאריך, חתימה`,
   },
   {
+    id: 'template-urgent-delay',
     title: 'נוסח קצר לבקשה דחופה לעיכוב הליכים',
     text: `לכבוד רשם ההוצאה לפועל,
 
@@ -94,6 +135,14 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'האם חייבים להוריד את הטפסים או שאפשר להגיש אונליין?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ברוב הבקשות אפשר להגיש אונליין דרך האזור האישי של רשות האכיפה והגבייה. אם מגישים בלשכה, בדואר, בפקס או במייל, צריך בדרך כלל להוריד או למלא את הטופס ולצרף מסמכים.',
+      },
+    },
     {
       '@type': 'Question',
       name: 'איזה טופס מגישים לביטול עיקול?',
@@ -153,6 +202,29 @@ const faqSchema = {
       </div>
     </header>
 
+    <section class="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+        <h2 class="text-lg font-bold text-green-900 mb-2">אפשר להגיש אונליין</h2>
+        <p class="text-sm text-gray-700 leading-relaxed mb-4">
+          ברוב הבקשות אין חובה להדפיס. נכנסים לאזור האישי של הוצאה לפועל,
+          בוחרים את סוג הבקשה, ממלאים פרטים ומעלים מסמכים סרוקים או קבצי PDF.
+        </p>
+        <a href={officialLinks.personalArea} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-green-700 hover:bg-green-800 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+          כניסה לאזור האישי
+        </a>
+      </div>
+      <div class="bg-white border border-neutral-border rounded-xl p-5">
+        <h2 class="text-lg font-bold text-gray-900 mb-2">מתי מורידים טופס?</h2>
+        <p class="text-sm text-gray-700 leading-relaxed mb-4">
+          מורידים טופס כשמגישים ידנית בלשכה, בדואר, בפקס או במייל, או כשצריך להכין
+          מראש נוסח חתום ומסמכים לפני ההגשה המקוונת.
+        </p>
+        <a href={officialLinks.appointment} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center border border-brand text-brand-dark hover:bg-brand-pale text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+          זימון תור ללשכה
+        </a>
+      </div>
+    </section>
+
     <section class="mb-12">
       <h2 class="text-2xl font-bold text-gray-900 mb-4">איזה טופס צריך?</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -165,9 +237,27 @@ const faqSchema = {
             <ul class="space-y-1 text-sm text-gray-600 mb-4">
               {item.documents.map(doc => <li>- {doc}</li>)}
             </ul>
-            <a href={item.guide} class="inline-flex text-sm font-semibold text-brand hover:text-brand-dark">
-              למדריך המלא
-            </a>
+            <div class="flex flex-col gap-2">
+              <a href={item.onlineHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-brand-dark hover:bg-brand-trust text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+                {item.onlineLabel}
+              </a>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {item.manualLinks.map(link => (
+                  <a
+                    href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
+                    class="inline-flex items-center justify-center border border-neutral-border hover:border-brand hover:bg-brand-pale text-gray-700 hover:text-brand-dark text-sm font-semibold px-3 py-2 rounded-lg transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+              <a href={item.guide} class="inline-flex text-sm font-semibold text-brand hover:text-brand-dark">
+                למדריך המלא
+              </a>
+            </div>
+            <p class="text-xs text-neutral-muted mt-3 leading-relaxed">{item.note}</p>
           </article>
         ))}
       </div>
@@ -177,7 +267,7 @@ const faqSchema = {
       <h2 class="text-2xl font-bold text-gray-900 mb-4">נוסחים בסיסיים שאפשר להתאים</h2>
       <div class="space-y-5">
         {quickTemplates.map(template => (
-          <article class="bg-white border border-neutral-border rounded-xl overflow-hidden">
+          <article id={template.id} class="bg-white border border-neutral-border rounded-xl overflow-hidden scroll-mt-24">
             <div class="border-b border-neutral-border bg-gray-50 px-5 py-3">
               <h3 class="font-bold text-gray-900">{template.title}</h3>
             </div>
@@ -201,6 +291,12 @@ const faqSchema = {
     <section class="mb-12">
       <h2 class="text-2xl font-bold text-gray-900 mb-4">שאלות נפוצות</h2>
       <div class="space-y-3">
+        <details class="bg-white border border-neutral-border rounded-xl">
+          <summary class="cursor-pointer p-4 font-semibold text-gray-800">חייבים להוריד טפסים או שאפשר להגיש אונליין?</summary>
+          <p class="px-4 pb-4 text-sm text-gray-600">
+            ברוב הבקשות אפשר להגיש אונליין דרך האזור האישי. אם מגישים בלשכה, בדואר, בפקס או במייל, צריך בדרך כלל להוריד או למלא את הטופס ולצרף מסמכים.
+          </p>
+        </details>
         <details class="bg-white border border-neutral-border rounded-xl">
           <summary class="cursor-pointer p-4 font-semibold text-gray-800">איזה טופס מגישים לביטול עיקול?</summary>
           <p class="px-4 pb-4 text-sm text-gray-600">ברוב המקרים משתמשים בטופס 214 ומצרפים מסמכים שמראים למה יש לבטל או לעכב את העיקול.</p>
