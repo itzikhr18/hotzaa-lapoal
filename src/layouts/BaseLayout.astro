@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import AccessibilityWidget from '../components/AccessibilityWidget.astro';
+import LeadCaptureWidget from '../components/LeadCaptureWidget';
 
 export interface Props {
   title: string;
@@ -111,6 +112,7 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
 </head>
 <body class="bg-neutral-bg text-gray-900 font-sans antialiased">
   <AccessibilityWidget />
+  <LeadCaptureWidget client:idle />
   <slot />
 
   {Astro.url.pathname !== '/tools/chatbot/' && (

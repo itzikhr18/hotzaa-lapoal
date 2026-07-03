@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import LeadCaptureForm from './LeadCaptureForm';
 
 // ── ריבית בנק ישראל לפי רבעונים — עדכן כשבנק ישראל מחליט ──────────────────
 // המקור: https://www.boi.org.il (החלטות הוועדה המוניטרית)
@@ -210,6 +211,16 @@ export default function InterestCalculator() {
               </div>
             ))}
           </div>
+
+          <LeadCaptureForm
+            source="calculator-result"
+            calculation={{
+              principal: result.principal,
+              baseInterest: result.baseInterest,
+              penaltyTotal: result.penaltyTotal,
+              grandTotal: result.grandTotal,
+            }}
+          />
 
           {/* Quarterly table */}
           <div className="overflow-x-auto">

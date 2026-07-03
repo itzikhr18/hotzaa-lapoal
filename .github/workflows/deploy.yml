@@ -39,6 +39,32 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: fc219626f8a49dc56bb0979ab7543862
           GEMINI_API_KEY: ${{ secrets.PUBLIC_GEMINI_API_KEY }}
 
+      # מסנכרן סודות אופציונליים לטופס הלידים. אם הסודות עדיין לא הוגדרו
+      # ב-GitHub, הפריסה לא תיכשל — הטופס יציג שגיאת הגדרה עד שיוגדרו.
+      - name: Sync lead capture secrets to Cloudflare Pages
+        run: |
+          set -e
+
+          if [ -z "$RESEND_API_KEY" ] || [ -z "$LEAD_NOTIFY_EMAIL" ] || [ -z "$LEAD_FROM_EMAIL" ]; then
+            echo "Lead email secrets are not fully configured; skipping lead secret sync."
+            exit 0
+          fi
+
+          printf '%s' "$RESEND_API_KEY" | npx wrangler@3 pages secret put RESEND_API_KEY --project-name=hotzaa-lapoal
+          printf '%s' "$LEAD_NOTIFY_EMAIL" | npx wrangler@3 pages secret put LEAD_NOTIFY_EMAIL --project-name=hotzaa-lapoal
+          printf '%s' "$LEAD_FROM_EMAIL" | npx wrangler@3 pages secret put LEAD_FROM_EMAIL --project-name=hotzaa-lapoal
+
+          if [ -n "$LEAD_WEBHOOK_URL" ]; then
+            printf '%s' "$LEAD_WEBHOOK_URL" | npx wrangler@3 pages secret put LEAD_WEBHOOK_URL --project-name=hotzaa-lapoal
+          fi
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: fc219626f8a49dc56bb0979ab7543862
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          LEAD_NOTIFY_EMAIL: ${{ secrets.LEAD_NOTIFY_EMAIL }}
+          LEAD_FROM_EMAIL: ${{ secrets.LEAD_FROM_EMAIL }}
+          LEAD_WEBHOOK_URL: ${{ secrets.LEAD_WEBHOOK_URL }}
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
