@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const siteUrl = 'https://hotzaa-lapoal.info';
+
+const forms = [
+  {
+    title: 'בקשה לביטול או עיכוב עיקול',
+    form: 'טופס 214',
+    intent: 'כשעוקל חשבון בנק, משכורת, רכב, דירה או כספים מוגנים.',
+    documents: ['הודעת העיקול', 'דפי חשבון 3 חודשים', 'אישור מקור כספים מוגנים', 'תלושי שכר או אישור קצבה'],
+    guide: '/guides/bitul-ikul/',
+  },
+  {
+    title: 'בקשה לצו תשלומים',
+    form: 'טופס 233 + שאלון וכתב ויתור על סודיות',
+    intent: 'כשמודים בחוב אבל לא יכולים לשלם את כולו בבת אחת.',
+    documents: ['צילום תעודת זהות וספח', '6 תלושי שכר אחרונים', 'דפי בנק 6 חודשים', 'הוצאות קבועות והתחייבויות'],
+    guide: '/guides/tzav-tashlumim/',
+  },
+  {
+    title: 'בקשה לבדיקת תיק והבנת מצב',
+    form: 'אזור אישי הוצאה לפועל',
+    intent: 'כשלא ברור איזה תיק פתוח, מה סכום החוב או מי הזוכה.',
+    documents: ['תעודת זהות', 'מספר תיק אם קיים', 'מכתב אזהרה או הודעת בנק', 'פרטי הזדהות ממשלתית'],
+    guide: '/guides/bdika-tik/',
+  },
+  {
+    title: 'בקשה לביטול הגבלות',
+    form: 'בקשה כללית בתיק',
+    intent: 'כשיש הגבלת חשבון, כרטיס אשראי, דרכון, רישיון או עיכוב יציאה.',
+    documents: ['החלטת ההגבלה', 'מסמכי הכנסה', 'הוכחת צורך דחוף', 'אישור תשלום ראשון אם יש צו'],
+    guide: '/guides/bitul-hagbalot/',
+  },
+];
+
+const quickTemplates = [
+  {
+    title: 'נוסח קצר לביטול עיקול חשבון בנק',
+    text: `לכבוד רשם ההוצאה לפועל,
+
+אני מבקש/ת לעכב ולבטל את העיקול שהוטל על חשבון הבנק בתיק מספר ________.
+העיקול פוגע ביכולתי לשלם הוצאות בסיסיות, וחלק מהכספים בחשבון מקורם ב________ ולכן הם מוגנים מעיקול.
+
+מצורפים: דפי חשבון, אישור מקור הכספים, תלושי שכר/אישור קצבה וכל מסמך תומך נוסף.
+אבקש החלטה דחופה והודעה מיידית לבנק במקרה של קבלת הבקשה.
+
+שם, תאריך, חתימה`,
+  },
+  {
+    title: 'נוסח קצר לצו תשלומים',
+    text: `לכבוד רשם ההוצאה לפועל,
+
+אני מודה בקיום החוב בתיק מספר ________, אך איני מסוגל/ת לשלם את מלוא החוב בבת אחת.
+לאור הכנסותיי והוצאותיי החודשיות, אבקש לקבוע צו תשלומים בסך ________ ש"ח לחודש.
+
+מצורפים מסמכים המעידים על מצבי הכלכלי: תלושי שכר, דפי חשבון, הוצאות קבועות והתחייבויות.
+אבקש לעכב הליכי גבייה ועיקולים כל עוד אני עומד/ת בתשלומים שייקבעו.
+
+שם, תאריך, חתימה`,
+  },
+  {
+    title: 'נוסח קצר לבקשה דחופה לעיכוב הליכים',
+    text: `לכבוד רשם ההוצאה לפועל,
+
+אבקש לעכב באופן דחוף את ההליכים בתיק מספר ________ עד למתן החלטה בבקשתי.
+ההליך שננקט גורם לפגיעה מיידית וקשה ביכולת הקיום/הפרנסה שלי, במיוחד משום ש________.
+
+מצורפים מסמכים תומכים להוכחת הדחיפות והפגיעה.
+אבקש לתת החלטה בהקדם האפשרי ולהודיע לצדדים הרלוונטיים.
+
+שם, תאריך, חתימה`,
+  },
+];
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'טפסים ונוסחים להוצאה לפועל',
+  description: 'מרכז טפסים ונוסחים לחייבים בהוצאה לפועל: ביטול עיקול, צו תשלומים, בדיקת תיק, ביטול הגבלות ובקשות דחופות.',
+  url: `${siteUrl}/forms/`,
+  inLanguage: 'he',
+  hasPart: forms.map(item => ({
+    '@type': 'CreativeWork',
+    name: item.title,
+    description: item.intent,
+    url: `${siteUrl}${item.guide}`,
+  })),
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'איזה טופס מגישים לביטול עיקול?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ברוב המקרים משתמשים בטופס 214, בקשה לביטול או עיכוב הליכים והגבלות, ומצרפים מסמכים שמראים למה יש לבטל את העיקול.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'איזה טופס צריך לצו תשלומים?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לצו תשלומים מגישים בדרך כלל טופס בקשה לצו תשלומים, שאלון וכתב ויתור על סודיות, בצירוף מסמכים על הכנסות, הוצאות ונכסים.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם אפשר להשתמש בנוסחים באתר כמו שהם?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'הנוסחים באתר הם בסיס כללי בלבד. צריך להתאים אותם לפרטי התיק, לצרף מסמכים ולבדוק באתר הרשמי של רשות האכיפה והגבייה אם הטופס או ההליך עודכנו.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="טפסים ונוסחים להוצאה לפועל - ביטול עיקול, צו תשלומים ובקשות דחופות"
+  description="מרכז טפסים ונוסחים להוצאה לפועל: איזה טופס צריך לביטול עיקול, צו תשלומים, בדיקת תיק וביטול הגבלות, אילו מסמכים לצרף ונוסחים בסיסיים לעריכה."
+  canonicalUrl={`${siteUrl}/forms/`}
+  schema={[pageSchema, faqSchema]}
+>
+  <Header />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/" class="hover:text-brand-dark">בית</a>
+      <span class="mx-1">/</span>
+      <span class="text-gray-700">טפסים ונוסחים</span>
+    </nav>
+
+    <header class="mb-10">
+      <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">מרכז פעולה</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-brand-dark leading-tight mb-4">
+        טפסים ונוסחים להוצאה לפועל
+      </h1>
+      <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+        ריכוז מעשי של הטפסים, המסמכים והנוסחים שחייבים מחפשים בזמן לחץ: ביטול עיקול,
+        צו תשלומים, בדיקת תיק, ביטול הגבלות ובקשה דחופה לעיכוב הליכים.
+      </p>
+      <div class="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+        המידע כאן הוא כללי בלבד. לפני הגשה בפועל בדקו את הטופס העדכני באתר הרשמי של
+        <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer" class="font-semibold underline">רשות האכיפה והגבייה</a>
+        והתאימו את הנוסח לפרטי התיק שלכם.
+      </div>
+    </header>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">איזה טופס צריך?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {forms.map(item => (
+          <article class="bg-white border border-neutral-border rounded-xl p-5">
+            <p class="text-xs font-bold text-brand mb-2">{item.form}</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-sm text-gray-600 mb-4 leading-relaxed">{item.intent}</p>
+            <p class="text-sm font-semibold text-gray-800 mb-2">מסמכים שכדאי להכין:</p>
+            <ul class="space-y-1 text-sm text-gray-600 mb-4">
+              {item.documents.map(doc => <li>- {doc}</li>)}
+            </ul>
+            <a href={item.guide} class="inline-flex text-sm font-semibold text-brand hover:text-brand-dark">
+              למדריך המלא
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">נוסחים בסיסיים שאפשר להתאים</h2>
+      <div class="space-y-5">
+        {quickTemplates.map(template => (
+          <article class="bg-white border border-neutral-border rounded-xl overflow-hidden">
+            <div class="border-b border-neutral-border bg-gray-50 px-5 py-3">
+              <h3 class="font-bold text-gray-900">{template.title}</h3>
+            </div>
+            <pre class="whitespace-pre-wrap text-sm leading-relaxed text-gray-700 p-5 bg-white overflow-x-auto font-sans">{template.text}</pre>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-12 bg-blue-50 border border-blue-200 rounded-xl p-5">
+      <h2 class="text-xl font-bold text-blue-900 mb-3">איך להגיש נכון ולא להיתקע?</h2>
+      <ol class="space-y-2 text-sm text-gray-700 list-decimal list-inside">
+        <li>בדקו באיזה תיק מדובר ומה מספר התיק המדויק.</li>
+        <li>בחרו את הטופס לפי סוג הפעולה: עיקול, צו תשלומים, הגבלה או בדיקת מידע.</li>
+        <li>צרפו ראיות, לא רק הסבר: דפי חשבון, תלושים, אישורי קצבאות, החלטות קודמות.</li>
+        <li>כתבו בקשה קצרה וברורה: מה קרה, מה אתם מבקשים, ומה מצורף.</li>
+        <li>שמרו אישור הגשה ומספר פנייה, ובדקו החלטות באזור האישי.</li>
+      </ol>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">שאלות נפוצות</h2>
+      <div class="space-y-3">
+        <details class="bg-white border border-neutral-border rounded-xl">
+          <summary class="cursor-pointer p-4 font-semibold text-gray-800">איזה טופס מגישים לביטול עיקול?</summary>
+          <p class="px-4 pb-4 text-sm text-gray-600">ברוב המקרים משתמשים בטופס 214 ומצרפים מסמכים שמראים למה יש לבטל או לעכב את העיקול.</p>
+        </details>
+        <details class="bg-white border border-neutral-border rounded-xl">
+          <summary class="cursor-pointer p-4 font-semibold text-gray-800">מה הכי חשוב לצרף לבקשה?</summary>
+          <p class="px-4 pb-4 text-sm text-gray-600">מסמך שמוכיח את הטענה. למשל דף בנק שמראה קצבה, תלושי שכר, אישור רפואי, הסדר תשלומים או החלטה קודמת.</p>
+        </details>
+        <details class="bg-white border border-neutral-border rounded-xl">
+          <summary class="cursor-pointer p-4 font-semibold text-gray-800">האם הנוסח מחליף עורך דין?</summary>
+          <p class="px-4 pb-4 text-sm text-gray-600">לא. הנוסחים הם בסיס כללי לעריכה עצמית. בתיקים מורכבים, סכומים גבוהים או נכסים משמעותיים כדאי לקבל ייעוץ משפטי אישי.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a href="/guides/bitul-ikul/" class="bg-white border border-neutral-border rounded-xl p-4 hover:border-brand hover:bg-brand-pale transition-colors">
+        <h3 class="font-bold text-gray-900 mb-1">ביטול עיקול</h3>
+        <p class="text-sm text-gray-600">כל העילות, המסמכים והשלבים.</p>
+      </a>
+      <a href="/guides/tzav-tashlumim/" class="bg-white border border-neutral-border rounded-xl p-4 hover:border-brand hover:bg-brand-pale transition-colors">
+        <h3 class="font-bold text-gray-900 mb-1">צו תשלומים</h3>
+        <p class="text-sm text-gray-600">איך מבקשים פריסה חודשית.</p>
+      </a>
+      <a href="/guides/bdika-tik/" class="bg-white border border-neutral-border rounded-xl p-4 hover:border-brand hover:bg-brand-pale transition-colors">
+        <h3 class="font-bold text-gray-900 mb-1">בדיקת תיק</h3>
+        <p class="text-sm text-gray-600">איך להבין מה פתוח נגדכם.</p>
+      </a>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

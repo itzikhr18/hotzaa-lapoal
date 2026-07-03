@@ -17,6 +17,7 @@ export default defineConfig({
         'https://hotzaa-lapoal.info/guides/',
         'https://hotzaa-lapoal.info/tools/calculator/',
         'https://hotzaa-lapoal.info/tools/chatbot/',
+        'https://hotzaa-lapoal.info/forms/',
         'https://hotzaa-lapoal.info/faq/',
       ],
       serialize(item) {
@@ -25,7 +26,7 @@ export default defineConfig({
           return { ...item, priority: 1.0, changefreq: 'daily' };
         }
         // Guide index and section indexes
-        if (item.url.match(/\/(guides|rights|insolvency|tools)\/?$/)) {
+        if (item.url.match(/\/(guides|rights|insolvency|tools|forms)\/?$/)) {
           return { ...item, priority: 0.9, changefreq: 'weekly' };
         }
         // Individual guides — high priority content
@@ -34,6 +35,9 @@ export default defineConfig({
         }
         // Tools
         if (item.url.includes('/tools/')) {
+          return { ...item, priority: 0.8, changefreq: 'monthly' };
+        }
+        if (item.url.includes('/forms/')) {
           return { ...item, priority: 0.8, changefreq: 'monthly' };
         }
         // Legal, about, contact — lower priority
