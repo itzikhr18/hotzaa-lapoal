@@ -6,13 +6,12 @@ const DISMISS_TTL = 1000 * 60 * 60 * 24 * 7;
 
 export default function LeadCaptureWidget() {
   const [open, setOpen] = useState(false);
-  const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
+    // הכפתור עצמו תמיד גלוי; הסגירה משתיקה רק את הפתיחה האוטומטית ל-7 ימים.
     const dismissedAt = Number(window.localStorage.getItem(DISMISS_KEY) || 0);
     if (dismissedAt && Date.now() - dismissedAt < DISMISS_TTL) return;
 
-    setHidden(false);
     const timer = window.setTimeout(() => setOpen(true), 9000);
     return () => window.clearTimeout(timer);
   }, []);
@@ -20,18 +19,14 @@ export default function LeadCaptureWidget() {
   function closeForNow() {
     window.localStorage.setItem(DISMISS_KEY, String(Date.now()));
     setOpen(false);
-    setHidden(true);
   }
 
   function closeAfterSuccess() {
     window.localStorage.setItem(DISMISS_KEY, String(Date.now()));
     window.setTimeout(() => {
       setOpen(false);
-      setHidden(true);
     }, 3500);
   }
-
-  if (hidden) return null;
 
   if (!open) {
     return (
