@@ -17,6 +17,8 @@
  * - Optional webhook through LEAD_WEBHOOK_URL for Make/Zapier/CRM.
  */
 
+import { isRateLimited } from '../_rate-limit.js';
+
 const ALLOWED_RANGES = {
   under_50k: 'עד 50 אלף',
   '50k_100k': '50-100 אלף',
@@ -193,6 +195,10 @@ export async function onRequestOptions() {
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+
+  if (isRateLimited(request, { limit: 5, windowMs: 60_000 })) {
+    return json({ error: 'יותר מדי נסיונות שליחה. המתן דקה ונסה שוב.' }, 429);
+  }
 
   let body;
   try {

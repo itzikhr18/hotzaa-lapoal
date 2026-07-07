@@ -13,6 +13,8 @@
  *   הוסף משתנה בשם GEMINI_API_KEY מסוג "Secret".
  */
 
+import { isRateLimited } from '../_rate-limit.js';
+
 const SYSTEM_PROMPT = `אתה עוזר מידע מקצועי בנושא הוצאה לפועל וחדלות פירעון בישראל.
 
 כללים מחייבים:
@@ -47,6 +49,10 @@ function json(obj, status = 200) {
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+
+  if (isRateLimited(request, { limit: 15, windowMs: 60_000 })) {
+    return json({ error: 'יותר מדי בקשות. המתן דקה ונסה שוב.' }, 429);
+  }
 
   const apiKey = env.GEMINI_API_KEY;
   if (!apiKey) {
@@ -84,10 +90,11 @@ export async function onRequestPost(context) {
 
   try {
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        // המפתח נשלח ב-header ולא ב-query string כדי שלא ידלוף ללוגים
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
         body: JSON.stringify({
           system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
           contents,
