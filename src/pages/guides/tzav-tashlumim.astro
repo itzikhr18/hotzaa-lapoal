@@ -80,7 +80,7 @@ const faqSchema = {
     totalTime: 'PT2H',
     step: [
       { '@type': 'HowToStep', position: 1, name: 'אסוף מסמכים', text: 'תלושי שכר 3 חודשים אחרונים, דפי חשבון בנק, קבלות הוצאות קבועות (שכר דירה, תרופות, חינוך), ותעודת זהות.' },
-      { '@type': 'HowToStep', position: 2, name: 'מלא טופס 7 — בקשה לצו תשלומים', text: 'הורד טופס 7 מאתר רשות האכיפה (gov.il). מלא פרטי הכנסה, הוצאות, ונכסים בכנות ובמדויק. כנות עדיפה — הרשם בודק.' },
+      { '@type': 'HowToStep', position: 2, name: 'מלא טופס 233 — בקשה לצו תשלומים', text: 'הורד טופס 233 (בקשה לצו חיוב בתשלומים) עם טופס 529 (שאלון וכתב ויתור על סודיות) מאתר רשות האכיפה (gov.il). מלא פרטי הכנסה, הוצאות, ונכסים בכנות ובמדויק. כנות עדיפה — הרשם בודק.' },
       { '@type': 'HowToStep', position: 3, name: 'הגש ללשכת ההוצאה לפועל', text: 'הגש את הבקשה ואת המסמכים ללשכת ההוצאה לפועל הרלוונטית — פיזית או דרך המערכת המקוונת. שלם אגרת הגשה של כמה עשרות שקלים.' },
       { '@type': 'HowToStep', position: 4, name: 'הגע לחקירת יכולת', text: 'הרשם יזמן אותך לחקירת יכולת. הגע עם כל המסמכים. הרשם יקבע תשלום חודשי לפי יכולתך האמיתית.' },
       { '@type': 'HowToStep', position: 5, name: 'שלם בקביעות ותעד הכל', text: 'עמוד בתשלומים החודשיים. ברגע שהצו פעיל ואתה משלם — הנושה לא יכול לפתוח הליכים נוספים. שמור כל אישור תשלום לאורך כל הדרך.' },
@@ -105,7 +105,7 @@ const faqSchema = {
     <p class="font-bold text-green-800 mb-3 text-base">בקצרה: איך מגישים צו תשלומים לבד</p>
     <ol class="space-y-1.5 text-sm text-gray-700 list-decimal list-inside">
       <li><strong>אסוף מסמכים</strong> — 3 תלושי שכר, דפי בנק, קבלות הוצאות קבועות.</li>
-      <li><strong>מלא טופס 7</strong> — "בקשה לצו תשלומים" באתר רשות האכיפה (gov.il).</li>
+      <li><strong>מלא טופס 233</strong> — "בקשה לצו חיוב בתשלומים" + טופס 529 (שאלון וכתב ויתור על סודיות) באתר רשות האכיפה (gov.il).</li>
       <li><strong>הגש ללשכה</strong> — פיזית או אונליין. אגרה: כמה עשרות שקלים בלבד.</li>
       <li><strong>הגע לחקירת יכולת</strong> — הרשם קובע סכום חודשי לפי הכנסותיך האמיתיות.</li>
       <li><strong>שלם בקביעות</strong> — כל עוד הצו פעיל, הנושה לא יכול לפתוח הליכים חדשים.</li>
@@ -447,9 +447,9 @@ const faqSchema = {
     </div>
   </div>
 
-  <h2>שלב אחרי שלב — טופס 7 ואיך מגישים</h2>
+  <h2>שלב אחרי שלב — טופס 233 ואיך מגישים</h2>
   <p>
-    הבקשה לצו תשלומים מוגשת באמצעות <strong>טופס 7 — "בקשה לצו תשלומים"</strong> של רשות האכיפה והגבייה.
+    הבקשה לצו תשלומים מוגשת באמצעות <strong>טופס 233 — "בקשה לצו חיוב בתשלומים"</strong> של רשות האכיפה והגבייה, בצירוף <strong>טופס 529 — שאלון וכתב ויתור על סודיות</strong>.
     להלן המדריך המלא שלב אחרי שלב:
   </p>
 
@@ -463,7 +463,7 @@ const faqSchema = {
     <li>
       <span class="step-num">2</span>
       <span>
-        <strong>הורד את טופס 7 — "בקשה לצו תשלומים"</strong> — זהו הטופס הרשמי של רשות האכיפה והגבייה. ניתן להוריד מאתר <a href="https://www.gov.il" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">gov.il</a> או לקחת פיזית בלשכת ההוצאה לפועל הקרובה אליך.
+        <strong>הורד את טופס 233 — "בקשה לצו חיוב בתשלומים" (עם טופס 529)</strong> — זהו הטופס הרשמי של רשות האכיפה והגבייה. ניתן להוריד מאתר <a href="https://www.gov.il" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">gov.il</a> או לקחת פיזית בלשכת ההוצאה לפועל הקרובה אליך.
       </span>
     </li>
     <li>
@@ -508,7 +508,7 @@ const faqSchema = {
   </ol>
 
   <div class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-6">
-    <p class="font-bold text-gray-800 mb-3">מה ממלאים בטופס 7 — שדות מרכזיים:</p>
+    <p class="font-bold text-gray-800 mb-3">מה ממלאים בטופס 233 — שדות מרכזיים:</p>
     <ol class="space-y-2 text-sm text-gray-700">
       <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק א׳:</span> <span>פרטים אישיים — שם, ת"ז, כתובת, מספר תיק, פרטי הנושה</span></li>
       <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק ב׳:</span> <span>הכנסות — שכר, קצבאות, כל מקור אחר — ציין ברוטו ונטו</span></li>
@@ -517,7 +517,7 @@ const faqSchema = {
       <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק ה׳:</span> <span>הצעת תשלום — הסכום שאתה מציע לשלם בחודש</span></li>
       <li class="flex gap-2"><span class="font-bold text-brand-dark">פרק ו׳:</span> <span>נסיבות מיוחדות — מחלה, נכות, ילדים קטנים, חובות נוספים</span></li>
     </ol>
-    <p class="text-xs text-neutral-muted mt-3">* ניתן להוריד טופס 7 מאתר רשות האכיפה והגבייה (gov.il)</p>
+    <p class="text-xs text-neutral-muted mt-3">* ניתן להוריד את טופס 233 וטופס 529 מאתר רשות האכיפה והגבייה (gov.il)</p>
   </div>
 
   <h2>מה קורה לעיקולים אחרי שהצו ניתן?</h2>

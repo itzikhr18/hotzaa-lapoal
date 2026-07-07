@@ -276,16 +276,16 @@ const faqSchema = {
       </thead>
       <tbody>
         <tr class="bg-white">
-          <td class="border border-gray-300 px-4 py-2 font-semibold">בסיס קיום</td>
-          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">5,000 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">סעיף 45(ב) לחוק ההוצאה לפועל</td>
-          <td class="border border-gray-300 px-4 py-2">מוגן תמיד — גם ללא הוכחת מקור</td>
+          <td class="border border-gray-300 px-4 py-2 font-semibold">כספים הדרושים למחיה בסיסית</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">לפי החלטת הרשם</td>
+          <td class="border border-gray-300 px-4 py-2">חוק ההוצאה לפועל — סמכות הרשם</td>
+          <td class="border border-gray-300 px-4 py-2">לא אוטומטי — יש להגיש לרשם בקשה מנומקת לשחרור כספי מחיה</td>
         </tr>
         <tr class="bg-gray-50">
-          <td class="border border-gray-300 px-4 py-2 font-semibold">שכר הגנה (יתרה לקיום)</td>
-          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">{wageRangeText} נטו לפי משפחה</td>
-          <td class="border border-gray-300 px-4 py-2">סעיף 25 + תקנות ההוצל"פ</td>
-          <td class="border border-gray-300 px-4 py-2">נכון ל-2026 — מתעדכן מעת לעת. תלוי בהרכב המשפחה</td>
+          <td class="border border-gray-300 px-4 py-2 font-semibold">שכר שהופקד לחשבון</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">בגובה הסכום המוגן ({wageRangeText} נטו לפי משפחה)</td>
+          <td class="border border-gray-300 px-4 py-2">סעיף 8 לחוק הגנת השכר</td>
+          <td class="border border-gray-300 px-4 py-2">ההגנה נמשכת 30 יום ממועד ההפקדה לחשבון (נכון ל-2026)</td>
         </tr>
         <tr class="bg-white">
           <td class="border border-gray-300 px-4 py-2 font-semibold">קצבת ילדים</td>
@@ -318,10 +318,10 @@ const faqSchema = {
           <td class="border border-gray-300 px-4 py-2">רק מזונות שנקבעו בפסק דין</td>
         </tr>
         <tr class="bg-gray-50">
-          <td class="border border-gray-300 px-4 py-2 font-semibold">שכר ב-30 הימים הראשונים</td>
-          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 100%</td>
-          <td class="border border-gray-300 px-4 py-2">סעיף 45(ד) לחוק ההוצאה לפועל</td>
-          <td class="border border-gray-300 px-4 py-2">שכר שהועבר בחודש האחרון לפני העיקול</td>
+          <td class="border border-gray-300 px-4 py-2 font-semibold">קצבאות ביטוח לאומי שהופקדו לחשבון</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 30 יום מיום התשלום</td>
+          <td class="border border-gray-300 px-4 py-2">סעיף 303 לחוק ביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2">לאחר 30 יום בחשבון — נדרשת בקשה לרשם לשחרור</td>
         </tr>
         <tr class="bg-white">
           <td class="border border-gray-300 px-4 py-2 font-semibold">הפקדות מעסיק לפנסיה</td>
@@ -466,8 +466,9 @@ const faqSchema = {
 
   <h2>כיצד להפשיר כספים מוגנים — בתוך 24-48 שעות</h2>
   <p>
-    אם הכסף שעוקל הגיע מקצבאות ביטוח לאומי, גמלת סיעוד, מזונות, שכר מינימום,
-    או שכר שהופקד ב-30 הימים האחרונים — אתה זכאי לשחרורו <strong>ללא קשר לגובה החוב</strong>.
+    אם הכסף שעוקל הגיע מקצבאות ביטוח לאומי או גמלת סיעוד (בתוך 30 יום מהתשלום לחשבון),
+    ממזונות, או משכר שהופקד ב-30 הימים האחרונים (עד גובה הסכום המוגן לפי הרכב המשפחה) —
+    אתה זכאי לשחרורו <strong>ללא קשר לגובה החוב</strong>.
     הנה השלבים לפעולה דחופה:
   </p>
 
@@ -747,16 +748,17 @@ const faqSchema = {
       הכסף יועבר ישירות מחשבונך אליו.
       בנוסף, רשות האכיפה והגבייה יכולה להטיל עוד אמצעי גבייה: <a href="/guides/ikul-maskoret/">עיקול משכורת</a>,
       <a href="/guides/ikul-yetzia/">עיכוב יציאה מהארץ</a>, <a href="/guides/ikul-nechassim/">עיקול נכסים</a>, והגבלת כרטיסי אשראי.
-      החוב ממשיך לגדול עם ריבית של כ-8.25% בשנה.
+      החוב ממשיך לגדול עם ריבית בסיס של כ-7% בשנה (ועוד דמי פיגורים אם לא משלמים).
       אי-פעולה היא תמיד הבחירה הגרועה ביותר.
     </p>
   </div>
 
   <h2>ריבית על החוב — כמה החוב שלך גדל?</h2>
   <p>
-    לפי <strong><a href="/guides/tikunim-2025/">תיקון 9 לחוק פסיקת ריבית והצמדה</a></strong>, החוב בהוצאה לפועל צובר ריבית של
-    כ-<strong>8.25% בשנה</strong> — המורכב מריבית בנק ישראל (3.75% נכון ליוני 2026), תוספת של 3.5%,
-    ודמי פיגורים של כ-1% בשנה.
+    לפי <strong><a href="/guides/tikunim-2025/">תיקון 9 לחוק פסיקת ריבית והצמדה</a></strong>, על החוב חלה
+    <strong>"הריבית השקלית"</strong> — כ-<strong>7% בשנה</strong> נכון ליולי 2026 (בקירוב ריבית בנק ישראל 3.5% + 3.5%).
+    בנוסף, מי שאינו עומד בצו תשלומים צובר <strong>דמי פיגורים</strong> בשיעור שנתי של מחצית הריבית
+    השקלית + 2% (כ-5.5%) — כך שסך התוספת מגיע לכ-12.5% בשנה. חייב שעומד בצו תשלומים משלם ריבית בסיס בלבד.
   </p>
 
   <div class="not-prose overflow-x-auto my-6">
@@ -764,43 +766,38 @@ const faqSchema = {
       <thead>
         <tr class="bg-gray-100 text-gray-700">
           <th class="border border-gray-300 px-4 py-2 text-right font-bold">סכום חוב מקורי</th>
-          <th class="border border-gray-300 px-4 py-2 text-right font-bold">ריבית שנתית (8.25%)</th>
-          <th class="border border-gray-300 px-4 py-2 text-right font-bold">לאחר שנה</th>
-          <th class="border border-gray-300 px-4 py-2 text-right font-bold">לאחר שלוש שנים</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">עם צו תשלומים (~7%/שנה)</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">בלי צו תשלומים (~12.5%/שנה)</th>
         </tr>
       </thead>
       <tbody>
         <tr class="bg-white">
           <td class="border border-gray-300 px-4 py-2">10,000 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">825 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold">10,825 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold text-red-700">12,475 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">+700 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 font-semibold text-red-700">+1,250 ₪</td>
         </tr>
         <tr class="bg-gray-50">
           <td class="border border-gray-300 px-4 py-2">30,000 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">2,475 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold">32,475 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold text-red-700">37,425 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">+2,100 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 font-semibold text-red-700">+3,750 ₪</td>
         </tr>
         <tr class="bg-white">
           <td class="border border-gray-300 px-4 py-2">50,000 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">4,125 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold">54,125 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold text-red-700">62,375 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">+3,500 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 font-semibold text-red-700">+6,250 ₪</td>
         </tr>
         <tr class="bg-gray-50">
           <td class="border border-gray-300 px-4 py-2">100,000 ₪</td>
-          <td class="border border-gray-300 px-4 py-2">8,250 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold">108,250 ₪</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold text-red-700">124,750 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">+7,000 ₪</td>
+          <td class="border border-gray-300 px-4 py-2 font-semibold text-red-700">+12,500 ₪</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    הנתונים לעיל הם הערכה פשוטה ללא ריבית דריבית. בפועל הריבית מצטברת מדי רבעון —
-    כך שהחוב גדל מהר יותר. פעולה מהירה חוסכת כסף רב.
+    הנתונים לעיל הם הערכה שנתית לשנה הראשונה (שיעורי יולי 2026), ללא הצמדה, אגרות והוצאות.
+    ההבדל בין העמודות מראה כמה חוסכת עמידה בצו תשלומים. פעולה מהירה חוסכת כסף רב.
   </p>
 
   <!-- FAQ section -->
@@ -839,11 +836,11 @@ const faqSchema = {
         <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
       </summary>
       <p class="px-4 pb-4 text-gray-600">
-        לא. קצבאות ביטוח לאומי מוגנות לחלוטין, גמלת סיעוד, מזונות שנפסקו בבית משפט,
-        ושכר שהגיע ב-30 הימים האחרונים — אינם ניתנים לעיקול. כמו כן יש להותיר ביד
-        החייב יתרה בגובה "שכר הגנה" — סכום נטו שמשתנה לפי הרכב המשפחה
-        ({wageRangeText}, {WAGE_AS_OF}). אם החשבון מכיל בעיקר כספים מוגנים, תוכל לבקש שחרורם
-        עם הוכחת המקור.
+        לא. קצבאות ביטוח לאומי וגמלת סיעוד (בתוך 30 יום מהתשלום לחשבון), מזונות שנפסקו
+        בבית משפט, ושכר שהופקד ב-30 הימים האחרונים (עד גובה הסכום המוגן לפי הרכב
+        המשפחה — {wageRangeText}, {WAGE_AS_OF}) — מוגנים מעיקול. מעבר לכך, ניתן לבקש
+        מהרשם לשחרר כספים הדרושים למחיה בסיסית. אם החשבון מכיל בעיקר כספים מוגנים,
+        תוכל לבקש שחרורם עם הוכחת המקור.
       </p>
     </details>
 

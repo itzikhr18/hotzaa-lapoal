@@ -3,24 +3,26 @@ import LeadCaptureForm from './LeadCaptureForm';
 
 // ── ריבית בנק ישראל לפי רבעונים — עדכן כשבנק ישראל מחליט ──────────────────
 // המקור: https://www.boi.org.il (החלטות הוועדה המוניטרית)
-// RATES מכיל את ריבית בנק ישראל בלבד; הפונקציה מוסיפה 3.5% spread לתיקון 9
+// RATES מכיל את ריבית בנק ישראל בלבד. "הריבית השקלית" לפי תיקון 9 מתפרסמת
+// רבעונית ע"י החשב הכללי; כאן היא מקורבת כ-BoI + 3.5% (ב-2025: ~8% בפועל).
 const RATES: Record<string, number> = {
   '2025-Q1': 0.045, // BoI 4.5%
   '2025-Q2': 0.045, // BoI 4.5%
   '2025-Q3': 0.045, // BoI 4.5% (אושר ב-29/9/2025)
-  '2025-Q4': 0.045, // BoI 4.5% עד 24/11 → 4.25% (הרוב הרבעון ב-4.5%)
+  '2025-Q4': 0.045, // BoI 4.5% עד 24/11 → 4.25% (רוב הרבעון ב-4.5%)
   '2026-Q1': 0.040, // BoI 4.0% (הפחתה 5/1/2026; הוחזק ב-23/2 וב-30/3)
   '2026-Q2': 0.0375, // BoI 3.75% (הופחת מ-4.0% ב-25/5/2026)
-  '2026-Q3': 0.0375, // BoI 3.75% — תקף עד החלטת הריבית הבאה (6/7/2026)
-  '2026-Q4': 0.0375, // עדכן אחרי החלטות הריבית של 7-12/2026
+  '2026-Q3': 0.035,  // BoI 3.5% (הופחת מ-3.75% ב-6/7/2026)
+  '2026-Q4': 0.035,  // עדכן אחרי החלטות הריבית של 9-12/2026 (הבאה: 1/9/2026)
 };
-// אומת מול בנק ישראל ביוני 2026. החלטת הריבית הבאה: 6/7/2026 — לעדכן את RATES אחריה.
-const RATES_LAST_VERIFIED = 'יוני 2026'; // עדכן יחד עם RATES אחרי כל החלטת ריבית
-const PENALTY_RATE_NEW = 0.0025; // 0.25% לרבעון (1% בשנה) — דמי פיגורים תיקון 9
-const NEW_LAW_SPREAD = 0.035;   // 3.5% spread מעל ריבית בנק ישראל — ריבית בסיס תיקון 9
-const PENALTY_CAP_COMPLIANT = 0.70; // תקרה לחייב עומד בצו תשלומים
-const PENALTY_CAP_DEFAULT   = 0.80;
-const CUT_DATE = new Date('2025-01-01');
+// אומת מול בנק ישראל ביולי 2026. החלטת הריבית הבאה: 1/9/2026 — לעדכן את RATES אחריה.
+const RATES_LAST_VERIFIED = 'יולי 2026'; // עדכן יחד עם RATES אחרי כל החלטת ריבית
+const NEW_LAW_SPREAD = 0.035; // קירוב לריבית השקלית: BoI + 3.5%
+const LAST_KNOWN_RATE = 0.035; // לרבעונים עתידיים שטרם עודכנו
+// דמי פיגורים לפי תיקון 9: השיעור השנתי = מחצית הריבית השקלית (בעיגול ל-0.1%)
+// בתוספת 2 נקודות אחוז; נצברים אחת לרבעון (רבע מהשיעור השנתי), החל מ-3 חודשי פיגור.
+// חייב שעומד בצו תשלומים אינו צובר דמי פיגורים כלל.
+const OLD_LAW_RATE = 0.0873; // ריבית פיגורים צמודה לפני 2025 (~8.73% + הצמדה למדד, ריבית דריבית)
 
 function getQuarter(date: Date): string {
   const q = Math.floor(date.getMonth() / 3) + 1;
@@ -29,8 +31,15 @@ function getQuarter(date: Date): string {
 
 function getRateForDate(date: Date): number {
   const key = getQuarter(date);
-  return RATES[key] ?? 0.043;
+  return RATES[key] ?? LAST_KNOWN_RATE;
 }
+
+// השיעור השנתי של דמי הפיגורים לפי הריבית השקלית של אותו רבעון
+function penaltyAnnualRate(shekelRate: number): number {
+  return Math.round((shekelRate / 2) * 1000) / 1000 + 0.02;
+}
+
+const CUT_DATE = new Date('2025-01-01');
 
 function formatILS(n: number): string {
   return new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS', maximumFractionDigits: 0 }).format(n);
@@ -71,25 +80,29 @@ export default function InterestCalculator() {
 
     // iterate quarter by quarter
     let cur = new Date(start);
+    let newLawQuarters = 0; // דמי פיגורים מתחילים רק אחרי 3 חודשי פיגור
     while (cur < end) {
       const qEnd = new Date(cur);
       qEnd.setMonth(qEnd.getMonth() + 3);
       const periodEnd = qEnd < end ? qEnd : end;
 
       const days = (periodEnd.getTime() - cur.getTime()) / 86400000;
-      const annualRate = getRateForDate(cur);
       const isNewLaw = cur >= CUT_DATE;
 
       if (isNewLaw) {
-        // תיקון 9: ריבית בסיס = BoI + 3.5%, על קרן + ריבית בסיס מצטברת בלבד
-        const baseInt = balance * (annualRate + NEW_LAW_SPREAD) * (days / 365);
+        // תיקון 9: הריבית השקלית (מקורבת: BoI + 3.5%) על היתרה
+        const shekelRate = getRateForDate(cur) + NEW_LAW_SPREAD;
+        const baseInt = balance * shekelRate * (days / 365);
         balance += baseInt;
         totalBase += baseInt;
 
-        // דמי פיגורים: רבעוניים, לא מצטברים לקרן
-        const penalty = p * PENALTY_RATE_NEW;
-        const cap = p * (compliant ? PENALTY_CAP_COMPLIANT : PENALTY_CAP_DEFAULT);
-        const actualPenalty = Math.min(totalPenalty + penalty, cap) - totalPenalty;
+        // דמי פיגורים: רבע מהשיעור השנתי (מחצית הריבית השקלית + 2%) לכל רבעון,
+        // החל מהרבעון השני של הפיגור. חייב שעומד בצו תשלומים אינו צובר כלל.
+        newLawQuarters += 1;
+        let actualPenalty = 0;
+        if (!compliant && newLawQuarters > 1) {
+          actualPenalty = p * (penaltyAnnualRate(shekelRate) / 4) * (days / 91);
+        }
         totalPenalty += actualPenalty;
 
         rows.push({
@@ -99,9 +112,8 @@ export default function InterestCalculator() {
           total: Math.round(balance + totalPenalty),
         });
       } else {
-        // חוק ישן: ריבית דריבית + קנס 25%
-        const rate = getRateForDate(cur) + 0.01; // historic spread
-        const int = balance * rate * (days / 365);
+        // לפני 2025: ריבית פיגורים צמודה (~8.73% + הצמדה), ריבית דריבית
+        const int = balance * OLD_LAW_RATE * (days / 365);
         balance += int;
         totalBase += int;
         rows.push({
@@ -169,7 +181,7 @@ export default function InterestCalculator() {
             className="w-4 h-4 accent-blue-600"
           />
           <label htmlFor="compliant" className="text-sm text-gray-700">
-            אני עומד בצו תשלומים (תקרת פיגורים 70%)
+            אני עומד בצו תשלומים (לא נצברים דמי פיגורים)
           </label>
         </div>
       </div>
@@ -187,6 +199,8 @@ export default function InterestCalculator() {
       </p>
       <p className="text-xs text-gray-500 mt-2">
         ריבית בנק ישראל במחשבון מעודכנת להחלטה האחרונה: {RATES_LAST_VERIFIED}.
+        המחשבון מקרב את "הריבית השקלית" (שמפרסם החשב הכללי מדי רבעון) כריבית
+        בנק ישראל + 3.5% — לשיעור הרשמי המדויק בדוק את פרסומי החשב הכללי.
         ריביות מתעדכנות לאחר כל החלטת ועדה מוניטרית —{' '}
         <a href="https://www.boi.org.il" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-700">
           בדוק את הריבית הנוכחית באתר בנק ישראל
