@@ -1,0 +1,192 @@
+import { useState, useCallback } from 'react';
+import { wageList, WAGE_AS_OF } from '../data/protected-amounts';
+
+// כללי עיקול משכורת (חוק הגנת השכר, סעיף 8 + חוק ההוצאה לפועל):
+// - הניכוי מוגבל ל-20% מהשכר נטו לעובד חודשי (25% לעובד יומי)
+// - חייבת להישאר בידי החייב יתרה של לפחות "שכר הגנה" לפי הרכב המשפחה
+// - בתיקי מזונות אין תקרת הגנה אוטומטית
+const PCT_MONTHLY = 0.20;
+const PCT_DAILY = 0.25;
+
+function formatILS(n: number): string {
+  return new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS', maximumFractionDigits: 0 }).format(n);
+}
+
+interface Result {
+  net: number;
+  protectedWage: number;
+  familyLabel: string;
+  pctCap: number;
+  maxByPct: number;
+  maxByProtection: number;
+  deduction: number;
+  remaining: number;
+  fullyProtected: boolean;
+  bindingRule: 'protected' | 'pct';
+}
+
+export default function SalaryGarnishmentCalculator() {
+  const [netSalary, setNetSalary] = useState('');
+  const [family, setFamily] = useState(0);
+  const [workerType, setWorkerType] = useState<'monthly' | 'daily'>('monthly');
+  const [result, setResult] = useState<Result | null>(null);
+
+  const calculate = useCallback(() => {
+    const net = parseFloat(netSalary.replace(/,/g, ''));
+    if (!net || net <= 0) return;
+
+    const { label: familyLabel, amount: protectedWage } = wageList[family];
+    const pctCap = workerType === 'monthly' ? PCT_MONTHLY : PCT_DAILY;
+
+    const maxByPct = net * pctCap;
+    const maxByProtection = Math.max(0, net - protectedWage);
+    const deduction = Math.round(Math.min(maxByPct, maxByProtection));
+
+    setResult({
+      net,
+      protectedWage,
+      familyLabel,
+      pctCap,
+      maxByPct: Math.round(maxByPct),
+      maxByProtection: Math.round(maxByProtection),
+      deduction,
+      remaining: Math.round(net - deduction),
+      fullyProtected: deduction === 0,
+      bindingRule: maxByProtection < maxByPct ? 'protected' : 'pct',
+    });
+  }, [netSalary, family, workerType]);
+
+  return (
+    <div dir="rtl" className="font-sans">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div>
+          <label htmlFor="sg-net" className="block text-sm font-semibold text-gray-700 mb-1">
+            משכורת נטו בחודש (₪)
+          </label>
+          <input
+            id="sg-net"
+            type="text"
+            inputMode="numeric"
+            value={netSalary}
+            onChange={e => setNetSalary(e.target.value)}
+            placeholder="למשל: 8500"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+          <p className="text-xs text-gray-500 mt-1">הנטו בתלוש — אחרי ניכויי חובה, לפני ניכויים רצוניים</p>
+        </div>
+
+        <div>
+          <label htmlFor="sg-family" className="block text-sm font-semibold text-gray-700 mb-1">
+            הרכב המשפחה
+          </label>
+          <select
+            id="sg-family"
+            value={family}
+            onChange={e => setFamily(Number(e.target.value))}
+            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          >
+            {wageList.map((w, i) => (
+              <option key={w.label} value={i}>
+                {w.label} — שכר הגנה {formatILS(w.amount)}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <fieldset>
+          <legend className="block text-sm font-semibold text-gray-700 mb-1">סוג העסקה</legend>
+          <div className="flex gap-4 mt-2">
+            <label className="flex items-center gap-2 text-sm text-gray-700">
+              <input
+                type="radio"
+                name="sg-worker-type"
+                checked={workerType === 'monthly'}
+                onChange={() => setWorkerType('monthly')}
+                className="w-4 h-4 accent-blue-600"
+              />
+              עובד חודשי (תקרה 20%)
+            </label>
+            <label className="flex items-center gap-2 text-sm text-gray-700">
+              <input
+                type="radio"
+                name="sg-worker-type"
+                checked={workerType === 'daily'}
+                onChange={() => setWorkerType('daily')}
+                className="w-4 h-4 accent-blue-600"
+              />
+              עובד יומי (תקרה 25%)
+            </label>
+          </div>
+        </fieldset>
+      </div>
+
+      <button
+        onClick={calculate}
+        className="w-full md:w-auto bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-lg transition-colors text-base"
+      >
+        חשב כמה מותר לעקל
+      </button>
+
+      <p className="text-xs text-gray-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 mt-4">
+        ⚠️ המחשבון מיועד להערכה בלבד ואינו חל על תיקי מזונות (שם אין תקרת הגנה אוטומטית).
+        סכומי שכר ההגנה מעודכנים ל-{WAGE_AS_OF}.
+      </p>
+
+      {result && (
+        <div className="mt-8 space-y-5">
+
+          {result.fullyProtected ? (
+            <div className="bg-green-50 border-2 border-green-300 rounded-xl p-5">
+              <p className="text-lg font-bold text-green-800 mb-1">✅ המשכורת שלך מוגנת מעיקול</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                המשכורת נטו שלך ({formatILS(result.net)}) אינה עולה על שכר ההגנה עבור
+                {' '}{result.familyLabel} ({formatILS(result.protectedWage)}) — לכן ברוב המקרים אסור לנכות ממנה כלל
+                (למעט תיקי מזונות). אם בכל זאת מנכים לך —{' '}
+                <a href="/guides/ikul-maskoret/" className="text-brand underline font-semibold">הגש בקשת ביטול לרשם</a>{' '}
+                וצרף תלוש שכר.
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {[
+                  { label: 'ניכוי מקסימלי מותר', value: formatILS(result.deduction), color: 'bg-red-50 border-red-200' },
+                  { label: 'חייב להישאר בידך לפחות', value: formatILS(result.remaining), color: 'bg-green-50 border-green-200' },
+                  { label: `שכר הגנה (${result.familyLabel})`, value: formatILS(result.protectedWage), color: 'bg-gray-50 border-gray-200' },
+                ].map(c => (
+                  <div key={c.label} className={`border rounded-xl p-4 text-center ${c.color}`}>
+                    <div className="text-xs text-gray-500 mb-1">{c.label}</div>
+                    <div className="text-xl font-bold text-gray-800">{c.value}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-700 space-y-2">
+                <p className="font-semibold text-gray-800">איך חושב הסכום?</p>
+                <p>
+                  תקרת אחוזים: {Math.round(result.pctCap * 100)}% מהנטו = <strong>{formatILS(result.maxByPct)}</strong>
+                </p>
+                <p>
+                  תקרת שכר הגנה: {formatILS(result.net)} − {formatILS(result.protectedWage)} = <strong>{formatILS(result.maxByProtection)}</strong>
+                </p>
+                <p>
+                  {result.bindingRule === 'protected'
+                    ? 'הניכוי המותר נקבע לפי שכר ההגנה — הוא הנמוך מבין השניים.'
+                    : 'הניכוי המותר נקבע לפי תקרת האחוזים — היא הנמוכה מבין השניים.'}
+                </p>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-gray-700">
+                💡 <strong>מנכים לך יותר מהסכום הזה?</strong> ייתכן שהעיקול חורג מהחוק.
+                ניתן לפנות לרשם ההוצאה לפועל בבקשת הפחתה או השבה —{' '}
+                <a href="/tools/noseach-bakasha/" className="text-brand underline font-semibold">הכן נוסח בקשה בחינם</a>{' '}
+                או קרא את <a href="/guides/ikul-maskoret/" className="text-brand underline">המדריך המלא לעיקול משכורת</a>.
+              </div>
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}

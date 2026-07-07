@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import RequestLetterGenerator from '../../components/RequestLetterGenerator';
+
+const siteUrl = 'https://hotzaa-lapoal.info';
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'מחולל נוסח בקשה לרשם ההוצאה לפועל',
+  description: 'יצירת נוסח בקשה מוכן להגשה לרשם ההוצאה לפועל: ביטול עיקול חשבון, ביטול עיקול משכורת, צו תשלומים והשבת סכום שנוכה ביתר.',
+  url: `${siteUrl}/tools/noseach-bakasha/`,
+  inLanguage: 'he',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any',
+  browserRequirements: 'Requires JavaScript',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
+  isAccessibleForFree: true,
+  audience: { '@type': 'Audience', audienceType: 'חייבים בהוצאה לפועל בישראל', geographicArea: { '@type': 'Country', name: 'Israel' } },
+  publisher: { '@type': 'Organization', name: 'הוצאהלפועל.info', url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}/og-image.png` } },
+  featureList: [
+    '4 סוגי בקשות: ביטול עיקול חשבון, ביטול/הפחתת עיקול משכורת, צו תשלומים, השבת סכום שנוכה ביתר',
+    'נימוקים משפטיים מוכנים לבחירה לפי המצב האישי',
+    'רשימת מסמכים מצורפים מומלצת לכל סוג בקשה',
+    'העתקה או הורדה כקובץ — הכל בדפדפן, בלי לשלוח פרטים לשרת',
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'איך מגישים בקשה לרשם ההוצאה לפועל?', acceptedAnswer: { '@type': 'Answer', text: 'מכינים בקשה בכתב עם הנימוקים והמסמכים התומכים, ומגישים אותה ללשכת ההוצאה לפועל שמנהלת את התיק — פיזית בלשכה, או אונליין דרך האזור האישי באתר רשות האכיפה והגבייה (gov.il). חשוב לשמור אישור הגשה.' } },
+    { '@type': 'Question', name: 'האם חובה עורך דין כדי להגיש בקשה לרשם?', acceptedAnswer: { '@type': 'Answer', text: 'לא. כל חייב רשאי להגיש בקשות לרשם ההוצאה לפועל בעצמו, ללא ייצוג. עם זאת, בתיקים מורכבים או בסכומים גבוהים מומלץ להתייעץ עם עורך דין או לפנות ללשכה לסיוע משפטי (זכאות לפי מבחן הכנסה).' } },
+    { '@type': 'Question', name: 'תוך כמה זמן הרשם מחליט בבקשה?', acceptedAnswer: { '@type': 'Answer', text: 'ברוב הבקשות ההחלטה ניתנת בכתב תוך 2–4 שבועות. בבקשות דחופות (למשל עיקול על כספים מוגנים) ניתן לציין את הדחיפות בכותרת הבקשה ולבקש החלטה מהירה.' } },
+    { '@type': 'Question', name: 'האם הפרטים שאני מזין נשמרים באתר?', acceptedAnswer: { '@type': 'Answer', text: 'לא. הנוסח נוצר בדפדפן שלך בלבד (JavaScript מקומי) — שום פרט אישי לא נשלח לשרת שלנו ולא נשמר אצלנו.' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'בית', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'כלים', item: `${siteUrl}/tools/` },
+    { '@type': 'ListItem', position: 3, name: 'מחולל נוסח בקשה', item: `${siteUrl}/tools/noseach-bakasha/` },
+  ],
+};
+---
+
+<BaseLayout
+  title="מחולל נוסח בקשה לרשם ההוצאה לפועל — ביטול עיקול, צו תשלומים ועוד"
+  description="צור בחינם נוסח בקשה מוכן להגשה לרשם ההוצאה לפועל: ביטול עיקול חשבון או משכורת, צו תשלומים והשבת כסף שנוכה ביתר. הכל בדפדפן — בלי לשלוח פרטים."
+  schema={[appSchema, faqSchema, breadcrumbSchema]}
+>
+  <Header />
+  <main class="max-w-3xl mx-auto px-4 py-10">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <a href="/tools/">כלים</a> › <span class="text-gray-700">מחולל נוסח בקשה</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-2">מחולל נוסח בקשה לרשם ההוצאה לפועל</h1>
+    <p class="text-gray-600 mb-2">ממלאים פרטים, מסמנים נימוקים — ומקבלים בקשה מנוסחת ומוכנה להגשה</p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 text-sm text-blue-800">
+      <strong>איך זה עובד?</strong> בוחרים את סוג הבקשה, ממלאים את הפרטים ומסמנים את הנימוקים
+      שמתאימים למצב שלך. הנוסח נבנה אוטומטית — מעתיקים או מורידים, מצרפים מסמכים,
+      ומגישים ללשכה (פיזית או דרך האזור האישי ב-gov.il).
+    </div>
+
+    <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-sm">
+      <RequestLetterGenerator client:idle />
+    </div>
+
+    <div class="mt-10 border-t pt-8 border-gray-200">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">שאלות נפוצות</h2>
+      <div class="space-y-3">
+        {[
+          { q: 'איך מגישים את הבקשה בפועל?', a: 'מדפיסים וחותמים, מצרפים את המסמכים, ומגישים ללשכת ההוצאה לפועל שמנהלת את התיק — או מגישים אונליין דרך האזור האישי באתר רשות האכיפה והגבייה. שומרים אישור הגשה.' },
+          { q: 'האם צריך עורך דין?', a: 'לא חובה — כל חייב רשאי להגיש בקשות בעצמו. בתיקים מורכבים מומלץ ייעוץ משפטי, או פנייה ללשכה לסיוע משפטי אם אתה עומד במבחן ההכנסה.' },
+          { q: 'כמה זמן לוקח לקבל החלטה?', a: 'בדרך כלל 2–4 שבועות. בבקשות דחופות — למשל עיקול על קצבאות — כדאי לציין את הדחיפות בכותרת.' },
+          { q: 'מה עושים אם הבקשה נדחתה?', a: 'ניתן להגיש בקשה מתוקנת עם מסמכים נוספים, או ערעור על החלטת הרשם (ברשות או בזכות, לפי סוג ההחלטה) לבית משפט השלום.' },
+        ].map(faq => (
+          <details class="border border-neutral-border rounded-xl group">
+            <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center text-sm">
+              {faq.q}
+              <span class="text-neutral-muted group-open:rotate-180 transition-transform flex-shrink-0 mr-2">▼</span>
+            </summary>
+            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/forms/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
+          ← כל הטפסים והנוסחים
+        </a>
+        <span class="text-gray-300">|</span>
+        <a href="/guides/bitul-ikul/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
+          ← המדריך המלא לביטול עיקול
+        </a>
+        <span class="text-gray-300">|</span>
+        <a href="/tools/ikul-maskoret/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
+          ← מחשבון עיקול משכורת
+        </a>
+      </div>
+    </div>
+
+  </main>
+  <Footer />
+</BaseLayout>
