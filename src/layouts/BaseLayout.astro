@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import AccessibilityWidget from '../components/AccessibilityWidget.astro';
 import LeadCaptureWidget from '../components/LeadCaptureWidget';
+import { ADS_ENABLED, ADSENSE_CLIENT, AD_SLOTS } from '../data/ads';
 
 export interface Props {
   title: string;
@@ -22,7 +23,8 @@ const siteUrl = 'https://hotzaa-lapoal.info';
 const {
   title,
   description,
-  canonicalUrl = Astro.url.href,
+  // ברירת מחדל: canonical נקי לפי pathname בלבד — בלי query string
+  canonicalUrl = `${siteUrl}${Astro.url.pathname}`,
   ogTitle = title,
   ogDescription = description,
   ogImage = `${siteUrl}/og-image.png`,
@@ -35,6 +37,9 @@ const {
 
 const fullTitle = title.includes('הוצאה לפועל') ? title : `${title} | הוצאהלפועל.info`;
 const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+
+// AdSense נטען רק כשיש לפחות יחידת מודעה מוגדרת — אחרת הסקריפט מוריד ביצועים בחינם
+const adsActive = ADS_ENABLED && Object.values(AD_SLOTS).some(Boolean);
 ---
 
 <!DOCTYPE html>
@@ -76,18 +81,26 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
   <meta name="twitter:title" content={ogTitle} />
   <meta name="twitter:description" content={ogDescription} />
   <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content={ogTitle} />
 
-  <!-- Preconnect for AdSense CDN -->
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-  <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
-  <link rel="dns-prefetch" href="https://www.googletagservices.com" />
+  {adsActive && (
+    <>
+      <!-- Preconnect for AdSense CDN -->
+      <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+      <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
+      <link rel="dns-prefetch" href="https://www.googletagservices.com" />
+    </>
+  )}
 
   <!-- Fonts — self-hosted for zero CDN latency -->
   <link rel="preload" as="font" href="/fonts/assistant-hebrew.woff2" type="font/woff2" crossorigin />
   <link rel="preload" as="font" href="/fonts/assistant-latin.woff2" type="font/woff2" crossorigin />
 
-  <!-- Favicon -->
+  <!-- Favicon + PWA -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#1B4F72" />
 
   <!-- Schema.org JSON-LD -->
   {schemas.map(s => (
@@ -107,8 +120,10 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
     gtag('config', 'G-5PKTGJZMWL');
   </script>
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1249745886248914" crossorigin="anonymous"></script>
+  <!-- Google AdSense — נטען רק כשיש יחידות מודעה מוגדרות (src/data/ads.ts) -->
+  {adsActive && (
+    <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossorigin="anonymous"></script>
+  )}
 </head>
 <body class="bg-neutral-bg text-gray-900 font-sans antialiased">
   <AccessibilityWidget />

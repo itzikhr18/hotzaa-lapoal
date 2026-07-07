@@ -53,13 +53,18 @@ src/
 ## צ'קליסט לפני השקה
 
 ### חובה לפני כל פרסום
-- [ ] עדכן `astro.config.mjs` עם הדומיין האמיתי
-- [ ] החלף `G-XXXXXXXXXX` ב-`BaseLayout.astro` עם מזהה GA4 אמיתי
-- [ ] הוסף דף תנאי שימוש: `src/pages/legal/terms.astro`
-- [ ] הוסף דף מדיניות פרטיות: `src/pages/legal/privacy.astro`
+- [x] עדכן `astro.config.mjs` עם הדומיין האמיתי (hotzaa-lapoal.info)
+- [x] מזהה GA4 אמיתי מוגדר ב-`BaseLayout.astro`
+- [x] דף תנאי שימוש: `src/pages/legal/terms.astro`
+- [x] דף מדיניות פרטיות: `src/pages/legal/privacy.astro`
 - [ ] רישום מאגר מידע (רשות הגנת הפרטיות)
 - [ ] בדיקה משפטית של כל ה-Disclaimers
 - [ ] חוזה בכתב עם כל עורך דין לפני קבלת לידים
+
+### מודעות (AdSense)
+סקריפט AdSense נטען **רק** כשמוגדר לפחות מזהה slot אחד ב-`src/data/ads.ts` —
+כל עוד ה-slots ריקים האתר לא טוען את הסקריפט בכלל (שיפור מהירות).
+אחרי אישור החשבון: יוצרים יחידות מודעה ב-AdSense ומדביקים את המזהים שם.
 
 ### עדכונים שוטפים
 - [ ] עדכן ריבית רבעונית ב-`InterestCalculator.tsx` (קובץ `RATES`)

@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SalaryGarnishmentCalculator from '../../components/SalaryGarnishmentCalculator';
+import { wageList, wageSentence, fmtILS, WAGE_AS_OF } from '../../data/protected-amounts';
+
+const siteUrl = 'https://hotzaa-lapoal.info';
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'מחשבון עיקול משכורת — כמה מותר לעקל לך מהשכר',
+  description: 'חישוב מיידי של הסכום המקסימלי שמותר לעקל מהמשכורת לפי חוק הגנת השכר: תקרת 20% מהנטו ושכר הגנה לפי הרכב המשפחה.',
+  url: `${siteUrl}/tools/ikul-maskoret/`,
+  inLanguage: 'he',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Any',
+  browserRequirements: 'Requires JavaScript',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
+  isAccessibleForFree: true,
+  audience: { '@type': 'Audience', audienceType: 'חייבים בהוצאה לפועל בישראל', geographicArea: { '@type': 'Country', name: 'Israel' } },
+  publisher: { '@type': 'Organization', name: 'הוצאהלפועל.info', url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}/og-image.png` } },
+  featureList: [
+    'חישוב תקרת ניכוי — 20% מהשכר נטו (25% לעובד יומי)',
+    `בדיקת שכר הגנה לפי הרכב משפחה (${WAGE_AS_OF})`,
+    'זיהוי משכורת מוגנת שאסור לעקל ממנה כלל',
+    'הסבר איזו תקרה קובעת ומה עושים אם ניכו יותר מדי',
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'כמה מותר לעקל מהמשכורת בהוצאה לפועל?', acceptedAnswer: { '@type': 'Answer', text: `הניכוי מוגבל ל-20% מהשכר נטו לעובד חודשי (25% לעובד יומי), ובתנאי שנשארת בידי החייב יתרה של לפחות "שכר הגנה" לפי הרכב המשפחה: ${wageSentence}. הנמוך מבין שתי התקרות הוא הקובע.` } },
+    { '@type': 'Question', name: 'מתי אסור לעקל מהמשכורת בכלל?', acceptedAnswer: { '@type': 'Answer', text: 'כאשר המשכורת נטו אינה עולה על שכר ההגנה המתאים להרכב המשפחה — ברוב המקרים אסור לנכות ממנה כלל (למעט תיקי מזונות, שבהם אין תקרת הגנה אוטומטית).' } },
+    { '@type': 'Question', name: 'מה עושים אם ניכו לי יותר מהמותר?', acceptedAnswer: { '@type': 'Answer', text: 'פונים לרשם ההוצאה לפועל בבקשה להשבת הסכום העודף, בצירוף תלושי שכר. הרשם מחויב לתקן את הצו ולהורות על החזר. ניתן גם לפנות למעסיק ישירות לפני הפנייה לרשם.' } },
+    { '@type': 'Question', name: 'האם החישוב הוא על הברוטו או על הנטו?', acceptedAnswer: { '@type': 'Answer', text: 'על הנטו. תקרת העיקול מחושבת על השכר לאחר ניכויי חובה (מס הכנסה, ביטוח לאומי, ביטוח בריאות) אך לפני ניכויים רצוניים כמו קרן השתלמות מוגדלת או החזרי הלוואות.' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'בית', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'כלים', item: `${siteUrl}/tools/` },
+    { '@type': 'ListItem', position: 3, name: 'מחשבון עיקול משכורת', item: `${siteUrl}/tools/ikul-maskoret/` },
+  ],
+};
+---
+
+<BaseLayout
+  title="מחשבון עיקול משכורת — כמה מותר לעקל לך מהשכר? (2026)"
+  description="חשב בחינם כמה מותר לעקל מהמשכורת שלך: תקרת 20% מהנטו, שכר הגנה לפי הרכב משפחה, ומתי המשכורת מוגנת לחלוטין מעיקול."
+  schema={[appSchema, faqSchema, breadcrumbSchema]}
+>
+  <Header />
+  <main class="max-w-3xl mx-auto px-4 py-10">
+
+    <nav class="text-sm text-neutral-muted mb-6">
+      <a href="/">בית</a> › <a href="/tools/">כלים</a> › <span class="text-gray-700">מחשבון עיקול משכורת</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-brand-dark mb-2">מחשבון עיקול משכורת</h1>
+    <p class="text-gray-600 mb-2">כמה מותר לעקל לך מהשכר — וכמה חייב להישאר בידך</p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 text-sm text-blue-800">
+      <strong>הכלל בקצרה:</strong> מותר לנכות עד 20% מהשכר נטו (25% לעובד יומי), ובתנאי
+      שנשאר בידך לפחות "שכר הגנה" לפי הרכב המשפחה. הנמוך מבין השניים קובע — ואם
+      השכר שלך נמוך משכר ההגנה, ברוב המקרים אסור לעקל ממנו בכלל.
+    </div>
+
+    <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-sm">
+      <SalaryGarnishmentCalculator client:idle />
+    </div>
+
+    <!-- טבלת שכר הגנה -->
+    <div class="mt-10 border-t pt-8 border-gray-200">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">טבלת שכר הגנה לפי הרכב משפחה ({WAGE_AS_OF})</h2>
+      <p class="text-sm text-gray-600 mb-4">
+        שכר ההגנה הוא סכום <strong>נטו</strong> שחייב להישאר בידי החייב אחרי הניכוי.
+        הסכומים מתעדכנים מדי שנה — המקור: רשות האכיפה והגבייה וכל-זכות.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+          <thead>
+            <tr class="bg-gray-100 text-gray-700">
+              <th scope="col" class="border border-gray-200 px-4 py-2 text-right font-bold">הרכב המשפחה</th>
+              <th scope="col" class="border border-gray-200 px-4 py-2 text-right font-bold">שכר הגנה (נטו)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {wageList.map((w, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <td class="border border-gray-200 px-4 py-2">{w.label}</td>
+                <td class="border border-gray-200 px-4 py-2 font-semibold">{fmtILS(w.amount)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">שאלות נפוצות</h2>
+      <div class="space-y-3">
+        {[
+          { q: 'כמה מותר לעקל מהמשכורת?', a: 'עד 20% מהנטו לעובד חודשי (25% לעובד יומי), ובתנאי שנשאר בידך לפחות שכר ההגנה לפי הרכב המשפחה. הנמוך מבין שתי התקרות קובע.' },
+          { q: 'מתי המשכורת מוגנת לחלוטין?', a: 'כשהנטו שלך אינו עולה על שכר ההגנה המתאים למשפחתך — אז ברוב המקרים אסור לנכות בכלל (חוץ מתיקי מזונות).' },
+          { q: 'ניכו לי יותר מהמותר — מה עושים?', a: 'מגישים בקשה לרשם ההוצאה לפועל להשבת הסכום העודף עם תלושי שכר. אפשר להכין נוסח בקשה במחולל הנוסחים שלנו.' },
+          { q: 'האם אפשר לבקש להפחית את העיקול מתחת לתקרה?', a: 'כן. אם הניכוי מונע עמידה בהוצאות קיום בסיסיות, הרשם רשאי להפחית את השיעור. יש להגיש בקשה מנומקת עם מסמכים.' },
+        ].map(faq => (
+          <details class="border border-neutral-border rounded-xl group">
+            <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center text-sm">
+              {faq.q}
+              <span class="text-neutral-muted group-open:rotate-180 transition-transform flex-shrink-0 mr-2">▼</span>
+            </summary>
+            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/guides/ikul-maskoret/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
+          ← המדריך המלא לעיקול משכורת
+        </a>
+        <span class="text-gray-300">|</span>
+        <a href="/tools/noseach-bakasha/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
+          ← מחולל נוסח בקשה לרשם
+        </a>
+        <span class="text-gray-300">|</span>
+        <a href="/rights/skhomim-mugganim/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
+          ← כל הסכומים המוגנים מעיקול
+        </a>
+      </div>
+    </div>
+
+  </main>
+  <Footer />
+</BaseLayout>
