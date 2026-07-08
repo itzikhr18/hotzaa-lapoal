@@ -65,11 +65,11 @@
   }
 
   .rtl-prose ul {
-    @apply list-disc list-inside mb-4 space-y-1 text-gray-700;
+    @apply list-disc list-outside pr-5 mb-4 space-y-1 text-gray-700;
   }
 
   .rtl-prose ol {
-    @apply list-decimal list-inside mb-4 space-y-1 text-gray-700;
+    @apply list-decimal list-outside pr-5 mb-4 space-y-1 text-gray-700;
   }
 
   .rtl-prose a {
