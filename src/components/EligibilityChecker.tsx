@@ -139,6 +139,26 @@ function getResult(answers: Record<string, string>): Result {
     };
   }
 
+  // איום על נכס / רכב — דחוף
+  if (received === 'seizure_property') {
+    return {
+      title: 'מאיימים לעקל נכס — יש הגנות חשובות',
+      emoji: '🏠',
+      urgency: 'high',
+      description: 'איום על נכס או רכב דורש טיפול מיידי. לדירת מגורים יחידה יש הגנה מיוחדת בחוק, ולרכב יש כללי מימוש נפרדים — במקרים רבים ניתן לעצור או לעכב את המימוש.',
+      steps: [
+        'בדוק אם מדובר בדירת מגורים יחידה — היא מוגנת חלקית לפי סעיף 38 לחוק ההוצאה לפועל',
+        'לרכב: בדוק אם שוויו נמוך מסף המימוש ואם הוא נחוץ לפרנסתך',
+        'הגש בקשה לרשם לעיכוב הליכי מימוש והצע הסדר תשלומים חלופי',
+      ],
+      guides: [
+        { label: 'עיקול דירת מגורים', href: '/guides/ikul-dira/' },
+        { label: 'עיקול רכב', href: '/guides/ikul-rechev/' },
+        { label: 'דירת מגורים מוגנת', href: '/rights/bayit-muggan/' },
+      ],
+    };
+  }
+
   // מכתב — התחלה
   if (received === 'letter') {
     return {
@@ -306,6 +326,15 @@ export default function EligibilityChecker() {
           </button>
         ))}
       </div>
+
+      {currentQ > 0 && (
+        <button
+          onClick={() => setCurrentQ(currentQ - 1)}
+          className="mt-4 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+        >
+          → חזרה לשאלה הקודמת
+        </button>
+      )}
     </div>
   );
 }

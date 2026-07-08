@@ -477,6 +477,11 @@
 
   /* overlay כאשר הפאנל פתוח במובייל */
   @media (max-width: 640px) {
+    /* אל תרחף במרכז אזור הקריאה — עגן את הטוגל לפינה שמאלית-תחתונה, מעל בועת הצ'אט */
+    #a11y-widget {
+      top: auto;
+      bottom: 96px;
+    }
     #a11y-panel::before {
       content: '';
       position: fixed;

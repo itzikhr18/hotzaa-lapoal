@@ -126,6 +126,7 @@ const adsActive = ADS_ENABLED && Object.values(AD_SLOTS).some(Boolean);
   )}
 </head>
 <body class="bg-neutral-bg text-gray-900 font-sans antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-[10001] focus:bg-brand-dark focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">דלג לתוכן הראשי</a>
   <AccessibilityWidget />
   <LeadCaptureWidget client:idle />
   <slot />
@@ -137,7 +138,7 @@ const adsActive = ADS_ENABLED && Object.values(AD_SLOTS).some(Boolean);
       aria-label="פתח את הצ'אטבוט — שאל שאלה"
     >
       <span aria-hidden="true" class="text-base">💬</span>
-      <span class="hidden sm:inline">יש לי שאלה</span>
+      <span>יש לי שאלה</span>
     </a>
   )}
 </body>

@@ -198,7 +198,7 @@ const schema = {
     </section>
 
     <!-- Sticky alpha nav -->
-    <nav aria-label="ניווט לפי אות" class="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm overflow-x-auto">
+    <nav aria-label="ניווט לפי אות" class="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-sm overflow-x-auto">
       <div class="max-w-4xl mx-auto px-2 py-2 flex gap-1 flex-nowrap text-sm font-medium">
         {sections.map(sec => (
           <a href={`#${sec.id}`} class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">{sec.letter}</a>
@@ -209,7 +209,7 @@ const schema = {
     <div class="max-w-4xl mx-auto px-4 py-10">
 
       {sections.map(sec => (
-        <section id={sec.id} class="mb-10 scroll-mt-16">
+        <section id={sec.id} class="mb-10 scroll-mt-28">
           <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">{sec.letter}</h2>
           <dl>
             {sec.terms.map(term => (

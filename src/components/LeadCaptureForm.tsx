@@ -142,7 +142,7 @@ export default function LeadCaptureForm({
           רוצה למחוק את החובות ולצאת לדרך חדשה?
         </h2>
         <p className="text-sm text-gray-700 leading-relaxed">
-          השאר פרטים עכשיו וקבל את דוח נתוני החוב המלא מהמחשבון + שיחת בדיקת היתכנות משפטית לתיק שלך
+          השאר פרטים עכשיו וקבל שיחת בדיקת היתכנות משפטית לתיק שלך
           (ללא עלות) מול עורך דין מוסמך מהרשת שלנו. אל תישאר לבד מול המערכת.
         </p>
         {calculation?.grandTotal && (
@@ -187,11 +187,12 @@ export default function LeadCaptureForm({
             id={`${source}-phone`}
             type="tel"
             inputMode="tel"
+            dir="ltr"
             value={phone}
             onChange={event => setPhone(event.target.value)}
             autoComplete="tel"
             placeholder="05X-XXXXXXX"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base text-left focus:outline-none focus:ring-2 focus:ring-blue-600"
           />
         </div>
 
@@ -201,7 +202,7 @@ export default function LeadCaptureForm({
             {debtRanges.map(range => (
               <label
                 key={range.value}
-                className={`cursor-pointer rounded-lg border px-3 py-2 text-center text-sm font-semibold transition-colors ${
+                className={`cursor-pointer rounded-lg border px-3 py-2 text-center text-sm font-semibold transition-colors focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-1 ${
                   debtRange === range.value
                     ? 'border-blue-700 bg-blue-700 text-white'
                     : 'border-gray-300 bg-white text-gray-700 hover:border-blue-500'
