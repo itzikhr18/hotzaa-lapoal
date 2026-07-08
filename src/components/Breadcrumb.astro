@@ -1,0 +1,39 @@
+---
+// Shared breadcrumb: semantic <ol> + aria + BreadcrumbList JSON-LD.
+// Pass the trail after "בית"; the last item (or any without href) renders as current.
+export interface Props {
+  items: { label: string; href?: string }[];
+}
+const { items } = Astro.props;
+const siteUrl = 'https://hotzaa-lapoal.info';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'בית', item: `${siteUrl}/` },
+    ...items.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: c.label,
+      ...(c.href ? { item: `${siteUrl}${c.href}` } : {}),
+    })),
+  ],
+};
+---
+
+<nav aria-label="breadcrumb" class="text-sm text-neutral-muted mb-6">
+  <ol class="flex flex-wrap gap-1 items-center list-none">
+    <li><a href="/" class="hover:text-brand-dark transition-colors">בית</a></li>
+    {items.map((c, i) => (
+      <>
+        <li class="text-neutral-border select-none">›</li>
+        <li>
+          {(i === items.length - 1 || !c.href)
+            ? <span class="text-gray-700">{c.label}</span>
+            : <a href={c.href} class="hover:text-brand-dark transition-colors">{c.label}</a>}
+        </li>
+      </>
+    ))}
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />

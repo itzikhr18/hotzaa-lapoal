@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const toolsSchema = {
   '@context': 'https://schema.org',
@@ -29,9 +30,7 @@ const toolsSchema = {
   <Header />
   <main id="main-content" class="max-w-4xl mx-auto px-4 py-10">
 
-    <nav class="text-sm text-neutral-muted mb-6">
-      <a href="/">בית</a> › <span class="text-gray-700">כלים</span>
-    </nav>
+    <Breadcrumb items={[{ label: 'כלים' }]} />
 
     <h1 class="text-3xl font-bold text-brand-dark mb-2">כלים חינמיים</h1>
     <p class="text-gray-500 mb-10">ייחודיים בשוק — פותחנו אותם כי הם לא היו קיימים</p>

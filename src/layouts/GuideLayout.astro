@@ -363,7 +363,8 @@ const fmtMonthYear = (d?: string) =>
     const toc = document.getElementById('toc');
     const tocList = document.getElementById('toc-list');
     if (article && toc && tocList) {
-      const headings = article.querySelectorAll('h2');
+      // skip headings inside UI blocks (.not-prose) — only real content sections
+      const headings = Array.from(article.querySelectorAll('h2')).filter(h => !h.closest('.not-prose'));
       if (headings.length >= 3) {
         headings.forEach((h, i) => {
           const id = h.id || `section-${i + 1}`;
