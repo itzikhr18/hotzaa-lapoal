@@ -202,7 +202,7 @@ export default function LeadCaptureForm({
             {debtRanges.map(range => (
               <label
                 key={range.value}
-                className={`cursor-pointer rounded-lg border px-3 py-2 text-center text-sm font-semibold transition-colors ${
+                className={`cursor-pointer rounded-lg border px-3 py-2 text-center text-sm font-semibold transition-colors focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-1 ${
                   debtRange === range.value
                     ? 'border-blue-700 bg-blue-700 text-white'
                     : 'border-gray-300 bg-white text-gray-700 hover:border-blue-500'
