@@ -12,7 +12,7 @@ export default function LeadCaptureWidget() {
     const dismissedAt = Number(window.localStorage.getItem(DISMISS_KEY) || 0);
     if (dismissedAt && Date.now() - dismissedAt < DISMISS_TTL) return;
 
-    const timer = window.setTimeout(() => setOpen(true), 9000);
+    const timer = window.setTimeout(() => setOpen(true), 30000);
     return () => window.clearTimeout(timer);
   }, []);
 
