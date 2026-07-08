@@ -112,9 +112,32 @@ const schema = {
       <span class="inline-block mt-2 px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full border border-green-200">עדכני לתיקון 9 — מרץ 2026</span>
     </div>
 
+    <!-- חיפוש + ניווט מהיר בין קטגוריות -->
+    <div class="mb-8">
+      <label for="guides-search" class="sr-only">חיפוש מדריך</label>
+      <input
+        id="guides-search"
+        type="search"
+        inputmode="search"
+        autocomplete="off"
+        placeholder="🔍 חיפוש מדריך (למשל: עיקול רכב, ערב, מזונות)…"
+        class="w-full border border-neutral-border rounded-xl px-4 py-3 text-base focus:ring-2 focus:ring-brand focus:outline-none mb-4"
+      />
+      <div class="flex flex-wrap gap-2">
+        {categories.map((cat, i) => (
+          <a href={`#cat-${i}`} class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-neutral-border rounded-full text-sm text-gray-600 hover:border-brand hover:text-brand-dark transition-all">
+            <span>{cat.icon}</span><span>{cat.name}</span>
+          </a>
+        ))}
+      </div>
+      <p id="guides-noresults" class="hidden mt-3 text-sm text-gray-500">
+        לא נמצא מדריך תואם. נסו ניסוח אחר, או <a href="/tools/chatbot/" class="text-brand underline">שאלו את הצ'אטבוט</a>.
+      </p>
+    </div>
+
     <div class="space-y-10">
-      {categories.map(cat => (
-        <section>
+      {categories.map((cat, i) => (
+        <section id={`cat-${i}`} class="scroll-mt-24">
           <div class="flex items-center gap-2 mb-4">
             <span class="text-xl">{cat.icon}</span>
             <h2 class="text-lg font-bold text-brand-dark">{cat.name}</h2>
@@ -138,5 +161,28 @@ const schema = {
       ))}
     </div>
   </main>
+
+  <script>
+    const input = document.getElementById('guides-search');
+    const noResults = document.getElementById('guides-noresults');
+    const sections = Array.from(document.querySelectorAll('main section[id^="cat-"]'));
+    const norm = (s) => (s || '').toLowerCase();
+    input?.addEventListener('input', () => {
+      const q = norm(input.value.trim());
+      let anyVisible = false;
+      sections.forEach(sec => {
+        let secVisible = false;
+        sec.querySelectorAll('a[href^="/guides/"], a[href^="/insolvency/"], a[href^="/rights/"], a[href^="/forms/"]').forEach(card => {
+          const match = !q || norm(card.textContent).includes(q);
+          card.style.display = match ? '' : 'none';
+          if (match) secVisible = true;
+        });
+        sec.style.display = secVisible ? '' : 'none';
+        if (secVisible) anyVisible = true;
+      });
+      if (noResults) noResults.classList.toggle('hidden', anyVisible || !q);
+    });
+  </script>
+
   <Footer />
 </BaseLayout>

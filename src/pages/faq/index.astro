@@ -236,9 +236,25 @@ const faqSchema = {
     </nav>
 
     <h1 class="text-3xl font-bold text-brand-dark mb-2">שאלות נפוצות</h1>
-    <p class="text-gray-500 mb-8">
+    <p class="text-gray-500 mb-6">
       {categories.reduce((sum, c) => sum + c.questions.length, 0)}+ תשובות לשאלות הנפוצות ביותר על הוצאה לפועל וחדלות פירעון
     </p>
+
+    <!-- חיפוש -->
+    <div class="mb-6">
+      <label for="faq-search" class="sr-only">חיפוש בשאלות ותשובות</label>
+      <input
+        id="faq-search"
+        type="search"
+        inputmode="search"
+        autocomplete="off"
+        placeholder="🔍 חיפוש בשאלות ותשובות…"
+        class="w-full border border-neutral-border rounded-xl px-4 py-3 text-base focus:ring-2 focus:ring-brand focus:outline-none"
+      />
+      <p id="faq-noresults" class="hidden mt-3 text-sm text-gray-500">
+        לא נמצאו תוצאות. נסה מילה אחרת, או <a href="/tools/chatbot/" class="text-brand underline">שאל את הצ'אטבוט</a>.
+      </p>
+    </div>
 
     <!-- ניווט מהיר בין קטגוריות -->
     <div class="flex flex-wrap gap-2 mb-10">
@@ -295,5 +311,29 @@ const faqSchema = {
     </div>
 
   </main>
+
+  <script>
+    const input = document.getElementById('faq-search');
+    const noResults = document.getElementById('faq-noresults');
+    const sections = Array.from(document.querySelectorAll('main section[id]'));
+    const norm = (s) => (s || '').toLowerCase();
+    input?.addEventListener('input', () => {
+      const q = norm(input.value.trim());
+      let anyVisible = false;
+      sections.forEach(sec => {
+        let secVisible = false;
+        sec.querySelectorAll('details').forEach(d => {
+          const match = !q || norm(d.textContent).includes(q);
+          d.style.display = match ? '' : 'none';
+          d.open = !!(q && match);
+          if (match) secVisible = true;
+        });
+        sec.style.display = secVisible ? '' : 'none';
+        if (secVisible) anyVisible = true;
+      });
+      if (noResults) noResults.classList.toggle('hidden', anyVisible || !q);
+    });
+  </script>
+
   <Footer />
 </BaseLayout>

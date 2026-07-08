@@ -208,18 +208,34 @@ const schema = {
 
     <div class="max-w-4xl mx-auto px-4 py-10">
 
+      <!-- חיפוש -->
+      <div class="mb-8">
+        <label for="milon-search" class="sr-only">חיפוש מונח</label>
+        <input
+          id="milon-search"
+          type="search"
+          inputmode="search"
+          autocomplete="off"
+          placeholder="🔍 חיפוש מונח (למשל: עיקול רכב, ערב מוגן)…"
+          class="w-full border border-neutral-border rounded-xl px-4 py-3 text-base focus:ring-2 focus:ring-blue-600 focus:outline-none"
+        />
+        <p id="milon-noresults" class="hidden mt-3 text-sm text-gray-500">
+          לא נמצא מונח תואם. נסו ניסוח אחר, או <a href="/tools/chatbot/" class="text-blue-600 underline">שאלו את הצ'אטבוט</a>.
+        </p>
+      </div>
+
       {sections.map(sec => (
         <section id={sec.id} class="mb-10 scroll-mt-28">
           <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-5">{sec.letter}</h2>
           <dl>
             {sec.terms.map(term => (
-              <>
+              <div class="milon-term">
                 <dt class="font-bold text-gray-800 text-base mt-4">{term.name}</dt>
                 <dd class="text-gray-600 text-sm mb-3">
                   {term.desc}
                   {term.guide && <a href={term.guide} class="text-blue-600 hover:underline text-xs mr-1">← קרא מדריך מלא</a>}
                 </dd>
-              </>
+              </div>
             ))}
           </dl>
         </section>
@@ -240,6 +256,28 @@ const schema = {
 
     </div>
   </main>
+
+  <script>
+    const input = document.getElementById('milon-search');
+    const noResults = document.getElementById('milon-noresults');
+    const sections = Array.from(document.querySelectorAll('main section[id]'));
+    const norm = (s) => (s || '').toLowerCase();
+    input?.addEventListener('input', () => {
+      const q = norm(input.value.trim());
+      let anyVisible = false;
+      sections.forEach(sec => {
+        let secVisible = false;
+        sec.querySelectorAll('.milon-term').forEach(t => {
+          const match = !q || norm(t.textContent).includes(q);
+          t.style.display = match ? '' : 'none';
+          if (match) secVisible = true;
+        });
+        sec.style.display = secVisible ? '' : 'none';
+        if (secVisible) anyVisible = true;
+      });
+      if (noResults) noResults.classList.toggle('hidden', anyVisible || !q);
+    });
+  </script>
 
   <Footer />
 </BaseLayout>
