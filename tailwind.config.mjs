@@ -6,7 +6,7 @@ export default {
       colors: {
         brand: {
           dark:    '#1B4F72',
-          DEFAULT: '#2E86C1',
+          DEFAULT: '#2874A6',
           light:   '#AED6F1',
           pale:    '#EBF5FB',
           trust:   '#0F2D4A',

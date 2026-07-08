@@ -24,11 +24,19 @@
   html {
     direction: rtl;
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
     font-family: 'Assistant', sans-serif;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* Placeholders carry format hints — keep them AA-legible (gray-500, 4.83:1) */
+  input::placeholder,
+  textarea::placeholder {
+    color: #6B7280;
+    opacity: 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
