@@ -5,6 +5,7 @@ const navLinks = [
   { label: 'חדלות פירעון', href: '/insolvency/' },
   { label: 'כלים', href: '/tools/' },
   { label: 'טפסים', href: '/forms/' },
+  { label: 'מילון', href: '/milon/' },
   { label: 'שאלות נפוצות', href: '/faq/' },
 ];
 
@@ -65,7 +66,11 @@ const currentPath = Astro.url.pathname;
       {navLinks.map(link => (
         <a
           href={link.href}
-          class="text-sm font-medium py-2.5 px-3 rounded-lg hover:bg-brand-pale hover:text-brand-dark transition-colors text-gray-700"
+          class={`text-sm font-medium py-2.5 px-3 rounded-lg hover:bg-brand-pale hover:text-brand-dark transition-colors ${
+            currentPath.startsWith(link.href)
+              ? 'bg-brand-pale text-brand-dark font-semibold'
+              : 'text-gray-700'
+          }`}
         >
           {link.label}
         </a>

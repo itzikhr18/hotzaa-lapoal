@@ -265,7 +265,16 @@ const fmtMonthYear = (d?: string) =>
 
         <slot />
 
-        <slot name="next-steps" />
+        <slot name="next-steps">
+          <div class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+            <h3 class="text-lg font-bold text-brand-dark mb-3">המשך לקרוא:</h3>
+            <ul class="space-y-2 text-sm">
+              {relatedGuides.slice(0, 4).map(g => (
+                <li>← <a href={g.href} class="text-brand hover:underline">{g.title}</a></li>
+              ))}
+            </ul>
+          </div>
+        </slot>
 
         <!-- מודעה (סוף המאמר) -->
         <AdUnit slot="endArticle" />
