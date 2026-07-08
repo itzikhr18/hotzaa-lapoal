@@ -16,6 +16,7 @@ interface Message {
   role: 'user' | 'assistant';
   text: string;
   loading?: boolean;
+  isError?: boolean;
 }
 
 export default function ChatBot() {
@@ -53,12 +54,19 @@ export default function ChatBot() {
         }),
       });
 
-      const data = await res.json();
-      const reply =
-        data?.reply ||
-        data?.error ||
-        'מצטער, לא הצלחתי לעבד את השאלה. נסה שוב.';
+      const data = await res.json().catch(() => ({}));
 
+      if (!res.ok) {
+        const errText = data?.error || 'אירעה שגיאה. נסה שוב בעוד רגע.';
+        setMessages(prev => [
+          ...prev.slice(0, -1),
+          { role: 'assistant', text: errText, isError: true },
+        ]);
+        setInput(text); // מחזירים את השאלה לשדה כדי שלא תיאבד
+        return;
+      }
+
+      const reply = data?.reply || 'מצטער, לא הצלחתי לעבד את השאלה. נסה שוב.';
       setMessages(prev => [
         ...prev.slice(0, -1),
         { role: 'assistant', text: reply },
@@ -68,9 +76,11 @@ export default function ChatBot() {
         ...prev.slice(0, -1),
         {
           role: 'assistant',
-          text: 'אירעה שגיאה טכנית. נסה שוב מאוחר יותר.',
+          text: 'אירעה שגיאה טכנית. השאלה שלך נשמרה בשדה — נסה לשלוח שוב.',
+          isError: true,
         },
       ]);
+      setInput(text); // מחזירים את השאלה לשדה כדי שלא תיאבד
     } finally {
       setLoading(false);
     }
@@ -97,7 +107,9 @@ export default function ChatBot() {
               className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
                 msg.role === 'user'
                   ? 'bg-blue-700 text-white rounded-tr-sm'
-                  : 'bg-white border border-gray-200 text-gray-800 rounded-tl-sm'
+                  : msg.isError
+                    ? 'bg-red-50 border border-red-200 text-red-800 rounded-tl-sm'
+                    : 'bg-white border border-gray-200 text-gray-800 rounded-tl-sm'
               }`}
             >
               {msg.loading ? (

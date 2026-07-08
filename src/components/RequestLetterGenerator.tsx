@@ -74,8 +74,10 @@ export default function RequestLetterGenerator() {
   const [selectedGrounds, setSelectedGrounds] = useState<number[]>([0]);
   const [extra, setExtra] = useState('');
   const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState(false);
 
   const reqType = REQUEST_TYPES.find(t => t.id === typeId)!;
+  const missingFields = !fullName.trim() || !idNumber.trim() || !caseNumber.trim();
 
   const toggleGround = (i: number) => {
     setSelectedGrounds(prev => (prev.includes(i) ? prev.filter(x => x !== i) : [...prev, i].sort()));
@@ -118,12 +120,13 @@ ${fullName.trim() || '____________'}
   }, [reqType, selectedGrounds, extra, fullName, idNumber, phone, caseNumber, lishka]);
 
   const copy = async () => {
+    setCopyError(false);
     try {
       await navigator.clipboard.writeText(letter);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     } catch {
-      /* clipboard unavailable */
+      setCopyError(true);
     }
   };
 
@@ -162,7 +165,7 @@ ${fullName.trim() || '____________'}
         </div>
         <div>
           <label htmlFor="rl-case" className="block text-sm font-semibold text-gray-700 mb-1">מספר תיק הוצאה לפועל</label>
-          <input id="rl-case" type="text" value={caseNumber} onChange={e => setCaseNumber(e.target.value)} placeholder="למשל: 501234-05-25" className={inputClass} />
+          <input id="rl-case" type="text" dir="ltr" value={caseNumber} onChange={e => setCaseNumber(e.target.value)} placeholder="למשל: 501234-05-25" className={`${inputClass} text-left`} />
         </div>
         <div>
           <label htmlFor="rl-lishka" className="block text-sm font-semibold text-gray-700 mb-1">לשכת ההוצאה לפועל</label>
@@ -170,7 +173,7 @@ ${fullName.trim() || '____________'}
         </div>
         <div>
           <label htmlFor="rl-phone" className="block text-sm font-semibold text-gray-700 mb-1">טלפון (לא חובה)</label>
-          <input id="rl-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="050-0000000" className={inputClass} />
+          <input id="rl-phone" type="tel" dir="ltr" value={phone} onChange={e => setPhone(e.target.value)} placeholder="050-0000000" className={`${inputClass} text-left`} />
         </div>
       </div>
 
@@ -209,6 +212,12 @@ ${fullName.trim() || '____________'}
         <pre className="whitespace-pre-wrap text-sm text-gray-800 leading-relaxed font-sans bg-white border border-gray-200 rounded-lg p-4 max-h-96 overflow-y-auto">{letter}</pre>
       </div>
 
+      {missingFields && (
+        <p className="text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-3">
+          ⚠️ בנוסח עדיין חסרים פרטים (שם מלא / ת.ז / מספר תיק). השלם אותם למעלה לפני הגשה לרשם — נוסח עם שדות ריקים עלול להידחות.
+        </p>
+      )}
+
       <div className="flex flex-wrap gap-3">
         <button onClick={copy} className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-2.5 rounded-lg transition-colors text-sm">
           {copied ? '✓ הועתק!' : 'העתק את הנוסח'}
@@ -217,6 +226,12 @@ ${fullName.trim() || '____________'}
           הורד כקובץ טקסט
         </button>
       </div>
+
+      {copyError && (
+        <p role="alert" className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2 mt-3">
+          ⚠️ ההעתקה נכשלה בדפדפן זה — סמן את הטקסט בתצוגה המקדימה למעלה והעתק ידנית (Ctrl+C), או השתמש בכפתור ההורדה.
+        </p>
+      )}
 
       <p className="text-xs text-gray-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 mt-4">
         🔒 <strong>פרטיות:</strong> הנוסח נוצר בדפדפן שלך בלבד — שום פרט אישי לא נשלח לשרת או נשמר.

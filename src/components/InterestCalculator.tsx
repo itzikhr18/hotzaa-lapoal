@@ -58,6 +58,7 @@ export default function InterestCalculator() {
   const [debtDate, setDebtDate] = useState('');
   const [calcDate, setCalcDate] = useState(new Date().toISOString().split('T')[0]);
   const [compliant, setCompliant] = useState(false);
+  const [error, setError] = useState('');
   const [result, setResult] = useState<null | {
     principal: number;
     baseInterest: number;
@@ -68,11 +69,14 @@ export default function InterestCalculator() {
 
   const calculate = useCallback(() => {
     const p = parseFloat(principal.replace(/,/g, ''));
-    if (!p || !debtDate || !calcDate) return;
+    if (!p || p <= 0) { setError('הזן את סכום קרן החוב (מספר גדול מאפס).'); setResult(null); return; }
+    if (!debtDate)     { setError('בחר את תאריך יצירת החוב.'); setResult(null); return; }
+    if (!calcDate)     { setError('בחר את תאריך החישוב.'); setResult(null); return; }
 
     const start = new Date(debtDate);
     const end   = new Date(calcDate);
-    if (end <= start) return;
+    if (end <= start) { setError('תאריך החישוב חייב להיות מאוחר מתאריך יצירת החוב.'); setResult(null); return; }
+    setError('');
 
     let balance = p;
     let totalBase = 0;
@@ -193,6 +197,12 @@ export default function InterestCalculator() {
       >
         חשב חוב עכשיו
       </button>
+
+      {error && (
+        <p role="alert" className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2 mt-3">
+          ⚠️ {error}
+        </p>
+      )}
 
       {/* Disclaimer */}
       <p className="text-xs text-gray-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 mt-4">
