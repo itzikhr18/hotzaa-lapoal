@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ChatBot from '../../components/ChatBot';
 import Disclaimer from '../../components/Disclaimer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const chatbotSchema = {
   '@context': 'https://schema.org',
@@ -36,9 +37,7 @@ const faqSchema = {
   <Header />
   <main id="main-content" class="max-w-2xl mx-auto px-4 py-10">
 
-    <nav class="text-sm text-neutral-muted mb-6">
-      <a href="/">בית</a> › <a href="/tools/">כלים</a> › <span class="text-gray-700">צ'אטבוט</span>
-    </nav>
+<Breadcrumb items={[{ label: 'כלים', href: '/tools/' }, { label: "צ'אטבוט" }]} />
 
     <h1 class="text-3xl font-bold text-brand-dark mb-2">צ'אטבוט הוצאה לפועל</h1>
     <p class="text-gray-500 mb-6">שאל כל שאלה — מקבל תשובה בעברית פשוטה, מיידית, בחינם</p>

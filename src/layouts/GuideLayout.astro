@@ -358,6 +358,34 @@ const fmtMonthYear = (d?: string) =>
   <Disclaimer />
   <Footer />
 
+  <!-- Reading progress + back-to-top (long guides) -->
+  <div id="read-progress" class="fixed top-0 right-0 z-[60] h-1 bg-brand w-0" aria-hidden="true"></div>
+  <button
+    id="back-to-top"
+    type="button"
+    aria-label="חזרה לראש העמוד"
+    class="fixed bottom-5 right-5 sm:bottom-24 z-30 hidden h-11 w-11 items-center justify-center rounded-full bg-brand-dark text-white text-lg shadow-lg hover:bg-brand-trust transition-colors"
+  >↑</button>
+
+  <script>
+    const progress = document.getElementById('read-progress');
+    const backTop = document.getElementById('back-to-top');
+    function onScroll() {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+      if (progress) progress.style.width = pct + '%';
+      if (backTop) {
+        const show = h.scrollTop > h.clientHeight * 1.5;
+        backTop.classList.toggle('hidden', !show);
+        backTop.classList.toggle('flex', show);
+      }
+    }
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    backTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
   <script>
     const article = document.querySelector('article');
     const toc = document.getElementById('toc');
