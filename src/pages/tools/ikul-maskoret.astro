@@ -63,7 +63,12 @@ const faqSchema = {
     </div>
 
     <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-sm">
-      <SalaryGarnishmentCalculator client:idle />
+      <!-- גילוי נאות -->
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm text-gray-700">
+      <p class="font-semibold text-gray-800 mb-1">⚠️ גילוי נאות</p>
+      <p>כלי זה מספק <strong>הערכה בלבד</strong> של הסכום המוגן מעיקול משכורת, על בסיס סעיף 8 לחוק הגנת השכר. הסכומים המדויקים תלויים בהרכב המשפחה, סוג החוב (מזונות אינם מוגנים), הסכמי עבודה, והחלטות הרשם. התוצאה <strong>אינה קובעת</strong> את גובה הניכוי בפועל. לבירור הסכום בתיק שלך — פנה לרשם ההוצאה לפועל או לעורך דין.</p>
+    </div>
+    <SalaryGarnishmentCalculator client:idle />
     </div>
 
     <!-- טבלת הסכום המוגן -->

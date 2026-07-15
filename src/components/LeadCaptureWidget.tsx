@@ -4,8 +4,12 @@ import LeadCaptureForm from './LeadCaptureForm';
 const DISMISS_KEY = 'hotzaaLeadWidgetDismissedAt';
 const DISMISS_TTL = 1000 * 60 * 60 * 24 * 7;
 
+// Lead capture is currently disabled (CPL model frozen).
+const LEADS_ENABLED = false;
+
 export default function LeadCaptureWidget() {
-  const [open, setOpen] = useState(false);
+  if (!LEADS_ENABLED) return null;
+    const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const openedByUser = useRef(false);

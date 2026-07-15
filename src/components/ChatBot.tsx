@@ -36,6 +36,12 @@ export default function ChatBot() {
 
   async function sendMessage(text: string) {
     if (!text.trim() || loading) return;
+    // Block potential ID numbers (9 digits) and warn
+    const idMatch = text.match(/\b\d{9}\b/);
+    if (idMatch) {
+      setMessages(prev => [...prev.slice(0, -1), { role: 'assistant' as const, text: '⚠️ זוהה מספר בעל 9 ספרות — ייתכן שמדובר בתעודת זהות. אנא אל תזין פרטים מזהים. שאל שוב ללא מספר תעודת הזהות.', isError: true }]);
+      return;
+    }
     const userMsg: Message = { role: 'user', text };
     setMessages(prev => [...prev, userMsg, { role: 'assistant', text: '', loading: true }]);
     setInput('');
@@ -91,7 +97,8 @@ export default function ChatBot() {
 
       {/* Disclaimer */}
       <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 text-sm text-gray-700">
-        🤖 צ'אטבוט AI — עלול לטעות. אינו מחליף ייעוץ משפטי אישי.
+        <p className="font-semibold text-gray-800 mb-1">⚠️ גילוי נאות</p>
+        <p>הצ'אטבוט מספק <strong>מידע כללי</strong> באמצעות מודל שפה מלאכותי (Google Gemini). התשובות <strong>אינן ייעוץ משפטי</strong>, אינן מותאמות למקרה הספציפי שלך, ועלולות להכיל טעויות. <strong>אל תזין פרטים מזהים</strong> (תעודת זהות, מספר תיק, מספר חשבון). הצ'אטבוט אינו מייצג אותך בהליך. לייעוץ אישי — פנה לעורך דין.</p>
       </div>
 
       {/* Messages */}

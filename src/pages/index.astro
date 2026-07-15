@@ -48,7 +48,7 @@ const homeFaqSchema = {
     {
       '@type': 'Question',
       name: 'כמה זמן יש לי להגיב אחרי קבלת מכתב הוצאה לפועל?',
-      acceptedAnswer: { '@type': 'Answer', text: 'ברוב המקרים יש 20–30 יום מהמצאת האזהרה להגיש בקשות ולהסדיר את החוב, לפי סוג התיק. לאחר תקופה זו הנושה רשאי לבקש עיקולים והגבלות. חשוב לפעול מיד ולא להמתין.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'לרוב יש 30 יום מיום המצאת האזהרה להגיב או לשלם. בחלק מסוגי התיקים התקופה עשויה להיות קצרה יותר — בדקו את המועד המדויק במכתב שקיבלתם. לאחר תקופה זו הנושה רשאי לבקש עיקולים והגבלות. חשוב לפעול מיד ולא להמתין.' },
     },
     {
       '@type': 'Question',
@@ -78,7 +78,7 @@ const homeFaqSchema = {
     {
       '@type': 'Question',
       name: 'קיבלתי תביעה כערב — מה עושים?',
-      acceptedAnswer: { '@type': 'Answer', text: 'אם ערבת לחוב אישי עד 89,311.66 ₪ (או עד 744,263.82 ₪ בערבות לרכישת דירה — סכומים מוצמדים למדד, מתעדכנים פעמיים בשנה) — ייתכן שאתה ערב מוגן. הנושה חייב לנסות לגבות מהחייב קודם. יש לך 20 יום להגיש התנגדות מרגע קבלת האזהרה.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'אם ערבת לחוב אישי עד 89,311.66 ₪ (או עד 744,263.82 ₪ בערבות לרכישת דירה — סכומים מוצמדים למדד, מתעדכנים פעמיים בשנה) — ייתכן שאתה ערב מוגן. הנושה חייב לנסות לגבות מהחייב קודם. יש לך לרוב 30 יום להגיש התנגדות מרגע קבלת האזהרה (בדקו את המועד המדויק במכתב).' },
     },
     {
       '@type': 'Question',
@@ -109,7 +109,7 @@ const compareRows = [
   { criterion: 'החוב נמחק?',    tzav: 'לא', ichud: 'לא', chdlp: 'כן — בהפטר, כ-3 שנים מצו ההליכים' },
   { criterion: 'מינימום חוב',   tzav: 'אין', ichud: 'צריך מספר תיקים', chdlp: '58,794 ₪ (2026)' },
   { criterion: 'עיקולים?',      tzav: 'מוקפאים בזמן הצו', ichud: 'מוקפאים מרגע אישור', chdlp: 'נעצרים בפתיחת הליך' },
-  { criterion: 'עלות',          tzav: 'כמה עשרות ₪', ichud: 'כמה עשרות ₪', chdlp: '<span dir="ltr">8,000–25,000</span> ₪' },
+  { criterion: 'עלות',          tzav: 'כמה עשרות ₪', ichud: 'כמה עשרות ₪', chdlp: 'אגרה 900 ₪ + עו״ד (משוערך)' },
   { criterion: 'משך',           tzav: 'עד פירעון מלא', ichud: 'עד פירעון מלא', chdlp: 'כ-3 שנים מצו / כ-4 מהגשה' },
   { criterion: 'מתאים למי?',    tzav: 'חוב אחד, הכנסה קבועה', ichud: 'חובות מרובים', chdlp: 'חוב גדול, אין יכולת לפרוע' },
 ];
@@ -135,7 +135,7 @@ const compareRows = [
           <span class="text-brand">אל תבהל. יש לך זכויות.</span>
         </h1>
         <p class="text-xl text-gray-600 max-w-xl mx-auto mb-10 leading-relaxed">
-          כ-570,000 ישראלים עם תיק פעיל — רובם לא יודעים שיש להם אפשרויות. אנחנו כאן לעזור.
+          כ-560 אלף חייבים עם כ-2 מיליון תיקים פתוחים — רובם לא יודעים שיש להם אפשרויות. אנחנו כאן לעזור.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a href="#situation-grid" class="inline-flex items-center justify-center gap-2 bg-brand-dark hover:bg-brand-trust text-white font-bold px-8 py-3.5 rounded-lg text-base transition-colors shadow-sm">
@@ -146,7 +146,7 @@ const compareRows = [
           </a>
         </div>
         <p class="text-xs text-gray-600 mt-6">
-          * כ-570 אלף חייבים עם תיק פעיל (סוף 2024), לפי דוח
+          * כ-560 אלף חייבים עם כ-2 מיליון תיקים פתוחים (סוף 2025), לפי דוח
           <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-dark">רשות האכיפה והגבייה</a>.
         </p>
       </div>
@@ -190,7 +190,7 @@ const compareRows = [
           <span class="text-amber-600 text-xl">⚖️</span>
           <div>
             <span class="font-bold text-amber-800">תיקון 9 (בתוקף מינואר 2025):</span>
-            <span class="text-amber-700 text-sm mr-1">ריבית הפיגורים מחושבת כיום לפי שיטה חדשה — פחות ריבית דריבית. בדוק כמה אתה חייב.</span>
+            <span class="text-amber-700 text-sm mr-1">ריבית הפיגורים מחושבת כיום לפי שיטה חדשה — פחות ריבית דריבית. הערכת גובה הריבית שלך.</span>
           </div>
         </div>
         <a href="/guides/tikunim-2025/" class="text-sm font-semibold text-amber-800 bg-amber-100 hover:bg-amber-200 px-4 py-2 rounded-full transition-colors whitespace-nowrap">
@@ -227,7 +227,7 @@ const compareRows = [
           </a>
           <a href="/faq/" class="bg-white border border-neutral-border rounded-xl p-3 hover:border-brand hover:bg-brand-pale transition-all text-center">
             <div class="font-semibold text-brand-dark">100+ שאלות</div>
-            <div class="text-xs text-neutral-muted mt-1">תשובות מעודכנות</div>
+            <div class="text-xs text-neutral-muted mt-1">תשובות כלליות</div>
           </a>
         </div>
       </div>
@@ -239,7 +239,7 @@ const compareRows = [
         <div class="text-center mb-8">
           <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">כלים חינמיים</p>
           <h2 class="text-3xl font-bold text-gray-900 mb-2">כלים שעובדים בשבילך</h2>
-          <p class="text-gray-500">ייחודיים בשוק — פותחנו אותם כי הם לא היו קיימים</p>
+          <p class="text-gray-500">כלים חינמיים שפיתחנו לציבור החייבים</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -248,7 +248,7 @@ const compareRows = [
               icon: '🧮',
               bg: 'bg-blue-50',
               name: 'מחשבון ריבית — תיקון 9',
-              desc: 'חשב כמה אתה באמת חייב לפי החוק החדש מינואר 2025',
+              desc: 'הערכת גובה החוב לפי תיקון 9 — להמחשה בלבד',
               tag: 'חדש! תיקון 9',
               tagColor: 'bg-orange-100 text-orange-700',
               href: '/tools/calculator/',
@@ -257,7 +257,7 @@ const compareRows = [
               icon: '💼',
               bg: 'bg-rose-50',
               name: 'מחשבון עיקול משכורת',
-              desc: 'כמה מותר לעקל לך מהשכר — וכמה חייב להישאר בידך?',
+              desc: 'חישוב מוערך של הסכום המוגן מעיקול והסכום שעשוי להיות מנוכה',
               tag: 'חדש!',
               tagColor: 'bg-rose-100 text-rose-700',
               href: '/tools/ikul-maskoret/',
@@ -267,7 +267,7 @@ const compareRows = [
               bg: 'bg-teal-50',
               name: 'מחולל נוסח בקשה',
               desc: 'בקשה מנוסחת לרשם תוך דקה: ביטול עיקול, צו תשלומים ועוד',
-              tag: 'חדש! מוכן להגשה',
+              tag: 'נוסח עזר — לא מחליף עו״ד',
               tagColor: 'bg-teal-100 text-teal-700',
               href: '/tools/noseach-bakasha/',
             },
@@ -275,8 +275,8 @@ const compareRows = [
               icon: '💬',
               bg: 'bg-green-50',
               name: "צ'אטבוט מידע",
-              desc: 'שאל שאלה ותקבל תשובה מבוססת חוק — לא ניחושים',
-              tag: 'AI + מאגר מאומת',
+              desc: 'שאל שאלה ותקבל תשובה מידעית כללית — לא תחליף לייעוץ משפטי',
+              tag: 'AI + מידע כללי',
               tagColor: 'bg-green-100 text-green-700',
               href: '/tools/chatbot/',
             },
@@ -284,7 +284,7 @@ const compareRows = [
               icon: '✅',
               bg: 'bg-purple-50',
               name: 'בדיקת זכאות',
-              desc: 'האם אתה זכאי לצו תשלומים, איחוד תיקים, או חדלות פירעון?',
+              desc: 'איזה מסלול עשוי להתאים למצבך? — שאלון הכוונה כללי',
               tag: '4 שאלות בלבד',
               tagColor: 'bg-purple-100 text-purple-700',
               href: '/tools/eligibility/',
@@ -321,7 +321,7 @@ const compareRows = [
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
           {[
             { num: '1', icon: '📂', title: 'פתיחת תיק', desc: 'הנושה פותח תיק בהוצאה לפועל ומצרף פסק דין או שטר חוב.' },
-            { num: '2', icon: '✉️', title: 'אזהרה לחייב', desc: 'החייב מקבל מכתב רשמי ויש לו 20 יום להגיב או לשלם.' },
+            { num: '2', icon: '✉️', title: 'אזהרה לחייב', desc: 'החייב מקבל מכתב רשמי ויש לו לרוב 30 יום להגיב או לשלם.' },
             { num: '3', icon: '🔒', title: 'הגבלות', desc: 'אם אין תגובה — עיקולים, עיכוב יציאה מהארץ והגבלות נוספות.' },
             { num: '4', icon: '💸', title: 'גבייה', desc: 'עיקול חשבון בנק, ניכוי ממשכורת, ועיקול נכסים.' },
             { num: '5', icon: '🤝', title: 'הסדר', desc: 'ניתן להגיע להסדר תשלומים בכל שלב ולהקפיא את הגבייה.' },
@@ -440,7 +440,7 @@ const compareRows = [
           <div class="bg-green-50 border-r-4 border-green-500 rounded-xl p-4 mb-5 text-sm text-gray-700">
             <strong>הוצאה לפועל בישראל:</strong> מערכת משפטית שמאפשרת לנושה לגבות חוב שנקבע בפסק דין.
             מנוהלת ע"י רשות האכיפה והגבייה (משרד המשפטים).
-            לחייב יש בדרך כלל <strong>20–30 יום</strong> להגיב מקבלת האזהרה (לפי סוג התיק) לפני שיתחילו עיקולים.
+            לחייב יש לרוב <strong>30 יום</strong> להגיב מיום המצאת האזהרה לפני שיתחילו עיקולים (בחלק מסוגי התיקים התקופה עשויה להיות קצרה יותר — בדקו את המכתב).
             <a href="/guides/michtav-hotzaa/" class="text-brand underline mr-1">קיבלתי מכתב — מה עושים? ←</a>
           </div>
 
@@ -452,7 +452,7 @@ const compareRows = [
           {[
             { icon: '📋', title: 'מה אפשר לעשות?', body: 'לבקש צו תשלומים, לבקש איחוד תיקים, לערער על גובה החוב, לבקש ביטול עיקול על כספים מוגנים, או לשקול חדלות פירעון.' },
             { icon: '🛡️', title: 'מה מוגן בחוק?', body: 'ברוב המקרים קצבאות ביטוח לאומי, שכר בגובה שכר ההגנה, כלי עבודה וציוד רפואי נהנים מהגנה מיוחדת מפני עיקול. ההגנה תלויה בסוג ההכנסה ובאופן ההפקדה.' },
-            { icon: '⏱️', title: 'כמה זמן יש לך?', body: 'בדרך כלל 20–30 יום מרגע המצאת האזהרה (לפי סוג התיק) לפני שהנושה רשאי לנקוט בהליכי גבייה. במקרים מסוימים ניתן לבקש הארכה.' },
+            { icon: '⏱️', title: 'כמה זמן יש לך?', body: 'לרוב 30 יום מרגע המצאת האזהרה לפני שהנושה רשאי לנקוט בהליכי גבייה (בחלק מסוגי התיקים התקופה עשויה להיות קצרה יותר — בדקו את המכתב). במקרים מסוימים ניתן לבקש הארכה.' },
           ].map(item => (
             <div class="flex gap-4 p-4 bg-gray-50 rounded-xl">
               <span class="text-2xl mt-0.5">{item.icon}</span>
@@ -529,7 +529,7 @@ const compareRows = [
       </div>
       <div class="space-y-3 max-w-2xl mx-auto">
         {[
-          { q: 'כמה זמן יש לי להגיב אחרי קבלת מכתב הוצאה לפועל?', a: 'ברוב המקרים יש 20–30 יום מהמצאת האזהרה להגיש בקשות ולהסדיר את החוב, לפי סוג התיק. לאחר תקופה זו הנושה רשאי לבקש עיקולים והגבלות. חשוב לפעול מיד ולא להמתין.' },
+          { q: 'כמה זמן יש לי להגיב אחרי קבלת מכתב הוצאה לפועל?', a: 'לרוב יש 30 יום מיום המצאת האזהרה להגיב או לשלם. בחלק מסוגי התיקים התקופה עשויה להיות קצרה יותר — בדקו את המועד המדויק במכתב שקיבלתם. לאחר תקופה זו הנושה רשאי לבקש עיקולים והגבלות. חשוב לפעול מיד ולא להמתין.' },
           { q: 'האם ניתן לפרוס חוב לתשלומים?', a: 'כן. ניתן להגיש בקשה לצו תשלומים לרשם ההוצאה לפועל. הרשם קובע סכום חודשי לפי יכולתך הכלכלית. ברוב המקרים, כל עוד עומדים בצו, ניתן למנוע או לצמצם עיקולים חדשים — אך ההחלטה הסופית היא של הרשם.' },
           { q: 'אילו כספים לא ניתן לעקל?', a: 'ברוב המקרים קצבאות ביטוח לאומי (ילדים, נכות, זקנה, שאירים) ושכר בגובה שכר ההגנה נהנים מהגנה מיוחדת מפני עיקול. ההגנה תלויה בסוג ההכנסה, באופן ההפקדה ובהוראות הדין.' },
           { q: 'מה זה תיקון 9 ואיך הוא משפיע עליי?', a: 'מאז תיקון 9 (ינואר 2025) שיטת חישוב הריבית בהוצאה לפועל השתנתה. הריבית מורכבת מריבית ייחוס בתוספת מרכיב דמי פיגורים שנתיים. חוב שלא מוסדר ממשיך לגדול — חשוב להבין את החישוב המדויק בתיק שלך.' },

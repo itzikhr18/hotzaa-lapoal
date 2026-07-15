@@ -61,7 +61,12 @@ const faqSchema = {
     </div>
 
     <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-sm">
-      <RequestLetterGenerator client:idle />
+      <!-- גילוי נאות -->
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm text-gray-700">
+      <p class="font-semibold text-gray-800 mb-1">⚠️ גילוי נאות</p>
+      <p>הנוסח המופק הוא <strong>נוסח עזר כללי</strong> המבוסס על הפרטים שהזנת. הוא <strong>אינו מהווה ייעוץ משפטי</strong>, אינו מותאם לנסיבות המשפטיות הספציפיות שלך, ואינו מחליף נוסח של עורך דין. <strong>לפני הגשה:</strong> בדוק את הטופס הרשמי העדכני באתר רשות האכיפה והגבייה, התאם את הנוסח לפרטי התיק, וודא שכל המסמכים הנדרשים מצורפים. מומלץ להתייעץ עם עורך דין לפני הגשה.</p>
+    </div>
+    <RequestLetterGenerator client:idle />
     </div>
 
     <div class="mt-10 border-t pt-8 border-gray-200">
