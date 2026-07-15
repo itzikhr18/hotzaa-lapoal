@@ -144,7 +144,7 @@ export default function ChatBot() {
       {messages.length > 1 && (
         <button
           onClick={() => { setMessages([{ role: 'assistant', text: 'שלום! אני כאן לעזור עם שאלות על הוצאה לפועל וחדלות פירעון. מה השאלה שלך?' }]); setInput(''); }}
-          className="text-xs text-gray-400 hover:text-gray-600 text-right transition-colors"
+          className="text-xs text-gray-500 hover:text-gray-700 text-right transition-colors"
         >
           נקה שיחה ←
         </button>
@@ -158,6 +158,7 @@ export default function ChatBot() {
           onChange={e => setInput(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && sendMessage(input)}
           placeholder="שאל שאלה על הוצאה לפועל..."
+          aria-label="שאל שאלה על הוצאה לפועל"
           disabled={loading}
           dir="rtl"
           className="flex-1 border border-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:opacity-50"
