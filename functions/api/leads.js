@@ -196,6 +196,13 @@ export async function onRequestOptions() {
 export async function onRequestPost(context) {
   const { request, env } = context;
 
+  // LEAD CAPTURE DISABLED — CPL model frozen (2026-07-16).
+  // No leads or personal data will be sent regardless of env vars.
+  return json({ error: 'טופס הפניה לעורכי דין אינו פעיל כרגע.', code: 'LEADS_DISABLED' }, 503);
+  /* eslint-disable */
+  // The code below is kept for reference but will never execute while disabled.
+  const _disabledEnv = context.env;
+
   if (isRateLimited(request, { limit: 5, windowMs: 60_000 })) {
     return json({ error: 'יותר מדי נסיונות שליחה. המתן דקה ונסה שוב.' }, 429);
   }
@@ -230,4 +237,5 @@ export async function onRequestPost(context) {
     error: 'לא הצלחנו לשלוח את הפרטים כרגע. נסה שוב בעוד כמה דקות.',
     code: 'LEAD_DELIVERY_FAILED',
   }, 502);
+  /* eslint-enable */
 }
