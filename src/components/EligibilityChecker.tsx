@@ -294,7 +294,7 @@ export default function EligibilityChecker() {
     <div dir="rtl" className="font-sans">
       {/* Progress bar */}
       <div className="mb-6">
-        <div className="flex justify-between text-xs text-gray-400 mb-1.5">
+        <div className="flex justify-between text-xs text-gray-500 mb-1.5">
           <span>שאלה {currentQ + 1} מתוך {questions.length}</span>
           <span>{progress}%</span>
         </div>
