@@ -37,7 +37,7 @@ const defaultRelatedGuides = [
 const defaultActionLinks = [
   { label: 'בדיקת תיק לפי תעודת זהות', href: '/guides/bdika-tik/', note: 'להבין מה פתוח נגדך' },
   { label: 'טפסים ונוסחים מוכנים', href: '/forms/', note: 'טופס 214, צו תשלומים ובקשות דחופות' },
-  { label: 'מחשבון ריבית תיקון 9', href: '/tools/calculator/', note: 'הערכת קרן, ריבית ודמי פיגורים' },
+  { label: 'בדיקת ריבית ויתרת חוב', href: '/tools/calculator/', note: 'קבלת יתרה רשמית והבנת רכיבי התיק' },
   { label: 'בדיקת מצב מהירה', href: '/tools/eligibility/', note: 'צו תשלומים, איחוד תיקים או חדלות פירעון' },
   { label: 'שאל את הצ׳אטבוט', href: '/tools/chatbot/', note: 'הכוונה כללית מיידית' },
 ];
@@ -67,6 +67,7 @@ const defaultSources = [
 ];
 
 const pageSources = sources ?? defaultSources;
+const usesGeneralSources = !sources;
 
 const siteUrl = 'https://hotzaa-lapoal.info';
 
@@ -249,164 +250,192 @@ const fmtMonthYear = (d?: string) =>
               href="/tools/chatbot/"
               class="inline-flex items-center gap-2 text-xs font-semibold bg-brand-pale hover:bg-blue-100 text-brand-dark border border-brand-light px-3 py-1.5 rounded-full transition-colors"
             >
-              <span aria-hidden="true">🤖</span> שאל את הצ'אטבוט
-            </a>
-          </div>
-        </header>
+          …17319 tokens truncated…ראש ההוצאה לפועל, ומשם לבית משפט מחוזי. "תביעה נגד הוצאה לפועל" כגוף — אינה דרך המלך; המסלול הנכון הוא ערעור על החלטה ספציפית. אם בוצע נזק עקב פעולה רשלנית של הרשות — ניתן לפנות לבית משפט לעניינים אזרחיים, אך מדובר בהליך מורכב.' },
+      { q: 'האם אפשר להשכיר דירה כשיש תיק הוצאה לפועל?', a: 'כן. תיק הוצאה לפועל פתוח אינו מונע בחוק את השכרת הדירה. עם זאת, בעלי דירות עשויים לבדוק דוח אשראי ולסרב לשכור. אם על הדירה שלך יש עיקול רישומי — ניתן להשכירה, אך לא למכור אותה ללא אישור. כדאי להיות שקוף עם השוכר/המשכיר.' },
+    ]
+  },
+  {
+    id: 'tikun9',
+    icon: '📰',
+    title: 'תיקון 9 וריבית — 2025',
+    questions: [
+      { q: 'מה זה תיקון 9 לחוק פסיקת ריבית?', a: 'תיקון 9, שנכנס לתוקף בינואר 2025, שינה את שיטת חישוב הריבית והפריד בין הריבית השקלית לבין דמי פיגורים המתווספים במועדים הקבועים בדין. השיעורים המדויקים מתפרסמים מדי רבעון על ידי החשב הכללי.' },
+      { q: 'כמה ריבית משלמים עכשיו על חוב בהוצאה לפועל?', a: 'אין שיעור קבוע אחד לכל התקופות. הריבית השקלית ושיעור דמי הפיגורים מתעדכנים ומתפרסמים מדי רבעון. את הסכום המדויק יש לבדוק בפירוט התיק באזור האישי של רשות האכיפה והגבייה.' },
+      { q: 'האם תיקון 9 חל על חובות ישנים שנפתחו לפני 2025?', a: 'כן. תיקון 9 חל על חובות קיימים מינואר 2025 ואילך. חישוב הריבית החדש פועל על הקרן שנותרה מינואר 2025.' },
+      { q: 'האם ריבית הפיגורים יכולה לגדול?', a: 'כן. הריבית מתעדכנת בכל פעם שבנק ישראל משנה את הריבית (בדרך כלל כל 6 שבועות). כשריבית בנק ישראל עולה — גם ריבית הפיגורים עולה.' },
+      { q: 'איך מחשבים כמה אני חייב לפי תיקון 9?', a: 'השתמש במחשבון הריבית שלנו — הוא עודכן לפי תיקון 9 ומחשב את הסכום המעודכן כולל ריבית ודמי פיגורים.' },
+      { q: 'איך משפיע צו תשלומים על דמי הפיגורים?', a: 'חייב שעומד בצו תשלומים אינו צובר דמי פיגורים כלל — זו ההטבה המרכזית של תיקון 9. תיקון 9 גם ביטל את ריבית-הדריבית הישנה, כך שהחוב כבר לא מתנפח ללא שליטה. הרשם ובית המשפט רשאים גם להפחית דמי פיגורים בנסיבות מיוחדות.' },
+      { q: 'מה זה "אגרת פתיחת תיק" ומי משלם?', a: 'אגרת פתיחת תיק היא התשלום שמשלם הנושה לרשות האכיפה בעת פתיחת תיק — בדרך כלל 1%-3% מגובה החוב (מינימום 185 ₪). לאחר ניצחון הנושה, האגרה נוספת לחוב של החייב, כלומר החייב מחזיר גם אותה. לתיקי מזונות קיימים פטורים מאגרה.' },
+    ]
+  },
+  {
+    id: 'mazamot',
+    icon: '👨‍👧',
+    title: 'מזונות בהוצאה לפועל',
+    questions: [
+      { q: 'איך גובים מזונות שלא שולמו דרך הוצאה לפועל?', a: 'מגישים בקשה לפתיחת תיק הוצאה לפועל עם פסק הדין למזונות. הרשם מוציא אזהרה לחייב, ואם לא משלם — עיקול חשבון בנק, עיקול משכורת, עיכוב יציאה מהארץ, ופסילת רישיון נהיגה.' },
+      { q: 'האם מזונות מוגנים מחדלות פירעון?', a: 'כן. חוב מזונות (לילדים ולבן/בת זוג לשעבר) אינו ניתן להפטר בהליך חדלות פירעון. גם אחרי מחיקת כל החובות האחרים — חוב מזונות ממשיך לעמוד ולצבור ריבית.' },
+      { q: 'מה קורה כשאב לא יכול לשלם מזונות?', a: 'ביטוח לאומי משלם לאם "גמלת מזונות" כשהאב לא משלם ותיק הוצאה לפועל פתוח. הסכום הוא הנמוך מבין פסק הדין לבין תקנות המזונות (הבטחת תשלום) לפי הרכב המשפחה, בניכוי הכנסות הזוכה — לבדיקה מדויקת יש מחשבון באתר ביטוח לאומי. לאחר מכן ביטוח לאומי גובה מהאב בעצמו.' },
+      { q: 'האם ניתן לעקל 100% מהמשכורת לצורך מזונות?', a: 'בחוב מזונות ההגנה על שכר לפי חוק הגנת השכר אינה חלה, ועקרונית ניתן לעקל גם את מלוא השכר. בפועל, הרשם או בית המשפט קובעים את ההיקף לפי צורכי הילדים ויכולת החייב, תוך התחשבות בצורכי קיום בסיסיים שלו.' },
+      { q: 'האם ניתן להפחית מזונות אחרי פסיקה?', a: 'כן, דרך בקשה לבית המשפט לענייני משפחה. אם הכנסתך ירדה משמעותית — ניתן לבקש עדכון סכום המזונות. עד שפסק הדין משתנה — ממשיכים לצבור חוב לפי הפסיקה המקורית.' },
+      { q: 'האם עיכוב יציאה מהארץ חל אוטומטית על חייב מזונות?', a: 'כן, עיכוב יציאה מהארץ ניתן לחייבי מזונות בתנאים קלים יותר מחובות רגילים — ניתן להטיל מהר יחסית ולחדש אוטומטית. לנסיעה לחו"ל נדרש אישור בית משפט.' },
+      { q: 'האם קיצבת ילדים מוגנת מעיקול?', a: 'כן לחלוטין. קיצבת ילדים מביטוח לאומי מוגנת מעיקול כחלק מכלל קצבאות ביטוח לאומי שאינן ניתנות לעיקול. גם אם הקיצבה הופקדה בחשבון הבנק — היא מוגנת, אם כי בפועל קשה לעתים להוכיח לבנק את מקורה. מומלץ לנהל חשבון נפרד לקצבאות.' },
+    ]
+  },
+  {
+    id: 'general',
+    icon: '❓',
+    title: 'שאלות כלליות',
+    questions: [
+      { q: 'כמה זמן נשאר מידע על תיק הוצאה לפועל?', a: 'מידע על תיקים פתוחים זמין כל עוד התיק פתוח. לאחר סגירת התיק, הרישום נשמר בארכיון הרשות. במערכת נתוני האשראי של בנק ישראל — מידע נכלל בדוחות הנמסרים לנותני אשראי במשך כ-3 שנים ממועד הדיווח, ולאחר מכן נשמר במאגר לצרכי תיעוד בלבד (עד 10 שנים).' },
+      { q: 'האם הוצאה לפועל משפיעה על דוח אשראי?', a: 'כן. תיקים פתוחים בהוצאה לפועל מדווחים ללשכות האשראי ופוגעים בדירוג האשראי, מה שמקשה על קבלת הלוואות, משכנתאות, וחכירות. סגירת התיק משפרת את הדירוג לאורך זמן.' },
+      { q: 'מה קורה אם החייב נפטר?', a: 'החובות עוברים לעיזבון — לא ליורשים אישית. אם ערך העיזבון קטן מהחובות — הנושים מקבלים לפי סדר עדיפויות. היורשים לא נושאים בחוב מכיסם אלא אם חתמו כערבים. מומלץ להתייעץ עם עורך דין בעניין הירושה.' },
+      { q: 'מה קורה אם הנושה נפטר?', a: 'כשנושה נפטר, זכויות הגבייה שלו עוברות לעיזבון ומשם ליורשיו. כלומר, החוב לא "נמחק" בשל פטירת הנושה. יורשי הנושה, או מנהל העיזבון, יכולים להמשיך בהליכי הגבייה. פנה ללשכה לברר מי הגורם שממשיך לנהל את התיק.' },
+      { q: 'כמה זמן נשאר עיקול על נכס לאחר סגירת תיק?', a: 'לאחר סגירת התיק (בגין תשלום מלא, הסדר, או הפטר), הנושה מחויב לפנות ללשכת ההוצאה לפועל ולרשם המקרקעין/מרשם הרכבים לביטול העיקול. ביטול אוטומטי אינו מובטח — צריך לפעול. בדרך כלל עיקול נמחק מהרישומים תוך מספר שבועות לאחר הגשת הבקשה המתאימה.' },
+      { q: 'האם פנסיית שארים מוגנת מעיקול?', a: 'כן. פנסיית שארים מביטוח לאומי (קצבת שאירים) מוגנת מעיקול כחלק מקצבאות ביטוח לאומי. לעומת זאת, פנסיית שארים מקרן פנסיה פרטית — ההגנה תלויה בסוג הקרן וסוג הקצבה: קצבה חודשית מוגנת בדרך כלל, חיסכון צבור לפני היוון עלול להיות חשוף. מומלץ להתייעץ עם עורך דין.' },
+    ]
+  },
+  {
+    id: 'practical',
+    icon: '🛠️',
+    title: 'שאלות מעשיות',
+    questions: [
+      { q: 'איפה מוגישים בקשה בהוצאה לפועל?', a: 'בלשכת ההוצאה לפועל הקרובה למקום מגוריך, או דרך המערכת המקוונת של רשות האכיפה והגבייה באתר gov.il.' },
+      { q: 'כמה עולה להגיש בקשה לבד?', a: 'בקשות רוב — אגרות מינימליות של כמה עשרות שקלים. בקשות מסוימות (ערעור, איחוד תיקים) עלולות לדרוש אגרה גבוהה יותר.' },
+      { q: 'מה מסמכים צריך להביא לחקירת יכולת?', a: 'תלושי משכורת 3 חודשים אחרונים, דפי חשבון בנק, קבלות הוצאות קבועות (שכר דירה, חשמל, תרופות), תעודת זהות.' },
+      { q: 'האם אפשר להגיש בקשות אונליין?', a: 'כן. רשות האכיפה והגבייה מאפשרת הגשת מגוון בקשות דרך אתר gov.il. לחלק מהבקשות נדרשת הגשה פיזית.' },
+      { q: 'מה עושים אם לא מבין את המכתב?', a: 'פנה לרשות האכיפה לבקשת הסבר, התייעץ עם עורך דין, או השתמש בצ\'אטבוט שלנו לקבלת מידע ראשוני.' },
+      { q: 'האם אפשר לשלם חוב הוצאה לפועל בכרטיס אשראי?', a: 'כן. ניתן לשלם דרך מערכת הוצאה לפועל המקוונת, בדואר, או בלשכה — בכרטיס אשראי, העברה בנקאית, או מזומן.' },
+      { q: 'כמה זמן נשאר הרישום בדוח האשראי?', a: 'לפי חוק נתוני אשראי, מידע נכלל בדוחות האשראי הנמסרים לנותני אשראי במשך כ-3 שנים ממועד הדיווח, ולאחר מכן נשמר במאגר בנק ישראל לצרכי תיעוד בלבד. גם מידע על הליך חדלות פירעון והפטר מדווח למערכת ומופיע בדוחות לתקופה דומה.' },
+      { q: 'האם אפשר למכור רכב שיש עליו עיקול?', a: 'לא ניתן להעביר בעלות על רכב מעוקל ברשם הרכבים ללא ביטול העיקול קודם. מכירת רכב מעוקל מהווה הפרה של צו הרשם ועלולה להיות עבירה פלילית. לפני כל עסקת רכב — בדוק עיקולים ברשם הרכבים (שרות רישוי ישראל). כדי למכור — יש לשלם את החוב ולבטל את העיקול תחילה.' },
+      { q: 'האם הוצאה לפועל יכולה לעקל את הביטוח הלאומי שלי?', a: 'לא. כלל קצבאות ביטוח לאומי — קצבת זקנה, נכות, ילדים, אבטלה, שאירים, דמי לידה, גמלת סיעוד — מוגנות לחלוטין מעיקול לפי חוק הביטוח הלאומי. אם הוצאה לפועל עיקלה סכומי ביטוח לאומי — ניתן לפנות לרשם מיידית ולבקש שחרור, עם הוכחה שמקור הכסף הוא ביטוח לאומי.' },
+    ]
+  },
+];
 
-        <!-- Table of Contents (auto-populated by client JS) -->
-        <nav id="toc" class="not-prose bg-brand-pale border border-brand-light rounded-xl p-5 mb-8 hidden" aria-label="תוכן עניינים">
-          <p class="font-bold text-brand-dark text-sm mb-3">תוכן עניינים</p>
-          <ol id="toc-list" class="space-y-1.5 text-sm list-decimal list-inside text-gray-700"></ol>
-        </nav>
+// FAQPage schema — נבנית אוטומטית מכל השאלות שמוצגות בעמוד (מקור אמת אחד)
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: categories.flatMap(cat =>
+    cat.questions.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    }))
+  ),
+};
+---
 
-        <!-- מודעה (בתוך המאמר) -->
-        <AdUnit slot="inArticle" layout="in-article" />
+<BaseLayout
+  title="100+ שאלות ותשובות על הוצאה לפועל (2026) — מדריך מלא לחייבים"
+  description="100+ שאלות נפוצות על הוצאה לפועל בישראל 2026: עיקול ובדיקת תיק, ביטול עיקול, ערבות, חדלות פירעון, ריבית תיקון 9, זכויות חייבים — תשובות קצרות וברורות."
+  schema={faqSchema}
+>
+  <Header />
+  <main id="main-content" class="max-w-4xl mx-auto px-4 py-10">
 
-        <slot />
+    <Breadcrumb items={[{ label: 'שאלות נפוצות' }]} />
 
-        <slot name="next-steps">
-          <div class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
-            <h3 class="text-lg font-bold text-brand-dark mb-3">המשך לקרוא:</h3>
-            <ul class="space-y-2 text-sm">
-              {relatedGuides.slice(0, 4).map(g => (
-                <li>← <a href={g.href} class="text-brand hover:underline">{g.title}</a></li>
-              ))}
-            </ul>
-          </div>
-        </slot>
+    <h1 class="text-3xl font-bold text-brand-dark mb-2">שאלות נפוצות</h1>
+    <p class="text-gray-500 mb-6">
+      {categories.reduce((sum, c) => sum + c.questions.length, 0)}+ תשובות לשאלות הנפוצות ביותר על הוצאה לפועל וחדלות פירעון
+    </p>
 
-        <!-- מודעה (סוף המאמר) -->
-        <AdUnit slot="endArticle" />
-
-        <!-- Official sources — boosts E-E-A-T for YMYL content -->
-        <aside class="not-prose mt-10 border-t border-neutral-border pt-6">
-          <h2 class="text-sm font-bold text-gray-700 mb-3">מקורות רשמיים ואסמכתאות</h2>
-          <ul class="space-y-2 text-sm">
-            {pageSources.map(src => (
-              <li>
-                <a href={src.href} target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark transition-colors flex items-center gap-1.5">
-                  <span class="text-xs">↗</span>
-                  {src.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </aside>
-      </article>
-
-      <!-- Sidebar -->
-      <aside class="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto space-y-6">
-        <CTAForm compact />
-
-        <div class="bg-white border border-neutral-border rounded-xl p-4 text-sm">
-          <p class="font-semibold text-gray-800 mb-3">פעולות מהירות</p>
-          <ul class="space-y-3">
-            {actionLinks.map(action => (
-              <li>
-                <a href={action.href} class="block rounded-lg border border-transparent p-2 -m-2 hover:border-brand-light hover:bg-brand-pale transition-colors">
-                  <span class="block font-semibold text-brand-dark">{action.label}</span>
-                  <span class="block text-xs text-neutral-muted mt-0.5">{action.note}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Related guides box -->
-        <div class="bg-white border border-neutral-border rounded-xl p-4 text-sm">
-          <p class="font-semibold text-gray-800 mb-3">מדריכים קשורים</p>
-          <ul class="space-y-2">
-            {relatedGuides.map(g => (
-              <li>
-                <a href={g.href} class="text-brand hover:text-brand-dark transition-colors flex items-center gap-1.5">
-                  <span class="text-xs">←</span>
-                  {g.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- מודעה (סרגל צד, דסקטופ בלבד) -->
-        <AdUnit slot="sidebar" class="hidden lg:block" />
-
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm">
-          <p class="font-semibold text-blue-800 mb-1">ℹ️ שים לב</p>
-          <p class="text-gray-700">המידע כאן הוא כללי בלבד. לייעוץ אישי בתיק שלך — פנה לעורך דין.</p>
-        </div>
-      </aside>
-
+    <!-- חיפוש -->
+    <div class="mb-6">
+      <label for="faq-search" class="sr-only">חיפוש בשאלות ותשובות</label>
+      <input
+        id="faq-search"
+        type="search"
+        inputmode="search"
+        autocomplete="off"
+        placeholder="🔍 חיפוש בשאלות ותשובות…"
+        class="w-full border border-neutral-border rounded-xl px-4 py-3 text-base focus:ring-2 focus:ring-brand focus:outline-none"
+      />
+      <p id="faq-noresults" class="hidden mt-3 text-sm text-gray-500">
+        לא נמצאו תוצאות. נסה מילה אחרת, או <a href="/tools/chatbot/" class="text-brand underline">שאל את הצ'אטבוט</a>.
+      </p>
     </div>
+
+    <!-- ניווט מהיר בין קטגוריות -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      {categories.map(cat => (
+        <a
+          href={`#${cat.id}`}
+          class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-neutral-border rounded-full text-sm text-gray-600 hover:border-brand hover:text-brand-dark transition-all"
+        >
+          <span>{cat.icon}</span>
+          <span>{cat.title}</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- קטגוריות ושאלות -->
+    <div class="space-y-12">
+      {categories.map(cat => (
+        <section id={cat.id}>
+          <h2 class="text-xl font-bold text-brand-dark mb-5 flex items-center gap-2">
+            <span class="text-2xl">{cat.icon}</span>
+            {cat.title}
+          </h2>
+          <div class="space-y-3">
+            {cat.questions.map(faq => (
+              <details class="border border-neutral-border rounded-xl group bg-white">
+                <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center gap-4">
+                  <span>{faq.q}</span>
+                  <span class="text-neutral-muted shrink-0 group-open:rotate-180 transition-transform text-lg">▼</span>
+                </summary>
+                <div class="px-4 pb-4 pt-1 text-gray-600 leading-relaxed border-t border-neutral-border">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-14 bg-brand-dark text-white rounded-2xl p-8 text-center">
+      <h2 class="text-xl font-bold mb-2">לא מצאת תשובה?</h2>
+      <p class="text-brand-light mb-6">שאל את הצ'אטבוט שלנו — עונה 24/7 על שאלות על הוצאה לפועל</p>
+      <a
+        href="/tools/chatbot/"
+        class="inline-block bg-white text-brand-dark font-bold px-6 py-3 rounded-lg hover:bg-brand-pale transition-colors"
+      >
+        לצ'אטבוט ←
+      </a>
+    </div>
+
+    <div class="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700">
+      ⚠️ המידע כאן הוא כללי בלבד ואינו מהווה ייעוץ משפטי. לייעוץ אישי בתיק שלך — פנה לעורך דין.
+    </div>
+
   </main>
 
-  <!-- Related Guides -->
-  <section class="bg-gray-50 border-t border-neutral-border py-10">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-xl font-bold text-gray-800 mb-5">מדריכים קשורים</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {[...allGuides, { title: 'כל המדריכים', href: '/guides/', icon: '→' }].map(g => (
-          <a href={g.href} class="flex items-center gap-3 p-3 bg-white border border-neutral-border rounded-xl hover:border-brand hover:bg-brand-pale transition-all text-sm font-medium text-gray-700 hover:text-brand-dark">
-            <span class="text-xl">{g.icon}</span>
-            {g.title}
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <Disclaimer />
-  <Footer />
-
-  <!-- Reading progress + back-to-top (long guides) -->
-  <div id="read-progress" class="fixed top-0 right-0 z-[60] h-1 bg-brand w-0" aria-hidden="true"></div>
-  <button
-    id="back-to-top"
-    type="button"
-    aria-label="חזרה לראש העמוד"
-    class="fixed bottom-5 right-5 sm:bottom-24 z-30 hidden h-11 w-11 items-center justify-center rounded-full bg-brand-dark text-white text-lg shadow-lg hover:bg-brand-trust transition-colors"
-  >↑</button>
-
   <script>
-    const progress = document.getElementById('read-progress');
-    const backTop = document.getElementById('back-to-top');
-    function onScroll() {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
-      if (progress) progress.style.width = pct + '%';
-      if (backTop) {
-        const show = h.scrollTop > h.clientHeight * 1.5;
-        backTop.classList.toggle('hidden', !show);
-        backTop.classList.toggle('flex', show);
-      }
-    }
-    document.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    backTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  </script>
-
-  <script>
-    const article = document.querySelector('article');
-    const toc = document.getElementById('toc');
-    const tocList = document.getElementById('toc-list');
-    if (article && toc && tocList) {
-      // skip headings inside UI blocks (.not-prose) — only real content sections
-      const headings = Array.from(article.querySelectorAll('h2')).filter(h => !h.closest('.not-prose'));
-      if (headings.length >= 3) {
-        headings.forEach((h, i) => {
-          const id = h.id || `section-${i + 1}`;
-          h.id = id;
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = `#${id}`;
-          a.textContent = h.textContent;
-          a.className = 'hover:text-brand-dark transition-colors';
-          li.appendChild(a);
-          tocList.appendChild(li);
+    const input = document.getElementById('faq-search');
+    const noResults = document.getElementById('faq-noresults');
+    const sections = Array.from(document.querySelectorAll('main section[id]'));
+    const norm = (s) => (s || '').toLowerCase();
+    input?.addEventListener('input', () => {
+      const q = norm(input.value.trim());
+      let anyVisible = false;
+      sections.forEach(sec => {
+        let secVisible = false;
+        sec.querySelectorAll('details').forEach(d => {
+          const match = !q || norm(d.textContent).includes(q);
+          d.style.display = match ? '' : 'none';
+          d.open = !!(q && match);
+          if (match) secVisible = true;
         });
-        toc.classList.remove('hidden');
-      }
-    }
+        sec.style.display = secVisible ? '' : 'none';
+        if (secVisible) anyVisible = true;
+      });
+      if (noResults) noResults.classList.toggle('hidden', anyVisible || !q);
+    });
   </script>
+
+  <Footer />
 </BaseLayout>
