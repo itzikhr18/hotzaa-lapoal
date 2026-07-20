@@ -1,3 +1,4 @@
+
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
@@ -8,11 +9,11 @@ const toolsSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'כלים חינמיים להוצאה לפועל',
-  description: "כלים חינמיים לחייבים בהוצאה לפועל: מחשבון ריבית תיקון 9, צ'אטבוט AI, בדיקת מצב וטפסים ונוסחים להגשה עצמית.",
+  description: "כלים חינמיים לחייבים בהוצאה לפועל: בדיקת יתרה במקור הרשמי, מחשבון עיקול משכורת, בדיקת מצב וטפסים ונוסחים להגשה עצמית.",
   url: 'https://hotzaa-lapoal.info/tools/',
   inLanguage: 'he',
   hasPart: [
-    { '@type': 'WebApplication', name: 'מחשבון ריבית הוצאה לפועל — תיקון 9', url: 'https://hotzaa-lapoal.info/tools/calculator/' },
+    { '@type': 'WebPage', name: 'בדיקת ריבית ויתרת חוב — מקורות רשמיים', url: 'https://hotzaa-lapoal.info/tools/calculator/' },
     { '@type': 'WebApplication', name: 'מחשבון עיקול משכורת', url: 'https://hotzaa-lapoal.info/tools/ikul-maskoret/' },
     { '@type': 'WebApplication', name: 'מחולל נוסח בקשה לרשם ההוצאה לפועל', url: 'https://hotzaa-lapoal.info/tools/noseach-bakasha/' },
     { '@type': 'WebApplication', name: "צ'אטבוט הוצאה לפועל", url: 'https://hotzaa-lapoal.info/tools/chatbot/' },
@@ -23,8 +24,8 @@ const toolsSchema = {
 ---
 
 <BaseLayout
-  title="כלים חינמיים להוצאה לפועל — מחשבון, צ'אטבוט וטפסים"
-  description="כלים חינמיים לחייבים בהוצאה לפועל: מחשבון ריבית תיקון 9, צ'אטבוט AI, בדיקת מצב מהירה וטפסים ונוסחים להגשה עצמית."
+  title="כלים חינמיים להוצאה לפועל — בדיקת יתרה, מחשבונים וטפסים"
+  description="כלים חינמיים לחייבים בהוצאה לפועל: בדיקת יתרה במקור הרשמי, מחשבון עיקול משכורת, בדיקת מצב מהירה וטפסים ונוסחים להגשה עצמית."
   schema={toolsSchema}
 >
   <Header />
@@ -39,13 +40,13 @@ const toolsSchema = {
 
       <a href="/tools/calculator/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
         <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mb-4">🧮</div>
-        <div class="inline-block bg-orange-100 text-orange-700 text-xs font-bold px-2.5 py-1 rounded-full mb-3">חדש! תיקון 9</div>
-        <h2 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand-dark transition-colors">מחשבון ריבית הוצאה לפועל</h2>
+        <div class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full mb-3">מקור רשמי</div>
+        <h2 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand-dark transition-colors">בדיקת ריבית ויתרת חוב</h2>
         <p class="text-gray-500 text-sm leading-relaxed mb-4">
-          חשב כמה אתה באמת חייב לפי החוק החדש מינואר 2025.
-          ריבית בסיס + דמי פיגורים רבעוניים — עם פירוט מלא.
+          קבל את יתרת התיק מהרשות ולמד אילו רכיבים לבדוק בפירוט החוב.
+          המחשבון המשוער הושהה עד להשלמת בדיקה מקצועית.
         </p>
-        <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">פתח מחשבון ←</span>
+        <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">לבדיקת יתרה ←</span>
       </a>
 
       <a href="/tools/ikul-maskoret/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
@@ -54,7 +55,7 @@ const toolsSchema = {
         <h2 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand-dark transition-colors">מחשבון עיקול משכורת</h2>
         <p class="text-gray-500 text-sm leading-relaxed mb-4">
           כמה מותר לעקל לך מהשכר — וכמה חייב להישאר בידך?
-          תקרת 20% ושכר הגנה לפי הרכב משפחה.
+          שכר הגנה וכללי העיקול לפי הרכב המשפחה.
         </p>
         <span class="text-brand font-semibold text-sm group-hover:text-brand-dark transition-colors">פתח מחשבון ←</span>
       </a>
