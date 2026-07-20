@@ -1,3 +1,4 @@
+
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import { wage, wageList, wageSentence, wageRangeText, fmtILS, WAGE_AS_OF } from '../../data/protected-amounts';
@@ -262,91 +263,7 @@ const faqSchema = {
     <strong>אם המשכורת נטו שלך אינה עולה על שכר ההגנה המגיע לך — לרוב לא ניתן לעקל ממנה.</strong>
   </p>
   <p>
-    שכר ההגנה הוא <strong>סכום נטו</strong> שמשתנה לפי הרכב המשפחה:
-    {wageSentence}. אם השכר הנטו שלך
-    אינו עולה על השכר ההגנה המתאים למשפחתך — הניכוי אסור (למעט תיקי מזונות).
-  </p>
-
-  <h2>טבלת דוגמאות — כמה ינוכה מהמשכורת שלך?</h2>
-  <p>
-    ארבעה תרחישים מהחיים, שיראו בדיוק כיצד חישוב העיקול עובד בפועל:
-  </p>
-
-  <div class="not-prose overflow-x-auto my-6">
-    <table class="w-full text-sm border-collapse">
-      <thead>
-        <tr class="bg-gray-100 text-gray-700">
-          <th class="border border-gray-300 px-4 py-2 text-right font-bold">משכורת נטו</th>
-          <th class="border border-gray-300 px-4 py-2 text-right font-bold">יחיד (מוגן {fmtILS(wage.single)}) — ניתן לעקל עד</th>
-          <th class="border border-gray-300 px-4 py-2 text-right font-bold">זוג + 2 ילדים (מוגן {fmtILS(wage.couplePlus2)}) — ניתן לעקל עד</th>
-        </tr>
-      </thead>
-      <tbody>
-        {exampleNets.map((net, i) => (
-          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-            <td class="border border-gray-300 px-4 py-2 font-semibold">{fmtILS(net)}</td>
-            <td class="border border-gray-300 px-4 py-2">
-              {maxGarnish(net, wage.single) === 0
-                ? <span class="font-bold text-green-700">0 ₪ — מוגן במלואו</span>
-                : <span class="font-bold text-orange-700">{fmtILS(maxGarnish(net, wage.single))}</span>}
-            </td>
-            <td class="border border-gray-300 px-4 py-2">
-              {maxGarnish(net, wage.couplePlus2) === 0
-                ? <span class="font-bold text-green-700">0 ₪ — מוגן במלואו</span>
-                : <span class="font-bold text-orange-700">{fmtILS(maxGarnish(net, wage.couplePlus2))}</span>}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-
-  <div class="warn-box">
-    <p class="font-semibold text-amber-800 mb-1">חשוב: אלו סכומי מקסימום חוקיים — לא מה שינוכה בפועל</p>
-    <p class="text-sm">
-      בשכר גבוה, המקסימום החוקי יכול להיות גבוה מאוד (כל מה שמעל הסכום המוגן).
-      בפועל, גובה העיקול נקבע בצו של רשם ההוצאה לפועל, וכמעט תמיד ניתן להפחית אותו
-      משמעותית באמצעות בקשת הפחתה מנומקת (הוצאות מחיה, תלושי שכר) או צו תשלומים
-      שמחליף את העיקול. אל תשלים עם המקסימום — הגש בקשה.
-    </p>
-  </div>
-
-  <div class="tip-box">
-    <p class="font-semibold mb-1">חשוב לדעת לגבי הנטו המחושב</p>
-    <p class="text-sm">
-      הנתונים בטבלה הם הערכות — הנטו המדויק תלוי במצב המשפחתי, נקודות הזיכוי, וניכויים
-      ספציפיים. לחישוב מדויק יש לבחון את תלוש המשכורת האישי שלך.
-      <strong>הניכוי לעיקול מחושב על הנטו בתלוש — לפני ניכויים רצוניים.</strong>
-    </p>
-  </div>
-
-  <h2>אילו הכנסות נוספות מוגנות מעיקול?</h2>
-  <p>
-    מעבר למשכורת, יש הכנסות שהחוק מגן עליהן במפורש ואינן ניתנות לעיקול כלל:
-  </p>
-
-  <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-    <div class="border border-green-200 bg-green-50 rounded-xl p-4">
-      <h3 class="font-bold text-gray-800 mb-2">קצבאות ביטוח לאומי — הגנה מיוחדת</h3>
-      <ul class="text-sm text-gray-600 space-y-1">
-        <li>• קצבת ילדים</li>
-        <li>• קצבת נכות כללית</li>
-        <li>• קצבת זקנה</li>
-        <li>• קצבת שאירים</li>
-        <li>• גמלת ניידות</li>
-      </ul>
-    </div>
-    <div class="border border-green-200 bg-green-50 rounded-xl p-4">
-      <h3 class="font-bold text-gray-800 mb-2">גמלות ותגמולים — מוגנים</h3>
-      <ul class="text-sm text-gray-600 space-y-1">
-        <li>• דמי אבטלה</li>
-        <li>• דמי לידה</li>
-        <li>• גמלת סיעוד</li>
-        <li>• גמלת שמירת הריון</li>
-        <li>• תגמולי מילואים</li>
-      </ul>
-    </div>
-    <div class="border border-blue-200 bg-blue-50 rounded-xl p-4">
+    שכר ההגנה הוא <strong>סכום נטו</strong> שמשתנה לפי ה…1129 tokens truncated…ue-50 rounded-xl p-4">
       <h3 class="font-bold text-gray-800 mb-2">הכנסות מיוחדות — הגנה חלקית</h3>
       <ul class="text-sm text-gray-600 space-y-1">
         <li>• מזונות שנפסקו לזכותך</li>
@@ -618,7 +535,7 @@ const faqSchema = {
     שמשנה מהותית את קצב תפיחת חוב בהוצאה לפועל:
   </p>
   <ul>
-    <li><strong>ריבית שקלית</strong> — מחושבת על בסיס ריבית בנק ישראל (3.5% נכון ליולי 2026) בתוספת מרווח</li>
+    <li><strong>ריבית שקלית</strong> — שיעורה הרשמי משתנה ומתפרסם מדי רבעון על ידי החשב הכללי</li>
     <li><strong>דמי פיגורים</strong> — מצטרפים לחוב פעם בשלושה חודשים בלבד (לא מדי יום), ורק למי שאינו עומד בצו תשלומים</li>
     <li><strong>ההשפעה</strong> — הפחתה של עד כ-70%-80% בקצב תפיחת החוב לאורך שנים, בעיקר למי שעומד בתשלומים</li>
   </ul>
