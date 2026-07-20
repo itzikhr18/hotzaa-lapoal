@@ -11,7 +11,6 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
       customPages: [
         'https://hotzaa-lapoal.info/',
         'https://hotzaa-lapoal.info/guides/',
