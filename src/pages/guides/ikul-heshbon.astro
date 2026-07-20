@@ -1,4 +1,3 @@
-
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import { wageSentence, wageRangeText, WAGE_AS_OF } from '../../data/protected-amounts';
@@ -270,7 +269,321 @@ const faqSchema = {
       <thead>
         <tr class="bg-gray-100 text-gray-700">
           <th class="border border-gray-300 px-4 py-2 text-right font-bold">סוג התשלום</th>
-          <th class="border border-gray-300 px-4 py-2 text-right font-bol…4593 tokens truncated…ירות לתיק בהוצאה לפועל דרך הפורטל
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">הסכום המוגן</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">בסיס חוקי</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">הערות</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">כספים הדרושים למחיה בסיסית</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">לפי החלטת הרשם</td>
+          <td class="border border-gray-300 px-4 py-2">חוק ההוצאה לפועל — סמכות הרשם</td>
+          <td class="border border-gray-300 px-4 py-2">לא אוטומטי — יש להגיש לרשם בקשה מנומקת לשחרור כספי מחיה</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">שכר שהופקד לחשבון</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">בגובה הסכום המוגן ({wageRangeText} נטו לפי משפחה)</td>
+          <td class="border border-gray-300 px-4 py-2">סעיף 8 לחוק הגנת השכר</td>
+          <td class="border border-gray-300 px-4 py-2">ההגנה נמשכת 30 יום ממועד ההפקדה לחשבון (נכון ל-2026)</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">קצבת ילדים</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 100%</td>
+          <td class="border border-gray-300 px-4 py-2">סעיף 303 לחוק ביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2">הגנה מוחלטת גם בחשבון רגיל</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">קצבת נכות כללית</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 100%</td>
+          <td class="border border-gray-300 px-4 py-2">סעיף 303 לחוק ביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2">כולל תוספות תלויים</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">קצבת זקנה</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 100%</td>
+          <td class="border border-gray-300 px-4 py-2">סעיף 303 לחוק ביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2">כולל קצבת שאירים</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">גמלת סיעוד</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 100%</td>
+          <td class="border border-gray-300 px-4 py-2">סעיף 303 לחוק ביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2">תשלומים לטיפול בקשיש/נכה</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">מזונות פסוקים</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 100%</td>
+          <td class="border border-gray-300 px-4 py-2">חוק המזונות ופסיקה</td>
+          <td class="border border-gray-300 px-4 py-2">רק מזונות שנקבעו בפסק דין</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">קצבאות ביטוח לאומי שהופקדו לחשבון</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 30 יום מיום התשלום</td>
+          <td class="border border-gray-300 px-4 py-2">סעיף 303 לחוק ביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2">לאחר 30 יום בחשבון — נדרשת בקשה לרשם לשחרור</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הפקדות מעסיק לפנסיה</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 100%</td>
+          <td class="border border-gray-300 px-4 py-2">חוק פנסיית חובה</td>
+          <td class="border border-gray-300 px-4 py-2">כסף בקופת גמל לא ניתן לעיקול</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">קצבת נכות מעבודה</td>
+          <td class="border border-gray-300 px-4 py-2 text-green-700 font-semibold">מלאה — 100%</td>
+          <td class="border border-gray-300 px-4 py-2">סעיף 303 לחוק ביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2">תגמול עבור נכות שנגרמה בעבודה</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">פיצויי פיטורין (חלקיים)</td>
+          <td class="border border-gray-300 px-4 py-2 text-amber-700 font-semibold">חלקית — תלוי נסיבות</td>
+          <td class="border border-gray-300 px-4 py-2">חוק פיצויי פיטורים</td>
+          <td class="border border-gray-300 px-4 py-2">ייעוץ משפטי מומלץ לקביעת החלק המוגן</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">חשוב: ההגנה חלה גם לאחר שהכסף נכנס לחשבון</p>
+    <p>
+      אחד המיתוסים הנפוצים הוא שהכסף מוגן רק "בדרך" אל החשבון.
+      בפועל — גם לאחר שהכסף הופקד בחשבון הרגיל שלך, הוא עדיין מוגן אם מקורו בקצבה או בשכר מינימום.
+      עליך להוכיח זאת בדפי בנק המראים את מקור ההפקדה — ואז הרשם חייב לשחרר את הכסף.
+    </p>
+  </div>
+
+  <h2>עיקול חשבון משותף מול חשבון פרטי — ההבדלים</h2>
+  <p>
+    אחת השאלות הנפוצות ביותר: מה קורה כשהעיקול מוטל על חשבון שאתה מחזיק יחד עם בן/בת הזוג?
+    התשובה מורכבת יותר ממה שנראה במבט ראשון.
+  </p>
+
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">היבט</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">חשבון פרטי</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">חשבון משותף</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">כמה נעצר?</td>
+          <td class="border border-gray-300 px-4 py-2">כל היתרה עד גובה החוב</td>
+          <td class="border border-gray-300 px-4 py-2">מחצית מהיתרה (חזקת שיתוף)</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הגנת השותף</td>
+          <td class="border border-gray-300 px-4 py-2">לא רלוונטי</td>
+          <td class="border border-gray-300 px-4 py-2">השותף יכול לבקש שחרור חלקו בהוכחה</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הוכחת בעלות</td>
+          <td class="border border-gray-300 px-4 py-2">לא נדרשת</td>
+          <td class="border border-gray-300 px-4 py-2">ניתן להוכיח בעלות בחלק גדול יותר עם ראיות</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">גישה לשותף</td>
+          <td class="border border-gray-300 px-4 py-2">כל הגישה חסומה</td>
+          <td class="border border-gray-300 px-4 py-2">השותף הלא-חייב יכול להמשיך לפעול בחלקו</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">זמן טיפול</td>
+          <td class="border border-gray-300 px-4 py-2">5-14 ימי עסקים לביטול</td>
+          <td class="border border-gray-300 px-4 py-2">7-21 ימי עסקים — מורכב יותר</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <p class="font-semibold text-blue-800 mb-2">מה השותף בחשבון צריך לעשות?</p>
+    <ul class="space-y-1 mt-1">
+      <li>פנה לרשם ההוצאה לפועל <strong>בנפרד</strong> — לא דרך החייב</li>
+      <li>הגש בקשה לשחרור חלקך תוך הצגת ראיות: תלושי שכר, העברות בנקאיות, חוזה נישואים</li>
+      <li>אם ניתן להוכיח שחלק גדול יותר ממחצית שייך לך — הרשם יכול לשחרר אותו</li>
+      <li>בחשבון של קשישים או נכים — שווה לבדוק אם כלל הכסף מוגן</li>
+    </ul>
+  </div>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">טיפ: כדאי לפתוח חשבון נפרד לכספים מוגנים</p>
+    <p>
+      אם אתה מקבל קצבאות ביטוח לאומי, שמור אותן בחשבון נפרד מהכנסות אחרות.
+      כך — אם אי פעם יוטל עיקול — קל בהרבה להוכיח שמקור הכסף בחשבון הוא מוגן,
+      ולא תצטרך להסביר תנועות בנק מעורבות.
+    </p>
+  </div>
+
+  <h2>מה קורה אם החשבון ריק בעת העיקול?</h2>
+  <p>
+    אחת הנקודות החשובות שרוב האנשים לא מכירים: עיקול חשבון בנק לא "פוקע" אם אין בו כסף.
+    הנה מה שקורה בפועל:
+  </p>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>
+        הבנק מקבל את הצו, בודק את היתרה — ומוצא אפס.
+        הוא מדווח לרשות האכיפה: "אין כספים לעיקול כרגע".
+      </span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>
+        הצו נשאר <strong>"רדום" על החשבון</strong> — כל כסף שיופקד בעתיד
+        יקפא אוטומטית, לרוב עוד לפני שאתה מספיק לקחת אותו.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>
+        הנושה יכול להחזיק את הצו הפעיל למשך שנים — ומדי פעם הבנק "מסרק" את החשבון
+        ומעביר כל יתרה שהצטברה לנושה.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>
+        חיי בנק שלך הופכים לסיוט: כרטיסי אשראי שנדחים, הוראות קבע שמתבטלות,
+        שיקים שחוזרים. אפילו אם אין כסף — ההשלכות מוחשיות.
+      </span>
+    </li>
+  </ol>
+
+  <div class="warn-box">
+    <p class="font-semibold text-amber-800 mb-1">אל תתעלם מעיקול גם אם החשבון ריק</p>
+    <p>
+      עיקול על חשבון ריק עדיין פוגע קשה: הוא יופעל מיד כשכסף יכנס לחשבון.
+      הדרך היחידה להסיר אותו היא הגשת בקשה רשמית לרשם — לא מספיק שהחשבון ריק.
+      ככל שהחוב ממשיך לצמוח בריבית — כך גדל הסכום שיוכל הנושה לתפוס בעתיד.
+    </p>
+  </div>
+
+  <h2>כיצד להפשיר כספים מוגנים — בתוך 24-48 שעות</h2>
+  <p>
+    אם הכסף שעוקל הגיע מקצבאות ביטוח לאומי או גמלת סיעוד (בתוך 30 יום מהתשלום לחשבון),
+    ממזונות, או משכר שהופקד ב-30 הימים האחרונים (עד גובה הסכום המוגן לפי הרכב המשפחה) —
+    אתה זכאי לשחרורו <strong>ללא קשר לגובה החוב</strong>.
+    הנה השלבים לפעולה דחופה:
+  </p>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>
+        <strong>הדפס דפי בנק של 90 הימים האחרונים</strong> — הדגש כל הפקדה מביטוח לאומי,
+        ממשרד הרווחה, ממעסיק. עבור כל הפקדה כזו — סמן: סכום, תאריך, שם המפקיד.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>
+        <strong>הדפס אישור עדכני מביטוח לאומי</strong> — ניתן להדפיסו מאתר המוסד לביטוח לאומי
+        תוך דקות. האישור מפרט את סוג הקצבה וגובהה.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>
+        <strong>הגיע פיזית ללשכת ההוצאה לפועל בבוקר מוקדם</strong> —
+        ובקש תור ישיר לרשם, כשאתה מציין שמדובר בכספים מוגנים וזו בקשה דחופה.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>
+        <strong>הגש בקשה לשחרור כספים מוגנים</strong> — ציין במפורש:
+        "הכספים מקורם בקצבת [שם הקצבה] ומוגנים לפי סעיף 303 לחוק ביטוח לאומי / סעיף 45 לחוק ההוצאה לפועל".
+        צרף את כל המסמכים.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span>
+        לאחר שהרשם חתם על ההחלטה — <strong>בקש שהלשכה תשלח הודעה לבנק באותו יום</strong> (פקס + אימייל).
+        שמור עותק של ההחלטה.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">6</span>
+      <span>
+        <strong>התקשר לבנק</strong> ושאל: "האם קיבלתם הודעה מלשכת ההוצאה לפועל על שחרור עיקול?"
+        ודא שהמסמך התקבל ותשאל מתי הכסף יהיה זמין.
+      </span>
+    </li>
+  </ol>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">טיפ: בבקשות דחופות — הגשה פיזית עדיפה</p>
+    <p>
+      הגשה אונליין מהירה לבקשות רגילות, אבל לבקשות דחופות (כסף מוגן, מצב חירום כלכלי)
+      — עדיף להגיע פיזית ולבקש תור ישיר לרשם.
+      הנוכחות הפיזית מאותתת על דחיפות ומאפשרת לרשם להחליט על אתר.
+      בקשות על כסף מוגן נאשרות לרוב תוך 24-48 שעות כשהמסמכים ברורים.
+    </p>
+  </div>
+
+  <h2>שלב אחרי שלב — מה לעשות עכשיו</h2>
+
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span>
+        <strong>אסוף את הפרטים מהבנק תוך דקות</strong> — פנה לבנק (בסניף, טלפון, אפליקציה)
+        וקבל: את <strong>מספר תיק ההוצאה לפועל</strong>, שם הזוכה (הנושה), הסכום המעוקל,
+        ותאריך שבו הוטל העיקול. בלי מספר התיק אי אפשר להגיש שום בקשה.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span>
+        <strong>בדוק אם הכסף המעוקל מקורו בגורמים מוגנים</strong> — הכן דפי בנק של 2-3 חודשים אחרונים
+        המראים ממה מורכבות ההכנסות שלך. אם הכסף הוא קצבת ביטוח לאומי, שכר מינימום, שכר שהגיע ב-30 יום האחרונים,
+        או גמלת סיעוד — תוכל לבקש שחרורו מיידי.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span>
+        <strong>הגש בקשת עיכוב הליכים (בתוך 24 שעות אם אפשר)</strong> — כניסה לפורטל רשות
+        האכיפה והגבייה באתר ממשל זמין או פנייה ישירה ללשכה הקרובה.
+        בקשת עיכוב הליכים עוצרת את העברת הכסף לנושה עד שהרשם ידון בבקשתך.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span>
+        <strong>קבע את הדרך לעצור את העיקול</strong> — יש שלוש דרכים עיקריות:
+        תשלום מלא, <a href="/guides/tzav-tashlumim/">צו תשלומים</a>, או <a href="/guides/hitnagdut-letik/">ערעור על החוב עצמו</a>. בחר בהתאם לנסיבותיך.
+      </span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span>
+        <strong>הגש את הבקשה המתאימה לרשם ההוצאה לפועל</strong> — ניתן להגיש אונליין דרך
+        פורטל רשות האכיפה והגבייה, בדוא"ל, או פיזית בלשכה. צרף את כל המסמכים הרלוונטיים
+        (דפי בנק, תלושי שכר, אישורי ביטוח לאומי).
+      </span>
+    </li>
+    <li>
+      <span class="step-num">6</span>
+      <span>
+        <strong>עקוב אחר ההחלטה וודא יישומה</strong> — לאחר אישור הרשם, הוא חייב לעדכן את הבנק
+        תוך 24 שעות. אם הבנק לא שחרר את הכסף תוך יום-יומיים — חזור לרשם עם אישור ההחלטה.
+      </span>
+    </li>
+  </ol>
+
+  <h2>שלוש הדרכים לעצור או להסיר את העיקול</h2>
+
+  <h3>דרך 1: תשלום מלא של החוב</h3>
+  <p>
+    הדרך הפשוטה ביותר. אם בידיך הסכום המלא — שלם ישירות לתיק בהוצאה לפועל דרך הפורטל
     המקוון. חשוב: שלם לרשות האכיפה, לא לנושה ישירות, כדי שהתשלום ירשם כחוקי ויפעיל
     את ביטול העיקול. לאחר התשלום בקש אישור בכתב ויידוע הבנק.
   </p>
