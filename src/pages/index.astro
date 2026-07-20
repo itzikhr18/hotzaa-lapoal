@@ -12,14 +12,6 @@ const websiteSchema = {
   url: 'https://hotzaa-lapoal.info',
   description: 'מידע על הוצאה לפועל וחדלות פירעון בישראל — כלים חינמיים, מדריכים בעברית פשוטה',
   inLanguage: 'he',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: 'https://hotzaa-lapoal.info/guides/?q={search_term_string}',
-    },
-    'query-input': 'required name=search_term_string',
-  },
 };
 
 const organizationSchema = {
@@ -210,7 +202,7 @@ const compareRows = [
           הליכי ההוצאה לפועל בישראל מנוהלים על ידי <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark underline">רשות האכיפה והגבייה</a> שבמשרד המשפטים, באמצעות <a href="/guides/lishkat-hotzaa/" class="text-brand hover:text-brand-dark underline">לשכות הוצאה לפועל</a> ברחבי הארץ. הפורטל הרשמי לבדיקת תיקים פתוחים הוא <a href="https://www.eca.gov.il/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark underline"><strong>אתר רשות האכיפה והגבייה (eca.gov.il)</strong></a>, שמאפשר לכל אדם לבדוק לפי תעודת זהות אם יש נגדו תיק פעיל.
         </p>
         <p class="text-gray-700 leading-relaxed">
-          האתר הזה — <strong>הוצאהלפועל.info</strong> — הוא <strong>אתר מידע חינמי ובלתי תלוי</strong> שעוזר לחייבים בישראל להבין את הזכויות שלהם, לחשב את החוב לפי תיקון 9 (2025), לעצור עיקולים שגויים ולסגור תיקים. אנחנו לא משרד עורכי דין ולא חלק מהמערכת הממשלתית — אנחנו מקור מידע מרוכז בעברית פשוטה, מבוסס על חוק ההוצאה לפועל תשכ"ז-1967, פסיקה עדכנית ופרסומי כל-זכות.
+          האתר הזה — <strong>הוצאהלפועל.info</strong> — הוא <strong>אתר מידע חינמי ובלתי תלוי</strong> שעוזר לחייבים בישראל להבין זכויות, לאתר מקורות רשמיים וללמוד אילו צעדים אפשר לבדוק. אנחנו לא משרד עורכי דין ולא חלק מהמערכת הממשלתית — המידע כללי ואינו תחליף לבדיקת התיק או לייעוץ אישי.
         </p>
         <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
           <a href="/guides/bdika-tik/" class="bg-white border border-neutral-border rounded-xl p-3 hover:border-brand hover:bg-brand-pale transition-all text-center">
@@ -218,8 +210,8 @@ const compareRows = [
             <div class="text-xs text-neutral-muted mt-1">לפי ת״ז</div>
           </a>
           <a href="/tools/calculator/" class="bg-white border border-neutral-border rounded-xl p-3 hover:border-brand hover:bg-brand-pale transition-all text-center">
-            <div class="font-semibold text-brand-dark">מחשבון ריבית</div>
-            <div class="text-xs text-neutral-muted mt-1">תיקון 9 / 2025</div>
+            <div class="font-semibold text-brand-dark">בדיקת יתרה</div>
+            <div class="text-xs text-neutral-muted mt-1">במקור הרשמי</div>
           </a>
           <a href="/guides/sgor-tik/" class="bg-white border border-neutral-border rounded-xl p-3 hover:border-brand hover:bg-brand-pale transition-all text-center">
             <div class="font-semibold text-brand-dark">סגירת תיק</div>
@@ -247,9 +239,9 @@ const compareRows = [
             {
               icon: '🧮',
               bg: 'bg-blue-50',
-              name: 'מחשבון ריבית — תיקון 9',
-              desc: 'הערכת גובה החוב לפי תיקון 9 — להמחשה בלבד',
-              tag: 'חדש! תיקון 9',
+              name: 'בדיקת ריבית ויתרת חוב',
+              desc: 'קישור ליתרה הרשמית והסבר על רכיבי פירוט התיק',
+              tag: 'מקור רשמי',
               tagColor: 'bg-orange-100 text-orange-700',
               href: '/tools/calculator/',
             },
@@ -548,7 +540,7 @@ const compareRows = [
         <a href="/guides/ribit-hotzaa/" class="group border-2 border-neutral-border rounded-2xl p-6 bg-white hover:border-brand hover:bg-brand-pale transition-all">
           <div class="text-3xl mb-3">📊</div>
           <h3 class="font-bold text-gray-900 mb-2 group-hover:text-brand-dark transition-colors">ריבית הוצאה לפועל (תיקון 9)</h3>
-          <p class="text-sm text-gray-600">כמה ריבית צברת? שיעור הריבית השקלית, דמי פיגורים, דוגמאות חישוב ומחשבון ריבית חינמי. מעודכן 2026.</p>
+          <p class="text-sm text-gray-600">הסבר כללי על הריבית השקלית ודמי הפיגורים, לצד הפניה לבדיקת היתרה הרשמית בתיק. מעודכן 2026.</p>
           <span class="inline-block mt-3 text-sm font-semibold text-brand group-hover:text-brand-dark">למדריך המלא ←</span>
         </a>
       </div>

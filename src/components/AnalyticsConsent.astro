@@ -1,0 +1,107 @@
+---
+const measurementId = 'G-5PKTGJZMWL';
+---
+
+<div
+  id="analytics-consent"
+  class="fixed inset-x-4 bottom-4 z-[10000] hidden max-w-2xl rounded-2xl border border-blue-200 bg-white p-5 shadow-2xl md:right-auto md:left-1/2 md:w-[calc(100%-2rem)] md:-translate-x-1/2"
+  role="dialog"
+  aria-modal="false"
+  aria-labelledby="analytics-consent-title"
+  aria-describedby="analytics-consent-description"
+>
+  <h2 id="analytics-consent-title" class="text-lg font-bold text-gray-900">בחירת פרטיות</h2>
+  <p id="analytics-consent-description" class="mt-2 text-sm leading-relaxed text-gray-600">
+    האתר יכול להפעיל Google Analytics כדי למדוד שימוש ולשפר את התוכן. המדידה תופעל רק אם תאשר/י.
+    אפשר לשנות את הבחירה בכל עת.
+  </p>
+  <div class="mt-4 flex flex-col gap-2 sm:flex-row">
+    <button id="analytics-accept" type="button" class="rounded-lg bg-blue-800 px-5 py-2.5 text-sm font-bold text-white hover:bg-blue-900">
+      אישור מדידה
+    </button>
+    <button id="analytics-decline" type="button" class="rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-bold text-gray-800 hover:bg-gray-50">
+      המשך ללא מדידה
+    </button>
+    <a href="/legal/privacy/" class="self-center px-2 py-2 text-sm font-semibold text-blue-800 underline">מדיניות פרטיות</a>
+  </div>
+</div>
+
+<button
+  id="analytics-settings"
+  type="button"
+  class="fixed bottom-20 left-5 z-30 rounded-full border border-gray-300 bg-white px-3 py-2 text-xs font-semibold text-gray-700 shadow-md hover:bg-gray-50"
+  aria-haspopup="dialog"
+  aria-controls="analytics-consent"
+>
+  פרטיות
+</button>
+
+<script is:inline define:vars={{ measurementId }}>
+  (() => {
+    const STORAGE_KEY = 'hotzaaAnalyticsConsent';
+    const panel = document.getElementById('analytics-consent');
+    const accept = document.getElementById('analytics-accept');
+    const decline = document.getElementById('analytics-decline');
+    const settings = document.getElementById('analytics-settings');
+
+    function showPanel() {
+      panel?.classList.remove('hidden');
+      window.setTimeout(() => accept?.focus(), 0);
+    }
+
+    function hidePanel() {
+      panel?.classList.add('hidden');
+      settings?.focus();
+    }
+
+    function clearAnalyticsCookies() {
+      document.cookie.split(';').forEach((part) => {
+        const name = part.split('=')[0]?.trim();
+        if (!name || (name !== '_ga' && !name.startsWith('_ga_'))) return;
+        document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax`;
+        document.cookie = `${name}=; Max-Age=0; path=/; domain=.${location.hostname}; SameSite=Lax`;
+      });
+    }
+
+    function loadAnalytics() {
+      if (window.__hotzaaAnalyticsLoaded) return;
+      window.__hotzaaAnalyticsLoaded = true;
+      window[`ga-disable-${measurementId}`] = false;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', measurementId, { anonymize_ip: true });
+
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+      document.head.appendChild(script);
+    }
+
+    function saveChoice(choice) {
+      try { localStorage.setItem(STORAGE_KEY, choice); } catch (_) {}
+    }
+
+    accept?.addEventListener('click', () => {
+      saveChoice('granted');
+      loadAnalytics();
+      hidePanel();
+    });
+
+    decline?.addEventListener('click', () => {
+      saveChoice('denied');
+      window[`ga-disable-${measurementId}`] = true;
+      clearAnalyticsCookies();
+      hidePanel();
+    });
+
+    settings?.addEventListener('click', showPanel);
+
+    const choice = (() => {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (_) { return null; }
+    })();
+
+    if (choice === 'granted') loadAnalytics();
+    else if (choice !== 'denied') showPanel();
+  })();
+</script>

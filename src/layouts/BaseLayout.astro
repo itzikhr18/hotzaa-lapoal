@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import AccessibilityWidget from '../components/AccessibilityWidget.astro';
-import LeadCaptureWidget from '../components/LeadCaptureWidget';
+import AnalyticsConsent from '../components/AnalyticsConsent.astro';
 import { ADS_ENABLED, ADSENSE_CLIENT, AD_SLOTS } from '../data/ads';
 
 export interface Props {
@@ -116,15 +116,6 @@ const adsActive = ADS_ENABLED && Object.values(AD_SLOTS).some(Boolean);
   <meta name="google-site-verification" content="X5NDXZCjqVjRvuyONLtPJ0UBFHrgFZRr-ybS83-hUWo" />
   <meta name="google-site-verification" content="S0rlBUmhG4a_Mtd6kXKk9PaMPyGMJN5xVDVh8cfJo1k" />
 
-  <!-- Google Analytics 4 — data-cfasync="false" prevents Cloudflare Rocket Loader from deferring these scripts -->
-  <script is:inline data-cfasync="false" async src="https://www.googletagmanager.com/gtag/js?id=G-5PKTGJZMWL"></script>
-  <script is:inline data-cfasync="false">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-5PKTGJZMWL');
-  </script>
-
   <!-- Google AdSense — נטען רק כשיש יחידות מודעה מוגדרות (src/data/ads.ts) -->
   {adsActive && (
     <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossorigin="anonymous"></script>
@@ -133,7 +124,7 @@ const adsActive = ADS_ENABLED && Object.values(AD_SLOTS).some(Boolean);
 <body class="bg-neutral-bg text-gray-900 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-[10001] focus:bg-brand-dark focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">דלג לתוכן הראשי</a>
   <AccessibilityWidget />
-  <LeadCaptureWidget client:idle />
+  <AnalyticsConsent />
   <slot />
 
   {Astro.url.pathname !== '/tools/chatbot/' && (

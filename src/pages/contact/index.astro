@@ -17,6 +17,7 @@ const schema = {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer support',
+      email: 'legal@hotzaa-lapoal.info',
       availableLanguage: 'Hebrew',
       areaServed: 'IL',
     },
@@ -25,8 +26,8 @@ const schema = {
 ---
 
 <BaseLayout
-  title="יצירת קשר — שאל שאלה על הוצאה לפועל"
-  description="שאלה על הוצאה לפועל? צ'אטבוט AI עונה 24/7 בחינם, מדריכים מפורטים, ושאלות נפוצות. ייעוץ אישי — ראה גורמי סיוע."
+  title="יצירת קשר — הוצאהלפועל.info"
+  description="פנייה בנושאי פרטיות, תיקון תוכן ונגישות באתר הוצאהלפועל.info, לצד קישורים למידע ולגורמי סיוע."
   schema={schema}
 >
   <Header />
@@ -38,6 +39,24 @@ const schema = {
     <p class="text-gray-600 mb-10">האתר מנגיש מידע לציבור בחינם. הנה הדרכים הטובות ביותר לקבל עזרה:</p>
 
     <div class="space-y-4">
+
+      <a href="mailto:legal@hotzaa-lapoal.info" class="flex gap-5 items-start bg-white border-2 border-brand rounded-xl p-5 hover:bg-brand-pale transition-all block group">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl shrink-0">✉️</div>
+        <div>
+          <h2 class="font-bold text-gray-800 group-hover:text-brand-dark transition-colors">פרטיות, תיקון תוכן ופנייה למפעיל</h2>
+          <p class="text-sm text-gray-500 mt-1">legal@hotzaa-lapoal.info — ציין קישור לעמוד ופרטים מספיקים לבדיקת הפנייה.</p>
+        </div>
+        <span class="text-brand text-lg mt-1 mr-auto">←</span>
+      </a>
+
+      <a href="mailto:accessibility@hotzaa-lapoal.info" class="flex gap-5 items-start bg-white border border-neutral-border rounded-xl p-5 hover:border-brand hover:bg-brand-pale transition-all block group">
+        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl shrink-0">♿</div>
+        <div>
+          <h2 class="font-bold text-gray-800 group-hover:text-brand-dark transition-colors">דיווח על בעיית נגישות</h2>
+          <p class="text-sm text-gray-500 mt-1">accessibility@hotzaa-lapoal.info — ספר לנו באיזה עמוד נתקלת בקושי ובאיזה מכשיר.</p>
+        </div>
+        <span class="text-brand text-lg mt-1 mr-auto">←</span>
+      </a>
 
       <a href="/tools/chatbot/" class="flex gap-5 items-start bg-white border-2 border-brand rounded-xl p-5 hover:bg-brand-pale transition-all block group">
         <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl shrink-0">💬</div>

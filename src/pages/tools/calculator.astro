@@ -6,147 +6,100 @@ import InterestCalculator from '../../components/InterestCalculator';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const siteUrl = 'https://hotzaa-lapoal.info';
+const pageUrl = `${siteUrl}/tools/calculator/`;
 
-const appSchema = {
+const pageSchema = {
   '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  name: 'מחשבון ריבית הוצאה לפועל — תיקון 9',
-  description: 'חישוב ריבית חוב בהוצאה לפועל לפי תיקון 9 שנכנס לתוקף בינואר 2025',
-  url: `${siteUrl}/tools/calculator/`,
+  '@type': 'WebPage',
+  name: 'בדיקת ריבית ויתרת חוב בהוצאה לפועל',
+  description: 'איך בודקים את יתרת החוב הרשמית בתיק ומאיפה מקבלים את שיעורי הריבית הרשמיים.',
+  url: pageUrl,
   inLanguage: 'he',
-  applicationCategory: 'FinanceApplication',
-  operatingSystem: 'Any',
-  browserRequirements: 'Requires JavaScript',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
   isAccessibleForFree: true,
-  audience: { '@type': 'Audience', audienceType: 'חייבים בהוצאה לפועל בישראל', geographicArea: { '@type': 'Country', name: 'Israel' } },
-  publisher: { '@type': 'Organization', name: 'הוצאהלפועל.info', url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}/og-image.png` } },
-  featureList: ['חישוב ריבית בסיס (הריבית השקלית, בקירוב בנק ישראל + 2%)', 'חישוב דמי פיגורים רבעוניים', 'מנגנון תיקון 9 — ביטול דמי פיגורים למי שעומד בצו תשלומים; הפחתה של עד ~70%-80% בתוספות לחוב לאורך שנים', 'פירוט מלא של רכיבי החוב', 'תיקון 9 — בתוקף מ-1.1.2025'],
 };
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'מה שינה תיקון 9 בחישוב ריבית הוצאה לפועל?', acceptedAnswer: { '@type': 'Answer', text: 'תיקון 9 (ינואר 2025) ביטל את שיטת ריבית-הדריבית הישנה והפריד בין ריבית בסיס ("הריבית השקלית") לדמי פיגורים. לפי הערכות משרד המשפטים, ההפחתה בתוספות לחוב מגיעה עד כ-70%-80% לאורך שנים; ההטבה הגדולה — חייב שעומד בצו תשלומים אינו צובר דמי פיגורים כלל.' } },
-    { '@type': 'Question', name: 'כמה ריבית חייבים לשלם על חוב בהוצאה לפועל ב-2025?', acceptedAnswer: { '@type': 'Answer', text: 'לפי תיקון 9: ריבית הבסיס היא "הריבית השקלית" שמפרסם החשב הכללי מדי רבעון (בקירוב שיעור בנק ישראל + 2%). בנוסף, מי שאינו עומד בצו תשלומים צובר דמי פיגורים בשיעור שנתי של מחצית הריבית השקלית + 2%. השיעור המדויק משתנה מדי רבעון — לחישוב מדויק כדאי לפנות ללשכת ההוצאה לפועל לפירוט תיק.' } },
-    { '@type': 'Question', name: 'האם תיקון 9 חל גם על חובות ישנים?', acceptedAnswer: { '@type': 'Answer', text: 'כן. תיקון 9 חל על כל החובות שעדיין פתוחים בהוצאה לפועל ועל חובות חדשים שנוצרו אחרי ינואר 2025. עבור חובות שנוצרו לפני ינואר 2025, הריבית מינואר 2025 ואילך חושבת לפי הנוסחה החדשה.' } },
-    { '@type': 'Question', name: 'כמה ניתן לחסוך בעמידה בצו תשלומים?', acceptedAnswer: { '@type': 'Answer', text: 'חייבים שעומדים בצו תשלומים אינם צוברים דמי פיגורים כלל — חיסכון של כ-5% מהקרן בכל שנה, שמצטבר לאורך זמן. לכן גם אם הסכומים החודשיים נראים קטנים, יציבות בתשלומים חוסכת אלפי שקלים.' } },
-    { '@type': 'Question', name: 'איך יודעים מה הסכום המדויק שאני חייב?', acceptedAnswer: { '@type': 'Answer', text: 'ניתן לבקש "פירוט תיק" מלשכת ההוצאה לפועל הרלוונטית, דרך האזור האישי באתר רשות האכיפה, או על ידי הצגת תעודת זהות בלשכה. הפירוט יכלול קרן, ריבית, ועלויות ביצוע.' } },
+    {
+      '@type': 'Question',
+      name: 'איך יודעים מה הסכום המדויק בתיק הוצאה לפועל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'את היתרה הרשמית בודקים באזור האישי של רשות האכיפה והגבייה או באמצעות קבלת פירוט תיק מהלשכה המטפלת.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'למה האתר אינו מציג כרגע מחשבון ריבית?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'החישוב הושהה עד להשלמת בדיקה מקצועית של הנוסחה ושל כל שיעורי הריבית הרשמיים, כדי לא להציג למשתמש יתרה שעלולה להיות מטעה.',
+      },
+    },
   ],
 };
 ---
 
 <BaseLayout
-  title="מחשבון ריבית הוצאה לפועל — תיקון 9 (2026)"
-  description="הערכת ריבית חוב בהוצאה לפועל לפי תיקון 9 שנכנס לתוקף בינואר 2025. ריבית בסיס + דמי פיגורים רבעוניים. חינם, מיידי, עם פירוט מלא."
-  schema={[appSchema, faqSchema]}
+  title="בדיקת ריבית ויתרת חוב בהוצאה לפועל — מקורות רשמיים"
+  description="כך בודקים את יתרת החוב הרשמית בתיק הוצאה לפועל ומקבלים פירוט של הקרן, הריבית וההוצאות — בלי להסתמך על אומדן לא מאומת."
+  schema={[pageSchema, faqSchema]}
 >
   <Header />
   <main id="main-content" class="max-w-3xl mx-auto px-4 py-10">
+    <Breadcrumb items={[{ label: 'כלים', href: '/tools/' }, { label: 'בדיקת ריבית ויתרה' }]} />
 
-<Breadcrumb items={[{ label: 'כלים', href: '/tools/' }, { label: 'מחשבון ריבית' }]} />
+    <h1 class="text-3xl font-bold text-brand-dark mb-3">בדיקת ריבית ויתרת חוב בהוצאה לפועל</h1>
+    <p class="text-gray-600 mb-7 leading-relaxed">
+      יתרה רשמית מתקבלת מתוך התיק עצמו. עמוד זה מפנה אותך למקור הנכון ומסביר אילו נתונים לבקש.
+    </p>
 
-    <h1 class="text-3xl font-bold text-brand-dark mb-2">מחשבון ריבית הוצאה לפועל</h1>
-    <p class="text-gray-600 mb-2">כולל תיקון 9 — בתוקף מ-1 בינואר 2025</p>
+    <InterestCalculator />
 
-    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 text-sm text-blue-800">
-      <strong>מה חדש בתיקון 9?</strong> — במקום ריבית דריבית אחת, יש עכשיו שני רכיבים נפרדים: ריבית בסיס (כלכלית) ודמי פיגורים רבעוניים עם תקרה. זה יכול לחסוך לך כסף.
-    </div>
-
-    <!-- גילוי נאות -->
-    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm text-gray-700">
-      <p class="font-semibold text-gray-800 mb-1">⚠️ גילוי נאות</p>
-      <p>כלי זה מספק <strong>הערכה בלבד</strong> של גובה הריבית ודמי הפיגורים. החישוב מבוסס על נתונים שהזנת ועל ריבית בנק ישראל הנכונה למועד החישוב. התוצאה <strong>אינה מהווה יתרת חוב משפטית</strong> ועשויה להשתנות בשל הצמדה, שינויי ריבית, עמידה/אי-עמידה בצו תשלומים, ונסיבות נוספות. ליתרת החוב המדויקת — פנה לרשות האכיפה והגבייה או לעורך דין.</p>
-      <p class="mt-2 text-xs text-gray-500">מקור ריבית: <a href="https://www.boi.org.il/" target="_blank" rel="noopener noreferrer" class="underline">בנק ישראל</a> · נכון להחלטה מ-06/07/2026, בתוקף מ-09/07/2026 (3.5%)</p>
-    </div>
-
-    <!-- הדרכה לפני המחשבון -->
-    <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-6">
-      <h2 class="text-base font-bold text-gray-800 mb-4">📋 איפה מוצאים את המידע הדרוש?</h2>
-      <div class="space-y-4 text-sm">
-
-        <div class="flex gap-3">
-          <div class="w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
-          <div>
-            <p class="font-semibold text-gray-800">סכום קרן החוב</p>
-            <p class="text-gray-500">הסכום המקורי שנקבע בפסק הדין או בשטר החוב — <strong>לפני</strong> ריבית. מופיע במכתב הפתיחה של תיק ההוצאה לפועל, בדרך כלל בשורה "סכום החוב".</p>
-          </div>
-        </div>
-
-        <div class="flex gap-3">
-          <div class="w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
-          <div>
-            <p class="font-semibold text-gray-800">תאריך יצירת החוב</p>
-            <p class="text-gray-500">התאריך שבו נוצר החוב — לרוב תאריך פסק הדין, תאריך ההמחאה שחזרה, או תאריך החשבונית שלא שולמה. מופיע גם הוא במכתב הפתיחה.</p>
-          </div>
-        </div>
-
-        <div class="flex gap-3">
-          <div class="w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</div>
-          <div>
-            <p class="font-semibold text-gray-800">האם אתה עומד בצו תשלומים?</p>
-            <p class="text-gray-500">אם הגשת בקשה לצו תשלומים ואתה משלם בקביעות — סמן "כן". חייב שעומד בצו תשלומים אינו צובר דמי פיגורים כלל.</p>
-          </div>
-        </div>
-
-        <div class="bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-amber-700">
-          💡 <strong>טיפ:</strong> אם אין לך את המכתב — תוכל לבקש פירוט תיק מלשכת ההוצאה לפועל הקרובה אליך, או דרך <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer" class="underline">אתר רשות האכיפה</a>.
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-sm">
-      <InterestCalculator client:idle />
-    </div>
-
-    <!-- הסבר על תיקון 9 -->
-    <div class="mt-10 border-t pt-8 border-gray-200">
-      <h2 class="text-xl font-bold text-gray-800 mb-4">איך עובד תיקון 9?</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-5">איך מקבלים יתרה רשמית?</h2>
+      <ol class="space-y-4">
         {[
-          { label: 'ריבית בסיס (הריבית השקלית)', val: 'בנק ישראל + 2% (קירוב)', desc: 'נכון ליולי 2026: ~6% בשנה' },
-          { label: 'דמי פיגורים', val: 'מחצית הריבית השקלית + 2%', desc: 'כ-5% בשנה — רק אם אינך משלם' },
-          { label: 'עומד בצו תשלומים?', val: 'אפס דמי פיגורים', desc: 'ההטבה הגדולה של תיקון 9' },
-        ].map(item => (
-          <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
-            <p class="text-xs text-gray-500 mb-1">{item.label}</p>
-            <p class="font-bold text-brand-dark">{item.val}</p>
-            <p class="text-xs text-gray-400 mt-1">{item.desc}</p>
-          </div>
+          ['היכנס לאזור האישי', 'הזדהה באתר הממשלתי ובחר את התיק הרלוונטי.'],
+          ['פתח את פירוט התיק', 'בדוק בנפרד את הקרן, הריבית, דמי הפיגורים, האגרות, שכר הטרחה והתשלומים שכבר נקלטו.'],
+          ['שמור אסמכתה', 'הורד או הדפס את פירוט היתרה עם תאריך ההפקה, במיוחד לפני הסדר או תשלום מלא.'],
+          ['בדוק פערים', 'אם תשלום שביצעת אינו מופיע או שהחישוב אינו ברור, פנה ללשכה המטפלת או לייעוץ משפטי אישי.'],
+        ].map(([title, text], index) => (
+          <li class="flex gap-3 rounded-xl border border-gray-200 bg-white p-4">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-dark text-sm font-bold text-white">{index + 1}</span>
+            <div>
+              <h3 class="font-bold text-gray-900">{title}</h3>
+              <p class="mt-1 text-sm leading-relaxed text-gray-600">{text}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ol>
+    </section>
 
-      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">שאלות נפוצות</h2>
+    <section class="mt-10 rounded-2xl border border-blue-200 bg-blue-50 p-6">
+      <h2 class="text-xl font-bold text-blue-950 mb-3">מקורות רשמיים</h2>
+      <ul class="space-y-3 text-sm">
+        <li><a class="font-semibold text-blue-900 underline" href="https://go.gov.il/ecagovernmentident" target="_blank" rel="noopener noreferrer">האזור האישי של רשות האכיפה והגבייה</a></li>
+        <li><a class="font-semibold text-blue-900 underline" href="https://ga.mof.gov.il/rate" target="_blank" rel="noopener noreferrer">שיעורי ריבית שמפרסם החשב הכללי</a></li>
+        <li><a class="font-semibold text-blue-900 underline" href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer">רשות האכיפה והגבייה באתר gov.il</a></li>
+      </ul>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">שאלות נפוצות</h2>
       <div class="space-y-3">
-        {[
-          { q: 'מה שינה תיקון 9 בחישוב ריבית?', a: 'תיקון 9 (ינואר 2025) ביטל את ריבית-הדריבית הישנה והפריד בין ריבית בסיס ("הריבית השקלית", בקירוב בנק ישראל + 2%) לדמי פיגורים בשיעור קבוע וידוע. חייב שעומד בצו תשלומים אינו צובר דמי פיגורים כלל.' },
-          { q: 'האם תיקון 9 חל על חובות ישנים?', a: 'כן. מינואר 2025 ואילך, גם חובות ישנים שנוצרו לפני כן מחושבים לפי הנוסחה החדשה. הצבירה שלפני ינואר 2025 נשארת, אבל הצמיחה העתידית מחושבת לפי הכללים החדשים.' },
-          { q: 'מה זה "דמי פיגורים"?', a: 'תוספת מעבר לריבית הבסיס, שנצברת רק אם אינך עומד בצו תשלומים. השיעור השנתי: מחצית הריבית השקלית + 2 נקודות אחוז (כ-5% בשנה), נצבר אחת לרבעון החל מ-3 חודשי פיגור.' },
-          { q: 'כיצד בודקים כמה אני חייב בדיוק?', a: 'בקש "פירוט תיק" ממשרד ההוצאה לפועל הרלוונטי, דרך האזור האישי באתר רשות האכיפה, או בלשכה עם תעודת זהות. הפירוט מראה קרן, ריבית, ועלויות ביצוע.' },
-        ].map(faq => (
-          <details class="border border-neutral-border rounded-xl group">
-            <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center text-sm">
-              {faq.q}
-              <span class="text-neutral-muted group-open:rotate-180 transition-transform flex-shrink-0 mr-2">▼</span>
-            </summary>
-            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
-          </details>
-        ))}
+        <details class="rounded-xl border border-gray-200 bg-white p-4">
+          <summary class="cursor-pointer font-bold text-gray-900">האם אפשר לחשב יתרה מדויקת רק מסכום ותאריך?</summary>
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">לא תמיד. בתיק עשויים להיות תשלומים, הוצאות, החלטות ושיעורים משתנים שאינם ידועים בלי פירוט התיק.</p>
+        </details>
+        <details class="rounded-xl border border-gray-200 bg-white p-4">
+          <summary class="cursor-pointer font-bold text-gray-900">האם האתר שומר את פרטי התיק שלי?</summary>
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">לא. אין בעמוד זה טופס להזנת שם, טלפון, מספר תיק או סכום חוב.</p>
+        </details>
       </div>
-
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/guides/tikunim-2025/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
-          ← קרא עוד על תיקון 9
-        </a>
-        <span class="text-gray-300">|</span>
-        <a href="/guides/michtav-hotzaa/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
-          ← קיבלת מכתב מהוצאה לפועל?
-        </a>
-      </div>
-    </div>
-
+    </section>
   </main>
   <Footer />
 </BaseLayout>

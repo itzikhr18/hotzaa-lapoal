@@ -37,7 +37,7 @@ const defaultRelatedGuides = [
 const defaultActionLinks = [
   { label: 'בדיקת תיק לפי תעודת זהות', href: '/guides/bdika-tik/', note: 'להבין מה פתוח נגדך' },
   { label: 'טפסים ונוסחים מוכנים', href: '/forms/', note: 'טופס 214, צו תשלומים ובקשות דחופות' },
-  { label: 'מחשבון ריבית תיקון 9', href: '/tools/calculator/', note: 'הערכת קרן, ריבית ודמי פיגורים' },
+  { label: 'בדיקת ריבית ויתרת חוב', href: '/tools/calculator/', note: 'קבלת יתרה רשמית והבנת רכיבי התיק' },
   { label: 'בדיקת מצב מהירה', href: '/tools/eligibility/', note: 'צו תשלומים, איחוד תיקים או חדלות פירעון' },
   { label: 'שאל את הצ׳אטבוט', href: '/tools/chatbot/', note: 'הכוונה כללית מיידית' },
 ];
@@ -67,6 +67,7 @@ const defaultSources = [
 ];
 
 const pageSources = sources ?? defaultSources;
+const usesGeneralSources = !sources;
 
 const siteUrl = 'https://hotzaa-lapoal.info';
 
@@ -281,7 +282,13 @@ const fmtMonthYear = (d?: string) =>
 
         <!-- Official sources — boosts E-E-A-T for YMYL content -->
         <aside class="not-prose mt-10 border-t border-neutral-border pt-6">
-          <h2 class="text-sm font-bold text-gray-700 mb-3">מקורות רשמיים ואסמכתאות</h2>
+          <h2 class="text-sm font-bold text-gray-700 mb-3">{usesGeneralSources ? 'מקורות כלליים לבדיקה' : 'מקורות לעמוד זה'}</h2>
+          {usesGeneralSources && (
+            <p class="text-xs text-gray-500 mb-3">
+              לעמוד זה טרם הושלמה רשימת אסמכתאות ממוקדת. הקישורים הבאים הם מקורות כלליים,
+              ויש לבדוק בהם את ההוראה העדכנית הרלוונטית לפני פעולה.
+            </p>
+          )}
           <ul class="space-y-2 text-sm">
             {pageSources.map(src => (
               <li>

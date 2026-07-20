@@ -33,7 +33,7 @@ const REQUEST_TYPES: RequestType[] = [
     request: 'להורות על ביטול העיקול שהוטל על משכורתי, ולחלופין על הפחתת שיעור הניכוי.',
     grounds: [
       'משכורתי נטו אינה עולה על שכר ההגנה הקבוע בדין להרכב משפחתי, ולפיכך היא מוגנת מעיקול.',
-      'הניכוי מהמשכורת עולה על התקרה הקבועה בחוק הגנת השכר (20% מהנטו לעובד חודשי).',
+      'הניכוי אינו מותיר בידי את הסכום המוגן החל על הרכב משפחתי, או שחושב בלי להתחשב בכללי ההגנה החלים על השכר.',
       'הניכוי הנוכחי אינו מותיר בידי סכום המספיק להוצאות קיום בסיסיות שלי ושל בני משפחתי.',
     ],
     attachments: ['3 תלושי שכר אחרונים', 'פירוט הוצאות חודשיות (שכירות, חשבונות, תרופות)', 'אישורים על בני משפחה תלויים'],
@@ -48,7 +48,7 @@ const REQUEST_TYPES: RequestType[] = [
       'הכנסתי החודשית ומחויבויותיי המשפחתיות אינן מאפשרות תשלום העולה על הסכום המוצע על ידי.',
       'אני מעוניין/ת לשלם את חובי בדרך מסודרת ולהימנע מהליכי גבייה נוספים.',
     ],
-    attachments: ['תלושי שכר / אישורי הכנסה 3 חודשים אחרונים', 'תדפיס עו"ש', 'פירוט הוצאות חודשיות', 'טופס כלכלי מלא (טופס 214) ככל שנדרש'],
+    attachments: ['צילום תעודת זהות כולל ספח', 'טופס 233 — בקשה לצו חיוב בתשלומים', 'טופס 529 — שאלון וכתב ויתור על סודיות', 'מסמכים המעידים על היכולת הכלכלית לפי רשימת המסמכים בטופס הרשמי'],
   },
   {
     id: 'hashavat-sechum',
@@ -219,10 +219,18 @@ ${fullName.trim() || '____________'}
       )}
 
       <div className="flex flex-wrap gap-3">
-        <button onClick={copy} className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-2.5 rounded-lg transition-colors text-sm">
+        <button
+          onClick={copy}
+          disabled={missingFields}
+          className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-2.5 rounded-lg transition-colors text-sm disabled:cursor-not-allowed disabled:opacity-50"
+        >
           {copied ? '✓ הועתק!' : 'העתק את הנוסח'}
         </button>
-        <button onClick={download} className="bg-white hover:bg-gray-50 text-brand-dark font-bold px-6 py-2.5 rounded-lg border-2 border-brand-dark transition-colors text-sm">
+        <button
+          onClick={download}
+          disabled={missingFields}
+          className="bg-white hover:bg-gray-50 text-brand-dark font-bold px-6 py-2.5 rounded-lg border-2 border-brand-dark transition-colors text-sm disabled:cursor-not-allowed disabled:opacity-50"
+        >
           הורד כקובץ טקסט
         </button>
       </div>
@@ -235,7 +243,8 @@ ${fullName.trim() || '____________'}
 
       <p className="text-xs text-gray-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 mt-4">
         🔒 <strong>פרטיות:</strong> הנוסח נוצר בדפדפן שלך בלבד — שום פרט אישי לא נשלח לשרת או נשמר.
-        ⚠️ הנוסח הוא בסיס לעריכה אישית ואינו תחליף לייעוץ משפטי.
+        ⚠️ זהו נוסח עזר בלבד, לא טופס רשמי ולא מסמך שנבדק עבור המקרה האישי שלך. יש לצרף את הטופס הרשמי המתאים,
+        לבדוק שכל טענה נכונה ולצרף אסמכתאות לפני הגשה.
       </p>
     </div>
   );
