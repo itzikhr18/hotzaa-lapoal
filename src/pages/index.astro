@@ -1,4 +1,3 @@
-
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
@@ -278,7 +277,61 @@ const compareRows = [
               bg: 'bg-purple-50',
               name: 'בדיקת זכאות',
               desc: 'איזה מסלול עשוי להתאים למצבך? — שאלון הכוונה כללי',
-              tag: '4…853 tokens truncated…   </div>
+              tag: '4 שאלות בלבד',
+              tagColor: 'bg-purple-100 text-purple-700',
+              href: '/tools/eligibility/',
+            },
+            {
+              icon: '📋',
+              bg: 'bg-amber-50',
+              name: 'טפסים ונוסחים',
+              desc: 'טופס 214, צו תשלומים ונוסחים קצרים לבקשות דחופות',
+              tag: 'להגשה עצמית',
+              tagColor: 'bg-amber-100 text-amber-700',
+              href: '/forms/',
+            },
+          ].map(tool => (
+            <a href={tool.href} class="group bg-white border border-neutral-border rounded-2xl p-6 hover:border-brand hover:shadow-sm transition-all block">
+              <div class={`w-11 h-11 ${tool.bg} rounded-xl flex items-center justify-center text-xl mb-4`}>{tool.icon}</div>
+              <h3 class="font-bold text-gray-800 mb-2">{tool.name}</h3>
+              <p class="text-sm text-gray-500 mb-3 leading-relaxed">{tool.desc}</p>
+              <span class={`text-xs font-semibold px-2.5 py-1 rounded-full ${tool.tagColor}`}>{tool.tag}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS STEPS -->
+    <section class="bg-gray-50 border-y border-neutral-border py-14">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">איך זה עובד</p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-2">שלבי הליך הוצאה לפועל</h2>
+          <p class="text-gray-500">מה קורה מרגע פתיחת התיק ועד סגירתו</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[
+            { num: '1', icon: '📂', title: 'פתיחת תיק', desc: 'הנושה פותח תיק בהוצאה לפועל ומצרף פסק דין או שטר חוב.' },
+            { num: '2', icon: '✉️', title: 'אזהרה לחייב', desc: 'החייב מקבל מכתב רשמי ויש לו לרוב 30 יום להגיב או לשלם.' },
+            { num: '3', icon: '🔒', title: 'הגבלות', desc: 'אם אין תגובה — עיקולים, עיכוב יציאה מהארץ והגבלות נוספות.' },
+            { num: '4', icon: '💸', title: 'גבייה', desc: 'עיקול חשבון בנק, ניכוי ממשכורת, ועיקול נכסים.' },
+            { num: '5', icon: '🤝', title: 'הסדר', desc: 'ניתן להגיע להסדר תשלומים בכל שלב ולהקפיא את הגבייה.' },
+            { num: '6', icon: '✅', title: 'סגירת תיק', desc: 'החוב שולם במלואו — התיק נסגר וכל ההגבלות מוסרות.' },
+          ].map(step => (
+            <div class="bg-white border border-neutral-border rounded-2xl p-5 flex flex-col gap-3">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-brand text-white text-sm font-bold flex items-center justify-center flex-shrink-0">{step.num}</span>
+                <span class="text-2xl">{step.icon}</span>
+              </div>
+              <div>
+                <p class="font-bold text-gray-800 mb-1">{step.title}</p>
+                <p class="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
 
     <!-- ALL GUIDE CATEGORIES -->
