@@ -11,6 +11,7 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
+      filter: (page) => page !== 'https://hotzaa-lapoal.info/partners/demo/',
       customPages: [
         'https://hotzaa-lapoal.info/',
         'https://hotzaa-lapoal.info/guides/',
