@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const contactEmail = 'partners@hotzaa-lapoal.info';
+const contactSubject = encodeURIComponent('התעניינות בהדגמת כלי הכנה לפגישת ייעוץ');
+const contactHref = `mailto:${contactEmail}?subject=${contactSubject}`;
+---
+
+<BaseLayout
+  title="הדגמת כלי הכנה לפגישת ייעוץ"
+  description="הדגמה כללית של כלי White-Label להכנת פונים לפגישת ייעוץ במשרד עורכי דין, ללא שמירת מידע אישי."
+  noindex={true}
+>
+  <Header />
+  <main id="main-content">
+    <section class="border-b border-neutral-border bg-gradient-to-b from-brand-pale to-white">
+      <div class="max-w-5xl mx-auto px-4 pt-8 pb-12 md:pt-12 md:pb-16">
+        <Breadcrumb items={[
+          { label: 'רישוי כלים למשרדים', href: '/partners/' },
+          { label: 'הדגמה' },
+        ]} />
+
+        <div class="mt-7 rounded-3xl border border-neutral-border bg-white shadow-xl overflow-hidden">
+          <div class="flex flex-col gap-4 border-b border-neutral-border bg-gray-50 px-5 py-4 sm:flex-row sm:items-center sm:justify-between md:px-8">
+            <div class="flex items-center gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-dark text-lg font-bold text-white" aria-hidden="true">מ</div>
+              <div>
+                <p class="font-bold text-gray-950">משרד עורכי דין לדוגמה</p>
+                <p class="text-xs text-gray-600">כלי דיגיטלי תחת מותג המשרד</p>
+              </div>
+            </div>
+            <span class="w-fit rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-bold text-amber-900">הדגמת המחשה בלבד</span>
+          </div>
+
+          <div class="px-5 py-8 md:px-10 md:py-12">
+            <div class="mx-auto max-w-3xl text-center">
+              <p class="text-sm font-bold uppercase tracking-wider text-brand">הכנה לשיחה מקצועית</p>
+              <h1 class="mt-3 text-3xl font-bold text-gray-950 md:text-5xl">מה כדאי לרכז לפני פגישת ייעוץ?</h1>
+              <p class="mt-4 leading-relaxed text-gray-700">
+                בחרו נושא וסמנו אילו מסמכים כלליים כבר נמצאים בידכם. בסיום תתקבל רשימת הכנה כללית שאפשר לשמור או להדפיס.
+              </p>
+            </div>
+
+            <div class="mx-auto mt-8 max-w-3xl rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-relaxed text-emerald-950" role="note">
+              <strong>פרטיות כברירת מחדל:</strong> ההדגמה אינה מבקשת שם, טלפון, סכומים או מספר תיק. הבחירות עצמן אינן נשמרות ואינן נשלחות אלינו.
+            </div>
+
+            <section class="mx-auto mt-10 max-w-3xl" aria-labelledby="topic-heading">
+              <div class="mb-4 flex items-center gap-3">
+                <span class="flex h-8 w-8 items-center justify-center rounded-full bg-brand-dark text-sm font-bold text-white" aria-hidden="true">1</span>
+                <h2 id="topic-heading" class="text-xl font-bold text-gray-950">מה הנושא המרכזי שברצונכם לברר?</h2>
+              </div>
+              <div class="grid gap-3 sm:grid-cols-2" id="topic-options">
+                {[
+                  ['עיקולים והגבלות', 'עיקול חשבון, משכורת, רכב או הגבלה אחרת'],
+                  ['הסדר חובות', 'ריכוז חובות ובחינת אפשרויות בשיחה'],
+                  ['חדלות פירעון', 'הכנה ראשונית לשיחה על ההליך'],
+                  ['מכתב או אזהרה', 'מסמך שהתקבל ודורש הבנה מקצועית'],
+                ].map(([topic, detail]) => (
+                  <button
+                    type="button"
+                    class="topic-button min-h-24 rounded-2xl border border-neutral-border bg-white p-4 text-right transition-colors hover:border-brand hover:bg-brand-pale focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+                    data-topic={topic}
+                    aria-pressed="false"
+                  >
+                    <span class="block font-bold text-gray-950">{topic}</span>
+                    <span class="mt-1 block text-sm leading-relaxed text-gray-600">{detail}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            <section class="mx-auto mt-10 max-w-3xl" aria-labelledby="documents-heading">
+              <div class="mb-4 flex items-center gap-3">
+                <span class="flex h-8 w-8 items-center justify-center rounded-full bg-brand-dark text-sm font-bold text-white" aria-hidden="true">2</span>
+                <h2 id="documents-heading" class="text-xl font-bold text-gray-950">מה כבר נמצא בידכם?</h2>
+              </div>
+              <fieldset class="grid gap-3 rounded-2xl border border-neutral-border bg-gray-50 p-4 sm:grid-cols-2">
+                <legend class="sr-only">מסמכים שכבר נמצאים בידכם</legend>
+                {[
+                  'אזהרה, החלטה או צו שקיבלתי',
+                  'רשימה או פירוט של תיקים וחובות',
+                  'ריכוז הכנסות והוצאות שוטפות',
+                  'דפי חשבון והתכתבויות רלוונטיות',
+                ].map((label) => (
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-transparent bg-white p-3 text-sm text-gray-800 hover:border-brand-light">
+                    <input type="checkbox" class="document-check mt-1 h-4 w-4 accent-brand-dark" data-label={label} />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </fieldset>
+            </section>
+
+            <div class="mx-auto mt-8 max-w-3xl text-center">
+              <button
+                type="button"
+                id="build-checklist"
+                class="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-brand-dark px-7 py-3 font-bold text-white shadow-lg transition-colors hover:bg-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark sm:w-auto"
+              >
+                הצגת רשימת הכנה
+              </button>
+              <p id="selection-error" class="mt-3 hidden text-sm font-semibold text-red-700" role="alert">יש לבחור תחילה נושא מרכזי.</p>
+            </div>
+
+            <section id="checklist-result" class="mx-auto mt-10 hidden max-w-3xl scroll-mt-24 rounded-2xl border-2 border-brand-light bg-brand-pale p-5 md:p-7" aria-labelledby="result-heading" aria-live="polite">
+              <p class="text-sm font-bold text-brand">רשימת הכנה כללית</p>
+              <h2 id="result-heading" class="mt-2 text-2xl font-bold text-gray-950">לקראת שיחה בנושא <span id="result-topic"></span></h2>
+              <p class="mt-3 text-sm leading-relaxed text-gray-700">מומלץ לרכז את הפריטים הבאים ולהציגם לעורך הדין ככל שהם רלוונטיים למקרה שלכם:</p>
+              <ul id="recommended-list" class="mt-5 space-y-2 text-sm text-gray-800"></ul>
+
+              <div id="existing-wrapper" class="mt-6 hidden border-t border-brand-light pt-5">
+                <h3 class="font-bold text-gray-950">סימנתם שכבר יש בידכם:</h3>
+                <ul id="existing-list" class="mt-3 space-y-2 text-sm text-gray-700"></ul>
+              </div>
+
+              <div class="mt-6 rounded-xl bg-white p-4 text-xs leading-relaxed text-gray-600">
+                הרשימה היא כלי ארגוני כללי בלבד. היא אינה קובעת איזה הליך מתאים, אינה כוללת את כל המסמכים האפשריים ואינה מחליפה ייעוץ משפטי אישי או בדיקת מועדים.
+              </div>
+
+              <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+                <button type="button" id="print-checklist" class="inline-flex min-h-11 items-center justify-center rounded-xl border border-brand-dark bg-white px-5 py-2 font-bold text-brand-dark hover:bg-gray-50">הדפסת הרשימה</button>
+                <button type="button" id="reset-checklist" class="inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-2 font-bold text-gray-700 hover:bg-white">התחלה מחדש</button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-4 py-14 text-center">
+      <p class="text-sm font-bold uppercase tracking-wider text-brand">למשרדי עורכי דין</p>
+      <h2 class="mt-3 text-3xl font-bold text-gray-950">כך הכלי יכול להיראות תחת המותג שלכם</h2>
+      <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-gray-700">בפיילוט מתאימים את הנושאים, הניסוחים, הצבעים וקישור ההמשך לצורכי המשרד. התוכן המקצועי עולה רק לאחר אישור המשרד.</p>
+      <div class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={contactHref} class="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-brand-dark px-7 py-3 font-bold text-white hover:bg-brand sm:w-auto">בדיקת התאמה לפיילוט</a>
+        <a href="/partners/" class="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-neutral-border bg-white px-7 py-3 font-bold text-brand-dark hover:border-brand sm:w-auto">פרטים על מודל הרישוי</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  const recommendations = {
+    'עיקולים והגבלות': [
+      'המסמך המלא שבו מופיעים העיקול או ההגבלה, כולל תאריך וקצוות המסמך',
+      'רשימה עדכנית של תיקי הוצאה לפועל, אם היא זמינה בידכם',
+      'מסמכים המתארים את מקור ההכנסה וההוצאות החיוניות',
+      'התכתבויות קודמות עם הזוכה, בא כוחו או לשכת ההוצאה לפועל',
+    ],
+    'הסדר חובות': [
+      'רשימת נושים וחובות מרוכזת, גם אם חלק מהסכומים עדיין אינם ודאיים',
+      'מכתבים, דרישות תשלום והצעות הסדר שהתקבלו בעבר',
+      'תמונה חודשית כללית של הכנסות, הוצאות והתחייבויות',
+      'פרטים על הליכים משפטיים או תיקי הוצאה לפועל קיימים',
+    ],
+    'חדלות פירעון': [
+      'ריכוז כללי של חובות, נושים ונכסים',
+      'מסמכים על הכנסות, הוצאות והתחייבויות שוטפות',
+      'החלטות, צווים או הליכים משפטיים קודמים אם קיימים',
+      'התכתבויות עם נושים, בעלי תפקיד או גורמים רשמיים',
+    ],
+    'מכתב או אזהרה': [
+      'המסמך המלא שקיבלתם ולא צילום חלקי בלבד',
+      'המעטפה או פרטי המסירה, אם נשמרו',
+      'מסמכים קודמים הקשורים לאותו עניין',
+      'רשימת שאלות קצרה: מה לא ברור ומה תרצו להבין בפגישה',
+    ],
+  };
+
+  let selectedTopic = '';
+  const topicButtons = Array.from(document.querySelectorAll('.topic-button'));
+  const documentChecks = Array.from(document.querySelectorAll('.document-check'));
+  const buildButton = document.getElementById('build-checklist');
+  const errorMessage = document.getElementById('selection-error');
+  const result = document.getElementById('checklist-result');
+  const resultTopic = document.getElementById('result-topic');
+  const recommendedList = document.getElementById('recommended-list');
+  const existingWrapper = document.getElementById('existing-wrapper');
+  const existingList = document.getElementById('existing-list');
+
+  const appendListItem = (list, text) => {
+    const item = document.createElement('li');
+    item.className = 'flex gap-2';
+    const marker = document.createElement('span');
+    marker.className = 'font-bold text-brand-dark';
+    marker.setAttribute('aria-hidden', 'true');
+    marker.textContent = '✓';
+    const content = document.createElement('span');
+    content.textContent = text;
+    item.append(marker, content);
+    list?.appendChild(item);
+  };
+
+  topicButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      selectedTopic = button.getAttribute('data-topic') || '';
+      topicButtons.forEach((candidate) => {
+        const isSelected = candidate === button;
+        candidate.setAttribute('aria-pressed', String(isSelected));
+        candidate.classList.toggle('border-brand', isSelected);
+        candidate.classList.toggle('bg-brand-pale', isSelected);
+      });
+      errorMessage?.classList.add('hidden');
+    });
+  });
+
+  buildButton?.addEventListener('click', () => {
+    if (!selectedTopic) {
+      errorMessage?.classList.remove('hidden');
+      topicButtons[0]?.focus();
+      return;
+    }
+
+    if (resultTopic) resultTopic.textContent = selectedTopic;
+    if (recommendedList) recommendedList.textContent = '';
+    recommendations[selectedTopic]?.forEach((item) => appendListItem(recommendedList, item));
+
+    const existing = documentChecks
+      .filter((check) => check.checked)
+      .map((check) => check.getAttribute('data-label'))
+      .filter(Boolean);
+
+    if (existingList) existingList.textContent = '';
+    existing.forEach((item) => appendListItem(existingList, item));
+    existingWrapper?.classList.toggle('hidden', existing.length === 0);
+
+    result?.classList.remove('hidden');
+    result?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  document.getElementById('print-checklist')?.addEventListener('click', () => window.print());
+
+  document.getElementById('reset-checklist')?.addEventListener('click', () => {
+    selectedTopic = '';
+    topicButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', 'false');
+      button.classList.remove('border-brand', 'bg-brand-pale');
+    });
+    documentChecks.forEach((check) => { check.checked = false; });
+    result?.classList.add('hidden');
+    errorMessage?.classList.add('hidden');
+    document.getElementById('topic-heading')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+
+<style>
+  @media print {
+    header,
+    footer,
+    #topic-options,
+    #documents-heading,
+    #build-checklist,
+    #print-checklist,
+    #reset-checklist,
+    main > section:last-of-type,
+    [aria-label*="צ'אטבוט"] {
+      display: none !important;
+    }
+
+    #checklist-result {
+      display: block !important;
+      border: 1px solid #94a3b8 !important;
+      background: white !important;
+    }
+  }
+</style>
+

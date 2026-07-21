@@ -33,3 +33,12 @@ test('request generator avoids the known form and wage-cap misstatements', async
   assert.match(source, /טופס 233/);
   assert.match(source, /טופס 529/);
 });
+
+test('partner demo stays local, avoids personal-data collection and is not indexed', async () => {
+  const source = await read('src/pages/partners/demo.astro');
+  assert.doesNotMatch(source, /fetch\(|localStorage|sessionStorage|\/api\//);
+  assert.doesNotMatch(source, /type=["'](?:email|tel|number)["']/);
+  assert.match(source, /noindex=\{true\}/);
+  assert.match(source, /הבחירות עצמן אינן נשמרות ואינן נשלחות אלינו/);
+  assert.match(source, /אינה מחליפה ייעוץ משפטי אישי/);
+});
