@@ -16,8 +16,8 @@ npm run build
 
 ## דרישות מערכת
 
-- **Node.js 18+** (בדוק עם `node -v`)
-- **npm 9+**
+- **Node.js 22.12+** (בדוק עם `node -v`)
+- **npm 9.6.5+**
 
 ---
 
@@ -99,7 +99,7 @@ git push -u origin main
 # 2. ב-Cloudflare Pages:
 #    - Build command: npm run build
 #    - Build output: dist
-#    - Node version: 18
+#    - Node version: 22
 ```
 
 ### הגדרת הצ'אטבוט (מפתח Gemini — בצד השרת בלבד)

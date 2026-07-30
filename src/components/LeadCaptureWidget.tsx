@@ -61,7 +61,7 @@ export default function LeadCaptureWidget() {
         ref={triggerRef}
         type="button"
         onClick={openPanel}
-        className="fixed bottom-20 right-5 sm:bottom-5 z-40 rounded-full bg-green-700 px-4 py-3 text-sm font-bold text-white shadow-lg transition-colors hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-200"
+        className="fixed bottom-20 right-5 sm:bottom-5 z-40 rounded-full bg-green-700 px-4 py-3 text-sm font-bold text-white shadow-lg transition-colors hover:bg-green-800 focus:outline-hidden focus:ring-4 focus:ring-green-200"
         aria-label="פתח טופס יצירת קשר עם עורך דין — שיחת ייעוץ ללא עלות"
       >
         שיחת ייעוץ — חינם
@@ -82,7 +82,7 @@ export default function LeadCaptureWidget() {
           ref={closeRef}
           type="button"
           onClick={closeForNow}
-          className="absolute left-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-gray-600 shadow-sm hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="absolute left-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-gray-600 shadow-xs hover:text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-blue-600"
           aria-label="סגור טופס"
         >
           ×

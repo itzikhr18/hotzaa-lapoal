@@ -286,7 +286,7 @@ const timeline = [
           },
         ].map(item => (
           <div class="flex items-start gap-4 bg-white border border-neutral-border rounded-xl p-4">
-            <span class="text-sm font-bold text-brand-dark min-w-[5rem] text-left">{item.rate}</span>
+            <span class="text-sm font-bold text-brand-dark min-w-20 text-left">{item.rate}</span>
             <div>
               <p class="font-semibold text-gray-800">{item.title}</p>
               <p class="text-gray-500 text-xs mt-0.5">{item.desc}</p>
@@ -327,12 +327,12 @@ const timeline = [
 
       <div class="relative">
         <!-- vertical line -->
-        <div class="absolute right-[5.5rem] top-0 bottom-0 w-0.5 bg-brand-light hidden md:block"></div>
+        <div class="absolute right-22 top-0 bottom-0 w-0.5 bg-brand-light hidden md:block"></div>
 
         <div class="space-y-6">
           {timeline.map(item => (
             <div class="md:flex gap-6 items-start">
-              <div class="min-w-[5rem] text-right mb-2 md:mb-0">
+              <div class="min-w-20 text-right mb-2 md:mb-0">
                 <span class="inline-block bg-brand-dark text-white text-sm font-bold px-3 py-1 rounded-full">{item.year}</span>
               </div>
               <div class="bg-white border border-neutral-border rounded-xl p-4 flex-1">
@@ -455,7 +455,7 @@ const timeline = [
             href={src.url}
             target="_blank"
             rel="noopener noreferrer"
-            class={`flex items-start gap-4 border rounded-xl p-4 hover:shadow-sm transition-shadow no-underline ${src.color}`}
+            class={`flex items-start gap-4 border rounded-xl p-4 hover:shadow-xs transition-shadow no-underline ${src.color}`}
           >
             <div class="flex-1">
               <div class="flex items-center gap-2 mb-1 flex-wrap">

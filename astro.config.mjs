@@ -1,13 +1,15 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://hotzaa-lapoal.info',
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
     react(),
-    tailwind(),
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,

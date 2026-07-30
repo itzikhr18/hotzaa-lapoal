@@ -66,7 +66,7 @@ export default function LeadCaptureForm({
     if (variant === 'compact') {
       return 'rounded-xl border border-blue-200 bg-white p-4 shadow-xl';
     }
-    return 'rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-green-50 p-5 md:p-6 shadow-sm';
+    return 'rounded-2xl border border-blue-200 bg-linear-to-br from-blue-50 via-white to-green-50 p-5 md:p-6 shadow-xs';
   }, [variant]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -175,7 +175,7 @@ export default function LeadCaptureForm({
             value={fullName}
             onChange={event => setFullName(event.target.value)}
             autoComplete="name"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base focus:outline-hidden focus:ring-2 focus:ring-blue-600"
           />
         </div>
 
@@ -192,7 +192,7 @@ export default function LeadCaptureForm({
             onChange={event => setPhone(event.target.value)}
             autoComplete="tel"
             placeholder="05X-XXXXXXX"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base text-left focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base text-left focus:outline-hidden focus:ring-2 focus:ring-blue-600"
           />
         </div>
 

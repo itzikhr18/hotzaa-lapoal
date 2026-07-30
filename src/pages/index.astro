@@ -117,7 +117,7 @@ const compareRows = [
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="bg-gradient-to-bl from-blue-50 to-amber-50 border-b border-neutral-border">
+    <section class="bg-linear-to-bl from-blue-50 to-amber-50 border-b border-neutral-border">
       <div class="max-w-4xl mx-auto px-4 py-16 text-center">
         <div class="inline-block bg-white border border-brand-light text-brand-dark text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
           מידע חינמי לחייבים בישראל
@@ -130,7 +130,7 @@ const compareRows = [
           כ-560 אלף חייבים עם כ-2 מיליון תיקים פתוחים — רובם לא יודעים שיש להם אפשרויות. אנחנו כאן לעזור.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="#situation-grid" class="inline-flex items-center justify-center gap-2 bg-brand-dark hover:bg-brand-trust text-white font-bold px-8 py-3.5 rounded-lg text-base transition-colors shadow-sm">
+          <a href="#situation-grid" class="inline-flex items-center justify-center gap-2 bg-brand-dark hover:bg-brand-trust text-white font-bold px-8 py-3.5 rounded-lg text-base transition-colors shadow-xs">
             מה קרה לך? מצא את הצעד הבא ←
           </a>
           <a href="/guides/michtav-hotzaa/" class="inline-flex items-center justify-center gap-2 bg-white border border-brand text-brand-dark font-semibold px-6 py-3.5 rounded-lg text-base hover:bg-brand-pale transition-colors">
@@ -291,7 +291,7 @@ const compareRows = [
               href: '/forms/',
             },
           ].map(tool => (
-            <a href={tool.href} class="group bg-white border border-neutral-border rounded-2xl p-6 hover:border-brand hover:shadow-sm transition-all block">
+            <a href={tool.href} class="group bg-white border border-neutral-border rounded-2xl p-6 hover:border-brand hover:shadow-xs transition-all block">
               <div class={`w-11 h-11 ${tool.bg} rounded-xl flex items-center justify-center text-xl mb-4`}>{tool.icon}</div>
               <h3 class="font-bold text-gray-800 mb-2">{tool.name}</h3>
               <p class="text-sm text-gray-500 mb-3 leading-relaxed">{tool.desc}</p>
@@ -467,7 +467,7 @@ const compareRows = [
         </div>
         <!-- Desktop: table -->
         <div class="hidden md:block">
-          <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+          <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-xs">
             <thead>
               <tr class="bg-brand text-white">
                 <th class="p-3 text-right font-semibold">קריטריון</th>
@@ -490,7 +490,7 @@ const compareRows = [
         <!-- Mobile: stacked cards (one arrangement per card) -->
         <div class="md:hidden space-y-4">
           {compareOptions.map(o => (
-            <div class="bg-white border border-neutral-border rounded-xl shadow-sm overflow-hidden">
+            <div class="bg-white border border-neutral-border rounded-xl shadow-xs overflow-hidden">
               <a href={o.href} class="block bg-brand text-white font-bold px-4 py-3 text-center">{o.name} ←</a>
               <dl class="divide-y divide-gray-100">
                 {compareRows.map(row => (
