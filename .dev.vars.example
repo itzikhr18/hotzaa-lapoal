@@ -1,0 +1,11 @@
+# Cloudflare Pages Functions local development variables.
+# For local testing, copy this file to .dev.vars and fill real values.
+# .dev.vars is ignored by Git.
+
+GEMINI_API_KEY=replace_with_gemini_api_key
+
+RESEND_API_KEY=replace_with_resend_api_key
+LEAD_NOTIFY_EMAIL=your_destination_email@example.com
+LEAD_FROM_EMAIL="Hotzaa Lapoal <leads@your-verified-domain.com>"
+
+LEAD_WEBHOOK_URL=
