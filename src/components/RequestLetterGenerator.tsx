@@ -140,7 +140,7 @@ ${fullName.trim() || '____________'}
     URL.revokeObjectURL(url);
   };
 
-  const inputClass = 'w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 focus:outline-none';
+  const inputClass = 'w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 focus:outline-hidden';
 
   return (
     <div dir="rtl" className="font-sans">

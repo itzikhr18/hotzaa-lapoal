@@ -10,6 +10,10 @@ dist/
 # environment variables
 .env
 .env.*
+.dev.vars
+.dev.vars.*
+!.env.example
+!.dev.vars.example
 
 # IDE
 .vscode/

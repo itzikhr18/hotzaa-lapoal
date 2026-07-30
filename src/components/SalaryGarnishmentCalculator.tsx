@@ -82,7 +82,7 @@ export default function SalaryGarnishmentCalculator() {
             value={netSalary}
             onChange={e => setNetSalary(e.target.value)}
             placeholder="למשל: 8500"
-            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
           />
           <p className="text-xs text-gray-500 mt-1">הנטו בתלוש — אחרי ניכויי חובה, לפני ניכויים רצוניים</p>
         </div>
@@ -95,7 +95,7 @@ export default function SalaryGarnishmentCalculator() {
             id="sg-family"
             value={family}
             onChange={e => setFamily(Number(e.target.value))}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base bg-white focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
           >
             {wageList.map((w, i) => (
               <option key={w.label} value={i}>

@@ -168,7 +168,7 @@ export default function ChatBot() {
           aria-label="שאל שאלה על הוצאה לפועל"
           disabled={loading}
           dir="rtl"
-          className="flex-1 border border-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:opacity-50"
+          className="flex-1 border border-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-hidden disabled:opacity-50"
         />
         <button
           onClick={() => sendMessage(input)}

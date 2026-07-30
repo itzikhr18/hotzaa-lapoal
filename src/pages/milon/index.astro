@@ -191,7 +191,7 @@ const schema = {
     </div>
 
     <!-- Hero -->
-    <section class="bg-gradient-to-l from-blue-700 to-blue-900 text-white py-12 px-4">
+    <section class="bg-linear-to-l from-blue-700 to-blue-900 text-white py-12 px-4">
       <div class="max-w-4xl mx-auto text-center">
         <p class="text-blue-200 text-sm font-medium mb-2">מאגר מונחים | עודכן מרץ 2026</p>
         <h1 class="text-3xl md:text-4xl font-bold mb-4">מילון מושגים — הוצאה לפועל בעברית פשוטה</h1>
@@ -203,10 +203,10 @@ const schema = {
     </section>
 
     <!-- Sticky alpha nav -->
-    <nav aria-label="ניווט לפי אות" class="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-sm overflow-x-auto">
+    <nav aria-label="ניווט לפי אות" class="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-xs overflow-x-auto">
       <div class="max-w-4xl mx-auto px-2 py-2 flex gap-1 flex-nowrap text-sm font-medium">
         {sections.map(sec => (
-          <a href={`#${sec.id}`} class="px-2 py-1 rounded hover:bg-blue-50 text-blue-700 whitespace-nowrap">{sec.letter}</a>
+          <a href={`#${sec.id}`} class="px-2 py-1 rounded-sm hover:bg-blue-50 text-blue-700 whitespace-nowrap">{sec.letter}</a>
         ))}
       </div>
     </nav>
@@ -222,7 +222,7 @@ const schema = {
           inputmode="search"
           autocomplete="off"
           placeholder="🔍 חיפוש מונח (למשל: עיקול רכב, ערב מוגן)…"
-          class="w-full border border-neutral-border rounded-xl px-4 py-3 text-base focus:ring-2 focus:ring-blue-600 focus:outline-none"
+          class="w-full border border-neutral-border rounded-xl px-4 py-3 text-base focus:ring-2 focus:ring-blue-600 focus:outline-hidden"
         />
         <p id="milon-noresults" class="hidden mt-3 text-sm text-gray-500">
           לא נמצא מונח תואם. נסו ניסוח אחר, או <a href="/tools/chatbot/" class="text-blue-600 underline">שאלו את הצ'אטבוט</a>.

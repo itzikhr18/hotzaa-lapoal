@@ -56,7 +56,7 @@ const faq = [
 >
   <Header />
   <main id="main-content">
-    <section class="relative overflow-hidden border-b border-neutral-border bg-gradient-to-b from-brand-pale to-white">
+    <section class="relative overflow-hidden border-b border-neutral-border bg-linear-to-b from-brand-pale to-white">
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-blue-100/70 blur-3xl"></div>
         <div class="absolute -bottom-28 -right-20 h-80 w-80 rounded-full bg-cyan-100/60 blur-3xl"></div>
@@ -66,7 +66,7 @@ const faq = [
         <Breadcrumb items={[{ label: 'רישוי למשרדי עורכי דין' }]} />
 
         <div class="max-w-4xl mx-auto text-center pt-6">
-          <span class="inline-flex items-center rounded-full border border-brand-light bg-white px-4 py-2 text-sm font-semibold text-brand-dark shadow-sm">
+          <span class="inline-flex items-center rounded-full border border-brand-light bg-white px-4 py-2 text-sm font-semibold text-brand-dark shadow-xs">
             פיילוט למשרדים בתחום הוצאה לפועל וחדלות פירעון
           </span>
           <h1 class="mt-6 text-4xl md:text-6xl font-bold leading-tight text-gray-950">
@@ -78,13 +78,13 @@ const faq = [
           <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={contactHref}
-              class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-xl bg-brand-dark px-7 py-3 font-bold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+              class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-xl bg-brand-dark px-7 py-3 font-bold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
             >
               בדיקת התאמה לפיילוט
             </a>
             <a
               href="/partners/demo/"
-              class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-xl border border-neutral-border bg-white px-7 py-3 font-bold text-brand-dark transition-colors duration-200 hover:border-brand hover:bg-brand-pale focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+              class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-xl border border-neutral-border bg-white px-7 py-3 font-bold text-brand-dark transition-colors duration-200 hover:border-brand hover:bg-brand-pale focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
             >
               צפייה בהדגמה חיה
             </a>
@@ -105,7 +105,7 @@ const faq = [
 
       <div class="grid gap-5 md:grid-cols-3">
         {benefits.map((benefit) => (
-          <article class="rounded-2xl border border-neutral-border bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-light hover:shadow-md">
+          <article class="rounded-2xl border border-neutral-border bg-white p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-brand-light hover:shadow-md">
             <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-pale text-brand-dark" aria-hidden="true">
               {benefit.icon === 'brand' && (
                 <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -200,7 +200,7 @@ const faq = [
         <div class="space-y-3">
           {faq.map((item) => (
             <details class="group rounded-xl border border-neutral-border bg-white p-5">
-              <summary class="cursor-pointer list-none font-bold text-gray-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-dark">
+              <summary class="cursor-pointer list-none font-bold text-gray-950 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-dark">
                 <span class="flex items-center justify-between gap-4">
                   {item.q}
                   <svg viewBox="0 0 20 20" class="h-5 w-5 shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -223,7 +223,7 @@ const faq = [
         </p>
         <a
           href={contactHref}
-          class="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-7 py-3 font-bold text-brand-dark transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-pale focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          class="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-7 py-3 font-bold text-brand-dark transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-pale focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           שלחו פנייה לפיילוט
         </a>

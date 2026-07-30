@@ -16,7 +16,7 @@ const contactHref = `mailto:${contactEmail}?subject=${contactSubject}`;
 >
   <Header />
   <main id="main-content">
-    <section class="border-b border-neutral-border bg-gradient-to-b from-brand-pale to-white">
+    <section class="border-b border-neutral-border bg-linear-to-b from-brand-pale to-white">
       <div class="max-w-5xl mx-auto px-4 pt-8 pb-12 md:pt-12 md:pb-16">
         <Breadcrumb items={[
           { label: 'רישוי כלים למשרדים', href: '/partners/' },
@@ -62,7 +62,7 @@ const contactHref = `mailto:${contactEmail}?subject=${contactSubject}`;
                 ].map(([topic, detail]) => (
                   <button
                     type="button"
-                    class="topic-button min-h-24 rounded-2xl border border-neutral-border bg-white p-4 text-right transition-colors hover:border-brand hover:bg-brand-pale focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+                    class="topic-button min-h-24 rounded-2xl border border-neutral-border bg-white p-4 text-right transition-colors hover:border-brand hover:bg-brand-pale focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
                     data-topic={topic}
                     aria-pressed="false"
                   >
@@ -98,7 +98,7 @@ const contactHref = `mailto:${contactEmail}?subject=${contactSubject}`;
               <button
                 type="button"
                 id="build-checklist"
-                class="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-brand-dark px-7 py-3 font-bold text-white shadow-lg transition-colors hover:bg-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark sm:w-auto"
+                class="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-brand-dark px-7 py-3 font-bold text-white shadow-lg transition-colors hover:bg-brand focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark sm:w-auto"
               >
                 הצגת רשימת הכנה
               </button>
