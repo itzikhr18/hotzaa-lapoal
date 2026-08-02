@@ -53,16 +53,40 @@ const faqSchema = {
         text: 'עיכוב הליכים (הקפאה) הוא השהיית פעולות הגבייה באופן זמני — התיק עדיין פתוח, החוב עדיין קיים, והנושה יכול לחדש את ההליכים. סגירת תיק היא סיום מוחלט ובלתי הפיך — ההליכים מסתיימים, ההגבלות מוסרות, והתיק נסגר לצמיתות. עיכוב הוא ארעי, סגירה היא קבועה.',
       },
     },
+    {
+      '@type': 'Question',
+      name: 'תוך כמה זמן הזוכה חייב להגיש בקשה לסגירת תיק?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'זוכה חייב להגיש בקשה לסגירת התיק תוך שבעה ימים ממועד פירעון החוב. הבקשה מוגשת על גבי טופס 406 ("בקשה לסגירת תיק הוצאה לפועל") תוך סימון בקשה מס\' 71, בצירוף אסמכתאות כגון קבלה על התשלום או הסכם בין הצדדים. אם שילמת ועברו יותר משבעה ימים והתיק עדיין פתוח — פנה לזוכה בכתב ולאחר מכן לרשם ההוצאה לפועל.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'האם החייב יכול להגיש בעצמו בקשה לסגירת התיק?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'לא. בקשת הסגירה לאחר פירעון מוגשת על ידי הזוכה, לא על ידי החייב. מה שהחייב כן יכול לעשות: לדרוש מהזוכה בכתב לקיים את חובתו תוך שבעה ימים, לשמור כל אסמכתת תשלום, ולפנות לרשם ההוצאה לפועל בצירוף הקבלה אם הזוכה אינו פועל.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'מה זה סגירת תיק מחוסר מעש?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'תיק שבו לא בוצע שום הליך במשך שנתיים יכול להיסגר ביוזמת רשם ההוצאה לפועל, גם בלי שהחוב שולם. הרשם שולח לזוכה הודעה ודורש ממנו לנמק מדוע לא ייסגר התיק, ולזוכה יש 30 יום להגיב. לא הגיב — התיק נסגר. המסלול אינו חל על תיקי משכנתה ומשכון. חשוב: סגירה מחוסר מעש אינה מוחקת את החוב, והזוכה רשאי לפתוח תיק חדש בכפוף לדיני ההתיישנות.',
+      },
+    },
   ],
 };
 ---
 
 <GuideLayout
-  title="סגירת תיק הוצאה לפועל 2026 — בקשה, אישור, והסרת עיקולים"
-  description="איך סוגרים תיק הוצאה לפועל ב-2026? פירעון מלא, הסדר עם הנושה, התיישנות והסכם פשרה — שלב אחר שלב: הגשת בקשה, אישור סגירה והסרת עיקולים והגבלות."
+  title="סגירת תיק הוצאה לפועל 2026 — בקשת זוכה, טופס 406 ומחוסר מעש"
+  description="איך סוגרים תיק הוצאה לפועל ב-2026: בקשת זוכה תוך 7 ימים מהפירעון (טופס 406, בקשה 71), סגירה מחוסר מעש אחרי שנתיים, אישור הסגירה והסרת עיקולים והגבלות."
   breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'סגירת תיק', href: '/guides/sgor-tik/' }]}
   publishDate="2026-03-28"
-  updateDate="2026-05-06"
+  updateDate="2026-08-03"
   readTime="6 דקות"
   schema={[faqSchema, {
     '@context': 'https://schema.org',
@@ -431,6 +455,90 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- בקשת זוכה לסגירת תיק -->
+  <section id="bakashat-zoche">
+    <h2>בקשת זוכה לסגירת תיק — מי מגיש, באיזה טופס, ותוך כמה זמן</h2>
+
+    <p>
+      זו נקודה שמפתיעה חייבים רבים: <strong>החייב אינו זה שסוגר את התיק</strong>. גם אחרי
+      שהחוב שולם במלואו, מי שנדרש להגיש את הבקשה הוא <strong>הזוכה</strong> (הנושה) — והוא
+      מחויב לעשות זאת בלוח זמנים קצוב.
+    </p>
+
+    <div class="warn-box">
+      <p class="font-semibold text-amber-800 mb-1">7 ימים — חובה על הזוכה</p>
+      <p class="text-sm">
+        זוכה חייב להגיש בקשה לסגירת התיק <strong>תוך שבעה ימים ממועד פירעון החוב</strong>.
+        אם שילמת ועברו מעל שבוע והתיק עדיין מופיע כפתוח — זו לא "תקלה טכנית", זו הפרה של
+        חובת הזוכה. פנה אליו בכתב, ואם אינו פועל — הגש פנייה לרשם ההוצאה לפועל.
+      </p>
+    </div>
+
+    <p><strong>איך הזוכה מגיש את הבקשה:</strong></p>
+    <ul>
+      <li><strong>טופס 406</strong> — "בקשה לסגירת תיק הוצאה לפועל". יש לסמן ב-X את <strong>בקשה מס' 71</strong> ("סגירת תיק")</li>
+      <li><strong>לצרף אסמכתאות</strong> — קבלה על התשלום, הסכם בין הצדדים, או כל מסמך שמוכיח את עילת הסגירה</li>
+      <li>
+        <strong>דרכי הגשה</strong> — דרך האזור האישי ב-<a href="https://www.eca.gov.il/" target="_blank" rel="noopener noreferrer">eca.gov.il</a>,
+        בדואר / דוא"ל / פקס ללשכה שבה מתנהל התיק, או הגשה ידנית בלשכה בתיאום תור מראש
+      </li>
+    </ul>
+
+    <div class="tip-box">
+      <p class="font-semibold text-green-800 mb-1">מה החייב כן יכול לעשות</p>
+      <p class="text-gray-700 text-sm">
+        אינך יכול להגיש את בקשת הסגירה במקום הזוכה, אבל אתה כן יכול: לדרוש ממנו בכתב לקיים
+        את חובתו, לצרף את הקבלה ולפנות לרשם, ובמקרים המתאימים לבקש
+        <a href="/guides/irur-hotzaa/">התערבות הרשם</a>. שמור כל אסמכתת תשלום —
+        היא הבסיס לכל פנייה.
+      </p>
+    </div>
+  </section>
+
+  <!-- סגירה מחוסר מעש -->
+  <section id="hoser-maas">
+    <h2>סגירת תיק מחוסר מעש — כשהזוכה נטש את התיק</h2>
+
+    <p>
+      יש מסלול נוסף שרבים לא מכירים: תיק שבו <strong>לא בוצע שום הליך במשך שנתיים</strong>
+      יכול להיסגר ביוזמת הרשם — גם בלי שהחוב שולם. זה נקרא <strong>סגירה מחוסר מעש</strong>.
+    </p>
+
+    <p><strong>איך זה עובד:</strong></p>
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <span>חלפו <strong>שנתיים</strong> מהמועד שבו בוצע ההליך האחרון בתיק, ומאז לא בוצע בו דבר.</span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>רשם ההוצאה לפועל שולח לזוכה <strong>הודעה</strong> ודורש ממנו לנמק מדוע לא ייסגר התיק.</span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>לזוכה יש <strong>30 יום</strong> להגיב. לא הגיב — התיק נסגר.</span>
+      </li>
+    </ol>
+
+    <div class="info-box">
+      <p class="font-semibold text-blue-800 mb-1">חריגים ותחולה</p>
+      <p class="text-gray-700 text-sm">
+        המסלול הזה <strong>אינו חל על תיקי משכנתה ומשכון</strong>, שנשארים פתוחים גם ללא
+        פעילות. כמו כן, פעולה קטנה של הזוכה מאפסת את מניין השנתיים.
+      </p>
+    </div>
+
+    <div class="warn-box">
+      <p class="font-semibold text-amber-800 mb-1">סגירה מחוסר מעש אינה מוחקת את החוב</p>
+      <p class="text-sm">
+        זו נקודה קריטית: סגירת התיק היא פעולה <strong>פרוצדורלית</strong> — היא מסיימת את
+        ההליכים באותו תיק, אך <strong>החוב עצמו ממשיך להתקיים</strong>. הזוכה רשאי לפתוח תיק
+        חדש בעתיד, בכפוף לדיני <a href="/guides/hitiyashnoot-chov/">ההתיישנות</a>. אל תתייחס
+        לסגירה מחוסר מעש כאל מחיקת חוב.
+      </p>
+    </div>
+  </section>
+
   <!-- סעיף 6: מה קורה אחרי -->
   <section id="after-closure">
     <h2>מה קורה אחרי סגירת התיק?</h2>
@@ -589,6 +697,46 @@ const faqSchema = {
     <h2>שאלות נפוצות</h2>
 
     <div class="space-y-4 my-6">
+
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          תוך כמה זמן הזוכה חייב להגיש בקשה לסגירת תיק?
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">
+          זוכה חייב להגיש בקשה לסגירת התיק <strong>תוך שבעה ימים ממועד פירעון החוב</strong>.
+          הבקשה מוגשת על גבי <strong>טופס 406</strong> תוך סימון <strong>בקשה מס' 71</strong>,
+          בצירוף אסמכתאות כגון קבלה או הסכם בין הצדדים. שילמת ועברו יותר משבוע והתיק עדיין
+          פתוח? פנה לזוכה בכתב, ולאחר מכן לרשם ההוצאה לפועל בצירוף הקבלה.
+        </p>
+      </details>
+
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          האם החייב יכול להגיש בעצמו בקשה לסגירת התיק?
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">
+          לא. בקשת הסגירה לאחר פירעון מוגשת על ידי <strong>הזוכה</strong>, לא על ידי החייב.
+          מה שכן אפשר: לדרוש מהזוכה בכתב לקיים את חובתו, לשמור כל אסמכתת תשלום, ולפנות
+          לרשם ההוצאה לפועל בצירוף הקבלה אם הזוכה אינו פועל.
+        </p>
+      </details>
+
+      <details class="border border-neutral-border rounded-xl group">
+        <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
+          מה זה סגירת תיק מחוסר מעש?
+          <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="px-4 pb-4 text-gray-600">
+          תיק שבו לא בוצע שום הליך במשך <strong>שנתיים</strong> יכול להיסגר ביוזמת הרשם, גם
+          בלי שהחוב שולם. הרשם שולח לזוכה הודעה ודורש לנמק מדוע לא ייסגר התיק, ולזוכה יש
+          <strong>30 יום</strong> להגיב. לא הגיב — התיק נסגר. המסלול אינו חל על תיקי משכנתה
+          ומשכון. שימו לב: הסגירה <strong>אינה מוחקת את החוב</strong> — הזוכה רשאי לפתוח תיק
+          חדש בכפוף ל<a href="/guides/hitiyashnoot-chov/">התיישנות</a>.
+        </p>
+      </details>
+
 
       <details class="border border-neutral-border rounded-xl group">
         <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">

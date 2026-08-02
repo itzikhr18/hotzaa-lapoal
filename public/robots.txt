@@ -5,13 +5,76 @@ User-agent: *
 Allow: /
 Disallow: /cdn-cgi/
 
-# Sitemaps
-Sitemap: https://hotzaa-lapoal.info/sitemap-index.xml
+# ─────────────────────────────────────────────
+# מנועי חיפוש קלאסיים
+# ─────────────────────────────────────────────
 
-# Googlebot
 User-agent: Googlebot
 Allow: /
 
-# Bingbot
 User-agent: Bingbot
 Allow: /
+
+# ─────────────────────────────────────────────
+# סורקי AI — מותר במפורש.
+# האתר רוצה להיות מצוטט בתשובות AI: זה ערוץ שבו
+# סמכות דומיין שוקלת פחות מבהירות התוכן.
+# מפת התוכן לסוכני AI: /llms.txt
+# ─────────────────────────────────────────────
+
+# ChatGPT — חיפוש חי וציטוט
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT — גלישה לפי בקשת משתמש
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI — סריקה כללית
+User-agent: GPTBot
+Allow: /
+
+# Claude — חיפוש, ציטוט וגלישה לפי בקשת משתמש
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Gemini ו-AI Overviews — בלי זה גוגל לא תשתמש בתוכן בתשובות AI
+User-agent: Google-Extended
+Allow: /
+
+# Applebot — מפעיל את Siri ואת חיפוש Spotlight
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Common Crawl — מאגר שממנו מודלים רבים לומדים
+User-agent: CCBot
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# ─────────────────────────────────────────────
+# Sitemaps
+# ─────────────────────────────────────────────
+Sitemap: https://hotzaa-lapoal.info/sitemap-index.xml
