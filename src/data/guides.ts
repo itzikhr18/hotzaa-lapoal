@@ -15,7 +15,7 @@ export const allGuides: GuideLink[] = [
   { title: 'עיקול חשבון בנק', href: '/guides/ikul-heshbon/', icon: '🏦' },
   { title: 'ביטול עיקול', href: '/guides/bitul-ikul/', icon: '✅' },
   { title: 'טפסים ונוסחים', href: '/forms/', icon: '📋' },
-  { title: 'עיקול משכורת', href: '/guides/ikul-maskoret/', icon: '💼' },
+  { title: 'ביטול עיקול משכורת', href: '/guides/ikul-maskoret/', icon: '💼' },
   { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/', icon: '📋' },
   { title: 'פשיטת רגל', href: '/guides/pshitat-regel/', icon: '⚖️' },
   { title: 'מזונות בהוצאה לפועל', href: '/guides/mazamot/', icon: '👨‍👧' },
