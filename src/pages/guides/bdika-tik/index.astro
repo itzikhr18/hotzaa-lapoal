@@ -2,11 +2,27 @@
 // src/pages/guides/bdika-tik/index.astro
 import GuideLayout from '../../../layouts/GuideLayout.astro';
 
-const title = "בדיקת תיק הוצאה לפועל ועיקולים לפי ת.ז. — בירור חינם (2026)";
-const description = "בדיקת תיק הוצאה לפועל לפי תעודת זהות — חינם, תוך דקות. בירור תיקים ועיקולים באזור האישי (eca.gov.il), הפקת דוח תיקים לחייב, מוקד *35592 או בלשכה. מדריך 2026.";
+const title = "בדיקת תיק הוצאה לפועל לפי תעודת זהות או מספר תיק (2026)";
+const description = "בדיקת תיק הוצאה לפועל לפי תעודת זהות או מספר תיק: כניסה לאזור האישי, בירור עיקולים, יתרת חוב והפקת רשימת תיקים. מדריך חינמי ל-2026.";
 const publishDate = "2026-03-29";
-const updateDate = "2026-08-03";
+const updateDate = "2026-08-24";
 const readTime = '6 דקות';
+
+const officialPersonalAreaUrl = 'https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page';
+
+const sources = [
+  { label: 'האזור האישי של ההוצאה לפועל - gov.il', href: officialPersonalAreaUrl },
+  { label: 'קבלת אישורים ותדפיסים מתיקי הוצאה לפועל - gov.il', href: 'https://www.gov.il/he/pages/qf_personal' },
+  { label: 'מידע לחייבים בתיקי הוצאה לפועל - gov.il', href: 'https://www.gov.il/he/pages/execution_debtors_guide' },
+  { label: 'מרכז המידע והשירות 35592* - gov.il', href: 'https://www.gov.il/he/pages/eca-call-center' },
+];
+
+const actionLinks = [
+  { label: 'כניסה לאזור האישי הרשמי', href: officialPersonalAreaUrl, note: 'צפייה בתיקים, יתרות והחלטות' },
+  { label: 'הפקת אישורים ותדפיסים', href: 'https://www.gov.il/he/pages/qf_personal', note: 'רשימת תיקים, דף חשבון ומסמכים' },
+  { label: 'מה עושים אחרי הבדיקה?', href: '/tools/eligibility/', note: 'שאלון הכוונה כללי לפי מצב התיק' },
+  { label: 'טפסים ונוסחים', href: '/forms/', note: 'בקשות נפוצות והפניות לטפסים רשמיים' },
+];
 
 const breadcrumb = [
   { label: 'מדריכים', href: '/guides/' },
@@ -22,7 +38,7 @@ const faqSchema = {
       "name": "איך לדעת אם יש נגדי תיק הוצאה לפועל?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ניתן לבדוק דרך מערכת הוצל\"פ נט באתר משרד המשפטים (eca.gov.il) עם מספר תעודת הזהות, לפנות ישירות ללשכת הוצאה לפועל הקרובה בטלפון או פיזית, לפנות לעורך דין, או לחכות למכתב אזהרה רשמי שמגיע בדואר רשום."
+        "text": "ניתן לבדוק באזור האישי של ההוצאה לפועל באתר gov.il לאחר הזדהות ממשלתית, לפנות למרכז המידע בטלפון 35592*, או להגיע ללשכת הוצאה לפועל עם תעודת זהות."
       }
     },
     {
@@ -30,7 +46,7 @@ const faqSchema = {
       "name": "האם ניתן לבדוק תיק הוצאה לפועל של מישהו אחר?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "בדרך כלל לא. מערכת הוצל\"פ נט מאפשרת לכל אדם לבדוק רק את התיקים שנפתחו נגדו — כלומר בתעודת הזהות שלו עצמו. גישה לפרטי תיק של אחרים מוגבלת לזוכה בתיק, לעורך הדין המייצג, וללשכת ההוצאה לפועל."
+        "text": "בדרך כלל לא. האזור האישי מאפשר לכל אדם לבדוק את התיקים שבהם הוא צד. גישה לפרטי תיק של אחרים מוגבלת לגורמים המורשים בתיק."
       }
     },
     {
@@ -78,7 +94,7 @@ const faqSchema = {
       "name": "האם בדיקת תיק הוצאה לפועל עולה כסף?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "לא. בדיקת תיקים דרך מערכת הוצל\"פ נט (eca.gov.il) היא חינמית לחלוטין. גם פנייה טלפונית למוקד (*35592) ופנייה פיזית ללשכה — אינן כרוכות בתשלום. אין צורך בעורך דין כדי לבדוק אם יש נגדך תיק."
+        "text": "לא. קבלת מידע באזור האישי של ההוצאה לפועל ב-gov.il אינה דורשת עורך דין. ניתן לקבל מידע אישי ועדכני גם באמצעות השירותים העצמיים במוקד 35592*."
       }
     },
     {
@@ -94,7 +110,7 @@ const faqSchema = {
       "name": "איך בודקים אם יש עיקול לפי תעודת זהות?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "אין מסך נפרד של עיקולים. העיקול הוא הליך בתוך תיק הוצאה לפועל, ולכן בודקים אותו כך: מזדהים באזור האישי ב-eca.gov.il, מבצעים שאילתת תיקים לפי תעודת זהות, ואז פותחים כל תיק ובודקים את ההליכים שננקטו בו — שם מופיעים צווי העיקול, מועד ההטלה והגורם שאליו נשלחו. שימו לב: עיקולים מנהליים של מס הכנסה, ביטוח לאומי או הרשות המקומית לא יופיעו במערכת ההוצאה לפועל."
+        "text": "העיקול הוא הליך בתוך תיק הוצאה לפועל. מזדהים באזור האישי ב-gov.il, פותחים את התיק ובודקים את ההליכים שננקטו בו. עיקולים מנהליים של רשויות אחרות אינם בהכרח חלק מתיק הוצאה לפועל."
       }
     },
     {
@@ -110,7 +126,7 @@ const faqSchema = {
       "name": "מה זה דוח תיקים לחייב ואיך מקבלים אותו?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "דוח תיקים לחייב (או רשימת תיקים לחייב) הוא מסמך רשמי שמרכז את כל תיקי ההוצאה לפועל הפתוחים על שם החייב בכל הלשכות בארץ. מקבלים אותו באזור האישי ב-eca.gov.il לאחר הזדהות ממשלתית, בהגעה ללשכת ההוצאה לפועל עם תעודת זהות, או בבקשה מקוונת. הדוח שימושי במיוחד לקראת בקשת איחוד תיקים או הליך חדלות פירעון."
+        "text": "רשימת תיקים לחייב מרכזת את תיקי ההוצאה לפועל של החייב. באזור האישי ניתן לקבל רשימת תיקים, דפי חשבון, החלטות ומסמכים נוספים לאחר הזדהות."
       }
     },
     {
@@ -128,14 +144,14 @@ const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "איך לבדוק אם יש נגדי תיק הוצאה לפועל",
-  "description": "מדריך שלב-אחר-שלב לבדיקת מצב תיק הוצאה לפועל דרך מערכת הוצל\"פ נט",
+  "description": "מדריך שלב-אחר-שלב לבדיקת מצב תיק הוצאה לפועל דרך האזור האישי הרשמי",
   "inLanguage": "he",
   "step": [
     {
       "@type": "HowToStep",
       "position": 1,
-      "name": "כניסה לאתר הוצל\"פ נט",
-      "text": "היכנסו לאתר eca.gov.il — זהו האתר הרשמי של מערכת ההוצאה לפועל של משרד המשפטים."
+      "name": "כניסה לאזור האישי של ההוצאה לפועל",
+      "text": "היכנסו לאזור האישי של ההוצאה לפועל באתר gov.il."
     },
     {
       "@type": "HowToStep",
@@ -172,6 +188,8 @@ const howToSchema = {
   {publishDate}
   {updateDate}
   {readTime}
+  {sources}
+  {actionLinks}
   schema={[faqSchema, howToSchema]}
   relatedGuides={[
     { title: 'עיקול חשבון בנק — מה עושים?', href: '/guides/ikul-heshbon/' },
@@ -192,7 +210,7 @@ const howToSchema = {
   <div class="not-prose my-6 bg-green-50 border-r-4 border-green-500 rounded-xl p-5">
     <p class="font-bold text-green-800 mb-3 text-base">בקצרה: איך בודקים אם יש נגדך תיק או עיקול</p>
     <ol class="space-y-1.5 text-sm text-gray-700 list-decimal list-inside">
-      <li><strong>היכנסו ל-eca.gov.il</strong> — האזור האישי של רשות האכיפה והגבייה. חינם, 24/7.</li>
+      <li><strong>היכנסו לאזור האישי ב-gov.il</strong> — השירות הרשמי של רשות האכיפה והגבייה.</li>
       <li><strong>הזדהו עם תעודת זהות</strong> — דרך ההזדהות הממשלתית. הבדיקה היא לפי מספר ת.ז. שלכם בלבד.</li>
       <li><strong>בחרו "שאילתת תיקים"</strong> — תוצג רשימת כל התיקים הפתוחים נגדכם, כולל הזוכה והיתרה.</li>
       <li><strong>פתחו כל תיק</strong> — שם תראו אילו <strong>עיקולים והגבלות</strong> הוטלו בפועל.</li>
@@ -219,15 +237,15 @@ const howToSchema = {
   <h2>בדיקת תיק הוצאה לפועל לפי תעודת זהות — שלב אחר שלב</h2>
 
   <p>
-    הדרך המהירה והנגישה ביותר לבדוק אם יש נגדכם תיק הוצאה לפועל היא דרך מערכת <strong>הוצל"פ נט</strong>
-    — האתר הרשמי של משרד המשפטים. הבדיקה היא לפי <strong>מספר תעודת הזהות</strong>, חינמית, וניתן לבצע
+    הדרך המהירה והנגישה ביותר לבדוק אם יש נגדכם תיק הוצאה לפועל היא דרך <strong>האזור האישי של ההוצאה לפועל</strong>
+    באתר gov.il. הבדיקה היא לפי <strong>מספר תעודת הזהות</strong>, וניתן לבצע
     אותה מכל מכשיר עם חיבור לאינטרנט.
   </p>
 
   <ol class="step-list">
     <li>
       <span class="step-num">1</span>
-      <span>היכנסו לאתר <a href="https://www.eca.gov.il/" target="_blank" rel="noopener noreferrer"><strong>eca.gov.il</strong></a> — האתר הרשמי של רשות האכיפה והגבייה.</span>
+      <span>היכנסו ל<a href={officialPersonalAreaUrl} target="_blank" rel="noopener noreferrer"><strong>אזור האישי הרשמי ב-gov.il</strong></a>.</span>
     </li>
     <li>
       <span class="step-num">2</span>
@@ -277,7 +295,7 @@ const howToSchema = {
   <ol class="step-list">
     <li>
       <span class="step-num">1</span>
-      <span>הזדהו באזור האישי ב-<a href="https://www.eca.gov.il/" target="_blank" rel="noopener noreferrer"><strong>eca.gov.il</strong></a> ובצעו שאילתת תיקים לפי ת.ז.</span>
+      <span>הזדהו ב<a href={officialPersonalAreaUrl} target="_blank" rel="noopener noreferrer"><strong>אזור האישי ב-gov.il</strong></a> ובדקו את רשימת התיקים שלכם.</span>
     </li>
     <li>
       <span class="step-num">2</span>
@@ -298,7 +316,7 @@ const howToSchema = {
     <p class="text-gray-700 text-sm">
       לא כל עיקול מגיע מהוצאה לפועל. רשויות מסוימות — <strong>מס הכנסה, מע"מ, ביטוח לאומי
       והרשות המקומית</strong> — מוסמכות להטיל עיקולים בהליך מנהלי משלהן, ואלה
-      <strong>לא יופיעו</strong> בשאילתת התיקים ב-eca.gov.il. אם החשבון מוגבל ולא מצאתם תיק
+      <strong>לא יופיעו</strong> בהכרח באזור האישי של ההוצאה לפועל. אם החשבון מוגבל ולא מצאתם תיק
       מתאים — בדקו מול הגורם הרלוונטי ישירות, וגם מול <a href="/guides/chov-arnona/">חוב ארנונה</a>.
     </p>
   </div>
@@ -340,10 +358,10 @@ const howToSchema = {
   </p>
 
   <!-- דרך 1 -->
-  <h3>1. מערכת "הוצל"פ נט" — הדרך המהירה ביותר</h3>
+  <h3>1. האזור האישי של ההוצאה לפועל — הדרך המהירה ביותר</h3>
 
   <p>
-    אתר <a href="https://www.eca.gov.il/" target="_blank" rel="noopener noreferrer"><strong>רשות האכיפה והגבייה (eca.gov.il)</strong></a> הוא המערכת המקוונת הרשמית של ההוצאה לפועל, מופעלת על ידי משרד המשפטים. היא מאפשרת לכל חייב לבדוק את תיקיו בכל
+    <a href={officialPersonalAreaUrl} target="_blank" rel="noopener noreferrer"><strong>האזור האישי של ההוצאה לפועל ב-gov.il</strong></a> הוא השירות המקוון הרשמי של רשות האכיפה והגבייה. הוא מאפשר לכל חייב לבדוק את תיקיו בכל
     שעה, ללא עלות, ישירות מהבית.
   </p>
 
@@ -352,7 +370,7 @@ const howToSchema = {
   <ol class="step-list">
     <li>
       <span class="step-num">1</span>
-      <span>היכנסו לאתר <a href="https://www.eca.gov.il/" target="_blank" rel="noopener noreferrer"><strong>eca.gov.il</strong></a> דרך דפדפן.</span>
+      <span>היכנסו ל<a href={officialPersonalAreaUrl} target="_blank" rel="noopener noreferrer"><strong>אזור האישי הרשמי ב-gov.il</strong></a> דרך הדפדפן.</span>
     </li>
     <li>
       <span class="step-num">2</span>
@@ -698,7 +716,7 @@ const howToSchema = {
   </p>
   <ul>
     <li>פנייה ישירה לבנק — ל<strong>מחלקת העיקולים</strong> — ובקשה לאישור אם יש עיקול</li>
-    <li>דרך הוצל"פ נט — בפרטי התיק יופיעו צווי העיקול שניתנו</li>
+    <li>דרך האזור האישי ב-gov.il — בפרטי התיק יופיעו ההליכים שננקטו בו</li>
     <li>הבנק מחויב להודיע לחייב על עיקול שהוטל על חשבונו</li>
   </ul>
 
@@ -779,7 +797,7 @@ const howToSchema = {
       <summary>איך בודקים אם יש עיקול לפי תעודת זהות?</summary>
       <p>
         אין מסך נפרד של "העיקולים שלי". העיקול הוא הליך <strong>בתוך</strong> תיק הוצאה לפועל,
-        ולכן בודקים אותו כך: מזדהים באזור האישי ב-eca.gov.il, מבצעים שאילתת תיקים לפי תעודת
+        ולכן בודקים אותו כך: מזדהים באזור האישי ב-gov.il, בוחרים תיק לפי תעודת
         זהות, ואז פותחים כל תיק ובודקים את ההליכים שננקטו בו — שם מופיעים צווי העיקול, מועד
         ההטלה והגורם שאליו נשלחו. שימו לב: עיקולים מנהליים של מס הכנסה, ביטוח לאומי או הרשות
         המקומית <strong>לא יופיעו</strong> במערכת ההוצאה לפועל.
@@ -827,7 +845,7 @@ const howToSchema = {
     <details>
       <summary>איך לדעת אם יש נגדי תיק הוצאה לפועל מבלי לקבל מכתב?</summary>
       <p>
-        הדרך הפשוטה ביותר היא להיכנס לאתר <a href="https://www.eca.gov.il/" target="_blank" rel="noopener noreferrer">רשות האכיפה והגבייה (eca.gov.il)</a> ולבצע
+        הדרך הפשוטה ביותר היא להיכנס ל<a href={officialPersonalAreaUrl} target="_blank" rel="noopener noreferrer">אזור האישי של ההוצאה לפועל ב-gov.il</a> ולבצע
         שאילתת תיקים עם מספר תעודת הזהות שלכם. ניתן גם לפנות טלפונית למוקד *35592 או
         לבקר פיזית בלשכת הוצאה לפועל. כל אחת מהאפשרויות הללו תאפשר לכם לדעת עוד לפני
         שמגיע מכתב — וזה חשוב, כי לפעמים מכתב לא מגיע בגלל כתובת ישנה.
@@ -951,7 +969,7 @@ const howToSchema = {
   <div class="tip-box">
     <p class="font-semibold text-green-800 mb-3">תמצית המדריך:</p>
     <ul class="text-gray-700 text-sm space-y-2">
-      <li>הדרך המהירה לבדוק תיק: <strong>הוצל"פ נט</strong> עם מספר ת"ז</li>
+      <li>הדרך המהירה לבדוק תיק: <strong>האזור האישי ב-gov.il</strong> לאחר הזדהות</li>
       <li>אפשרות נוספת: פנייה טלפונית למוקד <strong>*35592</strong> או ביקור בלשכה</li>
       <li>מכתב אזהרה פותח <strong>20 ימים</strong> לפעולה — אל תאחרו</li>
       <li>תיק <strong>מושהה</strong> אינו תיק סגור — הריבית ממשיכה לצבור</li>
