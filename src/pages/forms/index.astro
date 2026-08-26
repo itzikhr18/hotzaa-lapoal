@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const siteUrl = 'https://hotzaa-lapoal.info';
-const lastVerified = '2026-07-03';
+const lastVerified = '2026-08-26';
 
 const officialLinks = {
   personalArea: 'https://go.gov.il/ecagovernmentident',
@@ -14,6 +14,7 @@ const officialLinks = {
   authority: 'https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority',
   form233: 'https://www.gov.il/BlobFolder/generalpage/eca-digital-forms2/he/Forms_form233.docx',
   form529: 'https://www.gov.il/BlobFolder/generalpage/eca-digital-forms2/he/Forms_form529.docx',
+  form218: 'https://www.gov.il/BlobFolder/service/claim_objection/he/%D7%98%D7%95%D7%A4%D7%A1%20218%20-%20%D7%94%D7%AA%D7%A0%D7%92%D7%93%D7%AA%D7%99%20%D7%A4%D7%A8%D7%A2%D7%AA%D7%99.pdf',
 };
 
 const forms = [
@@ -32,6 +33,21 @@ const forms = [
     note: 'באונליין בדרך כלל מגישים את הבקשה מתוך האזור האישי ומצרפים מסמכים. הנוסח שלנו הוא עזר לנימוקים, לא הטופס הרשמי עצמו.',
     lastVerified,
     sourceStatus: 'נבדק מול מסלול ההגשה באזור האישי. לפני הגשה ידנית יש לוודא באתר הרשות שהטופס או ההליך לא עודכנו.',
+  },
+  {
+    title: 'התנגדות לביצוע שטר או תביעה על סכום קצוב',
+    form: 'טופס 218',
+    intent: 'כשנפתח תיק על שטר או תביעה על סכום קצוב ואתם מתנגדים לכל החוב או לחלק ממנו.',
+    documents: ['בקשת התנגדות מנומקת', 'תצהיר לאימות העובדות', 'מסמכי פתיחת התיק או השטר', 'צילום תעודת זהות'],
+    guide: '/guides/hitnagdut-letik/',
+    onlineHref: officialLinks.form218,
+    onlineLabel: 'הורדת טופס 218 הרשמי',
+    manualLinks: [
+      { label: 'מדריך התנגדות לתיק הוצאה לפועל', href: '/guides/hitnagdut-letik/', external: false },
+    ],
+    note: 'זהו טופס התנגדות, לא טופס כללי לביטול עיקול. לפי דף ההסבר הרשמי יש לצרף תצהיר ומסמכים; מועדי ההגשה חשובים ולכן יש לבדוק מיד את האזהרה ואת ההנחיות העדכניות.',
+    lastVerified,
+    sourceStatus: 'קישור ההורדה מפנה ישירות לטופס 218 של רשות האכיפה והגבייה באתר gov.il.',
   },
   {
     title: 'בקשה לצו תשלומים',
@@ -91,6 +107,7 @@ const officialSources = [
   { label: 'איתור לשכות הוצאה לפועל', href: officialLinks.bureaus },
   { label: 'טופס 233 רשמי - בקשה לצו תשלומים', href: officialLinks.form233 },
   { label: 'טופס 529 רשמי - כתב ויתור על סודיות', href: officialLinks.form529 },
+  { label: 'טופס 218 רשמי - התנגדות לביצוע שטר או תביעה', href: officialLinks.form218 },
 ];
 
 const quickTemplates = [
@@ -139,7 +156,7 @@ const pageSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'טפסים ונוסחים להוצאה לפועל',
-  description: 'מרכז טפסים ונוסחים לחייבים בהוצאה לפועל: ביטול עיקול, צו תשלומים, בדיקת תיק, ביטול הגבלות ובקשות דחופות.',
+  description: 'מרכז טפסים ונוסחים לחייבים בהוצאה לפועל: טופס 214 לביטול עיקול, טופס 218 להתנגדות, צו תשלומים ובקשות דחופות.',
   url: `${siteUrl}/forms/`,
   inLanguage: 'he',
   dateModified: lastVerified,
@@ -174,6 +191,14 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
+      name: 'מהו טופס 218 בהוצאה לפועל?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'טופס 218 מיועד להתנגדות לביצוע שטר או תביעה על סכום קצוב, לכל החוב או לחלק ממנו. לפי הנחיות רשות האכיפה והגבייה יש לצרף בקשה מנומקת, תצהיר ומסמכים תומכים ולבדוק את מועד ההגשה שמופיע באזהרה.',
+      },
+    },
+    {
+      '@type': 'Question',
       name: 'איזה טופס צריך לצו תשלומים?',
       acceptedAnswer: {
         '@type': 'Answer',
@@ -193,8 +218,8 @@ const faqSchema = {
 ---
 
 <BaseLayout
-  title="טפסים ונוסחים להוצאה לפועל - ביטול עיקול, צו תשלומים ובקשות דחופות"
-  description="מרכז טפסים ונוסחים להוצאה לפועל: איזה טופס צריך לביטול עיקול, צו תשלומים, בדיקת תיק וביטול הגבלות, אילו מסמכים לצרף ונוסחים בסיסיים לעריכה."
+  title="טפסים להוצאה לפועל: 214, 218 וצו תשלומים (2026)"
+  description="טפסים להוצאה לפועל במקום אחד: טופס 214 לביטול עיקול, טופס 218 להתנגדות, צו תשלומים וקישורים רשמיים. כולל מסמכים נדרשים והסבר להגשה."
   canonicalUrl={`${siteUrl}/forms/`}
   schema={[pageSchema, faqSchema]}
 >
@@ -352,6 +377,10 @@ const faqSchema = {
         <details class="bg-white border border-neutral-border rounded-xl">
           <summary class="cursor-pointer p-4 font-semibold text-gray-800">איזה טופס מגישים לביטול עיקול?</summary>
           <p class="px-4 pb-4 text-sm text-gray-600">ברוב המקרים משתמשים בטופס 214 ומצרפים מסמכים שמראים למה יש לבטל או לעכב את העיקול.</p>
+        </details>
+        <details class="bg-white border border-neutral-border rounded-xl">
+          <summary class="cursor-pointer p-4 font-semibold text-gray-800">מהו טופס 218 בהוצאה לפועל?</summary>
+          <p class="px-4 pb-4 text-sm text-gray-600">טופס 218 מיועד להתנגדות לביצוע שטר או תביעה על סכום קצוב. יש לצרף בקשה מנומקת, תצהיר ומסמכים, ולבדוק מיד את מועד ההגשה שמופיע באזהרה.</p>
         </details>
         <details class="bg-white border border-neutral-border rounded-xl">
           <summary class="cursor-pointer p-4 font-semibold text-gray-800">מה הכי חשוב לצרף לבקשה?</summary>
