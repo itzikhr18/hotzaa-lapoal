@@ -60,11 +60,21 @@ test('guides credit a professional reviewer only with a name and a real review d
     false,
   );
 
+  // A reviewer's own site may be linked, but only as an http(s) URL.
+  const linked = getProfessionalReview({ ...reviewer, reviewerUrl: 'https://example.co.il', reviewDate: '2026-08-01' });
+  assert.equal(linked.url, 'https://example.co.il/');
+  assert.equal(reviewSchemaFields(linked).reviewedBy.url, 'https://example.co.il/');
+  for (const reviewerUrl of ['javascript:alert(1)', 'example.co.il', '']) {
+    assert.equal(getProfessionalReview({ ...reviewer, reviewerUrl, reviewDate: '2026-08-01' }).url, undefined);
+  }
+
   const layout = await read('src/layouts/GuideLayout.astro');
   assert.doesNotMatch(layout, /lastFactCheck|reviewDate\s*=[^=]/);
   const credit = layout.match(/\{review \? \(([\s\S]*?)\) : \(/);
   assert.ok(credit, 'the reviewer credit must sit behind the review check');
   assert.match(credit[1], /נבדק מקצועית על ידי/);
+  // The link is given in return for the review, so it must not pass ranking credit.
+  assert.match(credit[1], /href=\{review\.url\}[^>]*rel="nofollow/);
   assert.equal(layout.split('נבדק מקצועית על ידי').length, 2);
 });
 

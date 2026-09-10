@@ -22,6 +22,8 @@ export interface Props {
   authorTitle?: string;
   reviewerName?: string;
   reviewerTitle?: string;
+  /** Optional link to the reviewer's own site. Rendered rel="nofollow", since it is given in return for the review. */
+  reviewerUrl?: string;
   /** The date the named reviewer actually reviewed this text. Never derived from updateDate. */
   reviewDate?: string;
   actionLinks?: { label: string; href: string; note: string }[];
@@ -58,6 +60,7 @@ const {
   authorTitle = 'עריכת תוכן משפטי לציבור',
   reviewerName,
   reviewerTitle,
+  reviewerUrl,
   reviewDate,
   actionLinks = defaultActionLinks,
 } = Astro.props;
@@ -92,9 +95,12 @@ const authorSchema = authorName === 'מערכת הוצאהלפועל.info'
 
 // A reviewer is credited only with a name and the date of their review; an edit
 // after that date is disclosed on the page instead of moving the review date.
-const review = getProfessionalReview({ reviewerName, reviewerTitle, reviewDate, updateDate });
+const review = getProfessionalReview({ reviewerName, reviewerTitle, reviewerUrl, reviewDate, updateDate });
 if (!review && (reviewerName || reviewDate)) {
   console.warn(`GuideLayout ${Astro.url.pathname}: reviewerName and a valid reviewDate are both required; no reviewer is shown.`);
+}
+if (review && reviewerUrl && !review.url) {
+  console.warn(`GuideLayout ${Astro.url.pathname}: reviewerUrl must be an absolute http(s) URL; the reviewer is shown without a link.`);
 }
 
 const articleSchema = {
@@ -206,7 +212,9 @@ const fmtMonthYear = (d?: string) =>
                 <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                   <p>
                     <strong class="text-blue-900">נבדק מקצועית על ידי:</strong>
-                    {review.name}
+                    {review.url
+                      ? <a href={review.url} rel="nofollow noopener noreferrer" target="_blank" class="text-brand hover:text-brand-dark transition-colors">{review.name}</a>
+                      : review.name}
                     {review.title && <span class="text-gray-500"> — {review.title}</span>}
                   </p>
                   <p class="text-xs text-blue-800">תאריך הבדיקה המקצועית: {fmtDate(review.date)}</p>
