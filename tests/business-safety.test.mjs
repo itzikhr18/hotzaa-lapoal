@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import test from 'node:test';
+import { getProfessionalReview, reviewSchemaFields } from '../src/lib/professional-review.mjs';
 
 const read = (file) => readFile(new URL(`../${file}`, import.meta.url), 'utf8');
 
@@ -32,6 +33,66 @@ test('request generator avoids the known form and wage-cap misstatements', async
   assert.doesNotMatch(source, /התקרה הקבועה בחוק היא 20%/);
   assert.match(source, /טופס 233/);
   assert.match(source, /טופס 529/);
+});
+
+test('guides credit a professional reviewer only with a name and a real review date', async () => {
+  const reviewer = { reviewerName: 'ישראלה ישראלי', reviewerTitle: 'עורכת דין' };
+
+  for (const props of [
+    { updateDate: '2026-09-01' },
+    { ...reviewer, updateDate: '2026-09-01' },
+    { reviewDate: '2026-08-01', updateDate: '2026-09-01' },
+    { reviewerName: '   ', reviewDate: '2026-08-01' },
+    { ...reviewer, reviewDate: 'not a date' },
+  ]) {
+    assert.equal(getProfessionalReview(props), null);
+  }
+  assert.deepEqual(reviewSchemaFields(null), {});
+
+  const review = getProfessionalReview({ ...reviewer, reviewDate: '2026-08-01', updateDate: '2026-09-01' });
+  assert.equal(review.changedSinceReview, true);
+  assert.deepEqual(reviewSchemaFields(review), {
+    reviewedBy: { '@type': 'Person', name: 'ישראלה ישראלי', jobTitle: 'עורכת דין' },
+    lastReviewed: '2026-08-01',
+  });
+  assert.equal(
+    getProfessionalReview({ ...reviewer, reviewDate: '2026-09-01', updateDate: '2026-09-01' }).changedSinceReview,
+    false,
+  );
+
+  // A reviewer's own site may be linked, but only as an http(s) URL.
+  const linked = getProfessionalReview({ ...reviewer, reviewerUrl: 'https://example.co.il', reviewDate: '2026-08-01' });
+  assert.equal(linked.url, 'https://example.co.il/');
+  assert.equal(reviewSchemaFields(linked).reviewedBy.url, 'https://example.co.il/');
+  for (const reviewerUrl of ['javascript:alert(1)', 'example.co.il', '']) {
+    assert.equal(getProfessionalReview({ ...reviewer, reviewerUrl, reviewDate: '2026-08-01' }).url, undefined);
+  }
+
+  const layout = await read('src/layouts/GuideLayout.astro');
+  assert.doesNotMatch(layout, /lastFactCheck|reviewDate\s*=[^=]/);
+  const credit = layout.match(/\{review \? \(([\s\S]*?)\) : \(/);
+  assert.ok(credit, 'the reviewer credit must sit behind the review check');
+  assert.match(credit[1], /נבדק מקצועית על ידי/);
+  // The link is given in return for the review, so it must not pass ranking credit.
+  assert.match(credit[1], /href=\{review\.url\}[^>]*rel="nofollow/);
+  assert.equal(layout.split('נבדק מקצועית על ידי').length, 2);
+});
+
+test('no page sets review markup or a reviewer credit outside the review helper', async () => {
+  const src = new URL('../src/', import.meta.url);
+  const files = (await readdir(src, { recursive: true }))
+    .map((file) => file.replaceAll('\\', '/'))
+    .filter((file) => /\.(astro|mjs|js|ts|tsx)$/.test(file));
+  assert.ok(files.includes('pages/insolvency/index.astro') && files.includes('layouts/GuideLayout.astro'), 'the scan must cover src/');
+  for (const file of files) {
+    const source = await readFile(new URL(file, src), 'utf8');
+    if (file !== 'lib/professional-review.mjs') {
+      assert.doesNotMatch(source, /reviewedBy|lastReviewed/, `${file} sets reviewedBy/lastReviewed directly`);
+    }
+    if (file !== 'layouts/GuideLayout.astro') {
+      assert.doesNotMatch(source, /נבדק מקצועית על ידי/, `${file} credits a reviewer outside GuideLayout`);
+    }
+  }
 });
 
 test('partner demo stays local, avoids personal-data collection and is not indexed', async () => {

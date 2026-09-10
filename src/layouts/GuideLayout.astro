@@ -6,6 +6,7 @@ import Disclaimer from '../components/Disclaimer.astro';
 import CTAForm from '../components/CTAForm.astro';
 import AdUnit from '../components/AdUnit.astro';
 import { allGuides } from '../data/guides';
+import { getProfessionalReview, reviewSchemaFields } from '../lib/professional-review.mjs';
 
 export interface Props {
   title: string;
@@ -21,7 +22,10 @@ export interface Props {
   authorTitle?: string;
   reviewerName?: string;
   reviewerTitle?: string;
-  lastFactCheck?: string;
+  /** Optional link to the reviewer's own site. Rendered rel="nofollow", since it is given in return for the review. */
+  reviewerUrl?: string;
+  /** The date the named reviewer actually reviewed this text. Never derived from updateDate. */
+  reviewDate?: string;
   actionLinks?: { label: string; href: string; note: string }[];
 }
 
@@ -56,7 +60,8 @@ const {
   authorTitle = 'עריכת תוכן משפטי לציבור',
   reviewerName,
   reviewerTitle,
-  lastFactCheck = updateDate,
+  reviewerUrl,
+  reviewDate,
   actionLinks = defaultActionLinks,
 } = Astro.props;
 
@@ -88,13 +93,15 @@ const authorSchema = authorName === 'מערכת הוצאהלפועל.info'
       url: `${siteUrl}/about/`,
     };
 
-const reviewerSchema = reviewerName
-  ? {
-      '@type': 'Person',
-      name: reviewerName,
-      jobTitle: reviewerTitle,
-    }
-  : undefined;
+// A reviewer is credited only with a name and the date of their review; an edit
+// after that date is disclosed on the page instead of moving the review date.
+const review = getProfessionalReview({ reviewerName, reviewerTitle, reviewerUrl, reviewDate, updateDate });
+if (!review && (reviewerName || reviewDate)) {
+  console.warn(`GuideLayout ${Astro.url.pathname}: reviewerName and a valid reviewDate are both required; no reviewer is shown.`);
+}
+if (review && reviewerUrl && !review.url) {
+  console.warn(`GuideLayout ${Astro.url.pathname}: reviewerUrl must be an absolute http(s) URL; the reviewer is shown without a link.`);
+}
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -113,8 +120,6 @@ const articleSchema = {
   },
   datePublished: publishDate,
   dateModified: updateDate ?? publishDate,
-  ...(reviewerSchema ? { reviewedBy: reviewerSchema } : {}),
-  ...(lastFactCheck ? { lastReviewed: lastFactCheck } : {}),
   articleSection,
   genre: 'legal information',
   isAccessibleForFree: true,
@@ -123,7 +128,8 @@ const articleSchema = {
     '@type': 'SpeakableSpecification',
     cssSelector: ['article h1', 'article .info-box', 'article > p:first-of-type'],
   },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+  // schema.org defines the review fields on WebPage, not on Article.
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl, ...reviewSchemaFields(review) },
 };
 
 const breadcrumbSchema = {
@@ -199,14 +205,26 @@ const fmtMonthYear = (d?: string) =>
                 <a href="/about/" class="text-brand hover:text-brand-dark transition-colors">{authorName}</a>
                 <span class="text-gray-500"> — {authorTitle}</span>
               </p>
-              {lastFactCheck && <p class="text-xs text-blue-800">בדיקת עובדות אחרונה: {fmtDate(lastFactCheck)}</p>}
+              {updateDate && <p class="text-xs text-blue-800">עדכון אחרון: {fmtDate(updateDate)}</p>}
             </div>
-            {reviewerName ? (
-              <p>
-                <strong class="text-blue-900">נבדק מקצועית על ידי:</strong>
-                {reviewerName}
-                {reviewerTitle && <span class="text-gray-500"> — {reviewerTitle}</span>}
-              </p>
+            {review ? (
+              <div class="grid gap-1">
+                <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                  <p>
+                    <strong class="text-blue-900">נבדק מקצועית על ידי:</strong>
+                    {review.url
+                      ? <a href={review.url} rel="nofollow noopener noreferrer" target="_blank" class="text-brand hover:text-brand-dark transition-colors">{review.name}</a>
+                      : review.name}
+                    {review.title && <span class="text-gray-500"> — {review.title}</span>}
+                  </p>
+                  <p class="text-xs text-blue-800">תאריך הבדיקה המקצועית: {fmtDate(review.date)}</p>
+                </div>
+                {review.changedSinceReview && (
+                  <p class="text-xs leading-relaxed text-amber-800">
+                    המדריך עודכן לאחר הבדיקה המקצועית, והשינויים שנעשו מאז לא עברו בדיקה מקצועית.
+                  </p>
+                )}
+              </div>
             ) : (
               <p class="text-xs leading-relaxed text-gray-600">
                 המידע נבדק מול מקורות רשמיים ומוצג כהכוונה כללית בלבד. כאשר יתווסף בודק משפטי אישי, שמו ותפקידו יוצגו כאן במפורש.
