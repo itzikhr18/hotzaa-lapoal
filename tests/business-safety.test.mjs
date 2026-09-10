@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import test from 'node:test';
 import { getProfessionalReview, reviewSchemaFields } from '../src/lib/professional-review.mjs';
 
@@ -61,11 +61,28 @@ test('guides credit a professional reviewer only with a name and a real review d
   );
 
   const layout = await read('src/layouts/GuideLayout.astro');
-  assert.doesNotMatch(layout, /lastFactCheck|reviewDate\s*=[^=]|reviewedBy\s*:|lastReviewed\s*:/);
+  assert.doesNotMatch(layout, /lastFactCheck|reviewDate\s*=[^=]/);
   const credit = layout.match(/\{review \? \(([\s\S]*?)\) : \(/);
   assert.ok(credit, 'the reviewer credit must sit behind the review check');
   assert.match(credit[1], /נבדק מקצועית על ידי/);
   assert.equal(layout.split('נבדק מקצועית על ידי').length, 2);
+});
+
+test('no page sets review markup or a reviewer credit outside the review helper', async () => {
+  const src = new URL('../src/', import.meta.url);
+  const files = (await readdir(src, { recursive: true }))
+    .map((file) => file.replaceAll('\\', '/'))
+    .filter((file) => /\.(astro|mjs|js|ts|tsx)$/.test(file));
+  assert.ok(files.includes('pages/insolvency/index.astro') && files.includes('layouts/GuideLayout.astro'), 'the scan must cover src/');
+  for (const file of files) {
+    const source = await readFile(new URL(file, src), 'utf8');
+    if (file !== 'lib/professional-review.mjs') {
+      assert.doesNotMatch(source, /reviewedBy|lastReviewed/, `${file} sets reviewedBy/lastReviewed directly`);
+    }
+    if (file !== 'layouts/GuideLayout.astro') {
+      assert.doesNotMatch(source, /נבדק מקצועית על ידי/, `${file} credits a reviewer outside GuideLayout`);
+    }
+  }
 });
 
 test('partner demo stays local, avoids personal-data collection and is not indexed', async () => {
