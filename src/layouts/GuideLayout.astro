@@ -40,7 +40,7 @@ const defaultRelatedGuides = [
 
 const defaultActionLinks = [
   { label: 'בדיקת תיק לפי תעודת זהות', href: '/guides/bdika-tik/', note: 'להבין מה פתוח נגדך' },
-  { label: 'טפסים ונוסחים מוכנים', href: '/forms/', note: 'טופס 214, צו תשלומים ובקשות דחופות' },
+  { label: 'טפסים רשמיים ונוסחי עזר', href: '/forms/', note: 'טופס 214, צו תשלומים ובקשות דחופות' },
   { label: 'בדיקת ריבית ויתרת חוב', href: '/tools/calculator/', note: 'קבלת יתרה רשמית והבנת רכיבי התיק' },
   { label: 'בדיקת מצב מהירה', href: '/tools/eligibility/', note: 'צו תשלומים, איחוד תיקים או חדלות פירעון' },
   { label: 'שאל את הצ׳אטבוט', href: '/tools/chatbot/', note: 'הכוונה כללית מיידית' },
@@ -57,7 +57,7 @@ const {
   relatedGuides = defaultRelatedGuides,
   sources,
   authorName = 'מערכת הוצאהלפועל.info',
-  authorTitle = 'עריכת תוכן משפטי לציבור',
+  authorTitle = 'עריכת מידע לציבור',
   reviewerName,
   reviewerTitle,
   reviewerUrl,
@@ -66,9 +66,9 @@ const {
 } = Astro.props;
 
 const defaultSources = [
-  { label: 'רשות האכיפה והגבייה — gov.il', href: 'https://www.gov.il/he/departments/legalinfo/hotsaa_lapoal' },
+  { label: 'רשות האכיפה והגבייה — gov.il', href: 'https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority' },
   { label: 'כל-זכות — זכויות בהוצאה לפועל', href: 'https://www.kolzchut.org.il/he/%D7%94%D7%95%D7%A6%D7%90%D7%94_%D7%9C%D7%A4%D7%95%D7%A2%D7%9C' },
-  { label: 'חוק ההוצאה לפועל, תשכ"ז-1967 — ספר החוקים', href: 'https://www.nevo.co.il/law_html/law01/055_247.htm' },
+  { label: 'חוק ההוצאה לפועל — נוסח באתר הביטוח הלאומי', href: 'https://www.btl.gov.il/Laws1/00_0063_000000.pdf' },
 ];
 
 const pageSources = sources ?? defaultSources;
@@ -114,12 +114,14 @@ const articleSchema = {
   author: authorSchema,
   publisher: {
     '@type': 'Organization',
+    '@id': 'https://hotzaa-lapoal.info/#organization',
     name: 'הוצאהלפועל.info',
     url: siteUrl,
     logo: { '@type': 'ImageObject', url: `${siteUrl}/og-image.png` },
   },
   datePublished: publishDate,
   dateModified: updateDate ?? publishDate,
+  citation: pageSources.map(source => ({ '@type': 'CreativeWork', name: source.label, url: source.href })),
   articleSection,
   genre: 'legal information',
   isAccessibleForFree: true,
@@ -227,15 +229,15 @@ const fmtMonthYear = (d?: string) =>
               </div>
             ) : (
               <p class="text-xs leading-relaxed text-gray-600">
-                המידע נבדק מול מקורות רשמיים ומוצג כהכוונה כללית בלבד. כאשר יתווסף בודק משפטי אישי, שמו ותפקידו יוצגו כאן במפורש.
+                זהו מידע כללי בעריכה פנימית, לא בדיקה משפטית מקצועית. מקורות העמוד והחריגים מפורטים בהמשך; תאריך עריכה אינו אישור לנכונות כל הדין. <a href="/about/#editorial-policy" class="underline">מדיניות העריכה והבדיקה</a>.
               </p>
             )}
           </div>
 
           <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
             <span class="flex items-center gap-1">
-              <span>✓</span>
-              <span>מבוסס על חוק ההוצאה לפועל תשכ"ז-1967, תיקון 9 (ינואר 2025) ותיקון 69 (פברואר 2022)</span>
+              <span aria-hidden="true">ℹ</span>
+              <span>יש לבדוק את המקורות, תנאי ההליך וההחלטות בתיק לפני פעולה</span>
             </span>
             {updateDate && (
               <span class="flex items-center gap-1">
@@ -243,13 +245,13 @@ const fmtMonthYear = (d?: string) =>
                 <span>נערך ב{fmtMonthYear(updateDate)}</span>
               </span>
             )}
-            <a href="https://www.gov.il/he/departments/legalinfo/hotsaa_lapoal" rel="noopener noreferrer" target="_blank" class="flex items-center gap-1 text-brand hover:text-brand-dark transition-colors">
+            <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" rel="noopener noreferrer" target="_blank" class="flex items-center gap-1 text-brand hover:text-brand-dark transition-colors">
               <span>🔗</span>
               <span>מקור: רשות האכיפה והגבייה</span>
             </a>
             <a href="https://www.kolzchut.org.il/he/%D7%94%D7%95%D7%A6%D7%90%D7%94_%D7%9C%D7%A4%D7%95%D7%A2%D7%9C" rel="noopener noreferrer" target="_blank" class="flex items-center gap-1 text-brand hover:text-brand-dark transition-colors">
               <span>🔗</span>
-              <span>כל-זכות</span>
+              <span>כל-זכות — מידע משלים</span>
             </a>
           </div>
           <p class="mt-4 text-lg text-gray-600 leading-relaxed">{description}</p>

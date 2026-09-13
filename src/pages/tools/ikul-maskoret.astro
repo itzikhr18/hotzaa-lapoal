@@ -2,135 +2,44 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import SalaryGarnishmentCalculator from '../../components/SalaryGarnishmentCalculator';
-import { wageList, wageSentence, fmtILS, WAGE_AS_OF } from '../../data/protected-amounts';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-
-const siteUrl = 'https://hotzaa-lapoal.info';
-
-const appSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  name: 'מחשבון עיקול משכורת — כמה מותר לעקל לך מהשכר',
-  description: 'חישוב מיידי של הסכום המקסימלי שמותר לעקל מהמשכורת לפי סעיף 8 לחוק הגנת השכר: סכום מוגן לפי הרכב המשפחה, וכלל 80% מהנטו.',
-  url: `${siteUrl}/tools/ikul-maskoret/`,
-  inLanguage: 'he',
-  applicationCategory: 'FinanceApplication',
-  operatingSystem: 'Any',
-  browserRequirements: 'Requires JavaScript',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
-  isAccessibleForFree: true,
-  audience: { '@type': 'Audience', audienceType: 'חייבים בהוצאה לפועל בישראל', geographicArea: { '@type': 'Country', name: 'Israel' } },
-  publisher: { '@type': 'Organization', name: 'הוצאהלפועל.info', url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}/og-image.png` } },
-  featureList: [
-    `בדיקת הסכום המוגן מעיקול לפי הרכב משפחה (${WAGE_AS_OF})`,
-    'זיהוי משכורת מוגנת שאסור לעקל ממנה כלל',
-    'חישוב לפי כלל 80% מהנטו — כשהסכום המוגן גבוה מ-80% מהשכר',
-    'הסבר מה עושים אם העיקול כבד מדי — בקשת הפחתה או צו תשלומים',
-  ],
-};
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: 'כמה מותר לעקל מהמשכורת בהוצאה לפועל?', acceptedAnswer: { '@type': 'Answer', text: `לפי סעיף 8 לחוק הגנת השכר, מוגן מעיקול סכום חודשי לפי הרכב המשפחה: ${wageSentence}. אם השכר נטו נמוך מהסכום המוגן — לא ניתן לעקל כלל. אם הסכום המוגן נמוך מ-80% מהנטו — נשאר בידי החייב הסכום המוגן וכל היתרה ניתנת לעיקול. אם הסכום המוגן הוא בין 80% ל-100% מהנטו — ניתן לעקל 20% מהנטו בלבד. בתיקי מזונות ההגנה אינה חלה.` } },
-    { '@type': 'Question', name: 'מתי אסור לעקל מהמשכורת בכלל?', acceptedAnswer: { '@type': 'Answer', text: 'כאשר המשכורת נטו אינה עולה על הסכום המוגן המתאים להרכב המשפחה — לא ניתן לעקל ממנה כלל (למעט תיקי מזונות, שבהם ההגנה אינה חלה).' } },
-    { '@type': 'Question', name: 'העיקול גבוה מדי — מה עושים?', acceptedAnswer: { '@type': 'Answer', text: 'המחשבון מציג את המקסימום המותר בחוק, אך רשם ההוצאה לפועל רשאי לקבוע עיקול נמוך יותר לפי הוצאות המחיה. ניתן להגיש בקשת הפחתה עם תלושי שכר ופירוט הוצאות, או לבקש צו תשלומים שמחליף את העיקול. אם נוכה סכום מעבר למותר — מגישים בקשה להשבה.' } },
-    { '@type': 'Question', name: 'האם החישוב הוא על הברוטו או על הנטו?', acceptedAnswer: { '@type': 'Answer', text: 'על הנטו. ההגנה מחושבת על השכר לאחר ניכויי חובה (מס הכנסה, ביטוח לאומי, ביטוח בריאות) אך לפני ניכויים רצוניים כמו קרן השתלמות מוגדלת או החזרי הלוואות.' } },
-  ],
-};
+import SalaryGarnishmentCalculator from '../../components/SalaryGarnishmentCalculator';
+import { wageList, fmtILS, WAGE_AS_OF, WAGE_RULE_TEXT, WAGE_LAW_URL, WAGE_SOURCE_URL, WAGE_INCOME_LAW_URL } from '../../data/protected-amounts';
+const questions = [
+  { question: 'האם מותר לעקל רק 20% מהמשכורת?', answer: 'לא. בחוב שאינו מזונות ההגנה היא הנמוך מבין סכום הבסיס המשפחתי לבין 80% מהשכר לאחר ניכויי חובה בחוק. כשהבסיס נמוך מ-80% מהשכר, יתרת השכר שאינה מוגנת עשויה לעלות על 20%.' },
+  { question: 'האם שכר נמוך מסכום הבסיס מוגן במלואו?', answer: 'לא מכוח סעיף 8 בלבד. אם סכום הבסיס גבוה מ-80% מהשכר, הסכום המוגן קטן ל-80% מהשכר. אין להסיק שהעיקול יהיה אפס.' },
+  { question: 'לאיזה מועד וסוג הכנסה מתאימה ההדגמה?', answer: 'לשכר חודשי ממשלם אחד המשולם בספטמבר 2026, בחוב שאינו מזונות ובהרכב משפחה המתאים להגדרות. נעשה שימוש בסכומי 2026 שהיו בתוקף בחודש שקדם לתשלום. אין להשתמש בה לקצבת פנסיה, לשכר יומי או לתקופה אחרת בלי אימות מתאים.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'מחשבון עיקול משכורת — הדגמת כלל סעיף 8', description: 'הדגמה מוגבלת לשכר חודשי וחוב שאינו מזונות. אינה קובעת את סכום הניכוי בתיק.', applicationCategory: 'FinanceApplication', operatingSystem: 'Any', isAccessibleForFree: true, url: 'https://hotzaa-lapoal.info/tools/ikul-maskoret/' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: questions.map(q => ({ '@type': 'Question', name: q.question, acceptedAnswer: { '@type': 'Answer', text: q.answer } })) },
+];
 ---
-
-<BaseLayout
-  title="מחשבון עיקול משכורת — כמה מותר לעקל לך מהשכר? (2026)"
-  description="חשב בחינם כמה מותר לעקל מהמשכורת שלך לפי חוק הגנת השכר: הסכום המוגן לפי הרכב משפחה, כלל 80% מהנטו, ומתי המשכורת מוגנת לחלוטין מעיקול."
-  schema={[appSchema, faqSchema]}
->
+<BaseLayout title="מחשבון עיקול משכורת — כלל 80% וסכומי הבסיס (2026)" description="הדגמה של החלק המוגן בשכר חודשי לפי סעיף 8: הנמוך בין הבסיס המשפחתי ל-80% מהשכר. כולל חריג מזונות, מקורות רשמיים ותנאי שימוש." schema={schema}>
   <Header />
-  <main id="main-content" class="max-w-3xl mx-auto px-4 py-10">
-
-<Breadcrumb items={[{ label: 'כלים', href: '/tools/' }, { label: 'מחשבון עיקול משכורת' }]} />
-
-    <h1 class="text-3xl font-bold text-brand-dark mb-2">מחשבון עיקול משכורת</h1>
-    <p class="text-gray-600 mb-2">כמה מותר לעקל לך מהשכר — וכמה חייב להישאר בידך</p>
-
-    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 text-sm text-blue-800">
-      <strong>הכלל בקצרה (סעיף 8 לחוק הגנת השכר):</strong> מוגן מעיקול סכום חודשי לפי הרכב
-      המשפחה. שכר נטו שאינו עולה על הסכום המוגן — אסור לעקל ממנו בכלל. מעל הסכום המוגן —
-      ניתן לעקל את היתרה, אך תמיד נשארים בידי החייב לפחות 80% מהנטו או הסכום המוגן
-      (הגבוה מביניהם עד גובה השכר). בתיקי מזונות ההגנה אינה חלה.
-    </div>
-
-    <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-xs">
-      <!-- גילוי נאות -->
-    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm text-gray-700">
-      <p class="font-semibold text-gray-800 mb-1">⚠️ גילוי נאות</p>
-      <p>כלי זה מספק <strong>הערכה בלבד</strong> של הסכום המוגן מעיקול משכורת, על בסיס סעיף 8 לחוק הגנת השכר. הסכומים המדויקים תלויים בהרכב המשפחה, סוג החוב (מזונות אינם מוגנים), הסכמי עבודה, והחלטות הרשם. התוצאה <strong>אינה קובעת</strong> את גובה הניכוי בפועל. לבירור הסכום בתיק שלך — פנה לרשם ההוצאה לפועל או לעורך דין.</p>
-    </div>
-    <SalaryGarnishmentCalculator client:idle />
-    </div>
-
-    <!-- טבלת הסכום המוגן -->
-    <div class="mt-10 border-t pt-8 border-gray-200">
-      <h2 class="text-xl font-bold text-gray-800 mb-4">טבלת הסכום המוגן מעיקול לפי הרכב משפחה ({WAGE_AS_OF})</h2>
-      <p class="text-sm text-gray-600 mb-4">
-        הסכום המוגן הוא סכום <strong>נטו</strong> שחייב להישאר בידי החייב אחרי הניכוי
-        (מבוסס על שיעורי הבטחת הכנסה, סעיף 8 לחוק הגנת השכר; מתעדכן מדי שנה).
-        המקור: כל-זכות ורשות האכיפה והגבייה.
-      </p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-xs">
-          <thead>
-            <tr class="bg-gray-100 text-gray-700">
-              <th scope="col" class="border border-gray-200 px-4 py-2 text-right font-bold">הרכב המשפחה</th>
-              <th scope="col" class="border border-gray-200 px-4 py-2 text-right font-bold">סכום מוגן (נטו)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {wageList.map((w, i) => (
-              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                <td class="border border-gray-200 px-4 py-2">{w.label}</td>
-                <td class="border border-gray-200 px-4 py-2 font-semibold">{fmtILS(w.amount)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <h2 class="text-xl font-bold text-gray-800 mb-4 mt-8">שאלות נפוצות</h2>
-      <div class="space-y-3">
-        {[
-          { q: 'כמה מותר לעקל מהמשכורת?', a: 'אם הנטו נמוך מהסכום המוגן למשפחתך — כלום. אם הסכום המוגן נמוך מ-80% מהנטו — ניתן לעקל את כל מה שמעבר לסכום המוגן. אם הסכום המוגן הוא 80%-100% מהנטו — ניתן לעקל 20% מהנטו בלבד.' },
-          { q: 'מתי המשכורת מוגנת לחלוטין?', a: 'כשהנטו שלך אינו עולה על הסכום המוגן המתאים למשפחתך — אז אסור לנכות בכלל (חוץ מתיקי מזונות).' },
-          { q: 'המספר שיצא לי גבוה — זה מה שינכו בפועל?', a: 'לא בהכרח. זהו המקסימום החוקי. בפועל הרשם קובע את גובה העיקול, וניתן לבקש הפחתה משמעותית לפי הוצאות מחיה, או צו תשלומים שמחליף את העיקול. כדאי לפעול מהר ולהגיש בקשה מנומקת.' },
-          { q: 'ניכו לי יותר מהמותר — מה עושים?', a: 'מגישים בקשה לרשם ההוצאה לפועל להשבת הסכום העודף עם תלושי שכר. אפשר להכין נוסח בקשה במחולל הנוסחים שלנו.' },
-        ].map(faq => (
-          <details class="border border-neutral-border rounded-xl group">
-            <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center text-sm">
-              {faq.q}
-              <span class="text-neutral-muted group-open:rotate-180 transition-transform flex-shrink-0 mr-2">▼</span>
-            </summary>
-            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
-          </details>
-        ))}
-      </div>
-
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/guides/ikul-maskoret/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
-          ← המדריך המלא לעיקול משכורת
-        </a>
-        <span class="text-gray-300">|</span>
-        <a href="/tools/noseach-bakasha/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
-          ← מחולל נוסח בקשה לרשם
-        </a>
-        <span class="text-gray-300">|</span>
-        <a href="/rights/skhomim-mugganim/" class="inline-flex items-center gap-1 text-sm text-brand hover:underline">
-          ← כל הסכומים המוגנים מעיקול
-        </a>
-      </div>
-    </div>
-
+  <main id="main-content" class="max-w-3xl mx-auto px-4 py-10 space-y-7">
+    <Breadcrumb items={[{ label: 'כלים', href: '/tools/' }, { label: 'מחשבון עיקול משכורת' }]} />
+    <h1 class="text-3xl font-bold text-brand-dark">מחשבון עיקול משכורת</h1>
+    <p>הדגמה של כלל ההגנה בחוק — לא אישור לסכום עיקול בתיק מסוים. עריכת תוכן: 13.09.2026; ללא טענה לביקורת מקצועית של עורך דין.</p>
+    <section class="bg-blue-50 border rounded-xl p-5 space-y-3">
+      <h2 class="text-xl font-bold">מה באמת אומר כלל 80%?</h2>
+      <p>{WAGE_RULE_TEXT}</p>
+      <p>סעיף 8 מפנה לגמלה לפי טור ג׳ בתוספת השנייה לחוק הבטחת הכנסה, בהרכב המשפחה הרלוונטי ובחודש שקדם לתשלום השכר. ההפניה אינה מחייבת שהעובד יהיה בן 55.</p>
+      <p>מקור: <a href={WAGE_LAW_URL} class="underline">חוק הגנת השכר, סעיף 8</a>; <a href={WAGE_INCOME_LAW_URL} class="underline">חוק הבטחת הכנסה, התוספת השנייה</a>.</p>
+    </section>
+    <section class="bg-white border rounded-xl p-5"><SalaryGarnishmentCalculator client:idle /><noscript>ההדגמה דורשת JavaScript. הכלל וטבלת המקור זמינים גם ללא הפעלתו; אין תוצאה אישית ללא בדיקה.</noscript></section>
+    <section class="space-y-3">
+      <h2 class="text-xl font-bold">סכומי בסיס לפי הרכב משפחה ({WAGE_AS_OF})</h2>
+      <p>אלה אינם סכומים שחייבים תמיד להישאר בידך. ההגנה כפופה לתקרת 80% מהשכר ולחריגים. הנתונים מטבלת ביטוח לאומי, בתוקף מ-01.01.2026, קבוצת 55 עד גיל הפרישה; נבדקו ב-13.09.2026.</p>
+      <div class="overflow-x-auto"><table class="w-full text-sm">
+        <caption class="text-right mb-2">סכום הבסיס לפני השוואה ל-80% מהשכר</caption>
+        <thead><tr><th scope="col" class="text-right p-2 border">הרכב משפחה</th><th scope="col" class="text-right p-2 border">סכום בסיס</th></tr></thead>
+        <tbody>{wageList.map(item => <tr><th scope="row" class="text-right p-2 border font-normal">{item.label}</th><td class="p-2 border">{fmtILS(item.amount)}</td></tr>)}</tbody>
+      </table></div>
+      <p><a href={WAGE_SOURCE_URL} class="underline">טבלת הסכומים והגדרות בני זוג וילד — ביטוח לאומי</a>. אם המעמד המשפחתי אינו מתאים בבירור, אל תבחרו קטגוריה רק לפי מספר האנשים בבית.</p>
+    </section>
+    <section class="space-y-4"><h2 class="text-xl font-bold">שאלות נפוצות</h2>{questions.map(q => <details class="border rounded-lg p-4"><summary class="font-semibold">{q.question}</summary><p class="mt-3">{q.answer}</p></details>)}</section>
+    <section class="space-y-3"><h2 class="text-xl font-bold">הניכוי בפועל נראה שגוי?</h2><p>אספו את צו העיקול, התלוש, פירוט הניכויים ומסמכי הרכב המשפחה. בקשו בירור מהמעסיק והגישו את הבקשה המתאימה בתיק לפי <a href="https://www.gov.il/he/service/cancel_salary_foreclosure" class="underline">שירות ביטול עיקול משכורת</a>. הגשת בקשה, תשלום חלקי או בקשה לצו תשלומים אינם כשלעצמם מבטלים עיקול; דרושה החלטה מתאימה.</p><p><a href="/guides/ikul-maskoret/" class="underline">מדריך עיקול משכורת</a> · <a href="/rights/skhomim-mugganim/" class="underline">כספים מוגנים מעיקול</a></p></section>
   </main>
   <Footer />
 </BaseLayout>

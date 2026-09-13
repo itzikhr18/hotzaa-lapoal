@@ -1,228 +1,93 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const howToSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: 'איך לבדוק זכאות לחדלות פירעון',
-  description: 'בדיקה שלב אחר שלב — האם אתה עומד בתנאי הסף להגשת בקשה לחדלות פירעון בישראל',
-  totalTime: 'PT30M',
-  step: [
-    { '@type': 'HowToStep', position: 1, name: 'בדוק שאתה יחיד', text: 'חדלות פירעון מיועדת ליחידים בלבד — לא לחברות, תאגידים או שותפויות. חברות כפופות להליך פירוק נפרד.' },
-    { '@type': 'HowToStep', position: 2, name: 'בדוק את סכום החוב הכולל', text: 'חשב את סך כל חובותיך. סכום החוב המינימלי לחדלות פירעון הוא 58,794 ₪ (2026). חוב נמוך יותר — שקול צו תשלומים.' },
-    { '@type': 'HowToStep', position: 3, name: 'בדוק את מסלול הטיפול', text: 'חוב 58,794–176,923 ₪: מטופל ע"י רשם חדלות פירעון. חוב מעל 176,923 ₪: מטופל בבית משפט השלום עם נאמן.' },
-    { '@type': 'HowToStep', position: 4, name: 'וודא תושבות ותום לב', text: 'נדרש שמרכז חייך בישראל ושאין בעיות תום לב (הסתרת נכסים, עבירות פליליות, הגשה קודמת ב-7 שנים האחרונות).' },
-    { '@type': 'HowToStep', position: 5, name: 'התייעץ עם עורך דין לפני הגשה', text: 'גם אם אתה עומד בתנאים — מומלץ להתייעץ לפני הגשה. ייעוץ ראשוני לרוב זול או חינמי. הלשכה לסיוע משפטי מציעה ייצוג חינמי לזכאים.' },
-  ],
-};
-
+const faqs = [
+  {
+    "q": "האם חוב נמוך מהסכום המינימלי פוסל בכל מקרה?",
+    "a": "לא. החוק מאפשר לרשם לפתוח הליכים בסכום נמוך יותר מטעמים מיוחדים המצדיקים זאת. זו החלטה פרטנית, לא זכות אוטומטית."
+  },
+  {
+    "q": "האם חברה יכולה להגיש חדלות פירעון?",
+    "a": "כן, לחברות ולתאגידים יש הליכי חדלות פירעון בבית המשפט המחוזי. עמוד זה עוסק רק בתנאים ובמסלולים של יחידים."
+  },
+  {
+    "q": "האם אזרחות ישראלית היא התנאי היחיד?",
+    "a": "לא. ההנחיות בוחנות זיקה לישראל באמצעות מרכז חיים, נכסים או עסק בתנאים הקבועים בחוק. אין להסתפק בתווית אזרח או תושב."
+  }
+];
+const sources = [
+  {
+    "label": "רשות האכיפה — תנאי הגשה וסכומי סף (עדכון 18.1.2026)",
+    "href": "https://www.gov.il/he/pages/insovlency-request-guide?chapterindex=4"
+  },
+  {
+    "label": "המדריך הרשמי להגשת בקשה",
+    "href": "https://www.gov.il/BlobFolder/policy/opening-insolvency-request-regulation/he/Forms_insolvency-guide.pdf"
+  },
+  {
+    "label": "הממונה — תקופת תשלומים וחריגים",
+    "href": "https://www.gov.il/BlobFolder/policy/installments-111125/ar/061125.pdf"
+  },
+  {
+    "label": "משרד המשפטים — בקשה לסיוע משפטי",
+    "href": "https://www.gov.il/he/service/legal_aid_application"
+  }
+];
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'מה סכום החוב המינימלי לחדלות פירעון?',
-      acceptedAnswer: { '@type': 'Answer', text: 'סכום החוב המינימלי לחדלות פירעון הוא 58,794 ₪ נכון ל-2026. סכום זה מתעדכן מדי שנה לפי מדד המחירים לצרכן. מי שחובו נמוך מסכום זה אינו זכאי להגיש בקשה לחדלות פירעון, אך יכול לשקול אפשרויות כמו צו תשלומים או איחוד תיקים.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'האם חברה יכולה להגיש חדלות פירעון?',
-      acceptedAnswer: { '@type': 'Answer', text: 'לא. חדלות פירעון לפי חוק 2019 מיועדת ליחידים בלבד — לא לחברות, תאגידים או שותפויות. לחברות יש הליך נפרד של פירוק בבית המשפט המחוזי.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'מה קורה אם כבר הגשתי חדלות פירעון בעבר?',
-      acceptedAnswer: { '@type': 'Answer', text: 'החוק אינו קובע חסימה אוטומטית על הגשה חוזרת, אך מי שהתנהל לגביו הליך חדלות פירעון ב-7 השנים שקדמו לבקשה חייב לפרט זאת בבקשה — והדבר עלול להוביל לדחייתה או להארכת תקופת התשלומים בהליך החדש. לפי הפסיקה, לאחר ביטול הליך קודם בשל מחדלי החייב נדרשת לרוב "תקופת צינון" של שנה עד שנתיים.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'האם אפשר להגיש חדלות פירעון בלי עורך דין?',
-      acceptedAnswer: { '@type': 'Answer', text: 'כן, ניתן להגיש בקשה לחדלות פירעון באופן עצמאי ללא עורך דין. עם זאת, ההליך מורכב ועלול לקחת שנים — מומלץ מאוד להתייעץ לפחות עם עורך דין לפני הגשה, גם אם ייעוץ ראשוני בלבד.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'מה ההבדל בין המסלולים לפי סכום החוב?',
-      acceptedAnswer: { '@type': 'Answer', text: 'יש שני מסלולים עיקריים: חוב בין 58,794 ₪ ל-176,923 ₪ מטופל על ידי רשם חדלות פירעון — מסלול מהיר יחסית ללא חובת מינוי נאמן. חוב מעל 176,923 ₪ מטופל בבית משפט השלום — הליך מלא הכולל מינוי נאמן, חקירות ותוכנית שיקום מפורטת.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'מה קורה לדירה שלי בחדלות פירעון?',
-      acceptedAnswer: { '@type': 'Answer', text: 'הנאמן בוחן את שווי הדירה ואת גובה המשכנתה. אם יש הון עצמי (הדירה שווה יותר מהמשכנתה), ייתכן שיידרש למכור. אך כאשר יש משכנתה גבוהה ומשפחה המתגוררת בדירה, בתי המשפט נוטים לאפשר הסדר — לעיתים בן הזוג רוכש את חלק החייב בדירה.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'מה קורה לעסק שלי בחדלות פירעון?',
-      acceptedAnswer: { '@type': 'Answer', text: 'עצמאי יכול להמשיך לעבוד ולנהל את עסקו במהלך הליך חדלות פירעון. כל הכנסות העסק חייבות להיות מדווחות לנאמן. ניתן להמשיך לנהל עסק בתנאי דיווח שוטף מלא.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'כמה זמן הרישום נשאר בדוח אשראי?',
-      acceptedAnswer: { '@type': 'Answer', text: '7 שנים ממועד קבלת ההפטר. לאחר מכן הרישום נמחק אוטומטית ממאגרי נתוני האשראי.' },
-    },
-  ],
+  mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
 };
-
 ---
 
 <GuideLayout
-  title="מי זכאי לחדלות פירעון (פשיטת רגל)? התנאים ל-2026"
-  description="מי זכאי להגיש בקשה לחדלות פירעון (פשיטת רגל) ב-2026? סכום חוב מינימלי של 58,794 ₪, תנאי תושבות, תום לב, ושני מסלולים לפי גובה החוב."
-  breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'מי זכאי?', href: '/insolvency/eligibility/' }]}
+  title="מי יכול להגיש חדלות פירעון? תנאי סף ומסלולי טיפול"
+  description="תנאים להגשת חדלות פירעון ליחיד: מצב כלכלי, זיקה לישראל, סכומי סף ומסלולים. גם חריג לחוב נמוך מהסף וקישורים להגשה הרשמית."
+  breadcrumb={[{"label":"חדלות פירעון","href":"/insolvency/"},{"label":"מי יכול להגיש חדלות פירעון? תנאי סף ומסלולי טיפול","href":"/insolvency/eligibility/"}]}
   publishDate="2025-03-01"
-  updateDate="2026-04-24"
+  updateDate="2026-09-13"
   readTime="5 דקות"
-  schema={[faqSchema, howToSchema]}
+  sources={sources}
+  schema={[faqSchema]}
 >
+  <p>לא קובעים זכאות לחדלות פירעון לפי סכום החוב בלבד. בבקשה של יחיד נבדקים המצב הכלכלי, הזיקה לישראל, סכומי הסף והמסמכים. מדריך זה מסביר מה לבדוק ומפנה למקורות הרשמיים; הוא אינו מחליף החלטה בבקשה.</p>
+  <div class="warn-box"><p>מידע כללי לציבור, לא קביעת זכאות או ייעוץ משפטי אישי. במקרה של סתירה, הדין וההחלטות בתיק גוברים. אין להפסיק תשלומים או להתעלם ממועד באזהרה על סמך מדריך זה.</p></div>
 
-  <p>
-    לפני שמגישים בקשה לחדלות פירעון — חשוב לבדוק שעומדים בתנאים הבסיסיים.
-    הגשת בקשה שלא עומדת בתנאים תידחה, ותעלה לך כסף ללא תוצאה.
-  </p>
+  <section id="conditions"><h2>מהם התנאים הבסיסיים?</h2>
+  <ul><li>המדריך עוסק ביחיד; לתאגיד יש מסלול חדלות פירעון אחר.</li><li>נבחנת חדלות הפירעון לפי המבחנים בחוק, או אם הצו יסייע למנוע אותה בהתאם לתנאי בקשת יחיד.</li><li>נדרשת זיקה לישראל: מרכז החיים בישראל במועד הבקשה או במהלך ששת החודשים שקדמו לה, או נכסים בישראל או עסק בישראל במועד הבקשה.</li><li>יש לפרט את כלל החובות, הנכסים והמצב הכלכלי, ולא רק תיקים שכבר נפתחו בהוצאה לפועל.</li></ul>
+  <p>מקור: <a href="https://www.gov.il/BlobFolder/policy/opening-insolvency-request-regulation/he/Forms_insolvency-guide.pdf" target="_blank" rel="noopener noreferrer">מדריך רשמי להגשת בקשה לפתיחת הליכים</a> ו<a href="https://fs.knesset.gov.il/20/law/20_lsr_491934.pdf" target="_blank" rel="noopener noreferrer">חוק חדלות פירעון, ובפרט תנאי בקשת יחיד</a>.</p></section>
+  <section id="thresholds"><h2>מה סכום החוב המינימלי בשנת 2026?</h2>
+  <p>מדריך רשות האכיפה והגבייה, המעודכן ל־18.1.2026, מציג סכום מינימלי של <strong>58,794 ₪</strong> וסכום מפריד בין מסלולי היחידים של <strong>176,923 ₪</strong>. אלה הסכומים כפי שהם מוצגים במדריך, ללא אגורות. הם מתעדכנים, ובסכום סמוך לסף יש לבדוק את הסכום המדויק התקף ביום ההגשה.</p>
+  <p><strong>קיים חריג:</strong> הרשם רשאי לפתוח הליכים גם מתחת לסכום המינימלי מטעמים מיוחדים המצדיקים זאת. לכן ״פחות מהסף = אסור להגיש בכל מקרה״ אינו תיאור נכון. מקור: <a href="https://www.gov.il/he/pages/insovlency-request-guide?chapterindex=4" target="_blank" rel="noopener noreferrer">מדריך רשות האכיפה — מידע כללי וסכומי הסף</a>.</p></section>
+  <section id="routes"><h2>מי מטפל בבקשה?</h2>
+  <ul><li><strong>מסלול חובות נמוכים:</strong> רשם חדלות פירעון במערכת ההוצאה לפועל, לפי תנאי החוק.</li><li><strong>המסלול שמעל הסכום המפריד:</strong> בקשת היחיד לממונה במשרד המשפטים; בית משפט השלום דן בצו השיקום ובעניינים שבסמכותו.</li><li><strong>תאגידים:</strong> הליכי חדלות פירעון בבית המשפט המחוזי; אין להסיק שהחוק אינו חל על חברות.</li></ul>
+  <p>אין הבטחה שהמסלול ברשות האכיפה יהיה קצר יותר או ללא נאמן. פרטי המסלול נבחנים לפי <a href="https://www.gov.il/he/pages/insovlency-request-guide?chapterindex=4" target="_blank" rel="noopener noreferrer">החלוקה הרשמית בין הגורמים המטפלים</a>.</p></section>
+  <section id="before-filing"><h2>מה להכין לבדיקה?</h2>
+  <p>רשימה מסודרת צריכה לכלול נושים וחובות, הכנסות והוצאות, נכסים וזכויות, בטוחות וערבויות, הליכים קודמים והחלטות פעילות. את הנספחים והתקופות המדויקות לאיסוף מסמכי הבנק והשכר בודקים בטופס העדכני של המסלול. אין כאן רשימת מסמכים שמחליפה אותו.</p>
+  <p>הליך קודם, אי־דיווח או התנהלות כלכלית בעייתית עשויים להשפיע על ההחלטה ועל התנאים, אך אין כאן ״פסילה אוטומטית לשבע שנים״. גם קיום נכס או קצבה בלבד אינו מאפשר לכלי מקוון לקבוע זכאות או הפטר. ראו <a href="https://www.gov.il/BlobFolder/policy/installments-111125/ar/061125.pdf" target="_blank" rel="noopener noreferrer">מדיניות הממונה על אורך תקופת התשלומים וחריגים</a>.</p></section>
+  <section id="alternatives"><h2>מה עוד חשוב להשוות?</h2>
+  <p><a href="/guides/tzav-tashlumim/">צו תשלומים</a>, <a href="/guides/ichud-tikim/">איחוד תיקים</a> ו<a href="/guides/hisdurim-chov/">הסדר עם נושים</a> אינם אותו הליך. הבחירה דורשת בירור של היכולת הכלכלית, סוגי החובות, נכסים, מועדים והשלכות — לא רק מספר תיקים. אפשר לבדוק <a href="https://www.gov.il/he/service/legal_aid_application" target="_blank" rel="noopener noreferrer">זכאות לסיוע משפטי במשרד המשפטים</a>.</p>
+  <p><strong>הגשת בקשה אינה מעכבת הליכים אוטומטית.</strong> כשיש מועד תגובה או מימוש קרוב, יש לבדוק בנפרד את הצורך בבקשת עיכוב ואת ההחלטה בה. מקור: <a href="https://www.gov.il/BlobFolder/policy/opening-insolvency-request-regulation/he/Forms_insolvency-guide.pdf" target="_blank" rel="noopener noreferrer">ההנחיות הרשמיות לפתיחת הליכים</a>.</p></section>
 
-  <h2>תנאי הסף הבסיסיים</h2>
-
-  <div class="info-box">
-    <p class="font-semibold text-blue-800 mb-3">כדי להגיש, צריך לעמוד בכל אלה:</p>
-    <ul class="space-y-1">
-      <li>✅ <strong>יחיד</strong> — לא חברה או תאגיד (לאלה יש הליך נפרד)</li>
-      <li>✅ <strong>חוב מינימלי של 58,794 ₪</strong> (נכון ל-2026)</li>
-      <li>✅ <strong>אי-יכולת לשלם</strong> — חובות גבוהים מיכולת ההחזר שלך</li>
-      <li>✅ <strong>תושב ישראל</strong> — או שמרכז החיים בישראל</li>
-    </ul>
-  </div>
-
-  <h2>סכומי הסף המעודכנים ל-2026</h2>
-
-  <div class="not-prose overflow-x-auto my-6">
-    <table class="w-full text-sm border-collapse">
-      <thead>
-        <tr class="bg-brand-dark text-white">
-          <th class="text-right p-3 border border-gray-200">סכום החוב</th>
-          <th class="text-right p-3 border border-gray-200">הגורם המטפל</th>
-          <th class="text-right p-3 border border-gray-200">הערות</th>
-        </tr>
-      </thead>
-      <tbody>
-        {[
-          ['פחות מ-58,794 ₪', 'לא זכאי לחדלות פירעון', 'שקול צו תשלומים או איחוד תיקים'],
-          ['58,794 – 176,923 ₪', 'רשם חדלות פירעון', 'מסלול מהיר יחסית'],
-          ['מעל 176,923 ₪', 'בית משפט השלום', 'הליך מלא עם נאמן'],
-        ].map(([amount, handler, note], i) => (
-          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-            <td class="p-3 border border-gray-200 font-semibold">{amount}</td>
-            <td class="p-3 border border-gray-200 text-brand-dark">{handler}</td>
-            <td class="p-3 border border-gray-200 text-gray-500 text-xs">{note}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    <p class="text-xs text-neutral-muted mt-2">* הסכומים מתעדכנים מדי שנה לפי מדד המחירים לצרכן.</p>
-  </div>
-
-  <h2>מי לא יכול להגיש?</h2>
-  <ul>
-    <li><strong>חברות ותאגידים</strong> — להם יש הליך פירוק נפרד בבית המשפט המחוזי</li>
-    <li><strong>מי שהתנהל לגביו הליך ב-7 השנים האחרונות</strong> — חייב לפרט זאת בבקשה; הדבר עלול להוביל לדחייה או להארכת תקופת התשלומים</li>
-    <li><strong>מי שהסתיר נכסים</strong> — בית המשפט עלול לדחות בקשה מחייב שלא פעל בתום לב</li>
-    <li><strong>מי שחובותיו נובעים מעבירות פליליות</strong> — יתכן עיכוב בהגשה</li>
-  </ul>
-
-  <h2>האם כדאי לי להגיש?</h2>
-  <p>
-    חדלות פירעון מתאימה כשהחוב גדול מדי מלסגור בכל דרך אחרת. לפני שמגישים, כדאי לבחון
-    אפשרויות אחרות:
-  </p>
-
-  <div class="not-prose grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
-    {[
-      { title: 'צו תשלומים', when: 'חוב שניתן לשלם בתשלומים', pro: 'פשוט, זול, מהיר', con: 'החוב לא נמחק' },
-      { title: 'איחוד תיקים', when: 'כמה תיקים נפרדים', pro: 'תשלום אחד מסודר', con: 'החוב לא נמחק' },
-      { title: 'חדלות פירעון', when: 'חוב שאי אפשר לסגור', pro: 'בסוף — הפטר', con: '4 שנים, עלות גבוהה' },
-    ].map(opt => (
-      <div class="border border-neutral-border rounded-xl p-4 bg-white">
-        <h3 class="font-bold text-gray-800 mb-2">{opt.title}</h3>
-        <p class="text-xs text-gray-500 mb-3">מתאים כש: {opt.when}</p>
-        <p class="text-xs text-green-700">✓ {opt.pro}</p>
-        <p class="text-xs text-red-600 mt-1">✗ {opt.con}</p>
-      </div>
-    ))}
-  </div>
-
-  <div class="warn-box">
-    <p class="font-semibold text-amber-800 mb-1">⚠️ בדוק לפני שמגיש</p>
-    <p>חדלות פירעון היא הליך ארוך ויקר. אם אתה לא בטוח — התייעץ עם עורך דין לפני הגשה. ייעוץ ראשוני הרבה פעמים חינמי או זול מאוד.</p>
-  </div>
-
-  <h2>שאלות שאנשים חוששים לשאול</h2>
-  <div class="space-y-4 my-6">
-    <details class="border border-neutral-border rounded-xl group">
-      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-        מה קורה לדירה שלי?
-        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-      </summary>
-      <p class="px-4 pb-4 text-gray-600">הנאמן בוחן את שווי הדירה ואת גובה המשכנתה. אם יש הון עצמי (הדירה שווה יותר מהמשכנתה), ייתכן שיידרש למכור. אך כאשר יש משכנתה גבוהה ומשפחה המתגוררת בדירה, בתי המשפט נוטים לאפשר הסדר — לעיתים בן הזוג רוכש את חלק החייב בדירה.</p>
-    </details>
-
-    <details class="border border-neutral-border rounded-xl group">
-      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-        מה קורה לעסק שלי?
-        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-      </summary>
-      <p class="px-4 pb-4 text-gray-600">עצמאי יכול להמשיך לעבוד ולנהל את עסקו במהלך הליך חדלות פירעון. כל הכנסות העסק חייבות להיות מדווחות לנאמן. ניתן להמשיך לנהל עסק עם דיווח שוטף מלא — ההליך לא מחייב סגירת העסק.</p>
-    </details>
-
-    <details class="border border-neutral-border rounded-xl group">
-      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-        האם הילדים שלי מושפעים?
-        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-      </summary>
-      <p class="px-4 pb-4 text-gray-600">ההליך חל עליך בלבד — לא על ילדיך. חובות מזונות לילדים אינם ניתנים למחיקה בהפטר והם ממשיכים לחול במלואם. ילדיך אינם אחראים לחובותיך ואינם צד להליך בשום צורה.</p>
-    </details>
-
-    <details class="border border-neutral-border rounded-xl group">
-      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-        כמה זמן הרישום נשאר בדוח אשראי?
-        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-      </summary>
-      <p class="px-4 pb-4 text-gray-600">המידע מופיע בדוחות האשראי הנמסרים לנותני אשראי במשך כ-3 שנים ממועד הדיווח למערכת נתוני האשראי; לאחר מכן הוא נשמר במאגר בנק ישראל לתיעוד בלבד.</p>
-    </details>
-  </div>
-
-  <h2>שאלות נפוצות</h2>
-  <div class="space-y-4 my-6">
-    <details class="border border-neutral-border rounded-xl group">
-      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-        מה סכום החוב המינימלי לחדלות פירעון?
-        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-      </summary>
-      <p class="px-4 pb-4 text-gray-600">58,794 ₪ נכון ל-2026. הסכום מתעדכן מדי שנה לפי מדד המחירים לצרכן. מתחת לסכום זה — לא ניתן להגיש, אך ניתן לשקול צו תשלומים או איחוד תיקים.</p>
-    </details>
-
-    <details class="border border-neutral-border rounded-xl group">
-      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-        האם חברה יכולה להגיש חדלות פירעון?
-        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-      </summary>
-      <p class="px-4 pb-4 text-gray-600">לא — הליך חדלות פירעון מיועד ליחידים בלבד. חברות ותאגידים כפופים להליך פירוק נפרד בבית המשפט המחוזי.</p>
-    </details>
-
-    <details class="border border-neutral-border rounded-xl group">
-      <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-        מה ההבדל בין המסלול ברשם לבין בית המשפט?
-        <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-      </summary>
-      <p class="px-4 pb-4 text-gray-600">חוב בין 58,794 ₪ ל-176,923 ₪ מטופל על ידי רשם חדלות פירעון — הליך מהיר יחסית ללא נאמן. חוב מעל 176,923 ₪ מגיע לבית משפט השלום — הליך מלא הכולל מינוי נאמן ותוכנית שיקום.</p>
-    </details>
-  </div>
-
+  <section id="faq">
+    <h2>שאלות נפוצות</h2>
+    <div class="space-y-3">
+      {faqs.map(faq => (
+        <details class="border border-neutral-border rounded-xl">
+          <summary class="p-4 font-semibold cursor-pointer">{faq.q}</summary>
+          <p class="px-4 pb-4">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
   <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
-    <h3 class="text-lg font-bold text-brand-dark mb-3">מה עכשיו?</h3>
+    <h3 class="font-bold mb-3">להמשך הבירור</h3>
     <ul class="space-y-2 text-sm">
-      <li>← <a href="/insolvency/process/" class="text-brand hover:underline">שלבי ההליך — מה קורה בכל שלב</a></li>
-      <li>← <a href="/insolvency/costs/" class="text-brand hover:underline">כמה עולה? פירוט עלויות</a></li>
-      <li>← <a href="/guides/ichud-tikim/" class="text-brand hover:underline">אולי איחוד תיקים יספיק?</a></li>
+      <li><a href="/insolvency/eligibility/" class="text-brand underline">תנאי הגשה והגורם המטפל</a></li>
+      <li><a href="/insolvency/process/" class="text-brand underline">מהגשה לצו שיקום — שלבי ההליך</a></li>
+      <li><a href="/insolvency/haftar/" class="text-brand underline">הפטר: החובות שנכללים והחריגים</a></li>
+      <li><a href="/insolvency/costs/" class="text-brand underline">אגרות, ייצוג והוצאות ההליך</a></li>
+      <li><a href="/guides/hisdurim-chov/" class="text-brand underline">הסדר עם נושים — מה חשוב לבדוק</a></li>
     </ul>
   </div>
-
 </GuideLayout>
