@@ -1,19 +1,8 @@
-// Only editorially defined intent counters belong here. Never add user-entered
-// values, link URLs/text, form fields, demo choices, or campaign parameters.
-const EVENTS = new Set(['partner_offer_open', 'partner_demo_open', 'partner_contact_intent']);
-const PLACEMENTS = new Set([
-  'header_desktop', 'header_mobile', 'footer', 'home_offer', 'tools_offer',
-  'partners_hero', 'partners_offer', 'partners_contact', 'partners_demo',
-]);
+// Pageviews only. Never add input values, link data or campaign parameters.
 const PRODUCTION_ORIGINS = new Set(['https://hotzaa-lapoal.info', 'https://www.hotzaa-lapoal.info']);
 
 export function isAnalyticsExcludedPath(pathname) {
   return /^\/partners\/demo(?:\/|$)/.test(pathname);
-}
-
-export function getGrowthEvent(eventName, placement) {
-  if (!EVENTS.has(eventName) || !PLACEMENTS.has(placement)) return null;
-  return { name: eventName, parameters: { placement } };
 }
 
 export function getAnalyticsPage(location) {
@@ -26,17 +15,16 @@ export function getAnalyticsPage(location) {
 
 /**
  * Basic opt-in: the Google library is not requested until permission is given.
- * The small pending queue contains only allowlisted counters, and is discarded
- * when consent is withdrawn, including while the library is still loading.
+ * Only one pageview is sent per document, after consent and library readiness.
  * GA4 Enhanced Measurement must also remain OFF in the property's web stream;
  * that remote setting is not controlled by send_page_view:false.
  */
-export function createGrowthAnalytics({ window, document, measurementId, storageKey }) {
+export function createPageAnalytics({ window, document, measurementId, storageKey }) {
   let consent = null;
   let loading = false;
   let ready = false;
   let configured = false;
-  const pending = [];
+  let listeningForConsent = false;
   const disableKey = `ga-disable-${measurementId}`;
   window[disableKey] = true;
 
@@ -62,16 +50,6 @@ export function createGrowthAnalytics({ window, document, measurementId, storage
     });
   }
 
-  function emit(event) {
-    if (!permitted() || !ready || !configured) return false;
-    window.gtag('event', event.name, {
-      ...event.parameters,
-      ...getAnalyticsPage(window.location),
-      send_to: measurementId,
-    });
-    return true;
-  }
-
   function configure() {
     if (!permitted() || !ready) return;
     window[disableKey] = false;
@@ -95,9 +73,8 @@ export function createGrowthAnalytics({ window, document, measurementId, storage
         cookie_flags: 'SameSite=Lax;Secure',
       });
       configured = true;
-      emit({ name: 'page_view', parameters: {} });
+      window.gtag('event', 'page_view', { ...page, send_to: measurementId });
     }
-    pending.splice(0).forEach(emit);
   }
 
   function load() {
@@ -120,7 +97,6 @@ export function createGrowthAnalytics({ window, document, measurementId, storage
     };
     script.onerror = () => {
       loading = false;
-      pending.length = 0;
       script.remove();
     };
     document.head.appendChild(script);
@@ -129,6 +105,13 @@ export function createGrowthAnalytics({ window, document, measurementId, storage
   function initialize() {
     // Even a previously granted choice must never activate the demonstration.
     if (isAnalyticsExcludedPath(window.location.pathname)) return 'denied';
+    if (!listeningForConsent) {
+      window.addEventListener('storage', (event) => {
+        // An opt-out in another tab also stops measurement in this document.
+        if (event.key === storageKey && event.newValue !== 'granted') revoke();
+      });
+      listeningForConsent = true;
+    }
     try { consent = window.localStorage.getItem(storageKey); } catch (_) { consent = null; }
     if (consent === 'granted') load();
     return consent;
@@ -145,25 +128,10 @@ export function createGrowthAnalytics({ window, document, measurementId, storage
   function revoke() {
     consent = 'denied';
     window[disableKey] = true;
-    pending.length = 0;
     saveChoice(consent);
     clearAnalyticsCookies();
     // Do not send a consent-mode ping after opting out.
   }
 
-  function trackElement(element) {
-    if (!permitted()) return false;
-    const event = getGrowthEvent(
-      element?.getAttribute('data-growth-event'),
-      element?.getAttribute('data-growth-placement'),
-    );
-    if (!event) return false;
-    if (!ready) {
-      if (pending.length < 20) pending.push(event);
-      return false;
-    }
-    return emit(event);
-  }
-
-  return { initialize, grant, revoke, trackElement };
+  return { initialize, grant, revoke };
 }

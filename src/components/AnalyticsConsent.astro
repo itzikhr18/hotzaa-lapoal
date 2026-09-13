@@ -8,8 +8,8 @@
 >
   <h2 id="analytics-consent-title" class="text-lg font-bold text-gray-900">בחירת פרטיות</h2>
   <p id="analytics-consent-description" class="mt-2 text-sm leading-relaxed text-gray-600">
-    באישור שלך, Google Analytics ימדוד צפיות בעמודים ופתיחת קישורי שותפות כדי לשפר את האתר.
-    אירועי השותפות כוללים רק את סוג הפעולה ואת מיקום הקישור, ללא תוכן שדות או פרטי פנייה.
+    באישור שלך, האתר ישלח ל־Google Analytics צפיות בעמודים כדי לשפר את התוכן.
+    אירוע הצפייה כולל כתובת עמוד נקייה, ללא פרמטרים, כתובת מפנה או תוכן שדות.
     אפשר לשנות את הבחירה בכל עת. ההדגמה אינה נמדדת.
   </p>
   <div class="mt-4 flex flex-col gap-2 sm:flex-row">
@@ -34,7 +34,7 @@
 </button>
 
 <script>
-  import { createGrowthAnalytics, isAnalyticsExcludedPath } from '../lib/growth-events.mjs';
+  import { createPageAnalytics, isAnalyticsExcludedPath } from '../lib/growth-events.mjs';
 
   (() => {
     const measurementId = 'G-5PKTGJZMWL';
@@ -42,7 +42,7 @@
     const accept = document.getElementById('analytics-accept');
     const decline = document.getElementById('analytics-decline');
     const settings = document.getElementById('analytics-settings');
-    const analytics = createGrowthAnalytics({
+    const analytics = createPageAnalytics({
       window, document, measurementId, storageKey: 'hotzaaAnalyticsConsent',
     });
 
@@ -73,17 +73,6 @@
     });
 
     settings?.addEventListener('click', showPanel);
-
-    document.addEventListener('click', (event) => {
-      if (event.defaultPrevented || !(event.target instanceof Element)) return;
-      const link = event.target.closest('a[data-growth-event], button[data-growth-event]');
-      if (link) analytics.trackElement(link);
-    });
-
-    // An opt-out in another tab also stops measurement in this document.
-    window.addEventListener('storage', (event) => {
-      if (event.key === 'hotzaaAnalyticsConsent' && event.newValue !== 'granted') analytics.revoke();
-    });
 
     const choice = analytics.initialize();
     if (choice !== 'granted' && choice !== 'denied') showPanel();
