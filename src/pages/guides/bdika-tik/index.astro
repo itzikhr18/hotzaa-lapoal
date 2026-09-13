@@ -5,7 +5,7 @@ import GuideLayout from '../../../layouts/GuideLayout.astro';
 const title = "בדיקת תיק הוצאה לפועל לפי ת״ז — חינם (2026)";
 const description = "בדיקת תיק, חובות ועיקולים לפי תעודת זהות: קישור לאזור האישי הרשמי, איתור רשימת תיקים, יתרת חוב והחלטות. הבדיקה חינמית ולא דורשת עורך דין.";
 const publishDate = "2026-03-29";
-const updateDate = "2026-08-26";
+const updateDate = "2026-09-13";
 const readTime = '6 דקות';
 
 const officialPersonalAreaUrl = 'https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page';
@@ -219,7 +219,17 @@ const howToSchema = {
     <p class="text-xs text-gray-600 mt-3">
       הבדיקה חינמית ואינה דורשת עורך דין. חייב יכול לבדוק רק את התיקים שנפתחו נגדו.
     </p>
+    <a href={officialPersonalAreaUrl} target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-lg bg-green-800 px-4 py-3 text-center text-sm font-bold text-white hover:bg-green-900">
+      כניסה לאזור האישי של ההוצאה לפועל
+    </a>
+    <p class="mt-2 text-xs text-gray-600">הקישור עובר לאתר הממשלתי. אין להזין באתר זה תעודת זהות או פרטי תיק.</p>
   </div>
+
+  <nav aria-label="קפיצה לנושא במדריך בדיקת תיק" class="not-prose my-6 flex flex-wrap gap-3 text-sm">
+    <a href="#check-by-id" class="rounded-lg border border-neutral-border px-4 py-3 font-semibold text-brand-dark underline">בדיקה לפי תעודת זהות</a>
+    <a href="#check-attachments" class="rounded-lg border border-neutral-border px-4 py-3 font-semibold text-brand-dark underline">בדיקת עיקולים</a>
+    <a href="#case-report" class="rounded-lg border border-neutral-border px-4 py-3 font-semibold text-brand-dark underline">רשימת תיקים ואישורים</a>
+  </nav>
 
   <div class="info-box">
     <p class="font-semibold text-blue-800 mb-1">מה כולל המדריך הזה?</p>
@@ -234,7 +244,7 @@ const howToSchema = {
   </div>
 
   <!-- ===== בדיקה לפי ת"ז ===== -->
-  <h2>בדיקת תיק הוצאה לפועל לפי תעודת זהות — שלב אחר שלב</h2>
+  <h2 id="check-by-id" class="scroll-mt-24">בדיקת תיק הוצאה לפועל לפי תעודת זהות — שלב אחר שלב</h2>
 
   <p>
     הדרך המהירה והנגישה ביותר לבדוק אם יש נגדכם תיק הוצאה לפועל היא דרך <strong>האזור האישי של ההוצאה לפועל</strong>
@@ -284,7 +294,7 @@ const howToSchema = {
   </div>
 
   <!-- ===== בירור עיקולים לפי ת"ז ===== -->
-  <h2>בדיקת עיקולים לפי תעודת זהות — איך רואים אילו עיקולים הוטלו</h2>
+  <h2 id="check-attachments" class="scroll-mt-24">בדיקת עיקולים לפי תעודת זהות — איך רואים אילו עיקולים הוטלו</h2>
 
   <p>
     זו נקודה שמבלבלת רבים: <strong>אין מסך נפרד של "העיקולים שלי"</strong>. העיקול הוא הליך
@@ -322,7 +332,7 @@ const howToSchema = {
   </div>
 
   <!-- ===== דוח תיקים לחייב ===== -->
-  <h2>דוח תיקים לחייב — המסמך הרשמי שמרכז את כל התיקים</h2>
+  <h2 id="case-report" class="scroll-mt-24">דוח תיקים לחייב — המסמך הרשמי שמרכז את כל התיקים</h2>
 
   <p>
     מעבר לצפייה במסך, ניתן להפיק <strong>דוח תיקים לחייב</strong> (נקרא גם "רשימת תיקים לחייב"
