@@ -13,7 +13,7 @@ async function collectFiles(directory) {
     const relative = path.relative(root, absolute).replaceAll('\\', '/');
     const lower = relative.toLowerCase();
 
-    if (lower.includes('chatbot') || lower.includes('gemini')) continue;
+    if (lower === 'functions/api/chat.js' || lower.includes('chatbot') || lower.includes('gemini')) continue;
     if (entry.isDirectory()) files.push(...await collectFiles(absolute));
     else if (textExtensions.has(path.extname(entry.name))) files.push({ absolute, relative });
   }

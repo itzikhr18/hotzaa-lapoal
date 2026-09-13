@@ -19,12 +19,12 @@ const REQUEST_TYPES: RequestType[] = [
     subject: 'בקשה לביטול עיקול חשבון בנק',
     request: 'להורות על ביטול העיקול שהוטל על חשבון הבנק שלי, ולחלופין על שחרור הכספים המוגנים שבחשבון.',
     grounds: [
-      'בחשבון מופקדים כספים מוגנים מעיקול על פי דין (קצבאות ביטוח לאומי / שכר עבודה בגובה שכר ההגנה).',
+      'בחשבון מופקדים כספים ממקור כמפורט באסמכתאות, ואבקש לבחון אם חלה עליהם הגנה מעיקול בהתאם לדין.',
       'העיקול פוגע פגיעה קשה ביכולתי לממן צרכי מחיה בסיסיים — מזון, תרופות, שכר דירה וחשבונות שוטפים.',
-      'החוב בתיק שולם או הוסדר, ולא היה מקום להטלת העיקול.',
+      'אבקש לבחון את ביטול העיקול או שינויו על סמך התשלום, ההסכם או ההחלטה שצורפו, ובהתאם לתנאיהם ולמצב התיק.',
       'העיקול הוטל על סכום העולה על יתרת החוב בתיק.',
     ],
-    attachments: ['תדפיס עו"ש 3 חודשים אחרונים', 'אישורים על קצבאות (אם רלוונטי)', 'תלושי שכר אחרונים'],
+    attachments: ['תדפיסי חשבון הממחישים את הניכוי ואת מקור הכספים', 'אישורים על קצבאות (אם רלוונטי)', 'תלושי שכר אחרונים'],
   },
   {
     id: 'bitul-ikul-maskoret',
@@ -32,7 +32,7 @@ const REQUEST_TYPES: RequestType[] = [
     subject: 'בקשה לביטול / הפחתת עיקול משכורת',
     request: 'להורות על ביטול העיקול שהוטל על משכורתי, ולחלופין על הפחתת שיעור הניכוי.',
     grounds: [
-      'משכורתי נטו אינה עולה על שכר ההגנה הקבוע בדין להרכב משפחתי, ולפיכך היא מוגנת מעיקול.',
+      'אבקש לבדוק אם הניכוי ממשכורתי חושב בהתאם להוראות ההגנה על השכר החלות בנסיבות המפורטות ובסוג החוב.',
       'הניכוי אינו מותיר בידי את הסכום המוגן החל על הרכב משפחתי, או שחושב בלי להתחשב בכללי ההגנה החלים על השכר.',
       'הניכוי הנוכחי אינו מותיר בידי סכום המספיק להוצאות קיום בסיסיות שלי ושל בני משפחתי.',
     ],
@@ -42,7 +42,7 @@ const REQUEST_TYPES: RequestType[] = [
     id: 'tzav-tashlumim',
     label: 'בקשה לצו תשלומים',
     subject: 'בקשה למתן צו תשלומים',
-    request: 'לקבוע לי צו תשלומים חודשי התואם את יכולתי הכלכלית, ולהורות על עיכוב הליכי הגבייה כנגדי כל עוד אני עומד/ת בצו.',
+    request: 'לקבוע לי צו תשלומים חודשי בהתאם ליכולתי הכלכלית, להצעה ולמסמכים שבטופס הרשמי. בקשה זו אינה כוללת בקשה נפרדת לעיכוב הליך מסוים.',
     grounds: [
       'אין ביכולתי לפרוע את מלוא החוב בתשלום אחד, אך ברצוני להסדירו בתשלומים חודשיים קבועים.',
       'הכנסתי החודשית ומחויבויותיי המשפחתיות אינן מאפשרות תשלום העולה על הסכום המוצע על ידי.',
@@ -56,8 +56,8 @@ const REQUEST_TYPES: RequestType[] = [
     subject: 'בקשה להשבת סכום שנגבה ביתר',
     request: 'להורות על השבת הסכום שנגבה ממני ביתר, ועל תיקון צו העיקול כך שיעמוד בהוראות הדין.',
     grounds: [
-      'הסכום שנוכה ממשכורתי / מחשבוני עולה על התקרה המותרת על פי דין.',
-      'נוכו ממני כספים מוגנים מעיקול (קצבאות / שכר בגובה שכר ההגנה).',
+      'לפי פירוט התשלומים והאסמכתאות, אבקש לבדוק אם נגבה ממני סכום ביתר ומה הסעד המתאים לפי הדין.',
+      'נוכו כספים ממקור כמפורט במסמכים, ואבקש לבדוק אם חלה עליהם הגנה ומה משמעותה לגבי הסכום שנגבה.',
       'הניכוי בוצע לאחר שהחוב בתיק נפרע או הוסדר.',
     ],
     attachments: ['תלושי שכר / תדפיסי בנק המעידים על הניכוי', 'אסמכתאות על תשלומים שבוצעו בתיק'],
@@ -71,7 +71,7 @@ export default function RequestLetterGenerator() {
   const [phone, setPhone] = useState('');
   const [caseNumber, setCaseNumber] = useState('');
   const [lishka, setLishka] = useState('');
-  const [selectedGrounds, setSelectedGrounds] = useState<number[]>([0]);
+  const [selectedGrounds, setSelectedGrounds] = useState<number[]>([]);
   const [extra, setExtra] = useState('');
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState(false);
@@ -85,7 +85,7 @@ export default function RequestLetterGenerator() {
 
   const changeType = (id: string) => {
     setTypeId(id);
-    setSelectedGrounds([0]);
+    setSelectedGrounds([]);
   };
 
   const letter = useMemo(() => {
@@ -108,7 +108,7 @@ ${groundLines || '1. ____________'}
 
 אשר על כן, מתבקש כבוד הרשם ${reqType.request}
 
-מסמכים מצורפים:
+מסמכים לבדיקת צירוף — יש לערוך ולמחוק כל מסמך שלא צורף:
 ${attachments}
 
 אבקש כי החלטת כבוד הרשם תישלח אליי בהקדם האפשרי.
@@ -154,6 +154,14 @@ ${fullName.trim() || '____________'}
         </select>
       </div>
 
+      <div className="text-sm text-gray-700 bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5">
+        <p>זו טיוטת נימוקים, לא טופס רשמי ולא בקשה שנשלחת לרשות. הגנות על שכר וקצבאות כפופות לתנאים ולחריגים; אין להסיק שהעיקול אינו חוקי או שהשבה מובטחת. אם נדרש עיכוב דחוף, בודקים בנפרד בקשה מתאימה והחלטה בה.</p>
+        <p className="mt-2">
+          <a className="underline" href="https://www.gov.il/BlobFolder/service/processes_cancellation/he/form214.pdf" target="_blank" rel="noopener noreferrer">טופס 214 — ביטול או עיכוב הליכים</a>
+          {' · '}<a className="underline" href="https://www.gov.il/he/service/request-change-payment-arrangement-222" target="_blank" rel="noopener noreferrer">הנחיות צו תשלומים וטופס 233</a>
+          {' · '}<a className="underline" href="https://www.btl.gov.il/Laws1/00_0063_000000.pdf" target="_blank" rel="noopener noreferrer">חוק ההוצאה לפועל — לרבות סעיף 20 לגבי גביית יתר</a>
+        </p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
         <div>
           <label htmlFor="rl-name" className="block text-sm font-semibold text-gray-700 mb-1">שם מלא</label>
@@ -178,7 +186,7 @@ ${fullName.trim() || '____________'}
       </div>
 
       <fieldset className="mb-5">
-        <legend className="block text-sm font-semibold text-gray-700 mb-2">נימוקים (בחר את המתאימים למצבך)</legend>
+        <legend className="block text-sm font-semibold text-gray-700 mb-2">נימוקים (אין בחירה אוטומטית; סמן רק טענה נכונה שתוכל להסביר ולתמוך במסמכים)</legend>
         <div className="space-y-2">
           {reqType.grounds.map((g, i) => (
             <label key={i} className="flex items-start gap-2 text-sm text-gray-700 cursor-pointer">
@@ -207,6 +215,7 @@ ${fullName.trim() || '____________'}
         />
       </div>
 
+      {selectedGrounds.length === 0 && !extra.trim() && <p className="text-sm text-amber-900 mb-4">לא נבחרו נימוקים. אפשר להפיק טיוטה ריקה, אך אין להגיש אותה בלי פירוט עובדתי מתאים.</p>}
       <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
         <p className="text-sm font-bold text-gray-700 mb-2">תצוגה מקדימה של הבקשה:</p>
         <pre className="whitespace-pre-wrap text-sm text-gray-800 leading-relaxed font-sans bg-white border border-gray-200 rounded-lg p-4 max-h-96 overflow-y-auto">{letter}</pre>
@@ -214,21 +223,19 @@ ${fullName.trim() || '____________'}
 
       {missingFields && (
         <p className="text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-3">
-          ⚠️ בנוסח עדיין חסרים פרטים (שם מלא / ת.ז / מספר תיק). השלם אותם למעלה לפני הגשה לרשם — נוסח עם שדות ריקים עלול להידחות.
+          אפשר להעתיק או להוריד טיוטה בלי להזין פרטים מזהים. לפני הגשה לרשות יש להשלים את הפרטים הדרושים בטופס הרשמי, לבדוק את הנימוקים ולחתום כנדרש.
         </p>
       )}
 
       <div className="flex flex-wrap gap-3">
         <button
           onClick={copy}
-          disabled={missingFields}
           className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-2.5 rounded-lg transition-colors text-sm disabled:cursor-not-allowed disabled:opacity-50"
         >
           {copied ? '✓ הועתק!' : 'העתק את הנוסח'}
         </button>
         <button
           onClick={download}
-          disabled={missingFields}
           className="bg-white hover:bg-gray-50 text-brand-dark font-bold px-6 py-2.5 rounded-lg border-2 border-brand-dark transition-colors text-sm disabled:cursor-not-allowed disabled:opacity-50"
         >
           הורד כקובץ טקסט
@@ -242,7 +249,7 @@ ${fullName.trim() || '____________'}
       )}
 
       <p className="text-xs text-gray-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 mt-4">
-        🔒 <strong>פרטיות:</strong> הנוסח נוצר בדפדפן שלך בלבד — שום פרט אישי לא נשלח לשרת או נשמר.
+        🔒 <strong>פרטיות:</strong> הנוסח נוצר בדפדפן שלך בלבד — הכלי אינו שולח פרטים לשרת או שומר אותם. העתקה שומרת טקסט בלוח המערכת והורדה יוצרת קובץ במכשיר שלך.
         ⚠️ זהו נוסח עזר בלבד, לא טופס רשמי ולא מסמך שנבדק עבור המקרה האישי שלך. יש לצרף את הטופס הרשמי המתאים,
         לבדוק שכל טענה נכונה ולצרף אסמכתאות לפני הגשה.
       </p>

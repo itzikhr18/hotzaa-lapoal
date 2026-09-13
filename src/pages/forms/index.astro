@@ -5,7 +5,6 @@ import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const siteUrl = 'https://hotzaa-lapoal.info';
-const lastVerified = '2026-08-26';
 const pageUpdated = '2026-09-13';
 
 const officialLinks = {
@@ -25,7 +24,7 @@ const forms = [
     title: 'בקשה לביטול או עיכוב עיקול',
     form: 'טופס 214',
     intent: 'כשעוקל חשבון בנק, משכורת, רכב, דירה או כספים מוגנים.',
-    documents: ['הודעת העיקול', 'דפי חשבון 3 חודשים', 'אישור מקור כספים מוגנים', 'תלושי שכר או אישור קצבה'],
+    documents: ['הודעת העיקול', 'דפי חשבון הממחישים את העיקול ומקור הכספים', 'אישור מקור כספים מוגנים', 'תלושי שכר או אישור קצבה'],
     guide: '/guides/bitul-ikul/',
     onlineHref: officialLinks.personalArea,
     onlineLabel: 'הגשה אונליין באזור האישי',
@@ -36,8 +35,7 @@ const forms = [
       { label: 'מדריך מילוי טופס 214', href: '/guides/bitul-ikul/', external: false },
     ],
     note: 'באונליין בדרך כלל מגישים את הבקשה מתוך האזור האישי ומצרפים מסמכים. הנוסח שלנו הוא עזר לנימוקים, לא הטופס הרשמי עצמו.',
-    lastVerified,
-    sourceStatus: 'נבדק מול מסלול ההגשה באזור האישי. לפני הגשה ידנית יש לוודא באתר הרשות שהטופס או ההליך לא עודכנו.',
+    sourceStatus: 'הנחיות טופס 214 ודפי השירות הרשמיים. זמינות דרך הגשה אינה בדיקה של בקשה בתוך תיק אישי.',
   },
   {
     id: 'form-218',
@@ -52,7 +50,6 @@ const forms = [
       { label: 'מדריך התנגדות לתיק הוצאה לפועל', href: '/guides/hitnagdut-letik/', external: false },
     ],
     note: 'זהו טופס התנגדות, לא טופס כללי לביטול עיקול. לפי דף ההסבר הרשמי יש לצרף תצהיר ומסמכים; מועדי ההגשה חשובים ולכן יש לבדוק מיד את האזהרה ואת ההנחיות העדכניות.',
-    lastVerified,
     sourceStatus: 'קישור ההורדה מפנה ישירות לטופס 218 של רשות האכיפה והגבייה באתר gov.il.',
   },
   {
@@ -60,17 +57,17 @@ const forms = [
     title: 'בקשה לצו תשלומים',
     form: 'טופס 233 + שאלון וכתב ויתור על סודיות',
     intent: 'כשמודים בחוב אבל לא יכולים לשלם את כולו בבת אחת.',
-    documents: ['צילום תעודת זהות וספח', '6 תלושי שכר אחרונים', 'דפי בנק 6 חודשים', 'הוצאות קבועות והתחייבויות'],
+    documents: ['צילום תעודת זהות וספח', 'תלושי שכר לפי רשימת המסמכים בטופס הרשמי', 'דפי בנק לפי התקופה הנדרשת בשאלון', 'הוצאות קבועות והתחייבויות'],
     guide: '/guides/tzav-tashlumim/',
     onlineHref: officialLinks.personalArea,
     onlineLabel: 'הגשה אונליין באזור האישי',
     manualLinks: [
+      { label: 'הנחיות רשמיות לצו תשלומים', href: 'https://www.gov.il/he/service/request-change-payment-arrangement-222', external: true },
       { label: 'הורדת טופס 233 רשמי', href: officialLinks.form233, external: true },
       { label: 'הורדת טופס 529 רשמי', href: officialLinks.form529, external: true },
       { label: 'נוסח עזר לצו תשלומים', href: '#template-tzav-tashlumim', external: false },
     ],
-    note: 'כאן כן יש קבצים רשמיים מאומתים להורדה. בהגשה אונליין עדיין כדאי להכין אותם ואת המסמכים לפני שמתחילים.',
-    lastVerified,
+    note: 'הנחיות טופס 233 דורשות שאלון 529 ומסמכים על היכולת הכלכלית. את הרשימה והתקופות המדויקות יש לבדוק בגרסה העדכנית. הבקשה אינה מבטיחה עיכוב הליכים.',
     sourceStatus: 'קישורי ההורדה לטופס 233 ולטופס 529 מפנים לקבצי gov.il רשמיים.',
   },
   {
@@ -87,25 +84,23 @@ const forms = [
       { label: 'איתור לשכת הוצאה לפועל', href: officialLinks.bureaus, external: true },
     ],
     note: 'לבדיקת תיק אין בהכרח טופס להורדה. הדרך המעשית היא כניסה לאזור האישי או פנייה ללשכה עם תעודת זהות.',
-    lastVerified,
     sourceStatus: 'הקישורים מפנים לאזור האישי, לזימון תור ולרשימת לשכות רשמית של רשות האכיפה והגבייה.',
   },
   {
     id: 'cancel-restrictions',
     title: 'בקשה לביטול הגבלות',
-    form: 'בקשה כללית בתיק',
-    intent: 'כשיש הגבלת חשבון, כרטיס אשראי, דרכון, רישיון או עיכוב יציאה.',
+    form: 'טופס 214 — בקשה לביטול הגבלות',
+    intent: 'כשיש הגבלה על דרכון, צ׳קים, כרטיס אשראי, בעלות על חברה או יציאה מהארץ.',
     documents: ['החלטת ההגבלה', 'מסמכי הכנסה', 'הוכחת צורך דחוף', 'אישור תשלום ראשון אם יש צו'],
     guide: '/guides/bitul-hagbalot/',
     onlineHref: officialLinks.personalArea,
     onlineLabel: 'הגשה אונליין באזור האישי',
     manualLinks: [
-      { label: 'נוסח עזר לעיכוב הליכים', href: '#template-urgent-delay', external: false },
+      { label: 'הנחיות רשמיות לביטול הגבלות', href: 'https://www.gov.il/he/service/request_for_cancellation_of_restrictions', external: true },
       { label: 'מדריך ביטול הגבלות', href: '/guides/bitul-hagbalot/', external: false },
     ],
-    note: 'הגבלות מבטלים בדרך כלל באמצעות בקשה בתיק וצירוף ראיות. אם מגישים ידנית, כדאי לשמור אישור מסירה או אישור תור.',
-    lastVerified,
-    sourceStatus: 'הבקשה מתבצעת בדרך כלל דרך האזור האישי או דרך לשכה; יש לבדוק את ההליך העדכני לפני הגשה.',
+    note: 'בקשה לביטול הגבלות נבחנת בתיק שבו הוטלו. הגבלה בתיק אחר עשויה להישאר. הגבלות רישיון נהיגה בהוצאה לפועל בוטלו; אין צורך לבקש את ביטולן במסלול זה.',
+    sourceStatus: 'שירות ביטול הגבלות של רשות האכיפה והגבייה: טופס 214 ובקשה בקוד 311 באזור האישי. בהגבלת יציאה נדרש תצהיר לפי ההנחיות.',
   },
 ];
 
@@ -127,7 +122,7 @@ const quickTemplates = [
     text: `לכבוד רשם ההוצאה לפועל,
 
 אני מבקש/ת לעכב ולבטל את העיקול שהוטל על חשבון הבנק בתיק מספר ________.
-העיקול פוגע ביכולתי לשלם הוצאות בסיסיות, וחלק מהכספים בחשבון מקורם ב________ ולכן הם מוגנים מעיקול.
+העיקול פוגע ביכולתי לשלם הוצאות בסיסיות, וחלק מהכספים בחשבון מקורם ב________ ואבקש לבחון אם חלה עליהם הגנה מעיקול, בהתאם לדין ולמסמכים.
 
 מצורפים: דפי חשבון, אישור מקור הכספים, תלושי שכר/אישור קצבה וכל מסמך תומך נוסף.
 אבקש החלטה דחופה והודעה מיידית לבנק במקרה של קבלת הבקשה.
@@ -143,7 +138,7 @@ const quickTemplates = [
 לאור הכנסותיי והוצאותיי החודשיות, אבקש לקבוע צו תשלומים בסך ________ ש"ח לחודש.
 
 מצורפים מסמכים המעידים על מצבי הכלכלי: תלושי שכר, דפי חשבון, הוצאות קבועות והתחייבויות.
-אבקש לעכב הליכי גבייה ועיקולים כל עוד אני עומד/ת בתשלומים שייקבעו.
+בקשה זו עוסקת בתשלומים. ככל שנדרש עיכוב הליך מסוים, יש להגיש בקשה מתאימה ומנומקת בנפרד לפי ההנחיות.
 
 שם, תאריך, חתימה`,
   },
@@ -175,55 +170,34 @@ const pageSchema = {
     name: item.title,
     description: item.intent,
     url: `${siteUrl}${item.guide}`,
-    dateModified: item.lastVerified,
   })),
 };
 
+const faqs = [
+  {
+    "q": "האם חייבים להוריד טפסים או שאפשר להגיש אונליין?",
+    "a": "אפשרויות ההגשה משתנות לפי הבקשה והייצוג. בדקו בדף השירות הרשמי את דרך ההגשה, הטופס והצרופות; בחלק מהבקשות באזור האישי אין צורך לצרף את טופס הבקשה עצמו."
+  },
+  {
+    "q": "למה מיועד טופס 214?",
+    "a": "טופס 214 משמש לבקשות ביטול, עיכוב או חידוש הליכים והגבלות, לפי הסעד המסומן. ביטול עיקול וביטול הגבלה אינם אותה בקשה; צריך לבחור את הסעד המתאים ולהסבירו."
+  },
+  {
+    "q": "מהו טופס 218?",
+    "a": "טופס 218 מיועד להתנגדות לביצוע שטר או תביעה על סכום קצוב, לכל החוב או לחלקו. נדרשים נימוקים, תצהיר וצרופות לפי ההנחיות, ויש לבדוק מיד את המועד באזהרה."
+  },
+  {
+    "q": "מה מצרפים לטופס 233?",
+    "a": "בהנחיות בקשת החייב לצו תשלומים מופיעים צילום תעודת זהות וספח, שאלון וכתב ויתור על סודיות 529 ומסמכים על היכולת הכלכלית לפי הרשימה בשאלון. יש לבדוק את הגרסה העדכנית."
+  },
+  {
+    "q": "האם הנוסחים באתר מוכנים להגשה?",
+    "a": "לא. אלה טיוטות עזר לעריכה בלבד. יש למחוק טענות שאינן נכונות, להתאים את הסעד, לצרף את הטפסים והאסמכתאות ולבדוק את דרך ההגשה. האתר אינו שולח בקשה לרשות."
+  }
+];
 const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'האם חייבים להוריד את הטפסים או שאפשר להגיש אונליין?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'ברוב הבקשות אפשר להגיש אונליין דרך האזור האישי של רשות האכיפה והגבייה. אם מגישים בלשכה, בדואר, בפקס או במייל, צריך בדרך כלל להוריד או למלא את הטופס ולצרף מסמכים.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'איזה טופס מגישים לביטול עיקול?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'ברוב המקרים משתמשים בטופס 214, בקשה לביטול או עיכוב הליכים והגבלות, ומצרפים מסמכים שמראים למה יש לבטל את העיקול.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'מהו טופס 218 בהוצאה לפועל?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'טופס 218 מיועד להתנגדות לביצוע שטר או תביעה על סכום קצוב, לכל החוב או לחלק ממנו. לפי הנחיות רשות האכיפה והגבייה יש לצרף בקשה מנומקת, תצהיר ומסמכים תומכים ולבדוק את מועד ההגשה שמופיע באזהרה.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'איזה טופס צריך לצו תשלומים?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'לצו תשלומים מגישים בדרך כלל טופס בקשה לצו תשלומים, שאלון וכתב ויתור על סודיות, בצירוף מסמכים על הכנסות, הוצאות ונכסים.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'האם אפשר להשתמש בנוסחים באתר כמו שהם?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'הנוסחים באתר הם בסיס כללי בלבד. צריך להתאים אותם לפרטי התיק, לצרף מסמכים ולבדוק באתר הרשמי של רשות האכיפה והגבייה אם הטופס או ההליך עודכנו.',
-      },
-    },
-  ],
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
 };
 ---
 
@@ -299,9 +273,6 @@ const faqSchema = {
           <article id={item.id} class="scroll-mt-24 bg-white border border-neutral-border rounded-xl p-5">
             <div class="flex flex-wrap items-center gap-2 mb-2">
               <p class="text-xs font-bold text-brand">{item.form}</p>
-              <span class="text-[11px] font-semibold text-gray-500 bg-gray-100 border border-gray-200 rounded-full px-2 py-0.5">
-                אומת: {item.lastVerified}
-              </span>
             </div>
             <h3 class="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
             <p class="text-sm text-gray-600 mb-4 leading-relaxed">{item.intent}</p>
@@ -340,6 +311,7 @@ const faqSchema = {
 
     <section class="mb-12">
       <h2 class="text-2xl font-bold text-gray-900 mb-4">נוסחים בסיסיים שאפשר להתאים</h2>
+      <p class="mb-4 text-sm text-gray-700">אלה טיוטות, לא טפסים רשמיים. אין להשתמש בטענה שאינה נכונה או להודות בחוב בלי להבין את המשמעות. בקשה אינה מבטיחה עיכוב הליכים.</p>
       <div class="space-y-5">
         {quickTemplates.map(template => (
           <article id={template.id} class="bg-white border border-neutral-border rounded-xl overflow-hidden scroll-mt-24">
@@ -366,7 +338,7 @@ const faqSchema = {
     <section class="mb-12 bg-white border border-neutral-border rounded-xl p-5">
       <h2 class="text-2xl font-bold text-gray-900 mb-3">מקורות רשמיים לטפסים</h2>
       <p class="text-sm text-gray-700 leading-relaxed mb-4">
-        הקישורים בעמוד נבדקו מול מקורות רשמיים של רשות האכיפה והגבייה. אם קישור רשמי משתנה,
+        הקישורים בעמוד מפנים למקורות רשמיים של רשות האכיפה והגבייה. בדיקת ההנחיות אינה אימות משפטי של בקשה אישית. אם קישור רשמי משתנה,
         יש להעדיף את האתר הממשלתי ואת האזור האישי על פני נוסח עזר כללי.
       </p>
       <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
@@ -383,30 +355,12 @@ const faqSchema = {
 
     <section class="mb-12">
       <h2 class="text-2xl font-bold text-gray-900 mb-4">שאלות נפוצות</h2>
-      <div class="space-y-3">
+      <div class="space-y-3">{faqs.map(faq => (
         <details class="bg-white border border-neutral-border rounded-xl">
-          <summary class="cursor-pointer p-4 font-semibold text-gray-800">חייבים להוריד טפסים או שאפשר להגיש אונליין?</summary>
-          <p class="px-4 pb-4 text-sm text-gray-600">
-            ברוב הבקשות אפשר להגיש אונליין דרך האזור האישי. אם מגישים בלשכה, בדואר, בפקס או במייל, צריך בדרך כלל להוריד או למלא את הטופס ולצרף מסמכים.
-          </p>
+          <summary class="cursor-pointer p-4 font-semibold text-gray-800">{faq.q}</summary>
+          <p class="px-4 pb-4 text-sm text-gray-600">{faq.a}</p>
         </details>
-        <details class="bg-white border border-neutral-border rounded-xl">
-          <summary class="cursor-pointer p-4 font-semibold text-gray-800">איזה טופס מגישים לביטול עיקול?</summary>
-          <p class="px-4 pb-4 text-sm text-gray-600">ברוב המקרים משתמשים בטופס 214 ומצרפים מסמכים שמראים למה יש לבטל או לעכב את העיקול.</p>
-        </details>
-        <details class="bg-white border border-neutral-border rounded-xl">
-          <summary class="cursor-pointer p-4 font-semibold text-gray-800">מהו טופס 218 בהוצאה לפועל?</summary>
-          <p class="px-4 pb-4 text-sm text-gray-600">טופס 218 מיועד להתנגדות לביצוע שטר או תביעה על סכום קצוב. יש לצרף בקשה מנומקת, תצהיר ומסמכים, ולבדוק מיד את מועד ההגשה שמופיע באזהרה.</p>
-        </details>
-        <details class="bg-white border border-neutral-border rounded-xl">
-          <summary class="cursor-pointer p-4 font-semibold text-gray-800">מה הכי חשוב לצרף לבקשה?</summary>
-          <p class="px-4 pb-4 text-sm text-gray-600">מסמך שמוכיח את הטענה. למשל דף בנק שמראה קצבה, תלושי שכר, אישור רפואי, הסדר תשלומים או החלטה קודמת.</p>
-        </details>
-        <details class="bg-white border border-neutral-border rounded-xl">
-          <summary class="cursor-pointer p-4 font-semibold text-gray-800">האם הנוסח מחליף עורך דין?</summary>
-          <p class="px-4 pb-4 text-sm text-gray-600">לא. הנוסחים הם בסיס כללי לעריכה עצמית. בתיקים מורכבים, סכומים גבוהים או נכסים משמעותיים כדאי לקבל ייעוץ משפטי אישי.</p>
-        </details>
-      </div>
+      ))}</div>
     </section>
 
     <section class="grid grid-cols-1 md:grid-cols-3 gap-4">

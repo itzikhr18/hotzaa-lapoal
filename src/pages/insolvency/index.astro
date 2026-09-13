@@ -4,177 +4,70 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 
-const siteUrl = 'https://hotzaa-lapoal.info';
-const pageUrl = `${siteUrl}/insolvency/`;
-
-const webPageSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: 'חדלות פירעון בישראל — כל מה שצריך לדעת 2026',
-  description: 'חדלות פירעון (פשיטת רגל) בישראל — מי זכאי, איך מגישים, כמה זה עולה, מה קורה לדירה, ומה נמחק בסוף. מדריך מרוכז מעודכן 2026.',
-  url: pageUrl,
-  inLanguage: 'he',
-  isPartOf: { '@type': 'WebSite', name: 'הוצאהלפועל.info', url: siteUrl },
-  audience: { '@type': 'Audience', audienceType: 'חייבים בהוצאה לפועל בישראל', geographicArea: { '@type': 'Country', name: 'Israel' } },
-  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h1', 'main > p:first-of-type'] },
+const title = 'חדלות פירעון ליחיד: תנאי הגשה, שלבים, עלויות והפטר';
+const description = 'מרכז מידע על חדלות פירעון בישראל: למי מגישים, מתי נעצרים הליכים, כמה זמן נמשכת תקופת התשלומים ומה כולל הפטר. מדריכים ומקורות רשמיים.';
+const pageUrl = 'https://hotzaa-lapoal.info/insolvency/';
+const guides = [
+  { title: 'מהי חדלות פירעון?', description: 'המצב הכלכלי, ההליך המשפטי והשלכותיו', href: '/insolvency/what-is/' },
+  { title: 'תנאי הגשה ומסלולים', description: 'סכומי סף, זיקה לישראל והגורם המטפל', href: '/insolvency/eligibility/' },
+  { title: 'שלבי ההליך', description: 'הגשה, צו פתיחה, צו שיקום ותקופת תשלומים', href: '/insolvency/process/' },
+  { title: 'אגרות ועלויות', description: 'מה לבדוק לגבי הגשה, סיוע משפטי וייצוג', href: '/insolvency/costs/' },
+  { title: 'הפטר: מה נכלל ומה לא?', description: 'חובות עבר, חריגים ובדיקות לאחר ההפטר', href: '/insolvency/haftar/' },
+];
+const faqs = [
+  { q: 'האם הגשת הבקשה עוצרת עיקולים?', a: 'לא אוטומטית. לפני צו מתאים יש לבדוק בקשה לעיכוב הליכים והחלטה בה. אישור שהבקשה התקבלה אינו צו עיכוב.' },
+  { q: 'האם ההליך נמשך שלוש שנים?', a: 'ברירת המחדל היא שלוש שנות תשלומים מצו השיקום הכלכלי, לא מההגשה או מצו הפתיחה. התקופה עשויה להשתנות לפי החוק וההחלטות.' },
+  { q: 'האם ההפטר מבטל את כל החובות?', a: 'לא. ההפטר חל על חובות עבר בכפוף לחריגים בחוק ולהחלטות בתיק; הוא אינו מבטיח מחיקת כל חיוב או רישום.' },
+];
+const pageSchema = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url: pageUrl, inLanguage: 'he',
+  dateModified: '2026-09-13',
+  hasPart: guides.map(item => ({ '@type': 'WebPage', name: item.title, url: 'https://hotzaa-lapoal.info' + item.href })),
 };
-
-const howToSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: 'כיצד להגיש בקשה לחדלות פירעון בישראל',
-  description: 'מדריך שלב אחר שלב לפתיחת הליך חדלות פירעון בישראל — בדיקת זכאות, הגשת בקשה, ועד לקבלת הפטר',
-  totalTime: 'P4Y',
-  step: [
-    { '@type': 'HowToStep', position: 1, name: 'בדוק זכאות', text: 'חוב מינימלי 58,794 ₪ (2026). יחידים בלבד — לא חברות. תושב ישראל.' },
-    { '@type': 'HowToStep', position: 2, name: 'בחר מסלול', text: 'חוב 58,794–176,923 ₪: רשם חדלות פירעון. חוב מעל 176,923 ₪: בית משפט השלום עם נאמן.' },
-    { '@type': 'HowToStep', position: 3, name: 'הכן מסמכים', text: 'רשימת נושים וחובות, דוח הכנסות/הוצאות, רשימת נכסים, מסמכי זיהוי.' },
-    { '@type': 'HowToStep', position: 4, name: 'הגש בקשה ועמוד בתנאים', text: 'הגש לבית המשפט או לרשם. לאחר הגשה — שתף פעולה עם הנאמן, עמוד בתשלומים ובדיווחים.' },
-    { '@type': 'HowToStep', position: 5, name: 'קבל הפטר', text: 'לאחר כ-4 שנים של עמידה בתנאים — בית המשפט מבטל את יתרת החובות.' },
-  ],
-};
-
 const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: 'מה ההבדל בין חדלות פירעון לפשיטת רגל?', acceptedAnswer: { '@type': 'Answer', text: 'אין הבדל — "פשיטת רגל" הוא השם הישן. מאז 2019, החוק החדש קרוי "חדלות פירעון ושיקום כלכלי" (חוק תשע"ח-2018). ההליך שודרג והפך ידידותי יותר לחייבים.' } },
-    { '@type': 'Question', name: 'מה הסכום המינימלי לפתיחת הליך חדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'נכון ל-2026: 58,794 ₪. חוב מתחת לסכום זה אינו מאפשר פתיחת הליך אישי.' } },
-    { '@type': 'Question', name: 'כמה זמן נמשך הליך חדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'בממוצע כ-4 שנים: שנת ביניים + 3 שנות שיקום. בשיתוף פעולה מלא ניתן לקצר. בהפרות — ניתן להאריך.' } },
-    { '@type': 'Question', name: 'האם אפשר לפתוח עסק בזמן הליך חדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'בעקרון כן, אבל בכפוף לאישור הנאמן. ההכנסות מהעסק מחויבות לדיווח ועשויות להשפיע על התשלום החודשי.' } },
-    { '@type': 'Question', name: 'מה קורה לדירה שלי בהליך חדלות פירעון?', acceptedAnswer: { '@type': 'Answer', text: 'אם יש לך דירת מגורים בבעלותך — הנאמן יבחן אותה. בנסיבות מסוימות ניתן לשמור על הדירה, בתנאים מסוימים. כל מקרה נבחן לגופו ומומלץ ייעוץ עורך דין.' } },
-    { '@type': 'Question', name: 'האם חדלות פירעון מוחקת את כל החובות?', acceptedAnswer: { '@type': 'Answer', text: 'לא הכל. חובות מזונות, קנסות פליליים, עיצומים מנהליים, וחובות שנוצרו במרמה — לא נמחקים. רוב החובות הרגילים (הלוואות, אשראי, שיקים) — כן נמחקים בהפטר.' } },
-  ],
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
 };
 ---
-
-<BaseLayout
-  title="חדלות פירעון בישראל — כל מה שצריך לדעת 2026"
-  description="חדלות פירעון היא לא קץ העולם — היא דרך לצאת ממעגל החובות. מי זכאי, כמה עולה, מה קורה לדירה, ומה נמחק בסוף. מדריך מעודכן 2026."
-  schema={[webPageSchema, faqSchema, howToSchema]}
->
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} schema={[pageSchema, faqSchema]}>
   <Header />
   <main id="main-content" class="max-w-4xl mx-auto px-4 py-10">
-
     <Breadcrumb items={[{ label: 'חדלות פירעון' }]} />
-
-    <h1 class="text-3xl font-bold text-brand-dark mb-3">חדלות פירעון בישראל</h1>
-    <p class="text-lg text-gray-600 mb-10 max-w-2xl">
-      כשהחובות גדולים מדי מלסגור — יש מסלול חוקי שנועד לתת לך התחלה חדשה.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
-      {[
-        {
-          icon: '❓',
-          title: 'מהי חדלות פירעון?',
-          desc: 'ההסבר הפשוט — מה השתנה מ"פשיטת רגל" ולמה זה שונה',
-          href: '/insolvency/what-is/',
-          kw: '6,800 חיפושים/חודש',
-          highlight: true,
-        },
-        {
-          icon: '✅',
-          title: 'מי זכאי להגיש?',
-          desc: 'סכומי הסף, התנאים, ומי לא יכול להגיש',
-          href: '/insolvency/eligibility/',
-          kw: '3,900 חיפושים/חודש',
-          highlight: false,
-        },
-        {
-          icon: '🗓️',
-          title: 'שלבי ההליך — מה קורה בכל שלב',
-          desc: 'מהגשת הבקשה עד ההפטר — 4 שנים בממוצע, שלב אחרי שלב',
-          href: '/insolvency/process/',
-          kw: '',
-          highlight: false,
-        },
-        {
-          icon: '💰',
-          title: 'כמה עולה הליך חדלות פירעון?',
-          desc: 'אגרות, שכר טרחה עורך דין, ועלויות נסתרות — הכל על השולחן',
-          href: '/insolvency/costs/',
-          kw: '',
-          highlight: false,
-        },
-        {
-          icon: '🏁',
-          title: 'ההפטר — מה זה ומתי מקבלים?',
-          desc: 'ביטול החובות בסוף ההליך — מה מוחק, מה נשאר, ומה התנאים',
-          href: '/insolvency/haftar/',
-          kw: '',
-          highlight: false,
-        },
-      ].map(item => (
-        <a
-          href={item.href}
-          class={`flex gap-4 items-start p-5 rounded-xl border-2 transition-all group ${
-            item.highlight
-              ? 'border-brand bg-brand-pale hover:bg-blue-100'
-              : 'border-neutral-border bg-white hover:border-brand hover:bg-brand-pale'
-          }`}
-        >
-          <span class="text-3xl mt-0.5">{item.icon}</span>
-          <div class="flex-1">
-            {item.highlight && (
-              <span class="text-xs font-bold text-brand bg-blue-100 px-2 py-0.5 rounded-full mb-2 inline-block">התחל כאן</span>
-            )}
-            <h2 class="font-bold text-gray-800 mb-1 group-hover:text-brand-dark transition-colors leading-snug">{item.title}</h2>
-            <p class="text-sm text-gray-500 mb-2">{item.desc}</p>
-            {item.kw && <span class="text-xs text-neutral-muted">🔍 {item.kw}</span>}
-          </div>
-          <span class="text-brand-dark text-lg group-hover:translate-x-[-4px] transition-transform mt-1">←</span>
+    <h1 class="text-3xl font-bold text-brand-dark mb-4">חדלות פירעון בישראל — מדריכים ליחידים</h1>
+    <p class="text-lg text-gray-600 mb-6">חדלות פירעון ושיקום כלכלי היא מסגרת לטיפול בחובות ובנכסים, שעשויה להסתיים בהפטר. כאן מתחילים להבין את התנאים וההשלכות — בלי הבטחה להתאמה, למחיקת חובות או לתוצאה מסוימת.</p>
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-8">
+      <h2 class="font-bold mb-2">לפני שמגישים בקשה</h2>
+      <p>הגשת בקשה אינה מעכבת הליכים אוטומטית. אם קיימת אזהרה, עיקול או מועד מימוש — יש לבדוק את המועד ואת ההחלטה הרלוונטית, ולא להניח שההליך נעצר. <a href="https://www.gov.il/BlobFolder/policy/opening-insolvency-request-regulation/he/Forms_insolvency-guide.pdf" target="_blank" rel="noopener noreferrer" class="underline">ההנחיה במדריך הרשמי</a>.</p>
+    </div>
+    <section aria-label="מדריכי חדלות פירעון" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+      {guides.map(item => (
+        <a href={item.href} class="border border-neutral-border rounded-xl p-5 hover:border-brand hover:bg-brand-pale">
+          <h2 class="text-lg font-bold text-brand-dark mb-2">{item.title}</h2>
+          <p class="text-sm text-gray-600">{item.description}</p>
         </a>
       ))}
-    </div>
-
-    <!-- בדיקה מהירה -->
-    <div class="bg-brand-pale border border-brand-light rounded-2xl p-6 mb-8">
-      <h2 class="text-xl font-bold text-brand-dark mb-4">האם חדלות פירעון מתאימה לי?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-        {[
-          { q: 'גובה החוב המינימלי', a: 'מ-58,794 ₪ (2026)' },
-          { q: 'משך ההליך הממוצע', a: 'כ-4 שנים' },
-          { q: 'אגרה ממשלתית', a: '900 ₪ (מתוך 1,616 ₪, נכון ל-2026)' },
-          { q: 'עלות כוללת משוערכת (כולל עו״ד)', a: '8,000–25,000 ₪' },
-          { q: 'מה קורה בסוף', a: 'הפטר — ביטול החובות' },
-          { q: 'מי מנהל', a: 'בית משפט / רשם חדלות פירעון' },
-          { q: 'האם חובה עורך דין', a: 'מומלץ מאוד, לא חובה' },
-        ].map(item => (
-          <div class="flex justify-between items-center py-2 border-b border-brand-light last:border-0">
-            <span class="text-gray-600">{item.q}</span>
-            <span class="font-semibold text-brand-dark text-xs">{item.a}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700 mb-10">
-      ⚠️ המידע כאן הוא כללי בלבד ואינו מהווה ייעוץ משפטי. חדלות פירעון היא הליך מורכב — מומלץ להתייעץ עם עורך דין לפני הגשה.
-    </div>
-
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-brand-dark mb-6">שאלות נפוצות על חדלות פירעון</h2>
-      <div class="space-y-3">
-        {[
-          { q: 'מה ההבדל בין חדלות פירעון לפשיטת רגל?', a: 'אין הבדל — "פשיטת רגל" הוא השם הישן. מאז 2019, החוק החדש קרוי "חדלות פירעון ושיקום כלכלי". ההליך שודרג, ומוקד הגישה השתנה מענישת החייב לשיקומו הכלכלי.' },
-          { q: 'מה הסכום המינימלי לפתיחת הליך?', a: 'נכון ל-2026: 58,794 ₪. חוב מתחת לסכום זה אינו מאפשר פתיחת הליך אישי. חוב גבוה יותר עדיין דורש עמידה בתנאים נוספים.' },
-          { q: 'האם חדלות פירעון מוחקת את כל החובות?', a: 'רוב החובות הרגילים (הלוואות, אשראי, שיקים) — כן. חובות מזונות, קנסות פליליים, וחובות שנוצרו במרמה — לא נמחקים.' },
-          { q: 'מה קורה לדירה שלי?', a: 'הנאמן יבחן את הנכסים. בנסיבות מסוימות ניתן לשמור על הדירה, לרוב בתנאים. כל מקרה נבחן לגופו — ייעוץ עורך דין חיוני.' },
-          { q: 'האם אפשר לפתוח עסק בזמן ההליך?', a: 'בעקרון כן, בכפוף לאישור הנאמן. ההכנסות מהעסק מחויבות דיווח ועשויות להשפיע על התשלום החודשי.' },
-          { q: 'כמה זמן נמשך ההליך?', a: 'בממוצע כ-4 שנים: שנת ביניים + 3 שנות שיקום. ניתן לקצר בשיתוף פעולה יוצא דופן, להאריך בהפרות.' },
-        ].map(faq => (
-          <details class="border border-neutral-border rounded-xl group">
-            <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-              {faq.q}
-              <span class="text-neutral-muted group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
-          </details>
-        ))}
-      </div>
     </section>
-
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-3">מה כדאי לברר תחילה?</h2>
+      <ul class="list-disc list-inside space-y-3">
+        <li>מהם החובות, סוגיהם וההליכים שכבר מתנהלים — לא רק הסכום הכולל.</li>
+        <li>לאיזה גורם מגישים: רשות האכיפה והגבייה או הממונה, לפי התנאים והסכום. לתאגידים מסלול אחר.</li>
+        <li>אילו נכסים, זכויות, מגבלות וחובות דיווח עשויים להיות מושפעים.</li>
+        <li>מהן החלופות: <a href="/guides/tzav-tashlumim/" class="underline">צו תשלומים</a>, <a href="/guides/ichud-tikim/" class="underline">איחוד תיקים</a> או <a href="/guides/hisdurim-chov/" class="underline">הסדר עם נושים</a>.</li>
+      </ul>
+      <p class="mt-4">לבדיקת תנאים עדכניים: <a href="https://www.gov.il/he/pages/insovlency-request-guide?chapterindex=4" target="_blank" rel="noopener noreferrer" class="underline">מדריך רשות האכיפה והגבייה</a>. חיפוש לפי המונח הישן? ראו <a href="/guides/pshitat-regel/" class="underline">פשיטת רגל והמעבר לחוק חדלות פירעון</a>.</p>
+    </section>
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-3">כמה זמן עד הפטר?</h2>
+      <p>ברירת המחדל היא שלוש שנות תשלומים מצו השיקום הכלכלי. המדריך הרשמי מתאר מסגרת כוללת של כארבע שנים מצו הפתיחה, אך אין בכך התחייבות למשך התיק. יש חריגים, קיצור, הארכה ותנאים נוספים. <a href="https://www.gov.il/BlobFolder/policy/installments-111125/ar/061125.pdf" target="_blank" rel="noopener noreferrer" class="underline">מדיניות הממונה על תקופת התשלומים</a>; <a href="https://www.gov.il/he/pages/insolvency_iaw?chapterIndex=5" target="_blank" rel="noopener noreferrer" class="underline">מדריך שלבי ההליך</a>.</p>
+    </section>
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-4">שאלות נפוצות</h2>
+      <div class="space-y-3">{faqs.map(faq => (
+        <details class="border border-neutral-border rounded-xl"><summary class="p-4 font-semibold cursor-pointer">{faq.q}</summary><p class="px-4 pb-4 text-gray-600">{faq.a}</p></details>
+      ))}</div>
+    </section>
+    <p class="text-sm text-gray-700 bg-blue-50 border border-blue-200 p-4 rounded-xl">מידע כללי לציבור בלבד. הדין והחלטות הגורמים המוסמכים גוברים. אין כאן קביעת זכאות או ייעוץ משפטי אישי. אפשר לבדוק <a href="https://www.gov.il/he/service/legal_aid_application" target="_blank" rel="noopener noreferrer" class="underline">זכאות לסיוע משפטי במשרד המשפטים</a>.</p>
   </main>
   <Footer />
 </BaseLayout>

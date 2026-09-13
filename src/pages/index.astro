@@ -2,12 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import CTAForm from '../components/CTAForm.astro';
+import { faqCategories, officialSources } from '../data/reference-content.mjs';
+const allFaqs = faqCategories.flatMap(category => category.questions);
+const homeFaqs = ['basics-2', 'basics-3', 'arrangements-2', 'salary-seizure-1', 'bank-seizure-1', 'restrictions-1', 'insolvency-4', 'tikun9-1'].map(id => allFaqs.find(faq => faq.id === id)!);
 import { socialUrls } from '../data/site';
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': 'https://hotzaa-lapoal.info/#website',
+  dateModified: '2026-09-13',
   name: 'הוצאהלפועל.info',
   url: 'https://hotzaa-lapoal.info',
   description: 'מידע על הוצאה לפועל וחדלות פירעון בישראל — כלים חינמיים, מדריכים בעברית פשוטה',
@@ -17,11 +21,11 @@ const websiteSchema = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://hotzaa-lapoal.info/#organization',
   name: 'הוצאהלפועל.info',
   url: 'https://hotzaa-lapoal.info',
   logo: 'https://hotzaa-lapoal.info/favicon.svg',
   description: 'מידע חינמי על הוצאה לפועל וחדלות פירעון לחייבים בישראל',
-  inLanguage: 'he',
   areaServed: 'IL',
   contactPoint: {
     '@type': 'ContactPoint',
@@ -36,48 +40,7 @@ const organizationSchema = {
 const homeFaqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'כמה זמן יש לי להגיב אחרי קבלת מכתב הוצאה לפועל?',
-      acceptedAnswer: { '@type': 'Answer', text: 'לרוב יש 30 יום מיום המצאת האזהרה להגיב או לשלם. בחלק מסוגי התיקים התקופה עשויה להיות קצרה יותר — בדקו את המועד המדויק במכתב שקיבלתם. לאחר תקופה זו הנושה רשאי לבקש עיקולים והגבלות. חשוב לפעול מיד ולא להמתין.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'האם ניתן לפרוס חוב לתשלומים?',
-      acceptedAnswer: { '@type': 'Answer', text: 'כן. ניתן להגיש בקשה לצו תשלומים לרשם ההוצאה לפועל. הרשם קובע סכום חודשי לפי יכולתך הכלכלית. ברוב המקרים, כל עוד עומדים בצו, ניתן למנוע או לצמצם עיקולים חדשים — אך ההחלטה הסופית היא של הרשם.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'אילו כספים לא ניתן לעקל?',
-      acceptedAnswer: { '@type': 'Answer', text: 'ברוב המקרים קצבאות ביטוח לאומי (ילדים, נכות, זקנה, שאירים) ושכר בגובה שכר ההגנה נהנים מהגנה מיוחדת מפני עיקול. ההגנה תלויה בסוג ההכנסה, באופן ההפקדה ובהוראות הדין.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'מה זה תיקון 9 ואיך הוא משפיע עליי?',
-      acceptedAnswer: { '@type': 'Answer', text: 'מאז תיקון 9 (ינואר 2025) שיטת חישוב הריבית בהוצאה לפועל השתנתה. הריבית מורכבת מריבית ייחוס בתוספת מרכיב דמי פיגורים שנתיים. חוב שלא מוסדר ממשיך לגדול — חשוב להבין את החישוב המדויק בתיק שלך.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'מתי כדאי לשקול חדלות פירעון?',
-      acceptedAnswer: { '@type': 'Answer', text: 'כשסך החובות גדול משמעותית מהיכולת לשלמם, ואין נכסים לממש. בדרך כלל ניתן לקבל הפטר כ-3 שנים מצו פתיחת ההליכים, וכ-4 שנים מהגשה ועד הפטר.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'האם אפשר לבדוק אם יש נגדי תיק הוצאה לפועל?',
-      acceptedAnswer: { '@type': 'Answer', text: 'כן. ניתן לבדוק דרך מערכת הוצל"פ נט באתר gov.il או לפנות ישירות ללשכת הוצאה לפועל עם תעודת זהות. ראה מדריך בדיקת תיק.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'כמה זמן נמשך הליך הוצאה לפועל?',
-      acceptedAnswer: { '@type': 'Answer', text: 'תלוי בהסדר: צו תשלומים — לפי יכולתך (1-10 שנים). איחוד תיקים — בדרך כלל 3-7 שנים. חדלות פירעון — כ-3 שנים מצו פתיחת ההליכים (כ-4 שנים מהגשה ועד הפטר). תשלום מלא — מיידי.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'האם הוצאה לפועל משפיעה על דירוג האשראי?',
-      acceptedAnswer: { '@type': 'Answer', text: 'כן. תיק פעיל בהוצאה לפועל מדווח ללשכות נתוני האשראי, ועלול לפגוע ביכולת לקבל הלוואות, משכנתא וחוזים עסקיים. אחרי סגירת התיק, נתוני האשראי עשויים להשתפר בהדרגה.' },
-    },
-  ],
+  mainEntity: homeFaqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
 };
 
 // השוואת מסלולים — מקור נתונים יחיד לטבלת הדסקטופ ולכרטיסי המובייל
@@ -96,8 +59,8 @@ const compareRows = [
 ---
 
 <BaseLayout
-  title="הוצאה לפועל: בדיקת תיק, עיקולים וזכויות (2026)"
-  description="מידע חינמי על הוצאה לפועל: בדיקת תיק ועיקולים לפי תעודת זהות, זכויות חייבים, טפסים, צו תשלומים, ביטול עיקול וסגירת תיק. מעודכן ל-2026."
+  title="הוצאה לפועל — בדיקת תיק, עיקולים, טפסים וזכויות"
+  description="מידע על הוצאה לפועל בעברית פשוטה: איך בודקים תיק במערכת הרשמית, מה עושים עם אזהרה או עיקול, טפסים וזכויות חייבים. מדריכים עם מקורות רשמיים."
   schema={[websiteSchema, organizationSchema, homeFaqSchema]}
 >
   <Header />
@@ -115,7 +78,7 @@ const compareRows = [
           <span class="text-brand">אל תבהל. יש לך זכויות.</span>
         </h1>
         <p class="text-xl text-gray-600 max-w-xl mx-auto mb-10 leading-relaxed">
-          כ-560 אלף חייבים עם כ-2 מיליון תיקים פתוחים — רובם לא יודעים שיש להם אפשרויות. אנחנו כאן לעזור.
+          מידע ברור על אזהרות, עיקולים והסדרת חובות — עם קישורים למקורות הרשמיים ולצעדים שכדאי לברר.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a href="#situation-grid" class="inline-flex items-center justify-center gap-2 bg-brand-dark hover:bg-brand-trust text-white font-bold px-8 py-3.5 rounded-lg text-base transition-colors shadow-xs">
@@ -126,8 +89,8 @@ const compareRows = [
           </a>
         </div>
         <p class="text-xs text-gray-600 mt-6">
-          * כ-560 אלף חייבים עם כ-2 מיליון תיקים פתוחים (סוף 2025), לפי דוח
-          <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-dark">רשות האכיפה והגבייה</a>.
+          אתר מידע עצמאי, לא אתר ממשלתי ולא משרד עורכי דין.
+          <a href="/about/#editorial-policy" class="underline hover:text-brand-dark">איך התוכן נערך ונבדק</a>.
         </p>
       </div>
     </section>
@@ -170,7 +133,7 @@ const compareRows = [
           <span class="text-amber-600 text-xl">⚖️</span>
           <div>
             <span class="font-bold text-amber-800">תיקון 9 (בתוקף מינואר 2025):</span>
-            <span class="text-amber-700 text-sm mr-1">ריבית הפיגורים מחושבת כיום לפי שיטה חדשה — פחות ריבית דריבית. הערכת גובה הריבית שלך.</span>
+            <span class="text-amber-700 text-sm mr-1">הריבית ודמי הפיגורים הם רכיבים נפרדים. את החיוב בפועל בודקים בפירוט התיק הרשמי.</span>
           </div>
         </div>
         <a href="/guides/tikunim-2025/" class="text-sm font-semibold text-amber-800 bg-amber-100 hover:bg-amber-200 px-4 py-2 rounded-full transition-colors whitespace-nowrap">
@@ -184,10 +147,10 @@ const compareRows = [
       <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">מה זה הוצאה לפועל?</h2>
         <p class="text-gray-700 leading-relaxed mb-3">
-          <strong>הוצאה לפועל</strong> היא הליך משפטי לגביית חובות בישראל. כאשר אדם או חברה לא משלמים חוב — שיק שחזר, פסק דין, חוב לרשות, מזונות או חוב חוזי — הנושה יכול לפתוח <strong>תיק הוצאה לפועל</strong> בלשכת ההוצאה לפועל הקרובה, ולהפעיל כלים לגביית הכסף: עיקול חשבון בנק, עיקול משכורת, עיקול רכב או דירה, עיכוב יציאה מהארץ, ועוד.
+          <strong>הוצאה לפועל</strong> היא מערכת לביצוע פסקי דין וחיובים שהדין מאפשר לבצע בה, כגון שטרות ותביעות על סכום קצוב בתנאים הקבועים בחוק. לא כל דרישת תשלום מאפשרת לפתוח תיק. סוג התיק, מסירת האזהרה והחלטות הרשם קובעים אילו הליכים ניתן לבקש. <a href={officialSources.execution.url} class="text-brand underline">חוק ההוצאה לפועל</a>.
         </p>
         <p class="text-gray-700 leading-relaxed mb-3">
-          הליכי ההוצאה לפועל בישראל מנוהלים על ידי <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark underline">רשות האכיפה והגבייה</a> שבמשרד המשפטים, באמצעות <a href="/guides/lishkat-hotzaa/" class="text-brand hover:text-brand-dark underline">לשכות הוצאה לפועל</a> ברחבי הארץ. הפורטל הרשמי לבדיקת תיקים פתוחים הוא <a href="https://www.eca.gov.il/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark underline"><strong>אתר רשות האכיפה והגבייה (eca.gov.il)</strong></a>, שמאפשר לכל אדם לבדוק לפי תעודת זהות אם יש נגדו תיק פעיל.
+          הליכי ההוצאה לפועל בישראל מנוהלים על ידי <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark underline">רשות האכיפה והגבייה</a> שבמשרד המשפטים, באמצעות <a href="/guides/lishkat-hotzaa/" class="text-brand hover:text-brand-dark underline">לשכות הוצאה לפועל</a> ברחבי הארץ. הפורטל הרשמי לבדיקת תיקים פתוחים הוא <a href={officialSources.personal.url} target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark underline"><strong>האזור האישי בהוצאה לפועל</strong></a>. הצפייה בפרטי תיק אישי דורשת הזדהות והרשאה מתאימה. אין להזין באתר שלנו מספר תיק או תעודת זהות לצורך בדיקה.
         </p>
         <p class="text-gray-700 leading-relaxed">
           האתר הזה — <strong>הוצאהלפועל.info</strong> — הוא <strong>אתר מידע חינמי ובלתי תלוי</strong> שעוזר לחייבים בישראל להבין זכויות, לאתר מקורות רשמיים וללמוד אילו צעדים אפשר לבדוק. אנחנו לא משרד עורכי דין ולא חלק מהמערכת הממשלתית — המידע כללי ואינו תחליף לבדיקת התיק או לייעוץ אישי.
@@ -203,10 +166,10 @@ const compareRows = [
           </a>
           <a href="/guides/sgor-tik/" class="bg-white border border-neutral-border rounded-xl p-3 hover:border-brand hover:bg-brand-pale transition-all text-center">
             <div class="font-semibold text-brand-dark">סגירת תיק</div>
-            <div class="text-xs text-neutral-muted mt-1">5 דרכים</div>
+            <div class="text-xs text-neutral-muted mt-1">הבקשה וההחלטה</div>
           </a>
           <a href="/faq/" class="bg-white border border-neutral-border rounded-xl p-3 hover:border-brand hover:bg-brand-pale transition-all text-center">
-            <div class="font-semibold text-brand-dark">100+ שאלות</div>
+            <div class="font-semibold text-brand-dark">שאלות ותשובות</div>
             <div class="text-xs text-neutral-muted mt-1">תשובות כלליות</div>
           </a>
         </div>
@@ -246,7 +209,7 @@ const compareRows = [
               icon: '✍️',
               bg: 'bg-teal-50',
               name: 'מחולל נוסח בקשה',
-              desc: 'בקשה מנוסחת לרשם תוך דקה: ביטול עיקול, צו תשלומים ועוד',
+              desc: 'טיוטת עזר לבירור ולעריכה — אינה טופס רשמי ואינה מוגשת לרשם',
               tag: 'נוסח עזר — לא מחליף עו״ד',
               tagColor: 'bg-teal-100 text-teal-700',
               href: '/tools/noseach-bakasha/',
@@ -263,9 +226,9 @@ const compareRows = [
             {
               icon: '✅',
               bg: 'bg-purple-50',
-              name: 'בדיקת זכאות',
+              name: 'שאלון הכוונה',
               desc: 'איזה מסלול עשוי להתאים למצבך? — שאלון הכוונה כללי',
-              tag: '4 שאלות בלבד',
+              tag: 'לא קובע זכאות',
               tagColor: 'bg-purple-100 text-purple-700',
               href: '/tools/eligibility/',
             },
@@ -274,7 +237,7 @@ const compareRows = [
               bg: 'bg-amber-50',
               name: 'טפסים ונוסחים',
               desc: 'טופס 214, צו תשלומים ונוסחים קצרים לבקשות דחופות',
-              tag: 'להגשה עצמית',
+              tag: 'קישורים רשמיים',
               tagColor: 'bg-amber-100 text-amber-700',
               href: '/forms/',
             },
@@ -300,12 +263,12 @@ const compareRows = [
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
           {[
-            { num: '1', icon: '📂', title: 'פתיחת תיק', desc: 'הנושה פותח תיק בהוצאה לפועל ומצרף פסק דין או שטר חוב.' },
-            { num: '2', icon: '✉️', title: 'אזהרה לחייב', desc: 'החייב מקבל מכתב רשמי ויש לו לרוב 30 יום להגיב או לשלם.' },
-            { num: '3', icon: '🔒', title: 'הגבלות', desc: 'אם אין תגובה — עיקולים, עיכוב יציאה מהארץ והגבלות נוספות.' },
-            { num: '4', icon: '💸', title: 'גבייה', desc: 'עיקול חשבון בנק, ניכוי ממשכורת, ועיקול נכסים.' },
-            { num: '5', icon: '🤝', title: 'הסדר', desc: 'ניתן להגיע להסדר תשלומים בכל שלב ולהקפיא את הגבייה.' },
-            { num: '6', icon: '✅', title: 'סגירת תיק', desc: 'החוב שולם במלואו — התיק נסגר וכל ההגבלות מוסרות.' },
+            { num: '1', icon: '📂', title: 'פתיחת תיק', desc: 'הזוכה מגיש בקשה ומסמכים בהתאם לסוג החיוב ותנאי הדין.' },
+            { num: '2', icon: '✉️', title: 'אזהרה לחייב', desc: 'בודקים את סוג התיק, תאריך מסירת האזהרה והמועד הספציפי לפעולה. אין מועד אחיד לכל תיק.' },
+            { num: '3', icon: '🔒', title: 'בקשות והחלטות', desc: 'הליכי גבייה והגבלות כפופים לתנאים ולהחלטות מתאימות; תיק פתוח אינו יוצר את כולם אוטומטית.' },
+            { num: '4', icon: '💸', title: 'גבייה', desc: 'אם ניתן צו, בודקים את היקפו ואת ההגנות החלות על הכסף או הנכס.' },
+            { num: '5', icon: '🤝', title: 'הסדר', desc: 'ניתן לברר הסדר או צו תשלומים. עיכוב הליכים וביטול עיקולים דורשים בדיקה והחלטה מתאימה.' },
+            { num: '6', icon: '✅', title: 'סגירת תיק', desc: 'לאחר הסדרת החוב מוודאים רישום תשלום, סגירת תיק וביטול ההליכים הרלוונטיים; תיקים אחרים נבדקים בנפרד.' },
           ].map(step => (
             <div class="bg-white border border-neutral-border rounded-2xl p-5 flex flex-col gap-3">
               <div class="flex items-center gap-3">
@@ -343,7 +306,7 @@ const compareRows = [
               { label: 'עיקול נכסים — דירה ורכב', href: '/guides/ikul-nechassim/' },
               { label: 'עיקול פנסיה וקרן השתלמות', href: '/guides/ikul-pensiya/' },
               { label: 'עיקול דירת מגורים', href: '/guides/ikul-dira/' },
-              { label: 'ביטול הגבלות — כרטיס אשראי ורישיון', href: '/guides/bitul-hagbalot/' },
+              { label: 'ביטול הגבלות — התנאים והבקשה', href: '/guides/bitul-hagbalot/' },
             ],
           },
           {
@@ -365,11 +328,11 @@ const compareRows = [
             color: 'bg-purple-50 border-purple-200',
             titleColor: 'text-purple-800',
             guides: [
-              { label: '10 זכויות שכל חייב חייב להכיר', href: '/rights/' },
+              { label: 'זכויות חייבים והחריגים להגנה', href: '/rights/' },
               { label: 'דירת מגורים מוגנת — הגנה מעיקול', href: '/rights/bayit-muggan/' },
               { label: 'כספים מוגנים מעיקול', href: '/rights/skhomim-mugganim/' },
               { label: 'ערב מוגן — זכויות ערבים', href: '/guides/arev/' },
-              { label: 'התיישנות חובות — מתי חוב פוקע', href: '/guides/hitiyashnoot-chov/' },
+              { label: 'התיישנות חובות — מתי צריך להעלות טענה', href: '/guides/hitiyashnoot-chov/' },
             ],
           },
           {
@@ -380,7 +343,7 @@ const compareRows = [
             guides: [
               { label: 'פשיטת רגל וחדלות פירעון 2026', href: '/guides/pshitat-regel/' },
               { label: 'בדיקת תיק הוצאה לפועל', href: '/guides/bdika-tik/' },
-              { label: 'תהליך הוצאה לפועל — שלב אחר שלב', href: '/insolvency/process/' },
+              { label: 'הליך חדלות פירעון — שלב אחר שלב', href: '/insolvency/process/' },
               { label: 'עלויות הליך חדלות פירעון', href: '/insolvency/costs/' },
               { label: 'מזונות בהוצאה לפועל', href: '/guides/mazamot/' },
             ],
@@ -418,21 +381,21 @@ const compareRows = [
           <h2 class="text-2xl font-bold text-brand-dark mb-4">זכויות חייבים בהוצאה לפועל — מה חשוב לדעת?</h2>
 
           <div class="bg-green-50 border-r-4 border-green-500 rounded-xl p-4 mb-5 text-sm text-gray-700">
-            <strong>הוצאה לפועל בישראל:</strong> מערכת משפטית שמאפשרת לנושה לגבות חוב שנקבע בפסק דין.
+            <strong>הוצאה לפועל בישראל:</strong> מערכת לביצוע פסקי דין וחיובים נוספים בהתאם לחוק.
             מנוהלת ע"י רשות האכיפה והגבייה (משרד המשפטים).
-            לחייב יש לרוב <strong>30 יום</strong> להגיב מיום המצאת האזהרה לפני שיתחילו עיקולים (בחלק מסוגי התיקים התקופה עשויה להיות קצרה יותר — בדקו את המכתב).
+            <strong>אין להסתמך על מועד כללי:</strong> בודקים מיד את האזהרה, סוג ההליך ומועד המסירה.
             <a href="/guides/michtav-hotzaa/" class="text-brand underline mr-1">קיבלתי מכתב — מה עושים? ←</a>
           </div>
 
           <p class="text-gray-600 leading-relaxed">
-            להיות חייב לא אומר שאין לך זכויות — החוק מגן עליך בדרכים רבות, ורוב החייבים אינם מודעים לכל האפשרויות העומדות לפניהם.
+            החוק קובע זכויות לצד חובות, מועדים וחריגים. הכרת האפשרויות אינה מחליפה בדיקה של ההחלטות והמסמכים בתיק.
           </p>
         </div>
         <div class="space-y-3">
           {[
             { icon: '📋', title: 'מה אפשר לעשות?', body: 'לבקש צו תשלומים, לבקש איחוד תיקים, לערער על גובה החוב, לבקש ביטול עיקול על כספים מוגנים, או לשקול חדלות פירעון.' },
-            { icon: '🛡️', title: 'מה מוגן בחוק?', body: 'ברוב המקרים קצבאות ביטוח לאומי, שכר בגובה שכר ההגנה, כלי עבודה וציוד רפואי נהנים מהגנה מיוחדת מפני עיקול. ההגנה תלויה בסוג ההכנסה ובאופן ההפקדה.' },
-            { icon: '⏱️', title: 'כמה זמן יש לך?', body: 'לרוב 30 יום מרגע המצאת האזהרה לפני שהנושה רשאי לנקוט בהליכי גבייה (בחלק מסוגי התיקים התקופה עשויה להיות קצרה יותר — בדקו את המכתב). במקרים מסוימים ניתן לבקש הארכה.' },
+            { icon: '🛡️', title: 'מה מוגן בחוק?', body: 'לקצבאות, לחלק מהשכר ולנכסים מסוימים יש הגנות שונות, עם חריגים ותנאים. שכר נמוך אינו פטור אוטומטית, והכללים במזונות שונים.' },
+            { icon: '⏱️', title: 'כמה זמן יש לך?', body: 'המועד תלוי בסוג הבקשה, התיק וההחלטה. אל תחכו: בדקו את המועד הרשום ואת הדין הרלוונטי; בקשת ארכה אינה מבטיחה שתתקבל.' },
           ].map(item => (
             <div class="flex gap-4 p-4 bg-gray-50 rounded-xl">
               <span class="text-2xl mt-0.5">{item.icon}</span>
@@ -523,7 +486,7 @@ const compareRows = [
         <a href="/guides/ichud-tikim/" class="group border-2 border-neutral-border rounded-2xl p-6 bg-white hover:border-brand hover:bg-brand-pale transition-all">
           <div class="text-3xl mb-3">📂</div>
           <h3 class="font-bold text-gray-900 mb-2 group-hover:text-brand-dark transition-colors">איחוד תיקים בהוצאה לפועל</h3>
-          <p class="text-sm text-gray-600">יש לך כמה תיקים? איחוד תיקים מאפשר תשלום חודשי אחד, מקפיא עיקולים ומסדר את הבלגן. מי זכאי ואיך מגישים.</p>
+          <p class="text-sm text-gray-600">יש לך כמה תיקים? בדקו אילו מהם ניתן לאחד, מה תנאי התשלום ומה הוחלט לגבי ההליכים. איחוד אינו כולל כל סוג חוב.</p>
           <span class="inline-block mt-3 text-sm font-semibold text-brand group-hover:text-brand-dark">למדריך המלא ←</span>
         </a>
         <a href="/guides/ribit-hotzaa/" class="group border-2 border-neutral-border rounded-2xl p-6 bg-white hover:border-brand hover:bg-brand-pale transition-all">
@@ -542,13 +505,14 @@ const compareRows = [
         <h2 class="text-3xl font-bold text-gray-900 mb-2">שאלות שכולם שואלים</h2>
       </div>
       <div class="space-y-3 max-w-2xl mx-auto">
-        {homeFaqSchema.mainEntity.map(faq => (
+        {homeFaqs.map(faq => (
           <details class="border border-neutral-border rounded-xl group bg-white">
             <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-              {faq.name}
+              {faq.q}
               <span class="text-neutral-muted group-open:rotate-180 transition-transform flex-shrink-0 mr-3">▼</span>
             </summary>
-            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.acceptedAnswer.text}</p>
+            <p class="px-4 pb-3 text-gray-600 text-sm">{faq.a}</p>
+            <p class="px-4 pb-4 text-xs"><a href={faq.source.url} target="_blank" rel="noopener noreferrer" class="text-brand underline">{faq.source.label}</a></p>
           </details>
         ))}
       </div>
@@ -558,15 +522,15 @@ const compareRows = [
     <section class="bg-brand-dark text-white py-14">
       <div class="max-w-2xl mx-auto px-4 text-center">
         <h2 class="text-2xl font-bold mb-3">צריך עזרה משפטית?</h2>
-        <p class="text-brand-light mb-8">הגורמים הרשמיים הבאים מספקים סיוע חינמי או בעלות נמוכה</p>
+        <p class="text-brand-light mb-8">קישורים לסיוע משפטי ולמידע ציבורי; השירות והתנאים נבדקים אצל כל גורם</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-right">
-          <a href="https://www.gov.il/he/departments/ministry_of_justice_legal_aid/govil-landing-page" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl p-4 transition-all block">
+          <a href="https://www.gov.il/he/service/legal_aid_application" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl p-4 transition-all block">
             <div class="font-semibold text-white mb-1">הלשכה לסיוע משפטי</div>
-            <div class="text-sm text-brand-light">ייצוג חינמי לזכאים &larr;</div>
+            <div class="text-sm text-brand-light">בירור זכאות, תנאים ואגרה &larr;</div>
           </a>
           <a href="https://www.kolzchut.org.il" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl p-4 transition-all block">
             <div class="font-semibold text-white mb-1">כל-זכות</div>
-            <div class="text-sm text-brand-light">מידע על זכויות בישראל &larr;</div>
+            <div class="text-sm text-brand-light">מידע ציבורי משלים — לא אתר ממשלתי &larr;</div>
           </a>
           <a href="https://www.gov.il/he/departments/law_enforcement_and_collection_system_authority" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl p-4 transition-all block">
             <div class="font-semibold text-white mb-1">רשות האכיפה והגבייה</div>

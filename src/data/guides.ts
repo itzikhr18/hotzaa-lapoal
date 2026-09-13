@@ -44,5 +44,5 @@ export const allGuides: GuideLink[] = [
   { title: 'חוב ארנונה', href: '/guides/chov-arnona/', icon: '🏘️' },
   { title: 'חייב מוגבל באמצעים', href: '/guides/hayav-mugbal/', icon: '⛔' },
   { title: 'הוצאה לפועל לעצמאים', href: '/guides/atzmait/', icon: '👨‍💼' },
-  { title: 'שלילת רישיון נהיגה', href: '/guides/rishayon-nehiga/', icon: '🚫' },
+  { title: 'הגבלת רישיון נהיגה שבוטלה', href: '/guides/rishayon-nehiga/', icon: '🚫' },
 ];

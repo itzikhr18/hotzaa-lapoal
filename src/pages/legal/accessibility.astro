@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 
-const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' });
+const today = '13 בספטמבר 2026';
 ---
 
 <BaseLayout
@@ -35,14 +35,14 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
         <ul>
           <li><strong>כפתור נגישות</strong> — קיים בכל דפי האתר (צד שמאל, אמצע המסך) ומאפשר התאמות: גודל טקסט, ניגודיות צבעים, גווני אפור, הדגשת קישורים, פונט קריא, עצירת אנימציות וסמן גדול</li>
           <li>כל הדפים כתובים בעברית תקנית עם כיוון RTL מלא</li>
-          <li>ניגודיות צבעים עומדת בדרישות WCAG AA</li>
+          <li>נעשים מאמצים לשמירה על ניגודיות קריאה; לא הושלמה בדיקת עמידה מלאה בתקן</li>
           <li>גופנים ברורים וקריאים (Assistant / Noto Sans Hebrew)</li>
           <li>מבנה כותרות היררכי (H1, H2, H3) בכל עמוד</li>
           <li>תגיות <code>lang="he"</code> ו-<code>dir="rtl"</code> בכל דף</li>
           <li>קישורים עם טקסט תיאורי ברור</li>
           <li>טפסים עם תוויות מפורשות</li>
           <li>האתר רספונסיבי ועובד על מובייל, טאבלט ומחשב</li>
-          <li>ניווט מקלדת מלא — כל הרכיבים נגישים ב-Tab, הפעלה ב-Enter/Space</li>
+          <li>תמיכה בניווט מקלדת ברכיבי האתר; בדיקה מקיפה בכל הרכיבים עדיין נדרשת</li>
           <li>הגדרות הנגישות נשמרות בין ביקורים (localStorage)</li>
         </ul>
       </section>
@@ -56,7 +56,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
         <ul>
           <li>הוספת תיאורי alt לתמונות</li>
           <li>שיפור ניווט מקלדת בכל הרכיבים האינטראקטיביים</li>
-          <li>בדיקת נגישות מחשבון הריבית עם קורא מסך</li>
+          <li>בדיקות קורא מסך בכלי ההכוונה ובמחשבון השכר</li>
           <li>הוספת תמלילים לתכנים עתידיים מסוג וידאו</li>
         </ul>
       </section>
@@ -67,8 +67,8 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
           לפניות בנושא נגישות, קשיים בגישה לתוכן, או בקשות להתאמות:
         </p>
         <ul>
-          <li>דואר אלקטרוני: <strong>accessibility@hotzaa-lapoal.info</strong></li>
-          <li>זמן תגובה: עד 5 ימי עסקים</li>
+          <li>דואר אלקטרוני: <a href="mailto:accessibility@hotzaa-lapoal.info">accessibility@hotzaa-lapoal.info</a></li>
+          <li>נשתדל להשיב בהקדם; לא נקבע זמן תגובה מובטח</li>
         </ul>
         <p>
           נשתדל לטפל בכל פנייה בהקדם ולספק את המידע המבוקש בפורמט נגיש.
@@ -91,7 +91,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
       <section>
         <h2>6. תאריך עדכון</h2>
         <p>
-          הצהרה זו עודכנה לאחרונה בתאריך {today} ותעודכן מדי שנה או בעת שינויים מהותיים באתר.
+          הצהרה זו עודכנה לאחרונה בתאריך {today} ותיבדק מחדש בעת עדכון מהותי. תאריך העריכה אינו אישור נגישות מקצועי.
         </p>
       </section>
 

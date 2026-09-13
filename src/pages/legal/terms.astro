@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 
-const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' });
+const today = '13 בספטמבר 2026';
 ---
 
 <BaseLayout
@@ -46,7 +46,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
         </p>
         <ul>
           <li>מדריכים ומאמרים בשפה פשוטה</li>
-          <li>מחשבון ריבית לצורכי הערכה בלבד</li>
+          <li>קישורים לבדיקת יתרת חוב רשמית וכלי המחשה והכוונה מוגבלים</li>
           <li>מידע על זכויות חייבים</li>
           <li>מידע על אפשרויות סיוע משפטי ציבורי (הלשכה לסיוע משפטי, כל-זכות)</li>
         </ul>
@@ -63,7 +63,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
           <li>האתר אינו אחראי לטעויות, השמטות, או אי-דיוקים במידע</li>
           <li>המידע עשוי שלא לשקף שינויי חקיקה אחרונים</li>
           <li>האתר אינו אחראי לתוצאות כלשהן הנובעות מהסתמכות על המידע</li>
-          <li>מחשבון הריבית מיועד להערכה בלבד — אין להסתמך עליו לצורכי הליכים משפטיים</li>
+          <li>כלי ההכוונה וההמחשה אינם קובעים זכאות או יתרה רשמית — אין להסתמך עליהם כתחליף לבדיקה מקצועית</li>
         </ul>
         <p>
           בכל מקרה, האחריות המרבית של מפעיל האתר לא תעלה על הסכום ששילמת עבור השירות
@@ -86,7 +86,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
         <h2>5. שירותים מסחריים — רישוי כלים</h2>
         <p>
           האתר מפעיל כלים טכנולוגיים (מחשבונים, מחולל נוסחים, צ'אטבוט מידע) הזמינים לציבור בחינם.
-          האתר מציע רישוי כלים ופתרונות White-Label למשרדי עורכי דין בתשלום, במודל דמי הקמה + תשלום חודשי.
+          אין באתר רכישה מקוונת או אספקת מוצר בתשלום. כל התקשרות נפרדת, אם תוצע בעתיד, תחייב תנאים שייקבעו בנפרד; המידע בדף אינו הסכם רישוי.
         </p>
         <ul>
           <li>הרישוי אינו כולל מכירת פרטי גולשים, לידים או הפניות בתשלום</li>
@@ -96,7 +96,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
         </ul>
         <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 my-4 text-sm">
           <p class="text-amber-800">
-            ⚖️ סעיף זה חייב בדיקת עורך דין לפני פרסום סופי — במיוחד: עקיפת כללי אתיקה של לשכת עורכי הדין, עקיפת חוק הגנת הפרטיות בהעברת נתונים, וניסוח הסכם הרישוי.
+            תנאי התקשרות מסחריים, ככל שיישקלו בעתיד, דורשים בדיקה משפטית נפרדת. תנאי השימוש באתר אינם אישור משפטי לתקפות הסכם כזה.
           </p>
         </div>
       </section>
@@ -127,9 +127,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
       <section>
         <h2>8. ניתוח שימוש ואנליטיקה</h2>
         <p>
-          האתר משתמש ב-<strong>Google Analytics 4</strong> לאיסוף נתוני שימוש אנונימיים
-          (עמודים שנצפו, זמן שהייה, מקור גישה) לשם שיפור מתמיד של תוכן ונגישות האתר.
-          לא נאסף מידע מזהה אישי. לפרטים נוספים ראה את <a href="/legal/privacy/">מדיניות הפרטיות</a>.
+          Google Analytics 4 נטען רק לאחר הסכמה מפורשת למדידת צפיות בעמודים. השירות עשוי לקבל מזהי עוגייה ונתונים טכניים; אין לתאר את כל הנתונים כאנונימיים. אפשר לשנות את הבחירה בכפתור הפרטיות. פירוט הנתונים והסייגים מופיע ב<a href="/legal/privacy/">מדיניות הפרטיות</a>.
         </p>
       </section>
 
@@ -161,7 +159,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
         <h2>12. יצירת קשר</h2>
         <p>לשאלות בנושא תנאי שימוש אלו:</p>
         <ul>
-          <li>דואר אלקטרוני: <strong>legal@hotzaa-lapoal.info</strong></li>
+          <li>דואר אלקטרוני: <a href="mailto:legal@hotzaa-lapoal.info">legal@hotzaa-lapoal.info</a></li>
           <li><a href="/contact/">עמוד יצירת קשר</a></li>
         </ul>
       </section>
