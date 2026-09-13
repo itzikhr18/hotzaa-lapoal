@@ -1,8 +1,10 @@
-export const PARTNER_EMAIL = 'partners@hotzaa-lapoal.info';
+export const PARTNER_EMAIL = 'itzikhr18@gmail.com';
+export const PARTNER_ALTERNATE_EMAIL = 'partners@hotzaa-lapoal.info';
 
-const contactSubject = 'בדיקת התאמה לכלי הכנה לפגישת ייעוץ באתר המשרד';
+const contactSubject = 'התעניינות ברכישת כלי הכנה לפגישת ייעוץ — בדוא״ל בלבד';
 const contactBody = [
-  'שלום, אשמח לבדוק התאמה של כלי הכנה לפגישת ייעוץ תחת מותג המשרד.',
+  'שלום איציק, אני מעוניין/ת בפרטים לרכישת כלי הכנה לפגישת ייעוץ תחת מותג המשרד.',
+  'אבקש לקבל את התכולה, המחיר, תנאי הרישוי ואופן האספקה בדוא״ל, ללא שיחת מכירה.',
   '',
   'כתובת אתר המשרד:',
   'תחום העיסוק של המשרד:',
