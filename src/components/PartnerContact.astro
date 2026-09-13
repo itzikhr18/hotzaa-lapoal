@@ -1,5 +1,5 @@
 ---
-import { PARTNER_EMAIL, PARTNER_CONTACT_HREF } from '../data/partners';
+import { PARTNER_EMAIL, PARTNER_ALTERNATE_EMAIL, PARTNER_CONTACT_HREF } from '../data/partners';
 
 interface Props {
   placement: string;
@@ -25,7 +25,7 @@ const helpId = `partner-contact-help-${placement}`;
           : 'bg-brand-dark text-white hover:bg-brand focus-visible:outline-brand-dark',
       ]}
     >
-      פתיחת דוא״ל לבדיקת התאמה
+      פנייה לרכישה בדוא״ל — ללא שיחה
     </a>
     <button
       type="button"
@@ -42,13 +42,17 @@ const helpId = `partner-contact-help-${placement}`;
     </button>
   </div>
   <p id={helpId} class:list={['mt-4 text-sm leading-relaxed', dark ? 'text-blue-100' : 'text-gray-600']}>
-    נפתחת טיוטה בתוכנת הדוא״ל שלכם עם שאלות על המשרד בלבד. דבר אינו נשלח אוטומטית.
+    הפנייה וקבלת פרטי הרכישה מתנהלות בדוא״ל, ללא צורך בשיחת מכירה.
+    הלחיצה פותחת טיוטה בלבד; אין חיוב או רכישה אוטומטיים, ודבר אינו נשלח אוטומטית.
     אין לצרף פרטי לקוחות, מסמכים או מספרי תיקים.
   </p>
   <p class="mt-3 text-sm">
     <span data-partner-email dir="ltr" tabindex="-1" class="inline-block max-w-full break-all select-all">{PARTNER_EMAIL}</span>
   </p>
   <p data-partner-copy-status role="status" aria-live="polite" aria-atomic="true" class="mt-2 min-h-6 text-sm"></p>
+  <p class:list={['mt-2 text-xs', dark ? 'text-blue-100' : 'text-gray-600']}>
+    כתובת נוספת לפניות: <a href={`mailto:${PARTNER_ALTERNATE_EMAIL}`} dir="ltr" class="inline-block max-w-full break-all underline">{PARTNER_ALTERNATE_EMAIL}</a>
+  </p>
 </div>
 
 <script>
