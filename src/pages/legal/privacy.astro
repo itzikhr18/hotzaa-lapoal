@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 
-const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' });
+const policyUpdated = '13 בספטמבר 2026';
 ---
 
 <BaseLayout
@@ -17,7 +17,7 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
 <Breadcrumb items={[{ label: 'מדיניות פרטיות' }]} />
 
     <h1 class="text-3xl font-bold text-brand-dark mb-2">מדיניות פרטיות</h1>
-    <p class="text-sm text-neutral-muted mb-10">עודכן לאחרונה: {today}</p>
+    <p class="text-sm text-neutral-muted mb-10">עודכן לאחרונה: {policyUpdated}</p>
 
     <div class="rtl-prose space-y-8">
 
@@ -44,11 +44,23 @@ const today = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: '
         <p>
           אם נתת אישור מפורש, האתר טוען את <strong>Google Analytics 4</strong> (Measurement ID: G-5PKTGJZMWL)
           לניתוח תנועת המשתמשים. השירות עשוי לאסוף נתונים טכניים או פסאודונימיים כגון:
-          עמודים שנצפו, זמן שהייה בדף, מדינת מקור, סוג מכשיר, ומקור ההגעה לאתר.
+          עמודים שנצפו, נתוני שימוש, מדינת מקור וסוג מכשיר.
         </p>
         <p>
           האתר אינו שולח ל-Google שם, טלפון או מספר תיק. עם זאת, Google עשויה לקבל מזהי עוגייה,
           פרטי מכשיר ונתוני רשת בהתאם להגדרות השירות ולמדיניותה. המידע משמש למדידת שימוש ולשיפור האתר.
+        </p>
+        <p>
+          לאחר הסכמה נמדדות גם לחיצות לפתיחת הצעת השירות למשרדי עורכי דין, לפתיחת ההדגמה
+          ולפתיחת טיוטת דוא״ל עסקית. האירועים שהאתר מגדיר כוללים רק את סוג הפעולה ומיקום הכפתור;
+          הם אינם כוללים טקסט שהוקלד, כתובת דוא״ל, תוכן הפנייה או בחירות מההדגמה.
+          פתיחת טיוטה אינה מעידה שהודעה נשלחה. בכתובת העמוד שהאתר מעביר למדידה אין פרמטרים
+          או מקטעי קישור, והאתר אינו מעביר כתובת מפנה.
+        </p>
+        <p>
+          בעמוד <a href="/partners/demo/">ההדגמה למשרדים</a> אין טעינה של Google Analytics או פרסומות,
+          גם אם ניתנה הסכמה בעמוד אחר. בחירת הנושא, סימון המסמכים ויצירת הרשימה מתבצעים בדפדפן,
+          ואינם נשלחים לשרת. קישור הדוא״ל פותח טיוטה בתוכנת הדואר שלך; רק שליחתה על ידך מעבירה את תוכנה.
         </p>
         <p>
           ניתן לסרב מראש או לשנות את הבחירה בכל עת באמצעות כפתור "פרטיות" באתר. ניתן גם:

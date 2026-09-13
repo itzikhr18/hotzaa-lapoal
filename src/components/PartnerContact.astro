@@ -1,0 +1,79 @@
+---
+import { PARTNER_EMAIL, PARTNER_CONTACT_HREF } from '../data/partners';
+
+interface Props {
+  placement: string;
+  tone?: 'light' | 'dark';
+}
+
+const { placement, tone = 'light' } = Astro.props;
+const dark = tone === 'dark';
+const helpId = `partner-contact-help-${placement}`;
+---
+
+<div data-partner-contact class="mt-7">
+  <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
+    <a
+      href={PARTNER_CONTACT_HREF}
+      data-growth-event="partner_contact_intent"
+      data-growth-placement={placement}
+      aria-describedby={helpId}
+      class:list={[
+        'inline-flex min-h-12 w-full items-center justify-center rounded-xl px-6 py-3 font-bold transition-colors focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 sm:w-auto',
+        dark
+          ? 'bg-white text-brand-dark hover:bg-brand-pale focus-visible:outline-white'
+          : 'bg-brand-dark text-white hover:bg-brand focus-visible:outline-brand-dark',
+      ]}
+    >
+      פתיחת דוא״ל לבדיקת התאמה
+    </a>
+    <button
+      type="button"
+      data-partner-copy
+      hidden
+      class:list={[
+        'min-h-12 w-full rounded-xl border px-5 py-3 font-semibold transition-colors focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 sm:w-auto',
+        dark
+          ? 'border-white/50 text-white hover:bg-white/10 focus-visible:outline-white'
+          : 'border-neutral-border text-brand-dark hover:bg-brand-pale focus-visible:outline-brand-dark',
+      ]}
+    >
+      העתקת כתובת הדוא״ל
+    </button>
+  </div>
+  <p id={helpId} class:list={['mt-4 text-sm leading-relaxed', dark ? 'text-blue-100' : 'text-gray-600']}>
+    נפתחת טיוטה בתוכנת הדוא״ל שלכם עם שאלות על המשרד בלבד. דבר אינו נשלח אוטומטית.
+    אין לצרף פרטי לקוחות, מסמכים או מספרי תיקים.
+  </p>
+  <p class="mt-3 text-sm">
+    <span data-partner-email dir="ltr" tabindex="-1" class="inline-block max-w-full break-all select-all">{PARTNER_EMAIL}</span>
+  </p>
+  <p data-partner-copy-status role="status" aria-live="polite" aria-atomic="true" class="mt-2 min-h-6 text-sm"></p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-partner-contact]').forEach((contact) => {
+    const button = contact.querySelector<HTMLButtonElement>('[data-partner-copy]');
+    const address = contact.querySelector<HTMLElement>('[data-partner-email]');
+    const status = contact.querySelector<HTMLElement>('[data-partner-copy-status]');
+    if (!button || !address || !status) return;
+
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      status.textContent = '';
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(address.textContent?.trim() || '');
+        status.textContent = 'כתובת הדוא״ל הועתקה. אפשר להדביק אותה בהודעה חדשה.';
+      } catch {
+        address.focus();
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(address);
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        status.textContent = 'ההעתקה האוטומטית לא זמינה. אפשר להעתיק ידנית את הכתובת המסומנת.';
+      }
+    });
+  });
+</script>

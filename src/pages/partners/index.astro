@@ -3,10 +3,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import PartnerContact from '../../components/PartnerContact.astro';
+import { PARTNER_EMAIL, PARTNER_CONTACT_HREF } from '../../data/partners';
 
-const contactEmail = 'partners@hotzaa-lapoal.info';
-const contactSubject = encodeURIComponent('התעניינות בפיילוט רישוי כלים למשרד עורכי דין');
-const contactHref = `mailto:${contactEmail}?subject=${contactSubject}`;
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'רישוי כלי הכנה לפגישת ייעוץ למשרדי עורכי דין',
+  serviceType: 'התאמה, הטמעה ותחזוקה של כלי דיגיטלי תחת מותג המשרד',
+  description: 'כלי White-Label להכנת פונים לפגישה: בחירת נושא, רשימת מסמכים כללית והדפסה, עם התאמת מיתוג ותוכן באישור המשרד.',
+  url: 'https://hotzaa-lapoal.info/partners/',
+  areaServed: { '@type': 'Country', name: 'Israel' },
+  provider: {
+    '@type': 'Organization',
+    name: 'הוצאהלפועל.info',
+    url: 'https://hotzaa-lapoal.info/',
+    email: PARTNER_EMAIL,
+  },
+};
 
 const benefits = [
   {
@@ -15,8 +29,8 @@ const benefits = [
     icon: 'brand',
   },
   {
-    title: 'כלים שמסבירים לפני השיחה',
-    text: 'מחשבונים, שאלוני הכוונה ומחוללי נוסחים שמסייעים לגולש להבין את הנושא ולהגיע לשיחה ממוקדת יותר.',
+    title: 'רשימת הכנה שאפשר להדפיס',
+    text: 'הפונה בוחר נושא, מסמן אילו מסמכים כבר בידיו ומקבל רשימת הכנה כללית. את התוכן המקצועי בודק ומאשר המשרד.',
     icon: 'flow',
   },
   {
@@ -32,8 +46,8 @@ const faq = [
     a: 'לא. מסלול הרישוי מבוסס על דמי הקמה ותשלום חודשי עבור שימוש בכלים. הוא אינו כולל מכירת פרטי גולשים או תשלום עבור הפניה לעורך דין.',
   },
   {
-    q: 'אילו כלים אפשר להתאים למשרד?',
-    a: 'ההתאמה יכולה לכלול מחשבונים, שאלוני הכוונה, מחוללי נוסחים ורכיבי תוכן אינטראקטיביים. היקף הפיילוט נקבע יחד, לאחר בדיקה של אתר המשרד והצרכים שלו.',
+    q: 'מהו הכלי הראשון שאפשר לבדוק?',
+    a: 'כלי הכנה לפגישת ייעוץ: בחירת נושא, סימון מסמכים שכבר נמצאים בידי הפונה ויצירת רשימה להדפסה. אפשר להתנסות בהדגמה לפני הפנייה. כלים נוספים והתאמות נבחנים בנפרד לפי צורכי המשרד.',
   },
   {
     q: 'האם הכלים נותנים ייעוץ משפטי?',
@@ -45,14 +59,19 @@ const faq = [
   },
   {
     q: 'איך מתחילים?',
-    a: 'שולחים דוא״ל קצר עם כתובת אתר המשרד והכלי שמעניין אתכם. לאחר התאמה ראשונית נגדיר פיילוט מצומצם, יעדים ולוח זמנים.',
+    a: 'פותחים טיוטת דוא״ל מהעמוד ומוסיפים את כתובת אתר המשרד, תחום העיסוק וההכנה שתרצו להציע לפונים. לאחר בדיקת התאמה מגדירים הצעה לפיילוט, תכולה ולוח זמנים. אין לצרף פרטי לקוחות או תיקים.',
+  },
+  {
+    q: 'האם נשלחים אליכם מסמכים או פרטי פונים בהדגמה?',
+    a: 'לא. ההדגמה אינה מבקשת שם, טלפון, סכום או מספר תיק, ואינה מאפשרת העלאת מסמכים. הבחירות ברשימת ההכנה נשארות בדפדפן ואינן נשלחות אלינו. בפיילוט מגדירים מראש את גבולות השימוש והפרטיות.',
   },
 ];
 ---
 
 <BaseLayout
-  title="רישוי כלים דיגיטליים למשרדי עורכי דין"
-  description="כלים דיגיטליים White-Label למשרדי עורכי דין בתחום הוצאה לפועל וחדלות פירעון — התאמה למותג, הטמעה ותחזוקה במודל רישוי."
+  title="כלי הכנה לפגישת ייעוץ למשרדי עורכי דין | רישוי"
+  description="כלי הכנה לפגישת ייעוץ תחת מותג משרד עורכי הדין: רשימת מסמכים להדפסה, התאמת מיתוג והטמעה. התנסו בהדגמה ובדקו התאמה לפיילוט רישוי."
+  schema={serviceSchema}
 >
   <Header />
   <main id="main-content">
@@ -70,27 +89,32 @@ const faq = [
             פיילוט למשרדים בתחום הוצאה לפועל וחדלות פירעון
           </span>
           <h1 class="mt-6 text-4xl md:text-6xl font-bold leading-tight text-gray-950">
-            הכלים הדיגיטליים שהלקוחות שלכם צריכים — תחת המותג שלכם
+            כלי הכנה לפגישת ייעוץ — תחת המותג של המשרד שלכם
           </h1>
           <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed text-gray-700">
-            רישוי White-Label של כלים אינטראקטיביים לאתר המשרד: התאמת מיתוג, הטמעה ותחזוקה — בלי לבנות מוצר מאפס ובלי לרכוש לידים.
+            אפשרו לפונים לבחור נושא, לרכז מסמכים ולהדפיס רשימת הכנה לשיחה.
+            מתחילים בכלי אחד לאתר המשרד, עם התאמת מיתוג, תוכן באישורכם והיקף הטמעה מוגדר.
           </p>
           <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href={contactHref}
-              class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-xl bg-brand-dark px-7 py-3 font-bold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
-            >
-              בדיקת התאמה לפיילוט
-            </a>
-            <a
               href="/partners/demo/"
               rel="nofollow"
+              data-growth-event="partner_demo_open"
+              data-growth-placement="partners_hero"
+              class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-xl bg-brand-dark px-7 py-3 font-bold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+            >
+              התנסות בהדגמה חיה
+            </a>
+            <a
+              href={PARTNER_CONTACT_HREF}
+              data-growth-event="partner_contact_intent"
+              data-growth-placement="partners_hero"
               class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-xl border border-neutral-border bg-white px-7 py-3 font-bold text-brand-dark transition-colors duration-200 hover:border-brand hover:bg-brand-pale focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
             >
-              צפייה בהדגמה חיה
+              פתיחת דוא״ל לבדיקת התאמה
             </a>
           </div>
-          <p class="mt-4 text-sm text-gray-600">פנייה ראשונית בדוא״ל · ללא התחייבות · הפיילוט מותאם לצורכי המשרד</p>
+          <p class="mt-4 text-sm text-gray-600">הדגמה ללא הרשמה · ללא הזנת פרטי לקוחות · הדוא״ל נפתח כטיוטה ואינו נשלח אוטומטית</p>
         </div>
       </div>
     </section>
@@ -98,9 +122,9 @@ const faq = [
     <section class="max-w-6xl mx-auto px-4 py-16 md:py-20">
       <div class="max-w-3xl mx-auto text-center mb-10">
         <p class="text-sm font-bold uppercase tracking-wider text-brand">הערך למשרד</p>
-        <h2 class="mt-3 text-3xl md:text-4xl font-bold text-gray-950">להוסיף שירות דיגיטלי בלי להקים צוות מוצר</h2>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold text-gray-950">מה אפשר להתאים לכלי באתר המשרד?</h2>
         <p class="mt-4 text-gray-700 leading-relaxed">
-          המטרה היא לא להחליף את שיקול הדעת המקצועי, אלא לשפר את הדרך שבה המשרד מנגיש מידע ומכין פונים לשיחה.
+          רשימת הכנה, מיתוג וקישור המשך למשרד — בתכולה שתוגדר מראש בהצעה ובהסכם הרישוי.
         </p>
       </div>
 
@@ -134,6 +158,29 @@ const faq = [
       </div>
     </section>
 
+    <section class="max-w-6xl mx-auto px-4 pb-16 md:pb-20" aria-labelledby="pilot-scope-heading">
+      <div class="rounded-2xl border border-brand-light bg-brand-pale p-6 md:p-9">
+        <div class="grid gap-8 md:grid-cols-2">
+          <div>
+            <h2 id="pilot-scope-heading" class="text-2xl font-bold text-gray-950">פיילוט אחד, עם תכולה ברורה</h2>
+            <p class="mt-4 leading-relaxed text-gray-700">בפנייה הראשונה בודקים את אתר המשרד ואת מטרת הכלי. ההצעה לפיילוט מפרטת:</p>
+            <ul class="mt-5 list-disc space-y-3 ps-5 text-sm leading-relaxed text-gray-700">
+              <li>נושאי ההכנה ורשימת המסמכים שהמשרד יבדוק ויאשר.</li>
+              <li>התאמת לוגו, צבעים וניסוחים, ורשימה שאפשר להדפיס.</li>
+              <li>מיקום ההטמעה וקישור המשך ליצירת קשר עם המשרד.</li>
+              <li>בדיקות תצוגה במובייל, נגישות ותפעול; אחריות התחזוקה ותנאי הרישוי.</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-neutral-border bg-white p-6">
+            <h3 class="text-xl font-bold text-gray-950">למי כדאי לבדוק התאמה?</h3>
+            <p class="mt-3 text-sm leading-relaxed text-gray-700">למשרד בתחום הוצאה לפועל או חדלות פירעון, עם אתר פעיל ואיש צוות שיכול לאשר את התוכן ולתת משוב על ההכנה לפגישות.</p>
+            <p class="mt-4 text-sm leading-relaxed text-gray-700">אפשר לבחון כיוון נוסף בהמשך. בפיילוט מגדירים כלי אחד, תכולה ודרך לבחון אם הוא מועיל למשרד; אין התחייבות לכמות פניות או לתוצאה משפטית.</p>
+            <a href="/partners/demo/" rel="nofollow" data-growth-event="partner_demo_open" data-growth-placement="partners_offer" class="mt-5 inline-flex min-h-11 items-center font-bold text-brand-dark underline underline-offset-4 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark">ראו את רשימת ההכנה בהדגמה ←</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="how-it-works" class="border-y border-neutral-border bg-gray-50 scroll-mt-24">
       <div class="max-w-6xl mx-auto px-4 py-16 md:py-20">
         <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -141,16 +188,16 @@ const faq = [
             <p class="text-sm font-bold uppercase tracking-wider text-brand">פיילוט ממוקד</p>
             <h2 class="mt-3 text-3xl md:text-4xl font-bold text-gray-950">מתחילים קטן, מודדים, ורק אז מרחיבים</h2>
             <p class="mt-5 leading-relaxed text-gray-700">
-              במקום פרויקט גדול וארוך, בוחרים כלי אחד שמשרת צורך ברור באתר המשרד. לאחר ההטמעה בודקים שימוש, איכות פניות ומשוב מהצוות.
+              לפני ההתחלה מסכימים מה בודקים: האם הפונים מבינים את רשימת ההכנה, האם הכלי משתלב באתר ואיזה משוב מתקבל מצוות המשרד. המחיר, לוח הזמנים ותנאי ההמשך נקבעים בהצעה פרטנית.
             </p>
           </div>
 
           <ol class="space-y-4">
             {[
-              ['1', 'מיפוי קצר', 'מזהים את קהל היעד, השאלות החוזרות והכלי המתאים ביותר לפיילוט.'],
-              ['2', 'התאמה למשרד', 'מתאימים את המיתוג, הניסוחים, הגילויים וקישורי ההמשך.'],
-              ['3', 'הטמעה ובדיקה', 'מעלים את הכלי לסביבת המשרד ובודקים תצוגה, נגישות ושימוש במובייל.'],
-              ['4', 'מדידה והחלטה', 'בוחנים את תוצאות הפיילוט ומחליטים אם לשפר, להרחיב או לעצור.'],
+              ['1', 'בדיקת התאמה והצעה', 'בודקים את אתר המשרד ומגדירים כלי אחד, תכולה, עלות ולוח זמנים לפני תחילת העבודה.'],
+              ['2', 'התאמה ואישור תוכן', 'מתאימים את המיתוג ורשימת ההכנה. המשרד בודק ומאשר את התוכן המקצועי וקישור ההמשך.'],
+              ['3', 'הטמעה ובדיקה', 'בודקים את הכלי בסביבת המשרד, כולל מובייל, נגישות והדפסה, לפני העלאה לקהל.'],
+              ['4', 'משוב והחלטה', 'בוחנים שימושיות ומשוב מהצוות ומחליטים על המשך בהתאם לתנאים שסוכמו.'],
             ].map(([number, title, text]) => (
               <li class="flex gap-4 rounded-2xl border border-neutral-border bg-white p-5">
                 <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-dark font-bold text-white" aria-hidden="true">{number}</span>
@@ -216,19 +263,14 @@ const faq = [
       </div>
     </section>
 
-    <section class="max-w-5xl mx-auto px-4 py-16 md:py-24">
+    <section id="partner-contact" class="max-w-5xl mx-auto px-4 py-16 scroll-mt-24 md:py-24">
       <div class="overflow-hidden rounded-3xl bg-brand-dark px-6 py-12 text-center text-white shadow-xl md:px-12 md:py-16">
         <h2 class="text-3xl md:text-4xl font-bold">רוצים לבדוק אם פיילוט מתאים למשרד שלכם?</h2>
         <p class="mx-auto mt-4 max-w-2xl text-blue-100 leading-relaxed">
-          כתבו לנו באיזה תחום המשרד מתמקד, צרפו קישור לאתר וציינו איזה כלי הייתם רוצים להציע ללקוחות.
+          מספיק להתחיל בקישור לאתר המשרד, תחום העיסוק וההכנה שהייתם רוצים להציע לפונים.
+          משם נבחן התאמה ונגדיר הצעה לכלי אחד.
         </p>
-        <a
-          href={contactHref}
-          class="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-7 py-3 font-bold text-brand-dark transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-pale focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        >
-          שלחו פנייה לפיילוט
-        </a>
-        <p class="mt-4 text-sm text-blue-100">{contactEmail}</p>
+        <PartnerContact placement="partners_contact" tone="dark" />
       </div>
     </section>
 
