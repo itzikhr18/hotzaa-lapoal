@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import PartnerOffer from '../../components/PartnerOffer.astro';
 
 const toolsSchema = {
   '@context': 'https://schema.org',
@@ -33,7 +34,7 @@ const toolsSchema = {
     <Breadcrumb items={[{ label: 'כלים' }]} />
 
     <h1 class="text-3xl font-bold text-brand-dark mb-2">כלים חינמיים</h1>
-    <p class="text-gray-500 mb-10">ייחודיים בשוק — פותחנו אותם כי הם לא היו קיימים</p>
+    <p class="text-gray-500 mb-10">כלים להבנת המידע, הכנת נוסחים ואיתור המקורות הרשמיים</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -61,7 +62,7 @@ const toolsSchema = {
 
       <a href="/tools/noseach-bakasha/" class="group bg-white border-2 border-neutral-border rounded-2xl p-7 hover:border-brand hover:bg-brand-pale transition-all block">
         <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-2xl mb-4">✍️</div>
-        <div class="inline-block bg-teal-100 text-teal-700 text-xs font-bold px-2.5 py-1 rounded-full mb-3">חדש! מוכן להגשה</div>
+        <div class="inline-block bg-teal-100 text-teal-700 text-xs font-bold px-2.5 py-1 rounded-full mb-3">נוסח עזר לעריכה</div>
         <h2 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand-dark transition-colors">מחולל נוסח בקשה</h2>
         <p class="text-gray-500 text-sm leading-relaxed mb-4">
           בקשה מנוסחת לרשם תוך דקה: ביטול עיקול חשבון או משכורת,
@@ -106,6 +107,7 @@ const toolsSchema = {
       ⚠️ הכלים מיועדים להערכה ולמידע כללי בלבד. אינם מהווים ייעוץ משפטי.
     </div>
 
+    <PartnerOffer placement="tools_offer" />
   </main>
   <Footer />
 </BaseLayout>

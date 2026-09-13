@@ -3,10 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-
-const contactEmail = 'partners@hotzaa-lapoal.info';
-const contactSubject = encodeURIComponent('התעניינות בהדגמת כלי הכנה לפגישת ייעוץ');
-const contactHref = `mailto:${contactEmail}?subject=${contactSubject}`;
+import PartnerContact from '../../components/PartnerContact.astro';
 ---
 
 <BaseLayout
@@ -124,18 +121,19 @@ const contactHref = `mailto:${contactEmail}?subject=${contactSubject}`;
                 <button type="button" id="print-checklist" class="inline-flex min-h-11 items-center justify-center rounded-xl border border-brand-dark bg-white px-5 py-2 font-bold text-brand-dark hover:bg-gray-50">הדפסת הרשימה</button>
                 <button type="button" id="reset-checklist" class="inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-2 font-bold text-gray-700 hover:bg-white">התחלה מחדש</button>
               </div>
+              <a href="#office-pilot" class="demo-office-link mt-6 block text-sm font-bold text-brand-dark underline">למשרדי עורכי דין: כך מתאימים את הכלי לאתר שלכם</a>
             </section>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="max-w-4xl mx-auto px-4 py-14 text-center">
+    <section id="office-pilot" class="max-w-4xl mx-auto scroll-mt-24 px-4 py-14 text-center">
       <p class="text-sm font-bold uppercase tracking-wider text-brand">למשרדי עורכי דין</p>
       <h2 class="mt-3 text-3xl font-bold text-gray-950">כך הכלי יכול להיראות תחת המותג שלכם</h2>
       <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-gray-700">בפיילוט מתאימים את הנושאים, הניסוחים, הצבעים וקישור ההמשך לצורכי המשרד. התוכן המקצועי עולה רק לאחר אישור המשרד.</p>
-      <div class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a href={contactHref} class="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-brand-dark px-7 py-3 font-bold text-white hover:bg-brand sm:w-auto">בדיקת התאמה לפיילוט</a>
+      <PartnerContact placement="partners_demo" />
+      <div class="mt-4 flex justify-center">
         <a href="/partners/" class="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-neutral-border bg-white px-7 py-3 font-bold text-brand-dark hover:border-brand sm:w-auto">פרטים על מודל הרישוי</a>
       </div>
     </section>
@@ -256,6 +254,7 @@ const contactHref = `mailto:${contactEmail}?subject=${contactSubject}`;
     #build-checklist,
     #print-checklist,
     #reset-checklist,
+    .demo-office-link,
     main > section:last-of-type,
     [aria-label*="צ'אטבוט"] {
       display: none !important;

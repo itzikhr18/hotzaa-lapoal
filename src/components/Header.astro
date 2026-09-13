@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'טפסים', href: '/forms/' },
   { label: 'מילון', href: '/milon/' },
   { label: 'שאלות נפוצות', href: '/faq/' },
+  { label: 'למשרדי עורכי דין', href: '/partners/' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -21,10 +22,12 @@ const currentPath = Astro.url.pathname;
     </a>
 
     <!-- Desktop nav -->
-    <nav class="hidden lg:flex items-center gap-6" aria-label="ניווט ראשי">
+    <nav class="hidden lg:flex items-center gap-3 xl:gap-5" aria-label="ניווט ראשי">
       {navLinks.map(link => (
         <a
           href={link.href}
+          data-growth-event={link.href === '/partners/' ? 'partner_offer_open' : undefined}
+          data-growth-placement={link.href === '/partners/' ? 'header_desktop' : undefined}
           class={`text-sm font-medium transition-colors hover:text-brand-dark ${
             currentPath.startsWith(link.href)
               ? 'text-brand-dark border-b-2 border-brand-dark pb-0.5'
@@ -62,10 +65,12 @@ const currentPath = Astro.url.pathname;
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden lg:hidden border-t border-neutral-border bg-white">
-    <nav class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1">
+    <nav class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1" aria-label="ניווט במובייל">
       {navLinks.map(link => (
         <a
           href={link.href}
+          data-growth-event={link.href === '/partners/' ? 'partner_offer_open' : undefined}
+          data-growth-placement={link.href === '/partners/' ? 'header_mobile' : undefined}
           class={`text-sm font-medium py-2.5 px-3 rounded-lg hover:bg-brand-pale hover:text-brand-dark transition-colors ${
             currentPath.startsWith(link.href)
               ? 'bg-brand-pale text-brand-dark font-semibold'

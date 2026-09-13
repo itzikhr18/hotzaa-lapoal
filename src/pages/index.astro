@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTAForm from '../components/CTAForm.astro';
+import PartnerOffer from '../components/PartnerOffer.astro';
 import { socialUrls } from '../data/site';
 
 const websiteSchema = {
@@ -64,16 +65,6 @@ const homeFaqSchema = {
     },
     {
       '@type': 'Question',
-      name: 'האם יש התיישנות על חובות בהוצאה לפועל?',
-      acceptedAnswer: { '@type': 'Answer', text: 'חוב אזרחי מתיישן לאחר 7 שנים אם הנושה לא פעל. חוב שנקבע בפסק דין — 25 שנה. חשוב: תשלום חלקי או הודאה בחוב מאפסים את שעון ההתיישנות.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'קיבלתי תביעה כערב — מה עושים?',
-      acceptedAnswer: { '@type': 'Answer', text: 'אם ערבת לחוב אישי עד 89,311.66 ₪ (או עד 744,263.82 ₪ בערבות לרכישת דירה — סכומים מוצמדים למדד, מתעדכנים פעמיים בשנה) — ייתכן שאתה ערב מוגן. הנושה חייב לנסות לגבות מהחייב קודם. יש לך לרוב 30 יום להגיש התנגדות מרגע קבלת האזהרה (בדקו את המועד המדויק במכתב).' },
-    },
-    {
-      '@type': 'Question',
       name: 'האם אפשר לבדוק אם יש נגדי תיק הוצאה לפועל?',
       acceptedAnswer: { '@type': 'Answer', text: 'כן. ניתן לבדוק דרך מערכת הוצל"פ נט באתר gov.il או לפנות ישירות ללשכת הוצאה לפועל עם תעודת זהות. ראה מדריך בדיקת תיק.' },
     },
@@ -97,13 +88,11 @@ const compareOptions = [
   { key: 'chdlp', name: 'חדלות פירעון', href: '/guides/pshitat-regel/' },
 ];
 const compareRows = [
-  { criterion: 'מה זה?',        tzav: 'פריסת חוב לתשלומים חודשיים', ichud: 'איחוד כל התיקים לתשלום אחד', chdlp: 'הליך שיקום + מחיקת חובות' },
-  { criterion: 'החוב נמחק?',    tzav: 'לא', ichud: 'לא', chdlp: 'כן — בהפטר, כ-3 שנים מצו ההליכים' },
-  { criterion: 'מינימום חוב',   tzav: 'אין', ichud: 'צריך מספר תיקים', chdlp: '58,794 ₪ (2026)' },
-  { criterion: 'עיקולים?',      tzav: 'מוקפאים בזמן הצו', ichud: 'מוקפאים מרגע אישור', chdlp: 'נעצרים בפתיחת הליך' },
-  { criterion: 'עלות',          tzav: 'כמה עשרות ₪', ichud: 'כמה עשרות ₪', chdlp: 'אגרה 900 ₪ + עו״ד (משוערך)' },
-  { criterion: 'משך',           tzav: 'עד פירעון מלא', ichud: 'עד פירעון מלא', chdlp: 'כ-3 שנים מצו / כ-4 מהגשה' },
-  { criterion: 'מתאים למי?',    tzav: 'חוב אחד, הכנסה קבועה', ichud: 'חובות מרובים', chdlp: 'חוב גדול, אין יכולת לפרוע' },
+  { criterion: 'מה זה?', tzav: 'בקשה לפריסת תשלום בתיק', ichud: 'בקשה לתשלום מרוכז בתיקים שניתן לאחד', chdlp: 'הליך לבחינת חדלות פירעון ושיקום כלכלי' },
+  { criterion: 'מה בודקים?', tzav: 'פירוט התיק והיכולת לעמוד בתשלום', ichud: 'סוגי התיקים והיכולת לעמוד בתנאי האיחוד', chdlp: 'חובות, נכסים, הכנסות ותנאי ההליך' },
+  { criterion: 'עיקולים?', tzav: 'אין להניח שהגשת הבקשה מעכבת הליכים', ichud: 'לפי החלטת הרשם ותנאי הצו', chdlp: 'לפי שלב ההליך והצו שניתן' },
+  { criterion: 'עלות ומשך', tzav: 'יש לבדוק לפי הבקשה וההחלטה בתיק', ichud: 'יש לבדוק לפי הבקשה וההחלטה בתיקים', chdlp: 'יש לבדוק אגרות עדכניות ותנאי ההליך במקור הרשמי' },
+  { criterion: 'מה הצעד הבא?', tzav: 'בדיקת המדריך והטופס הרלוונטי', ichud: 'בדיקה אילו תיקים נכללים בבקשה', chdlp: 'בירור תנאי ההליך והגורם המוסמך' },
 ];
 ---
 
@@ -302,6 +291,8 @@ const compareRows = [
       </div>
     </section>
 
+    <div class="px-4"><PartnerOffer placement="home_offer" /></div>
+
     <!-- PROCESS STEPS -->
     <section class="bg-gray-50 border-y border-neutral-border py-14">
       <div class="max-w-4xl mx-auto px-4">
@@ -462,8 +453,8 @@ const compareRows = [
     <section class="bg-gray-50 border-y border-neutral-border py-14">
       <div class="max-w-4xl mx-auto px-4">
         <div class="text-center mb-8">
-          <h2 class="text-2xl font-bold text-brand-dark mb-2">איזה הסדר מתאים לך?</h2>
-          <p class="text-gray-500 text-sm">השוואה מהירה בין שלוש האפשרויות הנפוצות</p>
+          <h2 class="text-2xl font-bold text-brand-dark mb-2">מה כדאי לבדוק לפני בחירת מסלול להסדרת החוב?</h2>
+          <p class="text-gray-500 text-sm">השוואה כללית לקראת בירור מקצועי</p>
         </div>
         <!-- Desktop: table -->
         <div class="hidden md:block">
@@ -503,6 +494,7 @@ const compareRows = [
             </div>
           ))}
         </div>
+        <p class="mt-5 text-sm leading-relaxed text-gray-600">עיכוב או ביטול הליכים תלויים במסלול ובהחלטה שניתנה. הגשת בקשה לבדה אינה מבטלת עיקולים. ראו את המידע הרשמי על <a href="https://www.gov.il/he/service/delay_processes" class="text-brand underline">בקשה לעיכוב הליכים</a> ועל <a href="https://www.gov.il/he/service/request_for_consolidation_portfolio" class="text-brand underline">בקשה לאיחוד תיקים</a>.</p>
         <div class="flex flex-wrap gap-3 justify-center mt-6">
           <a href="/guides/tzav-tashlumim/" class="text-sm font-medium text-brand hover:text-brand-dark transition-colors">מדריך צו תשלומים ←</a>
           <span class="text-neutral-border">|</span>
@@ -520,9 +512,9 @@ const compareRows = [
         <!-- POPULAR GUIDES -->
     <section class="max-w-4xl mx-auto px-4 py-14">
       <div class="text-center mb-8">
-        <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">הכי מבוקש</p>
-        <h2 class="text-3xl font-bold text-gray-900 mb-2">המדריכים הפופולריים ביותר</h2>
-        <p class="text-gray-500 text-sm">הדפים שחייבים קוראים הכי הרבה</p>
+        <p class="text-brand text-sm font-bold uppercase tracking-wide mb-2">מדריכים להתחלה</p>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">מדריכים בנושאים מרכזיים</h2>
+        <p class="text-gray-500 text-sm">בדיקת תיק, הסדרת חובות והבנת פירוט החוב</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <a href="/guides/bdika-tik/" class="group border-2 border-neutral-border rounded-2xl p-6 bg-white hover:border-brand hover:bg-brand-pale transition-all">
@@ -553,22 +545,13 @@ const compareRows = [
         <h2 class="text-3xl font-bold text-gray-900 mb-2">שאלות שכולם שואלים</h2>
       </div>
       <div class="space-y-3 max-w-2xl mx-auto">
-        {[
-          { q: 'כמה זמן יש לי להגיב אחרי קבלת מכתב הוצאה לפועל?', a: 'לרוב יש 30 יום מיום המצאת האזהרה להגיב או לשלם. בחלק מסוגי התיקים התקופה עשויה להיות קצרה יותר — בדקו את המועד המדויק במכתב שקיבלתם. לאחר תקופה זו הנושה רשאי לבקש עיקולים והגבלות. חשוב לפעול מיד ולא להמתין.' },
-          { q: 'האם ניתן לפרוס חוב לתשלומים?', a: 'כן. ניתן להגיש בקשה לצו תשלומים לרשם ההוצאה לפועל. הרשם קובע סכום חודשי לפי יכולתך הכלכלית. ברוב המקרים, כל עוד עומדים בצו, ניתן למנוע או לצמצם עיקולים חדשים — אך ההחלטה הסופית היא של הרשם.' },
-          { q: 'אילו כספים לא ניתן לעקל?', a: 'ברוב המקרים קצבאות ביטוח לאומי (ילדים, נכות, זקנה, שאירים) ושכר בגובה שכר ההגנה נהנים מהגנה מיוחדת מפני עיקול. ההגנה תלויה בסוג ההכנסה, באופן ההפקדה ובהוראות הדין.' },
-          { q: 'מה זה תיקון 9 ואיך הוא משפיע עליי?', a: 'מאז תיקון 9 (ינואר 2025) שיטת חישוב הריבית בהוצאה לפועל השתנתה. הריבית מורכבת מריבית ייחוס בתוספת מרכיב דמי פיגורים שנתיים. חוב שלא מוסדר ממשיך לגדול — חשוב להבין את החישוב המדויק בתיק שלך.' },
-          { q: 'מתי כדאי לשקול חדלות פירעון?', a: 'כשסך החובות גדול משמעותית מהיכולת לשלמם, ואין נכסים לממש. בדרך כלל ניתן לקבל הפטר כ-3 שנים מצו פתיחת ההליכים, וכ-4 שנים מהגשה ועד הפטר.' },
-          { q: 'האם אפשר לבדוק אם יש נגדי תיק הוצאה לפועל?', a: 'כן. ניתן לבדוק דרך מערכת הוצל"פ נט באתר gov.il או לפנות ישירות ללשכת הוצאה לפועל עם תעודת זהות. ראה מדריך בדיקת תיק.' },
-          { q: 'כמה זמן נמשך הליך הוצאה לפועל?', a: 'תלוי בהסדר: צו תשלומים — לפי יכולתך (1-10 שנים). איחוד תיקים — בדרך כלל 3-7 שנים. חדלות פירעון — כ-3 שנים מצו פתיחת ההליכים (כ-4 שנים מהגשה ועד הפטר). תשלום מלא — מיידי.' },
-          { q: 'האם הוצאה לפועל משפיעה על דירוג האשראי?', a: 'כן. תיק פעיל בהוצאה לפועל מדווח ללשכות נתוני האשראי, ועלול לפגוע ביכולת לקבל הלוואות, משכנתא וחוזים עסקיים. אחרי סגירת התיק, נתוני האשראי עשויים להשתפר בהדרגה.' },
-        ].map(faq => (
+        {homeFaqSchema.mainEntity.map(faq => (
           <details class="border border-neutral-border rounded-xl group bg-white">
             <summary class="p-4 font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-xl list-none flex justify-between items-center">
-              {faq.q}
+              {faq.name}
               <span class="text-neutral-muted group-open:rotate-180 transition-transform flex-shrink-0 mr-3">▼</span>
             </summary>
-            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.a}</p>
+            <p class="px-4 pb-4 text-gray-600 text-sm">{faq.acceptedAnswer.text}</p>
           </details>
         ))}
       </div>
