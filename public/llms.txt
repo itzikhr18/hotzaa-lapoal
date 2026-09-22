@@ -5,6 +5,7 @@
 ## נקודות התחלה
 
 - [בדיקת תיק הוצאה לפועל](https://hotzaa-lapoal.info/guides/bdika-tik/): ניווט לאזור האישי הממשלתי והסבר על בדיקת מידע בתיק.
+- [איתור חייבים — מידע לזוכים](https://hotzaa-lapoal.info/guides/itur-hayavim/): מה פתוח לציבור, בקשת מידע על חייב בתוך תיק, ואישור היעדר תיקים.
 - [מכתב מהוצאה לפועל](https://hotzaa-lapoal.info/guides/michtav-hotzaa/): זיהוי סוג המסמך ובירור המועד והתגובה המתאימים לו.
 - [טפסים להוצאה לפועל](https://hotzaa-lapoal.info/forms/): קישורים לטפסים רשמיים ולהנחיות הגשה.
 - [מדריכים לפי נושא](https://hotzaa-lapoal.info/guides/)
@@ -14,7 +15,8 @@
 ## עיקולים וזכויות
 
 - [עיקול חשבון בנק](https://hotzaa-lapoal.info/guides/ikul-heshbon/)
-- [עיקול משכורת](https://hotzaa-lapoal.info/guides/ikul-maskoret/)
+- [עיקול משכורת — הסכום המוגן](https://hotzaa-lapoal.info/guides/ikul-maskoret/)
+- [ביטול עיקול משכורת](https://hotzaa-lapoal.info/guides/bitul-ikul-maskoret/): נימוקים, טופס 214, מסמכים ובקשה דחופה.
 - [ביטול עיקול](https://hotzaa-lapoal.info/guides/bitul-ikul/)
 - [כספים מוגנים](https://hotzaa-lapoal.info/rights/skhomim-mugganim/)
 - [דירת מגורים](https://hotzaa-lapoal.info/rights/bayit-muggan/)
