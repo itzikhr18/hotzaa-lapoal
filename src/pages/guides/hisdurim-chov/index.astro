@@ -1,93 +1,195 @@
 ---
 import GuideLayout from '../../../layouts/GuideLayout.astro';
 
+const EXEC_LAW = 'https://www.btl.gov.il/Laws1/00_0063_000000.pdf';
+const CLOSE = 'https://www.gov.il/he/service/file_closure_request-5';
+
 const faqs = [
   {
-    "q": "כמה אחוזים מהחוב אפשר להפחית בהסדר?",
-    "a": "אין שיעור מובטח או מחירון רשמי להסדר פרטי. כל הסכמה תלויה בצדדים ובתנאיה, וייתכן שלא תושג הפחתה."
+    q: 'איך מגיעים להסדר חוב בהוצאה לפועל?',
+    a: 'פונים לעורך הדין של הזוכה, שפרטיו מופיעים בתיק, עם הצעה כתובה: סכום, לוח תשלומים ובקשה לביטול ההליכים בסיום. כשמגיעים להסכמה, מעגנים אותה בכתב. לפי רשות האכיפה והגבייה, אחרי ההסדר הזוכה מגיש בקשה לביטול ההליכים.',
+    source: 'https://www.gov.il/he/service/foreclosure_cancellation_request',
   },
   {
-    "q": "האם הסדר חייב תמיד להיות בכתב כדי להיות תקף?",
-    "a": "אין כלל גורף כזה: הדין או ההסכמה עשויים לדרוש צורה מסוימת. תיעוד כתוב חשוב להוכחת ההסכמה ותנאיה, ויש לבדוק את המקרה לגופו."
+    q: 'כמה אחוזים מהחוב אפשר להפחית בהסדר?',
+    a: 'אין שיעור מובטח או מחירון רשמי להסדר פרטי. כל הסכמה תלויה בצדדים, והנושה לא חייב לקבל הצעת פשרה. ייתכן שלא תושג הפחתה כלל.',
+    source: EXEC_LAW,
   },
   {
-    "q": "האם חתימה על הסדר סוגרת מיד את תיק ההוצאה לפועל?",
-    "a": "אין להניח כך. יש לבדוק דיווח על ההסדר והתשלומים, עדכון יתרה והחלטות סגירה או ביטול הליכים. נושים ותיקים שאינם חלק מההסדר מצריכים בדיקה נפרדת."
-  }
+    q: 'האם הסדר חייב להיות בכתב כדי להיות תקף?',
+    a: 'אין כלל גורף כזה. לפי סעיף 23 לחוק החוזים, חוזה יכול להיעשות גם בעל פה, אלא אם הדין או ההסכמה דורשים צורה מסוימת. אבל רק תיעוד כתוב וברור מאפשר להוכיח מה הוסכם, ולכן מומלץ תמיד להסדיר בכתב.',
+    source: 'https://www.gov.il/BlobFolder/dynamiccollectorresultitem/decision35445-01-17/he/35445-01-17.pdf',
+  },
+  {
+    q: 'האם חתימה על הסדר סוגרת מיד את תיק ההוצאה לפועל?',
+    a: 'לא. צריך שהזוכה ידווח על ההסדר ויגיש בקשה לביטול ההליכים או לסגירת התיק. גם חייב יכול להגיש בקשה לסגירת תיק בטופס 406. בודקים באזור האישי שההחלטה ניתנה ושהעיקולים וההגבלות הוסרו.',
+    source: CLOSE,
+  },
+  {
+    q: 'מה קורה אם לא עומדים בהסדר?',
+    a: 'לפי סעיף 19ב לחוק ההוצאה לפועל, כשהזוכה מודיע ללשכה על הסדר, ההליכים בתיק מעוכבים כל עוד הוא לא הודיע על הפרה. אחרי הפרה, כדי לחדש הליכים הזוכה צריך לדווח על התשלומים שקיבל, לשלוח לכם הודעה בדואר רשום עם פירוט התשלומים והיתרה המעודכנת, ולהגיש בקשה לחידוש רק אחרי 15 ימים. לכן חשוב שההסכם יגדיר מה נחשב הפרה, ושתתחייבו רק למה שתוכלו לעמוד בו.',
+    source: EXEC_LAW,
+  },
 ];
-const sources = [
-  {
-    "label": "חוק ההוצאה לפועל — סעיפים 19א–19ב",
-    "href": "https://www.btl.gov.il/Laws1/00_0063_000000.pdf"
-  },
-  {
-    "label": "פסק דין רשמי — צורת חוזה והוכחת הסכמה",
-    "href": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/decision35445-01-17/he/35445-01-17.pdf"
-  },
-  {
-    "label": "חוק חדלות פירעון — תיקון מספר 9 (2026)",
-    "href": "https://fs.knesset.gov.il/25/law/25_lsr_10981603.pdf"
-  },
-  {
-    "label": "רשות האכיפה — בקשה לסגירת תיק",
-    "href": "https://www.gov.il/he/service/file_closure_request-5"
-  },
-  {
-    "label": "בנק ישראל — תיקון מידע",
-    "href": "https://www.creditdata.org.il/information/guide-3/"
-  }
-];
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
 };
+
+const sources = [
+  { label: 'חוק ההוצאה לפועל — סעיפים 19א–19ב', href: EXEC_LAW },
+  { label: 'רשות האכיפה — הסדר עם הזוכה וביטול הליכים (דף ביטול עיקול עו"ש)', href: 'https://www.gov.il/he/service/foreclosure_cancellation_request' },
+  { label: 'רשות האכיפה — בקשה לסגירת תיק', href: CLOSE },
+  { label: 'פסק דין רשמי — צורת חוזה והוכחת הסכמה', href: 'https://www.gov.il/BlobFolder/dynamiccollectorresultitem/decision35445-01-17/he/35445-01-17.pdf' },
+  { label: 'חוק חדלות פירעון — תיקון מספר 9 (2026)', href: 'https://fs.knesset.gov.il/25/law/25_lsr_10981603.pdf' },
+  { label: 'בנק ישראל — תיקון מידע במערכת נתוני אשראי', href: 'https://www.creditdata.org.il/information/guide-3/' },
+];
+
+const relatedGuides = [
+  { title: 'סגירת תיק הוצאה לפועל', href: '/guides/sgor-tik/' },
+  { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
+  { title: 'איחוד תיקים', href: '/guides/ichud-tikim/' },
+  { title: 'בדיקת תיק ויתרה', href: '/guides/bdika-tik/' },
+  { title: 'התיישנות חוב', href: '/guides/hitiyashnoot-chov/' },
+  { title: 'חדלות פירעון', href: '/insolvency/' },
+];
 ---
 
 <GuideLayout
-  title="הסדר חוב עם נושה: תיעוד, דיווח וסגירת תיק הוצאה לפועל"
-  description="מה לבדוק בהסדר חוב: תנאי הסכמה, סמכות הנציג, ריבית, דיווח על תשלומים וסגירת תיק. ההבדל מהסדר בבית משפט, בלי הבטחת הנחה."
-  breadcrumb={[{"label":"מדריכים","href":"/guides/"},{"label":"הסדר חוב עם נושה: תיעוד, דיווח וסגירת תיק הוצאה לפועל","href":"/guides/hisdurim-chov/"}]}
+  title="הסדר חוב בהוצאה לפועל: איך מגיעים להסכם — עם דוגמה למכתב ולהסכם"
+  description="איך מגיעים להסדר חוב עם הזוכה בהוצאה לפועל: בדיקת יתרה, פנייה לעורך הדין של הזוכה, מכתב הצעה לדוגמה, מה חייב להופיע בהסכם הסדר חוב, ואיך מוודאים שהתיק נסגר והעיקולים ירדו."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'הסדר חוב', href: '/guides/hisdurim-chov/' }]}
   publishDate="2026-03-29"
-  updateDate="2026-09-13"
-  readTime="5 דקות"
+  updateDate="2026-10-05"
+  readTime="8 דקות"
   sources={sources}
+  relatedGuides={relatedGuides}
   schema={[faqSchema]}
 >
-  <p>הסדר חוב יכול לקבוע תנאים מוסכמים לתשלום ולסיום חוב, אך הנושה אינו חייב לקבל הצעת פשרה פרטית. אין שיעור הנחה, משך משא ומתן או סכום סף שמבטיחים הסכמה. לפני פעולה חשוב להבין גם את ההשפעה על תיקי ההוצאה לפועל ועל נושים אחרים.</p>
-  <div class="warn-box"><p>מידע כללי לציבור, לא קביעת זכאות או ייעוץ משפטי אישי. במקרה של סתירה, הדין וההחלטות בתיק גוברים. אין להפסיק תשלומים או להתעלם ממועד באזהרה על סמך מדריך זה.</p></div>
+  <div class="info-box">
+    <p class="mb-2"><strong>התשובה הקצרה:</strong> הסדר חוב הוא הסכם ישיר עם הזוכה: כמה תשלמו, מתי, ומה קורה לתיק בסוף. פונים בכתב לעורך הדין של הזוכה, שפרטיו מופיעים בתיק, עם הצעה ריאלית.</p>
+    <p class="mb-0">מעגנים כל הסכמה בהסכם כתוב, שבו הזוכה מתחייב להגיש בקשה לביטול ההליכים ולסגירת התיק. הנושה לא חייב להסכים, ואין "אחוז פשרה" מובטח. <a href="#letter">דוגמה למכתב הצעה</a> · <a href="#agreement">מה חייב להופיע בהסכם</a>.</p>
+  </div>
 
-  <section id="what-is"><h2>הסדר פרטי, צו תשלומים והסדר בבית משפט</h2>
-  <p>הסדר פרטי מבוסס על הסכמה בין הצדדים. הוא יכול לכלול שינוי מועדי תשלום, טיפול בריבית או ויתור מוסכם על חלק מהחוב — אם הוסכם כך. <a href="/guides/tzav-tashlumim/">צו תשלומים</a> הוא החלטה במסגרת הוצאה לפועל, ואינו הסכם פרטי למחיקת קרן.</p>
-  <p>קיים גם מסלול משפטי לאישור הסדר חוב ולעיכוב הליכים לצורך גיבושו, בכפוף להחלטת בית המשפט ותנאי החוק. <a href="https://fs.knesset.gov.il/25/law/25_lsr_10981603.pdf" target="_blank" rel="noopener noreferrer">תיקון מספר 9 לחוק חדלות פירעון, שפורסם בינואר 2026</a>, עוסק בין היתר במסגרת זו. <a href="https://www.gov.il/he/service/submitting-copy-single-application-stay-of-proceedings" target="_blank" rel="noopener noreferrer">השירות הרשמי למסירת העתק בקשת עיכוב לממונה</a> אינו אישור אוטומטי להסדר או לעיכוב.</p></section>
-  <section id="types"><h2>מה יכולים לכלול תנאי ההסדר?</h2>
-  <ul><li>סכום כולל מוסכם ומועדי תשלום.</li><li>הוראות מפורשות לגבי ריבית, הצמדה והוצאות בתקופת ההסדר.</li><li>מה נעשה בהליכים קיימים ומי מדווח על ההסדר ועל התשלומים.</li><li>התנאים לסיום החוב ולסגירת התיק, והמשמעות של אי־עמידה בתנאים.</li></ul>
-  <p>אין בעמוד זה ״אחוזי פשרה מקובלים״, אומדן מחיר שבו נמכר חוב או המלצה לגייס כסף מבני משפחה. סכום מוסכם בתיק אחר אינו ראיה למה שיוסכם במקרה שלכם.</p></section>
-  <section id="when-creditor"><h2>מה לבדוק לפני פנייה לנושה?</h2>
-  <p>ב<a href="/guides/bdika-tik/">בדיקת התיק</a> אפשר לברר מי הזוכה, מה יתרת החוב ואילו הליכים ננקטו. כאשר פונים באמצעות נציג או חברת גבייה, יש לבדוק את זהות הנושה ואת סמכות הנציג להגיע להסדר בשמו. גם נציג מוסמך יכול לפעול בשם נושה; לא רק מי שרכש חוב יכול לחתום.</p>
-  <p>אם החוב מוכחש או שקיימת טענת <a href="/guides/hitiyashnoot-chov/">התיישנות</a>, יש לברר את משמעות ההודאה או התשלום לפני משלוח נוסח. אין להסיק מחוב ישן שהתיק התיישן או שהנושה יסכים להפחתה.</p></section>
-  <section id="how-to-negotiate"><h2>רשימת בדיקה לתיעוד ההסדר</h2>
-  <ol><li>משווים את פירוט החוב, התשלומים שכבר בוצעו וההחלטות בתיק.</li><li>מזהים אילו נושים וחובות נכללים בהצעה ואילו אינם נכללים.</li><li>מבהירים מה בדיוק הוסכם לגבי סכום, מועדים, ריבית, הפרה וסגירה.</li><li>מבקשים תיעוד כתוב וברור של ההסכמה ושל סמכות החותם.</li><li>שומרים קבלות ואישורי דיווח, ועוקבים אחר עדכון יתרת התיק.</li></ol>
-  <p>זו רשימת נושאים לבירור, לא נוסח חוזה ולא הוראה לשנות תשלומים קיימים. אין להניח שהמשא ומתן עצמו עוצר הליכי גבייה.</p></section>
-  <section id="letter-template"><h2>האם הסדר בעל פה חסר תוקף?</h2>
-  <p>לא נכון לקבוע שכל הסדר בעל פה אינו מחייב. לפי סעיף 23 לחוק החוזים, צורת החוזה אינה חייבת תמיד להיות בכתב, אלא אם הדין או ההסכמה דורשים צורה מסוימת. עם זאת, תיעוד כתוב וברור חשוב להוכחת ההסכמה ותנאיה. ראו <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/decision35445-01-17/he/35445-01-17.pdf" target="_blank" rel="noopener noreferrer">פסק דין רשמי המבהיר את הכלל ואת הצורך להוכיח הסכמה</a>.</p></section>
-  <section id="after-deal"><h2>דיווח על הסדר, תשלומים וסגירת תיק</h2>
-  <p>לפי סעיפים 19א–19ב לחוק ההוצאה לפועל, קיימות הוראות לדיווח על תקבולים ועל הסדר ישיר עם החייב, ולחידוש הליכים לאחר הפרתו. יש להבחין בין משא ומתן, הסדר שדווח ותיק שנסגר. המקור: <a href="https://www.btl.gov.il/Laws1/00_0063_000000.pdf" target="_blank" rel="noopener noreferrer">חוק ההוצאה לפועל במאגר החקיקה הרשמי של הביטוח הלאומי</a>.</p>
-  <p>גם חייב וגם זוכה יכולים להשתמש ב<a href="https://www.gov.il/he/service/file_closure_request-5" target="_blank" rel="noopener noreferrer">שירות הרשמי לבקשה לסגירת תיק או להסרת חייב</a>, לפי התנאים והאסמכתאות. אין להניח שהסדר פרטי סגר כבר את התיק: בודקים יתרה, החלטה וביצוע בפועל.</p>
-  <p>הסרת הגבלה בתיק אחד אינה מבטלת הגבלה פעילה בתיק אחר. ראו <a href="https://www.gov.il/he/service/request_for_cancellation_of_restrictions" target="_blank" rel="noopener noreferrer">הנחיות רשמיות לביטול הגבלות</a> ואת <a href="/guides/bitul-ikul/">מדריך ביטול עיקול</a>.</p></section>
-  <section id="traps"><h2>מה לא כדאי להניח?</h2>
-  <ul><li>שתשלום חלקי מקפיא לבדו כל ריבית או סוגר את כל החוב.</li><li>שהסדר פרטי עם נושה אחד מחייב נושה אחר.</li><li>שסגירת תיק מוחקת מיד כל מידע בנתוני האשראי.</li><li>שהסדר או חדלות פירעון הם המסלול ״הטוב ביותר״ מעל סכום קבוע.</li></ul>
-  <p>אם יש טעות בדיווח נתוני אשראי, אפשר לפנות ל<a href="https://www.creditdata.org.il/information/guide-3/" target="_blank" rel="noopener noreferrer">שירות תיקון מידע בבנק ישראל</a>. השלכות מס, בטוחות וערבויות אינן נבחנות במדריך זה ומצריכות בדיקה נפרדת לפי העניין.</p></section>
-  <section id="comparison"><h2>אם לא מגיעים להסכמה</h2>
-  <p>אפשר ללמוד על <a href="/guides/tzav-tashlumim/">בקשה לצו תשלומים</a>, <a href="/guides/ichud-tikim/">איחוד תיקים</a> ועל <a href="/insolvency/">חדלות פירעון</a>. לכל מסלול תנאים והשלכות; אין כאן המלצה אישית לבחור באחד מהם. הגשת בקשת חדלות פירעון אינה מעניקה עיכוב אוטומטי, כפי שמבהיר <a href="https://www.gov.il/BlobFolder/policy/opening-insolvency-request-regulation/he/Forms_insolvency-guide.pdf" target="_blank" rel="noopener noreferrer">מדריך ההגשה הרשמי</a>.</p></section>
+  <p>הרבה תיקים בהוצאה לפועל נגמרים בהסכם ולא בהחלטה של רשם. לזוכה יש אינטרס לקבל כסף בטוח ומהר, ולכם יש אינטרס לסגור את התיק, להוריד עיקולים ולהפסיק את צבירת הריבית. אבל הסדר שלא מתועד נכון עלול להשאיר את התיק פתוח גם אחרי ששילמתם. כך עושים את זה נכון.</p>
+
+  <h2 id="what-is">הסדר פרטי, צו תשלומים או הסדר בבית משפט?</h2>
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מסלול</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מי מחליט</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה אפשר לקבל</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הסדר פרטי עם הזוכה</td>
+          <td class="border border-gray-300 px-4 py-2">הצדדים, בהסכמה</td>
+          <td class="border border-gray-300 px-4 py-2">פריסה, ויתור על ריבית או על חלק מהחוב — רק אם הזוכה מסכים</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold"><a class="text-brand underline" href="/guides/tzav-tashlumim/">צו תשלומים</a></td>
+          <td class="border border-gray-300 px-4 py-2">רשם ההוצאה לפועל</td>
+          <td class="border border-gray-300 px-4 py-2">פריסה לפי היכולת. אין מחיקה של קרן החוב</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold"><a class="text-brand underline" href="/guides/ichud-tikim/">איחוד תיקים</a></td>
+          <td class="border border-gray-300 px-4 py-2">רשם ההוצאה לפועל</td>
+          <td class="border border-gray-300 px-4 py-2">תשלום אחד לכמה תיקים, לפחות 3% מסך החובות</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הסדר חוב בבית משפט / <a class="text-brand underline" href="/insolvency/">חדלות פירעון</a></td>
+          <td class="border border-gray-300 px-4 py-2">בית המשפט או הממונה, לפי החוק</td>
+          <td class="border border-gray-300 px-4 py-2">מסגרת לכלל הנושים, כולל מחיקת חובות בסוף ההליך, בתנאים</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm"><a href="https://fs.knesset.gov.il/25/law/25_lsr_10981603.pdf" target="_blank" rel="noopener noreferrer">תיקון מספר 9 לחוק חדלות פירעון</a>, שפורסם בינואר 2026, עוסק בין היתר במסלול לאישור הסדר חוב ולעיכוב הליכים לצורך גיבושו, בכפוף להחלטת בית המשפט ותנאי החוק. <a href="https://www.gov.il/he/service/submitting-copy-single-application-stay-of-proceedings" target="_blank" rel="noopener noreferrer">מסירת העתק בקשת עיכוב לממונה</a> אינה אישור אוטומטי של הסדר או של עיכוב.</p>
+
+  <h2 id="steps">איך מגיעים להסדר — 6 צעדים</h2>
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>בודקים את היתרה המדויקת.</strong> הורידו דף חשבון מהאזור האישי: קרן, ריבית, הוצאות ותשלומים שכבר בוצעו. אי אפשר לנהל משא ומתן בלי לדעת על כמה מדברים. <a href="/guides/bdika-tik/">בדיקת תיק ויתרה</a>.</span></li>
+    <li><span class="step-num">2</span><span><strong>מחליטים מה באמת אפשר לשלם.</strong> סכום חד-פעמי מוגבל, או סכום חודשי שתוכלו לעמוד בו לאורך זמן. הצעה שלא תעמדו בה גרועה יותר מהצעה צנועה.</span></li>
+    <li><span class="step-num">3</span><span><strong>מזהים עם מי מדברים.</strong> פרטי עורך הדין של הזוכה מופיעים בתיק. אם פונה אליכם חברת גבייה או נציג, בקשו לראות שהוא מוסמך להגיע להסדר בשם הנושה.</span></li>
+    <li><span class="step-num">4</span><span><strong>שולחים הצעה בכתב,</strong> בדוא"ל או במכתב, ושומרים העתק. <a href="#letter">דוגמה בהמשך</a>.</span></li>
+    <li><span class="step-num">5</span><span><strong>מעגנים את ההסכמה בהסכם כתוב</strong> לפני שמשלמים, עם כל הסעיפים החשובים. <a href="#agreement">רשימת הסעיפים</a>.</span></li>
+    <li><span class="step-num">6</span><span><strong>משלמים בדרך שאפשר להוכיח</strong> — העברה בנקאית, או תשלום דרך מערכת ההוצאה לפועל — ומוודאים שהתיק נסגר. <a href="#after-deal">מה בודקים אחרי</a>.</span></li>
+  </ol>
+
+  <div class="warn-box">
+    <p class="font-semibold mb-1">לפני שכותבים: חוב ישן או חוב שאתם מכחישים</p>
+    <p class="mb-0">אם אתם סבורים שהחוב <a href="/guides/hitiyashnoot-chov/">התיישן</a>, או שאתם חולקים על עצם החוב, בררו קודם עם עורך דין או עם <a href="https://www.gov.il/he/service/legal_aid_application">הסיוע המשפטי</a> מה המשמעות של הודאה בכתב או של תשלום. מכתב שמודה בחוב עלול להשפיע על טענות כאלה.</p>
+  </div>
+
+  <h2 id="letter">דוגמה: מכתב הצעה להסדר חוב</h2>
+  <p>זו טיוטה להתאמה, לא נוסח משפטי מחייב. שנו את הפרטים, מחקו מה שלא רלוונטי, ושמרו העתק של כל מה ששלחתם.</p>
+  <blockquote>
+    <p>לכבוד עו"ד ___, ב"כ הזוכה ___<br />הנדון: תיק הוצאה לפועל מס' ___ — הצעה להסדר חוב</p>
+    <p>שלום רב,</p>
+    <p>אני החייב/ת בתיק שבנדון. לפי דף החשבון מיום ___, יתרת החוב היא ___ ₪. אני מעוניין/ת להסדיר את החוב ולסגור את התיק.</p>
+    <p>בשל מצבי הכלכלי (___), איני יכול/ה לשלם את מלוא היתרה. אני מציע/ה: [תשלום חד-פעמי של ___ ₪ עד ליום ___ / ___ תשלומים חודשיים של ___ ₪, החל מיום ___], לסילוק מלא וסופי של החוב בתיק.</p>
+    <p>בכפוף להסכמתכם, אבקש שהזוכה יגיש עם קבלת התשלום [הראשון / האחרון] בקשה לביטול כל ההליכים וההגבלות בתיק ולסגירתו.</p>
+    <p>אשמח לקבל את תשובתכם בכתב.<br />בכבוד רב, ___ (שם, טלפון, דוא"ל)</p>
+  </blockquote>
+  <p class="text-sm">צריכים טיוטה לבקשה לרשם, ולא לזוכה? <a href="/tools/noseach-bakasha/">מחולל נוסח הבקשה</a> בונה טיוטות לבקשות נפוצות בהוצאה לפועל, והכול נשאר בדפדפן שלכם.</p>
+
+  <h2 id="agreement">מה חייב להופיע בהסכם הסדר חוב</h2>
+  <p>אחרי שהגעתם להסכמה, דאגו שהיא תהיה כתובה וחתומה. רשימת הבדיקה הזו עוזרת לוודא שלא נשאר פתח למחלוקת:</p>
+  <ul>
+    <li><strong>הצדדים ומספרי התיקים:</strong> מי הנושה, מי החייב, ואילו תיקים בדיוק כלולים בהסדר. הסדר עם נושה אחד לא מחייב נושה אחר.</li>
+    <li><strong>הסכום הכולל ולוח התשלומים:</strong> סכום, מועדים ואופן תשלום, כולל מספר חשבון או תשלום דרך ההוצאה לפועל.</li>
+    <li><strong>"לסילוק מלא וסופי":</strong> שהתשלום לפי ההסכם מסלק את כל החוב בתיק, כולל ריבית, הוצאות ושכר טרחה, ושלא תידרש יתרה נוספת.</li>
+    <li><strong>ההליכים בתיק:</strong> שבזמן ההסדר לא יינקטו הליכים חדשים, ומה יקרה לעיקולים הקיימים.</li>
+    <li><strong>סגירת התיק:</strong> שהזוכה יגיש בקשה לביטול כל ההליכים וההגבלות ולסגירת התיק, ותוך כמה ימים מהתשלום הרלוונטי.</li>
+    <li><strong>מה נחשב הפרה:</strong> למשל איחור של כמה ימים בתשלום, ומה קורה במקרה כזה. לפי סעיף 19ב לחוק, אחרי הפרה הזוכה רשאי לבקש לחדש את ההליכים, בכפוף להודעה מוקדמת אליכם. <a href="#law">פירוט</a>.</li>
+    <li><strong>חתימות</strong> ופרטים של מי שחותם בשם הנושה, וסמכותו לחתום.</li>
+  </ul>
+  <p class="text-sm">בעל פה מול כתב: לפי סעיף 23 לחוק החוזים, חוזה לא חייב תמיד להיות בכתב. אבל בלי תיעוד כתוב קשה מאוד להוכיח מה הוסכם. ראו <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/decision35445-01-17/he/35445-01-17.pdf" target="_blank" rel="noopener noreferrer">פסק דין רשמי בנושא</a>.</p>
+
+  <h2 id="law">מה החוק אומר על הסדר עם הזוכה</h2>
+  <p>סעיפים 19א ו-19ב לחוק ההוצאה לפועל מסדירים בדיוק את המצב הזה, שבו משלמים לזוכה ישירות ולא דרך הלשכה. <a href={EXEC_LAW}>לנוסח החוק</a>.</p>
+  <ul>
+    <li><strong>הזוכה מודיע על ההסדר, וההליכים מעוכבים.</strong> זוכה שהגיע איתכם להסדר צריך להודיע על כך ללשכה, וההליכים בתיק מעוכבים כל עוד הוא לא הודיע שהפרתם את ההסדר (19ב(א)).</li>
+    <li><strong>הזוכה מדווח על התשלומים.</strong> בדרך כלל זוכה צריך לדווח על כל תשלום שקיבל מחוץ ללשכה תוך 7 ימים. כשיש הסדר, הוא רשאי לדווח פעם בשלושה חודשים (19א).</li>
+    <li><strong>שילמתם הכול?</strong> הזוכה צריך לדווח על כך תוך 7 ימים ולהגיש בקשה לסגירת התיק (19א(ב)).</li>
+    <li><strong>גם אתם יכולים לדווח.</strong> חייב רשאי לדווח ללשכה על תשלומים ששילם לפי ההסדר. ההודעה מועברת לזוכה, ואם הוא לא מגיב תוך 15 ימים, קרן החוב מוקטנת לפי ההודעה שלכם (19ב(ד)). שמרו כל אישור תשלום.</li>
+    <li><strong>אם ההסדר הופר,</strong> הזוכה לא יכול פשוט לחזור לעקל. הוא צריך לדווח על התשלומים שקיבל, לשלוח לכם הודעה בדואר רשום עם הפירוט והיתרה המעודכנת, ולהגיש בקשה לחידוש ההליכים רק אחרי שעברו 15 ימים מהמשלוח (19ב(ג)).</li>
+  </ul>
+
+  <h2 id="after-deal">אחרי ההסדר: איך מוודאים שהתיק באמת נסגר</h2>
+  <ol>
+    <li><strong>הזוכה מגיש בקשה.</strong> לפי רשות האכיפה והגבייה, אחרי הסדר עם עורך הדין של הזוכה, הזוכה הוא שמגיש בקשה לביטול ההליכים. בדקו באזור האישי שהבקשה הוגשה. <a href="https://www.gov.il/he/service/foreclosure_cancellation_request">מקור</a>.</li>
+    <li><strong>הזוכה לא מגיש?</strong> גם חייב יכול להגיש <a href={CLOSE}>בקשה לסגירת תיק</a> בטופס 406, עם ההסכם והקבלות. אם יש מחלוקת אם שילמתם, המסלול הוא <a href="https://www.gov.il/he/service/debt_repayment_argument">טענת "פרעתי"</a>.</li>
+    <li><strong>בודקים שהעיקולים וההגבלות ירדו</strong> בכל תיק שכלול בהסדר. הגבלה מבוטלת ברמת התיק, ולכן הסרה בתיק אחד לא מסירה הגבלה בתיק אחר. <a href="https://www.gov.il/he/service/request_for_cancellation_of_restrictions" target="_blank" rel="noopener noreferrer">ביטול הגבלות</a> · <a href="/guides/bitul-ikul/">ביטול עיקול</a>.</li>
+    <li><strong>שומרים הכול:</strong> ההסכם, אישורי התשלום והחלטת הסגירה.</li>
+  </ol>
+  <p>סגירת התיק לא מוחקת מיד את המידע במערכת נתוני האשראי. אם יש טעות בדיווח, אפשר לפנות ל<a href="https://www.creditdata.org.il/information/guide-3/" target="_blank" rel="noopener noreferrer">שירות תיקון מידע של בנק ישראל</a>. השלכות מס, בטוחות וערבויות לא נבחנות כאן, ודורשות בדיקה נפרדת. <a href="/guides/sgor-tik/">המדריך לסגירת תיק</a>.</p>
+
+  <h2 id="many-creditors">כמה נושים? (הסדר נושים)</h2>
+  <p>כשיש כמה נושים, הסדר פרטי צריך להיעשות מול כל אחד מהם בנפרד, ואף אחד מהם לא מחויב להסדר שעשיתם עם אחר. אם רוב החובות הם בתיקי הוצאה לפועל רגילים, <a href="/guides/ichud-tikim/">איחוד תיקים</a> מרכז אותם לתשלום אחד. אם החובות גדולים מהיכולת גם בפריסה ארוכה, המסגרת הכוללת היא <a href="/insolvency/">חדלות פירעון</a>. שם הנושים כולם כפופים להליך אחד, ובסופו אפשר לקבל הפטר. הגשת בקשת חדלות פירעון לא מעניקה עיכוב אוטומטי, כפי שמבהיר <a href="https://www.gov.il/BlobFolder/policy/opening-insolvency-request-regulation/he/Forms_insolvency-guide.pdf" target="_blank" rel="noopener noreferrer">מדריך ההגשה הרשמי</a>.</p>
+
+  <h2 id="traps">טעויות שכדאי להימנע מהן</h2>
+  <ul>
+    <li><strong>לשלם לפני שיש הסכם כתוב.</strong></li>
+    <li><strong>לשלם במזומן בלי קבלה,</strong> או לחשבון שלא מופיע בהסכם.</li>
+    <li><strong>להניח שתשלום חלקי מקפיא את הריבית</strong> או עוצר את ההליכים.</li>
+    <li><strong>לשכוח לבדוק שהתיק נסגר</strong> ושהעיקולים הוסרו בפועל.</li>
+    <li><strong>להתחייב לסכום שלא תוכלו לעמוד בו.</strong> אחרי הפרה, הזוכה יכול לבקש לחדש את ההליכים.</li>
+  </ul>
 
   <section id="faq">
-    <h2>שאלות נפוצות</h2>
-    <div class="space-y-3">
+    <h2>שאלות נפוצות על הסדר חוב</h2>
+    <div class="space-y-4 my-6">
       {faqs.map(faq => (
-        <details class="border border-neutral-border rounded-xl">
-          <summary class="p-4 font-semibold cursor-pointer">{faq.q}</summary>
-          <p class="px-4 pb-4">{faq.a}</p>
+        <details class="border border-neutral-border rounded-xl p-4">
+          <summary class="font-semibold cursor-pointer">{faq.q}</summary>
+          <p>{faq.a}</p>
+          <p><a href={faq.source}>המקור לתשובה</a></p>
         </details>
       ))}
     </div>
@@ -95,11 +197,10 @@ const faqSchema = {
   <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
     <h3 class="font-bold mb-3">להמשך הבירור</h3>
     <ul class="space-y-2 text-sm">
-      <li><a href="/insolvency/eligibility/" class="text-brand underline">תנאי הגשה והגורם המטפל</a></li>
-      <li><a href="/insolvency/process/" class="text-brand underline">מהגשה לצו שיקום — שלבי ההליך</a></li>
+      <li><a href="/guides/sgor-tik/" class="text-brand underline">סגירת תיק הוצאה לפועל</a></li>
+      <li><a href="/guides/tzav-tashlumim/" class="text-brand underline">צו תשלומים</a></li>
+      <li><a href="/insolvency/eligibility/" class="text-brand underline">חדלות פירעון — תנאי הגשה והגורם המטפל</a></li>
       <li><a href="/insolvency/haftar/" class="text-brand underline">הפטר: החובות שנכללים והחריגים</a></li>
-      <li><a href="/insolvency/costs/" class="text-brand underline">אגרות, ייצוג והוצאות ההליך</a></li>
-      <li><a href="/guides/hisdurim-chov/" class="text-brand underline">הסדר עם נושים — מה חשוב לבדוק</a></li>
     </ul>
   </div>
 </GuideLayout>

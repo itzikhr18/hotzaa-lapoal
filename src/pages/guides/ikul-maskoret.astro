@@ -1,25 +1,183 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
-import { WAGE_RULE_TEXT, WAGE_LAW_URL, WAGE_SOURCE_URL, WAGE_INCOME_LAW_URL } from '../../data/protected-amounts';
-const sources = [{ label: 'חוק הגנת השכר — סעיף 8', href: WAGE_LAW_URL }, { label: 'חוק הבטחת הכנסה — התוספת השנייה', href: WAGE_INCOME_LAW_URL }, { label: 'ביטוח לאומי — סכומי הבטחת הכנסה 2026', href: WAGE_SOURCE_URL }, { label: 'רשות האכיפה והגבייה — ביטול עיקול משכורת', href: 'https://www.gov.il/he/service/cancel_salary_foreclosure' }];
+import { WAGE_RULE_TEXT, WAGE_LAW_URL, WAGE_SOURCE_URL, WAGE_INCOME_LAW_URL, wage, wageList, fmtILS, illustrateMonthlyWage } from '../../data/protected-amounts';
+
+const examples = [
+  { who: 'יחיד', base: wage.single, net: 3000 },
+  { who: 'יחיד', base: wage.single, net: 6000 },
+  { who: 'זוג + 2 ילדים', base: wage.couplePlus2, net: 9000 },
+  { who: 'הורה יחיד + ילד', base: wage.singleParentPlusChild, net: 5000 },
+].map(e => ({ ...e, ...illustrateMonthlyWage(e.net, e.base)! }));
+
+const faqs = [
+  {
+    q: 'כמה מותר לעקל מהמשכורת בהוצאה לפועל?',
+    a: 'בחוב שאינו מזונות, חלק מהשכר מוגן: הנמוך מבין סכום בסיס לפי הרכב המשפחה (ב-2026, ליחיד 2,596 ₪) לבין 80% מהשכר נטו אחרי ניכויי חובה. החלק שמעל זה עשוי להיות מעוקל, עד גובה הצו. אין כלל קבוע של "עד 20%" או "עד שליש".',
+    source: WAGE_LAW_URL,
+  },
+  {
+    q: 'האם שכר מינימום מוגן מעיקול?',
+    a: 'לא במלואו באופן אוטומטי. המבחן הוא נוסחת סעיף 8 לחוק הגנת השכר, לא הכותרת "שכר מינימום". גם כשסכום הבסיס גבוה מהשכר, ההגנה יכולה להיות 80% מהשכר, כך שחלק קטן ממנו עשוי להיות מעוקל.',
+    source: WAGE_LAW_URL,
+  },
+  {
+    q: 'עיקול משכורת בתיק מזונות — האם הסכום המוגן חל?',
+    a: 'לא. לפי סעיף 8(ב) לחוק הגנת השכר, ההגנה של סעיף 8(א) אינה חלה על עיקול לתשלום מזונות. בתיק מזונות היקף העיקול נקבע לפי ההחלטות בתיק.',
+    source: WAGE_LAW_URL,
+  },
+  {
+    q: 'המשכורת כבר נכנסה לבנק — היא עדיין מוגנת?',
+    a: 'לפי סעיף 8(ו) לחוק הגנת השכר, ההגבלות על עיקול חלות גם על שכר ששולם דרך בנק, למשך חודש ימים מיום התשלום. זו לא הגנה קבועה על כל יתרת החשבון.',
+    source: WAGE_LAW_URL,
+  },
+  {
+    q: 'המעסיק מנכה יותר מהמותר — מה עושים?',
+    a: 'מבקשים מהמעסיק את העתק הצו ואת פירוט החישוב, ומגישים בקשה בתיק ההוצאה לפועל, באזור האישי או בטופס 214, עם תלושי שכר ופירוט תנועות בעו"ש מ-3 החודשים האחרונים. ההגשה חינם.',
+    source: 'https://www.gov.il/he/service/cancel_salary_foreclosure',
+  },
+  {
+    q: 'איך מפסיקים עיקול משכורת?',
+    a: 'הדרכים העיקריות: לשלם את כל החוב בתיק (בפסק דין, שטרות, סכום קצוב וכביש אגרה העיקול מתבטל בלי בקשה), להגיש בקשה לביטול העיקול עם נימוק ואסמכתאות, או אחרי 3 תשלומים רצופים לפי צו תשלומים, לבקש הכרה כ"חייב משלם". אם היא מתקבלת, ההליכים בעיקול המשכורת מעוכבים — עיכוב ולא ביטול, ורק אחרי החלטה.',
+    source: 'https://www.gov.il/he/service/application-for-recognition-of-payable-debts-execution',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
+};
+
+const sources = [
+  { label: 'חוק הגנת השכר — סעיף 8', href: WAGE_LAW_URL },
+  { label: 'חוק הבטחת הכנסה — התוספת השנייה', href: WAGE_INCOME_LAW_URL },
+  { label: 'ביטוח לאומי — סכומי הבטחת הכנסה 2026', href: WAGE_SOURCE_URL },
+  { label: 'רשות האכיפה והגבייה — ביטול עיקול משכורת', href: 'https://www.gov.il/he/service/cancel_salary_foreclosure' },
+  { label: 'רשות האכיפה והגבייה — עיכוב הליכים בגין "חייב משלם"', href: 'https://www.gov.il/he/service/application-for-recognition-of-payable-debts-execution' },
+];
+
+const relatedGuides = [
+  { title: 'ביטול עיקול משכורת', href: '/guides/bitul-ikul-maskoret/' },
+  { title: 'מחשבון עיקול משכורת', href: '/tools/ikul-maskoret/' },
+  { title: 'כספים מוגנים מעיקול', href: '/rights/skhomim-mugganim/' },
+  { title: 'עיקול חשבון בנק', href: '/guides/ikul-heshbon/' },
+  { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
+  { title: 'ביטול עיקול', href: '/guides/bitul-ikul/' },
+];
 ---
-<GuideLayout title="עיקול משכורת בהוצאה לפועל: כמה מותר לעקל, הסכום המוגן וכלל 80%" description="כמה מותר לעקל מהמשכורת לפי סעיף 8 לחוק הגנת השכר: סכום הבסיס לפי הרכב המשפחה, כלל 80%, למה 20% אינם תקרה כללית, החריג למזונות, שכר יומי ושכר שכבר הופקד בבנק." breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'עיקול משכורת', href: '/guides/ikul-maskoret/' }]} publishDate="2025-01-20" updateDate="2026-09-13" sources={sources}>
-  <p class="text-lg">{WAGE_RULE_TEXT}</p>
-  <h2 id="law">מה הבסיס המשפטי?</h2>
-  <p>סעיף 8(א) לחוק הגנת השכר משאיר חלק משכר העבודה החודשי מחוץ לעיקול. מתחילים מסכום הגמלה שבטור ג׳ בתוספת השנייה לחוק הבטחת הכנסה, לפי הרכב המשפחה, בחודש שקדם לתשלום השכר. אם הסכום הזה עולה על 80% מהשכר, ההגנה מצטמצמת ל-80%. השכר לצורך ההשוואה הוא לאחר ניכויים שהמעסיק חייב לנכות על פי חיקוק — לא כל ניכוי רצוני שמופיע בתלוש.</p>
-  <p>מקור צמוד: <a href={WAGE_LAW_URL}>סעיף 8 לחוק הגנת השכר</a>, ו<a href={WAGE_INCOME_LAW_URL}>התוספת השנייה לחוק הבטחת הכנסה</a>. החישוב מתייחס להגנה שבסעיף זה, לא להחלטה על סכום הניכוי בפועל.</p>
-  <h2 id="amounts">כיצד בודקים את הסכום?</h2>
-  <ol><li>מזהים את חודש תשלום השכר ואת הרכב המשפחה לפי הגדרות הדין, כולל הגדרת ילד והורה עצמאי.</li><li>מאמתים את סכום הבסיס בחודש הקודם, לא רק את השנה שמופיעה בכותרת.</li><li>משווים את הבסיס ל-80% מהשכר לאחר ניכויי חובה בחוק: הנמוך הוא החלק המוגן מכוח סעיף 8.</li><li>משווים לצו ולניכוי בפועל; אין להסיק שכל יתרה חייבת להיגבות.</li></ol>
-  <p><a href={WAGE_SOURCE_URL}>טבלת ביטוח לאומי מ-01.01.2026</a> מציגה את סכומי הבסיס הרלוונטיים בטבלת גיל 55 עד גיל הפרישה. השימוש בטור ג׳ הוא מכוח הפניית החוק, ואינו תנאי גיל לעובד. <a href="/tools/ikul-maskoret/">במחשבון יש טבלה והדגמה מוגבלת לשכר המשולם בספטמבר 2026</a>.</p>
-  <h2 id="exceptions">מזונות, שכר יומי ופנסיה</h2>
-  <p>הגנת סעיף 8(א) אינה חלה על עיקול לשם תשלום מזונות — סעיף 8(ב). בשכר על בסיס יומי קובע סעיף 8(א1) חלק של 1/25 מהסכום החודשי; אין להשתמש במחשבון החודשי כאילו הוא חישוב יומי. קצבה ממעסיק או מקופת גמל נחשבת כשכר לעניין סעיף זה, בלי לגרוע מהגנה אחרת שבחוק; אין לערבב אותה עם גמלת ביטוח לאומי או עם חיסכון שטרם שולם.</p>
-  <p>עבודה אצל כמה מעסיקים, תשלומים חריגים, שינוי משפחתי או הכנסה ממקורות שונים מחייבים בירור פרטני. המחשבון אינו מחבר הכנסות ואינו קובע זכאות.</p>
-  <h2 id="bank">המשכורת כבר הופקדה בבנק</h2>
-  <p>לפי סעיף 8(ו), ההגבלות ממשיכות לחול על השכר ששולם באמצעות הגופים המנויים בחוק במשך חודש ימים ממועד התשלום. זו אינה הגנה קבועה על יתרת החשבון, ולא פטור לכל הכספים המעורבים בו. שמרו תלוש ותדפיס שמזהים את ההפקדה. לגבי גמלת ביטוח לאומי קיים כלל נפרד של 30 ימים — <a href="/guides/ikul-heshbon/">ראו מדריך עיקול חשבון</a>.</p>
-  <h2 id="action">מה עושים אם נוכה סכום שנראה שגוי?</h2>
-  <p>לתהליך ההגשה המלא — נימוקים, טופס 214, מסמכים ובקשה דחופה — ראו את <a href="/guides/bitul-ikul-maskoret/">מדריך ביטול עיקול משכורת</a>. בקצרה:</p>
-  <ul><li>בקשו את העתק הצו ופירוט חישוב הניכוי מהמעסיק.</li><li>אספו תלוש, פירוט ניכויי חובה, מסמכי הרכב משפחה ותדפיס בנק אם הכסף כבר הופקד.</li><li>בדקו בתיק את סוג החוב, ההחלטה האחרונה והבקשות שכבר הוגשו.</li><li>פעלו לפי <a href="https://www.gov.il/he/service/cancel_salary_foreclosure">שירות ביטול עיקול משכורת הרשמי</a>. ציינו במפורש מה מבוקש ולמה, וצרפו אסמכתאות.</li><li>אם נדרש לעצור ניכוי קרוב, בקשו גם סעד זמני מתאים ועקבו אחר החלטה. אל תניחו שעצם הגשת הבקשה עצרה את ההליך.</li></ul>
-  <p>צו תשלומים או תשלום חלקי אינם מחליפים אוטומטית את העיקול. כאשר ניתנת החלטת ביטול או שינוי, יש לוודא מה נדרש להמצאתה ויישומה אצל המעסיק. במקרה דחוף או מורכב אפשר לבדוק <a href="https://www.gov.il/he/service/legal_aid_application">זכאות לסיוע משפטי</a>; הזכאות אינה אוטומטית.</p>
-  <h2 id="faq">האם שכר מינימום או שכר נמוך פטורים מעיקול?</h2>
-  <p>לא באופן אוטומטי מכוח סעיף 8. המבחן אינו הכותרת ״שכר מינימום״, אלא נוסחת ההגנה ותנאי הדין. גם כשסכום הבסיס גבוה מהשכר, ההגנה שבסעיף עשויה להיות 80% מהשכר ולא כולו.</p>
+<GuideLayout
+  title="עיקול משכורת בהוצאה לפועל: כמה מותר לעקל ב-2026 (טבלה ודוגמאות)"
+  description="כמה מותר לעקל מהמשכורת לפי סעיף 8 לחוק הגנת השכר: טבלת הסכומים המוגנים 2026 לפי הרכב משפחה, כלל 80%, דוגמאות חישוב, החריג למזונות, שכר שהופקד בבנק ומה עושים כשמנכים יותר מדי."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'עיקול משכורת', href: '/guides/ikul-maskoret/' }]}
+  publishDate="2026-03-24"
+  updateDate="2026-10-05"
+  readTime="7 דקות"
+  sources={sources}
+  relatedGuides={relatedGuides}
+  schema={[faqSchema]}
+>
+  <div class="info-box">
+    <p class="mb-2"><strong>התשובה הקצרה:</strong> {WAGE_RULE_TEXT}</p>
+    <p class="mb-0">ליחיד, ב-2026, סכום הבסיס הוא {fmtILS(wage.single)}. לכן ממשכורת נטו של 6,000 ₪ מוגנים {fmtILS(wage.single)}, והשאר עשוי להיות מעוקל, עד גובה הצו. <a href="#table">הטבלה המלאה לפי הרכב משפחה</a>.</p>
+  </div>
+
+  <p>צו עיקול על המשכורת אומר שהמעסיק מעביר חלק מהשכר לתיק ההוצאה לפועל, לפני שהכסף מגיע אליכם. אבל החוק לא מאפשר לקחת הכול. סעיף 8 לחוק הגנת השכר משאיר בידיכם חלק מהשכר, לפי הרכב המשפחה. כאן תמצאו את הסכומים המעודכנים, איך מחשבים, ומה עושים אם מנכים לכם יותר מהמותר.</p>
+
+  <h2 id="table">טבלת הסכום המוגן מעיקול משכורת — 2026</h2>
+  <p>סכום הבסיס נלקח מטור ג' בתוספת השנייה לחוק הבטחת הכנסה, לפי <a href={WAGE_SOURCE_URL}>טבלת ביטוח לאומי מ-01.01.2026</a>. הסכומים אומתו מול הטבלה ב-13.09.2026.</p>
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">הרכב המשפחה</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">סכום בסיס חודשי (2026)</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">שכר נטו שמעליו הבסיס הוא המוגן</th>
+        </tr>
+      </thead>
+      <tbody>
+        {wageList.map((row, i) => (
+          <tr class={i % 2 ? 'bg-gray-50' : 'bg-white'}>
+            <td class="border border-gray-300 px-4 py-2 font-semibold">{row.label}</td>
+            <td class="border border-gray-300 px-4 py-2">{fmtILS(row.amount)}</td>
+            <td class="border border-gray-300 px-4 py-2">{fmtILS(Math.round(row.amount / 0.8))}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm">העמודה השלישית מראה מאיזה שכר נטו ומעלה החלק המוגן שווה לסכום הבסיס. מתחת לסכום הזה, החלק המוגן הוא 80% מהשכר. הסכומים מתעדכנים מדי שנה. בודקים את הסכום שהיה בתוקף בחודש שלפני תשלום השכר.</p>
+
+  <h2 id="how">איך מחשבים את החלק המוגן — 3 שלבים</h2>
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>מוצאים את השכר נטו לצורך החישוב:</strong> השכר אחרי ניכויים שהמעסיק חייב לנכות לפי חוק, כמו מס הכנסה, ביטוח לאומי ומס בריאות. לא מורידים ניכויים רצוניים, כמו הלוואה מהמעסיק.</span></li>
+    <li><span class="step-num">2</span><span><strong>מחשבים 80% מהשכר הזה</strong> ומשווים לסכום הבסיס של הרכב המשפחה שלכם בטבלה.</span></li>
+    <li><span class="step-num">3</span><span><strong>הנמוך מבין השניים הוא החלק המוגן.</strong> מה שמעליו עשוי להיות מעוקל, עד גובה הצו.</span></li>
+  </ol>
+  <p>מקור: <a href={WAGE_LAW_URL}>סעיף 8(א) לחוק הגנת השכר</a> ו<a href={WAGE_INCOME_LAW_URL}>התוספת השנייה לחוק הבטחת הכנסה</a>. רוצים לחשב בלי לחשוב? <a href="/tools/ikul-maskoret/">מחשבון עיקול משכורת</a> עושה את זה בשבילכם. החישוב נעשה בדפדפן, ושום נתון לא נשלח אלינו.</p>
+
+  <h2 id="examples">דוגמאות חישוב</h2>
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">הרכב משפחה</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">שכר נטו</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">80% מהשכר</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">סכום בסיס</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מוגן</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">עשוי להיות מעוקל</th>
+        </tr>
+      </thead>
+      <tbody>
+        {examples.map((e, i) => (
+          <tr class={i % 2 ? 'bg-gray-50' : 'bg-white'}>
+            <td class="border border-gray-300 px-4 py-2">{e.who}</td>
+            <td class="border border-gray-300 px-4 py-2">{fmtILS(e.net)}</td>
+            <td class="border border-gray-300 px-4 py-2">{fmtILS(e.net * 0.8)}</td>
+            <td class="border border-gray-300 px-4 py-2">{fmtILS(e.base)}</td>
+            <td class="border border-gray-300 px-4 py-2 font-semibold">{fmtILS(e.exempt)}</td>
+            <td class="border border-gray-300 px-4 py-2">{fmtILS(e.remainder)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>שימו לב לשורה הראשונה: גם במשכורת נמוכה, שבה סכום הבסיס גבוה מהשכר, נשאר חלק שאינו מוגן, כי ההגנה מוגבלת ל-80% מהשכר. ובשורות האחרות רואים שאין תקרה קבועה של 20% או שליש. ככל שהשכר גבוה יותר, החלק שעשוי להיות מעוקל גדל.</p>
+  <p class="text-sm">הדוגמאות מתייחסות לשכר חודשי בחוב שאינו מזונות, ממעסיק אחד. הן לא קובעות כמה ינוכה בפועל בתיק שלכם. זה תלוי בצו ובהחלטות בתיק.</p>
+
+  <h2 id="exceptions">חריגים חשובים</h2>
+  <ul>
+    <li><strong>מזונות:</strong> ההגנה של סעיף 8(א) לא חלה על עיקול לתשלום מזונות (סעיף 8(ב)). בתיק מזונות ההיקף נקבע לפי ההחלטות בתיק. <a href="/guides/mazamot/">מזונות בהוצאה לפועל</a>.</li>
+    <li><strong>שכר יומי:</strong> לפי סעיף 8(א1), מי שמשתכר לפי יום עבודה מקבל הגנה של 1/25 מהסכום החודשי לכל יום. לכן אין להשתמש בטבלה החודשית כמו שהיא.</li>
+    <li><strong>פנסיה ממעסיק או מקופת גמל:</strong> קצבה כזו נחשבת לשכר לעניין סעיף 8. היא שונה מקצבת ביטוח לאומי, שמוגנת לפי כללים אחרים. <a href="/guides/ikul-pensiya/">עיקול פנסיה</a>.</li>
+    <li><strong>כמה מעסיקים או כמה צווים:</strong> מצב כזה דורש בדיקה פרטנית. כדאי לפנות למוקד או לייעוץ.</li>
+  </ul>
+
+  <h2 id="bank">המשכורת כבר נכנסה לחשבון הבנק</h2>
+  <p>לפי סעיף 8(ו) לחוק הגנת השכר, המגבלות על עיקול חלות גם על שכר ששולם דרך בנק, <strong>למשך חודש ימים מיום התשלום</strong>. לכן, אם החשבון מעוקל, אפשר לבקש לשחרר את החלק המוגן של המשכורת שנכנסה בחודש האחרון. לשם כך מצרפים תלוש ותדפיס בנק שמראה את ההפקדה. ההגנה הזו לא חלה על חסכונות שהצטברו בחשבון. <a href="/guides/ikul-heshbon/">עיקול חשבון בנק</a>.</p>
+
+  <h2 id="action">מנכים לכם יותר מהמותר? כך פועלים</h2>
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>בקשו ממחלקת השכר</strong> את העתק הצו ואת פירוט החישוב: מה נוכה, ממה ולאיזה תיק.</span></li>
+    <li><span class="step-num">2</span><span><strong>חשבו את החלק המוגן</strong> לפי הטבלה או <a href="/tools/ikul-maskoret/">במחשבון</a>, והשוו לסכום שנשאר לכם בפועל.</span></li>
+    <li><span class="step-num">3</span><span><strong>הגישו בקשה בתיק</strong> דרך <a href="https://www.gov.il/he/service/cancel_salary_foreclosure">שירות ביטול עיקול משכורת</a>: באזור האישי, או בטופס 214 בקוד 62. מצרפים תלושים ופירוט תנועות בעו"ש מ-3 החודשים האחרונים, ומציינים את מספר ההליך ואת פרטי המעסיק. השירות חינם.</span></li>
+    <li><span class="step-num">4</span><span><strong>עקבו אחרי ההחלטה</strong> באזור האישי. אחרי שהיא ניתנת, ודאו שהמעסיק עדכן את הניכוי.</span></li>
+  </ol>
+  <p>המדריך המלא, עם כל הנימוקים, המסמכים והבקשה הדחופה: <a href="/guides/bitul-ikul-maskoret/">ביטול עיקול משכורת</a>.</p>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">משלמים לפי צו תשלומים? בדקו את "חייב משלם"</p>
+    <p class="mb-0">מי ששילם 3 תשלומים ברציפות לפי צו תשלומים, וממשיך לשלם, יכול לבקש הכרה כ"חייב משלם". אם הבקשה מתקבלת, ההליכים בעיקול המשכורת מעוכבים (וגם בעו"ש ובמיטלטלין). זה עיכוב ולא ביטול, והזוכה מקבל 30 יום להגיב. מגישים בטופס 351, או באזור האישי בקוד 351. ההסדר לא חל על תיקי פסק דין מזונות. <a href="https://www.gov.il/he/service/application-for-recognition-of-payable-debts-execution">פרטים ב-gov.il</a>.</p>
+  </div>
+
+  <h2 id="faq">שאלות נפוצות על עיקול משכורת</h2>
+  <div class="space-y-4 my-6">
+    {faqs.map(faq => (
+      <details class="border border-neutral-border rounded-xl p-4">
+        <summary class="font-semibold cursor-pointer">{faq.q}</summary>
+        <p>{faq.a}</p>
+        <p><a href={faq.source}>המקור הרשמי לתשובה</a></p>
+      </details>
+    ))}
+  </div>
 </GuideLayout>
