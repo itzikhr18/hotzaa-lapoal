@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const siteUrl = 'https://hotzaa-lapoal.info';
-const pageUpdated = '2026-09-13';
+const pageUpdated = '2026-10-05';
 
 const officialLinks = {
   personalArea: 'https://go.gov.il/ecagovernmentident',
@@ -104,6 +104,18 @@ const forms = [
   },
 ];
 
+const formsByNumber = [
+  { num: '214', name: 'בקשה לביטול, עיכוב או חידוש הליכים והגבלות', when: 'עיקול בנק, משכורת, רכב או מטלטלין; ביטול הגבלות', code: '61 עיכוב · 62 ביטול · 311 ביטול הגבלות', guide: '/guides/bitul-ikul/' },
+  { num: '218', name: 'התנגדות לביצוע שטר או תביעה על סכום קצוב', when: 'תיק שנפתח על צ׳ק, שטר או סכום קצוב ואתם חולקים על החוב', code: '—', guide: '/guides/hitnagdut-letik/' },
+  { num: '233', name: 'בקשה לצו תשלומים או לשינוי צו', when: 'מודים בחוב ולא יכולים לשלם הכול בבת אחת', code: '50', guide: '/guides/tzav-tashlumim/' },
+  { num: '529', name: 'שאלון וכתב ויתור על סודיות', when: 'מצרפים לבקשת צו תשלומים ולבקשת איחוד תיקים', code: '—', guide: '/guides/tzav-tashlumim/' },
+  { num: '7', name: 'בקשת חייב לאיחוד תיקים', when: 'כמה תיקים פתוחים ורוצים תשלום חודשי אחד', code: '73', guide: '/guides/ichud-tikim/' },
+  { num: '235', name: 'צירוף תיק לתיק איחוד או ביטול איחוד', when: 'נפתח תיק חדש אחרי האיחוד, או רוצים לצאת מהאיחוד', code: '—', guide: '/guides/ichud-tikim/' },
+  { num: '236', name: 'טענת "פרעתי"', when: 'שילמתם את החוב, כולו או חלקו, והתיק לא מעודכן', code: '119', guide: '/guides/sgor-tik/' },
+  { num: '351', name: 'בקשה להכרה כ"חייב משלם"', when: 'עומדים בצו תשלומים ורוצים לעכב עיקולים', code: '351', guide: '/guides/bitul-ikul/' },
+  { num: '406', name: 'בקשה לסגירת תיק או הסרת חייב מתיק', when: 'החוב שולם, הוסדר, או שאתם לא החייב הנכון', code: '—', guide: '/guides/sgor-tik/' },
+];
+
 const officialSources = [
   { label: 'טופס 214 רשמי - ביטול, עיכוב או חידוש הליכים', href: officialLinks.form214 },
   { label: 'האזור האישי של רשות האכיפה והגבייה', href: officialLinks.personalArea },
@@ -191,6 +203,22 @@ const faqs = [
     "a": "בהנחיות בקשת החייב לצו תשלומים מופיעים צילום תעודת זהות וספח, שאלון וכתב ויתור על סודיות 529 ומסמכים על היכולת הכלכלית לפי הרשימה בשאלון. יש לבדוק את הגרסה העדכנית."
   },
   {
+    "q": "מה ההבדל בין קוד 61 לקוד 62 בטופס 214?",
+    "a": "לפי רשות האכיפה והגבייה, קוד 61 הוא בקשה לעיכוב הליכים וקוד 62 הוא בקשה לביטול הליכים והגבלות. עיכוב משאיר את העיקול אבל מונע את מימושו עד החלטה; ביטול מסיר אותו. באזור האישי בוחרים את הקוד ואין צורך לצרף את הטופס עצמו, אבל חובה לפרט נימוקים."
+  },
+  {
+    "q": "איזה טופס מגישים לסגירת תיק?",
+    "a": "טופס 406 הוא בקשה לסגירת תיק הוצאה לפועל או להסרת חייב מתיק. אם שילמתם והתיק לא מעודכן, המסלול הוא טענת פרעתי בטופס 236 (קוד 119). בתיקים מסוג פסק דין כספי, שטרות, סכום קצוב וכביש אגרה, תשלום מלא סוגר את התיק אוטומטית כעבור 30 יום."
+  },
+  {
+    "q": "איזה טופס מגישים לאיחוד תיקים?",
+    "a": "טופס 7, בקשת חייב לאיחוד תיקים, שצריך להיחתם בפני עורך דין או עובד לשכה מוסמך, יחד עם טופס 529, רשימת תיקים עדכנית וצילום תעודת זהות. באזור האישי זו בקשה בקוד 73. לצירוף תיק חדש לאיחוד או לביטול האיחוד יש טופס 235."
+  },
+  {
+    "q": "האם הגשת הטפסים עולה כסף?",
+    "a": "בקשות לביטול עיקול, לצו תשלומים ולהכרה כחייב משלם ניתנות לפי רשות האכיפה ללא עלות. כשנדרש תצהיר, למשל בטענת פרעתי, בבקשת איחוד או בביטול הגבלת יציאה מהארץ, יש אגרה על אימות החתימה בלשכה לפי טבלת האגרות, או עלות של עורך דין."
+  },
+  {
     "q": "האם הנוסחים באתר מוכנים להגשה?",
     "a": "לא. אלה טיוטות עזר לעריכה בלבד. יש למחוק טענות שאינן נכונות, להתאים את הסעד, לצרף את הטפסים והאסמכתאות ולבדוק את דרך ההגשה. האתר אינו שולח בקשה לרשות."
   }
@@ -202,8 +230,8 @@ const faqSchema = {
 ---
 
 <BaseLayout
-  title="טפסים להוצאה לפועל: 214, 218, 233 והגשה אונליין"
-  description="טופס 214 לביטול או לעיכוב הליכים, 218 להתנגדות ו־233 לצו תשלומים: קישורים רשמיים, מסמכים נלווים והסבר להגשה מקוונת או ידנית."
+  title="טפסי הוצאה לפועל לפי מספר: 214, 233, 406, 7, 236 ועוד"
+  description="טבלת טפסי הוצאה לפועל לפי מספר וקוד בקשה: 214 לביטול עיקול (קודים 61/62), 233 לצו תשלומים, 7 לאיחוד תיקים, 236 לפרעתי, 406 לסגירת תיק — עם קישורים רשמיים ומסמכים נדרשים."
   canonicalUrl={`${siteUrl}/forms/`}
   schema={[pageSchema, faqSchema]}
 >
@@ -241,6 +269,7 @@ const faqSchema = {
       <a href="#form-214" class="rounded-lg border border-neutral-border px-4 py-3 font-semibold text-brand-dark underline">טופס 214 — ביטול ועיכוב הליכים</a>
       <a href="#form-218" class="rounded-lg border border-neutral-border px-4 py-3 font-semibold text-brand-dark underline">טופס 218 — התנגדות</a>
       <a href="#form-233" class="rounded-lg border border-neutral-border px-4 py-3 font-semibold text-brand-dark underline">טופס 233 — צו תשלומים</a>
+      <a href="#form-numbers" class="rounded-lg border border-neutral-border px-4 py-3 font-semibold text-brand-dark underline">כל הטפסים לפי מספר</a>
     </nav>
 
     <section class="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -264,6 +293,39 @@ const faqSchema = {
           זימון תור ללשכה
         </a>
       </div>
+    </section>
+
+    <section id="form-numbers" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">טפסי הוצאה לפועל לפי מספר</h2>
+      <p class="text-sm text-gray-700 leading-relaxed mb-4">
+        באזור האישי לא מצרפים את הטופס עצמו: בוחרים את סוג הבקשה (הקוד) וחובה לפרט נימוקים. הטופס נדרש בהגשה בדואר, בפקס, בדוא"ל או בלשכה.
+        המספרים והקודים נבדקו מול דפי השירות של רשות האכיפה והגבייה בספטמבר–אוקטובר 2026.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-white">
+          <thead>
+            <tr class="bg-gray-100 text-gray-700">
+              <th class="border border-gray-300 px-3 py-2 text-right font-bold">טופס</th>
+              <th class="border border-gray-300 px-3 py-2 text-right font-bold">מה הוא</th>
+              <th class="border border-gray-300 px-3 py-2 text-right font-bold">מתי משתמשים</th>
+              <th class="border border-gray-300 px-3 py-2 text-right font-bold">קוד באזור האישי</th>
+            </tr>
+          </thead>
+          <tbody>
+            {formsByNumber.map(row => (
+              <tr>
+                <td class="border border-gray-300 px-3 py-2 font-bold whitespace-nowrap">{row.num}</td>
+                <td class="border border-gray-300 px-3 py-2"><a href={row.guide} class="text-brand underline">{row.name}</a></td>
+                <td class="border border-gray-300 px-3 py-2 text-gray-700">{row.when}</td>
+                <td class="border border-gray-300 px-3 py-2 text-gray-700">{row.code}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-600 mt-3 leading-relaxed">
+        בקשה לחדלות פירעון היא מסלול נפרד, שאינו מוגש בטפסי ההוצאה לפועל. ראו <a href="/insolvency/process/" class="underline">תהליך חדלות פירעון</a>.
+      </p>
     </section>
 
     <section class="mb-12">
