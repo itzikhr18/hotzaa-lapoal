@@ -3,96 +3,222 @@ import GuideLayout from '../../../layouts/GuideLayout.astro';
 
 const faqs = [
   {
-    "q": "איפה בודקים תיק לפי תעודת זהות?",
-    "a": "באזור האישי הרשמי של ההוצאה לפועל לאחר הזדהות ובהתאם להרשאות. האתר הזה מפנה לשירות ואינו מבצע בדיקה או מקבל תעודת זהות.",
-    "source": "https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page"
+    q: 'איך בודקים אם יש לי תיק בהוצאה לפועל לפי תעודת זהות?',
+    a: 'הדרך הרשמית והחינמית היא האזור האישי של ההוצאה לפועל ב-gov.il. נרשמים פעם אחת למערכת ההזדהות הלאומית ורואים את כל התיקים הפתוחים נגדכם, כולל נתוני התיק, החלטות ודף חשבון. אפשר גם לפנות ללשכת הוצאה לפועל בזימון תור מראש.',
+    source: 'https://www.gov.il/he/pages/qf_personal_information',
   },
   {
-    "q": "אפשר לבדוק תיק של אדם אחר?",
-    "a": "לא על סמך מספר תעודת הזהות שלו בלבד. גישה למסמכים מותנית בזיהוי ובהרשאה המתאימה בתיק.",
-    "source": "https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page"
+    q: 'אפשר לבדוק בלי מספר תיק?',
+    a: 'כן, באזור האישי, שם רשימת התיקים מוצגת לפי הזיהוי שלכם. הצ\'אט האוטומטי והמענה הטלפוני דורשים מספר תיק ומספר זהות. גם בבנק הדואר, כשמזדהים בתעודת זהות בלי מספר תיק, מוצגות כל דרישות התשלום הפתוחות בתיקי ההוצאה לפועל.',
+    source: 'https://www.gov.il/he/pages/execution_debtors_guide',
   },
   {
-    "q": "איך רואים עיקולים?",
-    "a": "פותחים את התיק ובודקים הליכים והחלטות. אם הצו מגוף אחר, הוא אינו בהכרח חלק מתיק הוצאה לפועל.",
-    "source": "https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page"
+    q: 'האם הפקת רשימת תיקים יכולה להזיק לי?',
+    a: 'כדאי לדעת את זה מראש. לפי רשות האכיפה והגבייה, כשמפיקים רשימת תיקים, נרשמת מסירת אזהרה בכל התיקים ברשימה שבהם עדיין לא נמסרה אזהרה. מאותו רגע מתחילה תקופת האזהרה. זו לא סיבה להימנע מבדיקה, אבל כדאי להיות מוכנים לפעול בתוך התקופה.',
+    source: 'https://www.gov.il/he/service/lawyer-request-for-report-of-debt-files',
   },
   {
-    "q": "מהו דוח תיקים לחייב?",
-    "a": "רשימה מרוכזת של תיקים; היא שונה מדף חשבון מפורט או מאישור סגירה. סוגי האישורים והפקתם מפורטים בשירות הממשלתי.",
-    "source": "https://www.gov.il/he/pages/qf_personal"
+    q: 'איך רואים אם יש עיקול על חשבון הבנק?',
+    a: 'באזור האישי, בפרטי התיק ובהחלטות שבו. במקביל אפשר לבקש מהבנק את פרטי הצו: מי הוציא אותו, באיזה תיק ובאיזה סכום. עיקול שלא מופיע בתיק הוצאה לפועל עשוי להיות עיקול מנהלי, למשל של עירייה או רשות המסים.',
+    source: 'https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page',
   },
   {
-    "q": "יש תמיד 20 ימים להגיב לאזהרה?",
-    "a": "לא. המועד תלוי בהליך. בהתנגדות לשטר או לתביעה על סכום קצוב המועד הרגיל הוא 30 ימים מהמצאת האזהרה.",
-    "source": "https://www.gov.il/BlobFolder/service/claim_objection/he/form218.pdf"
+    q: 'אפשר לבדוק תיקים של אדם אחר לפי תעודת הזהות שלו?',
+    a: 'לא. צפייה בתיקים מותנית בהזדהות ובהרשאה. זוכה שמחפש מידע על חייב בתיק שלו פונה לשירות הייעודי לזוכים, ועורכי דין ועובדים סוציאליים מגישים בקשה נפרדת לרשימת תיקים של חייב.',
+    source: 'https://www.gov.il/he/service/lawyer-request-for-report-of-debt-files',
   },
   {
-    "q": "אין לי גישה לאזור האישי — מה אפשר לעשות?",
-    "a": "ניתן לפנות לערוצי המידע הרשמיים ולבדוק שירות מתאים בלשכה, בהתאם לדרישות הזיהוי והזימון.",
-    "source": "https://www.gov.il/he/pages/eca-call-center"
-  }
+    q: 'כמה זמן יש לי מרגע שקיבלתי אזהרה?',
+    a: 'לפי מדריך הרשות לחייבים, תקופת האזהרה היא 30 ימים בתיקים מסוג תביעה על סכום קצוב ושטרות, ו-20 ימים בתיקים אחרים. התאריך המחייב הוא זה שמופיע באזהרה שלכם.',
+    source: 'https://www.gov.il/he/pages/execution_debtors_guide',
+  },
+  {
+    q: 'האם אתרים פרטיים לבדיקת תיק לפי תעודת זהות הם רשמיים?',
+    a: 'לא. הבדיקה הרשמית נעשית באזור האישי, במוקד או בלשכה, והיא חינם. אל תמסרו מספר זהות, קוד הזדהות או סיסמה לאתר או לגורם שאינו רשמי.',
+    source: 'https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page',
+  },
 ];
-const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })) };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
+};
+
 const sources = [
-  {
-    "label": "האזור האישי הרשמי",
-    "href": "https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page"
-  },
-  {
-    "label": "קבלת אישורים ותדפיסים",
-    "href": "https://www.gov.il/he/pages/qf_personal"
-  },
-  {
-    "label": "מרכז המידע והשירות",
-    "href": "https://www.gov.il/he/pages/eca-call-center"
-  },
-  {
-    "label": "הנחיות התנגדות",
-    "href": "https://www.gov.il/BlobFolder/service/claim_objection/he/form218.pdf"
-  }
+  { label: 'אזור אישי — הוצאה לפועל (gov.il)', href: 'https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page' },
+  { label: 'רשות האכיפה והגבייה — קבלת מידע אישי ועדכני על תיקים', href: 'https://www.gov.il/he/pages/qf_personal_information' },
+  { label: 'רשות האכיפה והגבייה — בקשה לקבלת רשימת תיקים של חייב', href: 'https://www.gov.il/he/service/lawyer-request-for-report-of-debt-files' },
+  { label: 'רשות האכיפה והגבייה — מידע לחייבים בתיקי הוצאה לפועל', href: 'https://www.gov.il/he/pages/execution_debtors_guide' },
+  { label: 'רשות האוכלוסין — בדיקת עיכוב יציאה מהארץ', href: 'https://www.gov.il/he/service/departure_prohibition_order_info_2' },
+  { label: 'הנחיות התנגדות — טופס 218', href: 'https://www.gov.il/BlobFolder/service/claim_objection/he/form218.pdf' },
 ];
 ---
 
 <GuideLayout
-  title="איך בודקים אם יש לי תיק בהוצאה לפועל? בדיקת חובות ועיקולים לפי תעודת זהות"
-  description="בדיקת תיק הוצאה לפועל לפי תעודת זהות, חינם ובאופן רשמי: כניסה לאזור האישי ב-gov.il, רשימת התיקים, יתרת החוב, עיקולים והחלטות — ומה עושים לפי מה שמצאתם."
-  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: "בדיקת תיק הוצאה לפועל", href: "/guides/bdika-tik/" }]}
+  title="בדיקת תיק הוצאה לפועל לפי תעודת זהות: חובות, עיקולים ורשימת תיקים"
+  description="איך בודקים חינם ובאופן רשמי אם יש נגדכם תיק בהוצאה לפועל: אזור אישי עם הזדהות לאומית, צ'אט אוטומטי, מוקד ‎*35592 או לשכה. איך רואים עיקולים ויתרת חוב, ומה חשוב לדעת לפני שמפיקים רשימת תיקים."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'בדיקת תיק הוצאה לפועל', href: '/guides/bdika-tik/' }]}
   publishDate="2026-03-29"
-  updateDate="2026-09-13"
-  readTime="5 דקות"
+  updateDate="2026-10-05"
+  readTime="7 דקות"
   sources={sources}
   schema={[faqSchema]}
 >
-  <div class="info-box"><p><strong>בדיקת תיק אישי נעשית בערוצים הרשמיים לאחר הזדהות — לא באתר זה.</strong> אין להזין באתר זה תעודת זהות או פרטי תיק. באזור האישי אפשר לעיין בתיקים שבהם אתם מורשים, ביתרה, בהחלטות ובהליכים. מספר תעודת זהות של אדם אחר אינו נותן זכות לצפות בתיקיו (לזוכים: <a href="/guides/itur-hayavim/">מה מותר לבדוק על אדם אחר</a>). <a href="https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page">כניסה לאזור האישי הרשמי ב-gov.il</a>.</p></div>
-  <p class="text-sm">מידע כללי שנערך מול המקורות הרשמיים המצוינים בעמוד; אינו ייעוץ משפטי או בדיקה של תיק אישי. הוראות הדין, האזהרה וההחלטות בתיק גוברות. כשיש מועד קרוב או הליך דחוף, יש לבדוק את המסלול המתאים ללא דיחוי.</p>
-  <div class="not-prose my-6 flex flex-wrap gap-3"><a class="inline-block rounded-xl bg-brand-dark text-white px-5 py-3 font-bold" href="https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page">כניסה לאזור האישי הרשמי</a><a class="inline-block rounded-xl border border-neutral-border px-5 py-3" href="https://www.gov.il/he/pages/qf_personal">אישורים ורשימת תיקים</a></div>
-  <nav aria-label="ניווט מהיר במדריך" class="not-prose my-6 flex flex-wrap gap-4">
-    <a href="#check-by-id">בדיקת תיק לפי תעודת זהות</a>
-    <a href="#check-attachments">בדיקת עיקולים</a>
-    <a href="#case-report">דוח תיקים ומסמכים</a>
+  <div class="info-box">
+    <p class="mb-2"><strong>התשובה הקצרה:</strong> בודקים תיק בהוצאה לפועל, חינם, ב<a href="https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page">אזור האישי של ההוצאה לפועל ב-gov.il</a>. נכנסים עם מערכת ההזדהות הלאומית ורואים את כל התיקים הפתוחים נגדכם: יתרה, החלטות, עיקולים ודף חשבון.</p>
+    <p class="mb-0">אפשר גם דרך הצ'אט האוטומטי או המוקד ‎*35592 (נדרש מספר תיק), או בלשכה בזימון תור. אין להזין באתר זה תעודת זהות או פרטי תיק — אנחנו אתר מידע ולא מבצעים בדיקות.</p>
+  </div>
+
+  <div class="not-prose my-6 flex flex-wrap gap-3">
+    <a class="inline-block rounded-xl bg-brand-dark text-white px-5 py-3 font-bold" href="https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page">כניסה לאזור האישי הרשמי ←</a>
+    <a class="inline-block rounded-xl border border-neutral-border px-5 py-3" href="#case-report">לפני שמפיקים רשימת תיקים</a>
+  </div>
+
+  <nav aria-label="ניווט מהיר במדריך" class="not-prose my-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+    <a class="text-brand underline" href="#ways">4 הדרכים לבדוק</a>
+    <a class="text-brand underline" href="#check-by-id">בדיקת תיק לפי תעודת זהות</a>
+    <a class="text-brand underline" href="#check-attachments">בדיקת עיקולים</a>
+    <a class="text-brand underline" href="#case-report">דוח תיקים לחייב</a>
+    <a class="text-brand underline" href="#next">מצאתי תיק — מה עכשיו?</a>
   </nav>
-  <h2 id="check-by-id" class="scroll-mt-24">בדיקת תיק לפי תעודת זהות — שלב אחר שלב</h2>
-  <ol><li>נכנסים עצמאית לדף הממשלתי של האזור האישי.</li><li>מזדהים בהתאם לאמצעי ההזדהות שהשירות הרשמי דורש.</li><li>פותחים את רשימת התיקים ובוחרים את התיק הרלוונטי.</li><li>בודקים מספר תיק, סוגו, הצדדים, יתרה והחלטות.</li><li>מורידים או שומרים את המסמכים הנחוצים ומתעדים את מועד הבדיקה.</li></ol>
-  <p>שמות מסכים ואמצעי כניסה עשויים להשתנות; עוקבים אחרי <a href="https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page">ההדרכה הרשמית</a>. אל תמסרו באתר זה תעודת זהות, סיסמה, קוד כניסה או מסמכי תיק.</p>
+
+  <p>כשמגיע מכתב מהוצאה לפועל, או כשהבנק מודיע פתאום על עיקול, השאלה הראשונה היא כמה תיקים יש נגדי ועל כמה כסף מדובר. את התשובה המלאה מקבלים רק ממערכות רשות האכיפה והגבייה. הבדיקה חינמית ואפשר לעשות אותה מהבית. הנה כל הדרכים, ומה כדאי לדעת לפני שמתחילים.</p>
+
+  <h2 id="ways">4 דרכים רשמיות לבדוק תיק בהוצאה לפועל</h2>
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">ערוץ</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה צריך</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה מקבלים</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">אזור אישי — הוצאה לפועל</td>
+          <td class="border border-gray-300 px-4 py-2">רישום חד-פעמי למערכת ההזדהות הלאומית. לא צריך מספר תיק</td>
+          <td class="border border-gray-300 px-4 py-2">כל התיקים, נתוני התיק, בקשות, החלטות רשם ודף חשבון. אפשר גם להגיש בקשות</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">צ'אט — מענה אוטומטי</td>
+          <td class="border border-gray-300 px-4 py-2">מספר זהות ומספר תיק</td>
+          <td class="border border-gray-300 px-4 py-2">גובה החוב, תאריך החלטת רשם, תאריך וסכום התקבול האחרון, סטטוס התיק. זמין 24/7</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">מוקד טלפוני ‎*35592 או 073-2055000</td>
+          <td class="border border-gray-300 px-4 py-2">מספר תיק ומספר זהות</td>
+          <td class="border border-gray-300 px-4 py-2">מענה אוטומטי בעברית, ערבית, אמהרית ורוסית, או נציג בשעות הפעילות</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">לשכת הוצאה לפועל</td>
+          <td class="border border-gray-300 px-4 py-2">זימון תור מראש בלבד ותעודה מזהה</td>
+          <td class="border border-gray-300 px-4 py-2">רשימת תיקים ומידע על התיקים. מתאים למי שאין לו גישה לאינטרנט</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm">מקור: <a href="https://www.gov.il/he/pages/qf_personal_information">רשות האכיפה והגבייה — קבלת מידע אישי ועדכני על תיקים</a>. שעות המוקד מתעדכנות מעת לעת, ולכן כדאי לבדוק אותן באתר הרשות.</p>
+
+  <div class="tip-box">
+    <p class="font-semibold mb-1">טיפ: לא יודעים את מספר התיק?</p>
+    <p class="mb-0">באזור האישי מספר התיק לא נדרש. גם בבנק הדואר אפשר להזדהות בתעודת זהות בלבד: לפי מדריך הרשות, אם מספר התיק לא ידוע, יוצגו כל דרישות התשלום הפתוחות שלכם בתיקי ההוצאה לפועל.</p>
+  </div>
+
+  <h2 id="check-by-id" class="scroll-mt-24">בדיקת תיק לפי תעודת זהות באזור האישי — שלב אחר שלב</h2>
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>נרשמים למערכת ההזדהות הלאומית</strong> (פעם אחת). זו אותה כניסה שמשמשת שירותי ממשלה אחרים. היכנסו דרך <a href="https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page">דף האזור האישי ב-gov.il</a> בלבד, ולא דרך קישור שהגיע אליכם בהודעה.</span></li>
+    <li><span class="step-num">2</span><span><strong>נכנסים לאזור האישי — הוצאה לפועל.</strong> מוצגים התיקים שבהם אתם צד: כחייבים, כזוכים או כמסייעים.</span></li>
+    <li><span class="step-num">3</span><span><strong>פותחים כל תיק בנפרד.</strong> בודקים את סוג התיק (פסק דין, שטרות, תביעה על סכום קצוב, מזונות), מי הזוכה, מה היתרה ומה ההחלטות האחרונות.</span></li>
+    <li><span class="step-num">4</span><span><strong>מורידים את דף החשבון</strong> כדי לראות קרן, ריבית, הוצאות ותשלומים. היתרה היום כמעט אף פעם לא זהה לסכום המקורי. <a href="/guides/ribit-hotzaa/">איך קוראים את רכיבי החוב</a>.</span></li>
+    <li><span class="step-num">5</span><span><strong>נרשמים לעדכוני החלטות</strong> ב-SMS או בדוא"ל. כך כל החלטה חדשה תגיע אליכם מיד ולא תפספסו מועד.</span></li>
+  </ol>
+  <p>שמות המסכים באתר הרשות משתנים מעת לעת. אם משהו לא ברור, יש באזור האישי צ'אט תמיכה עם נציג ו<a href="https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page">הדרכות רשמיות</a>. אל תמסרו קוד הזדהות או סיסמה לאף אחד שפונה אליכם, גם אם הוא מציג את עצמו כנציג.</p>
+
   <h2 id="check-attachments" class="scroll-mt-24">בדיקת עיקולים לפי תעודת זהות</h2>
-  <p>עיקול הוא הליך בתוך תיק. בודקים את סוג ההליך, הנכס או המחזיק, ההחלטה והסטטוס. אם הבנק, המעסיק או גורם אחר הודיעו על עיקול, מבקשים את פרטי הצו ומשווים לתיק. עיקול מנהלי של רשות או צו בית משפט אינם בהכרח מוצגים כתיק הוצאה לפועל. <a href="https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page">האזור האישי</a>; <a href="/guides/bitul-ikul/">זיהוי מקור העיקול</a>.</p>
-  <p>אין ״חמישה ימים בטוחים״ או ״24 שעות קבועות״ לפעול נגד כל עיקול. כשקיים מימוש קרוב או כסף חיוני, בודקים את המועד שבצו ואת מסלול הבקשה הדחופה.</p>
-  <h2 id="case-report" class="scroll-mt-24">דוח תיקים לחייב, יתרה ומסמכים</h2>
-  <p>רשימת התיקים מסייעת לקבל תמונה מרוכזת, אך לכל תיק יש מסמכים והחלטות משלו. דף חשבון מציג את התנועות והרכיבים; אישור סגירה הוא מסמך אחר. אפשר לבדוק מה ניתן להפיק ב<a href="https://www.gov.il/he/pages/qf_personal">שירות אישורים ותדפיסים</a>.</p>
-  <p>הסכום המקורי אינו בהכרח היתרה היום. בודקים קרן, תשלומים, ריבית, דמי פיגורים והוצאות לפי נתוני התיק — לא אחוז קבוע של 4%–8%. <a href="/guides/ribit-hotzaa/">בדיקת רכיבי החוב</a>.</p>
-  <h2>מה אומר סטטוס התיק?</h2>
-  <p>כותרת כללית כמו פעיל, מעוכב או סגור אינה תחליף לקריאת ההחלטות. עיכוב עשוי להיות מוגבל להליך מסוים ולתקופה; סגירה אינה תמיד הוכחה שהחוב שולם או שכל היסטוריית האשראי נמחקה. בודקים גם תיקים נוספים. <a href="/guides/sgor-tik/">סגירת תיק</a>; <a href="https://www.gov.il/he/service/request_for_cancellation_of_restrictions">הגבלות בכמה תיקים</a>.</p>
-  <h2>מצאתי תיק ולא קיבלתי אזהרה</h2>
-  <p>מבקשים את האזהרה ואישור ההמצאה. אי־קבלה אישית אינה מוכיחה לבדה שהמצאה לא הייתה כדין, ומנגד רישום במערכת אינו מחליף בדיקת טענה לפגם. אין זמן משלוח אחיד של 7–14 ימים שאפשר להסתמך עליו. <a href="/guides/michtav-hotzaa/">מכתב ואזהרה</a>.</p>
-  <p>המועד לתגובה תלוי בסוג ההליך: בהתנגדות לשטר או לתביעה על סכום קצוב מדובר בדרך כלל ב-30 ימים מהמצאת האזהרה. אין כלל של 20 ימים לכל מכתב, וכל ההליכים אינם מתחילים אוטומטית ביום שאחרי. <a href="https://www.gov.il/BlobFolder/service/claim_objection/he/form218.pdf">הנחיות התנגדות</a>.</p>
-  <h2>אין גישה לאזור האישי?</h2>
-  <p>אפשר לבדוק את שירותי <a href="https://www.gov.il/he/pages/eca-call-center">מוקד המידע הרשמי</a> ואת <a href="https://www.gov.il/he/service/appointment-to-execution-bureau">הפנייה המקוונת למי שאינם מיוצגים</a>. לפני הגעה ללשכה בודקים תור, מסמכי זיהוי ושעות פעילות. אין למסור קוד הזדהות למי שפונה אליכם ללא אימות.</p>
-  <h2>הגבלות ונסיעה לחו״ל</h2>
-  <p>בודקים כל הגבלה ומקורה; ביטול בתיק אחד לא מספיק כאשר קיימת מניעה אחרת. הגבלת רישיון נהיגה ככלי גבייה בוטלה בתיקון 69, אבל אינה מבטלת בעיית רישוי תעבורתית. <a href="/guides/ikul-yetzia/">בדיקת יציאה מהארץ</a>; <a href="/guides/rishayon-nehiga/">רישיון נהיגה</a>.</p>
-  <h2>הצעד הבא לפי מה שמצאתם</h2>
-  <ul><li>טענה נגד שטר או תביעה קצובה — <a href="/guides/hitnagdut-letik/">התנגדות</a>.</li><li>חיוב שכבר קוים — <a href="https://www.gov.il/he/service/debt_repayment_argument">פרעתי</a>.</li><li>קושי לשלם — <a href="/guides/tzav-tashlumim/">צו תשלומים</a>.</li><li>פעולה קרובה — בדיקת <a href="https://www.gov.il/he/service/delay_processes">עיכוב הליכים</a>.</li><li>מחלוקת על החלטה — בדיקת <a href="/guides/irur-hotzaa/">ערעור ומועד</a>.</li></ul>
-  <h2 id="faq">שאלות נפוצות</h2>
+  <p>עיקול הוא פעולה שננקטת בתוך תיק מסוים. לכן בודקים אותו בתוך התיק: בהליכים ובהחלטות שמוצגים בו. אפשר גם לבדוק מהכיוון השני:</p>
+  <ul>
+    <li><strong>הבנק:</strong> בקשו מהבנק את פרטי צו העיקול: מי הוציא אותו, מספר התיק, התאריך והסכום. על חשבון אחד יכולים לחול כמה צווים מגופים שונים.</li>
+    <li><strong>המעסיק:</strong> מחלקת השכר מחזיקה העתק של צו עיקול המשכורת ויכולה להראות לכם כמה מנוכה ולאיזה תיק.</li>
+    <li><strong>העיקול לא מופיע בהוצאה לפועל?</strong> ייתכן שזה עיקול מנהלי, למשל של רשות מקומית על חוב ארנונה או של רשות המסים. עיקול כזה מטפלים מול הגוף שהטיל אותו. <a href="/guides/chov-arnona/">עיקול בגלל חוב ארנונה</a>.</li>
+    <li><strong>עיכוב יציאה מהארץ:</strong> בודקים בשירות המקוון של <a href="https://www.gov.il/he/service/departure_prohibition_order_info_2">רשות האוכלוסין</a>, עם הזדהות לאומית. מוצגים רק צווים שמוגדרים "פתוחים לעיון הציבור". <a href="/guides/ikul-yetzia/">עיכוב יציאה מהארץ</a>.</li>
+  </ul>
+  <p>מצאתם עיקול? <a href="/guides/bitul-ikul/">כך מבקשים לבטל או לעכב אותו</a>, בטופס 214 או באזור האישי.</p>
+
+  <h2 id="case-report" class="scroll-mt-24">דוח תיקים לחייב (רשימת תיקים) — ומה חשוב לדעת לפני שמפיקים</h2>
+  <p>"רשימת תיקים", או בשמה הנפוץ "דוח תיקים לחייב", היא רשימה מרוכזת של כל התיקים הפתוחים נגדכם בהוצאה לפועל, כולל מצב התיק וסוגו. חייבים שאינם מיוצגים מפיקים אותה <a href="https://www.gov.il/he/service/lawyer-request-for-report-of-debt-files">באזור האישי או בלשכה בזימון תור</a>. עורכי דין ועובדים סוציאליים מגישים בקשה נפרדת.</p>
+
+  <div class="warn-box">
+    <p class="font-semibold mb-1">שימו לב: הפקת הרשימה נחשבת קבלת אזהרה</p>
+    <p class="mb-2">לפי רשות האכיפה והגבייה, כשמפיקים רשימת תיקים, נרשמת מסירת אזהרה בכל התיקים שברשימה שבהם עדיין לא נמסרה אזהרה. בפועל, מאותו יום מתחילה לרוץ תקופת האזהרה: 30 ימים בשטרות ובתביעה על סכום קצוב, ו-20 ימים בשאר התיקים.</p>
+    <p class="mb-0">זו לא סיבה להימנע מהבדיקה. בדרך כלל עדיף לדעת מה פתוח נגדכם. אבל כדאי לפנות זמן לטפל בתיקים מיד אחר כך: לשלם, להגיש <a href="/guides/hitnagdut-letik/">התנגדות</a>, לבקש <a href="/guides/tzav-tashlumim/">צו תשלומים</a> או להתייצב ל<a href="/guides/hakirat-yecholet/">חקירת יכולת</a>.</p>
+  </div>
+
+  <p>רשימת התיקים היא לא דף חשבון ולא אישור על סגירת תיק. דף חשבון מפרט את התנועות בתיק אחד. אישור סגירה רלוונטי רק אחרי שהתיק נסגר. <a href="/guides/sgor-tik/">איך סוגרים תיק ומקבלים אישור</a>.</p>
+
+  <h2 id="status">מה אומרים הסטטוסים של התיק?</h2>
+  <p>הסטטוס הכללי ("פעיל", "מעוכב", "סגור") הוא רק נקודת התחלה. התמונה המלאה נמצאת בהחלטות עצמן:</p>
+  <ul>
+    <li><strong>פעיל:</strong> הזוכה יכול לבקש הליכי גבייה אחרי שעברה תקופת האזהרה.</li>
+    <li><strong>מעוכב:</strong> לפעמים העיכוב חל רק על הליך מסוים, ולפעמים הוא מוגבל בזמן. קראו את ההחלטה.</li>
+    <li><strong>סגור:</strong> בדקו את סיבת הסגירה. סגירה שאינה בגלל תשלום מלא לא בהכרח אומרת שהחוב נמחק. <a href="/guides/sgor-tik/">סגירת תיק</a>.</li>
+  </ul>
+
+  <h2 id="next">מצאתי תיק — מה עכשיו?</h2>
+  <p>הצעד הנכון תלוי בסוג התיק ובמצב שלכם. לפי מדריך הרשות לחייבים, אלה האפשרויות העיקריות:</p>
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">המצב</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה עושים</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מועד חשוב</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2">לא מסכימים לחוב בתיק שטרות או תביעה על סכום קצוב</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href="/guides/hitnagdut-letik/">התנגדות</a></td>
+          <td class="border border-gray-300 px-4 py-2">בדרך כלל 30 ימים מהמצאת האזהרה (<a class="text-brand underline" href="https://www.gov.il/BlobFolder/service/claim_objection/he/form218.pdf">הנחיות טופס 218</a>)</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2">כבר שילמתם את החוב, כולו או חלקו</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href="https://www.gov.il/he/service/debt_repayment_argument">טענת "פרעתי"</a> — טופס 236, קוד 119</td>
+          <td class="border border-gray-300 px-4 py-2">בתוך 21 או 30 ימים מהאזהרה, כדי שלא תצטרכו להתייצב לחקירת יכולת</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2">החוב נכון, אבל אין אפשרות לשלם בבת אחת</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href="/guides/tzav-tashlumim/">צו תשלומים</a> או <a class="text-brand underline" href="/guides/hakirat-yecholet/">חקירת יכולת</a></td>
+          <td class="border border-gray-300 px-4 py-2">חקירת יכולת: 21 ימים (פסק דין, מזונות ביטוח לאומי) או 30 ימים (שטרות, סכום קצוב)</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2">יש שני תיקים או יותר</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href="/guides/ichud-tikim/">איחוד תיקים</a></td>
+          <td class="border border-gray-300 px-4 py-2">אין מועד קבוע. כדאי לפני שמצטברים הליכים</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2">יש עיקול פעיל</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href="/guides/bitul-ikul/">בקשה לביטול או לעיכוב עיקול</a></td>
+          <td class="border border-gray-300 px-4 py-2">מיד, במיוחד כשהכסף נחוץ למחיה</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2">החובות גדולים מכדי לשלם גם בפריסה ארוכה</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href="/insolvency/">חדלות פירעון</a></td>
+          <td class="border border-gray-300 px-4 py-2">כדאי לבדוק מוקדם. ההליך ארוך</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm">המועדים מבוססים על <a href="https://www.gov.il/he/pages/execution_debtors_guide">מדריך הרשות לחייבים</a> ועל דפי השירות של <a href="https://www.gov.il/he/service/ability_investigation">חקירת יכולת</a> ו<a href="https://www.gov.il/he/service/debt_repayment_argument">טענת פרעתי</a>. התאריך המחייב בתיק שלכם הוא זה שמופיע באזהרה.</p>
+
+  <h2 id="private-sites">אתרים פרטיים ל"בדיקה לפי תעודת זהות"</h2>
+  <p>בחיפוש בגוגל מופיעים גם אתרים פרטיים שמציעים בדיקת תיקים או "דוח חובות". הם לא ערוץ רשמי של ההוצאה לפועל. הבדיקה הרשמית חינמית, ואין צורך למסור לאף גורם פרטי מספר זהות, קוד הזדהות או פרטי חשבון כדי לדעת מה פתוח נגדכם.</p>
+
+  <h2 id="someone-else">ואם אני רוצה לבדוק מישהו אחר?</h2>
+  <p>אי אפשר לראות תיקים של אדם אחר רק לפי מספר הזהות שלו. הגישה לתיקים מותנית בהזדהות ובהרשאה. מי שמחזיק פסק דין או צ'ק ומחפש מידע על החייב שלו, יכול לקרוא את <a href="/guides/itur-hayavim/">המדריך לאיתור חייבים</a>, שמסביר מה מותר לזוכה לבקש ודרך אילו שירותים רשמיים.</p>
+
+  <h2 id="faq">שאלות נפוצות על בדיקת תיק בהוצאה לפועל</h2>
   <div class="space-y-4 my-6">
     {faqs.map(faq => (
       <details class="border border-neutral-border rounded-xl p-4">
