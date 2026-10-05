@@ -1,2 +1,4 @@
 /sitemap.xml /sitemap-index.xml 301
 /favicon.ico /favicon.svg 301
+/tools/chatbot /tools/ 301
+/tools/chatbot/ /tools/ 301
