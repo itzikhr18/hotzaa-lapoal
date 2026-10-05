@@ -40,7 +40,6 @@ export default defineConfig({
         'https://hotzaa-lapoal.info/',
         'https://hotzaa-lapoal.info/guides/',
         'https://hotzaa-lapoal.info/tools/calculator/',
-        'https://hotzaa-lapoal.info/tools/chatbot/',
         'https://hotzaa-lapoal.info/forms/',
         'https://hotzaa-lapoal.info/faq/',
       ],
