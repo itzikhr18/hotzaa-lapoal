@@ -38,7 +38,7 @@
 - [כלי עיקול משכורת](https://hotzaa-lapoal.info/tools/ikul-maskoret/): יש לקרוא את התנאים והמגבלות בעמוד לפני שימוש.
 - [מחולל נוסח עזר](https://hotzaa-lapoal.info/tools/noseach-bakasha/): טיוטה לעריכה ולבדיקה, לא טופס רשמי ולא אישור להגשה.
 - [שאלון הכוונה](https://hotzaa-lapoal.info/tools/eligibility/): מידע כללי, לא החלטת זכאות.
-- [נתונים ממקורות רשמיים](https://hotzaa-lapoal.info/nitunim/): נתונים עם תקופת ייחוס ומקור מזוהה; אין להסיק מהם תוצאה בתיק אישי.
+- [נתוני הוצאה לפועל 2025](https://hotzaa-lapoal.info/nitunim/): ריכוז נתונים מדוח רשות האכיפה והגבייה לשנת 2025 (נכון לסוף 2025): 560,894 חייבים, 1,945,329 תיקים פתוחים, 73.8% מהחייבים הפרטיים ללא עורך דין, הגבלות, מזונות, חדלות פירעון והמרכז לגביית קנסות; אין להסיק מהם תוצאה בתיק אישי.
 - [אודות ומדיניות עריכה](https://hotzaa-lapoal.info/about/#editorial-policy)
 - [דיווח על טעות](https://hotzaa-lapoal.info/contact/)
 - [מדיניות פרטיות](https://hotzaa-lapoal.info/legal/privacy/)
