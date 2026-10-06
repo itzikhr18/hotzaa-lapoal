@@ -1,84 +1,206 @@
 ---
 import GuideLayout from '../../../layouts/GuideLayout.astro';
 
+const GUIDE_DEBTOR = 'https://www.gov.il/he/pages/alimony?chapterIndex=3';
+const GUIDE_NII = 'https://www.gov.il/he/pages/alimony?chapterIndex=4';
+const LAW = 'https://www.btl.gov.il/Laws1/00_0063_000000.pdf';
+const AMEND55 = 'https://m.knesset.gov.il/activity/legislation/laws/pages/lawbill.aspx?lawitemid=2015883&t=lawreshumot';
+const INSOLVENCY_175 = 'https://fs.knesset.gov.il/20/law/20_lsr_491934.pdf';
+
 const faqs = [
   {
-    "q": "האם רשם יכול לפרוס חוב מזונות עבר?",
-    "a": "כן, לפי התנאים והסמכות שבדין. זו אינה הפחתה אוטומטית של המזונות השוטפים שנפסקו.",
-    "source": "https://m.knesset.gov.il/activity/legislation/laws/pages/lawbill.aspx?lawitemid=2015883&t=lawreshumot"
+    q: 'אפשר למחוק חוב מזונות בהוצאה לפועל?',
+    a: 'אין בהוצאה לפועל מסלול "מחיקה" של חוב מזונות. אפשר לפרוס את חוב העבר לתשלומים, לטעון "פרעתי" אם שילמתם, ולעדכן את הלשכה בהסכם חתום אם הגעתם להסכמה עם הזוכה. שינוי של סכום המזונות עצמו נעשה בבית המשפט שפסק אותם. גם בחדלות פירעון, חוב מזונות לפי פסק דין לא נכלל ככלל בהפטר.',
+    source: GUIDE_DEBTOR,
   },
   {
-    "q": "האם מזונות ביטוח לאומי נכללים באיחוד?",
-    "a": "לא. השירות הרשמי לאיחוד מחריג את כל סוגי תיקי המזונות, לרבות מזונות ביטוח לאומי.",
-    "source": "https://www.gov.il/he/service/request_for_consolidation_portfolio"
+    q: 'אפשר לפרוס חוב מזונות לתשלומים?',
+    a: 'את חוב העבר — כן. מגישים טופס 233, בקשה למתן צו חיוב בתשלומים ופריסת חוב עבר בתיק מזונות (תיקון 55), עם מסמכים על היכולת הכלכלית. את המזונות השוטפים אי אפשר לפרוס בהוצאה לפועל. סכום הפריסה מתווסף למזונות השוטפים שמשלמים כל חודש.',
+    source: GUIDE_DEBTOR,
   },
   {
-    "q": "האם עיכוב יציאה מוטל אוטומטית?",
-    "a": "אין להסיק כך מעצם החוב. יש לבדוק את המסלול, תנאי הדין וההחלטות בתיק.",
-    "source": "https://www.btl.gov.il/Laws1/00_0063_000000.pdf"
+    q: 'מה ההבדל בין תיק מזונות רגיל לתיק של ביטוח לאומי?',
+    a: 'כשביטוח לאומי משלם לזכאי מזונות, הוא גובה מהחייב את מה ששילם. הסכום שמשולם לזכאי הוא הנמוך מבין סכום פסק הדין לבין הסכום שבתקנות הביטוח הלאומי. אם החוב לא משולם, נפתח תיק בהוצאה לפועל שבו הזוכה הוא ביטוח לאומי. בתיקים האלה יש מסלול פריסה לפי טבלה, בלי צורך במסמכים נוספים.',
+    source: GUIDE_NII,
   },
   {
-    "q": "האם פנייה לשינוי מזונות עוצרת את החיוב?",
-    "a": "הגשת בקשה אינה החלטה שמשנה את פסק הדין. יש לבדוק מה תקף ולפעול לפי החלטה מתאימה.",
-    "source": "https://www.btl.gov.il/Laws1/00_0063_000000.pdf"
-  }
+    q: 'אפשר להיכנס למאסר בגלל חוב מזונות?',
+    a: 'כן. לפי סעיף 74 לחוק ההוצאה לפועל, בחוב מזונות לפי פסק דין הרשם רשאי, לבקשת הזוכה, לתת צו מאסר עד 21 ימים, גם בלי חקירת יכולת. הצו לא מבוצע לפני שנשלחה התראה ועברו 7 ימים, וההתראה כוללת מידע על זכאות לעורך דין מהסיוע המשפטי. מי שנאסר מובא לפני רשם תוך 24 שעות.',
+    source: LAW,
+  },
+  {
+    q: 'האם תיק מזונות נכנס לאיחוד תיקים?',
+    a: 'לא. חוק ההוצאה לפועל מוציא תיקי מזונות מאיחוד, ודף השירות של הרשות מחריג את כל סוגי תיקי המזונות, כולל מזונות ביטוח לאומי.',
+    source: 'https://www.gov.il/he/service/request_for_consolidation_portfolio',
+  },
+  {
+    q: 'למה אני צריך לשלם 1% יותר?',
+    a: 'לפי מדריך הרשות, בתיקי מזונות מקוזזת אגרה של 1% מכל תשלום, לפי תקנות האגרות. לכן מוסיפים 1% לכל תשלום: אם צריך לשלם 100 ₪, משלמים 101 ₪.',
+    source: GUIDE_DEBTOR,
+  },
+  {
+    q: 'שילמתי ישירות לאם הילדים. זה נספר?',
+    a: 'צריך לדווח ללשכת המזונות על התשלום ולוודא שגם הזוכה מעדכנת אותו בתיק. אם אין עדכון, המסלול הוא טענת "פרעתי" עם אסמכתאות. הדרך הבטוחה היא לשלם ישירות לתיק: התשלום נזקף מיד, ואין צורך בדיווח.',
+    source: GUIDE_DEBTOR,
+  },
 ];
-const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })) };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
+};
+
 const sources = [
-  {
-    "label": "מדריך גביית מזונות — רשות האכיפה",
-    "href": "https://www.gov.il/he/pages/alimony?chapterIndex=4"
-  },
-  {
-    "label": "תיקון 55 — סמכות לפריסת חוב עבר",
-    "href": "https://m.knesset.gov.il/activity/legislation/laws/pages/lawbill.aspx?lawitemid=2015883&t=lawreshumot"
-  },
-  {
-    "label": "חוק ההוצאה לפועל",
-    "href": "https://www.btl.gov.il/Laws1/00_0063_000000.pdf"
-  },
-  {
-    "label": "בקשת איחוד — תיקים מוחרגים",
-    "href": "https://www.gov.il/he/service/request_for_consolidation_portfolio"
-  }
+  { label: 'רשות האכיפה והגבייה — מדריך גביית מזונות: מידע לחייב', href: GUIDE_DEBTOR },
+  { label: 'רשות האכיפה והגבייה — מדריך גביית מזונות: תיקי ביטוח לאומי', href: GUIDE_NII },
+  { label: 'חוק ההוצאה לפועל — סעיפים 14, 66ב, 74 ו-74א', href: LAW },
+  { label: 'תיקון 55 — פריסת חוב עבר במזונות', href: AMEND55 },
+  { label: 'בקשת איחוד — תיקים מוחרגים', href: 'https://www.gov.il/he/service/request_for_consolidation_portfolio' },
+  { label: 'חוק חדלות פירעון — סעיף 175 (חובות שאינם נכללים בהפטר)', href: INSOLVENCY_175 },
+];
+
+const relatedGuides = [
+  { title: 'עיכוב יציאה מהארץ', href: '/guides/ikul-yetzia/' },
+  { title: 'עיקול משכורת', href: '/guides/ikul-maskoret/' },
+  { title: 'צו תשלומים', href: '/guides/tzav-tashlumim/' },
+  { title: 'בדיקת תיק לפי תעודת זהות', href: '/guides/bdika-tik/' },
+  { title: 'הפטר בחדלות פירעון', href: '/insolvency/haftar/' },
 ];
 ---
 
 <GuideLayout
-  title="מזונות בהוצאה לפועל — חוב שוטף, חוב עבר ודרכי בירור"
-  description="גביית פסק דין מזונות, ההבחנה ממזונות ביטוח לאומי, פריסת חוב עבר, עיקולים והצורך לבדוק החלטות ולא להניח אכיפה אוטומטית."
-  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: "מזונות בהוצאה לפועל", href: "/guides/mazamot/" }]}
+  title="חוב מזונות בהוצאה לפועל: פריסה, ביטוח לאומי ומה אפשר לעשות"
+  description="מה אפשר לעשות כשנפתח נגדכם תיק מזונות בהוצאה לפועל: פריסת חוב עבר בטופס 233, תיקי מזונות של ביטוח לאומי, למה אין מחיקה של חוב מזונות, עיכוב יציאה, מאסר ועיקול משכורת."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'מזונות בהוצאה לפועל', href: '/guides/mazamot/' }]}
   publishDate="2026-03-29"
-  updateDate="2026-09-13"
-  readTime="5 דקות"
+  updateDate="2026-10-06"
+  readTime="8 דקות"
   sources={sources}
+  relatedGuides={relatedGuides}
   schema={[faqSchema]}
 >
-  <div class="info-box"><p><strong>חוב מזונות כפוף לכללים מיוחדים; הוא אינו תיק חוב רגיל.</strong> מפרידים בין החיוב השוטף, חוב העבר ומזונות שבהם הזוכה הוא הביטוח הלאומי. הרשם עשוי לפרוס חוב עבר בתנאים, אך אינו משנה מעצמו את פסק הדין הקובע מזונות. <a href="https://www.gov.il/he/pages/alimony?chapterIndex=4">המדריך הרשמי</a>; <a href="https://m.knesset.gov.il/activity/legislation/laws/pages/lawbill.aspx?lawitemid=2015883&t=lawreshumot">הסמכות לפריסה</a>.</p></div>
-  <h2>מה נגבה בתיק מזונות?</h2>
-  <p>נקודת המוצא היא פסק הדין והחיובים שניתן לבצע מכוחו. בודקים את הסכומים, התקופות, הצמדה ורכיבים נוספים לפי ההחלטות, לצד תשלומים שכבר בוצעו. אין לגבות את אותו חיוב פעמיים. כשנטען שהחיוב קוים, בודקים את מסלול <a href="https://www.gov.il/he/service/debt_repayment_argument">פרעתי</a> ואת המסמכים התומכים.</p>
-  <h2>מזונות ביטוח לאומי הם מסלול שיש לזהות בנפרד</h2>
-  <p>ביטוח לאומי משלם לזכאים בתנאי הזכאות וגובה מהחייב את הסכומים ששילם. גובה הגמלה אינו בהכרח מלוא פסק הדין. אם כבר נפתח תיק, יש לבדוק היכן וכיצד לשלם כדי שהסכום ייזקף נכון. <a href="https://www.gov.il/he/pages/alimony?chapterIndex=4">פרק מזונות ביטוח לאומי</a>.</p>
-  <h2>אפשר לפרוס חוב עבר?</h2>
-  <p>כן, ניתן לבקש זאת בכפוף לתנאים ולשיקול הדעת. תיקון 55 העניק לרשם סמכות לפריסת חוב עבר במזונות, תוך בחינת יכולת החייב והפגיעה בזוכה. זו אינה הפחתה אוטומטית של סכום המזונות השוטף. <a href="https://m.knesset.gov.il/activity/legislation/laws/pages/lawbill.aspx?lawitemid=2015883&t=lawreshumot">תיקון החוק</a>.</p>
-  <p>בתיקי מזונות ביטוח לאומי קיים בשירות הרשמי מסלול פריסה לפי טבלה, ומסלול בטופס 233 כשמבוקשת פריסה שונה. יש להשתמש בהנחיות העדכניות; סעיפים היסטוריים על הוראות שעה של קורונה אינם אישור למסלול חדש כיום. <a href="https://www.gov.il/he/pages/alimony?chapterIndex=4">הנחיות הפריסה</a>.</p>
-  <h2>עיקולים, יציאה מהארץ ומאסר</h2>
-  <p>דיני המזונות כוללים חריגים להגנות החלות בחוב רגיל וכלי אכיפה מיוחדים, בכפוף לתנאים ולהחלטות. אין כלל שעיקול שכר מוגבל תמיד ל-50%, ואין צו יציאה ״אוטומטי״ מעצם פיגור. יש לבדוק את הדין והצו המסוים. <a href="https://www.btl.gov.il/Laws1/00_0063_000000.pdf">הוראות האכיפה בחוק</a>; <a href="/guides/ikul-maskoret/">הגנת שכר וחריג מזונות</a>.</p>
-  <p>בניגוד לאמירה גורפת שאין מאסר בגלל חוב בישראל, בחוב מזונות קיימת סמכות מיוחדת למאסר בתנאים שבחוק. צו הבאה הוא כלי אחר. אין להסיק שאיחור יחיד גורר מאסר או שהליך כזה כבר ניתן בתיק. <a href="https://www.btl.gov.il/Laws1/00_0063_000000.pdf">פרק הבאה ומאסר</a>.</p>
-  <h2>מה לא מבטל את התיק אוטומטית?</h2>
-  <ul><li>בקשה להפחתת המזונות בערכאה המוסמכת אינה משנה לבדה את החיוב הקיים.</li><li>בקשת פריסה אינה אישור להפסיק את התשלום השוטף.</li><li>איחוד תיקים אינו כולל תיקי מזונות, לרבות מזונות ביטוח לאומי. <a href="https://www.gov.il/he/service/request_for_consolidation_portfolio">החריג הרשמי</a>.</li><li>הגבלת רישיון נהיגה בוטלה ככלי גבייה בתיקון 69; אין להציג אותה כאיום נוכחי גם בהקשר זה. <a href="https://main.knesset.gov.il/activity/legislation/laws/pages/lawbill.aspx?lawitemid=2165615&t=lawsuggestionssearch">התיקון</a>.</li></ul>
-  <h2>היכן מטפלים בשינוי פסק הדין?</h2>
-  <p>שאלת הפחתת החיוב השוטף וסמכות בית משפט למשפחה או בית דין תלויה בדין ובהליך. אין להסיק סמכות רק מזהות הערכאה שבה נפתח תיק קודם. כאן נבדקו הליכי הגבייה, לא זכאות אישית לשינוי מזונות או שאלות סמכות בסכסוך משפחתי.</p>
-  <h2>מה להכין לבדיקה?</h2>
-  <p>פסק הדין וכל החלטה מעדכנת, פירוט חוב לפי חודשים, קבלות, מסמכי ביטוח לאומי אם רלוונטיים ונתוני מצב כלכלי לבקשת פריסה. לתגובה, ערעור או עיכוב עשויים לחול מועדים שונים; <a href="/guides/irur-hotzaa/">ערעורים בענייני משפחה נבחנים בנפרד</a>.</p>
-  <h2 id="faq">שאלות נפוצות</h2>
-  <div class="space-y-4 my-6">
-    {faqs.map(faq => (
-      <details class="border border-neutral-border rounded-xl p-4">
-        <summary class="font-semibold cursor-pointer">{faq.q}</summary>
-        <p>{faq.a}</p>
-        <p><a href={faq.source}>המקור הרשמי לתשובה</a></p>
-      </details>
-    ))}
+  <div class="info-box">
+    <p class="mb-2"><strong>התשובה הקצרה:</strong> בתיק מזונות אפשר לפרוס את <strong>חוב העבר</strong> לתשלומים, בטופס 233, אבל לא את המזונות השוטפים. אין בהוצאה לפועל מסלול למחיקת חוב מזונות. אם לדעתכם הסכום גבוה מדי, משנים אותו בבית המשפט שפסק אותו, לא בהוצאה לפועל.</p>
+    <p class="mb-0">חוב מזונות הוא החוב שהחוק מטפל בו בחומרה הרבה ביותר: אפשר להטיל עיכוב יציאה גם בחוב קטן, ואפשר להגיע עד צו מאסר. לכן כדאי לפעול מוקדם. <a href="#spread">פריסת חוב עבר</a> · <a href="#nii">תיק של ביטוח לאומי</a> · <a href="#delete">"מחיקת" חוב מזונות</a>.</p>
   </div>
+
+  <h2 id="types">שני סוגים של תיקי מזונות</h2>
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold"></th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">פסק דין מזונות (זוכה פרטי)</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מזונות ביטוח לאומי</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">מי הזוכה</td>
+          <td class="border border-gray-300 px-4 py-2">מי שקיבל את פסק הדין, בדרך כלל ההורה השני</td>
+          <td class="border border-gray-300 px-4 py-2">המוסד לביטוח לאומי, שגובה מכם את מה ששילם לזכאי</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">פריסה</td>
+          <td class="border border-gray-300 px-4 py-2">חוב עבר בלבד, בטופס 233 עם מסמכים</td>
+          <td class="border border-gray-300 px-4 py-2">לפי טבלת פריסה בטופס ייעודי, בלי מסמכים; או בטופס 233 אם רוצים פריסה אחרת</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הגבלות (דרכון, כרטיסי אשראי ועוד)</td>
+          <td class="border border-gray-300 px-4 py-2">אפשר להטיל בגלל עצם חוב המזונות</td>
+          <td class="border border-gray-300 px-4 py-2">המסלול המיוחד למזונות לא חל; חלים התנאים הרגילים</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm">מקורות: <a href={GUIDE_DEBTOR}>מדריך הרשות לחייב בתיק מזונות</a>; <a href={GUIDE_NII}>תיקי ביטוח לאומי</a>; <a href={LAW}>חוק ההוצאה לפועל, סעיף 66ב</a>.</p>
+
+  <h2 id="first">קיבלתם אזהרה בתיק מזונות? מה עושים</h2>
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>בודקים מה כתוב בתיק:</strong> מי הזוכה, אילו חודשים נטען שלא שולמו, ומה החוב. <a href="/guides/bdika-tik/">איך בודקים תיק</a>.</span></li>
+    <li><span class="step-num">2</span><span><strong>ממשיכים לשלם את המזונות השוטפים</strong> לפי פסק הדין, כולל ההצמדה שנקבעה בו. בקשת פריסה או בקשה לשינוי בבית המשפט לא עוצרות את החיוב.</span></li>
+    <li><span class="step-num">3</span><span><strong>שילמתם ולא נרשם?</strong> מגישים <a href="https://www.gov.il/he/service/debt_repayment_argument">טענת "פרעתי"</a> עם אסמכתאות.</span></li>
+    <li><span class="step-num">4</span><span><strong>לא יכולים לשלם את חוב העבר בבת אחת?</strong> מגישים בקשה לפריסה. <a href="#spread">פירוט בהמשך</a>.</span></li>
+    <li><span class="step-num">5</span><span><strong>נקבע דיון?</strong> מגיעים. אם אי אפשר, מבקשים מראש דחייה בטופס 401, עם נימוקים.</span></li>
+  </ol>
+
+  <h2 id="spread">פריסת חוב עבר בטופס 233</h2>
+  <p>לפי מדריך הרשות, <strong>דמי המזונות השוטפים לא ניתנים לפריסה בהוצאה לפועל.</strong> את חוב העבר — מזונות והוצאות שלא שולמו בזמן — אפשר לפרוס בבקשה בטופס 233, "בקשה למתן צו חיוב בתשלומים ופריסת חוב עבר בתיק מזונות", לפי <a href={AMEND55}>תיקון 55 לחוק</a>. מצרפים מסמכים שמעידים על היכולת הכלכלית.</p>
+  <div class="warn-box">
+    <p class="mb-0"><strong>שימו לב:</strong> סכום הפריסה שהרשם קובע <strong>מתווסף</strong> למזונות השוטפים. אם המזונות הם 2,000 ₪ בחודש והרשם קבע 500 ₪ לחוב העבר, תשלמו 2,500 ₪ בחודש. הציעו סכום שתוכלו לעמוד בו באמת. מקור: <a href={GUIDE_DEBTOR}>מדריך הרשות</a>.</p>
+  </div>
+
+  <h2 id="nii">תיק מזונות שבו הזוכה הוא ביטוח לאומי</h2>
+  <p>כשביטוח לאומי משלם מזונות לזכאי, הוא גובה מכם את מה ששילם. הסכום שמשולם לזכאי הוא <strong>הנמוך מבין</strong> הסכום בפסק הדין לבין הסכום שקבוע בתקנות הביטוח הלאומי. לפי <a href={GUIDE_NII}>מדריך הרשות</a>:</p>
+  <ul>
+    <li><strong>לפני שנפתח תיק:</strong> אפשר לשלם את כל החוב ישירות לביטוח לאומי תוך 60 יום, או בהוראת קבע מזונות. אם לא משלמים, התיק עובר להוצאה לפועל.</li>
+    <li><strong>יש לכם הסדר קיים עם ביטוח לאומי</strong> על חוב עבר ואתם משלמים בקביעות — ההסדר נשאר בתוקף. ממשיכים לשלם, וגם הוראת קבע פעילה ממשיכה לעבוד.</li>
+    <li><strong>בקשה חדשה לפריסה:</strong> לפי טבלת הפריסה שבטופס "בקשה לפריסת חוב — מזונות ביטוח לאומי", <strong>בלי לצרף מסמכים</strong>. פריסה שלא לפי הטבלה — בטופס 233.</li>
+  </ul>
+
+  <h2 id="delete">אפשר "למחוק" חוב מזונות?</h2>
+  <p>זו אחת השאלות הנפוצות, והתשובה הכנה היא שבהוצאה לפועל אין מסלול כזה. מה שכן קיים:</p>
+  <ul>
+    <li><strong>טענת "פרעתי"</strong> — אם החוב, כולו או חלקו, כבר שולם.</li>
+    <li><strong>הסכם עם הזוכה על חוב העבר</strong> — לפי מדריך הרשות, מעדכנים את הלשכה ודואגים שגם הזוכה תעדכן, עם הסכם חתום על ידי הצדדים.</li>
+    <li><strong>שינוי פסק הדין</strong> — בקשה לביטול או לשינוי מגישים לבית המשפט שפסק את המזונות. החלטה חדשה מגישים ללשכת המזונות מיד.</li>
+    <li><strong>חדלות פירעון</strong> — לפי <a href={INSOLVENCY_175}>סעיף 175 לחוק חדלות פירעון</a>, חוב מזונות לפי פסק דין לא נכלל ככלל בהפטר. בית המשפט רשאי לקבוע אחרת רק בנסיבות חריגות. <a href="/insolvency/haftar/">הפטר והחריגים</a>.</li>
+  </ul>
+
+  <h2 id="enforcement">מה יכולים לעשות נגדכם בתיק מזונות</h2>
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">הליך</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה מיוחד במזונות</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold"><a class="text-brand underline" href="/guides/ikul-yetzia/">עיכוב יציאה מהארץ</a></td>
+          <td class="border border-gray-300 px-4 py-2">הסף של 50,000 ₪ שחל בחובות אחרים לא חל על חוב מזונות (סעיף 14(ה)(3))</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold"><a class="text-brand underline" href="/rights/hagbalot/">הגבלות</a></td>
+          <td class="border border-gray-300 px-4 py-2">בחוב מזונות לפי פסק דין הרשם רשאי להטיל הגבלות (דרכון, כרטיסי אשראי, צ'קים ועוד) גם בלי שנקבע שאתם "משתמטים", אם שוכנע שזה מוצדק. לא חל על חוב שגובה ביטוח לאומי (סעיף 66ב(א)(2))</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">צו מאסר</td>
+          <td class="border border-gray-300 px-4 py-2">עד 21 ימים, לבקשת הזוכה, גם בלי חקירת יכולת. לא מבוצע לפני התראה ו-7 ימים, וההתראה כוללת מידע על עורך דין מהסיוע המשפטי (סעיף 74)</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold"><a class="text-brand underline" href="/guides/ikul-maskoret/">עיקול משכורת</a></td>
+          <td class="border border-gray-300 px-4 py-2">החריג למזונות בסעיף 8(ב) לחוק הגנת השכר: ההגנה הרגילה על חלק מהשכר לא חלה באותה צורה</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold"><a class="text-brand underline" href="/guides/ichud-tikim/">איחוד תיקים</a></td>
+          <td class="border border-gray-300 px-4 py-2">תיקי מזונות לא נכנסים לאיחוד, כולל מזונות ביטוח לאומי (סעיף 74א)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm">מקור: <a href={LAW}>חוק ההוצאה לפועל</a>. הגבלת רישיון נהיגה בוטלה ככלי גבייה בתיקון 69, גם בתיקי מזונות. <a href="/guides/rishayon-nehiga/">פרטים</a>.</p>
+
+  <h2 id="paying">איך משלמים נכון</h2>
+  <ul>
+    <li><strong>הכי בטוח לשלם ישירות לתיק:</strong> התשלום נזקף מיד ואין צורך בדיווח. דרכי התשלום: אתר התשלומים הממשלתי, טלפון ‎*35592 או 073-2055000 או בלשכה (עד 50,000 ₪ בעסקה), הוראת קבע, העברה בנקאית או המחאה בנקאית.</li>
+    <li><strong>הוסיפו 1%:</strong> בתיקי מזונות מקוזזת אגרה של 1% מכל תשלום. 100 ₪ חיוב — משלמים 101 ₪.</li>
+    <li><strong>שילמתם ישירות לזוכה?</strong> דווחו ללשכת המזונות, ובדקו שהזוכה עדכנה את התשלום בתיק.</li>
+  </ul>
+  <p class="text-sm">מקור: <a href={GUIDE_DEBTOR}>מדריך גביית מזונות — מידע לחייב</a>.</p>
+
+  <section id="faq">
+    <h2>שאלות נפוצות על חוב מזונות</h2>
+    <div class="space-y-4 my-6">
+      {faqs.map(faq => (
+        <details class="border border-neutral-border rounded-xl p-4">
+          <summary class="font-semibold cursor-pointer">{faq.q}</summary>
+          <p>{faq.a}</p>
+          <p><a href={faq.source}>המקור הרשמי לתשובה</a></p>
+        </details>
+      ))}
+    </div>
+  </section>
 </GuideLayout>
