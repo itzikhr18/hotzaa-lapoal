@@ -1,0 +1,251 @@
+---
+import GuideLayout from '../../../layouts/GuideLayout.astro';
+
+const EA_PERSONAL = 'https://www.gov.il/he/departments/topics/personal-area-enforcement/govil-landing-page';
+const EA_INFO = 'https://www.gov.il/he/pages/qf_personal_information';
+const FINES_CENTER = 'https://www.gov.il/he/service/debt_payment_center_to_collect_fines_and_fees_old';
+const EXIT_CHECK = 'https://www.gov.il/he/service/departure_prohibition_order_info_2';
+const LIMITED_MEANS = 'https://www.gov.il/he/service/execution_debtors_check';
+const INSOLVENCY_SEARCH = 'https://www.gov.il/he/service/locating-information-bankruptcy-case-or-company-liquidation';
+const CREDIT_DATA = 'https://creditdata.org.il/';
+const CREDIT_KZ = 'https://www.kolzchut.org.il/he/%D7%A7%D7%91%D7%9C%D7%AA_%D7%9E%D7%99%D7%93%D7%A2_%D7%A2%D7%9C_%D7%A0%D7%AA%D7%95%D7%A0%D7%99_%D7%90%D7%A9%D7%A8%D7%90%D7%99_%D7%95%D7%93%D7%99%D7%A8%D7%95%D7%92_%D7%94%D7%90%D7%A9%D7%A8%D7%90%D7%99_%D7%94%D7%90%D7%99%D7%A9%D7%99';
+const RESTRICTED_GUIDE = 'https://boi.org.il/information/bank-paymnts/guide/restricted_accounts';
+const RESTRICTED_LOOKUP = 'https://boi.org.il/information/restricted_accounts/';
+const NII_DEBT_KZ = 'https://www.kolzchut.org.il/he/%D7%AA%D7%A9%D7%9C%D7%95%D7%9D_%D7%97%D7%95%D7%91_%D7%9C%D7%91%D7%99%D7%98%D7%95%D7%97_%D7%9C%D7%90%D7%95%D7%9E%D7%99';
+const NII_BRANCHES = 'https://www.btl.gov.il/snifim/Pages/default.aspx';
+const TAX_PERSONAL = 'https://www.gov.il/he/service/personal_area_taxes';
+
+const faqs = [
+  {
+    q: 'איך בודקים את כל החובות שלי לפי תעודת זהות?',
+    a: 'אין מערכת ממשלתית אחת שמציגה את כל החובות. כל גוף מנהל את החובות שלו: הוצאה לפועל באזור האישי של רשות האכיפה והגבייה, קנסות ודוחות משטרה באזור האישי של המרכז לגביית קנסות, ארנונה ומים ברשות המקומית, וחובות לביטוח לאומי באזור האישי באתר ביטוח לאומי. כדאי להוסיף גם דוח נתוני אשראי של בנק ישראל: דוח אחד בשנה קלנדרית ניתן בחינם.',
+    source: FINES_CENTER,
+  },
+  {
+    q: 'איך בודקים קנסות ודוחות משטרה לפי תעודת זהות?',
+    a: 'דוחות משטרה, קנסות של בית משפט לתעבורה, קנסות פליליים, קנסות מנהליים, וגם דוחות חניה של רשויות מקומיות, נגבים במרכז לגביית קנסות. בודקים באזור האישי של המרכז, או במוקד ‎*35592 או 073-2055000. כדי לזהות את החוב צריך אחד מאלה: מספר זהות ומספר תיק במרכז, מספר זהות ומספר רישיון נהיגה, מספר דוח משטרה, או מספר דוח חניה ומספר רכב.',
+    source: FINES_CENTER,
+  },
+  {
+    q: 'איך בודקים אם יש לי עיכוב יציאה מהארץ?',
+    a: 'בשירות של רשות האוכלוסין וההגירה. באינטרנט הבדיקה אפשרית רק לגבי עצמכם, עם הזדהות לאומית. בטלפון ‎*3450 אפשר לבדוק גם לגבי הילדים הקטינים שלכם (מתחת לגיל 18). השירות חינם, ומוצגים בו צווים שמוגדרים "פתוחים לעיון הציבור".',
+    source: EXIT_CHECK,
+  },
+  {
+    q: 'איך יודעים כמה אני חייב לביטוח לאומי?',
+    a: 'את מקור החוב בודקים באזור האישי באתר ביטוח לאומי, או מול מחלקת הגבייה בסניף. ביטוח לאומי גובה חובות דמי ביטוח בעצמו: בתנאים מסוימים הוא רשאי לקזז חוב מקצבאות, ויכול גם לעקל חשבון בנק. חריג: חוב מזונות לביטוח לאומי נגבה בתיק הוצאה לפועל.',
+    source: NII_DEBT_KZ,
+  },
+  {
+    q: 'אפשר לבדוק חובות של אדם אחר לפי תעודת הזהות שלו?',
+    a: 'ברוב המקרים לא. תיקי הוצאה לפועל, קנסות ונתוני אשראי פתוחים רק לאדם עצמו או למי שהוא הרשה. יש כמה מאגרים ציבוריים, כמו מרשם החייבים המוגבלים באמצעים, איתור תיקי חדלות פירעון אצל הממונה, ואיתור חשבונות מוגבלים באתר בנק ישראל. הם מראים מצבים מסוימים בלבד, לא את כל החובות.',
+    source: LIMITED_MEANS,
+  },
+  {
+    q: 'האם הבדיקות עולות כסף?',
+    a: 'רוב הבדיקות הרשמיות ניתנות בלי תשלום, למשל בדיקת עיכוב יציאה מהארץ ובדיקה במרשם החייבים המוגבלים באמצעים. בדוח נתוני אשראי, דוח אחד בשנה קלנדרית ניתן בחינם, ודוחות נוספים בתשלום. אתר פרטי שגובה כסף על "בדיקת חובות לפי תעודת זהות" אינו ערוץ רשמי.',
+    source: CREDIT_KZ,
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
+};
+
+const sources = [
+  { label: 'רשות האכיפה והגבייה — אזור אישי, הוצאה לפועל', href: EA_PERSONAL },
+  { label: 'רשות האכיפה והגבייה — קבלת מידע אישי ועדכני על תיקים', href: EA_INFO },
+  { label: 'המרכז לגביית קנסות, אגרות והוצאות — תשלום ובירור חובות', href: FINES_CENTER },
+  { label: 'רשות האוכלוסין וההגירה — בדיקת עיכוב יציאה מהארץ', href: EXIT_CHECK },
+  { label: 'רשות האכיפה והגבייה — בדיקה במרשם חייבים מוגבלים באמצעים', href: LIMITED_MEANS },
+  { label: 'משרד המשפטים — איתור מידע על תיקי חדלות פירעון ופירוק', href: INSOLVENCY_SEARCH },
+  { label: 'כל זכות — קבלת מידע על נתוני אשראי (מערכת נתוני אשראי של בנק ישראל)', href: CREDIT_KZ },
+  { label: 'בנק ישראל — המדריך לחשבונות מוגבלים', href: RESTRICTED_GUIDE },
+  { label: 'כל זכות — תשלום חוב לביטוח לאומי', href: NII_DEBT_KZ },
+  { label: 'רשות המסים — אזור אישי', href: TAX_PERSONAL },
+];
+
+const relatedGuides = [
+  { title: 'בדיקת תיק הוצאה לפועל', href: '/guides/bdika-tik/' },
+  { title: 'איך מבטלים עיקול', href: '/guides/bitul-ikul/' },
+  { title: 'עיכוב יציאה מהארץ', href: '/guides/ikul-yetzia/' },
+  { title: 'חוב ארנונה', href: '/guides/chov-arnona/' },
+  { title: 'איתור חייבים — מה מותר לבדוק על אדם אחר', href: '/guides/itur-hayavim/' },
+  { title: 'חייב מוגבל באמצעים', href: '/guides/hayav-mugbal/' },
+];
+---
+
+<GuideLayout
+  title="בדיקת חובות לפי תעודת זהות: איפה בודקים כל חוב, קנס ועיקול (חינם)"
+  description="אין מאגר אחד לכל החובות. כך בודקים חינם, בכל ערוץ רשמי: הוצאה לפועל, קנסות ודוחות משטרה במרכז לגביית קנסות, ארנונה, ביטוח לאומי, נתוני אשראי, עיכוב יציאה, חשבון מוגבל וחדלות פירעון."
+  breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'בדיקת חובות לפי תעודת זהות', href: '/guides/bdikat-hovot/' }]}
+  publishDate="2026-10-07"
+  updateDate="2026-10-07"
+  readTime="6 דקות"
+  sources={sources}
+  relatedGuides={relatedGuides}
+  schema={[faqSchema]}
+>
+  <div class="info-box">
+    <p class="mb-2"><strong>התשובה הקצרה:</strong> אין מערכת אחת שמראה את כל החובות שלכם. כל גוף מנהל את החובות שלו, ולכן בודקים בכמה מקומות. ברוב המקרים שלושה מספיקים כדי לראות את רוב התמונה:</p>
+    <ol class="mb-2">
+      <li><a href={EA_PERSONAL}>האזור האישי של ההוצאה לפועל</a> — תיקים, יתרות ועיקולים.</li>
+      <li><a href={FINES_CENTER}>האזור האישי של המרכז לגביית קנסות</a> — דוחות משטרה, קנסות ואגרות.</li>
+      <li><a href={CREDIT_KZ}>דוח נתוני אשראי של בנק ישראל</a> — הלוואות, אשראי והליכי גבייה. אחד בשנה בחינם.</li>
+    </ol>
+    <p class="mb-0">הבדיקות האלה נעשות באתרים הרשמיים, ורובן בלי תשלום. אנחנו אתר מידע: לא מבצעים בדיקות ולא מבקשים מכם תעודת זהות.</p>
+  </div>
+
+  <nav aria-label="ניווט מהיר במדריך" class="not-prose my-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+    <a class="text-brand underline" href="#table">טבלה: איפה בודקים כל חוב</a>
+    <a class="text-brand underline" href="#execution">הוצאה לפועל</a>
+    <a class="text-brand underline" href="#fines">קנסות ודוחות משטרה</a>
+    <a class="text-brand underline" href="#credit">נתוני אשראי</a>
+    <a class="text-brand underline" href="#restrictions">עיכוב יציאה וחשבון מוגבל</a>
+    <a class="text-brand underline" href="#other-person">בדיקה על אדם אחר</a>
+  </nav>
+
+  <p>קיבלתם עיקול שאתם לא מבינים מאיפה הגיע? מתכננים לבקש הלוואה, או פשוט רוצים לדעת איפה אתם עומדים? חובות בישראל מפוזרים בין כמה גופים. חלקם גובים דרך ההוצאה לפועל, וחלקם גובים בעצמם. במדריך הזה ריכזנו את כל המקומות הרשמיים שבהם בודקים חובות לפי תעודת זהות, מה צריך לכל בדיקה, ומה כל אחת מראה.</p>
+
+  <h2 id="table" class="scroll-mt-24">איפה בודקים כל סוג של חוב</h2>
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">סוג החוב</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">איפה בודקים</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">מה צריך</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">תיקי הוצאה לפועל, עיקולים, יתרת חוב</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href={EA_PERSONAL}>אזור אישי — הוצאה לפועל</a>, מוקד ‎*35592 או לשכה</td>
+          <td class="border border-gray-300 px-4 py-2">הזדהות לאומית. במוקד: מספר זהות ומספר תיק</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">דוחות משטרה, קנסות תעבורה, קנסות פליליים ומנהליים, חלק מדוחות החניה</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href={FINES_CENTER}>המרכז לגביית קנסות</a>: אזור אישי או מוקד ‎*35592</td>
+          <td class="border border-gray-300 px-4 py-2">מספר זהות ומספר תיק, או מספר זהות ורישיון נהיגה, או מספר דוח משטרה, או דוח חניה ומספר רכב</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">ארנונה, מים ואגרות של העירייה</td>
+          <td class="border border-gray-300 px-4 py-2">הרשות המקומית: אתר העירייה, האזור האישי שלה או מחלקת הגבייה</td>
+          <td class="border border-gray-300 px-4 py-2">לפי הנהלים של כל רשות. <a class="text-brand underline" href="/guides/chov-arnona/">חוב ארנונה</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">חוב לביטוח לאומי</td>
+          <td class="border border-gray-300 px-4 py-2">האזור האישי באתר ביטוח לאומי, או <a class="text-brand underline" href={NII_BRANCHES}>מחלקת הגבייה בסניף</a></td>
+          <td class="border border-gray-300 px-4 py-2">הזדהות באתר ביטוח לאומי</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">מס הכנסה, מע"מ</td>
+          <td class="border border-gray-300 px-4 py-2">פנייה דרך <a class="text-brand underline" href={TAX_PERSONAL}>האזור האישי של רשות המסים</a>, או למשרד שמטפל בתיק שלכם</td>
+          <td class="border border-gray-300 px-4 py-2">רישום לאזור האישי של רשות המסים</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הלוואות, כרטיסי אשראי, מינוס בבנק</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href={CREDIT_KZ}>דוח נתוני אשראי</a> ממערכת נתוני האשראי של בנק ישראל</td>
+          <td class="border border-gray-300 px-4 py-2">הזדהות לאומית או טלפון ‎*6194. אחד בשנה חינם</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">עיכוב יציאה מהארץ</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href={EXIT_CHECK}>רשות האוכלוסין וההגירה</a>, באינטרנט או ב־‎*3450</td>
+          <td class="border border-gray-300 px-4 py-2">הזדהות לאומית. בטלפון: מספר דרכון, תאריך הנפקה ושנת לידה</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">חשבון בנק מוגבל בגלל שיקים</td>
+          <td class="border border-gray-300 px-4 py-2">הבנק שלכם, או <a class="text-brand underline" href={RESTRICTED_LOOKUP}>איתור חשבונות מוגבלים באתר בנק ישראל</a></td>
+          <td class="border border-gray-300 px-4 py-2">פנייה לבנק או בדיקה באתר בנק ישראל</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">הליך חדלות פירעון או פשיטת רגל</td>
+          <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href={INSOLVENCY_SEARCH}>איתור תיקים אצל הממונה על חדלות פירעון</a></td>
+          <td class="border border-gray-300 px-4 py-2">מידע ציבורי פתוח בלי הזדהות. הליך שמתנהל בהוצאה לפועל לא יופיע שם</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm">המקורות לכל שורה מופיעים בסעיפים שלמטה וברשימת המקורות בסוף העמוד. מספרי טלפון ושעות פעילות מתעדכנים מעת לעת. לפני שמתקשרים, כדאי לבדוק אותם באתר הגוף עצמו.</p>
+
+  <h2 id="execution" class="scroll-mt-24">1. הוצאה לפועל: תיקים, יתרות ועיקולים</h2>
+  <p>זה המקום הראשון לבדוק. ב<a href={EA_PERSONAL}>אזור האישי של ההוצאה לפועל</a> נכנסים עם מערכת ההזדהות הלאומית, ורואים את כל התיקים שבהם אתם צד, בלי צורך במספר תיק. בכל תיק מופיעים הזוכה, היתרה, ההחלטות והעיקולים, ואפשר להוריד דף חשבון.</p>
+  <p>בלי אינטרנט: מוקד ‎*35592 או 073-2055000 (נדרשים מספר תיק ומספר זהות), או לשכת הוצאה לפועל בזימון תור. ההסבר המלא, כולל מה חשוב לדעת לפני שמפיקים רשימת תיקים, נמצא ב<a href="/guides/bdika-tik/">מדריך בדיקת תיק בהוצאה לפועל</a>.</p>
+
+  <h2 id="fines" class="scroll-mt-24">2. קנסות ודוחות משטרה: המרכז לגביית קנסות</h2>
+  <p>המרכז לגביית קנסות, אגרות והוצאות הוא מערכת נפרדת מההוצאה לפועל, גם הוא חלק מרשות האכיפה והגבייה. לפי דף השירות הרשמי, הוא גובה בין היתר:</p>
+  <ul>
+    <li>דוחות משטרה וקנסות ברירת משפט.</li>
+    <li>קנסות של בית משפט לתעבורה, קנסות פליליים ופיצוי לנפגע עבירה.</li>
+    <li>קנסות מנהליים, קנסות מוועדות מקומיות ואגרות של רשות הרישוי.</li>
+    <li>חובות אזרחיים (אגרות והוצאות), ודוחות חניה שהטילו רשויות מקומיות או רשות שדות התעופה.</li>
+  </ul>
+  <p>בודקים ב<a href={FINES_CENTER}>אזור האישי של המרכז לגביית קנסות</a>, או במוקד ‎*35592 או 073-2055000 (לפי הרשות: בימים א' עד ה' בין 8:00 ל־16:00, ובערבי חג עד 12:00). כדי לזהות את החוב צריך אחד מאלה: מספר זהות ומספר תיק במרכז (מופיע על דרישת התשלום), מספר זהות ומספר רישיון נהיגה, מספר דוח משטרה, או מספר דוח חניה ומספר רכב.</p>
+  <div class="tip-box">
+    <p class="font-semibold mb-1">שווה לבדוק בשתי המערכות</p>
+    <p class="mb-0">לפי הדוח השנתי של רשות האכיפה והגבייה, כ־47% מהחייבים בהוצאה לפועל הם חייבים גם במרכז לגביית קנסות. <a href="/nitunim/#fines">הנתונים המלאים</a>.</p>
+  </div>
+
+  <h2 id="local" class="scroll-mt-24">3. ארנונה ודוחות חניה: הרשות המקומית</h2>
+  <p>חוב ארנונה, מים או אגרות של עירייה מבררים מול הרשות המקומית: באתר העירייה, באזור האישי שלה או במחלקת הגבייה. דוח חניה של עירייה נגבה לפעמים במרכז לגביית קנסות. אם קיבלתם דרישת תשלום מהמרכז, בודקים שם. רשויות מקומיות יכולות לגבות בעצמן בהליך מנהלי, כולל עיקול חשבון בנק, בלי לפתוח תיק בהוצאה לפועל. עיקול מנהלי של עירייה לא יופיע באזור האישי של ההוצאה לפועל. מה אפשר לעשות עם חוב כזה: <a href="/guides/chov-arnona/">חוב ארנונה — הסדר, הפחתה ומחיקה</a>.</p>
+
+  <h2 id="nii-tax" class="scroll-mt-24">4. ביטוח לאומי ורשות המסים</h2>
+  <p><strong>ביטוח לאומי</strong> גובה חובות דמי ביטוח בעצמו. לפי כל זכות, את מקור החוב בודקים <a href={NII_DEBT_KZ}>באזור האישי באתר ביטוח לאומי, או מול מחלקת הגבייה בסניף</a>. בתנאים מסוימים ביטוח לאומי רשאי לקזז חוב מקצבאות, והוא יכול גם לעקל חשבון בנק. חריג: חוב מזונות לביטוח לאומי נגבה בתיק הוצאה לפועל. <a href="/guides/mazamot/">מזונות בהוצאה לפועל</a>.</p>
+  <p><strong>רשות המסים</strong> (מס הכנסה ומע"מ) יכולה גם היא לגבות חובות בהליך מנהלי, לפי פקודת המסים (גבייה). כדי לברר חוב או עיקול של רשות המסים, פונים למשרד שמטפל בתיק שלכם, או פותחים פנייה ב<a href={TAX_PERSONAL}>אזור האישי של רשות המסים</a>.</p>
+
+  <h2 id="credit" class="scroll-mt-24">5. נתוני אשראי: הלוואות, כרטיסי אשראי והליכי גבייה</h2>
+  <p>חוב לבנק או לחברת אשראי לא תמיד מגיע להוצאה לפועל. כדי לראות אותו מבקשים <strong>דוח ריכוז נתונים</strong> ממערכת נתוני האשראי של בנק ישראל. לפי <a href={CREDIT_KZ}>כל זכות</a>:</p>
+  <ul>
+    <li><strong>איך מזמינים:</strong> דרך מערכת ההזדהות הלאומית, או בטלפון לבנק ישראל ‎*6194.</li>
+    <li><strong>עלות:</strong> דוח אחד בשנה קלנדרית בחינם. דוחות נוספים בתשלום.</li>
+    <li><strong>מה יש בדוח:</strong> ההתחייבויות שלכם ותנאי הפירעון שלהן, הליכים שננקטו לגביית חובות שלא שולמו בזמן, והגופים שקיבלו מידע עליכם מהמערכת.</li>
+  </ul>
+  <p>הדוח לא מחליף את הבדיקה בהוצאה לפועל, שבה מופיעים התיקים וההחלטות עצמם. האתר הרשמי של המערכת: <a href={CREDIT_DATA}>מערכת נתוני אשראי</a>.</p>
+
+  <h2 id="restrictions" class="scroll-mt-24">6. עיכוב יציאה מהארץ וחשבון בנק מוגבל</h2>
+  <p><strong>עיכוב יציאה מהארץ:</strong> בודקים ב<a href={EXIT_CHECK}>שירות של רשות האוכלוסין וההגירה</a>. באינטרנט אפשר לבדוק רק לגבי עצמכם, עם הזדהות לאומית. בטלפון ‎*3450 אפשר לבדוק גם לגבי הילדים הקטינים שלכם (מתחת לגיל 18). השירות חינם, ומוצגים בו רק צווים שמוגדרים "פתוחים לעיון הציבור". מה עושים אם יש צו: <a href="/guides/ikul-yetzia/">עיכוב יציאה מהארץ — איך מבטלים</a>.</p>
+  <p><strong>חשבון מוגבל:</strong> לפי <a href={RESTRICTED_GUIDE}>המדריך של בנק ישראל</a>, חשבון שסורבו בו עשרה שיקים או יותר בגלל חוסר כיסוי, בתוך 12 חודשים, מוגבל לשנה. בנק ישראל מפרסם שירות ל<a href={RESTRICTED_LOOKUP}>איתור חשבונות מוגבלים</a>: חשבונות מוגבלים לפי מספר חשבון, ולקוחות שהוגבלו בנסיבות מחמירות גם לפי מספר זהות. אפשר גם לפנות ישירות לבנק.</p>
+
+  <h2 id="insolvency" class="scroll-mt-24">7. חדלות פירעון ומוגבלים באמצעים</h2>
+  <ul>
+    <li><strong>תיקי חדלות פירעון ופשיטת רגל:</strong> משרד המשפטים מפעיל <a href={INSOLVENCY_SEARCH}>מערכת לאיתור מידע על תיקים</a> שמתנהלים אצל הממונה על הליכי חדלות פירעון. המידע הציבורי פתוח בלי הזדהות, וכולל הליכים פעילים או כאלה שהסתיימו בשלוש השנים האחרונות. חשוב: הליכי חדלות פירעון של יחידים עם חובות נמוכים יחסית מתנהלים בהוצאה לפועל, והם לא יופיעו במערכת הזו.</li>
+    <li><strong>מרשם החייבים המוגבלים באמצעים:</strong> <a href={LIMITED_MEANS}>שירות חינמי של רשות האכיפה והגבייה</a>. מציג רק מי שרשם ההוצאה לפועל הכריז עליו כמוגבל באמצעים. <a href="/guides/hayav-mugbal/">מה זה חייב מוגבל באמצעים</a>.</li>
+  </ul>
+
+  <h2 id="unknown-attachment" class="scroll-mt-24">יש עיקול ואתם לא יודעים מי הטיל אותו?</h2>
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>בקשו מהבנק או מהמעסיק את פרטי הצו:</strong> מי הוציא אותו, מספר התיק, התאריך והסכום. על חשבון אחד יכולים לחול כמה צווים מגופים שונים.</span></li>
+    <li><span class="step-num">2</span><span><strong>אם הצו של ההוצאה לפועל</strong> — בדקו את התיק ב<a href={EA_PERSONAL}>אזור האישי</a>, ו<a href="/guides/bitul-ikul/">כך מבקשים לבטל או לעכב את העיקול</a>.</span></li>
+    <li><span class="step-num">3</span><span><strong>אם הצו הוצא ישירות על ידי עירייה, ביטוח לאומי או רשות המסים</strong>, ולא על ידי לשכת הוצאה לפועל — זה עיקול מנהלי. מטפלים בו מול הגוף שהטיל אותו, לא בהוצאה לפועל.</span></li>
+  </ol>
+  <p>חלק מהכסף בחשבון יכול להיות מוגן מעיקול, למשל קצבאות מסוימות. <a href="/rights/skhomim-mugganim/">אילו סכומים מוגנים מעיקול</a>.</p>
+
+  <h2 id="other-person" class="scroll-mt-24">אפשר לבדוק חובות של אדם אחר?</h2>
+  <p>ברוב המקרים לא. תיקי הוצאה לפועל, קנסות ונתוני אשראי פתוחים רק לאדם עצמו או למי שהוא הרשה. יש כמה מאגרים ציבוריים, כמו מרשם המוגבלים באמצעים, איתור תיקי חדלות פירעון ואיתור חשבונות מוגבלים. הם מראים מצבים מסוימים בלבד, ולא את כל החובות של האדם. הרשימה המלאה, ומה זוכה יכול לבקש בתוך תיק: <a href="/guides/itur-hayavim/#registries">איתור חייבים — מאגרים ציבוריים</a>.</p>
+
+  <div class="warn-box">
+    <p class="font-semibold mb-1">זהירות מאתרים פרטיים ל"בדיקת חובות לפי תעודת זהות"</p>
+    <p class="mb-0">אתר פרטי לא מחובר למערכות של רשות האכיפה והגבייה או של ביטוח לאומי. לשכות אשראי מורשות אמנם מקבלות נתונים ממערכת נתוני האשראי, אבל את הדוח עצמו אפשר לקבל ישירות, אחד בשנה בחינם. אל תמסרו לגורם לא רשמי מספר זהות, קוד הזדהות, סיסמה או פרטי כרטיס אשראי.</p>
+  </div>
+
+  <h2 id="next">מצאתם חוב — מה עכשיו?</h2>
+  <ul>
+    <li>תיק חדש בהוצאה לפועל: בדקו את המועדים באזהרה. <a href="/guides/michtav-hotzaa/">קיבלתי מכתב מהוצאה לפועל</a>.</li>
+    <li>לא מסכימים לחוב: <a href="/guides/hitnagdut-letik/">התנגדות לתיק</a>, או <a href="/guides/hitiyashnoot-chov/">טענת התיישנות</a> בחוב ישן.</li>
+    <li>החוב נכון אבל אין אפשרות לשלם בבת אחת: <a href="/guides/tzav-tashlumim/">צו תשלומים</a> או <a href="/guides/hisdurim-chov/">הסדר חוב</a>.</li>
+    <li>כמה תיקים: <a href="/guides/ichud-tikim/">איחוד תיקים</a>. חובות גדולים מאוד: <a href="/insolvency/">חדלות פירעון</a>.</li>
+  </ul>
+
+  <h2 id="faq">שאלות נפוצות על בדיקת חובות לפי תעודת זהות</h2>
+  <div class="space-y-4 my-6">
+    {faqs.map(faq => (
+      <details class="border border-neutral-border rounded-xl p-4">
+        <summary class="font-semibold cursor-pointer">{faq.q}</summary>
+        <p>{faq.a}</p>
+        <p><a href={faq.source}>המקור לתשובה</a></p>
+      </details>
+    ))}
+  </div>
+</GuideLayout>
