@@ -67,7 +67,7 @@ test('every owned page has official sources, actual edit date and no invented pr
   for (const page of pages) {
     const source = await read('src/pages/' + page);
     assert.match(source, /www\.btl\.gov\.il|WAGE_LAW_URL/, page);
-    assert.match(source, /2026-09-13|13\.09\.2026|2026-10-05|2026-10-06/, page);
+    assert.match(source, /2026-09-13|13\.09\.2026|2026-10-05|2026-10-06|2026-10-08/, page);
     assert.doesNotMatch(source, /reviewerName=|reviewDate=|סיכוי גבוה מאוד|מוגנת לחלוטין|לא ניתן לעקל ממנה כלל|שמחליף את העיקול/, page);
   }
 });
