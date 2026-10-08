@@ -24,6 +24,7 @@ async function collect(dir) {
 await collect(root);
 for(const [url,page] of pages) {
  const {html,title,description}=page, issue=message=>failures.push({url,message});
+ if(html.includes('\u0000'))issue('NUL character in HTML');
  if(!title.trim())issue('Missing title');
  if(description.length!==1||!description[0].trim())issue('Expected one nonempty meta description');
  if((html.match(/<h1(?:\s|>)/gi)||[]).length!==1)issue('Expected one H1');

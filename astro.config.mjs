@@ -31,7 +31,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [
-    react(),
+    // Static site: render islands with renderToString. React 18's streaming encoder
+    // inserted stray NUL bytes into Hebrew island HTML (seen on three tool pages).
+    react({ experimentalDisableStreaming: true }),
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
