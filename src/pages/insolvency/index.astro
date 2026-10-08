@@ -13,6 +13,7 @@ const guides = [
   { title: 'שלבי ההליך', description: 'הגשה, צו פתיחה, צו שיקום ותקופת תשלומים', href: '/insolvency/process/' },
   { title: 'אגרות ועלויות', description: 'מה לבדוק לגבי הגשה, סיוע משפטי וייצוג', href: '/insolvency/costs/' },
   { title: 'הפטר: מה נכלל ומה לא?', description: 'חובות עבר, חריגים ובדיקות לאחר ההפטר', href: '/insolvency/haftar/' },
+  { title: 'הדוח הדו־חודשי', description: 'מתי מגישים, מה מצרפים והגשה בממו־נט, עם כלי הכנה חינמי', href: '/insolvency/doch-du-chodshi/' },
 ];
 const faqs = [
   { q: 'האם הגשת הבקשה עוצרת עיקולים?', a: 'לא אוטומטית. לפני צו מתאים יש לבדוק בקשה לעיכוב הליכים והחלטה בה. אישור שהבקשה התקבלה אינו צו עיכוב.' },
@@ -21,7 +22,7 @@ const faqs = [
 ];
 const pageSchema = {
   '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url: pageUrl, inLanguage: 'he',
-  dateModified: '2026-09-13',
+  dateModified: '2026-10-08',
   hasPart: guides.map(item => ({ '@type': 'WebPage', name: item.title, url: 'https://hotzaa-lapoal.info' + item.href })),
 };
 const faqSchema = {

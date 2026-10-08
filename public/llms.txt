@@ -33,6 +33,7 @@
 - [חדלות פירעון — תנאי ההליך](https://hotzaa-lapoal.info/insolvency/eligibility/)
 - [שלבי ההליך](https://hotzaa-lapoal.info/insolvency/process/)
 - [הפטר](https://hotzaa-lapoal.info/insolvency/haftar/)
+- [הדוח הדו־חודשי בחדלות פירעון](https://hotzaa-lapoal.info/insolvency/doch-du-chodshi/): דוח הכנסות והוצאות לממונה ולנאמן כל חודשיים עד ה־15 (ואחרי צו השיקום כל 6 חודשים), רשימת המסמכים, הגשה בממו־נט, וכלי שפועל בדפדפן בלבד לחישוב מועדים ולאיחוד המסמכים לקובץ PDF אחד.
 - [סגירת תיק](https://hotzaa-lapoal.info/guides/sgor-tik/)
 
 ## כלים ומקורות
