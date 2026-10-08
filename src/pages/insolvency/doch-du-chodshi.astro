@@ -1,0 +1,216 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import InsolvencyReportHelper from '../../components/InsolvencyReportHelper';
+
+const SERVICE = 'https://www.gov.il/he/service/bi_monthly_report_about_incomes';
+const FORM = 'https://www.gov.il/BlobFolder/service/bi_monthly_report_about_incomes/he/income-expenditure-report.pdf';
+const GUIDE = 'https://www.gov.il/he/pages/insolvency_iaw?chapterIndex=5';
+const MAMONET = 'https://apacforms.justice.gov.il/Home';
+const LEGAL_AID = 'https://www.gov.il/he/service/legal_aid_application';
+const PAGE_URL = 'https://hotzaa-lapoal.info/insolvency/doch-du-chodshi/';
+
+const faqs = [
+  {
+    q: 'עד מתי צריך להגיש את הדוח הדו־חודשי?',
+    a: 'עד ה־15 בחודש, כל חודשיים. הדוח הראשון מוגש חודשיים אחרי הצו לפתיחת הליכים: לפי הדוגמה של הממונה, צו מ־10.08 – דוח ראשון עד 15.10 על אוגוסט וספטמבר. אם בצו או בהחלטה נקבע אחרת, הם הקובעים.',
+    source: SERVICE,
+  },
+  {
+    q: 'צריך לצרף קבלות על אוכל וקניות?',
+    a: 'בתקופת הביניים כן: הממונה מבקש מסמכים על קניות של מזון, מוצרי צריכה ומוצרים אחרים שהבית צריך. בתקופת השיקום הכלכלי אין צורך בהם, אבל שאר המסמכים עדיין נדרשים.',
+    source: SERVICE,
+  },
+  {
+    q: 'אפשר להגיש כמה קבצים נפרדים?',
+    a: 'לפי הנחיית הממונה סורקים את הדוח המלא יחד עם כל המסמכים לקובץ PDF אחד, ברור וקריא. הכלי בעמוד הזה עוזר לחבר כמה קבצים ותמונות לקובץ אחד.',
+    source: SERVICE,
+  },
+  {
+    q: 'מה קורה אם לא מגישים את הדוח?',
+    a: 'דף השירות של הממונה לא מפרט תוצאה מיוחדת לדוח שלא הוגש. אבל הדיווח הוא אחת החובות שבצו לפתיחת הליכים, ולפי מדריך הממונה, אם בית המשפט מוצא שהחייב לא שיתף פעולה או הפר את המגבלות באופן שפוגע מהותית בהליך, הוא יורה על ביטול הצו, בלי פטור מחובות העבר. זו החלטה של בית המשפט לפי מה שהוא מוצא, לא תוצאה אוטומטית. אם קשה לכם להגיש בזמן, פנו מראש לנאמן או למוקד הממונה.',
+    source: GUIDE,
+  },
+  {
+    q: 'אני ובן או בת הזוג שלי בהליך. צריך שני דוחות?',
+    a: 'לפי הממונה, בני זוג שמנהלים משק בית משותף ושניהם בהליך רשאים להגיש דוח אחד משותף שחתום בידי שניהם, ולהגיש אותו בכל אחד מהתיקים.',
+    source: SERVICE,
+  },
+  {
+    q: 'מי שמיוצג בידי עורך דין יכול להגיש את הדוח בנייר?',
+    a: 'לא. לפי הממונה, רק חייבים שאינם מיוצגים בידי עורך דין רשאים להגיש את הדוח ידנית במזכירות המחוז. ההגשה הרגילה היא מקוונת, באתר ממו־נט.',
+    source: SERVICE,
+  },
+  {
+    q: 'הכלי שולח את המסמכים שלי למישהו?',
+    a: 'לא. הכלי פועל בדפדפן במכשיר שלכם בלבד. הקבצים והסכומים לא נשלחים לאתר ולא נשמרים, ונמחקים כשסוגרים את הדף. את ההגשה עצמה עושים רק באתר הממונה.',
+    source: PAGE_URL,
+  },
+];
+
+const sources = [
+  { label: 'הממונה — הגשת דו"ח דו חודשי או חצי שנתי על הכנסות והוצאות (נבדק 08.10.2026)', href: SERVICE },
+  { label: 'הטופס הרשמי — דוח על הכנסות והוצאות חייב בהליך חדלות פירעון (עדכון 2.12.2021)', href: FORM },
+  { label: 'הממונה — הליך חדלות פירעון לחייב יחיד: שלבי ההליך (עדכון 02.01.2025)', href: GUIDE },
+  { label: 'ממו־נט — אתר הבקשות והפניות לממונה', href: MAMONET },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
+};
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'הכנת הדוח הדו־חודשי בחדלות פירעון — מועדים, רשימת מסמכים ואיחוד לקובץ PDF',
+  description: 'כלי חינמי שפועל בדפדפן בלבד: מחשב את מועדי ההגשה הקרובים, בונה רשימת מסמכים, מסכם סכומים לפי שורות הטופס ומחבר מסמכים לקובץ PDF אחד.',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Any',
+  isAccessibleForFree: true,
+  inLanguage: 'he',
+  url: PAGE_URL + '#tool',
+};
+---
+
+<GuideLayout
+  title="דוח דו־חודשי בחדלות פירעון: מתי מגישים, מה מצרפים וכלי חינמי להכנה"
+  description="מי שקיבל צו לפתיחת הליכים מגיש לממונה ולנאמן דוח הכנסות והוצאות כל חודשיים עד ה־15. מועדים, רשימת מסמכים, הגשה בממו־נט וכלי שמחבר הכול לקובץ אחד."
+  breadcrumb={[{ label: 'חדלות פירעון', href: '/insolvency/' }, { label: 'הדוח הדו־חודשי', href: '/insolvency/doch-du-chodshi/' }]}
+  publishDate="2026-10-08"
+  updateDate="2026-10-08"
+  readTime="6 דקות"
+  sources={sources}
+  schema={[faqSchema, toolSchema]}
+  relatedGuides={[
+    { title: 'שלבי חדלות פירעון: מצו פתיחה לצו שיקום', href: '/insolvency/process/' },
+    { title: 'הפטר: מה נמחק ומה לא', href: '/insolvency/haftar/' },
+    { title: 'תנאי הגשה והגורם המטפל', href: '/insolvency/eligibility/' },
+    { title: 'אגרות, ייצוג והוצאות ההליך', href: '/insolvency/costs/' },
+  ]}
+  actionLinks={[
+    { label: 'הכלי להכנת הדוח', href: '/insolvency/doch-du-chodshi/#tool', note: 'מועדים, מסמכים וקובץ PDF אחד' },
+    { label: 'שלבי חדלות פירעון', href: '/insolvency/process/', note: 'מצו פתיחה לצו שיקום והפטר' },
+    { label: 'הפטר', href: '/insolvency/haftar/', note: 'אילו חובות נכללים ומה החריגים' },
+    { label: 'מרכז המידע על חדלות פירעון', href: '/insolvency/', note: 'כל המדריכים במקום אחד' },
+  ]}
+>
+  <p>קיבלתם צו לפתיחת הליכים בחדלות פירעון? אחת החובות הקבועות שלכם מעכשיו היא דוח על ההכנסות וההוצאות של הבית. מגישים אותו לממונה ולנאמן כל חודשיים, עד ה־15 בחודש. אחרי צו השיקום הכלכלי מגישים אותו כל חצי שנה.</p>
+  <p>זו בירוקרטיה מעייפת, במיוחד בתקופה לחוצה. המדריך מסביר מתי מגישים, מה מצרפים ואיך מגישים. באמצע העמוד יש <a href="#tool">כלי חינמי</a> שעוזר להכין הכול, בלי לשלוח לנו שום פרט.</p>
+
+  <div class="warn-box"><p>מידע כללי ולא ייעוץ משפטי. הצו שקיבלתם, ההחלטות בתיק והנחיות הממונה גוברים על כל מה שכתוב כאן. אם עורך דין מייצג אתכם, בדקו איתו מי מגיש את הדוח.</p></div>
+
+  <div class="info-box">
+    <p><strong>בקצרה:</strong></p>
+    <ul>
+      <li>מצו הפתיחה ועד צו השיקום: דוח כל חודשיים, עד ה־15 בחודש.</li>
+      <li>מצו השיקום ועד סוף ההליך: דוח כל 6 חודשים, עד ה־15 בחודש.</li>
+      <li>מצרפים תלושים ומסמכים על כל הכנסה והוצאה, וסורקים הכול לקובץ PDF אחד.</li>
+      <li>מגישים באתר ממו־נט של הממונה. רק מי שאין לו עורך דין יכול להגיש גם בנייר.</li>
+    </ul>
+  </div>
+
+  <h2 id="why" class="scroll-mt-24">למה הדוח הזה חשוב</h2>
+  <p>לפי <a href={GUIDE} target="_blank" rel="noopener noreferrer">מדריך הממונה</a>, הצו לפתיחת הליכים כולל חובת תשלום חודשי, חובת דיווח על הכנסות והוצאות ומגבלות שקובע החוק. הנאמן בודק את המצב הכלכלי ומדווח לממונה על ההתנהלות שלכם.</p>
+  <p>המדריך הרשמי מסביר גם מה קורה כשההתנהלות לא תקינה. בדיון על צו השיקום, אם בית המשפט מוצא שהחייב ניצל את ההליך לרעה, לא שיתף פעולה או הפר את המגבלות באופן שפוגע מהותית בניהול ההליך, הוא יורה על ביטול הצו לפתיחת הליכים, ואז לא יינתן פטור מחובות העבר. גם בתקופת השיקום, אם מדווחים לממונה שהחייב לא עומד בתנאי התוכנית, הממונה ישקול לבקש מבית המשפט לבטל את ההליך.</p>
+  <p>אלה החלטות של בית המשפט לפי מה שהוא מוצא, לא תוצאה אוטומטית של דוח אחד שאיחר. ובכל זאת, הדוח הוא חלק משיתוף הפעולה שלכם בהליך. אם אתם יודעים שתאחרו או שחסר מסמך, אל תחכו: עדכנו את הנאמן או פנו למוקד הממונה.</p>
+  <p>בטופס עצמו כתוב שצריך למסור מידע מלא ומהימן, ושמסירת מידע חלקי או כוזב עלולה להיות עבירה פלילית לפי סעיף 346 לחוק חדלות פירעון. לכן עדיף דוח אמיתי ומלא, גם כשהמספרים לא נעימים.</p>
+
+  <h2 id="when" class="scroll-mt-24">מתי מגישים</h2>
+  <p>המועדים תלויים בשלב שבו אתם נמצאים. הנתונים והדוגמאות לקוחים מ<a href={SERVICE} target="_blank" rel="noopener noreferrer">דף השירות של הממונה</a>.</p>
+  <div class="not-prose overflow-x-auto my-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">שלב</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">כל כמה זמן</th>
+          <th class="border border-gray-300 px-4 py-2 text-right font-bold">דוגמה מהממונה</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">תקופת הביניים: מצו הפתיחה ועד צו השיקום (בדרך כלל כ־11 חודשים)</td>
+          <td class="border border-gray-300 px-4 py-2">כל חודשיים, עד ה־15 בחודש. הדוח הראשון חודשיים אחרי הצו.</td>
+          <td class="border border-gray-300 px-4 py-2">צו ב־10.08: דוח ראשון עד 15.10 על אוגוסט וספטמבר, הבא עד 15.12 על אוקטובר ונובמבר.</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 font-semibold">תקופת השיקום הכלכלי: מצו השיקום ועד סוף ההליך (בדרך כלל כ־3 שנים)</td>
+          <td class="border border-gray-300 px-4 py-2">כל 6 חודשים, עד ה־15 בחודש. הדוח הראשון 6 חודשים אחרי צו השיקום.</td>
+          <td class="border border-gray-300 px-4 py-2">צו שיקום ב־10.2: דוח ראשון עד 15.8 על פברואר עד יולי.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>דוח חצי שנתי הוא בפועל שלושה דוחות דו־חודשיים שמוגשים יחד, עם מידע על כל אחד מהחודשים. את משכי התקופות (כ־11 חודשים וכ־3 שנים) מתאר <a href={GUIDE} target="_blank" rel="noopener noreferrer">מדריך הממונה</a>, והם משתנים מתיק לתיק.</p>
+
+  <h2 id="attach" class="scroll-mt-24">מה מצרפים לדוח</h2>
+  <p>לפי דף השירות של הממונה, הדוח כולל:</p>
+  <ul>
+    <li><strong>הטופס הרשמי</strong> <a href={FORM} target="_blank" rel="noopener noreferrer">"דוח על הכנסות והוצאות"</a>, מלא וחתום, עם מספר התיק במערכת הממונה, כתובת עדכנית ומספר טלפון.</li>
+    <li><strong>תלושי שכר</strong> שלכם, של בן או בת הזוג ושל הילדים הבגירים שגרים איתכם.</li>
+    <li><strong>מסמכים על הכנסות אחרות</strong>, למשל פנסיה, שכר דירה, קצבה מביטוח לאומי (שלכם או של בן משפחה שגר איתכם), ותמיכות או מתנות בכסף או בשווה כסף.</li>
+    <li><strong>מסמכים על הוצאות</strong>, למשל הסכם שכירות עדכני, אישור על תשלום משכנתא, חשמל, מים, ארנונה, טלפון, כבלים, חינוך והוצאות על רכב שבבעלותכם.</li>
+    <li><strong>קבלות על קניות</strong> של מזון, מוצרי צריכה ומוצרים אחרים שאתם ובני הבית צריכים. בתקופת השיקום הכלכלי אין צורך בהן.</li>
+    <li><strong>לעצמאים:</strong> הדיווחים לרשויות המס, כלומר מע"מ ומס הכנסה.</li>
+  </ul>
+  <p>בטופס יש גם חובה לדווח על כל שינוי מהותי במצב הכלכלי, כולל נכס שקיבלתם, רכשתם או ירשתם בתקופת הדוח. בני זוג עם משק בית משותף ששניהם בהליך רשאים להגיש דוח אחד משותף, חתום בידי שניהם, בכל אחד מהתיקים.</p>
+
+  <h2 id="tool" class="scroll-mt-24">כלי: מכינים את הדוח בארבעה צעדים</h2>
+  <p>הכלי עוזר לדעת מתי להגיש, לבנות רשימת מסמכים אישית, לסכם את הסכומים לפי שורות הטופס, ולחבר את הטופס והמסמכים לקובץ PDF אחד. הוא לא מגיש את הדוח ולא מחליף את הטופס הרשמי.</p>
+  <div class="not-prose my-6">
+    <InsolvencyReportHelper client:visible />
+    <noscript><p class="rounded-lg border p-4">הכלי דורש JavaScript. אפשר להשתמש ברשימות שבעמוד ובטופס הרשמי גם בלעדיו.</p></noscript>
+  </div>
+
+  <h2 id="submit" class="scroll-mt-24">איך מגישים באתר הממונה</h2>
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>מורידים את <a href={FORM} target="_blank" rel="noopener noreferrer">הטופס הרשמי</a>,</strong> מדפיסים, ממלאים וחותמים.</span></li>
+    <li><span class="step-num">2</span><span><strong>סורקים את הטופס יחד עם כל המסמכים לקובץ PDF אחד.</strong> הממונה מבקש לוודא שהקובץ ברור וקריא. <a href="#tool">הכלי שלמעלה</a> יכול לחבר את הקבצים.</span></li>
+    <li><span class="step-num">3</span><span><strong>נכנסים ל<a href={MAMONET} target="_blank" rel="noopener noreferrer">ממו־נט</a>,</strong> אתר הבקשות והפניות לממונה.</span></li>
+    <li><span class="step-num">4</span><span><strong>ממלאים את פרטי הפנייה:</strong> נושא "הגשת דו"חות" וסוג פנייה "דו"ח הכנסות והוצאות דו חודשי".</span></li>
+    <li><span class="step-num">5</span><span><strong>מצרפים את הקובץ ושולחים.</strong></span></li>
+    <li><span class="step-num">6</span><span><strong>שומרים עותק</strong> של הדוח שהוגש ואת המסמכים המקוריים, למקרה שתתבקשו להציג אותם.</span></li>
+  </ol>
+  <p>דף השירות מציין שהדוח מוגש לממונה ולנאמן, אבל שלבי ההגשה בו מתארים שליחה לממונה בלבד. כדאי לשאול את הנאמן שלכם אם הוא צריך עותק בנפרד.</p>
+  <div class="tip-box"><p><strong>הגשה בנייר:</strong> רק מי שאין לו עורך דין רשאי להגיש את הדוח ידנית, במזכירות מחוז הממונה שבו מתנהל ההליך. קבלת הקהל בימים ב' ו־ד', 08:30–12:30, בתור שמזמינים מראש. אפשר לקבל עזרה במוקד *5067.</p></div>
+
+  <h2 id="mistakes" class="scroll-mt-24">טעויות שכדאי להימנע מהן</h2>
+  <ul>
+    <li><strong>סריקה מטושטשת או חתוכה.</strong> הממונה מבקש קובץ ברור וקריא. פתחו את הקובץ ובדקו כל עמוד לפני ששולחים.</li>
+    <li><strong>כמה קבצים במקום אחד.</strong> ההנחיה היא קובץ PDF אחד שכולל את הדוח ואת כל המסמכים.</li>
+    <li><strong>טופס בלי חתימה או בלי מספר תיק.</strong> שני הפרטים מופיעים בטופס הרשמי.</li>
+    <li><strong>תלוש שכר שמוגן בסיסמה.</strong> תלושים שנשלחים במייל מוגנים לפעמים בסיסמה. פתחו אותם ושמרו או הדפיסו אותם מחדש כ־PDF בלי סיסמה, אחרת לא יהיה אפשר לצרף אותם לקובץ אחד.</li>
+    <li><strong>שינוי שלא דווח.</strong> עבודה חדשה, ירידה בהכנסה, ירושה או נכס שקיבלתם מדווחים בדוח עצמו.</li>
+  </ul>
+
+  <h2 id="track" class="scroll-mt-24">ההליך שלכם מתנהל ברשות האכיפה והגבייה?</h2>
+  <p>המדריך הזה מבוסס על ההנחיות של הממונה. לפי <a href={GUIDE} target="_blank" rel="noopener noreferrer">מדריך הממונה</a>, הליך שפתח החייב בעצמו כשהחובות נמוכים מסכום הסף מתנהל ברשות האכיפה והגבייה, בפני רשם הוצאה לפועל ייעודי. אם זה המצב שלכם, פעלו לפי ההחלטות שקיבלתם ובדקו מול הרשות אילו דיווחים נדרשים. על המסלולים השונים: <a href="/insolvency/eligibility/">תנאי הגשה והגורם המטפל</a>.</p>
+
+  <h2 id="help" class="scroll-mt-24">מי יכול לעזור</h2>
+  <ul>
+    <li><strong>מוקד השירות של הממונה:</strong> טלפון *5067, בימים א'–ה' 8:00–16:00. יש גם צ'אט אנושי בדף השירות.</li>
+    <li><strong>עורך הדין שמייצג אתכם</strong>, אם יש לכם כזה.</li>
+    <li><strong>סיוע משפטי:</strong> אפשר לבדוק <a href={LEGAL_AID} target="_blank" rel="noopener noreferrer">זכאות לסיוע משפטי במשרד המשפטים</a>.</li>
+  </ul>
+
+  <section id="faq">
+    <h2>שאלות נפוצות</h2>
+    <div class="space-y-3">
+      {faqs.map(faq => (
+        <details class="border border-neutral-border rounded-xl">
+          <summary class="p-4 font-semibold cursor-pointer">{faq.q}</summary>
+          <p class="px-4 pb-4">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <div slot="next-steps" class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
+    <h3 class="font-bold mb-3">להמשך הבירור</h3>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/insolvency/process/" class="text-brand underline">שלבי ההליך: מצו פתיחה לצו שיקום והפטר</a></li>
+      <li><a href="/insolvency/haftar/" class="text-brand underline">הפטר: החובות שנכללים והחריגים</a></li>
+      <li><a href="/insolvency/costs/" class="text-brand underline">אגרות, ייצוג והוצאות ההליך</a></li>
+      <li><a href="/insolvency/" class="text-brand underline">כל המדריכים על חדלות פירעון</a></li>
+    </ul>
+  </div>
+</GuideLayout>

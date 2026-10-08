@@ -8,7 +8,7 @@ const pages = [
   'src/pages/insolvency/costs.astro', 'src/pages/insolvency/haftar.astro',
   'src/pages/guides/pshitat-regel/index.astro', 'src/pages/guides/hisdurim-chov/index.astro',
   'src/pages/forms/index.astro', 'src/pages/tools/eligibility.astro',
-  'src/pages/tools/noseach-bakasha.astro',
+  'src/pages/tools/noseach-bakasha.astro', 'src/pages/insolvency/doch-du-chodshi.astro',
 ];
 const read = file => readFile(new URL('../' + file, import.meta.url), 'utf8');
 
