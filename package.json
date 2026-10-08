@@ -15,9 +15,9 @@
     "ping": "node scripts/ping-indexnow.mjs"
   },
   "dependencies": {
-    "@astrojs/react": "^6.0.2",
+    "@astrojs/react": "^6.0.6",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.1.6",
+    "astro": "^7.3.5",
     "pdf-lib": "^1.17.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -28,5 +28,10 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "tailwindcss": "^4.3.3"
+  },
+  "overrides": {
+    "@tailwindcss/typography": {
+      "postcss-selector-parser": "^7.1.6"
+    }
   }
 }
