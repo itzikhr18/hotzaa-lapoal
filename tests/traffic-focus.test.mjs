@@ -16,6 +16,28 @@ test('new sales promotions and personal-email ordering have been withdrawn', () 
   assert.equal(existsSync(new URL('../src/components/PartnerContact.astro', import.meta.url)), false);
 });
 
+test('the paid kit offer stays opt-in, labelled and limited to chosen guides', () => {
+  for (const path of ['src/pages/index.astro', 'src/pages/tools/index.astro', 'src/components/Header.astro', 'src/layouts/BaseLayout.astro']) {
+    assert.doesNotMatch(read(path), /KitOffer|gumroad\.com/, `${path} must stay free of the paid offer`);
+  }
+  const layout = read('src/layouts/GuideLayout.astro');
+  assert.match(layout, /showKitOffer = false/);
+  assert.match(layout, /\{showKitOffer && <KitOffer \/>\}/);
+  const offer = read('src/components/KitOffer.astro');
+  assert.match(offer, /מוצר בתשלום/);
+  assert.match(offer, /כל המידע באתר נשאר חינמי/);
+  assert.match(offer, /לא ייעוץ משפטי/);
+  assert.doesNotMatch(offer, /<form|<input|fetch\(|data-growth-|localStorage|utm_/);
+  for (const path of [
+    'src/pages/guides/bdika-tik/index.astro',
+    'src/pages/guides/michtav-hotzaa.astro',
+    'src/pages/guides/tzav-tashlumim.astro',
+    'src/pages/guides/ikul-heshbon.astro',
+  ]) {
+    assert.match(read(path), /^\s+showKitOffer$/m, `${path} should show the kit offer`);
+  }
+});
+
 test('priority search pages expose matching section links and official resources', () => {
   const forms = read('src/pages/forms/index.astro');
   for (const id of ['form-214', 'form-218', 'form-233']) {

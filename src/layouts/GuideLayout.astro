@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Disclaimer from '../components/Disclaimer.astro';
 import CTAForm from '../components/CTAForm.astro';
 import AdUnit from '../components/AdUnit.astro';
+import KitOffer from '../components/KitOffer.astro';
 import { allGuides } from '../data/guides';
 import { getProfessionalReview, reviewSchemaFields } from '../lib/professional-review.mjs';
 
@@ -27,6 +28,8 @@ export interface Props {
   /** The date the named reviewer actually reviewed this text. Never derived from updateDate. */
   reviewDate?: string;
   actionLinks?: { label: string; href: string; note: string }[];
+  /** Show the optional paid first-30-days kit at the end of the article. Off by default. */
+  showKitOffer?: boolean;
 }
 
 const defaultRelatedGuides = [
@@ -63,6 +66,7 @@ const {
   reviewerUrl,
   reviewDate,
   actionLinks = defaultActionLinks,
+  showKitOffer = false,
 } = Astro.props;
 
 const defaultSources = [
@@ -252,6 +256,8 @@ const fmtMonthYear = (d?: string) =>
         <AdUnit slot="inArticle" layout="in-article" />
 
         <slot />
+
+        {showKitOffer && <KitOffer />}
 
         <slot name="next-steps">
           <div class="not-prose mt-10 p-6 bg-brand-pale border border-brand-light rounded-xl">
