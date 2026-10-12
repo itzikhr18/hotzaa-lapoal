@@ -1,0 +1,37 @@
+---
+// Optional paid product from the site owner, shown only at the end of selected guides.
+// Kept off the homepage, tools area and header (see tests/traffic-focus.test.mjs).
+// No tracking, no personal data: a plain outbound link to the Gumroad product page.
+const KIT_URL = 'https://itzikhr.gumroad.com/l/hotzaa-lapoal-kit';
+---
+
+<aside
+  class="not-prose mt-10 rounded-xl border border-brand-light bg-white p-5 sm:p-6"
+  aria-labelledby="kit-offer-title"
+>
+  <p class="mb-2 inline-block rounded-full bg-brand-pale px-3 py-0.5 text-xs font-semibold text-brand-dark">
+    מוצר בתשלום של האתר · לא חובה
+  </p>
+  <p id="kit-offer-title" class="mb-2 text-lg font-bold text-brand-dark" style="margin-top:0">
+    רוצים את כל הצעדים של החודש הראשון במקום אחד, להדפסה?
+  </p>
+  <p class="mb-3 text-sm leading-relaxed text-gray-700">
+    <strong>ערכת 30 הימים הראשונים</strong> היא קובץ PDF של 14 עמודים שמרכז את מה שמופיע במדריכים לסדר
+    עבודה מעשי: לוח מועדים לפי סוג התיק, צו תשלומים ואיחוד תיקים צעד אחר צעד, מה מוגן מעיקול,
+    4 דפי עבודה למילוי, תסריט שיחה למוקד ונוסח להצעת הסדר.
+  </p>
+  <p class="mb-4 text-xs leading-relaxed text-neutral-muted">
+    כל המידע באתר נשאר חינמי, והערכה אינה תנאי לשום דבר. היא מידע כללי ולא ייעוץ משפטי.
+    הרכישה וההורדה נעשות באתר Gumroad, ואנחנו לא אוספים כאן פרטים.
+  </p>
+  <a
+    href={KIT_URL}
+    target="_blank"
+    rel="noopener"
+    style="color:#fff;text-decoration:none"
+    class="inline-flex items-center gap-2 rounded-lg bg-brand-dark px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-trust"
+  >
+    לפרטים על הערכה · 29 ₪
+    <span aria-hidden="true">↗</span>
+  </a>
+</aside>
