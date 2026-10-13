@@ -9,6 +9,7 @@ const KZ_NOTE = 'https://www.kolzchut.org.il/he/%D7%94%D7%AA%D7%A0%D7%92%D7%93%D
 const KZ_CLAIM_OBJ = 'https://www.kolzchut.org.il/he/%D7%94%D7%AA%D7%A0%D7%92%D7%93%D7%95%D7%AA_%D7%9C%D7%AA%D7%91%D7%99%D7%A2%D7%94_%D7%A2%D7%9C_%D7%A1%D7%9B%D7%95%D7%9D_%D7%A7%D7%A6%D7%95%D7%91_%D7%91%D7%94%D7%95%D7%A6%D7%90%D7%94_%D7%9C%D7%A4%D7%95%D7%A2%D7%9C';
 const KZ_CLAIM = 'https://www.kolzchut.org.il/he/%D7%AA%D7%91%D7%99%D7%A2%D7%94_%D7%A2%D7%9C_%D7%A1%D7%9B%D7%95%D7%9D_%D7%A7%D7%A6%D7%95%D7%91_%D7%91%D7%94%D7%95%D7%A6%D7%90%D7%94_%D7%9C%D7%A4%D7%95%D7%A2%D7%9C';
 const PAID = 'https://www.gov.il/he/service/debt_repayment_argument';
+const KZ_PAID = 'https://www.kolzchut.org.il/he/%D7%98%D7%A2%D7%A0%D7%AA_%22%D7%A4%D7%A8%D7%A2%D7%AA%D7%99%22_%D7%A9%D7%9C_%D7%97%D7%99%D7%99%D7%91_%D7%91%D7%94%D7%95%D7%A6%D7%90%D7%94_%D7%9C%D7%A4%D7%95%D7%A2%D7%9C';
 const DELAY = 'https://www.gov.il/he/service/delay_processes';
 const LEGAL_AID = 'https://www.gov.il/he/service/legal_aid_application';
 
@@ -39,6 +40,11 @@ const faqs = [
     source: PAID,
   },
   {
+    q: 'עברו 30 הימים. אפשר עדיין לטעון שכבר שילמתי?',
+    a: 'כן. לטענת "פרעתי" אין מועד אחרון: אפשר להעלות אותה בכל שלב של התיק. המועד שבאזהרה חשוב מסיבה אחרת: מי שמגיש בתוכו פטור מהתייצבות לחקירת יכולת עד שהבקשה מוכרעת. בתיק שנפתח על פסק דין אפשר לטעון רק לתשלומים שנעשו אחרי פסק הדין, ולא לתקוף את פסק הדין עצמו. טענה בלי בסיס עלולה לגרור חיוב בהוצאות.',
+    source: KZ_PAID,
+  },
+  {
     q: 'אפשר להגיש התנגדות לפסק דין?',
     a: 'לא. התנגדות בהוצאה לפועל קיימת רק בתיקי שטרות ובתביעה על סכום קצוב. פסק דין של בית משפט תוקפים בבית המשפט — בבקשה לביטול פסק הדין או בערעור, לפי המקרה ובמועדים של אותו הליך.',
     source: LAW,
@@ -60,6 +66,7 @@ const sources = [
   { label: 'כל זכות — התנגדות לתביעה על סכום קצוב', href: KZ_CLAIM_OBJ },
   { label: 'כל זכות — תביעה על סכום קצוב בהוצאה לפועל', href: KZ_CLAIM },
   { label: 'רשות האכיפה והגבייה — טענת פרעתי', href: PAID },
+  { label: 'כל זכות — טענת "פרעתי" של חייב בהוצאה לפועל', href: KZ_PAID },
 ];
 
 const relatedGuides = [
@@ -77,7 +84,7 @@ const relatedGuides = [
   description="יש 30 ימים מהאזהרה. מתי מגישים התנגדות, מה כותבים בטופס 218, אילו טענות מקובלות, מה קורה בבית המשפט, ומה עושים אם המועד עבר."
   breadcrumb={[{ label: 'מדריכים', href: '/guides/' }, { label: 'התנגדות לתיק', href: '/guides/hitnagdut-letik/' }]}
   publishDate="2026-03-26"
-  updateDate="2026-10-08"
+  updateDate="2026-10-13"
   readTime="8 דקות"
   sources={sources}
   relatedGuides={relatedGuides}
@@ -128,12 +135,12 @@ const relatedGuides = [
         <tr class="bg-gray-50">
           <td class="border border-gray-300 px-4 py-2 font-semibold">כל תיק — כשהחוב כבר שולם</td>
           <td class="border border-gray-300 px-4 py-2"><a class="text-brand underline" href={PAID}>טענת "פרעתי"</a> — טופס 236, קוד 119</td>
-          <td class="border border-gray-300 px-4 py-2">כדאי בתוך תקופת האזהרה</td>
+          <td class="border border-gray-300 px-4 py-2">אין מועד אחרון, אפשר בכל שלב. הגשה בתוך תקופת האזהרה פוטרת מחקירת יכולת עד ההחלטה. בתיק פסק דין: רק תשלומים שנעשו אחרי פסק הדין</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p class="text-sm">מקורות: <a href={LAW}>חוק ההוצאה לפועל, סעיפים 81א ו־81א1</a>; <a href={FORM218}>טופס 218</a>; <a href={PAID}>דף השירות לטענת פרעתי</a>.</p>
+  <p class="text-sm">מקורות: <a href={LAW}>חוק ההוצאה לפועל, סעיפים 81א ו־81א1</a>; <a href={FORM218}>טופס 218</a>; <a href={PAID}>דף השירות לטענת פרעתי</a>; <a href={KZ_PAID}>כל זכות — טענת "פרעתי"</a>.</p>
 
   <h2 id="claim-rules" class="scroll-mt-24">מה צריך להתקיים בתביעה על סכום קצוב?</h2>
   <p>תביעה על סכום קצוב היא דרך לפתוח תיק בלי פסק דין. לכן החוק מגביל אותה. לפי סעיף 81א1 לחוק ההוצאה לפועל:</p>
