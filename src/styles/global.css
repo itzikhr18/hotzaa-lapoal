@@ -46,7 +46,8 @@
     @apply list-decimal list-outside pr-5 mb-4 space-y-1 text-gray-700;
   }
 
-  & a {
+  /* Button-styled links (with a bg-* class) keep their own colors — otherwise text-brand on bg-brand-dark fails contrast */
+  & a:not([class*="bg-"]) {
     @apply text-brand underline hover:text-brand-dark transition-colors;
   }
 

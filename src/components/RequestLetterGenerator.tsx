@@ -218,7 +218,7 @@ ${fullName.trim() || '____________'}
       {selectedGrounds.length === 0 && !extra.trim() && <p className="text-sm text-amber-900 mb-4">לא נבחרו נימוקים. אפשר להפיק טיוטה ריקה, אך אין להגיש אותה בלי פירוט עובדתי מתאים.</p>}
       <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
         <p className="text-sm font-bold text-gray-700 mb-2">תצוגה מקדימה של הבקשה:</p>
-        <pre className="whitespace-pre-wrap text-sm text-gray-800 leading-relaxed font-sans bg-white border border-gray-200 rounded-lg p-4 max-h-96 overflow-y-auto">{letter}</pre>
+        <pre tabIndex={0} role="region" aria-label="נוסח הבקשה שנוצר" className="whitespace-pre-wrap focus:outline-2 focus:outline-offset-2 focus:outline-brand-dark text-sm text-gray-800 leading-relaxed font-sans bg-white border border-gray-200 rounded-lg p-4 max-h-96 overflow-y-auto">{letter}</pre>
       </div>
 
       {missingFields && (
