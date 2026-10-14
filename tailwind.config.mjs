@@ -20,7 +20,7 @@ export default {
         neutral: {
           bg:     '#F8F9FA',
           border: '#E5E7EB',
-          muted:  '#6B7280',
+          muted:  '#4B5563',
         }
       },
       fontFamily: {
